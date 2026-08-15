@@ -10385,6 +10385,269 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transition: none !important;
   }
 }
+/* =========================================================
+   SECTION REVEAL ON SCROLL
+   ========================================================= */
+.luxury-products-section.reveal-section {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* عندما يصل القسم إلى الشاشة */
+.luxury-products-section.reveal-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.luxury-products-section .lux-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-gap: 16px;
+  gap: 16px;
+  width: 100%;
+}
+.luxury-products-section .lux-card {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+  min-height: 0;
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.luxury-products-section .lux-card:hover {
+  transform: translateY(-4px);
+  border-color: #e8e8e8;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+}
+.luxury-products-section {
+  /* =========================
+     IMAGE
+  ========================= */
+}
+.luxury-products-section .lux-image {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  padding: 10px;
+  background: #fafafa;
+  overflow: hidden;
+}
+.luxury-products-section .lux-image a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.luxury-products-section .lux-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  transition: transform 0.4s ease;
+}
+.luxury-products-section .lux-card:hover .lux-image img {
+  transform: scale(1.04);
+}
+.luxury-products-section {
+  /* =========================
+     DISCOUNT
+  ========================= */
+}
+.luxury-products-section .lux-discount {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #E62973;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1;
+}
+.luxury-products-section {
+  /* =========================
+     CONTENT
+  ========================= */
+}
+.luxury-products-section .lux-content {
+  padding: 13px 14px 14px;
+  text-align: center;
+}
+.luxury-products-section .lux-content h3 {
+  margin: 0;
+  min-height: 42px;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.6;
+  color: #111;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.luxury-products-section .lux-content h3 a {
+  color: inherit;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+.luxury-products-section .lux-content h3 a:hover {
+  color: #E62973;
+}
+.luxury-products-section {
+  /* =========================
+     META
+  ========================= */
+}
+.luxury-products-section .lux-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+}
+.luxury-products-section .lux-rating {
+  order: -1;
+  color: #d99b18;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+.luxury-products-section .lux-price {
+  color: #111;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.4;
+}
+.luxury-products-section {
+  /* =========================
+     CART
+  ========================= */
+}
+.luxury-products-section .lux-cart {
+  margin-top: 11px;
+  width: 100%;
+}
+.luxury-products-section .lux-cart salla-add-product-button {
+  display: block;
+  width: 100%;
+}
+.luxury-products-section .lux-cart salla-add-product-button button {
+  width: 100% !important;
+  min-height: 40px !important;
+  height: 40px !important;
+  padding: 0 10px !important;
+  border: 0 !important;
+  border-radius: 11px !important;
+  background: #111 !important;
+  color: #fff !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  box-shadow: none !important;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.luxury-products-section .lux-cart salla-add-product-button button:hover {
+  background: #E62973 !important;
+  transform: translateY(-1px);
+}
+/* =========================================================
+   DESKTOP
+========================================================= */
+@media (min-width: 1200px) {
+  .luxury-products-section .lux-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+  .luxury-products-section .lux-image {
+    height: 205px;
+  }
+}
+/* =========================================================
+   TABLET
+========================================================= */
+@media (max-width: 1199px) {
+  .luxury-products-section .lux-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .luxury-products-section .lux-image {
+    height: 195px;
+  }
+}
+/* =========================================================
+   SMALL TABLET
+========================================================= */
+@media (max-width: 900px) {
+  .luxury-products-section .lux-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .luxury-products-section .lux-image {
+    height: 185px;
+  }
+}
+/* =========================================================
+   MOBILE
+========================================================= */
+@media (max-width: 640px) {
+  .luxury-products-section .lux-grid {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 4px 2px 12px;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+  .luxury-products-section .lux-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .luxury-products-section .lux-card {
+    flex: 0 0 170px;
+    width: 170px;
+    max-width: 170px;
+    scroll-snap-align: start;
+    border-radius: 14px;
+  }
+  .luxury-products-section .lux-image {
+    height: 175px;
+    padding: 8px;
+  }
+  .luxury-products-section .lux-content {
+    padding: 11px 10px 11px;
+  }
+  .luxury-products-section .lux-content h3 {
+    font-size: 13px;
+    min-height: 39px;
+  }
+  .luxury-products-section .lux-price {
+    font-size: 15px;
+  }
+  .luxury-products-section .lux-cart {
+    margin-top: 9px;
+  }
+  .luxury-products-section .lux-cart salla-add-product-button button {
+    height: 37px !important;
+    min-height: 37px !important;
+    border-radius: 10px !important;
+    font-size: 11px !important;
+  }
+}
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+@media (max-width: 380px) {
+  .luxury-products-section .lux-card {
+    flex-basis: 155px;
+    width: 155px;
+    max-width: 155px;
+  }
+  .luxury-products-section .lux-image {
+    height: 160px;
+  }
+}
 body.mm-ocd-opened,
 body.modal-is-open,
 body.fancybox-open {

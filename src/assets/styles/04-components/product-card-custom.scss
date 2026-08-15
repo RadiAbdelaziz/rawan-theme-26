@@ -1,0 +1,412 @@
+/* ==========================================
+   PREMIUM PRODUCT CARD - E62973 IDENTITY
+========================================== */
+
+
+.s-product-card-entry {
+
+    background:#ffffff;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    border:none;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.12);
+
+    position:relative;
+
+    transition:.45s cubic-bezier(.22,1,.36,1);
+
+
+
+    &:hover {
+
+        transform:translateY(-10px);
+
+        box-shadow:
+        0 30px 70px rgba(230,41,115,.25);
+
+    }
+
+
+
+    /* ================= IMAGE ================= */
+
+
+    .s-product-card-image {
+
+
+        background:#fafafa;
+
+        padding:18px;
+
+        position:relative;
+
+
+
+        .s-product-card-image-cover {
+
+
+            width:100%;
+
+            aspect-ratio:1/1;
+
+            object-fit:contain;
+
+            border-radius:20px;
+
+            transition:.6s ease;
+
+
+        }
+
+
+    }
+
+
+
+
+    &:hover {
+
+
+        .s-product-card-image-cover {
+
+            transform:scale(1.08);
+
+        }
+
+    }
+
+
+
+
+
+    /* ================= BADGE ================= */
+
+
+    .s-product-card-promotion-title {
+
+
+        position:absolute;
+
+        top:15px;
+
+        left:15px;
+
+
+        background:#E62973;
+
+        color:white;
+
+        padding:6px 12px;
+
+        border-radius:999px;
+
+        font-size:11px;
+
+        font-weight:800;
+
+        z-index:5;
+
+
+    }
+
+
+
+
+
+    /* ================= FAVORITE ================= */
+
+
+    .s-product-card-wishlist-btn {
+
+
+        top:15px;
+
+        right:15px;
+
+
+
+        button {
+
+
+            width:42px;
+
+            height:42px;
+
+
+            border-radius:50%;
+
+
+            background:white !important;
+
+
+            color:#E62973 !important;
+
+
+            box-shadow:
+            0 5px 15px rgba(0,0,0,.12);
+
+
+
+            transition:.3s;
+
+
+
+            &:hover {
+
+
+                background:#E62973 !important;
+
+                color:white !important;
+
+                transform:scale(1.1);
+
+
+            }
+
+
+        }
+
+
+    }
+
+
+
+
+
+
+    /* ================= CONTENT ================= */
+
+
+    .s-product-card-content {
+
+
+        padding:18px;
+
+        text-align:right;
+
+
+    }
+
+
+
+
+    .s-product-card-content-title {
+
+
+        margin-bottom:8px;
+
+
+
+        a {
+
+
+            color:#111;
+
+
+            font-size:16px;
+
+
+            font-weight:900;
+
+
+            line-height:1.7;
+
+
+            transition:.3s;
+
+
+
+            &:hover {
+
+
+                color:#E62973;
+
+
+            }
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+    /* ================= RATING ================= */
+
+
+    .s-product-card-rating {
+
+
+        color:#E62973;
+
+
+        font-size:13px;
+
+
+        margin-top:8px;
+
+
+    }
+
+
+
+
+
+
+
+    /* ================= PRICE ================= */
+
+
+    .s-product-card-sale-price {
+
+
+        display:flex;
+
+
+        align-items:center;
+
+
+        gap:8px;
+
+
+        margin-top:12px;
+
+
+
+        h4 {
+
+
+            color:#111;
+
+
+            font-size:22px;
+
+
+            font-weight:900;
+
+
+        }
+
+
+
+        span {
+
+
+            color:#999;
+
+
+            font-size:14px;
+
+
+            text-decoration:line-through;
+
+
+        }
+
+
+
+    }
+
+
+
+
+
+    /* ================= OLD PRICE ================= */
+
+
+    .s-product-card-price {
+
+
+        color:#111;
+
+        font-size:20px;
+
+        font-weight:900;
+
+
+    }
+
+
+
+
+
+
+
+    /* ================= ADD TO CART ================= */
+
+
+    .s-product-card-content-footer {
+
+
+        margin-top:18px;
+
+
+
+        salla-add-product-button {
+
+
+
+            width:100%;
+
+
+
+            button {
+
+
+                width:100% !important;
+
+
+                height:48px;
+
+
+                border-radius:14px !important;
+
+
+                background:#E62973 !important;
+
+
+                color:#fff !important;
+
+
+                font-weight:900;
+
+
+                border:none !important;
+
+
+                transition:.3s;
+
+
+
+                &:hover {
+
+
+                    background:#c2185b !important;
+
+
+                    transform:scale(1.03);
+
+
+                }
+
+
+            }
+
+
+        }
+
+
+    }
+
+
+
+}

@@ -1501,3 +1501,31 @@
     }
 
 }
+/* =========================================================
+   SECTION REVEAL ON SCROLL
+   ========================================================= */
+
+.luxury-products-section.reveal-section {
+
+    opacity: 0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.22, 1, .36, 1);
+
+}
+
+
+/* عندما يصل القسم إلى الشاشة */
+
+.luxury-products-section.reveal-section.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
