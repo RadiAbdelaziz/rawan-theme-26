@@ -86,7 +86,6 @@
 rel="stylesheet"
 href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 />
-    
     <style>
         :root {
             --font-main: '{{theme.font.name}}';
@@ -122,6 +121,7 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 {% endif %}
 <script defer crossorigin="anonymous" src="{{ 'app.js' | asset }}"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="store-locations.js"></script>
 
 {# Twilight Components #}
 <salla-offer-modal data-testid="store-offer-modal"></salla-offer-modal>
