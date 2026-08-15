@@ -1,25 +1,40 @@
 /* =========================================================
-   LUXURY PRODUCTS CAROUSEL
+   LUXURY PRODUCTS SHOWCASE
+   E62973 IDENTITY
+   AUTO CAROUSEL
    ========================================================= */
 
-.lux-carousel {
 
-    position: relative;
+/* =========================================================
+   GLOBAL
+   ========================================================= */
 
-    width: 100%;
+.luxury-products-section,
+.luxury-products-section *,
+.luxury-products-section *::before,
+.luxury-products-section *::after {
+
+    box-sizing: border-box;
 
 }
 
 
 /* =========================================================
-   VIEWPORT
+   SECTION
    ========================================================= */
 
-.lux-carousel-viewport {
+.luxury-products-section {
 
     position: relative;
 
     width: 100%;
+
+    padding:
+        var(--lux-padding, 80px)
+        0;
+
+    background:
+        var(--lux-bg, #ffffff);
 
     overflow: hidden;
 
@@ -27,40 +42,301 @@
 
 
 /* =========================================================
-   TRACK
+   CONTAINER
    ========================================================= */
 
-.lux-carousel-track {
+.luxury-products-section > .container {
 
-    display: flex;
+    width: 100%;
 
-    flex-direction: row;
+    max-width: 1240px;
 
-    gap: 16px;
+    margin:
+        0 auto;
 
-    width: max-content;
-
-    direction: ltr;
-
-    transform: translateX(0);
-
-    will-change: transform;
-
-}
-
-
-/* أثناء الحركة */
-
-.lux-carousel-track.is-moving {
-
-    transition:
-        transform .55s cubic-bezier(.22, 1, .36, 1);
+    padding:
+        0 20px;
 
 }
 
 
 /* =========================================================
-   CARD
+   HEADER
+   ========================================================= */
+
+.lux-header {
+
+    width: 100%;
+
+    max-width: 760px;
+
+    margin:
+        0 auto 42px;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   BADGE
+   ========================================================= */
+
+.lux-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-bottom: 14px;
+
+    padding:
+        7px 15px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(230, 41, 115, .06);
+
+    color:
+        var(--lux-accent, #E62973);
+
+    border:
+        1px solid rgba(230, 41, 115, .12);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+}
+
+
+/* =========================================================
+   BADGE DOT
+   ========================================================= */
+
+.lux-badge-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    flex:
+        0 0 7px;
+
+    border-radius: 50%;
+
+    background:
+        var(--lux-accent, #E62973);
+
+    box-shadow:
+        0 0 0 4px rgba(230, 41, 115, .08);
+
+}
+
+
+/* =========================================================
+   MAIN TITLE
+   ========================================================= */
+
+.lux-heading {
+
+    margin:
+        0;
+
+    color:
+        #111111;
+
+    font-size:
+        clamp(28px, 4vw, 42px);
+
+    line-height:
+        1.35;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        -.7px;
+
+}
+
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+.lux-subheading {
+
+    max-width:
+        650px;
+
+    margin:
+        13px auto 0;
+
+    color:
+        #888888;
+
+    font-size:
+        14px;
+
+    line-height:
+        1.9;
+
+    font-weight:
+        400;
+
+}
+
+
+/* =========================================================
+   HEADER LINE
+   ========================================================= */
+
+.lux-line {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        9px;
+
+    width:
+        180px;
+
+    margin:
+        20px auto 0;
+
+}
+
+
+.lux-line span {
+
+    flex:
+        1;
+
+    height:
+        1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(230, 41, 115, .30)
+        );
+
+}
+
+
+.lux-line span:last-child {
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(230, 41, 115, .30),
+            transparent
+        );
+
+}
+
+
+.lux-line i {
+
+    width:
+        7px;
+
+    height:
+        7px;
+
+    flex:
+        0 0 7px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--lux-accent, #E62973);
+
+}
+
+
+/* =========================================================
+   AUTO CAROUSEL
+   ========================================================= */
+
+.lux-carousel {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+}
+
+
+/* =========================================================
+   CAROUSEL VIEWPORT
+   ========================================================= */
+
+.lux-carousel-viewport {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    overflow:
+        hidden;
+
+}
+
+
+/* =========================================================
+   CAROUSEL TRACK
+   ========================================================= */
+
+.lux-carousel-track {
+
+    display:
+        flex;
+
+    flex-direction:
+        row;
+
+    align-items:
+        stretch;
+
+    gap:
+        16px;
+
+    width:
+        max-content;
+
+    direction:
+        ltr;
+
+    will-change:
+        transform;
+
+}
+
+
+/* =========================================================
+   CAROUSEL CARD WIDTH
    ========================================================= */
 
 .lux-carousel-track .lux-card {
@@ -68,99 +344,13 @@
     flex:
         0 0
         calc(
-            (100% - 64px) / 5
+            (1240px - 40px - 64px) / 5
         );
 
     width:
         calc(
-            (100% - 64px) / 5
+            (1240px - 40px - 64px) / 5
         );
-
-}
-
-
-/* =========================================================
-   ARROWS
-   ========================================================= */
-
-.lux-carousel-arrow {
-
-    position: absolute;
-
-    top: 50%;
-
-    z-index: 20;
-
-    width: 44px;
-
-    height: 44px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 0;
-
-    border: 1px solid rgba(230, 41, 115, .12);
-
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, .96);
-
-    color: var(--lux-accent, #E62973);
-
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, .10);
-
-    cursor: pointer;
-
-    transform: translateY(-50%);
-
-    transition:
-        transform .25s ease,
-        background .25s ease,
-        color .25s ease,
-        box-shadow .25s ease;
-
-}
-
-
-.lux-carousel-arrow:hover {
-
-    background:
-        var(--lux-accent, #E62973);
-
-    color:
-        #ffffff;
-
-    box-shadow:
-        0 12px 30px rgba(230, 41, 115, .25);
-
-    transform:
-        translateY(-50%) scale(1.06);
-
-}
-
-
-.lux-carousel-arrow--prev {
-
-    right: -22px;
-
-}
-
-
-.lux-carousel-arrow--next {
-
-    left: -22px;
-
-}
-
-
-.lux-carousel-arrow i {
-
-    font-size: 18px;
 
 }
 
@@ -169,17 +359,22 @@
    PRODUCT CARD
    ========================================================= */
 
-.lux-carousel-track .lux-card {
+.lux-card {
 
-    position: relative;
+    position:
+        relative;
 
-    display: flex;
+    display:
+        flex;
 
-    flex-direction: column;
+    flex-direction:
+        column;
 
-    min-width: 0;
+    min-width:
+        0;
 
-    overflow: hidden;
+    overflow:
+        hidden;
 
     background:
         var(--lux-card, #ffffff);
@@ -198,10 +393,20 @@
         box-shadow .35s ease,
         border-color .35s ease;
 
+    animation:
+        lux-card-reveal .55s ease both;
+
+    animation-delay:
+        calc(var(--product-index, 0) * 60ms);
+
 }
 
 
-.lux-carousel-track .lux-card:hover {
+/* =========================================================
+   CARD HOVER
+   ========================================================= */
+
+.lux-card:hover {
 
     transform:
         translateY(-7px);
@@ -216,13 +421,706 @@
 
 
 /* =========================================================
-   DISABLE OLD REVEAL TRANSFORM
+   IMAGE AREA
    ========================================================= */
 
-.lux-carousel-track .lux-card {
+.lux-image {
 
-    animation:
-        lux-card-reveal .55s ease both;
+    position:
+        relative;
+
+    width:
+        100%;
+
+    aspect-ratio:
+        1 / 1;
+
+    overflow:
+        hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #fafafa
+        );
+
+}
+
+
+/* =========================================================
+   IMAGE LINK
+   ========================================================= */
+
+.lux-image-link {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
+    z-index:
+        1;
+
+    text-decoration:
+        none;
+
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE
+   ========================================================= */
+
+.lux-product-image {
+
+    display:
+        block;
+
+    width:
+        84%;
+
+    height:
+        84%;
+
+    object-fit:
+        contain;
+
+    transition:
+        transform .5s cubic-bezier(.22, 1, .36, 1);
+
+}
+
+
+/* =========================================================
+   IMAGE HOVER
+   ========================================================= */
+
+.lux-card:hover .lux-product-image {
+
+    transform:
+        scale(1.07);
+
+}
+
+
+/* =========================================================
+   DISCOUNT / PRODUCT BADGE
+   ========================================================= */
+
+.lux-discount {
+
+    position:
+        absolute;
+
+    top:
+        12px;
+
+    right:
+        12px;
+
+    z-index:
+        5;
+
+    max-width:
+        55%;
+
+    padding:
+        6px 11px;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        999px;
+
+    background:
+        var(--lux-accent, #E62973);
+
+    color:
+        #ffffff;
+
+    font-size:
+        10px;
+
+    font-weight:
+        800;
+
+    line-height:
+        1.2;
+
+    white-space:
+        nowrap;
+
+    text-overflow:
+        ellipsis;
+
+}
+
+
+/* =========================================================
+   WISHLIST
+   ========================================================= */
+
+.lux-wishlist {
+
+    position:
+        absolute;
+
+    top:
+        12px;
+
+    left:
+        12px;
+
+    z-index:
+        6;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        38px;
+
+    height:
+        38px;
+
+    padding:
+        0;
+
+    border:
+        1px solid rgba(0, 0, 0, .06);
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255, 255, 255, .95);
+
+    color:
+        var(--lux-accent, #E62973);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, .08);
+
+    cursor:
+        pointer;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        color .25s ease;
+
+}
+
+
+.lux-wishlist span {
+
+    font-size:
+        21px;
+
+    line-height:
+        1;
+
+}
+
+
+.lux-wishlist:hover {
+
+    transform:
+        scale(1.08);
+
+    background:
+        var(--lux-accent, #E62973);
+
+    color:
+        #ffffff;
+
+    border-color:
+        var(--lux-accent, #E62973);
+
+}
+
+
+/* =========================================================
+   SALES STATUS
+   ========================================================= */
+
+.lux-sales-status {
+
+    width:
+        calc(100% - 24px);
+
+    margin:
+        9px auto 0;
+
+    padding:
+        6px 10px;
+
+    border-radius:
+        999px;
+
+    background:
+        #fff7d6;
+
+    color:
+        #806b18;
+
+    font-size:
+        9px;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.3;
+
+    text-align:
+        center;
+
+    white-space:
+        nowrap;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+
+}
+
+
+.lux-sales-status--out {
+
+    background:
+        #f5f5f5;
+
+    color:
+        #777777;
+
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.lux-content {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    flex:
+        1;
+
+    min-width:
+        0;
+
+    padding:
+        13px 14px 14px;
+
+    text-align:
+        center;
+
+}
+
+
+/* =========================================================
+   RATING
+   ========================================================= */
+
+.lux-rating {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        4px;
+
+    min-height:
+        18px;
+
+    margin-bottom:
+        6px;
+
+    color:
+        #777777;
+
+    font-size:
+        10px;
+
+}
+
+
+.lux-rating-star {
+
+    color:
+        #D7A900;
+
+    font-size:
+        13px;
+
+}
+
+
+.lux-rating-value {
+
+    color:
+        #555555;
+
+    font-weight:
+        700;
+
+}
+
+
+.lux-rating-count {
+
+    color:
+        #999999;
+
+}
+
+
+/* =========================================================
+   PRODUCT TITLE
+   ========================================================= */
+
+.lux-product-title {
+
+    min-height:
+        43px;
+
+    margin:
+        0;
+
+    padding:
+        0;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.7;
+
+    font-weight:
+        900;
+
+}
+
+
+.lux-product-title a {
+
+    display:
+        -webkit-box;
+
+    color:
+        #111111;
+
+    text-decoration:
+        none;
+
+    overflow:
+        hidden;
+
+    -webkit-line-clamp:
+        2;
+
+    -webkit-box-orient:
+        vertical;
+
+    transition:
+        color .25s ease;
+
+}
+
+
+.lux-product-title a:hover {
+
+    color:
+        var(--lux-accent, #E62973);
+
+}
+
+
+/* =========================================================
+   SUB INFO
+   ========================================================= */
+
+.lux-product-subinfo {
+
+    min-height:
+        18px;
+
+    margin:
+        3px 0 0;
+
+    color:
+        #999999;
+
+    font-size:
+        10px;
+
+    line-height:
+        1.5;
+
+    white-space:
+        nowrap;
+
+    overflow:
+        hidden;
+
+    text-overflow:
+        ellipsis;
+
+}
+
+
+/* =========================================================
+   LUXURY PRICE
+   ========================================================= */
+
+.lux-price {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        100%;
+
+    margin-top:
+        12px;
+
+    min-height:
+        34px;
+
+}
+
+
+.lux-price-main {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        6px;
+
+    direction:
+        ltr;
+
+    color:
+        #111111;
+
+}
+
+
+.lux-price-current {
+
+    display:
+        inline-block;
+
+    color:
+        #111111;
+
+    font-size:
+        19px;
+
+    font-weight:
+        900;
+
+    line-height:
+        1.2;
+
+    letter-spacing:
+        -.2px;
+
+}
+
+
+.lux-price-currency {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    color:
+        #E62973;
+
+    font-size:
+        17px;
+
+    line-height:
+        1;
+
+}
+
+
+.lux-price-currency i {
+
+    color:
+        #E62973;
+
+    font-size:
+        17px;
+
+    line-height:
+        1;
+
+}
+
+
+/* =========================================================
+   OLD PRICE
+   ========================================================= */
+
+.lux-price-old {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    gap:
+        4px;
+
+    margin-right:
+        8px;
+
+    color:
+        #999999;
+
+    font-size:
+        11px;
+
+    font-weight:
+        500;
+
+    text-decoration:
+        line-through;
+
+    direction:
+        ltr;
+
+}
+
+
+.lux-price-old i {
+
+    color:
+        #999999;
+
+    font-size:
+        10px;
+
+    line-height:
+        1;
+
+}
+
+
+/* =========================================================
+   CART
+   ========================================================= */
+
+.lux-cart {
+
+    margin-top:
+        10px;
+
+}
+
+
+.lux-cart-inner {
+
+    display:
+        inline-flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        6px;
+
+}
+
+
+/* =========================================================
+   REVEAL ANIMATION
+   ========================================================= */
+
+@keyframes lux-card-reveal {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(18px);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+
+    }
 
 }
 
@@ -235,7 +1133,8 @@
 
     .lux-carousel-track {
 
-        gap: 14px;
+        gap:
+            14px;
 
     }
 
@@ -244,27 +1143,13 @@
 
         flex-basis:
             calc(
-                (100% - 42px) / 4
+                (100vw - 40px - 42px) / 4
             );
 
         width:
             calc(
-                (100% - 42px) / 4
+                (100vw - 40px - 42px) / 4
             );
-
-    }
-
-
-    .lux-carousel-arrow--prev {
-
-        right: -15px;
-
-    }
-
-
-    .lux-carousel-arrow--next {
-
-        left: -15px;
 
     }
 
@@ -332,51 +1217,16 @@
 
         flex-basis:
             calc(
-                (100% - 10px) / 2
+                (100vw - 24px - 10px) / 2
             );
 
         width:
             calc(
-                (100% - 10px) / 2
+                (100vw - 24px - 10px) / 2
             );
 
         border-radius:
             14px;
-
-    }
-
-
-    .lux-carousel-arrow {
-
-        width:
-            36px;
-
-        height:
-            36px;
-
-    }
-
-
-    .lux-carousel-arrow--prev {
-
-        right:
-            -8px;
-
-    }
-
-
-    .lux-carousel-arrow--next {
-
-        left:
-            -8px;
-
-    }
-
-
-    .lux-carousel-arrow i {
-
-        font-size:
-            15px;
 
     }
 
@@ -423,10 +1273,43 @@
     }
 
 
+    .lux-sales-status {
+
+        width:
+            calc(100% - 16px);
+
+        margin-top:
+            7px;
+
+        padding:
+            5px 6px;
+
+        font-size:
+            8px;
+
+    }
+
+
     .lux-content {
 
         padding:
             9px 8px 10px;
+
+    }
+
+
+    .lux-rating {
+
+        font-size:
+            9px;
+
+    }
+
+
+    .lux-rating-star {
+
+        font-size:
+            11px;
 
     }
 
@@ -465,6 +1348,60 @@
 
     }
 
+
+    .lux-price-old {
+
+        font-size:
+            9px;
+
+    }
+
+
+    .lux-cart {
+
+        padding-top:
+            10px;
+
+    }
+
+
+    .lux-cart
+    salla-add-product-button
+    button,
+    .lux-cart
+    salla-add-product-button
+    .s-button-element {
+
+        height:
+            39px !important;
+
+        min-height:
+            39px !important;
+
+        border-radius:
+            10px !important;
+
+        font-size:
+            10px !important;
+
+    }
+
+
+    .lux-cart-inner {
+
+        gap:
+            5px;
+
+    }
+
+
+    .lux-cart-inner i {
+
+        font-size:
+            13px;
+
+    }
+
 }
 
 
@@ -486,24 +1423,13 @@
 
         flex-basis:
             calc(
-                (100% - 8px) / 2
+                (100vw - 24px - 8px) / 2
             );
 
         width:
             calc(
-                (100% - 8px) / 2
+                (100vw - 24px - 8px) / 2
             );
-
-    }
-
-
-    .lux-carousel-arrow {
-
-        width:
-            32px;
-
-        height:
-            32px;
 
     }
 
@@ -515,6 +1441,62 @@
 
         padding-right:
             7px;
+
+    }
+
+
+    .lux-product-title {
+
+        font-size:
+            10px;
+
+    }
+
+
+    .lux-price-current {
+
+        font-size:
+            14px;
+
+    }
+
+
+    .lux-cart
+    salla-add-product-button
+    button,
+    .lux-cart
+    salla-add-product-button
+    .s-button-element {
+
+        height:
+            35px !important;
+
+        min-height:
+            35px !important;
+
+        font-size:
+            9px !important;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .luxury-products-section * ,
+    .luxury-products-section *::before ,
+    .luxury-products-section *::after {
+
+        animation:
+            none !important;
+
+        transition:
+            none !important;
 
     }
 
