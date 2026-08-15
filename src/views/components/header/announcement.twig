@@ -1,0 +1,38 @@
+{% if component.show_announcement %}
+    {% set announcements = component.announcements ?: [] %}
+
+    {% if announcements|length > 0 %}
+        <div class="announcement-bar"
+            style="
+                --announcement-bg: {{ component.announcement_background ?: '#E62973' }};
+                --announcement-color: {{ component.announcement_color ?: '#FFFFFF' }};
+                --announcement-speed: {{ component.announcement_speed ?: '20' }}s;
+                --announcement-font-size: {{ component.announcement_font_size ?: '14' }}px;
+                direction: rtl;
+            "
+        >
+            {% for i in 1..2 %}
+                <div class="announcement-track">
+                    {% for item in announcements %}
+                        {% if item.text %}
+                            {% if item.link %}
+                                <a href="{{ item.link }}" class="announcement-link">
+                                    {{ item.text }}
+                                </a>
+                            {% else %}
+                                <span>{{ item.text }}</span>
+                            {% endif %}
+
+                            {% if component.show_separator %}
+                                <span class="sep">
+                                    {{ component.separator ?: '•' }}
+                                </span>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endif %}
+

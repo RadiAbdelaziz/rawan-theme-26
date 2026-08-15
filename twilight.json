@@ -1127,7 +1127,191 @@
                     "maxLength": 30
                 }
             ]
+        },
+        {
+  "key": "7d3c9e21-8f54-4a6b-b219-5e7f3c8d1a42",
+  "title": {
+    "ar": "الشريط الإعلاني",
+    "en": "Announcement Bar"
+  },
+  "icon": "sicon-megaphone",
+  "path": "header.announcement",
+  "image": "https://cdn.salla.network/images/themes/raed/preview-images/announcement-bar.png",
+  "is_default": true,
+  "fields": [
+    {
+      "type": "boolean",
+      "id": "show_announcement",
+      "label": "تفعيل الشريط الإعلاني",
+      "icon": "sicon-toggle-off",
+      "format": "switch",
+      "value": true
+    },
+    {
+      "type": "string",
+      "id": "announcement_background",
+      "label": "لون الخلفية",
+      "icon": "sicon-palette",
+      "format": "color",
+      "value": "#E62973"
+    },
+    {
+      "type": "string",
+      "id": "announcement_color",
+      "label": "لون النص",
+      "icon": "sicon-palette",
+      "format": "color",
+      "value": "#FFFFFF"
+    },
+    {
+      "type": "items",
+      "id": "announcement_speed",
+      "label": "سرعة الحركة",
+      "icon": "sicon-clock",
+      "format": "dropdown-list",
+      "source": "Manual",
+      "selected": [
+        {
+          "label": "متوسطة",
+          "value": "20"
         }
+      ],
+      "options": [
+        {
+          "label": "بطيئة",
+          "value": "30"
+        },
+        {
+          "label": "متوسطة",
+          "value": "20"
+        },
+        {
+          "label": "سريعة",
+          "value": "12"
+        }
+      ]
+    },
+    {
+      "type": "items",
+      "id": "announcement_direction",
+      "label": "اتجاه الحركة",
+      "icon": "sicon-arrow-left",
+      "format": "dropdown-list",
+      "source": "Manual",
+      "selected": [
+        {
+          "label": "من اليمين إلى اليسار",
+          "value": "rtl"
+        }
+      ],
+      "options": [
+        {
+          "label": "من اليمين إلى اليسار",
+          "value": "rtl"
+        },
+        {
+          "label": "من اليسار إلى اليمين",
+          "value": "ltr"
+        }
+      ]
+    },
+    {
+      "type": "boolean",
+      "id": "pause_on_hover",
+      "label": "إيقاف الحركة عند مرور المؤشر",
+      "icon": "sicon-cursor",
+      "format": "switch",
+      "value": true
+    },
+    {
+      "type": "boolean",
+      "id": "show_separator",
+      "label": "إظهار الفاصل بين الإعلانات",
+      "icon": "sicon-minus",
+      "format": "switch",
+      "value": true
+    },
+    {
+      "type": "string",
+      "id": "separator",
+      "label": "رمز الفاصل",
+      "icon": "sicon-minus",
+      "format": "text",
+      "value": "•"
+    },
+    {
+      "type": "items",
+      "id": "announcement_font_size",
+      "label": "حجم الخط",
+      "icon": "sicon-format-size",
+      "format": "dropdown-list",
+      "source": "Manual",
+      "selected": [
+        {
+          "label": "متوسط",
+          "value": "14"
+        }
+      ],
+      "options": [
+        {
+          "label": "صغير",
+          "value": "12"
+        },
+        {
+          "label": "متوسط",
+          "value": "14"
+        },
+        {
+          "label": "كبير",
+          "value": "16"
+        },
+        {
+          "label": "كبير جداً",
+          "value": "18"
+        }
+      ]
+    },
+    {
+      "type": "collection",
+      "id": "announcements",
+      "format": "collection",
+      "label": "الإعلانات",
+      "item_label": "إعلان",
+      "minLength": 1,
+      "maxLength": 10,
+      "value": [
+        {
+          "announcements.text": "شحن مجاني لجميع الطلبات فوق 300 ريال",
+          "announcements.link": ""
+        },
+        {
+          "announcements.text": "خصم 15٪ على أول طلب",
+          "announcements.link": ""
+        },
+        {
+          "announcements.text": "اكتشف أحدث المنتجات",
+          "announcements.link": ""
+        }
+      ],
+      "fields": [
+        {
+          "type": "string",
+          "id": "announcements.text",
+          "label": "النص",
+          "multilanguage": true,
+          "format": "text",
+          "maxLength": 150
+        },
+        {
+          "type": "string",
+          "id": "announcements.link",
+          "label": "الرابط",
+          "format": "url"
+        }
+      ]
+    }
+  ]
+}
     ],
     "support_url": "https://example.com",
     "description": {

@@ -1,0 +1,70 @@
+.announcement-bar {
+    --announcement-bg: #E62973;
+    --announcement-color: #fff;
+    --announcement-speed: 18s;
+    --announcement-font-size: 0.875rem;
+
+    background: var(--announcement-bg);
+    color: var(--announcement-color);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    min-height: 42px;
+    font-size: var(--announcement-font-size);
+    font-weight: 500;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
+}
+
+.announcement-track {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    flex-shrink: 0;
+    padding: 0.625rem 0;
+    will-change: transform;
+    animation: announcement-scroll var(--announcement-speed) linear infinite;
+}
+
+.announcement-track span {
+    display: inline-flex;
+    align-items: center;
+}
+
+.sep {
+    opacity: 0.45;
+    user-select: none;
+}
+
+.announcement-bar:hover .announcement-track {
+    animation-play-state: paused;
+}
+
+@keyframes announcement-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .announcement-track {
+        animation: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .announcement-bar {
+        --announcement-font-size: 0.75rem;
+        min-height: 38px;
+    }
+
+    .announcement-track {
+        gap: 1.5rem;
+        padding: 0.5rem 0;
+    }
+}
