@@ -1,6 +1,6 @@
 /* =========================================================
    LUXURY REWARD PROGRESS
-   ربط شريط المكافأة بالسلة
+   ربط شريط المكافأة بالسلة بشكل مباشر
 ========================================================= */
 
 (function () {
@@ -10,6 +10,7 @@
 
     /* =====================================================
        INITIALIZE
+       تهيئة جميع أقسام المكافأة
     ===================================================== */
 
     function initLuxuryReward() {
@@ -34,15 +35,11 @@
 
 
     /* =====================================================
-       SECTION
+       REWARD SECTION
+       تهيئة القسم
     ===================================================== */
 
     function initRewardSection(section) {
-
-
-        /* =================================================
-           ELEMENTS
-        ================================================= */
 
         const progressBar = section.querySelector(
             '[data-progress-bar]'
@@ -59,12 +56,8 @@
         );
 
 
-        const targetElement = section.querySelector(
-            '[data-reward-target]'
-        );
-
-
         const steps = {
+
             cart: section.querySelector(
                 '[data-step="cart"]'
             ),
@@ -76,19 +69,17 @@
             gift: section.querySelector(
                 '[data-step="gift"]'
             )
+
         };
 
 
         /* =================================================
-           TARGET
-           سعر المنتج المرجعي
+           REWARD TARGET
+           الحد المطلوب للوصول للمكافأة
         ================================================= */
 
         const target = parseFloat(
-            section.dataset.rewardTarget ||
-            (targetElement
-                ? targetElement.dataset.rewardTarget
-                : 0)
+            section.dataset.rewardTarget || 0
         );
 
 
@@ -97,15 +88,16 @@
             setUnavailableState(section);
 
             return;
+
         }
 
 
         /* =================================================
-           UPDATE
+           UPDATE REWARD
+           تحديث الشريط والحالة
         ================================================= */
 
         function updateReward(cartTotal) {
-
 
             cartTotal = parseFloat(cartTotal) || 0;
 
@@ -114,9 +106,8 @@
                CALCULATE PROGRESS
             ============================================= */
 
-            let progress = (
-                cartTotal / target
-            ) * 100;
+            let progress =
+                (cartTotal / target) * 100;
 
 
             progress = Math.max(
@@ -126,7 +117,7 @@
 
 
             /* =============================================
-               PROGRESS BAR
+               UPDATE PROGRESS BAR
             ============================================= */
 
             if (progressBar) {
@@ -138,12 +129,14 @@
 
 
             /* =============================================
-               UPDATE DATA ATTRIBUTE
+               SAVE STATE
             ============================================= */
 
-            section.dataset.cartTotal = cartTotal;
+            section.dataset.cartTotal =
+                cartTotal;
 
-            section.dataset.rewardProgress = progress;
+            section.dataset.rewardProgress =
+                progress;
 
 
             /* =============================================
@@ -151,7 +144,6 @@
             ============================================= */
 
             if (cartTotal < target) {
-
 
                 const remaining =
                     target - cartTotal;
@@ -176,7 +168,7 @@
 
                 setStepState(
                     steps.cart,
-                    true
+                    cartTotal > 0
                 );
 
 
@@ -205,12 +197,10 @@
 
             else {
 
-
                 if (rewardStatus) {
 
                     rewardStatus.textContent =
-                        '{{ component.status_complete ?: "مبروك! لقد وصلتِ إلى المكافأة" }}';
-
+                        'مبروك! لقد وصلتِ إلى المكافأة';
                 }
 
 
@@ -250,14 +240,15 @@
 
         /* =================================================
            LOAD CART
+           قراءة إجمالي السلة من Salla
         ================================================= */
 
         function loadCart() {
 
-
             if (
                 typeof window.salla === 'undefined' ||
-                !window.salla.cart
+                !window.salla.cart ||
+                typeof window.salla.cart.details !== 'function'
             ) {
 
                 return;
@@ -282,10 +273,16 @@
                             const total =
                                 extractCartTotal(response);
 
+
                             updateReward(total);
 
                         })
-                        .catch(function () {
+                        .catch(function (error) {
+
+                            console.warn(
+                                'Luxury Reward: Cart details failed',
+                                error
+                            );
 
                             updateReward(0);
 
@@ -296,7 +293,7 @@
             } catch (error) {
 
                 console.warn(
-                    'Luxury Reward:',
+                    'Luxury Reward: Cart error',
                     error
                 );
 
@@ -306,15 +303,32 @@
 
 
         /* =================================================
+           REFRESH CART
+           تأخير بسيط حتى تكتمل عملية السلة
+        ================================================= */
+
+        function refreshCart() {
+
+            setTimeout(function () {
+
+                loadCart();
+
+            }, 500);
+
+        }
+
+
+        /* =================================================
            CART EVENTS
+           أحداث السلة
         ================================================= */
 
         function bindCartEvents() {
 
-
             if (
                 typeof window.salla === 'undefined' ||
-                !window.salla.cart
+                !window.salla.cart ||
+                !window.salla.cart.event
             ) {
 
                 return;
@@ -322,23 +336,24 @@
             }
 
 
+            const cartEvents =
+                window.salla.cart.event;
+
+
             /* =============================================
                PRODUCT ADDED
+               تمت إضافة منتج
             ============================================= */
 
             if (
-                window.salla.cart.event &&
-                typeof window.salla.cart.event.onItemAdded ===
+                typeof cartEvents.onItemAdded ===
                 'function'
             ) {
 
-                window.salla.cart.event.onItemAdded(
+                cartEvents.onItemAdded(
                     function () {
 
-                        setTimeout(
-                            loadCart,
-                            300
-                        );
+                        refreshCart();
 
                     }
                 );
@@ -347,22 +362,19 @@
 
 
             /* =============================================
-               PRODUCT REMOVED
+               PRODUCT DELETED
+               تم حذف منتج
             ============================================= */
 
             if (
-                window.salla.cart.event &&
-                typeof window.salla.cart.event.onItemRemoved ===
+                typeof cartEvents.onItemDeleted ===
                 'function'
             ) {
 
-                window.salla.cart.event.onItemRemoved(
+                cartEvents.onItemDeleted(
                     function () {
 
-                        setTimeout(
-                            loadCart,
-                            300
-                        );
+                        refreshCart();
 
                     }
                 );
@@ -372,21 +384,18 @@
 
             /* =============================================
                CART UPDATED
+               تغيرت كمية أو بيانات السلة
             ============================================= */
 
             if (
-                window.salla.cart.event &&
-                typeof window.salla.cart.event.onUpdated ===
+                typeof cartEvents.onUpdated ===
                 'function'
             ) {
 
-                window.salla.cart.event.onUpdated(
+                cartEvents.onUpdated(
                     function () {
 
-                        setTimeout(
-                            loadCart,
-                            300
-                        );
+                        refreshCart();
 
                     }
                 );
@@ -398,6 +407,7 @@
 
         /* =================================================
            INITIAL LOAD
+           التحميل الأول
         ================================================= */
 
         loadCart();
@@ -405,36 +415,100 @@
 
         /* =================================================
            BIND EVENTS
+           ربط أحداث السلة
         ================================================= */
 
         bindCartEvents();
+
+
+        /* =================================================
+           FALLBACK REFRESH
+           فحص دوري احتياطي
+        ================================================= */
+
+        let lastTotal =
+            section.dataset.cartTotal || '';
+
+
+        setInterval(function () {
+
+            if (
+                typeof window.salla === 'undefined' ||
+                !window.salla.cart
+            ) {
+
+                return;
+
+            }
+
+
+            loadCart();
+
+        }, 5000);
 
     }
 
 
     /* =====================================================
-       CART TOTAL
+       EXTRACT CART TOTAL
+       استخراج إجمالي السلة
     ===================================================== */
 
     function extractCartTotal(response) {
 
-
         if (!response) {
 
             return 0;
+
         }
 
 
-        const data =
+        let data =
             response.data ||
             response;
 
 
-        /* =============================================
-           POSSIBLE TOTAL LOCATIONS
-        ============================================= */
+        /* =================================================
+           إذا كانت الاستجابة تحتوي على data داخل data
+        ================================================= */
+
+        if (
+            data &&
+            data.data &&
+            typeof data.data === 'object'
+        ) {
+
+            data = data.data;
+
+        }
+
+
+        /* =================================================
+           POSSIBLE CART OBJECTS
+        ================================================= */
+
+        const cart =
+            data.cart ||
+            data;
+
+
+        /* =================================================
+           POSSIBLE TOTALS
+        ================================================= */
 
         const possibleTotals = [
+
+            cart.total,
+
+            cart.total_price,
+
+            cart.sub_total,
+
+            cart.subtotal,
+
+            cart.grand_total,
+
+            cart.amount,
 
             data.total,
 
@@ -442,22 +516,7 @@
 
             data.sub_total,
 
-            data.subtotal,
-
-            data.cart &&
-            data.cart.total,
-
-            data.cart &&
-            data.cart.total_price,
-
-            data.cart &&
-            data.cart.sub_total,
-
-            data.data &&
-            data.data.total,
-
-            data.data &&
-            data.data.total_price
+            data.subtotal
 
         ];
 
@@ -468,10 +527,11 @@
             i++
         ) {
 
-
             const value =
                 parseFloat(
-                    possibleTotals[i]
+                    cleanNumber(
+                        possibleTotals[i]
+                    )
                 );
 
 
@@ -487,40 +547,54 @@
         }
 
 
-        /* =============================================
+        /* =================================================
            FALLBACK
-           جمع أسعار العناصر
-        ============================================= */
+           جمع أسعار المنتجات
+        ================================================= */
 
         const items =
+            cart.items ||
             data.items ||
             data.cart_items ||
-            (
-                data.cart &&
-                data.cart.items
-            ) ||
             [];
 
 
         if (Array.isArray(items)) {
 
-
             return items.reduce(
                 function (total, item) {
-
-
-                    const price =
-                        parseFloat(
-                            item.price ||
-                            item.total ||
-                            item.product_price ||
-                            0
-                        );
-
 
                     const quantity =
                         parseFloat(
                             item.quantity || 1
+                        );
+
+
+                    const itemTotal =
+                        parseFloat(
+                            cleanNumber(
+                                item.total
+                            )
+                        );
+
+
+                    if (
+                        !isNaN(itemTotal) &&
+                        itemTotal >= 0
+                    ) {
+
+                        return total + itemTotal;
+
+                    }
+
+
+                    const price =
+                        parseFloat(
+                            cleanNumber(
+                                item.price ||
+                                item.product_price ||
+                                0
+                            )
                         );
 
 
@@ -540,7 +614,38 @@
 
 
     /* =====================================================
+       CLEAN NUMBER
+       تنظيف الرقم من الرموز
+    ===================================================== */
+
+    function cleanNumber(value) {
+
+        if (
+            value === null ||
+            value === undefined
+        ) {
+
+            return 0;
+
+        }
+
+
+        if (typeof value === 'number') {
+
+            return value;
+
+        }
+
+
+        return String(value)
+            .replace(/[^0-9.-]/g, '');
+
+    }
+
+
+    /* =====================================================
        STEP STATE
+       حالة مراحل المكافأة
     ===================================================== */
 
     function setStepState(
@@ -548,10 +653,10 @@
         active
     ) {
 
-
         if (!step) {
 
             return;
+
         }
 
 
@@ -571,10 +676,10 @@
 
     /* =====================================================
        UNAVAILABLE STATE
+       حالة عدم توفر الحد
     ===================================================== */
 
     function setUnavailableState(section) {
-
 
         section.classList.add(
             'reward-unavailable'
@@ -590,7 +695,7 @@
         if (status) {
 
             status.textContent =
-                'لم يتم تحديد منتج للمكافأة';
+                'لم يتم تحديد قيمة المكافأة';
 
         }
 
@@ -612,10 +717,10 @@
 
     /* =====================================================
        FORMAT PRICE
+       تنسيق السعر
     ===================================================== */
 
     function formatPrice(value) {
-
 
         value =
             Math.max(
