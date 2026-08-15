@@ -2277,6 +2277,176 @@
     }
 
   ]
+},
+{
+  "key": "4e7a9c31-6b25-48d9-a712-5f3c8e2d6b90",
+  "title": {
+    "en": "Categories Cards",
+    "ar": "بطاقات المجموعات"
+  },
+  "icon": "sicon-layout-grid",
+  "path": "home.categories-cards",
+  "image": "https://cdn.salla.network/images/themes/raed/preview-images/grid.png",
+  "is_default": true,
+  "fields": [
+    {
+      "type": "boolean",
+      "id": "show_section",
+      "format": "switch",
+      "label": "إظهار القسم",
+      "value": true
+    },
+
+    {
+      "type": "string",
+      "id": "title",
+      "format": "text",
+      "label": "العنوان الرئيسي",
+      "multilanguage": true,
+      "value": "تسوق حسب المجموعة"
+    },
+
+    {
+      "type": "string",
+      "id": "description",
+      "format": "textarea",
+      "label": "وصف القسم",
+      "multilanguage": true,
+      "value": "اكتشفي تشكيلات أنيقة من الأزياء والعطور والإكسسوارات المصممة بذوق راقٍ"
+    },
+
+    {
+      "id": "items",
+      "type": "collection",
+      "format": "collection",
+      "label": "بطاقات المجموعات",
+      "description": "أضف المجموعات التي تريد إبرازها في القسم",
+      "minLength": 1,
+      "maxLength": 4,
+      "required": false,
+
+      "fields": [
+
+        {
+          "type": "string",
+          "id": "items.title",
+          "format": "text",
+          "label": "عنوان البطاقة",
+          "multilanguage": true,
+          "required": false
+        },
+
+        {
+          "type": "string",
+          "id": "items.subtitle",
+          "format": "text",
+          "label": "العنوان الفرعي",
+          "multilanguage": true,
+          "required": false
+        },
+
+        {
+          "type": "string",
+          "id": "items.image",
+          "format": "image",
+          "label": "صورة المجموعة",
+          "required": false
+        },
+
+        {
+          "type": "items",
+          "id": "items.category",
+          "format": "dropdown-list",
+          "label": "الفئة المرتبطة",
+          "icon": "sicon-category",
+          "source": "categories",
+          "searchable": true,
+          "required": false
+        },
+
+        {
+          "type": "string",
+          "id": "items.link",
+          "format": "url",
+          "label": "رابط خارجي",
+          "required": false
+        },
+
+        {
+          "type": "string",
+          "id": "items.badge",
+          "format": "text",
+          "label": "الشارة",
+          "multilanguage": true,
+          "required": false
+        }
+
+      ]
+    },
+
+    {
+      "type": "boolean",
+      "id": "show_badge",
+      "format": "switch",
+      "label": "إظهار الشارة",
+      "value": true
+    },
+
+    {
+      "type": "boolean",
+      "id": "show_description",
+      "format": "switch",
+      "label": "إظهار الوصف",
+      "value": true
+    },
+
+    {
+      "type": "boolean",
+      "id": "show_arrow",
+      "format": "switch",
+      "label": "إظهار سهم الانتقال",
+      "value": true
+    },
+
+    {
+      "type": "boolean",
+      "id": "enable_animation",
+      "format": "switch",
+      "label": "تفعيل الحركة",
+      "value": true
+    },
+
+    {
+      "type": "string",
+      "id": "columns",
+      "format": "select",
+      "label": "عدد الأعمدة",
+      "value": "4",
+      "options": [
+        {
+          "label": "2 مجموعات",
+          "value": "2"
+        },
+        {
+          "label": "3 مجموعات",
+          "value": "3"
+        },
+        {
+          "label": "4 مجموعات",
+          "value": "4"
+        }
+      ]
+    },
+
+    {
+      "type": "string",
+      "id": "padding",
+      "format": "number",
+      "label": "المسافة الداخلية للقسم",
+      "value": "70"
+    }
+
+  ]
 }
 
 

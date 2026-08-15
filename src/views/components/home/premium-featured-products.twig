@@ -1,1 +1,281 @@
-<h1>come on city</h1>
+{% set products = component.products %}
+
+{% if products|length %}
+
+<section
+    class="featured-products-premium reveal-section"
+    style="
+        --section-bg: {{ component.background_color ?: '#FFFFFF' }};
+        --card-bg: {{ component.card_color ?: '#FFFFFF' }};
+        --button-bg: {{ component.button_color ?: '#E62973' }};
+        --section-padding: {{ component.padding ?: 80 }}px;
+    "
+>
+    <div class="container">
+
+        {# Header #}
+
+        {% if component.show_title != false %}
+
+            <header class="featured-header">
+
+                <div class="featured-badge">
+                    <span class="featured-badge-dot"></span>
+                    <span>منتجاتنا</span>
+                </div>
+
+                <h2>
+                    {{ component.title ?: 'أحدث المنتجات الفاخرة' }}
+                </h2>
+
+                <p>
+                    {{ component.subtitle ?: 'مجموعة مختارة بعناية لتجربة تسوق راقية' }}
+                </p>
+
+                <div class="featured-line">
+                    <span></span>
+                    <i></i>
+                    <span></span>
+                </div>
+
+            </header>
+
+        {% endif %}
+
+        {# Products Grid #}
+
+        <div class="featured-grid columns-{{ component.columns ?: '4' }}">
+
+            {% for product in products %}
+
+                <article
+                    class="premium-card"
+                    style="--product-index: {{ loop.index0 }};"
+                >
+
+                    {# Image #}
+
+                    <div class="premium-image">
+
+                        {% if component.show_badge != false and product.promotion_title %}
+
+                            <span class="premium-discount">
+                                {{ product.promotion_title }}
+                            </span>
+
+                        {% elseif component.show_badge != false and product.sale_price %}
+
+                            <span class="premium-discount">
+                                عرض
+                            </span>
+
+                        {% endif %}
+
+                        {# Wishlist #}
+
+                        <button
+                            type="button"
+                            class="premium-wishlist"
+                            aria-label="إضافة {{ product.name }} إلى المفضلة"
+                            onclick="salla.wishlist.toggle('{{ product.id }}')"
+                        >
+                            <span>♡</span>
+                        </button>
+
+                        {# Image Link #}
+
+                        <a
+                            href="{{ product.url ?: '#' }}"
+                            class="premium-image-link"
+                            aria-label="{{ product.name }}"
+                        >
+
+                            {% if product.image %}
+
+                                <img
+                                    class="premium-product-image"
+                                    src="{{ product.image.url ?: product.image }}"
+                                    alt="{{ product.image.alt ?: product.name }}"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+
+                            {% elseif product.main_image %}
+
+                                <img
+                                    class="premium-product-image"
+                                    src="{{ product.main_image }}"
+                                    alt="{{ product.name }}"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+
+                            {% else %}
+
+                                <img
+                                    class="premium-product-image"
+                                    src="{{ 'images/placeholder.png'|asset }}"
+                                    alt="{{ product.name }}"
+                                    loading="lazy"
+                                    decoding="async"
+                                >
+
+                            {% endif %}
+
+                        </a>
+
+                    </div>
+
+                    {# Sales Status #}
+
+                    {% if product.is_out_of_stock %}
+
+                        <div class="premium-sales-status premium-sales-status--out">
+                            غير متوفر حالياً
+                        </div>
+
+                    {% elseif product.promotion_title %}
+
+                        <div class="premium-sales-status">
+                            {{ product.promotion_title }}
+                        </div>
+
+                    {% endif %}
+
+                    {# Content #}
+
+                    <div class="premium-content">
+
+                        {# Rating #}
+
+                        {% if component.show_rating != false and product.rating %}
+
+                            <div class="premium-rating">
+
+                                <span class="premium-rating-star">★</span>
+
+                                <span class="premium-rating-value">
+                                    {{ product.rating.stars ?: product.rating }}
+                                </span>
+
+                                {% if product.rating.count %}
+
+                                    <span class="premium-rating-count">
+                                        ({{ product.rating.count }})
+                                    </span>
+
+                                {% endif %}
+
+                            </div>
+
+                        {% endif %}
+
+                        {# Title #}
+
+                        <h3 class="premium-product-title">
+                            <a href="{{ product.url ?: '#' }}">
+                                {{ product.name }}
+                            </a>
+                        </h3>
+
+                        {# Sub Info #}
+
+                        <p class="premium-product-subinfo">
+
+                            {% if product.subtitle %}
+
+                                {{ product.subtitle }}
+
+                            {% elseif product.brand and product.brand.name %}
+
+                                {{ product.brand.name }}
+
+                            {% else %}
+
+                                منتج فاخر مختار بعناية
+
+                            {% endif %}
+
+                        </p>
+
+                        {# Price #}
+
+                        <div class="premium-price-row">
+
+                            <div class="premium-price-main">
+
+                                <strong class="premium-price">
+
+                                    {% if product.is_on_sale and product.sale_price %}
+
+                                        {{ product.sale_price }}
+
+                                    {% else %}
+
+                                        {{ product.price }}
+
+                                    {% endif %}
+
+                                </strong>
+
+                                <span
+                                    class="premium-price-currency"
+                                    aria-label="ريال سعودي"
+                                >
+                                    <i class="sicon-sar"></i>
+                                </span>
+
+                            </div>
+
+                            {% if component.show_old_price != false and product.regular_price %}
+
+                                <del class="premium-old-price">
+                                    <span>{{ product.regular_price }}</span>
+                                    <i class="sicon-sar"></i>
+                                </del>
+
+                            {% elseif component.show_old_price != false and product.price_before_discount %}
+
+                                <del class="premium-old-price">
+                                    <span>{{ product.price_before_discount }}</span>
+                                    <i class="sicon-sar"></i>
+                                </del>
+
+                            {% endif %}
+
+                        </div>
+
+                        {# Add To Cart #}
+
+                        {% if component.show_add_to_cart != false %}
+
+                            <div class="premium-cart">
+
+                                <salla-add-product-button
+                                    product-id="{{ product.id }}"
+                                    product-status="{{ product.status }}"
+                                    product-type="{{ product.type }}"
+                                    width="full"
+                                >
+                                    <span class="premium-cart-inner">
+                                        <i class="sicon-shopping-bag"></i>
+                                        <span>إضافة إلى السلة</span>
+                                    </span>
+                                </salla-add-product-button>
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>
+
+{% endif %}

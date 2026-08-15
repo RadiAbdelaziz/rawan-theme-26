@@ -7400,6 +7400,28 @@ model-viewer[style*=width]:before{
     padding-right: 12px;
   }
 }
+.categories-section > .s-comments-product .s-comments-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+@media (max-width: 1100px) {
+  .categories-section > .s-comments-product .s-comments-container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}
+@media (max-width: 768px) {
+  .categories-section > .s-comments-product .s-comments-container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
 .share-btns-list{
     position: absolute;
     top: 3rem;
@@ -12714,6 +12736,469 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .featured-products-premium *::after {
     animation: none !important;
     transition: none !important;
+  }
+}
+/* =========================================================
+   CATEGORIES CARDS
+   Premium / Soft Luxury Style
+========================================================= */
+/* =========================================================
+   GLOBAL
+========================================================= */
+.categories-section,
+.categories-section *,
+.categories-section *::before,
+.categories-section *::after {
+  box-sizing: border-box;
+}
+/* =========================================================
+   SECTION
+========================================================= */
+.categories-section {
+  --categories-accent: #E62973;
+  --categories-accent-soft: #FFF4F7;
+  --categories-text: #171717;
+  --categories-muted: #777777;
+  --categories-border: #F0E9EC;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 80px 0;
+  background: linear-gradient(180deg, #FFFDFE 0%, #FFF9FB 100%);
+  overflow: hidden;
+  isolation: isolate;
+}
+/* =========================================================
+   SOFT BACKGROUND DECORATION
+========================================================= */
+.categories-section::before {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  top: -180px;
+  right: -150px;
+  border-radius: 50%;
+  background: rgba(230, 41, 115, 0.045);
+  filter: blur(20px);
+  pointer-events: none;
+}
+.categories-section::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  bottom: -170px;
+  left: -140px;
+  border-radius: 50%;
+  background: rgba(230, 41, 115, 0.035);
+  filter: blur(20px);
+  pointer-events: none;
+}
+/* =========================================================
+   CONTAINER
+========================================================= */
+.categories-section > .container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+/* =========================================================
+   HEADER
+========================================================= */
+.categories-header {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto 52px;
+  text-align: center;
+}
+/* =========================================================
+   DECORATIVE LINE
+========================================================= */
+.categories-header .decor-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 180px;
+  margin: 0 auto 20px;
+}
+.categories-header .decor-line span {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(230, 41, 115, 0.28));
+}
+.categories-header .decor-line span:last-child {
+  background: linear-gradient(90deg, rgba(230, 41, 115, 0.28), transparent);
+}
+.categories-header .decor-line i {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: var(--categories-accent);
+  box-shadow: 0 0 0 4px rgba(230, 41, 115, 0.07);
+}
+/* =========================================================
+   HEADER TITLE
+========================================================= */
+.categories-header h2 {
+  margin: 0;
+  color: var(--categories-text);
+  font-size: max(28px, min(4vw, 42px));
+  line-height: 1.35;
+  font-weight: 900;
+  letter-spacing: -0.7px;
+}
+/* =========================================================
+   HEADER DESCRIPTION
+========================================================= */
+.categories-header p {
+  width: 100%;
+  max-width: 650px;
+  margin: 12px auto 0;
+  color: var(--categories-muted);
+  font-size: 14px;
+  line-height: 1.9;
+  font-weight: 400;
+}
+/* =========================================================
+   GRID
+========================================================= */
+.categories-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-gap: 18px;
+  gap: 18px;
+  width: 100%;
+}
+/* =========================================================
+   CATEGORY CARD
+========================================================= */
+.category-card {
+  --card-radius: 18px;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 390px;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 18px;
+  border-radius: var(--card-radius);
+  background: #FFFFFF;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-shadow: 0 6px 24px rgba(24, 16, 20, 0.055);
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  animation: categoryCardReveal 0.65s ease both;
+  animation-delay: calc(0 * 80ms);
+  animation-delay: calc(var(--category-index, 0) * 80ms);
+}
+/* =========================================================
+   CARD HOVER
+========================================================= */
+.category-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(230, 41, 115, 0.12);
+  box-shadow: 0 16px 38px rgba(24, 16, 20, 0.09);
+}
+/* =========================================================
+   IMAGE
+========================================================= */
+.category-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* =========================================================
+   IMAGE HOVER
+========================================================= */
+.category-card:hover img {
+  transform: scale(1.055);
+}
+/* =========================================================
+   OVERLAY
+========================================================= */
+.category-card .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02) 15%, rgba(0, 0, 0, 0.08) 42%, rgba(0, 0, 0, 0.68) 100%);
+  transition: background 0.4s ease;
+}
+.category-card:hover .overlay {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.03) 10%, rgba(0, 0, 0, 0.12) 40%, rgba(0, 0, 0, 0.72) 100%);
+}
+/* =========================================================
+   BADGE
+========================================================= */
+.category-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: calc(100% - 32px);
+  padding: 7px 13px;
+  border: 1px solid rgba(230, 41, 115, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--categories-accent);
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+}
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+.category-card .content {
+  position: absolute;
+  right: 22px;
+  left: 22px;
+  bottom: 21px;
+  z-index: 3;
+  color: #FFFFFF;
+  text-align: right;
+}
+/* =========================================================
+   CARD TITLE
+========================================================= */
+.category-card .content h3 {
+  margin: 0;
+  color: #FFFFFF;
+  font-size: max(19px, min(2vw, 24px));
+  line-height: 1.35;
+  font-weight: 900;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+}
+/* =========================================================
+   CARD SUBTITLE
+========================================================= */
+.category-card .content p {
+  width: 100%;
+  margin: 6px 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 12px;
+  line-height: 1.7;
+  font-weight: 400;
+}
+/* =========================================================
+   ARROW
+========================================================= */
+.category-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 31px;
+  height: 31px;
+  margin-top: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  backdrop-filter: blur(8px);
+  opacity: 0.88;
+  transform: translateX(0);
+  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+.category-arrow i {
+  font-size: 13px;
+  line-height: 1;
+}
+.category-card:hover .category-arrow {
+  background: var(--categories-accent);
+  border-color: var(--categories-accent);
+  transform: translateX(-4px);
+}
+/* =========================================================
+   CARD REVEAL ANIMATION
+========================================================= */
+@keyframes categoryCardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* =========================================================
+   SECTION REVEAL
+========================================================= */
+.reveal-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* =========================================================
+   CARD REVEAL
+========================================================= */
+.category-card.reveal-section {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.category-card.reveal-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* =========================================================
+   TABLET
+========================================================= */
+@media (max-width: 1100px) {
+  .categories-section {
+    padding: 70px 0;
+  }
+  .categories-section > .container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .categories-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .category-card {
+    height: 370px;
+  }
+}
+/* =========================================================
+   MOBILE
+========================================================= */
+@media (max-width: 768px) {
+  .categories-section {
+    padding: 55px 0 45px;
+  }
+  .categories-section > .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .categories-header {
+    margin-bottom: 30px;
+  }
+  .categories-header .decor-line {
+    width: 145px;
+    margin-bottom: 16px;
+  }
+  .categories-header h2 {
+    font-size: 27px;
+    letter-spacing: -0.5px;
+  }
+  .categories-header p {
+    padding: 0 8px;
+    font-size: 12px;
+    line-height: 1.85;
+  }
+  .categories-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .category-card {
+    height: 290px;
+    border-radius: 15px;
+  }
+  .category-badge {
+    top: 8px;
+    right: 8px;
+    max-width: calc(100% - 16px);
+    padding: 5px 9px;
+    font-size: 8px;
+  }
+  .category-card .content {
+    right: 13px;
+    left: 13px;
+    bottom: 14px;
+  }
+  .category-card .content h3 {
+    font-size: 16px;
+  }
+  .category-card .content p {
+    margin-top: 4px;
+    font-size: 9px;
+    line-height: 1.6;
+  }
+  .category-arrow {
+    width: 27px;
+    height: 27px;
+    margin-top: 9px;
+  }
+  .category-arrow i {
+    font-size: 11px;
+  }
+}
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+@media (max-width: 420px) {
+  .categories-grid {
+    gap: 8px;
+  }
+  .category-card {
+    height: 250px;
+    border-radius: 13px;
+  }
+  .category-card .content {
+    right: 11px;
+    left: 11px;
+    bottom: 11px;
+  }
+  .category-card .content h3 {
+    font-size: 14px;
+  }
+  .category-card .content p {
+    font-size: 8px;
+  }
+  .category-arrow {
+    width: 25px;
+    height: 25px;
+    margin-top: 7px;
+  }
+  .category-badge {
+    padding: 4px 8px;
+    font-size: 7px;
+  }
+}
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .categories-section *,
+  .categories-section *::before,
+  .categories-section *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .reveal-section,
+  .category-card.reveal-section {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 body.mm-ocd-opened,
