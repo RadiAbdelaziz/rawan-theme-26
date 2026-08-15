@@ -1,129 +1,283 @@
-document.addEventListener("DOMContentLoaded", function(){
+/* =========================================================
+   STORE LOCATIONS
+   Interactive Leaflet Map
+========================================================= */
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    'use strict';
 
 
-const mapElement = document.querySelector('#store-map');
+    /* =====================================================
+       CHECK LEAFLET
+    ===================================================== */
+
+    if (typeof L === 'undefined') {
+        return;
+    }
 
 
-if(!mapElement){
-    return;
-}
+    /* =====================================================
+       FIND MAPS
+    ===================================================== */
+
+    const mapElements = document.querySelectorAll(
+        '[data-store-map]'
+    );
 
 
-
-if(typeof L === "undefined"){
-    return;
-}
-
+    if (!mapElements.length) {
+        return;
+    }
 
 
-let defaultLat = 24.7136;
-let defaultLng = 46.6753;
+    /* =====================================================
+       INITIALIZE EACH SECTION
+    ===================================================== */
+
+    mapElements.forEach(function (mapElement) {
+
+        const section =
+            mapElement.closest('.store-location-section');
 
 
-
-let map = L.map("store-map")
-.setView(
-[
-defaultLat,
-defaultLng
-],
-10
-);
+        if (!section) {
+            return;
+        }
 
 
+        /* =================================================
+           CONTROLS
+        ================================================= */
 
-L.tileLayer(
-"https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-{
- attribution:"© OpenStreetMap"
-}
-).addTo(map);
-
+        const showControls =
+            section.dataset.showControls !== 'false';
 
 
-let marker = L.marker(
-[
-defaultLat,
-defaultLng
-]
-)
-.addTo(map)
-.bindPopup("الفرع الرئيسي")
-.openPopup();
+        /* =================================================
+           BRANCHES
+        ================================================= */
+
+        const branchButtons =
+            section.querySelectorAll(
+                '.store-branch-card'
+            );
 
 
+        /* =================================================
+           DEFAULT LOCATION
+        ================================================= */
+
+        let defaultLat = 24.7136;
+        let defaultLng = 46.6753;
 
 
+        if (branchButtons.length) {
 
-document.querySelectorAll(".store-branch-card")
-.forEach(function(button){
+            const firstBranch =
+                branchButtons[0];
 
+            const firstLat =
+                parseFloat(
+                    firstBranch.dataset.lat
+                );
 
-button.addEventListener(
-"click",
-function(){
-
-
-let lat = parseFloat(this.dataset.lat);
-
-let lng = parseFloat(this.dataset.lng);
-
-let name = this.dataset.name;
-
+            const firstLng =
+                parseFloat(
+                    firstBranch.dataset.lng
+                );
 
 
-if(!lat || !lng){
-    return;
-}
+            if (
+                Number.isFinite(firstLat) &&
+                Number.isFinite(firstLng)
+            ) {
+
+                defaultLat = firstLat;
+                defaultLng = firstLng;
+
+            }
+
+        }
 
 
+        /* =================================================
+           CREATE MAP
+        ================================================= */
 
-map.flyTo(
-[
-lat,
-lng
-],
-13,
-{
-    animate:true,
-    duration:1
-}
-);
-
-
-
-marker
-.setLatLng(
-[
-lat,
-lng
-]
-)
-.bindPopup(
-"فرع " + name
-)
-.openPopup();
+        const map = L.map(
+            mapElement,
+            {
+                zoomControl: showControls,
+                scrollWheelZoom: showControls,
+                dragging: true,
+                doubleClickZoom: showControls,
+                touchZoom: showControls
+            }
+        ).setView(
+            [
+                defaultLat,
+                defaultLng
+            ],
+            12
+        );
 
 
+        /* =================================================
+           OPENSTREETMAP
+        ================================================= */
+
+        L.tileLayer(
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {
+                attribution:
+                    '&copy; OpenStreetMap contributors',
+
+                maxZoom: 19
+            }
+        ).addTo(map);
 
 
-document
-.querySelectorAll(".store-branch-card")
-.forEach(card=>{
-    card.classList.remove("active");
-});
+        /* =================================================
+           MARKER
+        ================================================= */
+
+        const marker = L.marker(
+            [
+                defaultLat,
+                defaultLng
+            ]
+        ).addTo(map);
 
 
-this.classList.add("active");
+        /* =================================================
+           BRANCH CLICK
+        ================================================= */
+
+        branchButtons.forEach(function (button) {
+
+            button.addEventListener(
+                'click',
+                function () {
+
+                    const lat =
+                        parseFloat(
+                            this.dataset.lat
+                        );
+
+                    const lng =
+                        parseFloat(
+                            this.dataset.lng
+                        );
+
+                    const name =
+                        this.dataset.name || 'الفرع';
 
 
+                    if (
+                        !Number.isFinite(lat) ||
+                        !Number.isFinite(lng)
+                    ) {
+                        return;
+                    }
 
-}
-);
+
+                    /* =====================================
+                       MOVE MAP
+                    ===================================== */
+
+                    map.flyTo(
+                        [
+                            lat,
+                            lng
+                        ],
+                        15,
+                        {
+                            animate: true,
+                            duration: 1
+                        }
+                    );
 
 
-});
+                    /* =====================================
+                       UPDATE MARKER
+                    ===================================== */
+
+                    marker
+                        .setLatLng(
+                            [
+                                lat,
+                                lng
+                            ]
+                        )
+                        .bindPopup(
+                            '<strong>' +
+                            name +
+                            '</strong>'
+                        )
+                        .openPopup();
 
 
+                    /* =====================================
+                       ACTIVE CARD
+                    ===================================== */
+
+                    branchButtons.forEach(
+                        function (card) {
+
+                            card.classList.remove(
+                                'active'
+                            );
+
+                        }
+                    );
+
+
+                    this.classList.add(
+                        'active'
+                    );
+
+                }
+            );
+
+        });
+
+
+        /* =================================================
+           ACTIVATE FIRST BRANCH
+        ================================================= */
+
+        if (branchButtons.length) {
+
+            branchButtons[0]
+                .classList.add('active');
+
+            marker
+                .bindPopup(
+                    '<strong>' +
+                    (
+                        branchButtons[0]
+                            .dataset.name ||
+                        'الفرع الرئيسي'
+                    ) +
+                    '</strong>'
+                )
+                .openPopup();
+
+        }
+
+
+        /* =================================================
+           FIX MAP SIZE
+        ================================================= */
+
+        setTimeout(function () {
+
+            map.invalidateSize();
+
+        }, 300);
+
+
+    });
 
 });

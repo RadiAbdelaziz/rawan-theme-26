@@ -1,0 +1,155 @@
+{% if component.show_section %}
+
+<section 
+class="store-location-section
+{% if component.enable_animation %}
+store-location-animated
+{% endif %}
+"
+
+style="
+background:{{ component.background_color ?: '#FFFFFF' }};
+--location-accent:{{ component.accent_color ?: '#E62973' }};
+--map-height:{{ component.map_height ?: '420' }}px;
+">
+
+
+{% if component.show_glow %}
+
+<div class="store-location-glow one"></div>
+<div class="store-location-glow two"></div>
+
+{% endif %}
+
+
+
+<div class="container">
+
+
+
+{% if component.show_title %}
+
+<div class="store-location-header">
+
+
+<div class="location-decoration">
+
+<span></span>
+<i></i>
+<span></span>
+
+</div>
+
+
+
+<h2>
+{{ component.title ?: 'شرفنا بزيارتك' }}
+</h2>
+
+
+
+<p>
+{{ component.subtitle ?: 'متواجدون لخدمتك في فروعنا داخل المملكة' }}
+</p>
+
+
+</div>
+
+{% endif %}
+
+
+
+
+
+<div class="store-location-content">
+
+
+
+<div class="store-location-map">
+
+
+<div 
+class="store-map"
+id="store-map"
+></div>
+
+
+</div>
+
+
+
+
+
+
+{% if component.branches|length %}
+
+<div class="store-location-branches">
+
+
+
+{% for branch in component.branches %}
+
+
+<button
+
+type="button"
+
+class="store-branch-card"
+
+data-lat="{{ branch.latitude }}"
+
+data-lng="{{ branch.longitude }}"
+
+data-name="{{ branch.name }}"
+
+>
+
+
+<h3>
+{{ branch.name }}
+</h3>
+
+
+{% if branch.description %}
+
+<p>
+{{ branch.description }}
+</p>
+
+{% endif %}
+
+
+{% if branch.button_text %}
+
+<span>
+{{ branch.button_text }}
+</span>
+
+{% endif %}
+
+
+</button>
+
+
+
+{% endfor %}
+
+
+</div>
+
+{% endif %}
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+{% endif %}

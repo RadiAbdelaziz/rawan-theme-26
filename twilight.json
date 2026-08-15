@@ -2896,6 +2896,180 @@
     }
 
   ]
+},
+{
+  "key": "9a7d6e42-3c51-4f88-b821-7f2a6c91d845",
+
+  "title": {
+    "en": "Store Locations",
+    "ar": "فروعنا ومواقعنا"
+  },
+
+  "description": "قسم عرض فروع المتجر مع خريطة تفاعلية.",
+
+  "icon": "sicon-location",
+
+  "path": "home.store-locations",
+
+  "image": "https://cdn.salla.network/images/themes/raed/preview-images/map.png",
+
+  "is_default": true,
+
+  "fields": [
+
+    {
+      "id": "show_section",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار القسم",
+      "value": true
+    },
+
+    {
+      "id": "title",
+      "type": "string",
+      "format": "text",
+      "label": "العنوان الرئيسي",
+      "multilanguage": true,
+      "value": "شرفنا بزيارتك"
+    },
+
+    {
+      "id": "subtitle",
+      "type": "string",
+      "format": "textarea",
+      "label": "الوصف",
+      "multilanguage": true,
+      "value": "متواجدون لخدمتك في فروعنا داخل المملكة"
+    },
+
+    {
+      "id": "background_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون الخلفية",
+      "value": "#FFFFFF"
+    },
+
+    {
+      "id": "accent_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون التفاصيل",
+      "value": "#E62973"
+    },
+
+    {
+      "id": "map_height",
+      "type": "string",
+      "format": "text",
+      "label": "ارتفاع الخريطة",
+      "value": "420"
+    },
+
+    {
+      "id": "branches",
+      "type": "collection",
+      "format": "collection",
+      "label": "الفروع",
+      "description": "أضف فروع المتجر ومواقعها على الخريطة.",
+      "minLength": 1,
+      "maxLength": 10,
+      "required": false,
+
+      "fields": [
+
+        {
+          "id": "name",
+          "type": "string",
+          "format": "text",
+          "label": "اسم الفرع",
+          "multilanguage": true,
+          "required": true
+        },
+
+        {
+          "id": "description",
+          "type": "string",
+          "format": "textarea",
+          "label": "وصف الفرع",
+          "multilanguage": true,
+          "required": false
+        },
+
+        {
+          "id": "latitude",
+          "type": "string",
+          "format": "text",
+          "label": "خط العرض",
+          "value": "24.7136",
+          "required": true
+        },
+
+        {
+          "id": "longitude",
+          "type": "string",
+          "format": "text",
+          "label": "خط الطول",
+          "value": "46.6753",
+          "required": true
+        },
+
+        {
+          "id": "button_text",
+          "type": "string",
+          "format": "text",
+          "label": "نص زر الموقع",
+          "multilanguage": true,
+          "value": "عرض الموقع",
+          "required": false
+        },
+
+        {
+          "id": "map_link",
+          "type": "string",
+          "format": "url",
+          "label": "رابط خرائط Google",
+          "description": "رابط الموقع في خرائط Google للفرع.",
+          "required": false
+        }
+
+      ]
+    },
+
+    {
+      "id": "show_glow",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار التوهج الخلفي",
+      "value": true
+    },
+
+    {
+      "id": "show_title",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار العنوان",
+      "value": true
+    },
+
+    {
+      "id": "show_controls",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار عناصر التحكم",
+      "value": true
+    },
+
+    {
+      "id": "enable_animation",
+      "type": "boolean",
+      "format": "switch",
+      "label": "تفعيل الحركة",
+      "value": true
+    }
+
+  ]
 }
 
 
