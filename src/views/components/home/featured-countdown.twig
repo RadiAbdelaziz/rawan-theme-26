@@ -1,0 +1,173 @@
+{% if component.show_section != false %}
+
+    {% set default_image = asset('images/countdown/product.jpg') %}
+    {% set product = component.product[0] ?: component.product %}
+
+    <section
+        class="countdown-section reveal-section"
+        style="
+            --countdown-bg: {{ component.background_color ?: '#111111' }};
+            --accent: {{ component.accent_color ?: '#E62973' }};
+            --title-color: {{ component.title_color ?: '#FFFFFF' }};
+            --desc-color: {{ component.description_color ?: '#D1D5DB' }};
+            --btn-color: {{ component.button_color ?: '#E62973' }};
+            min-height: {{ component.section_height ?: '650' }}px;
+            background: var(--countdown-bg);
+            {% if component.background_image %}
+                background-image:
+                    linear-gradient(
+                        rgba(0, 0, 0, .75),
+                        rgba(0, 0, 0, .75)
+                    ),
+                    url('{{ component.background_image }}');
+                background-size: cover;
+                background-position: center;
+            {% endif %}
+        "
+    >
+
+        {% if component.show_glow != false %}
+
+            <div class="countdown-glow glow-one"></div>
+            <div class="countdown-glow glow-two"></div>
+
+        {% endif %}
+
+        <div class="container">
+
+            <div class="
+                countdown-wrapper
+                {% if component.content_align == 'right' %}
+                    content-right
+                {% elseif component.content_align == 'left' %}
+                    content-left
+                {% else %}
+                    content-center
+                {% endif %}
+            ">
+
+                <div class="countdown-content reveal-card">
+
+                    {% if component.badge %}
+
+                        <span class="offer-badge">
+                            {{ component.badge }}
+                        </span>
+
+                    {% endif %}
+
+                    <h2>
+
+                        {{ component.title ?: (product.name ?: 'منتج مميز') }}
+
+                        {% if component.highlight %}
+
+                            <span>
+                                {{ component.highlight }}
+                            </span>
+
+                        {% endif %}
+
+                    </h2>
+
+                    {% if component.description or product.description %}
+
+                        <p>
+                            {{ component.description ?: product.description }}
+                        </p>
+
+                    {% endif %}
+
+                    {% if component.show_countdown != false %}
+
+                        <div
+                            class="offer-timer"
+                            data-countdown="{{ component.end_date ?: '2027-01-01T00:00:00' }}"
+                        >
+
+                            <div class="time-box">
+                                <span class="days">00</span>
+                                <small>يوم</small>
+                            </div>
+
+                            <div class="time-box">
+                                <span class="hours">00</span>
+                                <small>ساعة</small>
+                            </div>
+
+                            <div class="time-box">
+                                <span class="minutes">00</span>
+                                <small>دقيقة</small>
+                            </div>
+
+                            <div class="time-box">
+                                <span class="seconds">00</span>
+                                <small>ثانية</small>
+                            </div>
+
+                        </div>
+
+                    {% endif %}
+
+                    {% if component.show_button != false %}
+
+                        <a
+                            href="{{ product.url ?: store.url }}"
+                            class="offer-btn"
+                        >
+                            {{ component.button_text ?: 'تسوق الآن' }}
+
+                            <i class="sicon-arrow-left"></i>
+                        </a>
+
+                    {% endif %}
+
+                </div>
+
+                <div class="countdown-image reveal-card">
+
+                    <div class="image-card">
+
+                        <img
+                            src="{{ product.image.url ?: default_image }}"
+                            alt="{{ product.name ?: 'Product' }}"
+                            loading="lazy"
+                            decoding="async"
+                            onerror="this.src='{{ default_image }}'"
+                        >
+
+                        {% if component.show_price and product.price %}
+
+                            <div class="price-card">
+
+                                <small>
+                                    السعر
+                                </small>
+
+                                <strong>
+                                    {{ product.price }}
+                                </strong>
+
+                                {% if component.show_old_price and product.sale_price %}
+
+                                    <del>
+                                        {{ product.sale_price }}
+                                    </del>
+
+                                {% endif %}
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+{% endif %}

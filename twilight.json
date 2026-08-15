@@ -1861,6 +1861,239 @@
     }
 
   ]
+},
+{
+  "key": "7f2c9d31-8a64-4b52-bd91-6e3f5a8c2026",
+  "title": {
+    "en": "Featured Countdown",
+    "ar": "العرض المميز بعداد تنازلي"
+  },
+  "description": "قسم عرض فاخر بمنتج حقيقي مع عداد تنازلي وخلفية داكنة.",
+  "icon": "sicon-clock",
+  "path": "home.featured-countdown",
+  "image": "https://cdn.salla.network/images/themes/raed/preview-images/slider.png",
+  "is_default": true,
+
+  "fields": [
+
+    {
+      "id": "show_section",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار القسم",
+      "value": true
+    },
+
+
+    {
+      "id": "product",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "اختر المنتج",
+      "icon": "sicon-product",
+      "source": "products",
+      "searchable": true,
+      "required": true
+    },
+
+
+    {
+      "id": "background_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون الخلفية الرئيسي",
+      "value": "#111111"
+    },
+
+
+    {
+      "id": "accent_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون التوهج",
+      "value": "#E62973"
+    },
+
+
+    {
+      "id": "background_image",
+      "type": "string",
+      "format": "image",
+      "label": "صورة خلفية اختيارية",
+      "value": null
+    },
+
+
+    {
+      "id": "badge",
+      "type": "string",
+      "format": "text",
+      "label": "الشارة",
+      "multilanguage": true,
+      "value": "عرض محدود"
+    },
+
+
+    {
+      "id": "title",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان القسم",
+      "multilanguage": true,
+      "value": "عرض اليوم المميز"
+    },
+
+
+    {
+      "id": "highlight",
+      "type": "string",
+      "format": "text",
+      "label": "النص المميز",
+      "multilanguage": true,
+      "value": "لفترة محدودة فقط"
+    },
+
+
+    {
+      "id": "description",
+      "type": "string",
+      "format": "textarea",
+      "label": "وصف العرض",
+      "multilanguage": true,
+      "value": "احصل على المنتج الآن قبل انتهاء العرض."
+    },
+
+
+    {
+      "id": "end_date",
+      "type": "string",
+      "format": "date",
+      "label": "تاريخ انتهاء العرض",
+      "required": true
+    },
+
+
+    {
+      "id": "button_text",
+      "type": "string",
+      "format": "text",
+      "label": "نص الزر",
+      "multilanguage": true,
+      "value": "تسوق الآن"
+    },
+
+
+    {
+      "id": "button_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون الزر",
+      "value": "#E62973"
+    },
+
+
+    {
+      "id": "title_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون العنوان",
+      "value": "#FFFFFF"
+    },
+
+
+    {
+      "id": "description_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون الوصف",
+      "value": "#D1D5DB"
+    },
+
+
+    {
+      "id": "section_height",
+      "type": "string",
+      "format": "text",
+      "label": "ارتفاع القسم",
+      "value": "650"
+    },
+
+
+    {
+      "id": "content_align",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "محاذاة المحتوى",
+
+      "selected": [
+        {
+          "label": "الوسط",
+          "value": "center"
+        }
+      ],
+
+      "options": [
+        {
+          "label": "يمين",
+          "value": "right"
+        },
+        {
+          "label": "وسط",
+          "value": "center"
+        },
+        {
+          "label": "يسار",
+          "value": "left"
+        }
+      ]
+    },
+
+
+    {
+      "id": "show_price",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار السعر",
+      "value": true
+    },
+
+
+    {
+      "id": "show_old_price",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار السعر القديم",
+      "value": true
+    },
+
+
+    {
+      "id": "show_button",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار زر الشراء",
+      "value": true
+    },
+
+
+    {
+      "id": "show_glow",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار التوهجات",
+      "value": true
+    },
+
+
+    {
+      "id": "show_countdown",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار العداد",
+      "value": true
+    }
+
+  ]
 }
 
 
