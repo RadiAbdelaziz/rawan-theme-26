@@ -1571,7 +1571,7 @@
   },
   "description": "عرض المنتجات بتصميم فاخر وعصري ومتجاوب.",
   "icon": "sicon-products",
-  "path": "home.all-product",
+  "path": "home.all-products",
   "image": "https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png",
   "is_default": false,
   "fields": [
