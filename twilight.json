@@ -1724,6 +1724,143 @@
       "selected": false
     }
   ]
+},
+{
+  "key": "8f4b6c21-3d72-4a95-b8e6-1f9c2a7d5e43",
+  "title": {
+    "en": "Store Categories",
+    "ar": "فئات المتجر الدائرية"
+  },
+  "icon": "sicon-grid",
+  "path": "home.categories",
+  "image": "https://cdn.salla.network/images/themes/raed/preview-images/categories.png",
+  "is_default": true,
+  "fields": [
+
+    {
+      "type": "boolean",
+      "id": "show_section",
+      "format": "switch",
+      "label": "إظهار القسم",
+      "value": true
+    },
+
+    {
+      "type": "string",
+      "id": "title",
+      "format": "text",
+      "label": "العنوان الرئيسي",
+      "multilanguage": true,
+      "value": "تسوق حسب الفئات",
+      "maxLength": 100
+    },
+
+    {
+      "type": "string",
+      "id": "subtitle",
+      "format": "textarea",
+      "label": "الوصف",
+      "multilanguage": true,
+      "value": "اكتشفي تشكيلات أنيقة من الأزياء والعطور والإكسسوارات",
+      "maxLength":255
+    },
+
+
+    {
+      "type":"string",
+      "id":"background_color",
+      "format":"color",
+      "label":"لون خلفية القسم",
+      "value":"#FFFFFF"
+    },
+
+
+    {
+      "type":"string",
+      "id":"heading_color",
+      "format":"color",
+      "label":"لون العنوان",
+      "value":"#4A0F27"
+    },
+
+
+    {
+      "type":"string",
+      "id":"subtitle_color",
+      "format":"color",
+      "label":"لون الوصف",
+      "value":"#777777"
+    },
+
+
+    {
+      "type":"string",
+      "id":"circle_size",
+      "format":"text",
+      "label":"حجم الدائرة",
+      "value":"80"
+    },
+
+
+    {
+      "type":"string",
+      "id":"circle_border",
+      "format":"color",
+      "label":"لون حدود الدائرة",
+      "value":"#E62973"
+    },
+
+
+    {
+      "type":"string",
+      "id":"circle_shadow",
+      "format":"color",
+      "label":"لون ظل الدائرة",
+      "value":"rgba(230,41,115,.15)"
+    },
+
+
+    {
+      "type": "items",
+      "id": "categories",
+      "format": "dropdown-list",
+      "label": "التصنيفات",
+      "icon": "sicon-category",
+      "selected": [],
+      "options": [],
+      "source": "categories",
+      "multichoice": true,
+      "searchable": true
+    },
+
+
+    {
+      "type":"boolean",
+      "id":"show_decoration",
+      "format":"switch",
+      "label":"إظهار الزخارف",
+      "value":true
+    },
+
+
+    {
+      "type":"boolean",
+      "id":"enable_hover",
+      "format":"switch",
+      "label":"تفعيل تأثير المرور",
+      "value":true
+    },
+
+
+    {
+      "type":"boolean",
+      "id":"enable_animation",
+      "format":"switch",
+      "label":"تفعيل حركة الظهور",
+      "value":true
+    }
+
+  ]
 }
 
 

@@ -115,7 +115,6 @@ href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     <main id="main-content" role="main"{{ (page.slug == 'product.single' or page.slug starts with 'product.index') ? ' class="flex flex-col space-y-8 sm:space-y-16"' : '' }}>
     {% block content %}{% endblock %}
     </main>
-    {% component 'footer.footer' %}
 </div>
 {% hook 'body:end' %}
 {% if theme.settings.get('enable_add_product_toast', true) %}
