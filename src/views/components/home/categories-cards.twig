@@ -1,402 +1,410 @@
 {# =========================================================
    CATEGORIES CARDS
-   بطاقات المجموعات
+   Luxury Categories Showcase
    RTL / Overflow Safe
 ========================================================= #}
 
 
 {# =========================================================
-   SECTION VISIBILITY
-   إظهار أو إخفاء القسم
+   DEFAULT DATA
+   البيانات الافتراضية للقسم
+========================================================= #}
+
+{% set default_images = [
+    'women.jpg',
+    'men.jpg',
+    'kids.jpg',
+    'offers.jpg'
+] %}
+
+
+{% set default_titles = [
+    'نسائي',
+    'رجالي',
+    'أطفال',
+    'عروض'
+] %}
+
+
+{% set default_subtitles = [
+    'اكتشفي أحدث التشكيلات',
+    'أناقة عصرية مميزة',
+    'راحة وأناقة للصغار',
+    'اقتني الفرصة الآن'
+] %}
+
+
+{# =========================================================
+   DEFAULT LINKS
+   روابط احتياطية في حال عدم اختيار فئة
+========================================================= #}
+
+{% set default_links = [
+    link('/categories'),
+    link('/categories'),
+    link('/categories'),
+    link('/categories')
+] %}
+
+
+{# =========================================================
+   COMPONENT ITEMS
+   العناصر القادمة من لوحة التحكم
+========================================================= #}
+
+{% set categories = component.items ?: [] %}
+
+
+{# =========================================================
+   FALLBACK ITEMS
+   بيانات افتراضية في حال عدم إضافة عناصر
+========================================================= #}
+
+{% if categories|length == 0 %}
+
+    {% set categories = [
+
+        {
+            "title": "نسائي",
+            "subtitle": "اكتشفي أحدث التشكيلات"
+        },
+
+        {
+            "title": "رجالي",
+            "subtitle": "أناقة عصرية مميزة"
+        },
+
+        {
+            "title": "أطفال",
+            "subtitle": "راحة وأناقة للصغار"
+        },
+
+        {
+            "title": "عروض",
+            "subtitle": "اقتني الفرصة الآن",
+            "badge": "خصم 50%"
+        }
+
+    ] %}
+
+{% endif %}
+
+
+{# =========================================================
+   SECTION
 ========================================================= #}
 
 {% if component.show_section != false %}
 
+<section
+    class="categories-section reveal-section"
+    dir="rtl"
+    style="
+        --categories-padding: {{ component.padding ?: 70 }}px;
+    "
+>
 
-    {# =====================================================
-       DEFAULT DATA
-       البيانات الافتراضية
-    ===================================================== #}
-
-    {% set default_images = [
-        'women.jpg',
-        'men.jpg',
-        'kids.jpg',
-        'offers.jpg'
-    ] %}
+    <div class="container">
 
 
-    {% set default_titles = [
-        'نسائي',
-        'رجالي',
-        'أطفال',
-        'عروض'
-    ] %}
+        {# =====================================================
+           SECTION HEADER
+           عنوان ووصف القسم
+        ===================================================== #}
 
-
-    {% set default_subtitles = [
-        'اكتشفي أحدث التشكيلات',
-        'أناقة عصرية مميزة',
-        'راحة وأناقة للصغار',
-        'اقتني الفرصة الآن'
-    ] %}
-
-
-    {# =====================================================
-       COMPONENT ITEMS
-       العناصر القادمة من لوحة التحكم
-    ===================================================== #}
-
-    {% set categories = component.items ?: [] %}
-
-
-    {# =====================================================
-       FALLBACK ITEMS
-       بيانات افتراضية في حال عدم اختيار عناصر
-    ===================================================== #}
-
-    {% if categories|length == 0 %}
-
-        {% set categories = [
-
-            {
-                "title": "نسائي",
-                "subtitle": "اكتشفي أحدث التشكيلات"
-            },
-
-            {
-                "title": "رجالي",
-                "subtitle": "أناقة عصرية مميزة"
-            },
-
-            {
-                "title": "أطفال",
-                "subtitle": "راحة وأناقة للصغار"
-            },
-
-            {
-                "title": "عروض",
-                "subtitle": "اقتني الفرصة الآن",
-                "badge": "خصم 50%"
-            }
-
-        ] %}
-
-    {% endif %}
-
-
-    {# =====================================================
-       SECTION
-       القسم الرئيسي
-    ===================================================== #}
-
-    <section
-        class="
-            categories-section
-            {% if component.enable_animation == false %}
-                categories-section--no-animation
-            {% endif %}
-        "
-        dir="rtl"
-        style="
-            --categories-columns: {{ component.columns ?: '4' }};
-            --categories-padding: {{ component.padding ?: '70' }}px;
-        "
-    >
-
-        <div class="container">
+        <header class="categories-header">
 
 
             {# =================================================
-               SECTION HEADER
-               عنوان القسم
+               DECORATIVE LINE
             ================================================= #}
 
-            <header class="categories-header">
+            <div class="decor-line">
+
+                <span></span>
+
+                <i></i>
+
+                <span></span>
+
+            </div>
+
+
+            {# =================================================
+               MAIN TITLE
+            ================================================= #}
+
+            <h2>
+
+                {{ component.title ?: 'تسوق حسب المجموعة' }}
+
+            </h2>
+
+
+            {# =================================================
+               DESCRIPTION
+            ================================================= #}
+
+            {% if component.show_description != false %}
+
+                <p>
+
+                    {{ component.description ?: 'اكتشفي تشكيلات أنيقة من الأزياء والعطور والإكسسوارات المصممة بذوق راقٍ' }}
+
+                </p>
+
+            {% endif %}
+
+
+        </header>
+
+
+        {# =====================================================
+           CATEGORIES GRID
+        ===================================================== #}
+
+        <div
+            class="
+                categories-grid
+                columns-{{ component.columns ?: '4' }}
+            "
+        >
+
+
+            {# =================================================
+               CATEGORY ITEMS
+            ================================================= #}
+
+            {% for item in categories|slice(0, 4) %}
 
 
                 {# =================================================
-                   DECORATIVE LINE
-                   الخط الزخرفي
+                   ITEM TITLE
                 ================================================= #}
 
-                <div class="decor-line">
-
-                    <span></span>
-
-                    <i></i>
-
-                    <span></span>
-
-                </div>
+                {% set item_title =
+                    item.title
+                    ?: default_titles[loop.index0]
+                %}
 
 
                 {# =================================================
-                   MAIN TITLE
-                   العنوان الرئيسي
+                   ITEM SUBTITLE
                 ================================================= #}
 
-                <h2>
-                    {{ component.title ?: 'تسوق حسب المجموعة' }}
-                </h2>
+                {% set item_subtitle =
+                    item.subtitle
+                    ?: default_subtitles[loop.index0]
+                %}
 
 
                 {# =================================================
-                   SECTION DESCRIPTION
-                   وصف القسم
+                   CATEGORY URL
+
+                   الأولوية:
+                   1. رابط الفئة المختارة
+                   2. slug الخاص بالفئة
+                   3. الرابط الخارجي
+                   4. الرابط الافتراضي
                 ================================================= #}
 
-                {% if component.show_description != false %}
+                {% set item_url = default_links[loop.index0] %}
 
-                    <p>
-                        {{ component.description ?: 'اكتشفي تشكيلات أنيقة من الأزياء والعطور والإكسسوارات المصممة بذوق راقٍ' }}
-                    </p>
+
+                {% if item.category %}
+
+                    {# -----------------------------------------
+                       Category URL
+                    ----------------------------------------- #}
+
+                    {% if item.category.url is defined and item.category.url %}
+
+                        {% set item_url = item.category.url %}
+
+
+                    {# -----------------------------------------
+                       Category Link
+                    ----------------------------------------- #}
+
+                    {% elseif item.category.link is defined and item.category.link %}
+
+                        {% set item_url = item.category.link %}
+
+
+                    {# -----------------------------------------
+                       Category Slug
+                       إنشاء رابط صفحة الفئة
+                    ----------------------------------------- #}
+
+                    {% elseif item.category.slug is defined and item.category.slug %}
+
+                        {% set item_url =
+                            link('categories/' ~ item.category.slug)
+                        %}
+
+
+                    {# -----------------------------------------
+                       إذا كانت القيمة نفسها عبارة عن رابط
+                    ----------------------------------------- #}
+
+                    {% elseif item.category is string %}
+
+                        {% set item_url = item.category %}
+
+                    {% endif %}
+
+
+                {# =================================================
+                   CUSTOM LINK
+
+                   يستخدم فقط إذا لم يتم اختيار فئة
+                ================================================= #}
+
+                {% elseif item.link %}
+
+                    {% set item_url = item.link %}
 
                 {% endif %}
 
 
-            </header>
+                {# =================================================
+                   ITEM IMAGE
+                ================================================= #}
+
+                {% set item_image = (
+                    'images/categories/' ~ default_images[loop.index0]
+                )|asset %}
 
 
-            {# =================================================
-               CATEGORIES GRID
-               شبكة بطاقات المجموعات
-            ================================================= #}
+                {% if item.image %}
 
-            <div
-                class="
-                    categories-grid
-                    categories-grid--columns-{{ component.columns ?: '4' }}
-                "
-            >
+                    {% if item.image.url is defined and item.image.url %}
+
+                        {% set item_image = item.image.url %}
+
+                    {% else %}
+
+                        {% set item_image = item.image %}
+
+                    {% endif %}
+
+                {% endif %}
 
 
                 {# =================================================
-                   CATEGORY LOOP
-                   عرض البطاقات
+                   CATEGORY CARD
                 ================================================= #}
 
-                {% for item in categories|slice(0, 4) %}
+                <a
+                    href="{{ item_url }}"
+                    class="category-card reveal-card"
+                    style="--category-index: {{ loop.index0 }};"
+                    aria-label="{{ item_title }}"
+                >
 
 
                     {# =================================================
-                       ITEM URL
-                       رابط البطاقة
-                       
-                       الأولوية:
-                       1. category.url
-                       2. category.slug
-                       3. category.link
-                       4. الرابط الخارجي
+                       IMAGE
                     ================================================= #}
 
-                    {% set item_url = '#' %}
-
-
-                    {# =================================================
-                       CATEGORY URL
-                       رابط الفئة المختارة
-                    ================================================= #}
-
-                    {% if item.category %}
-
-                        {% if item.category.url is defined and item.category.url %}
-
-                            {% set item_url = item.category.url %}
-
-                        {% elseif item.category.slug is defined and item.category.slug %}
-
-                            {% set item_url = link(
-                                'categories/' ~ item.category.slug
-                            ) %}
-
-                        {% elseif item.category.link is defined and item.category.link %}
-
-                            {% set item_url = item.category.link %}
-
-                        {% endif %}
-
-                    {% endif %}
-
-
-                    {# =================================================
-                       CUSTOM URL
-                       الرابط الخارجي له الأولوية
-                    ================================================= #}
-
-                    {% if item.link %}
-
-                        {% set item_url = item.link %}
-
-                    {% endif %}
-
-
-                    {# =================================================
-                       ITEM IMAGE
-                       صورة البطاقة
-                    ================================================= #}
-
-                    {% set item_image = (
-                        'images/categories/' ~ default_images[loop.index0]
-                    )|asset %}
-
-
-                    {% if item.image %}
-
-                        {% if item.image.url is defined and item.image.url %}
-
-                            {% set item_image = item.image.url %}
-
-                        {% else %}
-
-                            {% set item_image = item.image %}
-
-                        {% endif %}
-
-                    {% endif %}
-
-
-                    {# =================================================
-                       ITEM TITLE
-                       عنوان البطاقة
-                    ================================================= #}
-
-                    {% set item_title =
-                        item.title
-                        ?: default_titles[loop.index0]
-                    %}
-
-
-                    {# =================================================
-                       ITEM SUBTITLE
-                       الوصف المختصر
-                    ================================================= #}
-
-                    {% set item_subtitle =
-                        item.subtitle
-                        ?: default_subtitles[loop.index0]
-                    %}
-
-
-                    {# =================================================
-                       CATEGORY CARD
-                       البطاقة
-                    ================================================= #}
-
-                    <a
-                        href="{{ item_url }}"
-                        class="category-card"
-                        style="--category-index: {{ loop.index0 }};"
-                        aria-label="{{ item_title }}"
+                    <img
+                        src="{{ item_image }}"
+                        alt="{{ item_title }}"
+                        loading="lazy"
+                        decoding="async"
                     >
 
 
+                    {# =================================================
+                       IMAGE OVERLAY
+                    ================================================= #}
+
+                    <div
+                        class="overlay"
+                        aria-hidden="true"
+                    ></div>
+
+
+                    {# =================================================
+                       BADGE
+                    ================================================= #}
+
+                    {% if component.show_badge != false and item.badge %}
+
+                        <span class="category-badge">
+
+                            {{ item.badge }}
+
+                        </span>
+
+                    {% endif %}
+
+
+                    {# =================================================
+                       CARD CONTENT
+                    ================================================= #}
+
+                    <div class="content">
+
+
                         {# =================================================
-                           IMAGE
-                           الصورة
+                           CARD TITLE
                         ================================================= #}
 
-                        <img
-                            src="{{ item_image }}"
-                            alt="{{ item_title }}"
-                            loading="lazy"
-                            decoding="async"
-                        >
+                        <h3>
+
+                            {{ item_title }}
+
+                        </h3>
 
 
                         {# =================================================
-                           IMAGE OVERLAY
-                           طبقة التدرج
+                           CARD SUBTITLE
                         ================================================= #}
 
-                        <div
-                            class="overlay"
-                            aria-hidden="true"
-                        ></div>
+                        {% if item_subtitle %}
+
+                            <p>
+
+                                {{ item_subtitle }}
+
+                            </p>
+
+                        {% endif %}
 
 
                         {# =================================================
-                           BADGE
-                           الشارة
+                           ARROW
                         ================================================= #}
 
-                        {% if component.show_badge != false and item.badge %}
+                        {% if component.show_arrow != false %}
 
-                            <span class="category-badge">
+                            <span
+                                class="category-arrow"
+                                aria-hidden="true"
+                            >
 
-                                {{ item.badge }}
+                                <i class="sicon-arrow-left"></i>
 
                             </span>
 
                         {% endif %}
 
 
-                        {# =================================================
-                           CARD CONTENT
-                           محتوى البطاقة
-                        ================================================= #}
-
-                        <div class="content">
+                    </div>
 
 
-                            {# =================================================
-                               TITLE
-                               عنوان البطاقة
-                            ================================================= #}
-
-                            <h3>
-                                {{ item_title }}
-                            </h3>
+                </a>
 
 
-                            {# =================================================
-                               SUBTITLE
-                               العنوان الفرعي
-                            ================================================= #}
-
-                            {% if component.show_description != false and item_subtitle %}
-
-                                <p>
-                                    {{ item_subtitle }}
-                                </p>
-
-                            {% endif %}
-
-
-                            {# =================================================
-                               ARROW
-                               سهم الانتقال
-                            ================================================= #}
-
-                            {% if component.show_arrow != false %}
-
-                                <span
-                                    class="category-arrow"
-                                    aria-hidden="true"
-                                >
-
-                                    <i class="sicon-arrow-left"></i>
-
-                                </span>
-
-                            {% endif %}
-
-
-                        </div>
-
-
-                    </a>
-
-
-                {% endfor %}
-
-
-            </div>
+            {% endfor %}
 
 
         </div>
 
-    </section>
 
+    </div>
+
+</section>
 
 {% endif %}
