@@ -10,6 +10,7 @@ import './categories'
 import './all-products'
 import './categorie'
 import './reward-progress'
+import './reviews'
 
 class App extends AppHelpers {
   constructor() {
