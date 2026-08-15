@@ -1,10 +1,10 @@
 {
     "name": {
-        "ar": "رائد",
-        "en": "Theme Raed"
+        "ar": "Rawan-theme-26",
+        "en": "Rawan-theme-26"
     },
-    "repository": "https://github.com/SallaApp/theme-raed",
-    "author_email": "support@salla.sa",
+    "repository": "https://github.com/RadiAbdelaziz/rawan-theme-26",
+    "author_email": "radyr2245@gmail.com",
     "features": [
         "mega-menu",
         "fonts",
@@ -1129,10 +1129,9 @@
             ]
         }
     ],
-    "support_url": "https://salla.com/",
+    "support_url": "https://example.com",
     "description": {
-        "ar": "مجموعة كبيرة من المزايا لدعم تجارتك وتقديم تجربة تسوق مثيرة لعملائك",
-        "en": "A wide range of features to support your business and provide an exciting shopping experience for your customers"
+        "ar": "",
+        "en": ""
     }
 }
-
