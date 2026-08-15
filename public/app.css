@@ -7422,6 +7422,10 @@ model-viewer[style*=width]:before{
     padding-right: 12px;
   }
 }
+.luxury-reward-section .s-comments-product .s-comments-container {
+  position: relative;
+  z-index: 2;
+}
 .share-btns-list{
     position: absolute;
     top: 3rem;
@@ -13685,6 +13689,408 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .luxury-look-section *::after {
     animation: none !important;
     transition: none !important;
+  }
+}
+/* ======================================
+   LUXURY REWARD SECTION
+====================================== */
+.luxury-reward-section {
+  position: relative;
+  overflow: hidden;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  color: #111;
+}
+/* ======================================
+   MAIN CONTAINER
+====================================== */
+.luxury-reward-section .container {
+  position: relative;
+  z-index: 2;
+}
+/* ======================================
+   BACKGROUND GLOW
+====================================== */
+.luxury-reward-glow {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  opacity: 0.45;
+}
+.luxury-reward-glow.one {
+  background: var(--reward-accent);
+  top: -120px;
+  right: -100px;
+}
+.luxury-reward-glow.two {
+  background: #f9d8e8;
+  bottom: -120px;
+  left: -100px;
+}
+/* ======================================
+   HEADER
+====================================== */
+.luxury-reward-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 45px;
+  z-index: 2;
+}
+.luxury-reward-decoration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+.luxury-reward-decoration span {
+  width: 75px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #f3b4ca, transparent);
+}
+.luxury-reward-decoration i {
+  width: 11px;
+  height: 11px;
+  background: var(--reward-accent);
+  transform: rotate(45deg);
+  box-shadow: 0 0 15px rgba(230, 41, 115, 0.35);
+}
+.luxury-reward-header h3 {
+  margin: 0;
+  font-size: max(22px, min(4vw, 30px));
+  font-weight: 900;
+  line-height: 1.4;
+  color: #111;
+}
+.luxury-reward-header p {
+  margin: 15px auto 0;
+  max-width: 600px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #777;
+}
+/* ======================================
+   PROGRESS WRAPPER
+====================================== */
+.luxury-reward-progress {
+  position: relative;
+  max-width: 800px;
+  margin: 55px auto 45px;
+}
+/* ======================================
+   PROGRESS BAR
+====================================== */
+.luxury-reward-bar {
+  position: relative;
+  width: 100%;
+  height: 12px;
+  background: #fff;
+  border-radius: 50px;
+  overflow: hidden;
+  border: 1px solid rgba(230, 41, 115, 0.12);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.04);
+}
+.luxury-reward-bar-fill {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #f8b4d0, var(--reward-accent), #f6d58a);
+  box-shadow: 0 5px 20px rgba(230, 41, 115, 0.25);
+  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* ======================================
+   PROGRESS STEPS
+====================================== */
+.luxury-reward-steps {
+  position: absolute;
+  top: -14px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  z-index: 3;
+}
+.luxury-reward-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 70px;
+}
+.luxury-reward-step .step-icon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #eee;
+  color: #aaa;
+  font-weight: 900;
+  border: 5px solid #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+}
+.luxury-reward-step span {
+  font-size: 11px;
+  font-weight: 700;
+  color: #777;
+  white-space: nowrap;
+  transition: color 0.35s ease;
+}
+/* ======================================
+   ACTIVE STEP
+====================================== */
+.luxury-reward-step.active .step-icon {
+  background: var(--reward-accent);
+  color: #fff;
+}
+.luxury-reward-step.active span {
+  color: var(--reward-accent);
+}
+/* ======================================
+   CURRENT STEP
+====================================== */
+.luxury-reward-step.current .step-icon {
+  background: #fff;
+  color: var(--reward-accent);
+  border-color: var(--reward-accent);
+  box-shadow: 0 0 0 5px rgba(230, 41, 115, 0.08), 0 8px 20px rgba(230, 41, 115, 0.18);
+  animation: rewardPulse 1.8s ease-in-out infinite;
+}
+.luxury-reward-step.current span {
+  color: var(--reward-accent);
+}
+/* ======================================
+   COMPLETED STEP
+====================================== */
+.luxury-reward-step.completed .step-icon {
+  background: var(--reward-accent);
+  color: #fff;
+  border-color: #fff;
+  box-shadow: 0 0 0 5px rgba(230, 41, 115, 0.08), 0 8px 20px rgba(230, 41, 115, 0.18);
+}
+.luxury-reward-step.completed span {
+  color: var(--reward-accent);
+}
+/* ======================================
+   STATUS BOX
+====================================== */
+.luxury-reward-status {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 25px;
+  background: #fff;
+  border-radius: 22px;
+  border: 1px solid rgba(230, 41, 115, 0.12);
+  box-shadow: 0 15px 35px rgba(230, 41, 115, 0.08);
+  z-index: 2;
+}
+.luxury-reward-status-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.status-icon {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(230, 41, 115, 0.1);
+  color: var(--reward-accent);
+  font-weight: 900;
+  transition: background 0.35s ease, color 0.35s ease, transform 0.35s ease;
+}
+.luxury-reward-status span {
+  display: block;
+  font-size: 12px;
+  color: #999;
+}
+.luxury-reward-status strong {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--reward-accent);
+}
+/* ======================================
+   REWARD BUTTON
+====================================== */
+.luxury-reward-status a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 190px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: var(--reward-accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(230, 41, 115, 0.18);
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+}
+.luxury-reward-status a b {
+  font-size: 16px;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+.luxury-reward-status a:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(230, 41, 115, 0.25);
+}
+.luxury-reward-status a:hover b {
+  transform: translateX(-4px);
+}
+/* ======================================
+   COMPLETED REWARD STATE
+====================================== */
+.luxury-reward-section.is-complete .luxury-reward-bar-fill {
+  background: linear-gradient(90deg, #E62973, #d81b64, #f6c86f);
+}
+.luxury-reward-section.is-complete .status-icon {
+  background: var(--reward-accent);
+  color: #fff;
+  transform: scale(1.05);
+}
+.luxury-reward-section.is-complete .luxury-reward-status strong {
+  color: #168a54;
+}
+.luxury-reward-section.is-complete .luxury-reward-step .step-icon {
+  background: var(--reward-accent);
+  color: #fff;
+}
+.luxury-reward-section.is-complete .luxury-reward-step span {
+  color: var(--reward-accent);
+}
+/* ======================================
+   ANIMATION
+====================================== */
+.luxury-reward-animated .luxury-reward-header,
+.luxury-reward-animated .luxury-reward-progress,
+.luxury-reward-animated .luxury-reward-status {
+  animation: rewardFade 0.8s ease both;
+}
+.luxury-reward-animated .luxury-reward-progress {
+  animation-delay: 0.15s;
+}
+.luxury-reward-animated .luxury-reward-status {
+  animation-delay: 0.3s;
+}
+@keyframes rewardFade {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes rewardPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+/* ======================================
+   MOBILE
+====================================== */
+@media (max-width: 600px) {
+  .luxury-reward-section {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+  .luxury-reward-header {
+    margin-bottom: 35px;
+  }
+  .luxury-reward-decoration {
+    gap: 10px;
+  }
+  .luxury-reward-decoration span {
+    width: 55px;
+  }
+  .luxury-reward-header h3 {
+    font-size: 23px;
+  }
+  .luxury-reward-header p {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 13px;
+  }
+  .luxury-reward-progress {
+    margin-top: 45px;
+    margin-bottom: 35px;
+  }
+  .luxury-reward-bar {
+    height: 10px;
+  }
+  .luxury-reward-steps {
+    top: -10px;
+  }
+  .luxury-reward-step {
+    min-width: 50px;
+  }
+  .luxury-reward-step .step-icon {
+    width: 34px;
+    height: 34px;
+    border-width: 4px;
+  }
+  .luxury-reward-step span {
+    font-size: 10px;
+  }
+  .luxury-reward-status {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 18px;
+    gap: 18px;
+  }
+  .luxury-reward-status-content {
+    align-items: flex-start;
+  }
+  .luxury-reward-status strong {
+    font-size: 13px;
+  }
+  .luxury-reward-status a {
+    width: 100%;
+    min-width: 0;
+  }
+}
+/* ======================================
+   SMALL MOBILE
+====================================== */
+@media (max-width: 380px) {
+  .luxury-reward-step span {
+    font-size: 9px;
+  }
+  .luxury-reward-step .step-icon {
+    width: 31px;
+    height: 31px;
+  }
+  .luxury-reward-status-content {
+    gap: 10px;
+  }
+  .status-icon {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
   }
 }
 body.mm-ocd-opened,
