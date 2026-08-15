@@ -1364,6 +1364,9 @@ input:where([type='file']):focus{
 .flex-wrap{
     flex-wrap: wrap;
 }
+.content-center{
+    align-content: center;
+}
 .items-start{
     align-items: flex-start;
 }
@@ -7369,6 +7372,10 @@ model-viewer[style*=width]:before{
   margin-left: auto;
   margin-right: auto;
 }
+.countdown-section .s-comments-product .s-comments-container {
+  position: relative;
+  z-index: 3;
+}
 .share-btns-list{
     position: absolute;
     top: 3rem;
@@ -11319,6 +11326,432 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transition: none !important;
   }
   .crystal-category-card {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* =========================================================
+   PREMIUM DARK COUNTDOWN OFFER
+   Soft Luxury / Clean / Elegant
+   ========================================================= */
+.countdown-section {
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 0;
+  color: #fff;
+  background: radial-gradient(circle at top right, rgba(230, 41, 115, 0.07), transparent 35%), radial-gradient(circle at bottom left, rgba(255, 126, 179, 0.05), transparent 40%), linear-gradient(135deg, #171117 0%, #1d171d 50%, #111013 100%);
+  isolation: isolate;
+}
+.countdown-section::before,
+.countdown-section::after {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(90px);
+  z-index: -1;
+  opacity: 0.65;
+  animation: countdownOrbPulse 7s ease-in-out infinite;
+}
+.countdown-section::before {
+  top: -140px;
+  right: 50px;
+  background: rgba(230, 41, 115, 0.1);
+}
+.countdown-section::after {
+  bottom: -150px;
+  left: 40px;
+  background: rgba(255, 126, 179, 0.07);
+  animation-delay: 2s;
+}
+@keyframes countdownOrbPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.7;
+  }
+}
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+.countdown-section .container {
+  position: relative;
+  z-index: 3;
+}
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+.countdown-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+.countdown-content,
+.countdown-image {
+  width: 50%;
+}
+.countdown-content.content-right {
+  text-align: right;
+}
+.countdown-content.content-center {
+  text-align: center;
+}
+.countdown-content.content-left {
+  text-align: left;
+}
+.countdown-content.content-center p {
+  margin-left: auto;
+  margin-right: auto;
+}
+.countdown-content.content-right p {
+  margin-left: 0;
+  margin-right: auto;
+}
+.countdown-content.content-left p {
+  margin-left: auto;
+  margin-right: 0;
+}
+/* =========================================================
+   BADGE
+   ========================================================= */
+.offer-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid rgba(230, 41, 115, 0.18);
+  border-radius: 999px;
+  background: rgba(230, 41, 115, 0.08);
+  color: #f184aa;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-size: 0.85rem;
+  font-weight: 800;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.08);
+  animation: countdownBadgePulse 3s ease-in-out infinite;
+}
+@keyframes countdownBadgePulse {
+  0%, 100% {
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.08);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(230, 41, 115, 0.1);
+  }
+}
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+.countdown-content h2 {
+  margin-top: 1.5rem;
+  color: #fff;
+  font-size: max(2.2rem, min(4vw, 3.5rem));
+  line-height: 1.25;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+.countdown-content h2 span {
+  display: block;
+  margin-top: 8px;
+  color: #e86b99;
+}
+.countdown-content p {
+  max-width: 520px;
+  margin-top: 1.2rem;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 1rem;
+  line-height: 2;
+}
+/* =========================================================
+   COUNTDOWN
+   ========================================================= */
+.offer-timer {
+  display: flex;
+  align-items: center;
+  justify-content: inherit;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  direction: ltr;
+}
+.content-center .offer-timer {
+  justify-content: center;
+}
+.content-right .offer-timer {
+  justify-content: flex-start;
+}
+.content-left .offer-timer {
+  justify-content: flex-end;
+}
+.time-box {
+  min-width: 80px;
+  padding: 1rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.045);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  text-align: center;
+}
+.time-box span {
+  display: block;
+  color: #e86b99;
+  font-size: 2rem;
+  font-weight: 900;
+}
+.time-box small {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.7rem;
+}
+/* =========================================================
+   BUTTON
+   ========================================================= */
+.offer-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 2.5rem;
+  padding: 1rem 2.5rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #E62973, #d92d6b);
+  color: #fff;
+  font-weight: 900;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(230, 41, 115, 0.18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.offer-btn:hover {
+  transform: translateY(-2px);
+  color: #fff;
+  background: linear-gradient(135deg, #e62973, #d52868);
+  box-shadow: 0 10px 26px rgba(230, 41, 115, 0.22);
+}
+/* =========================================================
+   PRODUCT IMAGE
+   ========================================================= */
+.countdown-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-card {
+  position: relative;
+  width: 420px;
+  height: 500px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2rem;
+  background: linear-gradient(145deg, #191619, #121113);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+.image-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.image-card:hover img {
+  transform: scale(1.045);
+}
+/* =========================================================
+   IMAGE SHINE
+   ========================================================= */
+.image-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -120%;
+  z-index: 2;
+  width: 65%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  transform: skewX(-15deg);
+  transition: left 0.9s ease;
+  pointer-events: none;
+}
+.image-card:hover::before {
+  left: 150%;
+}
+/* =========================================================
+   PRICE
+   ========================================================= */
+.price-card {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 5;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.2rem;
+  background: rgba(20, 16, 20, 0.82);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.14);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.price-card small {
+  display: block;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 0.75rem;
+}
+.price-card strong {
+  display: block;
+  margin-top: 2px;
+  color: #e86b99;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+.price-card del {
+  display: block;
+  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.38);
+  font-size: 0.82rem;
+}
+/* =========================================================
+   REVEAL
+   ========================================================= */
+.countdown-section.reveal-section {
+  opacity: 0;
+  transform: translateY(45px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.countdown-section.reveal-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.countdown-section .reveal-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.countdown-section.show .reveal-card {
+  opacity: 1;
+  transform: translateY(0);
+}
+.countdown-section.show .reveal-card:nth-child(1) {
+  transition-delay: 0.15s;
+}
+.countdown-section.show .reveal-card:nth-child(2) {
+  transition-delay: 0.3s;
+}
+/* =========================================================
+   TABLET
+   ========================================================= */
+@media (max-width: 992px) {
+  .countdown-wrapper {
+    flex-direction: column-reverse;
+    gap: 3rem;
+  }
+  .countdown-content,
+  .countdown-image {
+    width: 100%;
+  }
+  .countdown-content {
+    text-align: center;
+  }
+  .countdown-content p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .offer-timer {
+    justify-content: center;
+  }
+  .countdown-image {
+    order: -1;
+  }
+  .image-card {
+    width: min(420px, 100%);
+    height: 460px;
+  }
+}
+/* =========================================================
+   MOBILE
+   ========================================================= */
+@media (max-width: 600px) {
+  .countdown-section {
+    padding: 4rem 0;
+  }
+  .countdown-wrapper {
+    gap: 2.5rem;
+  }
+  .countdown-content h2 {
+    font-size: 2rem;
+  }
+  .countdown-content p {
+    font-size: 0.9rem;
+  }
+  .offer-timer {
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+  .time-box {
+    min-width: 65px;
+    padding: 0.8rem 0.45rem;
+    border-radius: 0.9rem;
+  }
+  .time-box span {
+    font-size: 1.5rem;
+  }
+  .time-box small {
+    font-size: 0.6rem;
+  }
+  .offer-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.9rem 1.5rem;
+  }
+  .image-card {
+    width: 100%;
+    height: 360px;
+    border-radius: 1.5rem;
+  }
+  .price-card {
+    right: 0.7rem;
+    bottom: 0.7rem;
+  }
+}
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+@media (max-width: 380px) {
+  .offer-timer {
+    gap: 0.35rem;
+  }
+  .time-box {
+    min-width: 58px;
+    padding: 0.7rem 0.35rem;
+  }
+  .time-box span {
+    font-size: 1.3rem;
+  }
+  .time-box small {
+    font-size: 0.55rem;
+  }
+  .countdown-content h2 {
+    font-size: 1.8rem;
+  }
+}
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .countdown-section *,
+  .countdown-section *::before,
+  .countdown-section *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .countdown-section.reveal-section,
+  .countdown-section .reveal-card {
     opacity: 1;
     transform: none;
   }
