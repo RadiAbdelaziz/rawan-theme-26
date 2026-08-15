@@ -9,6 +9,7 @@ import './brand-video'
 import './categories'
 import './all-products'
 import './categorie'
+import './reward-progress'
 
 class App extends AppHelpers {
   constructor() {

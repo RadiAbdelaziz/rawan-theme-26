@@ -1,0 +1,323 @@
+{# =========================================================
+   LUXURY REWARD PROGRESS
+   شريط المكافأة والهدايا
+========================================================= #}
+
+
+{% if component.show_section %}
+
+
+    {# =====================================================
+       REWARD PRODUCT
+       المنتج المرجعي للمكافأة
+    ===================================================== #}
+
+    {% set reward_product = component.reward_product %}
+
+
+    {# =====================================================
+       REWARD TARGET
+       استخراج سعر المنتج المرجعي تلقائيًا
+    ===================================================== #}
+
+    {% set reward_target = 0 %}
+
+
+    {% if reward_product %}
+
+        {% if reward_product.price is defined %}
+
+            {% set reward_target = reward_product.price %}
+
+        {% elseif reward_product.sale_price is defined %}
+
+            {% set reward_target = reward_product.sale_price %}
+
+        {% endif %}
+
+    {% endif %}
+
+
+    {# =====================================================
+       SECTION
+    ===================================================== #}
+
+    <section
+        class="
+            luxury-reward-section
+            {% if component.show_animation %}
+                luxury-reward-animated
+            {% endif %}
+        "
+        dir="rtl"
+        data-reward-target="{{ reward_target }}"
+        style="
+            background: {{ component.background_color ?: '#FFF5FA' }};
+            --reward-accent: {{ component.accent_color ?: '#E62973' }};
+        "
+    >
+
+
+        {# =================================================
+           BACKGROUND GLOW
+        ================================================= #}
+
+        <div
+            class="luxury-reward-glow one"
+            aria-hidden="true"
+        ></div>
+
+        <div
+            class="luxury-reward-glow two"
+            aria-hidden="true"
+        ></div>
+
+
+        {# =================================================
+           MAIN CONTAINER
+        ================================================= #}
+
+        <div class="container">
+
+
+            {# =================================================
+               HEADER
+            ================================================= #}
+
+            <div class="luxury-reward-header">
+
+
+                {# Decorative Line #}
+
+                <div
+                    class="luxury-reward-decoration"
+                    aria-hidden="true"
+                >
+
+                    <span></span>
+
+                    <i></i>
+
+                    <span></span>
+
+                </div>
+
+
+                {# Main Title #}
+
+                <h3>
+                    {{
+                        component.title
+                        ?: 'أنتِ على بُعد خطوات من مكافأتكِ'
+                    }}
+                </h3>
+
+
+                {# Description #}
+
+                <p>
+                    {{
+                        component.subtitle
+                        ?: 'أضيفي المزيد إلى سلتكِ للوصول إلى المكافأة والحصول على هدية فاخرة'
+                    }}
+                </p>
+
+
+            </div>
+
+
+            {# =================================================
+               PROGRESS
+            ================================================= #}
+
+            <div class="luxury-reward-progress">
+
+
+                {# Progress Bar #}
+
+                <div class="luxury-reward-bar">
+
+                    <div
+                        class="luxury-reward-bar-fill"
+                        data-progress-bar
+                        style="width: 0%;"
+                    ></div>
+
+                </div>
+
+
+                {# =================================================
+                   REWARD STEPS
+                ================================================= #}
+
+                <div
+                    class="luxury-reward-steps"
+                    dir="ltr"
+                >
+
+
+                    {# Cart #}
+
+                    <div
+                        class="luxury-reward-step active"
+                        data-step="cart"
+                    >
+
+                        <div class="step-icon">
+                            ✓
+                        </div>
+
+                        <span>
+                            السلة
+                        </span>
+
+                    </div>
+
+
+                    {# Free Shipping #}
+
+                    {% if component.show_shipping != false %}
+
+                        <div
+                            class="luxury-reward-step"
+                            data-step="shipping"
+                        >
+
+                            <div class="step-icon">
+                                +
+                            </div>
+
+                            <span>
+                                {{
+                                    component.shipping_label
+                                    ?: 'شحن مجاني'
+                                }}
+                            </span>
+
+                        </div>
+
+                    {% endif %}
+
+
+                    {# Luxury Gift #}
+
+                    {% if component.show_gift != false %}
+
+                        <div
+                            class="luxury-reward-step"
+                            data-step="gift"
+                        >
+
+                            <div class="step-icon">
+                                ◆
+                            </div>
+
+                            <span>
+                                {{
+                                    component.gift_label
+                                    ?: 'هدية فاخرة'
+                                }}
+                            </span>
+
+                        </div>
+
+                    {% endif %}
+
+
+                </div>
+
+
+            </div>
+
+
+            {# =================================================
+               REWARD STATUS
+            ================================================= #}
+
+            <div class="luxury-reward-status">
+
+
+                <div class="luxury-reward-status-content">
+
+
+                    {# Status Icon #}
+
+                    <div
+                        class="status-icon"
+                        data-reward-icon
+                        aria-hidden="true"
+                    >
+                        ✓
+                    </div>
+
+
+                    {# Status Text #}
+
+                    <div>
+
+                        <span>
+                            المكافأة الحالية:
+                        </span>
+
+                        <strong data-reward-status>
+                            {{
+                                component.status_before
+                                ?: 'أضيفي المزيد للحصول على المكافأة'
+                            }}
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                {# =================================================
+                   CTA BUTTON
+                ================================================= #}
+
+                {% if component.show_button != false %}
+
+                    <a
+                        href="{{ component.button_link ?: '/' }}"
+                        class="luxury-reward-button"
+                    >
+
+                        <span>
+                            {{
+                                component.button_text
+                                ?: 'تسوقي المزيد لفتح الهدية'
+                            }}
+                        </span>
+
+                        <b aria-hidden="true">
+                            ➔
+                        </b>
+
+                    </a>
+
+                {% endif %}
+
+
+            </div>
+
+
+            {# =================================================
+               DEBUG / TARGET
+               مخفي - يستخدمه JavaScript
+            ================================================= #}
+
+            <div
+                class="luxury-reward-data"
+                data-reward-target="{{ reward_target }}"
+                hidden
+            ></div>
+
+
+        </div>
+
+
+    </section>
+
+
+{% endif %}

@@ -2569,6 +2569,177 @@
     }
 
   ]
+},
+{
+  "key": "f83b9d42-7a11-4e55-b921-8c4a7f9d21e6",
+  "title": {
+    "en": "Luxury Reward Progress",
+    "ar": "شريط المكافأة والهدايا"
+  },
+  "description": "قسم تفاعلي يوضح تقدم العميل للوصول إلى المكافأة بناءً على سعر المنتج المحدد.",
+  "icon": "sicon-gift",
+  "path": "home.reward-progress",
+  "image": "https://cdn.salla.network/images/themes/raed/preview-images/offers.png",
+  "is_default": true,
+
+  "fields": [
+
+    {
+      "id": "show_section",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار القسم",
+      "value": true
+    },
+
+
+    {
+      "id": "title",
+      "type": "string",
+      "format": "text",
+      "label": "العنوان الرئيسي",
+      "multilanguage": true,
+      "value": "أنتِ على بُعد خطوات من مكافأتكِ"
+    },
+
+
+    {
+      "id": "subtitle",
+      "type": "string",
+      "format": "textarea",
+      "label": "الوصف",
+      "multilanguage": true,
+      "value": "أضيفي المزيد إلى سلتكِ للوصول إلى المكافأة والحصول على هدية فاخرة"
+    },
+
+
+    {
+      "id": "reward_product",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "المنتج المرجعي للمكافأة",
+      "description": "اختر المنتج الذي سيتم استخدام سعره تلقائيًا كحد للوصول إلى المكافأة.",
+      "icon": "sicon-product",
+      "source": "products",
+      "searchable": true,
+      "multichoice": false,
+      "required": false
+    },
+
+
+    {
+      "id": "background_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون خلفية القسم",
+      "value": "#FFF5FA"
+    },
+
+
+    {
+      "id": "accent_color",
+      "type": "string",
+      "format": "color",
+      "label": "اللون الأساسي والتفاصيل",
+      "value": "#E62973"
+    },
+
+
+    {
+      "id": "shipping_label",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان مرحلة الشحن",
+      "multilanguage": true,
+      "value": "شحن مجاني"
+    },
+
+
+    {
+      "id": "gift_label",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان مرحلة الهدية",
+      "multilanguage": true,
+      "value": "هدية فاخرة"
+    },
+
+
+    {
+      "id": "status_before",
+      "type": "string",
+      "format": "text",
+      "label": "النص قبل الوصول للمكافأة",
+      "multilanguage": true,
+      "value": "أضيفي المزيد للحصول على المكافأة"
+    },
+
+
+    {
+      "id": "status_complete",
+      "type": "string",
+      "format": "text",
+      "label": "النص عند اكتمال المكافأة",
+      "multilanguage": true,
+      "value": "مبروك! لقد وصلتِ إلى المكافأة"
+    },
+
+
+    {
+      "id": "button_text",
+      "type": "string",
+      "format": "text",
+      "label": "نص الزر",
+      "multilanguage": true,
+      "value": "تسوقي المزيد لفتح الهدية"
+    },
+
+
+    {
+      "id": "button_link",
+      "type": "string",
+      "format": "url",
+      "label": "رابط الزر",
+      "value": "/"
+    },
+
+
+    {
+      "id": "show_shipping",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار مرحلة الشحن المجاني",
+      "value": true
+    },
+
+
+    {
+      "id": "show_gift",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار مرحلة الهدية",
+      "value": true
+    },
+
+
+    {
+      "id": "show_button",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار زر التسوق",
+      "value": true
+    },
+
+
+    {
+      "id": "show_animation",
+      "type": "boolean",
+      "format": "switch",
+      "label": "تفعيل الحركة",
+      "value": true
+    }
+
+  ]
 }
 
 
