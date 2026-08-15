@@ -1311,7 +1311,260 @@
       ]
     }
   ]
+},
+{
+  "key": "f7a83c21-4b6e-49d2-91c5-7e2a6d8f104b",
+  "title": {
+    "en": "Cinematic Hero",
+    "ar": "الهيرو السينمائي"
+  },
+  "icon": "sicon-video-camera",
+  "path": "home.cinematic-hero",
+  "image": "https://cdn.salla.network/images/themes/raed/preview-images/slider.png",
+  "is_default": false,
+  "fields": [
+    {
+      "type": "boolean",
+      "id": "luxury_show_section",
+      "label": "إظهار القسم",
+      "format": "switch",
+      "value": true
+    },
+    {
+      "type": "string",
+      "multilanguage": true,
+      "label": "العنوان الرئيسي",
+      "id": "luxury_title",
+      "format": "text",
+      "value": "الأناقة اللي تدور عليها وصلت"
+    },
+    {
+      "type": "string",
+      "multilanguage": true,
+      "label": "العنوان المميز",
+      "id": "luxury_highlight",
+      "format": "text",
+      "value": ""
+    },
+    {
+      "type": "string",
+      "multilanguage": true,
+      "label": "الوصف",
+      "id": "luxury_description",
+      "format": "textarea",
+      "value": "اكتشف تشكيلتنا الجديدة واختَر إطلالتك بكل أناقة."
+    },
+    {
+      "type": "string",
+      "label": "فيديو الخلفية",
+      "id": "luxury_video",
+      "format": "file",
+      "value": "",
+      "required": false,
+      "description": "الفيديو الافتراضي هو banner.mp4 الموجود داخل Assets."
+    },
+    {
+      "type": "string",
+      "icon": "sicon-image",
+      "label": "صورة الفيديو الاحتياطية",
+      "id": "luxury_poster",
+      "format": "image",
+      "value": null
+    },
+    {
+      "type": "boolean",
+      "label": "تشغيل الفيديو تلقائياً",
+      "id": "luxury_autoplay",
+      "format": "switch",
+      "value": true
+    },
+    {
+      "type": "boolean",
+      "label": "كتم صوت الفيديو",
+      "id": "luxury_muted",
+      "format": "switch",
+      "value": true
+    },
+    {
+      "type": "boolean",
+      "label": "تكرار الفيديو",
+      "id": "luxury_loop",
+      "format": "switch",
+      "value": true
+    },
+    {
+      "type": "boolean",
+      "label": "إظهار أدوات التحكم",
+      "id": "luxury_controls",
+      "format": "switch",
+      "value": false
+    },
+    {
+      "type": "string",
+      "label": "شفافية التعتيم",
+      "id": "luxury_overlay_opacity",
+      "format": "text",
+      "value": "0.28"
+    },
+    {
+      "type": "string",
+      "label": "لون التعتيم",
+      "id": "luxury_overlay_color",
+      "format": "color",
+      "value": "#000000"
+    },
+    {
+      "type": "string",
+      "label": "لون العنوان",
+      "id": "luxury_title_color",
+      "format": "color",
+      "value": "#FFFFFF"
+    },
+    {
+      "type": "string",
+      "label": "لون العنوان المميز",
+      "id": "luxury_highlight_color",
+      "format": "color",
+      "value": "#E62973"
+    },
+    {
+      "type": "string",
+      "label": "لون الوصف",
+      "id": "luxury_description_color",
+      "format": "color",
+      "value": "#FFFFFF"
+    },
+    {
+      "type": "string",
+      "label": "ارتفاع الهيرو",
+      "id": "luxury_section_height",
+      "format": "text",
+      "value": "100vh"
+    },
+    {
+      "type": "items",
+      "label": "محاذاة المحتوى",
+      "id": "luxury_content_align",
+      "format": "dropdown-list",
+      "selected": [
+        {
+          "label": "الوسط",
+          "value": "center"
+        }
+      ],
+      "options": [
+        {
+          "label": "يمين",
+          "value": "right"
+        },
+        {
+          "label": "الوسط",
+          "value": "center"
+        },
+        {
+          "label": "يسار",
+          "value": "left"
+        }
+      ]
+    },
+    {
+      "type": "string",
+      "multilanguage": true,
+      "label": "نص الزر الرئيسي",
+      "id": "luxury_button_text",
+      "format": "text",
+      "value": "تسوق الآن"
+    },
+    {
+      "type": "string",
+      "label": "رابط الزر الرئيسي",
+      "id": "luxury_button_url",
+      "format": "url",
+      "value": ""
+    },
+    {
+      "type": "string",
+      "label": "خلفية الزر الرئيسي",
+      "id": "luxury_button_bg",
+      "format": "color",
+      "value": "#000000"
+    },
+    {
+      "type": "string",
+      "label": "لون نص الزر الرئيسي",
+      "id": "luxury_button_color",
+      "format": "color",
+      "value": "#FFFFFF"
+    },
+    {
+      "type": "boolean",
+      "label": "إظهار الزر الثاني",
+      "id": "luxury_show_second_button",
+      "format": "switch",
+      "value": false
+    },
+    {
+      "type": "string",
+      "multilanguage": true,
+      "label": "نص الزر الثاني",
+      "id": "luxury_second_button_text",
+      "format": "text",
+      "value": "اكتشف المزيد"
+    },
+    {
+      "type": "string",
+      "label": "رابط الزر الثاني",
+      "id": "luxury_second_button_url",
+      "format": "url",
+      "value": ""
+    },
+    {
+      "type": "string",
+      "label": "خلفية الزر الثاني",
+      "id": "luxury_second_button_bg",
+      "format": "color",
+      "value": "#FFFFFF"
+    },
+    {
+      "type": "string",
+      "label": "لون نص الزر الثاني",
+      "id": "luxury_second_button_color",
+      "format": "color",
+      "value": "#000000"
+    },
+    {
+      "type": "boolean",
+      "label": "إظهار التقييم",
+      "id": "luxury_show_rating",
+      "format": "switch",
+      "value": false
+    },
+    {
+      "type": "string",
+      "multilanguage": true,
+      "label": "نص التقييم",
+      "id": "luxury_rating_text",
+      "format": "text",
+      "value": "أكثر من 5000 عميل يثق بنا"
+    },
+    {
+      "type": "boolean",
+      "label": "إظهار مؤشر النزول",
+      "id": "luxury_show_scroll",
+      "format": "switch",
+      "value": true
+    },
+    {
+      "type": "boolean",
+      "label": "تفعيل الحركة",
+      "id": "luxury_enable_animation",
+      "format": "switch",
+      "value": true
+    }
+  ]
 }
+
+
     ],
     "support_url": "https://example.com",
     "description": {

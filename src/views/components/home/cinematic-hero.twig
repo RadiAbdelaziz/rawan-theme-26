@@ -1,0 +1,336 @@
+{# =========================================================
+   Cinematic hero
+   Header + video + hero content
+   Compatible with: home.cinematic-hero
+   ========================================================= #}
+
+{% if component.luxury_show_section != false %}
+
+    <section
+        class="luxury-overlay-hero"
+        style="
+            --luxury-overlay: {{ component.luxury_overlay_color ?: '#000000' }};
+            --luxury-overlay-opacity: {{ component.luxury_overlay_opacity ?: '0.28' }};
+            --luxury-title-color: {{ component.luxury_title_color ?: '#FFFFFF' }};
+            --luxury-highlight-color: {{ component.luxury_highlight_color ?: '#E62973' }};
+            --luxury-description-color: {{ component.luxury_description_color ?: '#FFFFFF' }};
+            min-height: {{ component.luxury_section_height ?: '100vh' }};
+        "
+    >
+
+        {# =====================================================
+           Background video
+           Priority:
+           1. Uploaded video from dashboard
+           2. banner.mp4 from assets
+           3. Poster image
+           ===================================================== #}
+
+        {% set luxury_video = component.luxury_video ?: asset('videos/banner.mp4') %}
+        {% set luxury_poster = component.luxury_poster %}
+
+        {% if luxury_video %}
+
+            <video
+                class="luxury-overlay-hero__video"
+                {% if component.luxury_autoplay != false %}autoplay{% endif %}
+                {% if component.luxury_muted != false %}muted{% endif %}
+                {% if component.luxury_loop != false %}loop{% endif %}
+                {% if component.luxury_controls %}controls{% endif %}
+                playsinline
+                preload="auto"
+                {% if luxury_poster %}poster="{{ luxury_poster }}"{% endif %}
+                aria-hidden="true"
+            >
+                <source
+                    src="{{ luxury_video }}"
+                    type="video/mp4"
+                >
+            </video>
+
+        {% elseif luxury_poster %}
+
+            <img
+                class="luxury-overlay-hero__video"
+                src="{{ luxury_poster }}"
+                alt="{{ component.luxury_title ?: store.name }}"
+                loading="eager"
+            >
+
+        {% endif %}
+
+        {# =====================================================
+           Dark overlay
+           ===================================================== #}
+
+        <div
+            class="luxury-overlay-hero__dark-overlay"
+            aria-hidden="true"
+        ></div>
+
+        {# =====================================================
+           Luxury gradient
+           ===================================================== #}
+
+        <div
+            class="luxury-overlay-hero__gradient"
+            aria-hidden="true"
+        ></div>
+
+        {# =====================================================
+           Soft pink glow
+           ===================================================== #}
+
+        <div
+            class="luxury-overlay-hero__glow luxury-overlay-hero__glow--left"
+            aria-hidden="true"
+        ></div>
+
+        <div
+            class="luxury-overlay-hero__glow luxury-overlay-hero__glow--right"
+            aria-hidden="true"
+        ></div>
+
+        {# =====================================================
+           Header overlay
+           ===================================================== #}
+
+        <header
+            class="luxury-overlay-header"
+            data-testid="luxury-overlay-header"
+        >
+            <div class="luxury-overlay-header__top">
+
+                {# Logo #}
+
+                <div class="luxury-overlay-header__logo">
+                    <a
+                        href="{{ store.url }}"
+                        aria-label="{{ store.name }}"
+                    >
+                        <img
+                            src="{{ store.logo|cdn(175) }}"
+                            alt="{{ store.name }}"
+                        >
+                    </a>
+                </div>
+
+                {# Center controls #}
+
+                <div class="luxury-overlay-header__controls">
+
+                    {# Menu #}
+
+                    <button
+                        type="button"
+                        class="luxury-overlay-header__control luxury-menu-toggle"
+                        onclick="
+                            var menu = document.querySelector('.luxury-overlay-header__mobile-menu');
+                            if (menu) {
+                                menu.classList.toggle('is-open');
+                            }
+                        "
+                        aria-label="القائمة"
+                    >
+                        <i class="sicon-menu"></i>
+                        <span>القائمة</span>
+                    </button>
+
+                    {# Language and currency #}
+
+                    {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
+
+                        <div class="luxury-overlay-header__localization">
+                            <salla-localization-modal show-trigger></salla-localization-modal>
+                        </div>
+
+                    {% endif %}
+
+                    {# Search #}
+
+                    <div class="luxury-overlay-header__search">
+                        <salla-search
+                            inline
+                            oval
+                            height="40"
+                        ></salla-search>
+                    </div>
+
+                </div>
+
+                {# User actions #}
+
+                <div class="luxury-overlay-header__actions">
+
+                    {# Login and user #}
+
+                    <salla-user-menu
+                        class="luxury-user-menu"
+                        data-testid="store-header-user-menu"
+                        show-header
+                    ></salla-user-menu>
+
+                    {# Wishlist #}
+
+                    <a
+                        href="{{ link('wishlist') }}"
+                        class="luxury-overlay-header__icon"
+                        aria-label="المفضلة"
+                    >
+                        <i class="sicon-heart"></i>
+                    </a>
+
+                    {# Cart #}
+
+                    <salla-cart-summary
+                        data-testid="store-header-cart"
+                        class="luxury-overlay-cart"
+                    >
+                        <i
+                            slot="icon"
+                            class="sicon-shopping-bag"
+                        ></i>
+                    </salla-cart-summary>
+
+                </div>
+
+            </div>
+
+            {# Category navigation #}
+
+            <nav
+                class="luxury-overlay-navigation"
+                aria-label="التصنيفات الرئيسية"
+            >
+                <custom-main-menu></custom-main-menu>
+            </nav>
+
+            {# Mobile menu #}
+
+            <div class="luxury-overlay-header__mobile-menu">
+                <custom-main-menu></custom-main-menu>
+            </div>
+
+        </header>
+
+        {# Hero content #}
+
+        <div
+            class="
+                luxury-overlay-hero__content
+                {% if component.luxury_content_align == 'left' %}
+                    is-left
+                {% elseif component.luxury_content_align == 'right' %}
+                    is-right
+                {% else %}
+                    is-center
+                {% endif %}
+                {% if component.luxury_enable_animation %}
+                    is-animated
+                {% endif %}
+            "
+        >
+
+            {# Title #}
+
+            {% if component.luxury_title %}
+
+                <h1 class="luxury-overlay-hero__title">
+                    {{ component.luxury_title }}
+
+                    {% if component.luxury_highlight %}
+                        <span class="luxury-overlay-hero__highlight">
+                            {{ component.luxury_highlight }}
+                        </span>
+                    {% endif %}
+                </h1>
+
+            {% endif %}
+
+            {# Description #}
+
+            {% if component.luxury_description %}
+
+                <p class="luxury-overlay-hero__description">
+                    {{ component.luxury_description }}
+                </p>
+
+            {% endif %}
+
+            {# Rating #}
+
+            {% if component.luxury_show_rating %}
+
+                <div class="luxury-overlay-hero__rating">
+                    <span>★★★★★</span>
+
+                    <small>
+                        {{ component.luxury_rating_text ?: 'أكثر من 5000 عميل يثق بنا' }}
+                    </small>
+                </div>
+
+            {% endif %}
+
+            {# Buttons #}
+
+            {% if component.luxury_button_text or component.luxury_show_second_button %}
+
+                <div class="luxury-overlay-hero__buttons">
+
+                    {# Primary button #}
+
+                    {% if component.luxury_button_text %}
+
+                        <a
+                            href="{{ component.luxury_button_url ?: store.url }}"
+                            class="luxury-overlay-hero__button luxury-overlay-hero__button--primary"
+                            style="
+                                background: {{ component.luxury_button_bg ?: '#000000' }};
+                                color: {{ component.luxury_button_color ?: '#FFFFFF' }};
+                            "
+                        >
+                            {{ component.luxury_button_text }}
+                        </a>
+
+                    {% endif %}
+
+                    {# Secondary button #}
+
+                    {% if component.luxury_show_second_button %}
+
+                        <a
+                            href="{{ component.luxury_second_button_url ?: store.url }}"
+                            class="luxury-overlay-hero__button luxury-overlay-hero__button--secondary"
+                            style="
+                                background: {{ component.luxury_second_button_bg ?: '#FFFFFF' }};
+                                color: {{ component.luxury_second_button_color ?: '#000000' }};
+                            "
+                        >
+                            {{ component.luxury_second_button_text ?: 'اكتشف المزيد' }}
+                        </a>
+
+                    {% endif %}
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        {# Scroll indicator #}
+
+        {% if component.luxury_show_scroll %}
+
+            <div
+                class="luxury-overlay-hero__scroll"
+                aria-hidden="true"
+            >
+                <span></span>
+            </div>
+
+        {% endif %}
+
+    </section>
+
+{% endif %}
+

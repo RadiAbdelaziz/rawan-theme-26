@@ -3,6 +3,10 @@ import Swal from 'sweetalert2';
 import Anime from './partials/anime';
 import initTootTip from './partials/tooltip';
 import AppHelpers from "./app-helpers";
+import './store-locations';
+import './luxury-reward'
+import './brand-video'
+import './categories'
 
 class App extends AppHelpers {
   constructor() {
@@ -21,6 +25,11 @@ class App extends AppHelpers {
     this.initiateDropdowns();
     this.initiateModals();
     this.initiateCollapse();
+    
+    // تفعيل الأنيميشن، العداد التنازلي، وتبويبات المنتجات المميزة
+    this.initiateRevealSections();
+    this.initiateCountdown(); 
+    this.initiateFeaturedTabs(); // <--- تم إضافة استدعاء التبويبات هنا!
     
     // Ensure #more-menu-dropdown exists before running changeMenuDirection
     const menuDirInterval = setInterval(() => {
@@ -45,23 +54,127 @@ class App extends AppHelpers {
     return this;
   }
 
-    changeMenuDirection() {
-      setTimeout(() => {
-        app.all('.root-level.has-children', item => {
-          if (item.classList.contains('change-menu-dir')) return;
-          app.on('mouseover', item, () => {
-            let allSubMenus = item.querySelectorAll('.sub-menu');
-            allSubMenus.forEach((submenu, idx) => {
-              if (idx === 0) return;
-              let rect = submenu.getBoundingClientRect();
-              if (rect.left < 10 || rect.right > window.innerWidth - 10) {
-                app.addClass(item, 'change-menu-dir');
-              }
-            });
+  /**
+   * دالة الأنيميشن لمراقبة التمرير وإظهار الأقسام بسلاسة
+   */
+  initiateRevealSections() {
+    const revealSections = document.querySelectorAll('.reveal-section');
+    if (!revealSections.length) return;
+
+    const triggerReveal = () => {
+      // حساب المسافة المناسبة في الشاشة لبدء الحركة (4/5 الشاشة)
+      const triggerBottom = (window.innerHeight / 5) * 4;
+
+      revealSections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+
+        if (sectionTop < triggerBottom) {
+          section.classList.add('show');
+        }
+      });
+    };
+
+    // تشغيل الدالة فوراً للتأكد من إظهار الأقسام الظاهرة سلفاً في أعلى الصفحة
+    triggerReveal();
+    window.addEventListener('scroll', triggerReveal, { passive: true });
+  }
+
+  /**
+   * تشغيل العداد التنازلي الفعلي ثانية بثانية
+   */
+  initiateCountdown() {
+    const timerContainer = document.querySelector('.offer-timer');
+    if (!timerContainer) return;
+
+    const targetDateStr = timerContainer.getAttribute('data-countdown');
+    if (!targetDateStr) return;
+
+    const targetDate = new Date(targetDateStr).getTime();
+
+    const daysEl = timerContainer.querySelector('.days');
+    const hoursEl = timerContainer.querySelector('.hours');
+    const minutesEl = timerContainer.querySelector('.minutes');
+    const secondsEl = timerContainer.querySelector('.seconds');
+
+    const updateTimer = () => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference < 0) {
+        clearInterval(intervalId);
+        if (daysEl) daysEl.innerText = "00";
+        if (hoursEl) hoursEl.innerText = "00";
+        if (minutesEl) minutesEl.innerText = "00";
+        if (secondsEl) secondsEl.innerText = "00";
+        return;
+      }
+
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      if (daysEl) daysEl.innerText = String(days).padStart(2, '0');
+      if (hoursEl) hoursEl.innerText = String(hours).padStart(2, '0');
+      if (minutesEl) minutesEl.innerText = String(minutes).padStart(2, '0');
+      if (secondsEl) secondsEl.innerText = String(seconds).padStart(2, '0');
+    };
+
+    updateTimer();
+    const intervalId = setInterval(updateTimer, 1000);
+  }
+
+  /**
+   * دالة التحكم في تبويبات المنتجات المميزة (Featured Products Tabs)
+   */
+  initiateFeaturedTabs() {
+    const tabButtons = document.querySelectorAll('.tab-trigger');
+    
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const sectionContainer = button.closest('.featured-products-section');
+        if (!sectionContainer) return;
+
+        // 1. إزالة الحالة النشطة عن جميع الأزرار داخل هذا القسم فقط
+        sectionContainer.querySelectorAll('.tab-trigger').forEach(btn => {
+          btn.classList.remove('is-active');
+        });
+
+        // 2. إخفاء جميع محتويات التبويبات داخل هذا القسم فقط
+        sectionContainer.querySelectorAll('.tabs__item').forEach(content => {
+          content.classList.remove('is-active');
+        });
+
+        // 3. تفعيل الزر الذي تم الضغط عليه
+        button.classList.add('is-active');
+
+        // 4. إظهار المحتوى التابع للزر المختار
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+          targetContent.classList.add('is-active');
+        }
+      });
+    });
+  }
+
+  changeMenuDirection() {
+    setTimeout(() => {
+      app.all('.root-level.has-children', item => {
+        if (item.classList.contains('change-menu-dir')) return;
+        app.on('mouseover', item, () => {
+          let allSubMenus = item.querySelectorAll('.sub-menu');
+          allSubMenus.forEach((submenu, idx) => {
+            if (idx === 0) return;
+            let rect = submenu.getBoundingClientRect();
+            if (rect.left < 10 || rect.right > window.innerWidth - 10) {
+              app.addClass(item, 'change-menu-dir');
+            }
           });
         });
-      }, 1000);
-    }
+      });
+    }, 1000);
+  }
 
   loadModalImgOnclick(){
     document.querySelectorAll('.load-img-onclick').forEach(link => {
@@ -94,17 +207,15 @@ class App extends AppHelpers {
     }
   }
 
-isElementLoaded(selector){
-  return new Promise((resolve=>{
-    const interval=setInterval(()=>{
-    if(document.querySelector(selector)){
-      clearInterval(interval)
-      return resolve(document.querySelector(selector))
-    }
-   },160)
-}))
-
-  
+  isElementLoaded(selector){
+    return new Promise((resolve=>{
+      const interval=setInterval(()=>{
+      if(document.querySelector(selector)){
+        clearInterval(interval)
+        return resolve(document.querySelector(selector))
+      }
+     },160)
+  }))
   };
 
   copyToClipboard(event) {
@@ -149,30 +260,24 @@ isElementLoaded(selector){
     });
   }
 
-
   initiateMobileMenu() {
+    this.isElementLoaded('#mobile-menu').then((menu) => {
+      const mobileMenu = new MobileMenu(menu, "(max-width: 1024px)", "( slidingSubmenus: false)");
 
-  this.isElementLoaded('#mobile-menu').then((menu) => {
+      salla.lang.onLoaded(() => {
+        mobileMenu.navigation({ title: salla.lang.get('blocks.header.main_menu') });
+      });
+      const drawer = mobileMenu.offcanvas({ position: salla.config.get('theme.is_rtl') ? "right" : 'left' });
 
- 
-  const mobileMenu = new MobileMenu(menu, "(max-width: 1024px)", "( slidingSubmenus: false)");
-
-  salla.lang.onLoaded(() => {
-    mobileMenu.navigation({ title: salla.lang.get('blocks.header.main_menu') });
-  });
-  const drawer = mobileMenu.offcanvas({ position: salla.config.get('theme.is_rtl') ? "right" : 'left' });
-
-  this.onClick("a[href='#mobile-menu']", event => {
-    document.body.classList.add('menu-opened');
-    event.preventDefault() || drawer.close() || drawer.open()
-    
-  });
-  this.onClick(".close-mobile-menu", event => {
-    document.body.classList.remove('menu-opened');
-    event.preventDefault() || drawer.close()
-  });
-  });
-
+      this.onClick("a[href='#mobile-menu']", event => {
+        document.body.classList.add('menu-opened');
+        event.preventDefault() || drawer.close() || drawer.open()
+      });
+      this.onClick(".close-mobile-menu", event => {
+        document.body.classList.remove('menu-opened');
+        event.preventDefault() || drawer.close()
+      });
+    });
   }
 
   initiateStickyMenu() {
@@ -253,25 +358,11 @@ isElementLoaded(selector){
       });
   }
 
-
-  /**
-   * Workaround for seeking to simplify & clean, There are three ways to use this method:
-   * 1- direct call: `this.anime('.my-selector')` - will use default values
-   * 2- direct call with overriding defaults: `this.anime('.my-selector', {duration:3000})`
-   * 3- return object to play it letter: `this.anime('.my-selector', false).duration(3000).play()` - will not play animation unless calling play method.
-   * @param {string|HTMLElement} selector
-   * @param {object|undefined|null|null} options - in case there is need to set attributes one by one set it `false`;
-   * @return {Anime|*}
-   */
   anime(selector, options = null) {
     let anime = new Anime(selector, options);
     return options === false ? anime : anime.play();
   }
 
-  /**
-   * These actions are responsible for pressing "add to cart" button,
-   * they can be from any page, especially when mega-menu is enabled
-   */
   initAddToCart() {
     salla.cart.event.onUpdated(summary => {
       document.querySelectorAll('[data-cart-total]').forEach(el => el.innerHTML = salla.money(summary.total));
