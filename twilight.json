@@ -2397,6 +2397,178 @@
     }
 
   ]
+},
+{
+  "key": "8b42f671-9c35-4d82-a716-5e8f2026cd91",
+  "title": {
+    "en": "Luxury Complete Look",
+    "ar": "الإطلالة المتكاملة الفاخرة"
+  },
+  "description": "عرض مجموعة منتجات متناسقة بتصميم فاخر.",
+  "icon": "sicon-star",
+  "path": "home.complete-look",
+  "image": "https://cdn.salla.network/images/themes/raed/preview-images/products.png",
+  "is_default": true,
+
+  "fields": [
+
+    {
+      "id": "badge",
+      "type": "string",
+      "format": "text",
+      "label": "النص العلوي",
+      "multilanguage": true,
+      "value": "أناقة نسائية فاخرة"
+    },
+
+    {
+      "id": "title",
+      "type": "string",
+      "format": "text",
+      "label": "العنوان الرئيسي",
+      "multilanguage": true,
+      "value": "أكملي إطلالتكِ بأسلوب راقٍ"
+    },
+
+    {
+      "id": "description",
+      "type": "string",
+      "format": "textarea",
+      "label": "الوصف",
+      "multilanguage": true,
+      "value": "اختاري الطقم المثالي الذي يعكس جمالك ويمنحك حضوراً متكاملاً في كل مناسبة"
+    },
+
+
+    {
+      "id": "main_image",
+      "type": "string",
+      "format": "image",
+      "label": "الصورة الرئيسية",
+      "value": null,
+      "required": false
+    },
+
+
+    {
+      "id": "products",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "منتجات الإطلالة",
+      "icon": "sicon-products",
+      "source": "products",
+      "searchable": true,
+      "multichoice": true,
+      "required": false,
+      "value": []
+    },
+
+
+    {
+      "id": "background_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون الخلفية",
+      "value": "#E62973"
+    },
+
+
+    {
+      "id": "accent_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون التفاصيل",
+      "value": "#ffffff"
+    },
+
+
+    {
+      "id": "card_background",
+      "type": "string",
+      "format": "color",
+      "label": "لون بطاقة المنتجات",
+      "value": "rgba(255,255,255,0.10)"
+    },
+
+
+    {
+      "id": "button_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون الزر",
+      "value": "#ffffff"
+    },
+
+
+    {
+      "id": "show_glow",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار التوهج الخلفي",
+      "value": true,
+      "selected": true
+    },
+
+
+    {
+      "id": "show_image",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار الصورة الرئيسية",
+      "value": true,
+      "selected": true
+    },
+
+
+    {
+      "id": "show_button",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار زر إضافة الإطلالة",
+      "value": true,
+      "selected": true
+    },
+
+
+    {
+      "id": "show_total",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار إجمالي السعر",
+      "value": true,
+      "selected": true
+    },
+
+
+    {
+      "id": "show_product_price",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار أسعار المنتجات",
+      "value": true,
+      "selected": true
+    },
+
+
+    {
+      "id": "show_product_image",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار صور المنتجات",
+      "value": true,
+      "selected": true
+    },
+
+
+    {
+      "id": "section_padding",
+      "type": "number",
+      "format": "number",
+      "label": "مسافة القسم",
+      "value": 80
+    }
+
+  ]
 }
 
 
