@@ -2723,6 +2723,179 @@
     }
 
   ]
+},
+{
+  "key": "c92f7e18-4b61-4a9e-9f31-7d8a2c6401ab",
+
+  "title": {
+    "en": "Luxury Reviews",
+    "ar": "تقييمات العملاء"
+  },
+  "description": "قسم فاخر لعرض تقييمات وتجارب العملاء.",
+  "icon": "sicon-star",
+  "path": "home.reviews",
+  "image": "https://cdn.salla.network/images/themes/raed/preview-images/reviews.png",
+  "is_default": true,
+  "fields": [
+    {
+      "id": "show_section",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار القسم",
+      "value": true
+    },
+
+    {
+      "id": "title",
+      "type": "string",
+      "format": "text",
+      "label": "عنوان القسم",
+      "multilanguage": true,
+      "value": "تجارب عملائنا"
+    },
+
+    {
+      "id": "subtitle",
+      "type": "string",
+      "format": "textarea",
+      "label": "وصف القسم",
+      "multilanguage": true,
+      "value": "آراء حقيقية من عملاء اختاروا الجودة والفخامة"
+    },
+
+    {
+      "id": "background_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون الخلفية",
+      "value": "#fffafc"
+    },
+
+    {
+      "id": "accent_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون التفاصيل",
+      "value": "#E62973"
+    },
+
+    {
+      "id": "enable_animation",
+      "type": "boolean",
+      "format": "switch",
+      "label": "تفعيل الحركة",
+      "value": true
+    },
+
+    {
+      "id": "autoplay",
+      "type": "boolean",
+      "format": "switch",
+      "label": "تشغيل التقييمات تلقائياً",
+      "value": true
+    },
+
+    {
+      "id": "autoplay_speed",
+      "type": "number",
+      "format": "number",
+      "label": "سرعة الانتقال بالثواني",
+      "value": 5
+    },
+
+    {
+      "id": "show_summary",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار ملخص التقييم",
+      "value": true
+    },
+
+    {
+      "id": "average_rating",
+      "type": "string",
+      "format": "text",
+      "label": "متوسط التقييم",
+      "value": "4.9"
+    },
+
+    {
+      "id": "total_reviews",
+      "type": "string",
+      "format": "text",
+      "label": "عدد التقييمات",
+      "value": "350+"
+    },
+
+    {
+      "id": "rating_text",
+      "type": "string",
+      "format": "text",
+      "label": "وصف التقييم",
+      "multilanguage": true,
+      "value": "تقييمات موثوقة من عملائنا"
+    },
+
+    {
+      "id": "reviews",
+      "type": "collection",
+      "format": "collection",
+      "label": "تقييمات العملاء",
+      "description": "أضف حتى 4 تقييمات لعرضها بشكل متحرك",
+
+      "minLength": 1,
+      "maxLength": 4,
+      "required": false,
+
+      "fields": [
+
+        {
+          "id": "image",
+          "type": "string",
+          "format": "image",
+          "label": "صورة العميل",
+          "required": false
+        },
+
+        {
+          "id": "name",
+          "type": "string",
+          "format": "text",
+          "label": "اسم العميل",
+          "multilanguage": true,
+          "required": true
+        },
+
+        {
+          "id": "role",
+          "type": "string",
+          "format": "text",
+          "label": "صفة العميل",
+          "multilanguage": true,
+          "required": false
+        },
+
+        {
+          "id": "text",
+          "type": "string",
+          "format": "textarea",
+          "label": "نص التقييم",
+          "multilanguage": true,
+          "required": true
+        },
+
+        {
+          "id": "stars",
+          "type": "number",
+          "label": "عدد النجوم",
+          "value": 5,
+          "required": false
+        }
+
+      ]
+    }
+
+  ]
 }
 
 

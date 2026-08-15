@@ -1,0 +1,714 @@
+/* =========================================================
+   LUXURY REVIEWS SECTION
+   قسم تقييمات العملاء الفاخر
+========================================================= */
+
+.luxury-reviews-section {
+
+    position: relative;
+    overflow: hidden;
+
+    padding: 90px 0;
+
+    direction: rtl;
+
+    /* =====================================================
+       BACKGROUND GLOW
+    ===================================================== */
+
+    .luxury-reviews-glow {
+
+        position: absolute;
+
+        width: 420px;
+        height: 420px;
+
+        top: -180px;
+        right: -150px;
+
+        background: var(--reviews-accent);
+
+        opacity: .10;
+
+        filter: blur(100px);
+
+        border-radius: 50%;
+
+        pointer-events: none;
+
+    }
+
+
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    .luxury-reviews-header {
+
+        position: relative;
+
+        z-index: 2;
+
+        text-align: center;
+
+        margin-bottom: 55px;
+
+
+        h2 {
+
+            margin: 20px 0 12px;
+
+            font-size: clamp(28px, 4vw, 36px);
+
+            font-weight: 900;
+
+            line-height: 1.4;
+
+            color: #151515;
+
+        }
+
+
+        p {
+
+            max-width: 520px;
+
+            margin: auto;
+
+            color: #777;
+
+            font-size: 15px;
+
+            line-height: 2;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       DECORATION
+    ===================================================== */
+
+    .luxury-reviews-decoration {
+
+        display: flex;
+
+        justify-content: center;
+        align-items: center;
+
+        gap: 15px;
+
+
+        span {
+
+            width: 65px;
+            height: 1px;
+
+            background: var(--reviews-accent);
+
+            opacity: .7;
+
+        }
+
+
+        i {
+
+            width: 13px;
+            height: 13px;
+
+            background: var(--reviews-accent);
+
+            transform: rotate(45deg);
+
+            box-shadow:
+                0 0 15px rgba(230, 41, 115, .25);
+
+        }
+
+    }
+
+
+    /* =====================================================
+       RATING SUMMARY
+    ===================================================== */
+
+    .luxury-review-summary {
+
+        margin: 35px auto 0;
+
+        max-width: 430px;
+
+        padding: 22px 30px;
+
+        background: #fff;
+
+        border-radius: 28px;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        gap: 30px;
+
+        box-shadow:
+            0 15px 40px rgba(0, 0, 0, .06);
+
+        border:
+            1px solid rgba(230, 41, 115, .08);
+
+
+        .summary-rating {
+
+            strong {
+
+                display: block;
+
+                font-size: 42px;
+
+                font-weight: 900;
+
+                line-height: 1;
+
+                color: var(--reviews-accent);
+
+            }
+
+
+            .summary-stars {
+
+                margin-top: 8px;
+
+                color: #e8b33d;
+
+                letter-spacing: 3px;
+
+                direction: ltr;
+
+            }
+
+        }
+
+
+        .summary-info {
+
+            text-align: right;
+
+
+            span {
+
+                display: block;
+
+                font-size: 20px;
+
+                font-weight: 900;
+
+                color: #222;
+
+            }
+
+
+            small {
+
+                display: block;
+
+                margin-top: 4px;
+
+                color: #888;
+
+                font-size: 12px;
+
+            }
+
+        }
+
+    }
+
+
+    /* =====================================================
+       REVIEWS SLIDER
+    ===================================================== */
+
+    salla-slider {
+
+        position: relative;
+
+        display: block;
+
+        width: 100%;
+
+        z-index: 2;
+
+    }
+
+
+    /* =====================================================
+       SLIDER ITEMS
+    ===================================================== */
+
+    .luxury-reviews-grid {
+
+        display: flex !important;
+
+        align-items: stretch;
+
+        gap: 28px;
+
+        padding: 10px 5px 25px;
+
+    }
+
+
+    /* =====================================================
+       REVIEW CARD
+    ===================================================== */
+
+    .luxury-review-card {
+
+        position: relative;
+
+        flex: 0 0 calc(25% - 21px);
+
+        width: calc(25% - 21px);
+
+        min-width: calc(25% - 21px);
+
+        min-height: 300px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255, 255, 255, .98),
+                rgba(255, 250, 252, .95)
+            );
+
+        border-radius: 32px;
+
+        padding: 32px;
+
+        border:
+            1px solid rgba(230, 41, 115, .12);
+
+        box-shadow:
+            0 20px 50px rgba(0, 0, 0, .06);
+
+        transition:
+            transform .4s ease,
+            box-shadow .4s ease,
+            border-color .4s ease;
+
+        overflow: hidden;
+
+
+        /* =================================================
+           CARD DECORATION
+        ================================================= */
+
+        &::after {
+
+            content: "”";
+
+            position: absolute;
+
+            left: 22px;
+            bottom: -15px;
+
+            font-size: 100px;
+
+            font-family: Georgia, serif;
+
+            line-height: 1;
+
+            color: var(--reviews-accent);
+
+            opacity: .05;
+
+            pointer-events: none;
+
+        }
+
+
+        &:hover {
+
+            transform: translateY(-10px);
+
+            box-shadow:
+                0 35px 70px rgba(0, 0, 0, .11);
+
+            border-color:
+                rgba(230, 41, 115, .30);
+
+        }
+
+
+        /* =================================================
+           REVIEW TOP
+        ================================================= */
+
+        .review-top {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            margin-bottom: 22px;
+
+
+            img,
+            .review-avatar {
+
+                flex: 0 0 70px;
+
+                width: 70px;
+
+                height: 70px;
+
+                border-radius: 50%;
+
+                object-fit: cover;
+
+                border:
+                    3px solid rgba(230, 41, 115, .18);
+
+            }
+
+
+            .review-avatar {
+
+                display: flex;
+
+                align-items: center;
+                justify-content: center;
+
+                background: #fff0f5;
+
+                color: var(--reviews-accent);
+
+                font-size: 22px;
+
+            }
+
+        }
+
+
+        /* =================================================
+           REVIEW INFORMATION
+        ================================================= */
+
+        .review-info {
+
+            min-width: 0;
+
+
+            h3 {
+
+                margin: 0;
+
+                font-size: 18px;
+
+                font-weight: 900;
+
+                line-height: 1.5;
+
+                color: #222;
+
+                word-break: break-word;
+
+            }
+
+
+            span {
+
+                display: block;
+
+                margin-top: 6px;
+
+                color: #999;
+
+                font-size: 13px;
+
+            }
+
+        }
+
+
+        /* =================================================
+           STARS
+        ================================================= */
+
+        .review-stars {
+
+            display: flex;
+
+            align-items: center;
+
+            direction: ltr;
+
+            margin-bottom: 18px;
+
+            font-size: 21px;
+
+            letter-spacing: 3px;
+
+
+            span {
+
+                color: #ddd;
+
+                line-height: 1;
+
+
+                &.active {
+
+                    color: #e8b33d;
+
+                }
+
+            }
+
+        }
+
+
+        /* =================================================
+           REVIEW TEXT
+        ================================================= */
+
+        .review-text {
+
+            position: relative;
+
+            z-index: 1;
+
+            margin: 0;
+
+            color: #555;
+
+            font-size: 15px;
+
+            line-height: 2.1;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       ANIMATION
+    ===================================================== */
+
+    &.luxury-reviews-animated {
+
+        .luxury-review-card {
+
+            animation:
+                luxuryReviewFade .7s ease both;
+
+        }
+
+
+        @for $i from 1 through 4 {
+
+            .luxury-review-card:nth-child(#{$i}) {
+
+                animation-delay:
+                    $i * .10s;
+
+            }
+
+        }
+
+    }
+
+
+    /* =====================================================
+       TABLET
+    ===================================================== */
+
+    @media (max-width: 992px) {
+
+        padding: 75px 0;
+
+
+        .luxury-review-card {
+
+            flex: 0 0 calc(50% - 14px);
+
+            width: calc(50% - 14px);
+
+            min-width: calc(50% - 14px);
+
+        }
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 600px) {
+
+        padding: 55px 0;
+
+
+        .luxury-reviews-header {
+
+            margin-bottom: 40px;
+
+
+            h2 {
+
+                font-size: 27px;
+
+            }
+
+
+            p {
+
+                font-size: 14px;
+
+            }
+
+        }
+
+
+        .luxury-reviews-decoration {
+
+            gap: 10px;
+
+
+            span {
+
+                width: 45px;
+
+            }
+
+
+            i {
+
+                width: 10px;
+                height: 10px;
+
+            }
+
+        }
+
+
+        .luxury-review-summary {
+
+            max-width: 100%;
+
+            padding: 18px 20px;
+
+            gap: 20px;
+
+            border-radius: 22px;
+
+
+            .summary-rating {
+
+                strong {
+
+                    font-size: 34px;
+
+                }
+
+
+                .summary-stars {
+
+                    font-size: 14px;
+
+                    letter-spacing: 2px;
+
+                }
+
+            }
+
+
+            .summary-info {
+
+                span {
+
+                    font-size: 17px;
+
+                }
+
+
+                small {
+
+                    font-size: 11px;
+
+                }
+
+            }
+
+        }
+
+
+        .luxury-reviews-grid {
+
+            gap: 15px;
+
+            padding-inline: 2px;
+
+        }
+
+
+        .luxury-review-card {
+
+            flex: 0 0 100%;
+
+            width: 100%;
+
+            min-width: 100%;
+
+            padding: 25px;
+
+            border-radius: 25px;
+
+        }
+
+
+        .luxury-review-card:hover {
+
+            transform: none;
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   REVIEW ANIMATION
+========================================================= */
+
+@keyframes luxuryReviewFade {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(35px);
+
+    }
+
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}

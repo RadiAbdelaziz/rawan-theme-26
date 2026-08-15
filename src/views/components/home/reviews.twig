@@ -1,0 +1,230 @@
+{% if component.show_section %}
+
+<section
+    class="
+        luxury-reviews-section
+        {% if component.enable_animation %}
+            luxury-reviews-animated
+        {% endif %}
+    "
+    style="
+        background: {{ component.background_color ?: '#fffafc' }};
+        --reviews-accent: {{ component.accent_color ?: '#E62973' }};
+    "
+>
+
+    <div class="luxury-reviews-glow"></div>
+
+    <div class="container">
+
+        {# =====================================================
+           SECTION HEADER
+        ===================================================== #}
+
+        <div class="luxury-reviews-header">
+
+            <div class="luxury-reviews-decoration">
+
+                <span></span>
+
+                <i></i>
+
+                <span></span>
+
+            </div>
+
+
+            <h2>
+                {{ component.title ?: 'تجارب عملائنا' }}
+            </h2>
+
+
+            <p>
+                {{ component.subtitle ?: 'آراء حقيقية من عملاء اختاروا الجودة والفخامة' }}
+            </p>
+
+
+            {# =================================================
+               RATING SUMMARY
+            ================================================= #}
+
+            {% if component.show_summary %}
+
+                <div class="luxury-review-summary">
+
+                    <div class="summary-rating">
+
+                        <strong>
+                            {{ component.average_rating ?: '4.9' }}
+                        </strong>
+
+                        <div class="summary-stars">
+                            ★★★★★
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-info">
+
+                        <span>
+                            {{ component.total_reviews ?: '350+' }}
+                        </span>
+
+                        <small>
+                            {{ component.rating_text ?: 'تقييمات موثوقة من عملائنا' }}
+                        </small>
+
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+
+        {# =====================================================
+           REVIEWS CAROUSEL
+        ===================================================== #}
+
+        {% if component.reviews|length %}
+
+            <salla-slider
+                id="luxury-reviews-slider"
+                type="carousel"
+                loop="true"
+                auto-play="true"
+                show-controls="false"
+            >
+
+                <div
+                    slot="items"
+                    class="luxury-reviews-grid"
+                >
+
+                    {% for review in component.reviews|slice(0, 4) %}
+
+                        <article
+                            class="
+                                luxury-review-card
+                                {% if component.enable_animation %}
+                                    reveal-card
+                                {% endif %}
+                            "
+                        >
+
+                            {# =====================================
+                               REVIEW TOP
+                            ===================================== #}
+
+                            <div class="review-top">
+
+                                {% if review.image %}
+
+                                    <img
+                                        src="{{ review.image }}"
+                                        alt="{{ review.name }}"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+
+                                {% else %}
+
+                                    <div class="review-avatar">
+
+                                        <i class="sicon-user"></i>
+
+                                    </div>
+
+                                {% endif %}
+
+
+                                <div class="review-info">
+
+                                    <h3>
+                                        {{ review.name }}
+                                    </h3>
+
+
+                                    {% if review.role %}
+
+                                        <span>
+                                            {{ review.role }}
+                                        </span>
+
+                                    {% endif %}
+
+                                </div>
+
+                            </div>
+
+
+                            {# =====================================
+                               STARS
+                            ===================================== #}
+
+                            <div class="review-stars">
+
+                                {% set stars = review.stars ?: 5 %}
+
+                                {% for i in 1..5 %}
+
+                                    {% if i <= stars %}
+
+                                        <span class="active">
+                                            ★
+                                        </span>
+
+                                    {% else %}
+
+                                        <span>
+                                            ☆
+                                        </span>
+
+                                    {% endif %}
+
+                                {% endfor %}
+
+                            </div>
+
+
+                            {# =====================================
+                               REVIEW TEXT
+                            ===================================== #}
+
+                            {% if review.text %}
+
+                                <p class="review-text">
+                                    {{ review.text }}
+                                </p>
+
+                            {% endif %}
+
+
+                            {# =====================================
+                               REVIEW QUOTE DECORATION
+                            ===================================== #}
+
+                            <span
+                                class="review-quote"
+                                aria-hidden="true"
+                            >
+                                ”
+                            </span>
+
+                        </article>
+
+                    {% endfor %}
+
+                </div>
+
+            </salla-slider>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endif %}
