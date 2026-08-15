@@ -2693,17 +2693,6 @@
       "multilanguage": true,
       "value": "تسوقي المزيد لفتح الهدية"
     },
-
-
-    {
-      "id": "button_link",
-      "type": "string",
-      "format": "url",
-      "label": "رابط الزر",
-      "value": "/"
-    },
-
-
     {
       "id": "show_shipping",
       "type": "boolean",
@@ -2711,8 +2700,6 @@
       "label": "إظهار مرحلة الشحن المجاني",
       "value": true
     },
-
-
     {
       "id": "show_gift",
       "type": "boolean",
@@ -2720,8 +2707,6 @@
       "label": "إظهار مرحلة الهدية",
       "value": true
     },
-
-
     {
       "id": "show_button",
       "type": "boolean",
@@ -2729,8 +2714,6 @@
       "label": "إظهار زر التسوق",
       "value": true
     },
-
-
     {
       "id": "show_animation",
       "type": "boolean",
