@@ -14215,7 +14215,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .luxury-reviews-section {
   /* =====================================================
-     REVIEWS SLIDER
+     SALLA SLIDER
+     يعتمد على Carousel الخاص بـ Salla
   ===================================================== */
 }
 .luxury-reviews-section salla-slider {
@@ -14226,14 +14227,32 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .luxury-reviews-section {
   /* =====================================================
-     SLIDER ITEMS
+     HIDE CONTROLS
+     لا نريد الأسهم أو الأزرار
+  ===================================================== */
+}
+.luxury-reviews-section salla-slider .swiper-button-next,
+.luxury-reviews-section salla-slider .swiper-button-prev,
+.luxury-reviews-section salla-slider .s-slider-button {
+  display: none !important;
+}
+.luxury-reviews-section {
+  /* =====================================================
+     SLIDER WRAPPER
   ===================================================== */
 }
 .luxury-reviews-section .luxury-reviews-grid {
-  display: flex !important;
-  align-items: stretch;
-  gap: 28px;
-  padding: 10px 5px 25px;
+  padding: 10px 5px 30px;
+}
+.luxury-reviews-section {
+  /* =====================================================
+     SWIPER SLIDES
+     4 بطاقات على سطح المكتب
+  ===================================================== */
+}
+.luxury-reviews-section .luxury-reviews-grid .swiper-slide {
+  height: auto;
+  display: flex;
 }
 .luxury-reviews-section {
   /* =====================================================
@@ -14242,9 +14261,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .luxury-reviews-section .luxury-review-card {
   position: relative;
-  flex: 0 0 calc(25% - 21px);
-  width: calc(25% - 21px);
-  min-width: calc(25% - 21px);
+  width: 100%;
   min-height: 300px;
   display: flex;
   flex-direction: column;
@@ -14390,9 +14407,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     padding: 75px 0;
   }
   .luxury-reviews-section .luxury-review-card {
-    flex: 0 0 calc(50% - 14px);
-    width: calc(50% - 14px);
-    min-width: calc(50% - 14px);
+    min-height: 290px;
+    padding: 28px;
   }
 }
 .luxury-reviews-section {
@@ -14442,15 +14458,20 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .luxury-reviews-section .luxury-review-summary .summary-info small {
     font-size: 11px;
   }
+  .luxury-reviews-section {
+    /* =============================================
+       MOBILE SLIDER
+       بطاقة واحدة في كل مرة
+    ============================================= */
+  }
   .luxury-reviews-section .luxury-reviews-grid {
-    gap: 15px;
-    padding-left: 2px;
-    padding-right: 2px;
+    padding: 10px 2px 25px;
+  }
+  .luxury-reviews-section .luxury-reviews-grid .swiper-slide {
+    width: 100% !important;
   }
   .luxury-reviews-section .luxury-review-card {
-    flex: 0 0 100%;
-    width: 100%;
-    min-width: 100%;
+    min-height: 0;
     padding: 25px;
     border-radius: 25px;
   }

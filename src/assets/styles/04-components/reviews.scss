@@ -6,11 +6,13 @@
 .luxury-reviews-section {
 
     position: relative;
+
     overflow: hidden;
 
     padding: 90px 0;
 
     direction: rtl;
+
 
     /* =====================================================
        BACKGROUND GLOW
@@ -95,6 +97,7 @@
         display: flex;
 
         justify-content: center;
+
         align-items: center;
 
         gap: 15px;
@@ -103,6 +106,7 @@
         span {
 
             width: 65px;
+
             height: 1px;
 
             background: var(--reviews-accent);
@@ -115,6 +119,7 @@
         i {
 
             width: 13px;
+
             height: 13px;
 
             background: var(--reviews-accent);
@@ -228,7 +233,8 @@
 
 
     /* =====================================================
-       REVIEWS SLIDER
+       SALLA SLIDER
+       يعتمد على Carousel الخاص بـ Salla
     ===================================================== */
 
     salla-slider {
@@ -245,18 +251,42 @@
 
 
     /* =====================================================
-       SLIDER ITEMS
+       HIDE CONTROLS
+       لا نريد الأسهم أو الأزرار
+    ===================================================== */
+
+    salla-slider .swiper-button-next,
+    salla-slider .swiper-button-prev,
+    salla-slider .s-slider-button {
+
+        display: none !important;
+
+    }
+
+
+    /* =====================================================
+       SLIDER WRAPPER
     ===================================================== */
 
     .luxury-reviews-grid {
 
-        display: flex !important;
+        padding:
 
-        align-items: stretch;
+            10px 5px 30px;
 
-        gap: 28px;
+    }
 
-        padding: 10px 5px 25px;
+
+    /* =====================================================
+       SWIPER SLIDES
+       4 بطاقات على سطح المكتب
+    ===================================================== */
+
+    .luxury-reviews-grid .swiper-slide {
+
+        height: auto;
+
+        display: flex;
 
     }
 
@@ -269,11 +299,7 @@
 
         position: relative;
 
-        flex: 0 0 calc(25% - 21px);
-
-        width: calc(25% - 21px);
-
-        min-width: calc(25% - 21px);
+        width: 100%;
 
         min-height: 300px;
 
@@ -282,6 +308,7 @@
         flex-direction: column;
 
         background:
+
             linear-gradient(
                 145deg,
                 rgba(255, 255, 255, .98),
@@ -317,6 +344,7 @@
             position: absolute;
 
             left: 22px;
+
             bottom: -15px;
 
             font-size: 100px;
@@ -386,6 +414,7 @@
                 display: flex;
 
                 align-items: center;
+
                 justify-content: center;
 
                 background: #fff0f5;
@@ -539,11 +568,9 @@
 
         .luxury-review-card {
 
-            flex: 0 0 calc(50% - 14px);
+            min-height: 290px;
 
-            width: calc(50% - 14px);
-
-            min-width: calc(50% - 14px);
+            padding: 28px;
 
         }
 
@@ -595,6 +622,7 @@
             i {
 
                 width: 10px;
+
                 height: 10px;
 
             }
@@ -653,22 +681,30 @@
         }
 
 
+        /* =============================================
+           MOBILE SLIDER
+           بطاقة واحدة في كل مرة
+        ============================================= */
+
         .luxury-reviews-grid {
 
-            gap: 15px;
+            padding:
 
-            padding-inline: 2px;
+                10px 2px 25px;
+
+        }
+
+
+        .luxury-reviews-grid .swiper-slide {
+
+            width: 100% !important;
 
         }
 
 
         .luxury-review-card {
 
-            flex: 0 0 100%;
-
-            width: 100%;
-
-            min-width: 100%;
+            min-height: 0;
 
             padding: 25px;
 
