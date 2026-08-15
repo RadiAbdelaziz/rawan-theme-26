@@ -1,0 +1,535 @@
+/* ======================================
+   STORE LOCATIONS SECTION
+====================================== */
+
+
+.store-location-section{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding-block:80px;
+
+    color:#111;
+
+    z-index:1;
+
+}
+
+
+
+/* ======================================
+   GLOW
+====================================== */
+
+
+.store-location-glow{
+
+    position:absolute;
+
+    width:350px;
+
+    height:350px;
+
+    border-radius:50%;
+
+    filter:blur(100px);
+
+    pointer-events:none;
+
+    opacity:.35;
+
+    z-index:0;
+
+}
+
+
+
+.store-location-glow.one{
+
+    background:var(--location-accent);
+
+    top:-120px;
+
+    left:-100px;
+
+}
+
+
+
+.store-location-glow.two{
+
+    background:#f3f4f6;
+
+    bottom:-120px;
+
+    right:-100px;
+
+}
+
+
+
+/* ======================================
+   HEADER
+====================================== */
+
+
+.store-location-header{
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+    margin-bottom:55px;
+
+}
+
+
+
+.location-decoration{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:15px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.location-decoration span{
+
+    width:80px;
+
+    height:2px;
+
+    background:
+
+    linear-gradient(
+        90deg,
+        transparent,
+        #ddd,
+        transparent
+    );
+
+}
+
+
+
+.location-decoration i{
+
+    width:12px;
+
+    height:12px;
+
+    background:var(--location-accent);
+
+    transform:rotate(45deg);
+
+    box-shadow:
+
+    0 0 15px rgba(230,41,115,.35);
+
+}
+
+
+
+.store-location-header h2{
+
+    margin:0;
+
+    font-size:clamp(32px,5vw,48px);
+
+    font-weight:900;
+
+    color:#111;
+
+}
+
+
+
+.store-location-header p{
+
+    margin:15px auto 0;
+
+    max-width:550px;
+
+    color:#777;
+
+    font-size:15px;
+
+    line-height:1.9;
+
+}
+
+
+
+/* ======================================
+   CONTENT
+====================================== */
+
+
+.store-location-content{
+
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    gap:30px;
+
+    align-items:stretch;
+
+}
+
+
+
+/* ======================================
+   MAP
+====================================== */
+
+
+.store-location-map{
+
+    width:65%;
+
+    overflow:hidden;
+
+    border-radius:30px;
+
+    background:#fff;
+
+    border:1px solid rgba(0,0,0,.06);
+
+    box-shadow:
+
+    0 20px 50px rgba(0,0,0,.08);
+
+}
+
+
+
+#store-map{
+
+    width:100%;
+
+    height:var(--map-height);
+
+}
+
+
+
+/* Leaflet */
+
+.leaflet-container{
+
+    width:100%;
+
+    height:100%;
+
+    font-family:inherit;
+
+}
+
+
+
+.leaflet-popup-content{
+
+    font-size:14px;
+
+    font-weight:700;
+
+    text-align:center;
+
+}
+
+
+
+/* ======================================
+   BRANCHES
+====================================== */
+
+
+.store-location-branches{
+
+    width:35%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+
+
+.store-branch-card{
+
+    width:100%;
+
+    appearance:none;
+
+    outline:none;
+
+    border:none;
+
+    text-align:right;
+
+    direction:rtl;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:#fff;
+
+    border:1px solid rgba(0,0,0,.06);
+
+    cursor:pointer;
+
+    transition:
+
+    transform .35s ease,
+
+    box-shadow .35s ease,
+
+    border-color .35s ease;
+
+}
+
+
+
+.store-branch-card h3{
+
+    margin:0;
+
+    font-size:18px;
+
+    font-weight:900;
+
+    color:#111;
+
+    transition:.3s;
+
+}
+
+
+
+.store-branch-card p{
+
+    margin:8px 0 0;
+
+    font-size:13px;
+
+    color:#777;
+
+    line-height:1.7;
+
+}
+
+
+
+/* Hover */
+
+.store-branch-card:hover,
+
+.store-branch-card.active{
+
+    transform:translateY(-5px);
+
+    border-color:var(--location-accent);
+
+    box-shadow:
+
+    0 18px 40px rgba(230,41,115,.15);
+
+}
+
+
+
+.store-branch-card:hover h3,
+
+.store-branch-card.active h3{
+
+    color:var(--location-accent);
+
+}
+
+
+
+/* ======================================
+   ANIMATION
+====================================== */
+
+
+.store-location-animated 
+.store-branch-card{
+
+    opacity:0;
+
+    animation:
+
+    storeBranchFade .7s ease forwards;
+
+}
+
+
+
+.store-location-animated 
+.store-branch-card:nth-child(1){
+
+    animation-delay:.05s;
+
+}
+
+
+.store-location-animated 
+.store-branch-card:nth-child(2){
+
+    animation-delay:.15s;
+
+}
+
+
+.store-location-animated 
+.store-branch-card:nth-child(3){
+
+    animation-delay:.25s;
+
+}
+
+
+.store-location-animated 
+.store-branch-card:nth-child(4){
+
+    animation-delay:.35s;
+
+}
+
+
+
+@keyframes storeBranchFade{
+
+
+from{
+
+    opacity:0;
+
+    transform:translateY(25px);
+
+}
+
+
+to{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+}
+
+
+
+/* ======================================
+   MOBILE
+====================================== */
+
+
+@media(max-width:992px){
+
+
+.store-location-content{
+
+    flex-direction:column;
+
+}
+
+
+
+.store-location-map{
+
+    width:100%;
+
+}
+
+
+
+.store-location-branches{
+
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+
+}
+
+
+
+@media(max-width:600px){
+
+
+.store-location-section{
+
+    padding-block:60px;
+
+}
+
+
+
+.store-location-header h2{
+
+    font-size:30px;
+
+}
+
+
+
+.location-decoration span{
+
+    width:45px;
+
+}
+
+
+
+#store-map{
+
+    height:320px;
+
+}
+
+
+
+.store-location-branches{
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.store-branch-card{
+
+    padding:18px;
+
+}
+
+
+}
