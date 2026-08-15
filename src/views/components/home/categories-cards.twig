@@ -1,89 +1,15 @@
 {# =========================================================
-   CATEGORIES CARDS
-   Luxury Categories Showcase
-   RTL / Safe Category Links
+   LUXURY CATEGORIES CARDS
+   Categories Showcase
+   RTL / Safe Category URLs
 ========================================================= #}
-
-
-{# =========================================================
-   DEFAULT DATA
-========================================================= #}
-
-{% set default_images = [
-    'women.jpg',
-    'men.jpg',
-    'kids.jpg',
-    'offers.jpg'
-] %}
-
-
-{% set default_titles = [
-    'نسائي',
-    'رجالي',
-    'أطفال',
-    'عروض'
-] %}
-
-
-{% set default_subtitles = [
-    'اكتشفي أحدث التشكيلات',
-    'أناقة عصرية مميزة',
-    'راحة وأناقة للصغار',
-    'اقتني الفرصة الآن'
-] %}
-
-
-{# =========================================================
-   DEFAULT LINKS
-========================================================= #}
-
-{% set default_links = [
-    link('/categories'),
-    link('/categories'),
-    link('/categories'),
-    link('/categories')
-] %}
-
-
-{# =========================================================
-   COMPONENT ITEMS
-========================================================= #}
-
-{% set categories = component.items ?: [] %}
-
-
-{# =========================================================
-   FALLBACK ITEMS
-========================================================= #}
-
-{% if categories|length == 0 %}
-
-    {% set categories = [
-        {
-            "title": "نسائي",
-            "subtitle": "اكتشفي أحدث التشكيلات"
-        },
-        {
-            "title": "رجالي",
-            "subtitle": "أناقة عصرية مميزة"
-        },
-        {
-            "title": "أطفال",
-            "subtitle": "راحة وأناقة للصغار"
-        },
-        {
-            "title": "عروض",
-            "subtitle": "اقتني الفرصة الآن",
-            "badge": "خصم 50%"
-        }
-    ] %}
-
-{% endif %}
 
 
 {# =========================================================
    SECTION
 ========================================================= #}
+
+{% if component.show_section != false %}
 
 <section
     class="categories-section reveal-section"
@@ -97,7 +23,7 @@
 
 
         {# =====================================================
-           HEADER
+           SECTION HEADER
         ===================================================== #}
 
         <header class="categories-header">
@@ -116,7 +42,7 @@
             </div>
 
 
-            {# Title #}
+            {# Main Title #}
 
             <h2>
 
@@ -142,86 +68,63 @@
 
 
         {# =====================================================
-           CATEGORIES GRID
+           CATEGORIES
         ===================================================== #}
 
-        <div class="categories-grid">
+        {% set categories = component.categories ?: [] %}
+
+
+        <div
+            class="
+                categories-grid
+                columns-{{ component.columns ?: '4' }}
+            "
+        >
 
 
             {# =================================================
-               LOOP
+               CATEGORY LOOP
             ================================================= #}
 
-            {% for item in categories|slice(0, 4) %}
-
-
-                {# =================================================
-                   TITLE
-                ================================================= #}
-
-                {% set item_title =
-                    item.title ?: default_titles[loop.index0]
-                %}
-
-
-                {# =================================================
-                   SUBTITLE
-                ================================================= #}
-
-                {% set item_subtitle =
-                    item.subtitle ?: default_subtitles[loop.index0]
-                %}
+            {% for category in categories|slice(0, 4) %}
 
 
                 {# =================================================
                    CATEGORY URL
 
-                   إذا تم اختيار فئة من لوحة التحكم:
-                   نستخدم رابط الفئة مباشرة.
-
-                   إذا لم توجد فئة:
-                   نستخدم الرابط الخارجي.
-
-                   إذا لم يوجد أي منهما:
-                   نستخدم الرابط الافتراضي.
+                   نفس طريقة قسم Crystal تمامًا
                 ================================================= #}
 
-                {% set item_url = default_links[loop.index0] %}
-
-
-                {% if item.category and item.category.url %}
-
-                    {% set item_url = item.category.url %}
-
-                {% elseif item.link %}
-
-                    {% set item_url = item.link %}
-
-                {% endif %}
-
-
-                {# =================================================
-                   IMAGE
-                ================================================= #}
-
-                {% set item_image =
-                    ('images/categories/' ~ default_images[loop.index0])|asset
+                {% set category_url =
+                    category.url
+                    ?: link('categories/' ~ category.slug)
                 %}
 
 
-                {% if item.image %}
+                {# =================================================
+                   CATEGORY IMAGE
 
-                    {% if item.image.url %}
+                   يدعم:
+                   category.image.url
+                   category.image
+                   placeholder
+                ================================================= #}
 
-                        {% set item_image = item.image.url %}
+                {% set category_image =
+                    category.image.url
+                    ?: category.image
+                    ?: 'images/placeholder.png'|asset
+                %}
 
-                    {% else %}
 
-                        {% set item_image = item.image %}
+                {# =================================================
+                   CATEGORY NAME
+                ================================================= #}
 
-                    {% endif %}
-
-                {% endif %}
+                {% set category_name =
+                    category.name
+                    ?: 'مجموعة مميزة'
+                %}
 
 
                 {# =================================================
@@ -229,10 +132,15 @@
                 ================================================= #}
 
                 <a
-                    href="{{ item_url }}"
-                    class="category-card reveal-card"
-                    style="--category-index: {{ loop.index0 }};"
-                    aria-label="{{ item_title }}"
+                    href="{{ category_url }}"
+                    class="
+                        category-card
+                        reveal-card
+                    "
+                    style="
+                        --category-index: {{ loop.index0 }};
+                    "
+                    aria-label="{{ category_name }}"
                 >
 
 
@@ -241,8 +149,8 @@
                     ================================================= #}
 
                     <img
-                        src="{{ item_image }}"
-                        alt="{{ item_title }}"
+                        src="{{ category_image }}"
+                        alt="{{ category_name }}"
                         loading="lazy"
                         decoding="async"
                     >
@@ -262,13 +170,17 @@
                        BADGE
                     ================================================= #}
 
-                    {% if component.show_badge != false and item.badge %}
+                    {% if component.show_badge != false %}
 
-                        <span class="category-badge">
+                        {% if category.badge %}
 
-                            {{ item.badge }}
+                            <span class="category-badge">
 
-                        </span>
+                                {{ category.badge }}
+
+                            </span>
+
+                        {% endif %}
 
                     {% endif %}
 
@@ -280,24 +192,52 @@
                     <div class="content">
 
 
-                        {# Card Title #}
+                        {# =================================================
+                           CATEGORY NAME
+                        ================================================= #}
 
                         <h3>
 
-                            {{ item_title }}
+                            {{ category_name }}
 
                         </h3>
 
 
-                        {# Card Subtitle #}
+                        {# =================================================
+                           CATEGORY DESCRIPTION
+                        ================================================= #}
 
-                        {% if item_subtitle %}
+                        {% if component.show_description != false %}
 
-                            <p>
+                            {% if category.description %}
 
-                                {{ item_subtitle }}
+                                <p>
 
-                            </p>
+                                    {{ category.description }}
+
+                                </p>
+
+                            {% endif %}
+
+                        {% endif %}
+
+
+                        {# =================================================
+                           PRODUCT COUNT
+                        ================================================= #}
+
+                        {% if category.products_count is defined
+                            and category.products_count is not null %}
+
+                            <span class="category-count">
+
+                                {{ category.products_count }}
+
+                                <span>
+                                    منتج
+                                </span>
+
+                            </span>
 
                         {% endif %}
 
@@ -329,9 +269,26 @@
             {% endfor %}
 
 
+            {# =================================================
+               EMPTY STATE
+            ================================================= #}
+
+            {% if categories|length == 0 %}
+
+                <div class="categories-empty">
+
+                    لم يتم اختيار أي مجموعات
+
+                </div>
+
+            {% endif %}
+
+
         </div>
 
 
     </div>
 
 </section>
+
+{% endif %}
