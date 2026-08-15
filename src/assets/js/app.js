@@ -7,6 +7,7 @@ import './store-locations';
 import './luxury-reward'
 import './brand-video'
 import './categories'
+import './all-products'
 
 class App extends AppHelpers {
   constructor() {

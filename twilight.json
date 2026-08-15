@@ -1562,6 +1562,168 @@
       "value": true
     }
   ]
+},
+{
+  "key": "c91f7a42-6d83-4e21-b5a9-31f8d7246c90",
+  "title": {
+    "en": "Featured Products",
+    "ar": "منتجات مختارة"
+  },
+  "description": "عرض المنتجات بتصميم فاخر وعصري ومتجاوب.",
+  "icon": "sicon-products",
+  "path": "home.all-product",
+  "image": "https://cdn.salla.network/images/themes/raed/preview-images/slider-products-with-bg.png",
+  "is_default": false,
+  "fields": [
+    {
+      "type": "string",
+      "icon": "sicon-format-text-alt",
+      "label": "الشارة",
+      "multilanguage": true,
+      "id": "badge_text",
+      "value": "منتجاتنا",
+      "format": "text",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-format-text-alt",
+      "label": "العنوان الرئيسي",
+      "multilanguage": true,
+      "id": "title",
+      "value": "كل المنتجات",
+      "format": "text",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-align-left",
+      "label": "الوصف",
+      "multilanguage": true,
+      "id": "subtitle",
+      "value": "اكتشف مجموعتنا الكاملة من المنتجات المختارة بعناية",
+      "format": "textarea",
+      "required": false
+    },
+    {
+      "type": "items",
+      "icon": "sicon-product",
+      "label": "المنتجات",
+      "id": "products",
+      "format": "dropdown-list",
+      "description": "اختر المنتجات التي تريد عرضها في القسم.",
+      "selected": [],
+      "options": [],
+      "required": true,
+      "multichoice": true,
+      "source": "products",
+      "searchable": true,
+      "maxLength": 12,
+      "minLength": 1,
+      "value": []
+    },
+    {
+      "type": "string",
+      "icon": "sicon-color",
+      "label": "لون خلفية القسم",
+      "id": "background_color",
+      "value": "#FFF5F8",
+      "format": "color",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-color",
+      "label": "لون الهوية",
+      "id": "accent_color",
+      "value": "#E62973",
+      "format": "color",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-color",
+      "label": "لون البطاقات",
+      "id": "card_color",
+      "value": "#FFFFFF",
+      "format": "color",
+      "required": false
+    },
+    {
+      "type": "string",
+      "format": "select",
+      "label": "عدد الأعمدة",
+      "id": "columns",
+      "value": "5",
+      "options": [
+        {
+          "label": "2 منتجات",
+          "value": "2"
+        },
+        {
+          "label": "3 منتجات",
+          "value": "3"
+        },
+        {
+          "label": "4 منتجات",
+          "value": "4"
+        },
+        {
+          "label": "5 منتجات",
+          "value": "5"
+        }
+      ],
+      "required": false
+    },
+    {
+      "type": "string",
+      "format": "number",
+      "label": "المسافة الداخلية للقسم",
+      "id": "section_padding",
+      "value": "70",
+      "required": false
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار الخصم",
+      "id": "show_discount",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار السعر",
+      "id": "show_price",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار التقييم",
+      "id": "show_rating",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار زر إضافة للسلة",
+      "id": "show_add_button",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار التوهج الخلفي",
+      "id": "show_glow",
+      "value": false,
+      "selected": false
+    }
+  ]
 }
 
 
