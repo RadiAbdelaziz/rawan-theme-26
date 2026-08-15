@@ -34,18 +34,14 @@
                 {# Title #}
 
                 <h2 class="lux-heading">
-
                     {{ component.title ?: 'تصميم عصري يناسب جميع المناسبات' }}
-
                 </h2>
 
 
                 {# Subtitle #}
 
                 <p class="lux-subheading">
-
                     {{ component.subtitle ?: 'قطعة مختارة بعناية لتناسب كل المناسبات وتضفي لمسة أناقة على مظهرك اليومي' }}
-
                 </p>
 
 
@@ -65,228 +61,286 @@
 
 
             {# =====================================================
-               Products Grid
+               Products Carousel
             ===================================================== #}
 
-            <div class="lux-grid columns-{{ component.columns ?: '5' }}">
+            <div
+                class="lux-carousel"
+                data-columns="{{ component.columns ?: '5' }}"
+            >
 
-                {% for product in component.products %}
+                {# Previous Arrow #}
 
-                    <article
-                        class="lux-card"
-                        style="--product-index: {{ loop.index0 }};"
-                    >
-
-                        {# =================================================
-                           Image Area
-                        ================================================= #}
-
-                        <div class="lux-image">
-
-                            {# Product Badge #}
-
-                            {% if component.show_discount != false and product.promotion_title %}
-
-                                <span class="lux-discount">
-                                    {{ product.promotion_title }}
-                                </span>
-
-                            {% endif %}
+                <button
+                    type="button"
+                    class="lux-carousel-arrow lux-carousel-arrow--prev"
+                    aria-label="المنتجات السابقة"
+                >
+                    <i class="sicon-keyboard-arrow-right"></i>
+                </button>
 
 
-                            {# Wishlist #}
+                {# Carousel Viewport #}
 
-                            <button
-                                type="button"
-                                class="lux-wishlist"
-                                aria-label="إضافة {{ product.name }} إلى المفضلة"
-                                onclick="salla.wishlist.toggle('{{ product.id }}')"
+                <div class="lux-carousel-viewport">
+
+                    {# Carousel Track #}
+
+                    <div class="lux-carousel-track">
+
+                        {% for product in component.products %}
+
+                            <article
+                                class="lux-card"
+                                style="--product-index: {{ loop.index0 }};"
                             >
 
-                                <span>♡</span>
+                                {# =================================================
+                                   Image Area
+                                ================================================= #}
 
-                            </button>
+                                <div class="lux-image">
 
+                                    {# Product Badge #}
 
-                            {# Product Image #}
+                                    {% if component.show_discount != false and product.promotion_title %}
 
-                            <a
-                                href="{{ product.url }}"
-                                class="lux-image-link"
-                                aria-label="{{ product.name }}"
-                            >
-
-                                {% if product.image %}
-
-                                    <img
-                                        class="lux-product-image"
-                                        src="{{ product.image.url ?: product.image }}"
-                                        alt="{{ product.image.alt ?: product.name }}"
-                                        loading="lazy"
-                                    >
-
-                                {% elseif product.main_image %}
-
-                                    <img
-                                        class="lux-product-image"
-                                        src="{{ product.main_image }}"
-                                        alt="{{ product.name }}"
-                                        loading="lazy"
-                                    >
-
-                                {% else %}
-
-                                    <img
-                                        class="lux-product-image"
-                                        src="{{ 'images/placeholder.png'|asset }}"
-                                        alt="{{ product.name }}"
-                                        loading="lazy"
-                                    >
-
-                                {% endif %}
-
-                            </a>
-
-                        </div>
-
-
-                        {# =================================================
-                           Sales Status
-                        ================================================= #}
-
-                        {% if product.is_out_of_stock %}
-
-                            <div class="lux-sales-status lux-sales-status--out">
-                                غير متوفر حالياً
-                            </div>
-
-                        {% elseif product.promotion_title %}
-
-                            <div class="lux-sales-status">
-                                {{ product.promotion_title }}
-                            </div>
-
-                        {% endif %}
-
-
-                        {# =================================================
-                           Product Content
-                        ================================================= #}
-
-                        <div class="lux-content">
-
-                            {# Rating #}
-
-                            {% if component.show_rating != false and product.rating %}
-
-                                <div class="lux-rating">
-
-                                    <span class="lux-rating-star">
-                                        ★
-                                    </span>
-
-                                    <span class="lux-rating-value">
-                                        {{ product.rating.stars ?: product.rating }}
-                                    </span>
-
-                                    {% if product.rating.count %}
-
-                                        <span class="lux-rating-count">
-                                            ({{ product.rating.count }})
+                                        <span class="lux-discount">
+                                            {{ product.promotion_title }}
                                         </span>
 
                                     {% endif %}
 
-                                </div>
 
-                            {% endif %}
+                                    {# Wishlist #}
 
+                                    <button
+                                        type="button"
+                                        class="lux-wishlist"
+                                        aria-label="إضافة {{ product.name }} إلى المفضلة"
+                                        onclick="salla.wishlist.toggle('{{ product.id }}')"
+                                    >
 
-                            {# Product Title #}
+                                        <span>♡</span>
 
-                            <h3 class="lux-product-title">
-
-                                <a href="{{ product.url }}">
-                                    {{ product.name }}
-                                </a>
-
-                            </h3>
-
-
-                            {# Sub Info #}
-
-                            <p class="lux-product-subinfo">
-
-                                {% if product.subtitle %}
-
-                                    {{ product.subtitle }}
-
-                                {% elseif product.brand and product.brand.name %}
-
-                                    {{ product.brand.name }}
-
-                                {% else %}
-
-                                    منتج فاخر مختار بعناية
-
-                                {% endif %}
-
-                            </p>
+                                    </button>
 
 
-                            {# =================================================
-                               Price
-                            ================================================= #}
+                                    {# Product Image #}
 
-                            {% if component.show_price != false %}
+                                    <a
+                                        href="{{ product.url }}"
+                                        class="lux-image-link"
+                                        aria-label="{{ product.name }}"
+                                    >
 
-                                <div class="lux-price">
+                                        {% if product.image %}
 
-                                    {% if product.is_on_sale and product.sale_price %}
-
-                                        <div class="lux-price-main">
-
-                                            <strong class="lux-price-current">
-                                                {{ product.sale_price }}
-                                            </strong>
-
-                                            <span
-                                                class="lux-price-currency"
-                                                aria-label="ريال سعودي"
+                                            <img
+                                                class="lux-product-image"
+                                                src="{{ product.image.url ?: product.image }}"
+                                                alt="{{ product.image.alt ?: product.name }}"
+                                                loading="lazy"
                                             >
-                                                <i class="sicon-sar"></i>
-                                            </span>
 
-                                        </div>
+                                        {% elseif product.main_image %}
 
-                                        {% if product.regular_price %}
+                                            <img
+                                                class="lux-product-image"
+                                                src="{{ product.main_image }}"
+                                                alt="{{ product.name }}"
+                                                loading="lazy"
+                                            >
 
-                                            <del class="lux-price-old">
+                                        {% else %}
 
-                                                <span>
-                                                    {{ product.regular_price }}
-                                                </span>
-
-                                                <i class="sicon-sar"></i>
-
-                                            </del>
+                                            <img
+                                                class="lux-product-image"
+                                                src="{{ 'images/placeholder.png'|asset }}"
+                                                alt="{{ product.name }}"
+                                                loading="lazy"
+                                            >
 
                                         {% endif %}
 
-                                    {% else %}
+                                    </a>
 
-                                        <div class="lux-price-main">
+                                </div>
 
-                                            <strong class="lux-price-current">
-                                                {{ product.price }}
-                                            </strong>
 
-                                            <span
-                                                class="lux-price-currency"
-                                                aria-label="ريال سعودي"
-                                            >
-                                                <i class="sicon-sar"></i>
+                                {# =================================================
+                                   Sales Status
+                                ================================================= #}
+
+                                {% if product.is_out_of_stock %}
+
+                                    <div class="lux-sales-status lux-sales-status--out">
+                                        غير متوفر حالياً
+                                    </div>
+
+                                {% elseif product.promotion_title %}
+
+                                    <div class="lux-sales-status">
+                                        {{ product.promotion_title }}
+                                    </div>
+
+                                {% endif %}
+
+
+                                {# =================================================
+                                   Product Content
+                                ================================================= #}
+
+                                <div class="lux-content">
+
+                                    {# Rating #}
+
+                                    {% if component.show_rating != false and product.rating %}
+
+                                        <div class="lux-rating">
+
+                                            <span class="lux-rating-star">
+                                                ★
                                             </span>
+
+                                            <span class="lux-rating-value">
+                                                {{ product.rating.stars ?: product.rating }}
+                                            </span>
+
+                                            {% if product.rating.count %}
+
+                                                <span class="lux-rating-count">
+                                                    ({{ product.rating.count }})
+                                                </span>
+
+                                            {% endif %}
+
+                                        </div>
+
+                                    {% endif %}
+
+
+                                    {# Product Title #}
+
+                                    <h3 class="lux-product-title">
+
+                                        <a href="{{ product.url }}">
+                                            {{ product.name }}
+                                        </a>
+
+                                    </h3>
+
+
+                                    {# Sub Info #}
+
+                                    <p class="lux-product-subinfo">
+
+                                        {% if product.subtitle %}
+
+                                            {{ product.subtitle }}
+
+                                        {% elseif product.brand and product.brand.name %}
+
+                                            {{ product.brand.name }}
+
+                                        {% else %}
+
+                                            منتج فاخر مختار بعناية
+
+                                        {% endif %}
+
+                                    </p>
+
+
+                                    {# =================================================
+                                       Price
+                                    ================================================= #}
+
+                                    {% if component.show_price != false %}
+
+                                        <div class="lux-price">
+
+                                            {% if product.is_on_sale and product.sale_price %}
+
+                                                <div class="lux-price-main">
+
+                                                    <strong class="lux-price-current">
+                                                        {{ product.sale_price }}
+                                                    </strong>
+
+                                                    <span
+                                                        class="lux-price-currency"
+                                                        aria-label="ريال سعودي"
+                                                    >
+                                                        <i class="sicon-sar"></i>
+                                                    </span>
+
+                                                </div>
+
+                                                {% if product.regular_price %}
+
+                                                    <del class="lux-price-old">
+
+                                                        <span>
+                                                            {{ product.regular_price }}
+                                                        </span>
+
+                                                        <i class="sicon-sar"></i>
+
+                                                    </del>
+
+                                                {% endif %}
+
+                                            {% else %}
+
+                                                <div class="lux-price-main">
+
+                                                    <strong class="lux-price-current">
+                                                        {{ product.price }}
+                                                    </strong>
+
+                                                    <span
+                                                        class="lux-price-currency"
+                                                        aria-label="ريال سعودي"
+                                                    >
+                                                        <i class="sicon-sar"></i>
+                                                    </span>
+
+                                                </div>
+
+                                            {% endif %}
+
+                                        </div>
+
+                                    {% endif %}
+
+
+                                    {# =================================================
+                                       Add To Cart
+                                    ================================================= #}
+
+                                    {% if component.show_add_button != false %}
+
+                                        <div class="lux-cart">
+
+                                            <salla-add-product-button
+                                                product-id="{{ product.id }}"
+                                                product-status="{{ product.status }}"
+                                                product-type="{{ product.type }}"
+                                                width="full"
+                                            >
+
+                                                <span class="lux-cart-inner">
+
+                                                    <i class="sicon-shopping-bag"></i>
+
+                                                    <span>
+                                                        إضافة إلى السلة
+                                                    </span>
+
+                                                </span>
+
+                                            </salla-add-product-button>
 
                                         </div>
 
@@ -294,45 +348,24 @@
 
                                 </div>
 
-                            {% endif %}
+                            </article>
+
+                        {% endfor %}
+
+                    </div>
+
+                </div>
 
 
-                            {# =================================================
-                               Add To Cart
-                            ================================================= #}
+                {# Next Arrow #}
 
-                            {% if component.show_add_button != false %}
-
-                                <div class="lux-cart">
-
-                                    <salla-add-product-button
-                                        product-id="{{ product.id }}"
-                                        product-status="{{ product.status }}"
-                                        product-type="{{ product.type }}"
-                                        width="full"
-                                    >
-
-                                        <span class="lux-cart-inner">
-
-                                            <i class="sicon-shopping-bag"></i>
-
-                                            <span>
-                                                إضافة إلى السلة
-                                            </span>
-
-                                        </span>
-
-                                    </salla-add-product-button>
-
-                                </div>
-
-                            {% endif %}
-
-                        </div>
-
-                    </article>
-
-                {% endfor %}
+                <button
+                    type="button"
+                    class="lux-carousel-arrow lux-carousel-arrow--next"
+                    aria-label="المنتجات التالية"
+                >
+                    <i class="sicon-keyboard-arrow-left"></i>
+                </button>
 
             </div>
 
