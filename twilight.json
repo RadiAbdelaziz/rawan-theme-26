@@ -3070,6 +3070,296 @@
     }
 
   ]
+},
+{
+  "key": "d4b7c921-5e63-4a18-9f72-61c8e4b305af",
+  "title": {
+    "en": "Fashion Blog",
+    "ar": "مجلة الموضة"
+  },
+  "description": "قسم فاخر لعرض أحدث مقالات المتجر.",
+  "icon": "sicon-book",
+  "path": "home.blog",
+  "image": "https://cdn.salla.network/images/themes/raed/preview-images/blog.png",
+  "is_default": true,
+  "fields": [
+    {
+      "id": "show_section",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار القسم",
+      "value": true
+    },
+    {
+      "id": "badge",
+      "type": "string",
+      "format": "text",
+      "label": "النص العلوي",
+      "multilanguage": true,
+      "value": "مجلة الموضة",
+      "maxLength": 80
+    },
+    {
+      "id": "title",
+      "type": "string",
+      "format": "text",
+      "label": "العنوان",
+      "multilanguage": true,
+      "value": "أحدث المقالات",
+      "maxLength": 100
+    },
+    {
+      "id": "subtitle",
+      "type": "string",
+      "format": "textarea",
+      "label": "الوصف",
+      "multilanguage": true,
+      "value": "أفكار وتنسيقات ونصائح لإطلالة أكثر أناقة",
+      "maxLength": 255
+    },
+    {
+      "id": "articles",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "المقالات",
+      "icon": "sicon-book",
+      "source": "blog_articles",
+      "searchable": true,
+      "multichoice": true,
+      "required": true,
+      "minLength": 1,
+      "maxLength": 6,
+      "selected": [],
+      "options": [],
+      "value": []
+    },
+    {
+      "id": "articles_count",
+      "type": "number",
+      "label": "عدد المقالات",
+      "value": 3,
+      "minimum": 1,
+      "maximum": 6
+    },
+    {
+      "id": "title_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون العنوان",
+      "value": "#4A0F27"
+    },
+    {
+      "id": "subtitle_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون الوصف",
+      "value": "#777777"
+    },
+    {
+      "id": "badge_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون النص العلوي",
+      "value": "#E62973"
+    },
+    {
+      "id": "accent_color",
+      "type": "string",
+      "format": "color",
+      "label": "اللون الرئيسي",
+      "value": "#E62973"
+    },
+    {
+      "id": "background_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون الخلفية",
+      "value": "#FFF8FB"
+    },
+    {
+      "id": "card_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون بطاقات المقالات",
+      "value": "#FFFFFF"
+    },
+    {
+      "id": "card_radius",
+      "type": "number",
+      "label": "استدارة البطاقات",
+      "value": 20,
+      "minimum": 0,
+      "maximum": 50
+    },
+    {
+      "id": "show_category",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار التصنيف",
+      "value": true
+    },
+    {
+      "id": "show_date",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار التاريخ",
+      "value": true
+    },
+    {
+      "id": "show_author",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار الكاتب",
+      "value": true
+    },
+    {
+      "id": "show_views",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار المشاهدات",
+      "value": false
+    },
+    {
+      "id": "show_excerpt",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار ملخص المقال",
+      "value": true
+    },
+    {
+      "id": "show_read_more",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار زر قراءة المقال",
+      "value": true
+    },
+    {
+      "id": "read_more_text",
+      "type": "string",
+      "format": "text",
+      "label": "نص زر القراءة",
+      "multilanguage": true,
+      "value": "قراءة المقال",
+      "maxLength": 50
+    },
+    {
+      "id": "show_all_button",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار زر جميع المقالات",
+      "value": true
+    },
+    {
+      "id": "all_button_text",
+      "type": "string",
+      "format": "text",
+      "label": "نص زر جميع المقالات",
+      "multilanguage": true,
+      "value": "جميع المقالات",
+      "maxLength": 50
+    },
+    {
+      "id": "all_articles_url",
+      "type": "items",
+      "format": "variable-list",
+      "label": "رابط جميع المقالات",
+      "description": "اختر رابط المدونة من روابط سلة.",
+      "searchable": true,
+      "source": "custom",
+      "sources": [
+        {
+          "label": "المدونة",
+          "key": "blog_link",
+          "value": "blog_link"
+        },
+        {
+          "label": "تصنيف ضمن المدونة",
+          "key": "blog_categories",
+          "value": "blog_categories"
+        },
+        {
+          "label": "مقالة",
+          "key": "blog_articles",
+          "value": "blog_articles"
+        },
+        {
+          "label": "رابط خارجي",
+          "key": "custom",
+          "value": "custom"
+        }
+      ],
+      "required": false,
+      "value": []
+    },
+    {
+      "id": "image_ratio",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "نسبة صور المقالات",
+      "source": "Manual",
+      "selected": [
+        {
+          "label": "أفقية",
+          "value": "landscape"
+        }
+      ],
+      "options": [
+        {
+          "label": "مربعة",
+          "value": "square"
+        },
+        {
+          "label": "أفقية",
+          "value": "landscape"
+        },
+        {
+          "label": "عمودية",
+          "value": "portrait"
+        }
+      ]
+    },
+    {
+      "id": "columns",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "عدد الأعمدة",
+      "source": "Manual",
+      "selected": [
+        {
+          "label": "3 مقالات",
+          "value": "3"
+        }
+      ],
+      "options": [
+        {
+          "label": "2 مقالات",
+          "value": "2"
+        },
+        {
+          "label": "3 مقالات",
+          "value": "3"
+        },
+        {
+          "label": "4 مقالات",
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "id": "show_decoration",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار الزخارف",
+      "value": true
+    },
+    {
+      "id": "show_animation",
+      "type": "boolean",
+      "format": "switch",
+      "label": "تفعيل الحركة",
+      "value": true
+    }
+  ]
 }
 
 

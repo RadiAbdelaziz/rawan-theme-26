@@ -1,0 +1,420 @@
+/* Luxury fashion blog */
+
+.luxury-blog-section {
+    position: relative;
+    overflow: hidden;
+    padding: 80px 0;
+}
+
+/* Background effects */
+
+.luxury-blog-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+        circle at top right,
+        rgba(230, 41, 115, 0.12),
+        transparent 40%
+    );
+}
+
+.luxury-blog-section::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: rgba(244, 114, 182, 0.08);
+    filter: blur(90px);
+    pointer-events: none;
+}
+
+/* Header */
+
+.luxury-blog-section .luxury-blog-header {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 55px;
+    text-align: right;
+}
+
+.luxury-blog-section .luxury-blog-badge {
+    display: inline-flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 10px;
+    padding: 9px 20px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(230, 41, 115, 0.18);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.25em;
+    box-shadow: 0 8px 30px rgba(230, 41, 115, 0.05);
+}
+
+.luxury-blog-section .luxury-blog-badge i {
+    font-size: 14px;
+}
+
+.luxury-blog-section .luxury-blog-title {
+    margin: 20px 0 0;
+    font-size: clamp(32px, 4vw, 50px);
+    line-height: 1.25;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+}
+
+.luxury-blog-section .luxury-blog-subtitle {
+    margin-top: 12px;
+    font-size: 22px;
+    line-height: 1.7;
+    font-weight: 500;
+}
+
+/* Article grid */
+
+.luxury-blog-section .luxury-blog-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+}
+
+/* Article card */
+
+.luxury-blog-section .luxury-blog-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(230, 41, 115, 0.15);
+    box-shadow: 0 10px 40px rgba(75, 15, 39, 0.04);
+    transition:
+        transform 0.5s cubic-bezier(.2, .8, .2, 1),
+        box-shadow 0.5s ease,
+        border-color 0.35s ease;
+}
+
+.luxury-blog-section .luxury-blog-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    border-color: rgba(230, 41, 115, 0.8);
+    box-shadow: 0 30px 70px rgba(230, 41, 115, 0.20);
+}
+
+/* Image */
+
+.luxury-blog-section .luxury-blog-card > a:first-child {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+}
+
+.luxury-blog-section .luxury-blog-card > a:first-child img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(.2, .8, .2, 1);
+}
+
+.luxury-blog-section .luxury-blog-card:hover > a:first-child img {
+    transform: scale(1.10) rotate(1deg);
+}
+
+/* Image overlay */
+
+.luxury-blog-section .luxury-blog-card > a:first-child::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.62),
+        rgba(0, 0, 0, 0.05) 65%,
+        transparent
+    );
+}
+
+/* Category badge */
+
+.luxury-blog-section .luxury-blog-card > a:first-child span {
+    position: absolute;
+    z-index: 3;
+    top: 20px;
+    right: 20px;
+    padding: 8px 17px;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900;
+    box-shadow: 0 8px 20px rgba(230, 41, 115, 0.25);
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+.luxury-blog-section .luxury-blog-card:hover > a:first-child span {
+    transform: translateY(-2px);
+}
+
+/* Card content */
+
+.luxury-blog-section .luxury-blog-card > div {
+    padding: 28px;
+}
+
+/* Meta */
+
+.luxury-blog-section .luxury-blog-card .text-xs {
+    line-height: 1.6;
+}
+
+.luxury-blog-section .luxury-blog-card .text-xs span {
+    white-space: nowrap;
+}
+
+/* Title */
+
+.luxury-blog-section .luxury-blog-card h3 {
+    margin: 0 0 16px;
+    font-size: 23px;
+    line-height: 1.5;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+}
+
+.luxury-blog-section .luxury-blog-card h3 a {
+    color: #111;
+    transition: color 0.3s ease;
+}
+
+.luxury-blog-section .luxury-blog-card:hover h3 a {
+    color: #E62973 !important;
+}
+
+/* Summary */
+
+.luxury-blog-section .luxury-blog-card p {
+    margin: 0;
+    color: #666;
+    font-size: 15px;
+    line-height: 2;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Card footer */
+
+.luxury-blog-section .luxury-blog-card .border-t {
+    border-color: rgba(230, 41, 115, 0.12) !important;
+}
+
+/* Author */
+
+.luxury-blog-section .luxury-blog-card .text-sm {
+    font-weight: 500;
+}
+
+/* Read more */
+
+.luxury-blog-section .luxury-blog-card a[class*="group/link"] {
+    position: relative;
+    white-space: nowrap;
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.luxury-blog-section .luxury-blog-card a[class*="group/link"]:hover {
+    transform: translateX(-4px);
+}
+
+.luxury-blog-section .luxury-blog-card a[class*="group/link"] i {
+    transition: transform 0.3s ease;
+}
+
+.luxury-blog-section .luxury-blog-card a[class*="group/link"]:hover i {
+    transform: translateX(-4px);
+}
+
+/* All articles button */
+
+.luxury-blog-section .luxury-blog-all {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    margin-top: 55px;
+}
+
+.luxury-blog-section .luxury-blog-all-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 190px;
+    padding: 13px 28px;
+    border: 1px solid;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    font-size: 14px;
+    font-weight: 800;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.luxury-blog-section .luxury-blog-all-button:hover {
+    background: #E62973 !important;
+    color: #fff !important;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(230, 41, 115, 0.22);
+}
+
+/* Animation */
+
+[data-blog-animation="true"] .luxury-blog-card {
+    opacity: 0;
+    animation: luxuryBlogReveal 0.75s cubic-bezier(.2, .8, .2, 1) forwards;
+}
+
+[data-blog-animation="true"] .luxury-blog-card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+[data-blog-animation="true"] .luxury-blog-card:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+[data-blog-animation="true"] .luxury-blog-card:nth-child(3) {
+    animation-delay: 0.25s;
+}
+
+[data-blog-animation="true"] .luxury-blog-card:nth-child(4) {
+    animation-delay: 0.35s;
+}
+
+[data-blog-animation="true"] .luxury-blog-card:nth-child(5) {
+    animation-delay: 0.45s;
+}
+
+[data-blog-animation="true"] .luxury-blog-card:nth-child(6) {
+    animation-delay: 0.55s;
+}
+
+@keyframes luxuryBlogReveal {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tablet */
+
+@media (max-width: 992px) {
+    .luxury-blog-section {
+        padding: 65px 0;
+    }
+
+    .luxury-blog-section .luxury-blog-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    .luxury-blog-section .luxury-blog-title {
+        font-size: 38px;
+    }
+
+    .luxury-blog-section .luxury-blog-subtitle {
+        font-size: 19px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 640px) {
+    .luxury-blog-section {
+        padding: 55px 0;
+    }
+
+    .luxury-blog-section .luxury-blog-header {
+        margin-bottom: 35px;
+        text-align: right;
+    }
+
+    .luxury-blog-section .luxury-blog-title {
+        font-size: 30px;
+        line-height: 1.35;
+    }
+
+    .luxury-blog-section .luxury-blog-subtitle {
+        font-size: 17px;
+        line-height: 1.8;
+    }
+
+    .luxury-blog-section .luxury-blog-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .luxury-blog-section .luxury-blog-card {
+        border-radius: 26px;
+    }
+
+    .luxury-blog-section .luxury-blog-card > div {
+        padding: 22px;
+    }
+
+    .luxury-blog-section .luxury-blog-card h3 {
+        font-size: 21px;
+    }
+
+    .luxury-blog-section .luxury-blog-card p {
+        font-size: 14px;
+        line-height: 1.9;
+    }
+
+    .luxury-blog-section .luxury-blog-card > a:first-child span {
+        top: 15px;
+        right: 15px;
+        padding: 7px 14px;
+    }
+
+    .luxury-blog-section .luxury-blog-all {
+        margin-top: 35px;
+    }
+}
+
+/* Reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+    .luxury-blog-section *,
+    .luxury-blog-section *::before,
+    .luxury-blog-section *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
