@@ -1,6 +1,9 @@
 {# =========================================================
    LUXURY TESTIMONIALS
    آراء العملاء - Testimonials Slider
+
+   يعتمد على twilight.json الحالي:
+   component.reviews
    ========================================================= #}
 
 {% if component.show_section != false %}
@@ -14,58 +17,73 @@
     "
     style="
         --testimonials-bg: {{ component.background_color ?: '#FFF8FB' }};
-        --testimonials-card: {{ component.card_color ?: '#FFFFFF' }};
+        --testimonials-card: #FFFFFF;
         --testimonials-accent: {{ component.accent_color ?: '#E62973' }};
-        --testimonials-title: {{ component.title_color ?: '#231F20' }};
-        --testimonials-text: {{ component.text_color ?: '#6B7280' }};
-        --testimonials-border: {{ component.border_color ?: '#F3D5E1' }};
-        --testimonials-radius: {{ component.card_radius ?: '24' }}px;
+        --testimonials-title: #231F20;
+        --testimonials-text: #6B7280;
+        --testimonials-border: #F3D5E1;
+        --testimonials-radius: 24px;
     "
 >
 
-    {% if component.show_glow != false %}
+    {# =====================================================
+       BACKGROUND GLOW
+       ===================================================== #}
 
-        <div
-            class="luxury-testimonials__glow luxury-testimonials__glow--one"
-            aria-hidden="true"
-        ></div>
+    <div
+        class="luxury-testimonials__glow luxury-testimonials__glow--one"
+        aria-hidden="true"
+    ></div>
 
-        <div
-            class="luxury-testimonials__glow luxury-testimonials__glow--two"
-            aria-hidden="true"
-        ></div>
-
-    {% endif %}
+    <div
+        class="luxury-testimonials__glow luxury-testimonials__glow--two"
+        aria-hidden="true"
+    ></div>
 
 
     <div class="container luxury-testimonials__container">
 
         {# =================================================
-           HEADER
-        ================================================= #}
+           SECTION HEADER
+           ================================================= #}
 
         <div class="luxury-testimonials__header">
 
-            <div class="luxury-testimonials__eyebrow">
+            <div
+                class="luxury-testimonials__eyebrow"
+                aria-hidden="true"
+            >
+
                 <span></span>
+
                 <i class="sicon-heart"></i>
+
                 <span></span>
+
             </div>
 
+
             <h2 class="luxury-testimonials__title">
-                {{ component.title ?: 'آراء عملائنا' }}
+
+                {{ component.title ?: 'تجارب عملائنا' }}
+
             </h2>
+
 
             {% if component.subtitle %}
 
                 <p class="luxury-testimonials__subtitle">
+
                     {{ component.subtitle }}
+
                 </p>
 
             {% else %}
 
                 <p class="luxury-testimonials__subtitle">
-                    تجارب حقيقية من عملائنا الذين اختاروا الجودة
+
+                    آراء حقيقية من عملاء اختاروا الجودة والفخامة
+
                 </p>
 
             {% endif %}
@@ -74,30 +92,70 @@
 
 
         {# =================================================
+           REVIEWS SUMMARY
+           ================================================= #}
+
+        {% if component.show_summary %}
+
+            <div class="luxury-testimonials__summary">
+
+                <div class="luxury-testimonials__summary-rating">
+
+                    <strong>
+                        {{ component.average_rating ?: '4.9' }}
+                    </strong>
+
+                    <div class="luxury-testimonials__summary-stars">
+                        ★★★★★
+                    </div>
+
+                </div>
+
+
+                <div class="luxury-testimonials__summary-info">
+
+                    <span>
+                        {{ component.total_reviews ?: '350+' }}
+                    </span>
+
+                    <small>
+                        {{ component.rating_text ?: 'تقييمات موثوقة من عملائنا' }}
+                    </small>
+
+                </div>
+
+            </div>
+
+        {% endif %}
+
+
+        {# =================================================
            TESTIMONIALS
-        ================================================= #}
+           يستخدم component.reviews الموجود في JSON
+           ================================================= #}
 
-        {% if component.testimonials|length %}
+        {% if component.reviews|length %}
 
-            <salla-slider
-                id="luxury-testimonials-slider"
-                type="carousel"
-                loop
-                auto-width="false"
-                show-controls="false"
-                {% if component.autoplay != false %}
-                    autoplay
-                {% endif %}
-            >
+            <div class="luxury-testimonials__slider-wrapper">
 
-                <div
-                    slot="items"
-                    class="luxury-testimonials__slides"
+                <salla-slider
+                    id="luxury-testimonials-slider"
+                    type="carousel"
+                    loop
+                    auto-width="false"
+                    show-controls="false"
+
+                    {% if component.autoplay != false %}
+                        autoplay
+                    {% endif %}
                 >
 
-                    {% for testimonial in component.testimonials %}
+                    <div
+                        slot="items"
+                        class="luxury-testimonials__slides"
+                    >
 
-                        <div class="swiper-slide">
+                        {% for review in component.reviews %}
 
                             <article
                                 class="
@@ -109,16 +167,16 @@
                             >
 
                                 {# =================================
-                                   Avatar
-                                ================================= #}
+                                   CUSTOMER IMAGE
+                                   ================================= #}
 
                                 <div class="luxury-testimonial-card__avatar-wrapper">
 
-                                    {% if testimonial.image %}
+                                    {% if review.image %}
 
                                         <img
-                                            src="{{ testimonial.image }}"
-                                            alt="{{ testimonial.name ?: 'عميل' }}"
+                                            src="{{ review.image }}"
+                                            alt="{{ review.name ?: 'عميل' }}"
                                             class="luxury-testimonial-card__avatar"
                                             loading="lazy"
                                             decoding="async"
@@ -132,7 +190,9 @@
                                                 luxury-testimonial-card__avatar--fallback
                                             "
                                         >
+
                                             <i class="sicon-user"></i>
+
                                         </div>
 
                                     {% endif %}
@@ -141,19 +201,24 @@
 
 
                                 {# =================================
-                                   Customer
-                                ================================= #}
+                                   CUSTOMER INFORMATION
+                                   ================================= #}
 
                                 <div class="luxury-testimonial-card__customer">
 
                                     <h3 class="luxury-testimonial-card__name">
-                                        {{ testimonial.name ?: 'عميل مميز' }}
+
+                                        {{ review.name ?: 'عميل مميز' }}
+
                                     </h3>
 
-                                    {% if testimonial.role %}
+
+                                    {% if review.role %}
 
                                         <span class="luxury-testimonial-card__role">
-                                            {{ testimonial.role }}
+
+                                            {{ review.role }}
+
                                         </span>
 
                                     {% endif %}
@@ -162,21 +227,22 @@
 
 
                                 {# =================================
-                                   Rating
-                                ================================= #}
+                                   STARS
+                                   يستخدم review.stars من JSON
+                                   ================================= #}
+
+                                {% set review_stars = review.stars ?: 5 %}
 
                                 <div
                                     class="luxury-testimonial-card__stars"
-                                    aria-label="التقييم"
+                                    aria-label="التقييم {{ review_stars }} من 5"
                                 >
-
-                                    {% set testimonial_rating = testimonial.rating ?: 5 %}
 
                                     {% for i in 1..5 %}
 
                                         <span
                                             class="
-                                                {% if i <= testimonial_rating %}
+                                                {% if i <= review_stars %}
                                                     is-active
                                                 {% endif %}
                                             "
@@ -190,8 +256,8 @@
 
 
                                 {# =================================
-                                   Quote
-                                ================================= #}
+                                   QUOTE
+                                   ================================= #}
 
                                 <div class="luxury-testimonial-card__quote">
 
@@ -202,73 +268,32 @@
                                         “
                                     </span>
 
+
                                     <p>
-                                        {{ testimonial.text ?: 'تجربة رائعة وخدمة مميزة، بالتأكيد سأكرر التجربة مرة أخرى.' }}
+
+                                        {{ review.text ?: 'تجربة رائعة وخدمة مميزة، بالتأكيد سأكرر التجربة مرة أخرى.' }}
+
                                     </p>
 
                                 </div>
 
 
                                 {# =================================
-                                   Social
-                                ================================= #}
+                                   BOTTOM DECORATION
+                                   ================================= #}
 
-                                {% if testimonial.social_links|length %}
-
-                                    <div class="luxury-testimonial-card__social">
-
-                                        {% for social in testimonial.social_links %}
-
-                                            {% if social.url %}
-
-                                                <a
-                                                    href="{{ social.url }}"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    aria-label="{{ social.name ?: 'التواصل الاجتماعي' }}"
-                                                >
-
-                                                    {% if social.icon %}
-
-                                                        <i class="{{ social.icon }}"></i>
-
-                                                    {% else %}
-
-                                                        <span>
-                                                            {{ social.name }}
-                                                        </span>
-
-                                                    {% endif %}
-
-                                                </a>
-
-                                            {% endif %}
-
-                                        {% endfor %}
-
-                                    </div>
-
-                                {% endif %}
+                                <div
+                                    class="luxury-testimonial-card__bottom-line"
+                                    aria-hidden="true"
+                                ></div>
 
                             </article>
 
-                        </div>
+                        {% endfor %}
 
-                    {% endfor %}
+                    </div>
 
-                </div>
-
-            </salla-slider>
-
-        {% else %}
-
-            <div class="luxury-testimonials__empty">
-
-                <i class="sicon-message-text"></i>
-
-                <span>
-                    آراء عملائنا ستظهر هنا
-                </span>
+                </salla-slider>
 
             </div>
 
