@@ -15980,7 +15980,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   position: relative;
   padding: 1px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--benefits-card);
   transition: background 0.5s ease, transform 0.5s ease;
 }
 .store-benefit__inner {

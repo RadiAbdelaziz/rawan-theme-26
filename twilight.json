@@ -3532,7 +3532,7 @@
 "type": "string",
 "format": "color",
 "label": "لون الخلفية",
-"value": "#4A0F27"
+"value": "#FFF8FB"
 },
 {
 "id": "accent_color",
