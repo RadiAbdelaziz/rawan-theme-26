@@ -3631,6 +3631,315 @@
 ]
 }
 ]
+},
+{
+"key": "8c42f7a1-91d6-4e35-b728-5f2c9a1740de",
+"title": {
+"en": "Quality & Brand Story",
+"ar": "الجودة وقصة العلامة"
+},
+"description": "قسم يجمع بين منهجية اختيار المنتجات وإحصائيات العلامة التجارية في تصميم فاخر.",
+"icon": "sicon-award",
+"path": "home.quality-story",
+"is_default": true,
+"fields": [
+{
+"id": "show_section",
+"type": "boolean",
+"format": "switch",
+"label": "إظهار القسم",
+"value": true
+},
+{
+"id": "badge",
+"type": "string",
+"format": "text",
+"label": "النص العلوي",
+"multilanguage": true,
+"value": "معاييرنا"
+},
+{
+"id": "show_badge",
+"type": "boolean",
+"format": "switch",
+"label": "إظهار النص العلوي",
+"value": true
+},
+{
+"id": "title",
+"type": "string",
+"format": "text",
+"label": "العنوان الرئيسي",
+"multilanguage": true,
+"value": "الجودة تبدأ في الاختيار",
+"maxLength": 100
+},
+{
+"id": "subtitle",
+"type": "string",
+"format": "textarea",
+"label": "الوصف",
+"multilanguage": true,
+"value": "نختار كل منتج بعناية لنقدم لك تجربة تستحق الثقة، من أول اختيار وحتى وصول طلبك.",
+"maxLength": 255
+},
+{
+"id": "quality_steps",
+"type": "collection",
+"format": "collection",
+"label": "خطوات الجودة",
+"minLength": 1,
+"maxLength": 4,
+"required": true,
+"fields": [
+{
+"id": "number",
+"type": "string",
+"format": "text",
+"label": "رقم الخطوة",
+"value": "01"
+},
+{
+"id": "title",
+"type": "string",
+"format": "text",
+"label": "عنوان الخطوة",
+"multilanguage": true,
+"value": "اختيار دقيق",
+"maxLength": 60
+},
+{
+"id": "description",
+"type": "string",
+"format": "textarea",
+"label": "وصف الخطوة",
+"multilanguage": true,
+"value": "نختار منتجاتنا بعناية وفق معايير محددة.",
+"maxLength": 180
+},
+{
+"id": "icon",
+"type": "string",
+"format": "text",
+"label": "أيقونة الخطوة",
+"value": "sicon-check-circle"
+},
+{
+"id": "icon_color",
+"type": "string",
+"format": "color",
+"label": "لون الأيقونة",
+"value": "#E62973"
+}
+]
+},
+{
+"id": "show_stats",
+"type": "boolean",
+"format": "switch",
+"label": "إظهار الأرقام",
+"value": true
+},
+{
+"id": "stats_badge",
+"type": "string",
+"format": "text",
+"label": "النص العلوي للأرقام",
+"multilanguage": true,
+"value": "ثقة تتحدث بالأرقام"
+},
+{
+"id": "stats_title",
+"type": "string",
+"format": "text",
+"label": "عنوان الأرقام",
+"multilanguage": true,
+"value": "علامتنا في أرقام"
+},
+{
+"id": "stats_subtitle",
+"type": "string",
+"format": "textarea",
+"label": "وصف الأرقام",
+"multilanguage": true,
+"value": "أرقام تعكس ثقة عملائنا والتزامنا بتقديم تجربة استثنائية.",
+"maxLength": 255
+},
+{
+"id": "stats",
+"type": "collection",
+"format": "collection",
+"label": "إحصائيات العلامة",
+"minLength": 2,
+"maxLength": 6,
+"required": true,
+"fields": [
+{
+"id": "value",
+"type": "string",
+"format": "text",
+"label": "القيمة",
+"value": "+25K"
+},
+{
+"id": "label",
+"type": "string",
+"format": "text",
+"label": "عنوان الرقم",
+"multilanguage": true,
+"value": "عميل سعيد",
+"maxLength": 60
+},
+{
+"id": "description",
+"type": "string",
+"format": "text",
+"label": "الوصف المختصر",
+"multilanguage": true,
+"value": "اختاروا علامتنا",
+"maxLength": 100
+},
+{
+"id": "icon",
+"type": "string",
+"format": "text",
+"label": "أيقونة الرقم",
+"value": "sicon-users"
+},
+{
+"id": "icon_color",
+"type": "string",
+"format": "color",
+"label": "لون الأيقونة",
+"value": "#E62973"
+},
+{
+"id": "enable_counter",
+"type": "boolean",
+"format": "switch",
+"label": "تفعيل حركة الرقم",
+"value": true
+}
+]
+},
+{
+"id": "columns",
+"type": "items",
+"format": "dropdown-list",
+"label": "عدد أعمدة الأرقام",
+"source": "Manual",
+"selected": [
+{
+"label": "4 أعمدة",
+"value": "4"
+}
+],
+"options": [
+{
+"label": "2 أعمدة",
+"value": "2"
+},
+{
+"label": "3 أعمدة",
+"value": "3"
+},
+{
+"label": "4 أعمدة",
+"value": "4"
+},
+{
+"label": "5 أعمدة",
+"value": "5"
+}
+]
+},
+{
+"id": "background_color",
+"type": "string",
+"format": "color",
+"label": "لون الخلفية",
+"value": "#FFF8FB"
+},
+{
+"id": "card_color",
+"type": "string",
+"format": "color",
+"label": "لون البطاقات",
+"value": "#FFFFFF"
+},
+{
+"id": "title_color",
+"type": "string",
+"format": "color",
+"label": "لون العنوان",
+"value": "#231F20"
+},
+{
+"id": "text_color",
+"type": "string",
+"format": "color",
+"label": "لون النص",
+"value": "#6B7280"
+},
+{
+"id": "accent_color",
+"type": "string",
+"format": "color",
+"label": "اللون الرئيسي",
+"value": "#E62973"
+},
+{
+"id": "border_color",
+"type": "string",
+"format": "color",
+"label": "لون الحدود",
+"value": "#F3D5E1"
+},
+{
+"id": "card_radius",
+"type": "number",
+"label": "استدارة البطاقات",
+"value": 24,
+"minimum": 0,
+"maximum": 50
+},
+{
+"id": "show_glow",
+"type": "boolean",
+"format": "switch",
+"label": "إظهار التوهج",
+"value": true
+},
+{
+"id": "show_divider",
+"type": "boolean",
+"format": "switch",
+"label": "إظهار الفاصل",
+"value": true
+},
+{
+"id": "enable_animation",
+"type": "boolean",
+"format": "switch",
+"label": "تفعيل الحركة",
+"value": true
+},
+{
+"id": "enable_counter",
+"type": "boolean",
+"format": "switch",
+"label": "تفعيل حركة الأرقام",
+"value": true
+},
+{
+"id": "section_padding",
+"type": "number",
+"label": "المسافة الرأسية للقسم",
+"value": 90,
+"minimum": 20,
+"maximum": 180
+}
+]
 }
 
 
