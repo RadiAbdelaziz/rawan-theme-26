@@ -3508,6 +3508,129 @@
       "value": true
     }
   ]
+},
+{
+"key": "5e8c2a71-4f63-4b92-a817-6d3e5f2026ab",
+"title": {
+"en": "Store Benefits",
+"ar": "مميزات التسوق"
+},
+"description": "عرض أهم مزايا التسوق في المتجر بطريقة أنيقة ومختصرة.",
+"icon": "sicon-star",
+"path": "home.store-benefits",
+"is_default": true,
+"fields": [
+{
+"id": "show_section",
+"type": "boolean",
+"format": "switch",
+"label": "إظهار القسم",
+"value": true
+},
+{
+"id": "background_color",
+"type": "string",
+"format": "color",
+"label": "لون الخلفية",
+"value": "#4A0F27"
+},
+{
+"id": "accent_color",
+"type": "string",
+"format": "color",
+"label": "اللون الرئيسي",
+"value": "#E62973"
+},
+{
+"id": "card_color",
+"type": "string",
+"format": "color",
+"label": "لون البطاقات",
+"value": "#FFFFFF"
+},
+{
+"id": "show_glow",
+"type": "boolean",
+"format": "switch",
+"label": "إظهار التوهج",
+"value": true
+},
+{
+"id": "enable_animation",
+"type": "boolean",
+"format": "switch",
+"label": "تفعيل الحركة",
+"value": true
+},
+{
+"id": "columns",
+"type": "string",
+"format": "select",
+"label": "عدد الأعمدة",
+"value": "4",
+"options": [
+{
+"label": "2",
+"value": "2"
+},
+{
+"label": "3",
+"value": "3"
+},
+{
+"label": "4",
+"value": "4"
+}
+]
+},
+{
+"id": "section_padding",
+"type": "number",
+"label": "المسافة الرأسية للقسم",
+"value": 55
+},
+{
+"id": "benefits",
+"type": "collection",
+"format": "collection",
+"label": "مزايا المتجر",
+"minLength": 1,
+"maxLength": 8,
+"required": true,
+"fields": [
+{
+"id": "title",
+"type": "string",
+"format": "text",
+"label": "عنوان الميزة",
+"multilanguage": true,
+"value": "شحن سريع وموثوق"
+},
+{
+"id": "description",
+"type": "string",
+"format": "textarea",
+"label": "وصف الميزة",
+"multilanguage": true,
+"value": "توصيل سريع وآمن إلى جميع المناطق."
+},
+{
+"id": "icon",
+"type": "string",
+"format": "text",
+"label": "أيقونة الميزة",
+"value": "sicon-truck"
+},
+{
+"id": "icon_color",
+"type": "string",
+"format": "color",
+"label": "لون الأيقونة",
+"value": "#E62973"
+}
+]
+}
+]
 }
 
 

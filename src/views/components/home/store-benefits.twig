@@ -1,0 +1,50 @@
+{% if component.show_section %}
+    <section
+        class="store-benefits"
+        style="
+            --benefits-background: {{ component.background_color ?: '#4A0F27' }};
+            --benefits-accent: {{ component.accent_color ?: '#E62973' }};
+            --benefits-card: {{ component.card_color ?: '#FFFFFF' }};
+            --benefits-padding: {{ component.section_padding ?: 55 }}px;
+        "
+    >
+        {% if component.show_glow %}
+            <div class="store-benefits__glow store-benefits__glow--top"></div>
+            <div class="store-benefits__glow store-benefits__glow--bottom"></div>
+            <div class="store-benefits__glow store-benefits__glow--center"></div>
+        {% endif %}
+
+        <div class="container">
+            {% if component.benefits|length %}
+                <div
+                    class="store-benefits__grid store-benefits__grid--{{ component.columns ?: '4' }}{% if component.enable_animation %} is-animated{% endif %}"
+                >
+                    {% for benefit in component.benefits %}
+                        <div class="store-benefit">
+                            <div class="store-benefit__inner">
+                                {% if benefit.icon %}
+                                    <div
+                                        class="store-benefit__icon"
+                                        style="--benefit-icon-color: {{ benefit.icon_color ?: component.accent_color ?: '#E62973' }};"
+                                    >
+                                        <i class="{{ benefit.icon }}"></i>
+                                    </div>
+                                {% endif %}
+
+                                <div class="store-benefit__content">
+                                    {% if benefit.title %}
+                                        <h3>{{ benefit.title }}</h3>
+                                    {% endif %}
+
+                                    {% if benefit.description %}
+                                        <p>{{ benefit.description }}</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endif %}
