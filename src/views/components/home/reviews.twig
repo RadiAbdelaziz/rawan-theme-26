@@ -4,6 +4,12 @@
 
    يعتمد على twilight.json الحالي:
    component.reviews
+
+   Desktop  : 3 بطاقات
+   Tablet   : 2 بطاقات
+   Mobile   : 1 بطاقة
+   Autoplay : يعمل تلقائياً
+   Controls : مخفية
    ========================================================= #}
 
 {% if component.show_section != false %}
@@ -70,23 +76,11 @@
             </h2>
 
 
-            {% if component.subtitle %}
+            <p class="luxury-testimonials__subtitle">
 
-                <p class="luxury-testimonials__subtitle">
+                {{ component.subtitle ?: 'آراء حقيقية من عملاء اختاروا الجودة والفخامة' }}
 
-                    {{ component.subtitle }}
-
-                </p>
-
-            {% else %}
-
-                <p class="luxury-testimonials__subtitle">
-
-                    آراء حقيقية من عملاء اختاروا الجودة والفخامة
-
-                </p>
-
-            {% endif %}
+            </p>
 
         </div>
 
@@ -130,24 +124,18 @@
 
 
         {# =================================================
-           TESTIMONIALS
-           يستخدم component.reviews الموجود في JSON
+           TESTIMONIALS SLIDER
            ================================================= #}
 
-        {% if component.reviews|length %}
+        {% if component.reviews|length > 0 %}
 
             <div class="luxury-testimonials__slider-wrapper">
 
                 <salla-slider
                     id="luxury-testimonials-slider"
                     type="carousel"
-                    loop
-                    auto-width="false"
+                    loop="true"
                     show-controls="false"
-
-                    {% if component.autoplay != false %}
-                        autoplay
-                    {% endif %}
                 >
 
                     <div
@@ -189,6 +177,7 @@
                                                 luxury-testimonial-card__avatar
                                                 luxury-testimonial-card__avatar--fallback
                                             "
+                                            aria-hidden="true"
                                         >
 
                                             <i class="sicon-user"></i>
@@ -228,7 +217,6 @@
 
                                 {# =================================
                                    STARS
-                                   يستخدم review.stars من JSON
                                    ================================= #}
 
                                 {% set review_stars = review.stars ?: 5 %}
@@ -241,11 +229,7 @@
                                     {% for i in 1..5 %}
 
                                         <span
-                                            class="
-                                                {% if i <= review_stars %}
-                                                    is-active
-                                                {% endif %}
-                                            "
+                                            class="{% if i <= review_stars %}is-active{% endif %}"
                                         >
                                             ★
                                         </span>
@@ -279,7 +263,7 @@
 
 
                                 {# =================================
-                                   BOTTOM DECORATION
+                                   BOTTOM LINE
                                    ================================= #}
 
                                 <div
@@ -297,6 +281,22 @@
 
             </div>
 
+        {% else %}
+
+            {# =================================================
+               EMPTY STATE
+               ================================================= #}
+
+            <div class="luxury-testimonials__empty">
+
+                <i class="sicon-message-text"></i>
+
+                <span>
+                    آراء عملائنا ستظهر هنا
+                </span>
+
+            </div>
+
         {% endif %}
 
     </div>
@@ -304,4 +304,3 @@
 </section>
 
 {% endif %}
-

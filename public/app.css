@@ -14972,7 +14972,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   position: relative;
   z-index: 3;
   text-align: center;
-  margin-bottom: 45px;
+  margin-bottom: 35px;
 }
 .luxury-testimonials {
   /* =====================================================
@@ -15051,7 +15051,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   width: -moz-fit-content;
   width: fit-content;
   max-width: 100%;
-  margin: 0 auto 20px;
+  margin: 0 auto 25px;
   padding: 16px 28px;
   display: flex;
   align-items: center;
@@ -15122,8 +15122,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .luxury-testimonials {
   /* =====================================================
-     HIDE CONTROLS
-     لا توجد أسهم
+     إخفاء الأسهم بالكامل
   ===================================================== */
 }
 .luxury-testimonials salla-slider .swiper-button-next,
@@ -15139,7 +15138,26 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .luxury-testimonials {
   /* =====================================================
-     SLIDES CONTAINER
+     SWIPER
+  ===================================================== */
+}
+.luxury-testimonials salla-slider .swiper {
+  width: 100%;
+  overflow: visible;
+}
+.luxury-testimonials {
+  /*
+     مهم جداً:
+     نجعل الـwrapper أفقي فعلياً
+  */
+}
+.luxury-testimonials salla-slider .swiper-wrapper {
+  display: flex !important;
+  align-items: stretch;
+}
+.luxury-testimonials {
+  /* =====================================================
+     SLIDES AREA
   ===================================================== */
 }
 .luxury-testimonials__slides {
@@ -15149,11 +15167,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .luxury-testimonials {
   /*
-     Swiper wrapper
+     إذا كان العنصر نفسه هو swiper-wrapper
   */
 }
 .luxury-testimonials__slides.swiper-wrapper {
-  display: flex;
+  display: flex !important;
   align-items: stretch;
 }
 .luxury-testimonials {
@@ -15167,16 +15185,29 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   align-items: stretch;
   box-sizing: border-box;
   flex-shrink: 0;
+  min-width: 0;
+}
+.luxury-testimonials {
+  /*
+     نجعل الكرت يأخذ كامل مساحة الشريحة
+  */
+}
+.luxury-testimonials__slides .swiper-slide > * {
+  width: 100%;
 }
 .luxury-testimonials {
   /* =====================================================
      DESKTOP
-     3 بطاقات
+     3 بطاقات في الواجهة
   ===================================================== */
 }
 @media (min-width: 993px) {
-  .luxury-testimonials__slides .swiper-slide {
+  .luxury-testimonials salla-slider .swiper-slide {
     width: calc((100% - 40px) / 3) !important;
+    margin-left: 20px;
+  }
+  .luxury-testimonials salla-slider .swiper-slide:last-child {
+    margin-left: 0;
   }
 }
 .luxury-testimonials {
@@ -15212,9 +15243,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border-color: rgba(230, 41, 115, 0.35);
 }
 .luxury-testimonials .luxury-testimonial-card {
-  /* =================================================
+  /* ===============================================
      QUOTE DECORATION
-  ================================================= */
+  =============================================== */
 }
 .luxury-testimonials .luxury-testimonial-card::before {
   content: "“";
@@ -15231,7 +15262,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .luxury-testimonials {
   /* =====================================================
-     AVATAR WRAPPER
+     AVATAR
   ===================================================== */
 }
 .luxury-testimonials .luxury-testimonial-card__avatar-wrapper {
@@ -15249,11 +15280,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border: 2px solid rgba(230, 41, 115, 0.3);
   box-shadow: 0 12px 30px rgba(230, 41, 115, 0.15);
 }
-.luxury-testimonials {
-  /* =====================================================
-     AVATAR
-  ===================================================== */
-}
 .luxury-testimonials .luxury-testimonial-card__avatar {
   display: flex;
   align-items: center;
@@ -15269,9 +15295,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border: 3px solid #FFFFFF;
   box-sizing: border-box;
 }
-.luxury-testimonials {
-  /* fallback icon */
-}
 .luxury-testimonials .luxury-testimonial-card__avatar--fallback {
   font-size: 28px;
 }
@@ -15284,11 +15307,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   width: 100%;
   margin-bottom: 10px;
 }
-.luxury-testimonials {
-  /* =====================================================
-     CUSTOMER NAME
-  ===================================================== */
-}
 .luxury-testimonials .luxury-testimonial-card__name {
   margin: 0;
   color: #E62973;
@@ -15297,11 +15315,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-weight: 900;
   line-height: 1.5;
   word-break: break-word;
-}
-.luxury-testimonials {
-  /* =====================================================
-     CUSTOMER ROLE
-  ===================================================== */
 }
 .luxury-testimonials .luxury-testimonial-card__role {
   display: block;
@@ -15346,9 +15359,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   align-items: center;
   justify-content: center;
 }
-.luxury-testimonials {
-  /* quote icon */
-}
 .luxury-testimonials .luxury-testimonial-card__quote-icon {
   display: block;
   height: 25px;
@@ -15358,9 +15368,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 45px;
   line-height: 0.7;
   opacity: 0.45;
-}
-.luxury-testimonials {
-  /* quote text */
 }
 .luxury-testimonials .luxury-testimonial-card__quote p {
   position: relative;
@@ -15392,37 +15399,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .luxury-testimonials {
   /* =====================================================
-     EMPTY
-  ===================================================== */
-}
-.luxury-testimonials__empty {
-  min-height: 220px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: #6B7280;
-  color: var(--testimonials-text, #6B7280);
-  text-align: center;
-}
-.luxury-testimonials__empty i {
-  font-size: 34px;
-  color: #E62973;
-  color: var(--testimonials-accent, #E62973);
-}
-.luxury-testimonials {
-  /* =====================================================
-     ANIMATION
-  ===================================================== */
-}
-.luxury-testimonials--animated .luxury-testimonial-card {
-  animation: luxuryTestimonialsReveal 0.7s ease both;
-}
-.luxury-testimonials {
-  /* =====================================================
      TABLET
-     2 بطاقات
+     بطاقتان
   ===================================================== */
 }
 @media (min-width: 601px) and (max-width: 992px) {
@@ -15435,8 +15413,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .luxury-testimonials__slides {
     padding: 60px 8px 30px;
   }
-  .luxury-testimonials__slides .swiper-slide {
+  .luxury-testimonials salla-slider .swiper-slide {
     width: calc((100% - 20px) / 2) !important;
+    margin-left: 20px;
+  }
+  .luxury-testimonials salla-slider .swiper-slide:last-child {
+    margin-left: 0;
   }
   .luxury-testimonials .luxury-testimonial-card {
     min-height: 370px;
@@ -15483,7 +15465,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     line-height: 1.9;
   }
   .luxury-testimonials {
-    /* Summary */
+    /* ===============================================
+       SUMMARY
+    =============================================== */
   }
   .luxury-testimonials__summary {
     width: calc(100% - 30px);
@@ -15506,16 +15490,24 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     font-size: 10px;
   }
   .luxury-testimonials {
-    /* Slider */
+    /* ===============================================
+       SLIDER
+    =============================================== */
   }
   .luxury-testimonials__slides {
     padding: 55px 5px 30px;
   }
-  .luxury-testimonials__slides .swiper-slide {
+  .luxury-testimonials salla-slider .swiper {
+    overflow: hidden;
+  }
+  .luxury-testimonials salla-slider .swiper-slide {
     width: 100% !important;
+    margin-left: 0 !important;
   }
   .luxury-testimonials {
-    /* Card */
+    /* ===============================================
+       CARD
+    =============================================== */
   }
   .luxury-testimonials .luxury-testimonial-card {
     min-height: 360px;
@@ -15527,7 +15519,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: none;
   }
   .luxury-testimonials {
-    /* Avatar */
+    /* ===============================================
+       AVATAR
+    =============================================== */
   }
   .luxury-testimonials .luxury-testimonial-card__avatar-wrapper {
     width: 100px;
@@ -15535,19 +15529,25 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     top: -50px;
   }
   .luxury-testimonials {
-    /* Name */
+    /* ===============================================
+       NAME
+    =============================================== */
   }
   .luxury-testimonials .luxury-testimonial-card__name {
     font-size: 18px;
   }
   .luxury-testimonials {
-    /* Role */
+    /* ===============================================
+       ROLE
+    =============================================== */
   }
   .luxury-testimonials .luxury-testimonial-card__role {
     font-size: 11px;
   }
   .luxury-testimonials {
-    /* Stars */
+    /* ===============================================
+       STARS
+    =============================================== */
   }
   .luxury-testimonials .luxury-testimonial-card__stars {
     margin-bottom: 15px;
@@ -15556,7 +15556,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     font-size: 17px;
   }
   .luxury-testimonials {
-    /* Quote */
+    /* ===============================================
+       QUOTE
+    =============================================== */
   }
   .luxury-testimonials .luxury-testimonial-card__quote-icon {
     font-size: 40px;
@@ -15566,7 +15568,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     line-height: 2;
   }
   .luxury-testimonials {
-    /* Bottom line */
+    /* ===============================================
+       BOTTOM LINE
+    =============================================== */
   }
   .luxury-testimonials .luxury-testimonial-card__bottom-line {
     right: 22px;
