@@ -1,726 +1,321 @@
 /* =========================================================
-   LUXURY REVIEWS
-   Testimonials Slider
-   الهوية: Pink #E62973
+   LUXURY REVIEWS — AUTO SLIDER ONLY
 ========================================================= */
 
 .luxury-reviews-section {
-
     position: relative;
-    width: 100%;
     overflow: hidden;
-
-    padding: 100px 0 110px;
-
+    padding: 90px 0;
     direction: rtl;
 
-    background: #fff8fb;
-
-
-    /* =====================================================
-       BACKGROUND GLOW
-    ===================================================== */
-
     .luxury-reviews-glow {
-
         position: absolute;
-
-        width: 520px;
-        height: 520px;
-
-        top: -220px;
-        right: -180px;
-
-        border-radius: 50%;
-
-        background: var(--reviews-accent, #E62973);
-
-        opacity: .09;
-
-        filter: blur(120px);
-
-        pointer-events: none;
-
-        z-index: 0;
-    }
-
-
-    /* Glow إضافي */
-
-    &::after {
-
-        content: "";
-
-        position: absolute;
-
         width: 420px;
         height: 420px;
-
-        left: -180px;
-        bottom: -220px;
-
+        top: -180px;
+        right: -150px;
+        background: var(--reviews-accent, #E62973);
+        opacity: .10;
+        filter: blur(100px);
         border-radius: 50%;
-
-        background: #f472b6;
-
-        opacity: .06;
-
-        filter: blur(110px);
-
         pointer-events: none;
-
-        z-index: 0;
     }
-
 
     /* =====================================================
        HEADER
     ===================================================== */
 
     .luxury-reviews-header {
-
         position: relative;
-
         z-index: 2;
-
         text-align: center;
-
-        margin-bottom: 65px;
-
+        margin-bottom: 55px;
 
         h2 {
-
             margin: 20px 0 12px;
-
-            color: #231F20;
-
-            font-size: clamp(28px, 4vw, 40px);
-
-            line-height: 1.4;
-
+            font-size: clamp(28px, 4vw, 36px);
             font-weight: 900;
+            line-height: 1.4;
+            color: #231F20;
         }
 
-
         p {
-
-            max-width: 600px;
-
-            margin: 0 auto;
-
+            max-width: 520px;
+            margin: auto;
             color: #6B7280;
-
             font-size: 15px;
-
             line-height: 2;
         }
     }
-
 
     /* =====================================================
        DECORATION
     ===================================================== */
 
     .luxury-reviews-decoration {
-
         display: flex;
-
-        align-items: center;
         justify-content: center;
-
-        gap: 14px;
-
+        align-items: center;
+        gap: 15px;
 
         span {
-
-            width: 60px;
-            height: 2px;
-
-            border-radius: 999px;
-
-            background:
-                linear-gradient(
-                    to left,
-                    transparent,
-                    var(--reviews-accent, #E62973)
-                );
-
-            opacity: .75;
+            width: 65px;
+            height: 1px;
+            background: var(--reviews-accent, #E62973);
+            opacity: .7;
         }
-
-
-        span:last-child {
-
-            background:
-                linear-gradient(
-                    to right,
-                    transparent,
-                    var(--reviews-accent, #E62973)
-                );
-        }
-
 
         i {
-
-            display: block;
-
-            width: 12px;
-            height: 12px;
-
-            border-radius: 3px;
-
+            width: 13px;
+            height: 13px;
             background: var(--reviews-accent, #E62973);
-
             transform: rotate(45deg);
-
-            box-shadow:
-                0 0 18px
-                rgba(230, 41, 115, .25);
+            box-shadow: 0 0 15px rgba(230, 41, 115, .25);
         }
     }
-
 
     /* =====================================================
        SUMMARY
     ===================================================== */
 
     .luxury-review-summary {
-
-        display: flex;
-
-        align-items: center;
-        justify-content: center;
-
-        gap: 28px;
-
+        margin: 35px auto 0;
         max-width: 430px;
-
-        margin: 32px auto 0;
-
-        padding: 20px 28px;
-
+        padding: 22px 30px;
         background: #fff;
+        border-radius: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, .06);
+        border: 1px solid rgba(230, 41, 115, .08);
 
-        border: 1px solid #f3d5e1;
-
-        border-radius: 24px;
-
-        box-shadow:
-            0 15px 40px rgba(230, 41, 115, .07);
-
-
-        .summary-rating {
-
-            strong {
-
-                display: block;
-
-                color: var(--reviews-accent, #E62973);
-
-                font-size: 40px;
-
-                font-weight: 900;
-
-                line-height: 1;
-            }
-
-
-            .summary-stars {
-
-                margin-top: 7px;
-
-                color: #e8b33d;
-
-                font-size: 14px;
-
-                letter-spacing: 2px;
-
-                direction: ltr;
-            }
+        .summary-rating strong {
+            display: block;
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1;
+            color: var(--reviews-accent, #E62973);
         }
 
+        .summary-stars {
+            margin-top: 8px;
+            color: #e8b33d;
+            letter-spacing: 3px;
+            direction: ltr;
+        }
 
         .summary-info {
-
             text-align: right;
 
-
             span {
-
                 display: block;
-
-                color: #231F20;
-
-                font-size: 19px;
-
+                font-size: 20px;
                 font-weight: 900;
+                color: #231F20;
             }
 
-
             small {
-
                 display: block;
-
                 margin-top: 4px;
-
-                color: #9CA3AF;
-
+                color: #6B7280;
                 font-size: 12px;
             }
         }
     }
 
-
     /* =====================================================
-       SALLA SLIDER
+       SALLA AUTO SLIDER
+       بدون أزرار
     ===================================================== */
 
     salla-slider {
-
         position: relative;
-
         display: block;
-
         width: 100%;
-
-        z-index: 3;
+        z-index: 2;
     }
 
-
-    /* =====================================================
-       SLIDER WRAPPER
-    ===================================================== */
-
-    .luxury-reviews-grid {
-
-        padding:
-
-            55px 10px 35px;
-
-        overflow: visible;
-    }
-
-
-    /* =====================================================
-       SWIPER SLIDES
-       Desktop = 3 cards
-    ===================================================== */
-
-    .luxury-reviews-grid .swiper-slide {
-
-        height: auto;
-
-        display: flex;
-
-        box-sizing: border-box;
-
-        padding: 0 10px;
-    }
-
-
-    /* =====================================================
-       NAVIGATION BUTTONS
-    ===================================================== */
-
+    /* إخفاء جميع أزرار التحكم */
     salla-slider .swiper-button-next,
     salla-slider .swiper-button-prev,
-    salla-slider .s-slider-button {
-
-        display: flex !important;
-
-        align-items: center;
-        justify-content: center;
-
-        width: 48px;
-        height: 48px;
-
-        border-radius: 50%;
-
-        background: #fff;
-
-        border: 1px solid #f3d5e1;
-
-        color: var(--reviews-accent, #E62973) !important;
-
-        box-shadow:
-            0 12px 30px
-            rgba(230, 41, 115, .12);
-
-        transition:
-            background .3s ease,
-            color .3s ease,
-            transform .3s ease,
-            box-shadow .3s ease;
-
-        z-index: 20;
+    salla-slider .s-slider-button,
+    salla-slider .s-slider-nav,
+    salla-slider .swiper-pagination {
+        display: none !important;
+        visibility: hidden !important;
     }
 
-
-    salla-slider .swiper-button-next:hover,
-    salla-slider .swiper-button-prev:hover,
-    salla-slider .s-slider-button:hover {
-
-        background: var(--reviews-accent, #E62973);
-
-        color: #fff !important;
-
-        transform: translateY(-3px);
-
-        box-shadow:
-            0 15px 35px
-            rgba(230, 41, 115, .25);
+    .luxury-reviews-grid {
+        padding: 15px 5px 35px;
     }
 
-
-    salla-slider .swiper-button-next::after,
-    salla-slider .swiper-button-prev::after {
-
-        font-size: 15px;
-
-        font-weight: 900;
+    .luxury-reviews-grid .swiper-slide {
+        height: auto;
+        display: flex;
     }
-
-
-    /* RTL positioning */
-
-    salla-slider .swiper-button-prev {
-
-        right: -8px;
-        left: auto;
-    }
-
-
-    salla-slider .swiper-button-next {
-
-        left: -8px;
-        right: auto;
-    }
-
 
     /* =====================================================
        REVIEW CARD
     ===================================================== */
 
     .luxury-review-card {
-
         position: relative;
-
         width: 100%;
-
-        min-height: 365px;
-
-        margin-top: 35px;
-
-        padding: 70px 30px 30px;
+        min-height: 300px;
 
         display: flex;
-
         flex-direction: column;
-
-        align-items: center;
-
-        text-align: center;
 
         background: #fff;
 
-        border: 1px solid #f3d5e1;
+        border-radius: 30px;
 
-        border-radius: 28px;
+        padding: 32px;
+
+        border: 1px solid rgba(230, 41, 115, .10);
 
         box-shadow:
-            0 18px 50px
-            rgba(35, 31, 32, .07);
-
-        overflow: visible;
+            0 18px 45px rgba(35, 31, 32, .07);
 
         transition:
             transform .35s ease,
             box-shadow .35s ease,
             border-color .35s ease;
+
+        overflow: visible;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 4px;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                var(--reviews-accent, #E62973),
+                transparent
+            );
+
+            opacity: .75;
+        }
+
+        &::after {
+            content: "”";
+            position: absolute;
+            left: 22px;
+            bottom: -15px;
+            font-size: 100px;
+            font-family: Georgia, serif;
+            line-height: 1;
+            color: var(--reviews-accent, #E62973);
+            opacity: .05;
+            pointer-events: none;
+        }
+
+        &:hover {
+            transform: translateY(-7px);
+
+            box-shadow:
+                0 28px 60px rgba(35, 31, 32, .11);
+
+            border-color:
+                rgba(230, 41, 115, .25);
+        }
+
+        /* =================================================
+           CUSTOMER
+        ================================================= */
+
+        .review-top {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+
+            img,
+            .review-avatar {
+                flex: 0 0 70px;
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                object-fit: cover;
+
+                border: 3px solid rgba(230, 41, 115, .18);
+
+                box-shadow:
+                    0 8px 20px rgba(230, 41, 115, .12);
+            }
+
+            .review-avatar {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #FFF8FB;
+                color: var(--reviews-accent, #E62973);
+                font-size: 22px;
+            }
+        }
+
+        .review-info {
+            min-width: 0;
+
+            h3 {
+                margin: 0;
+                font-size: 18px;
+                font-weight: 900;
+                line-height: 1.5;
+                color: var(--reviews-accent, #E62973);
+                word-break: break-word;
+            }
+
+            span {
+                display: block;
+                margin-top: 5px;
+                color: #9CA3AF;
+                font-size: 13px;
+            }
+        }
+
+        /* =================================================
+           STARS
+        ================================================= */
+
+        .review-stars {
+            display: flex;
+            align-items: center;
+            direction: ltr;
+            margin-bottom: 18px;
+            font-size: 20px;
+            letter-spacing: 3px;
+
+            span {
+                color: #ddd;
+                line-height: 1;
+
+                &.active {
+                    color: #e8b33d;
+                }
+            }
+        }
+
+        /* =================================================
+           TEXT
+        ================================================= */
+
+        .review-text {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            color: #6B7280;
+            font-size: 15px;
+            line-height: 2.1;
+        }
     }
-
-
-    .luxury-review-card:hover {
-
-        transform: translateY(-8px);
-
-        border-color:
-            rgba(230, 41, 115, .28);
-
-        box-shadow:
-            0 28px 65px
-            rgba(230, 41, 115, .12);
-    }
-
-
-    /* =====================================================
-       QUOTE DECORATION
-    ===================================================== */
-
-    .luxury-review-card::before {
-
-        content: "“";
-
-        position: absolute;
-
-        top: 20px;
-        left: 25px;
-
-        color: var(--reviews-accent, #E62973);
-
-        opacity: .06;
-
-        font-family: Georgia, serif;
-
-        font-size: 90px;
-
-        line-height: 1;
-
-        pointer-events: none;
-    }
-
-
-    /* =====================================================
-       CUSTOMER
-       الصورة متداخلة أعلى الكارت
-    ===================================================== */
-
-    .luxury-review-card .review-top {
-
-        position: relative;
-
-        display: flex;
-
-        flex-direction: column;
-
-        align-items: center;
-
-        justify-content: center;
-
-        width: 100%;
-
-        margin: 0 0 18px;
-
-        gap: 12px;
-    }
-
-
-    /* =====================================================
-       CUSTOMER IMAGE
-    ===================================================== */
-
-    .luxury-review-card .review-top img,
-    .luxury-review-card .review-top .review-avatar {
-
-        position: absolute;
-
-        top: -105px;
-
-        left: 50%;
-
-        transform: translateX(-50%);
-
-        width: 86px;
-        height: 86px;
-
-        flex: 0 0 86px;
-
-        border-radius: 50%;
-
-        object-fit: cover;
-
-        background: #fff;
-
-        border: 5px solid #fff;
-
-        outline: 2px solid rgba(230, 41, 115, .18);
-
-        box-shadow:
-            0 12px 30px
-            rgba(230, 41, 115, .15);
-
-        z-index: 5;
-    }
-
-
-    .luxury-review-card .review-avatar {
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        color: var(--reviews-accent, #E62973);
-
-        background: #fff5f9;
-
-        font-size: 25px;
-    }
-
-
-    /* =====================================================
-       CUSTOMER INFO
-    ===================================================== */
-
-    .luxury-review-card .review-info {
-
-        width: 100%;
-
-        text-align: center;
-
-        padding-top: 4px;
-    }
-
-
-    .luxury-review-card .review-info h3 {
-
-        margin: 0;
-
-        color: var(--reviews-accent, #E62973);
-
-        font-size: 19px;
-
-        font-weight: 900;
-
-        line-height: 1.5;
-    }
-
-
-    .luxury-review-card .review-info span {
-
-        display: block;
-
-        margin-top: 5px;
-
-        color: #9CA3AF;
-
-        font-size: 12px;
-
-        line-height: 1.6;
-    }
-
-
-    /* =====================================================
-       STARS
-    ===================================================== */
-
-    .luxury-review-card .review-stars {
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        direction: ltr;
-
-        gap: 2px;
-
-        margin: 4px 0 18px;
-
-        font-size: 17px;
-
-        letter-spacing: 1px;
-    }
-
-
-    .luxury-review-card .review-stars span {
-
-        color: #E5E7EB;
-
-        line-height: 1;
-    }
-
-
-    .luxury-review-card .review-stars span.active {
-
-        color: #E8B33D;
-    }
-
-
-    /* =====================================================
-       REVIEW TEXT
-    ===================================================== */
-
-    .luxury-review-card .review-text {
-
-        position: relative;
-
-        z-index: 2;
-
-        max-width: 430px;
-
-        margin: 0 auto;
-
-        color: #6B7280;
-
-        font-size: 14px;
-
-        line-height: 2;
-
-        text-align: center;
-    }
-
-
-    /* =====================================================
-       SOCIAL ICONS
-       تعمل إذا أضيفت عناصر social داخل البطاقة
-    ===================================================== */
-
-    .luxury-review-card .review-social {
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        gap: 8px;
-
-        margin-top: auto;
-
-        padding-top: 22px;
-    }
-
-
-    .luxury-review-card .review-social a {
-
-        display: inline-flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        width: 34px;
-        height: 34px;
-
-        border-radius: 50%;
-
-        color: var(--reviews-accent, #E62973);
-
-        background: #fff5f9;
-
-        border: 1px solid #f3d5e1;
-
-        text-decoration: none;
-
-        transition:
-            background .3s ease,
-            color .3s ease,
-            transform .3s ease;
-    }
-
-
-    .luxury-review-card .review-social a:hover {
-
-        color: #fff;
-
-        background: var(--reviews-accent, #E62973);
-
-        transform: translateY(-3px);
-    }
-
 
     /* =====================================================
        ANIMATION
@@ -729,219 +324,83 @@
     &.luxury-reviews-animated {
 
         .luxury-review-card {
-
-            animation:
-                luxuryReviewFade .7s ease both;
+            animation: luxuryReviewFade .7s ease both;
         }
 
-
         @for $i from 1 through 4 {
-
             .luxury-review-card:nth-child(#{$i}) {
-
-                animation-delay:
-                    $i * .10s;
+                animation-delay: $i * .10s;
             }
         }
     }
-
 
     /* =====================================================
        TABLET
     ===================================================== */
 
     @media (max-width: 992px) {
-
-        padding: 80px 0 90px;
-
-
-        .luxury-reviews-grid {
-
-            padding-left: 5px;
-            padding-right: 5px;
-        }
-
-
-        .luxury-reviews-grid .swiper-slide {
-
-            padding: 0 7px;
-        }
-
+        padding: 75px 0;
 
         .luxury-review-card {
-
-            min-height: 350px;
-
-            padding:
-                65px 25px 28px;
-        }
-
-
-        salla-slider .swiper-button-prev {
-
-            right: -4px;
-        }
-
-
-        salla-slider .swiper-button-next {
-
-            left: -4px;
+            min-height: 290px;
+            padding: 28px;
         }
     }
 
-
     /* =====================================================
        MOBILE
-       بطاقة واحدة
     ===================================================== */
 
     @media (max-width: 600px) {
-
-        padding: 60px 0 70px;
-
+        padding: 55px 0;
 
         .luxury-reviews-header {
-
-            margin-bottom: 45px;
-
+            margin-bottom: 40px;
 
             h2 {
-
                 font-size: 27px;
             }
 
-
             p {
-
-                padding: 0 15px;
-
                 font-size: 14px;
             }
         }
 
-
         .luxury-reviews-decoration {
-
-            gap: 9px;
-
+            gap: 10px;
 
             span {
-
-                width: 42px;
+                width: 45px;
             }
 
-
             i {
-
                 width: 10px;
                 height: 10px;
             }
         }
 
-
         .luxury-review-summary {
-
-            max-width: calc(100% - 30px);
-
-            padding: 17px 18px;
-
-            gap: 18px;
-
-            border-radius: 20px;
-
-
-            .summary-rating strong {
-
-                font-size: 32px;
-            }
-
-
-            .summary-info span {
-
-                font-size: 16px;
-            }
+            max-width: 100%;
+            padding: 18px 20px;
+            gap: 20px;
+            border-radius: 22px;
         }
-
 
         .luxury-reviews-grid {
-
-            padding:
-                50px 10px 30px;
+            padding: 10px 2px 25px;
         }
-
 
         .luxury-reviews-grid .swiper-slide {
-
             width: 100% !important;
-
-            padding: 0 3px;
         }
-
 
         .luxury-review-card {
-
-            min-height: 360px;
-
-            margin-top: 30px;
-
-            padding:
-                68px 22px 25px;
-
-            border-radius: 24px;
+            min-height: 0;
+            padding: 25px;
+            border-radius: 25px;
         }
-
-
-        .luxury-review-card .review-top img,
-        .luxury-review-card .review-top .review-avatar {
-
-            width: 78px;
-            height: 78px;
-
-            flex-basis: 78px;
-
-            top: -98px;
-        }
-
-
-        .luxury-review-card .review-info h3 {
-
-            font-size: 18px;
-        }
-
-
-        .luxury-review-card .review-text {
-
-            font-size: 14px;
-
-            line-height: 2;
-        }
-
-
-        /* الأسهم على الجوال */
-
-        salla-slider .swiper-button-next,
-        salla-slider .swiper-button-prev,
-        salla-slider .s-slider-button {
-
-            width: 40px;
-            height: 40px;
-        }
-
-
-        salla-slider .swiper-button-prev {
-
-            right: -2px;
-        }
-
-
-        salla-slider .swiper-button-next {
-
-            left: -2px;
-        }
-
 
         .luxury-review-card:hover {
-
             transform: none;
         }
     }
@@ -949,23 +408,17 @@
 
 
 /* =========================================================
-   REVIEW ANIMATION
+   REVIEW FADE
 ========================================================= */
 
 @keyframes luxuryReviewFade {
-
     from {
-
         opacity: 0;
-
-        transform: translateY(30px);
+        transform: translateY(25px);
     }
 
-
     to {
-
         opacity: 1;
-
         transform: translateY(0);
     }
 }
@@ -976,13 +429,10 @@
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
     .luxury-reviews-section *,
     .luxury-reviews-section *::before,
     .luxury-reviews-section *::after {
-
         animation: none !important;
-
         transition: none !important;
     }
 }
