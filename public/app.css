@@ -9833,8 +9833,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   Cinematic hero
-   Header + video
+   CINEMATIC HERO
+   Header + Video + Hero Content
    ========================================================= */
 .luxury-overlay-hero {
   position: relative;
@@ -9844,9 +9844,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   isolation: isolate;
   background: #000;
   color: #fff;
+  --luxury-primary: #E62973;
+  --luxury-primary-hover: #C91F62;
 }
 /* =========================================================
-   Video
+   VIDEO
+   يعمل تلقائياً ولا يظهر أي تحكم
    ========================================================= */
 .luxury-overlay-hero__video {
   position: absolute;
@@ -9855,14 +9858,21 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   bottom: 0;
   left: 0;
   z-index: 0;
+  display: block;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  pointer-events: none;
+  background: #000;
+  /*
+   * حركة بسيطة للفيديو نفسه
+   * بدون التأثير على التشغيل
+   */
   animation: luxuryHeroZoom 18s ease-in-out infinite alternate;
 }
 /* =========================================================
-   Dark overlay
+   DARK OVERLAY
    ========================================================= */
 .luxury-overlay-hero__dark-overlay {
   position: absolute;
@@ -9878,7 +9888,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   pointer-events: none;
 }
 /* =========================================================
-   Bottom gradient
+   GRADIENT
    ========================================================= */
 .luxury-overlay-hero__gradient {
   position: absolute;
@@ -9888,10 +9898,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   left: 0;
   z-index: 2;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.38) 0%, rgba(0, 0, 0, 0.05) 35%, rgba(0, 0, 0, 0.08) 55%, rgba(0, 0, 0, 0.6) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.48) 0%, rgba(0, 0, 0, 0.08) 35%, rgba(0, 0, 0, 0.12) 55%, rgba(0, 0, 0, 0.68) 100%);
 }
 /* =========================================================
-   Glow
+   PINK GLOW
    ========================================================= */
 .luxury-overlay-hero__glow {
   position: absolute;
@@ -9914,7 +9924,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background: #FF7EB3;
 }
 /* =========================================================
-   Header
+   HEADER
    ========================================================= */
 .luxury-overlay-header {
   position: absolute;
@@ -9930,7 +9940,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transition: background 0.35s ease, backdrop-filter 0.35s ease;
 }
 /* =========================================================
-   Header top
+   HEADER TOP
    ========================================================= */
 .luxury-overlay-header__top {
   width: 100%;
@@ -9945,11 +9955,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   gap: 25px;
 }
 /* =========================================================
-   Logo
+   LOGO
    ========================================================= */
 .luxury-overlay-header__logo {
   justify-self: end;
   order: 3;
+  display: flex;
+  align-items: center;
 }
 .luxury-overlay-header__logo a {
   display: flex;
@@ -9964,15 +9976,21 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   max-height: 58px;
   -o-object-fit: contain;
      object-fit: contain;
-  filter: brightness(0) invert(1);
+  /*
+   * اللوجو الحقيقي:
+   * theme-logo.png
+   *
+   * لا نفرض عليه filter حتى يظهر بشكله الحقيقي.
+   */
+  filter: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .luxury-overlay-header__logo:hover img {
-  opacity: 0.82;
+  opacity: 0.88;
   transform: translateY(-1px);
 }
 /* =========================================================
-   Controls
+   CENTER CONTROLS
    ========================================================= */
 .luxury-overlay-header__controls {
   display: flex;
@@ -9995,18 +10013,19 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.3s ease, background 0.3s ease;
+  transition: opacity 0.3s ease, background 0.3s ease, color 0.3s ease;
 }
 .luxury-overlay-header__control:hover {
-  opacity: 0.75;
-  background: rgba(255, 255, 255, 0.08);
+  color: var(--luxury-primary);
+  opacity: 1;
+  background: rgba(230, 41, 115, 0.12);
   border-radius: 999px;
 }
 .luxury-overlay-header__control i {
   font-size: 18px;
 }
 /* =========================================================
-   Localization
+   LOCALIZATION
    ========================================================= */
 .luxury-overlay-header__localization {
   display: flex;
@@ -10017,7 +10036,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: #fff;
 }
 /* =========================================================
-   Search
+   SEARCH
    ========================================================= */
 .luxury-overlay-header__search {
   width: 150px;
@@ -10043,41 +10062,71 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .luxury-overlay-header__search .s-search-input:focus {
   background: rgba(255, 255, 255, 0.15) !important;
-  border-color: rgba(255, 255, 255, 0.55) !important;
+  border-color: rgba(230, 41, 115, 0.75) !important;
 }
 /* =========================================================
-   User actions
+   USER ACTIONS
    ========================================================= */
 .luxury-overlay-header__actions {
   justify-self: start;
   order: 1;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 8px;
   color: #fff;
 }
 /* =========================================================
-   User menu
+   ACTION WRAPPER
+   يجعل كل عنصر بنفس الحجم
+   ========================================================= */
+.luxury-overlay-header__action {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* =========================================================
+   USER MENU
    ========================================================= */
 .luxury-user-menu {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  max-width: 42px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   color: #fff !important;
   --color-primary: #fff;
+  overflow: visible !important;
 }
 .luxury-user-menu * {
   color: #fff !important;
 }
 .luxury-user-menu button {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
   background: transparent !important;
   border: 0 !important;
 }
 /* =========================================================
-   Icon button
+   GENERIC HEADER ICON
    ========================================================= */
 .luxury-overlay-header__icon {
   position: relative;
   width: 42px;
   height: 42px;
-  display: inline-flex;
+  flex: 0 0 42px;
+  display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
@@ -10085,39 +10134,94 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   text-decoration: none;
   border-radius: 50%;
   background: transparent;
-  transition: background 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 .luxury-overlay-header__icon:hover {
-  background: rgba(255, 255, 255, 0.12);
-  opacity: 0.9;
+  color: #fff;
+  background: rgba(230, 41, 115, 0.2);
   transform: translateY(-2px);
 }
 .luxury-overlay-header__icon i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
   font-size: 20px;
+  line-height: 1;
 }
 /* =========================================================
-   Cart
+   CART WRAPPER
+   ========================================================= */
+.luxury-overlay-header__cart-wrapper {
+  overflow: visible;
+}
+/* =========================================================
+   CART
    ========================================================= */
 .luxury-overlay-cart {
-  min-width: 55px;
-  min-height: 42px;
+  position: relative;
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  min-height: 42px !important;
+  max-width: 42px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
   color: #fff !important;
+  overflow: visible !important;
 }
 .luxury-overlay-cart * {
   color: #fff !important;
 }
+.luxury-overlay-cart .s-cart-summary-content {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 42px !important;
+  height: 42px !important;
+}
+.luxury-overlay-cart .s-cart-summary-icon {
+  width: 42px !important;
+  height: 42px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
 .luxury-overlay-cart .s-cart-summary-total {
-  color: #fff !important;
-  font-weight: 700;
+  display: none !important;
 }
 .luxury-overlay-cart .s-cart-summary-count {
-  background: #E62973 !important;
+  position: absolute !important;
+  top: -3px !important;
+  right: -3px !important;
+  min-width: 18px !important;
+  height: 18px !important;
+  padding: 0 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 999px !important;
+  background: var(--luxury-primary) !important;
   color: #fff !important;
-  border: 2px solid rgba(0, 0, 0, 0.25);
-  box-shadow: 0 5px 15px rgba(230, 41, 115, 0.45);
+  border: 2px solid rgba(0, 0, 0, 0.35) !important;
+  box-shadow: 0 5px 15px rgba(230, 41, 115, 0.5) !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+}
+.luxury-overlay-cart .sicon-shopping-bag {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  line-height: 1;
 }
 /* =========================================================
-   Main category navigation
+   MAIN NAVIGATION
    ========================================================= */
 .luxury-overlay-navigation {
   position: relative;
@@ -10156,11 +10260,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transition: opacity 0.3s ease, color 0.3s ease;
 }
 .luxury-overlay-navigation .main-menu > li > a:hover {
-  color: #fff !important;
-  opacity: 0.68;
+  color: var(--luxury-primary) !important;
+  opacity: 1;
 }
 /* =========================================================
-   Hero content
+   HERO CONTENT
    ========================================================= */
 .luxury-overlay-hero__content {
   position: relative;
@@ -10187,7 +10291,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   text-align: left;
 }
 /* =========================================================
-   Title
+   TITLE
    ========================================================= */
 .luxury-overlay-hero__title {
   max-width: 1000px;
@@ -10210,7 +10314,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   text-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 /* =========================================================
-   Description
+   DESCRIPTION
    ========================================================= */
 .luxury-overlay-hero__description {
   max-width: 720px;
@@ -10224,7 +10328,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   animation: luxuryHeroFadeUp 1s 0.1s ease both;
 }
 /* =========================================================
-   Rating
+   RATING
    ========================================================= */
 .luxury-overlay-hero__rating {
   display: flex;
@@ -10244,7 +10348,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: rgba(255, 255, 255, 0.9);
 }
 /* =========================================================
-   Buttons
+   BUTTONS
+   الهوية الوردية
    ========================================================= */
 .luxury-overlay-hero__buttons {
   display: flex;
@@ -10267,22 +10372,43 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   text-decoration: none;
   font-size: 14px;
   font-weight: 800;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-}
-.luxury-overlay-hero__button:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
-  opacity: 0.92;
-}
-.luxury-overlay-hero__button--secondary {
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-color: rgba(255, 255, 255, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 /* =========================================================
-   Scroll
+   PRIMARY BUTTON
+   ========================================================= */
+.luxury-overlay-hero__button--primary {
+  background: linear-gradient(135deg, #E62973, #EC4899) !important;
+  color: #fff !important;
+  border: 1px solid #E62973 !important;
+  box-shadow: 0 12px 35px rgba(230, 41, 115, 0.32);
+}
+.luxury-overlay-hero__button--primary:hover {
+  background: linear-gradient(135deg, #C91F62, #DB2777) !important;
+  color: #fff !important;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(230, 41, 115, 0.45);
+}
+/* =========================================================
+   SECONDARY BUTTON
+   ========================================================= */
+.luxury-overlay-hero__button--secondary {
+  background: rgba(230, 41, 115, 0.14) !important;
+  color: #fff !important;
+  border: 1px solid rgba(230, 41, 115, 0.65) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+}
+.luxury-overlay-hero__button--secondary:hover {
+  background: #E62973 !important;
+  color: #fff !important;
+  border-color: #E62973 !important;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(230, 41, 115, 0.35);
+}
+/* =========================================================
+   SCROLL
    ========================================================= */
 .luxury-overlay-hero__scroll {
   position: absolute;
@@ -10307,12 +10433,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--luxury-primary);
   transform: translateX(-50%);
   animation: luxuryScroll 1.8s ease-in-out infinite;
 }
 /* =========================================================
-   Mobile menu
+   MOBILE MENU
    ========================================================= */
 .luxury-overlay-header__mobile-menu {
   display: none;
@@ -10322,7 +10448,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   left: 15px;
   padding: 15px;
   background: rgba(10, 10, 10, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(230, 41, 115, 0.3);
   border-radius: 18px;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -10346,8 +10472,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background: transparent !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
+.luxury-overlay-header__mobile-menu .main-menu > li > a:hover {
+  color: var(--luxury-primary) !important;
+}
 /* =========================================================
-   Animations
+   ANIMATIONS
    ========================================================= */
 @keyframes luxuryHeroZoom {
   from {
@@ -10382,7 +10511,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   Tablet
+   TABLET
    ========================================================= */
 @media (max-width: 991px) {
   .luxury-overlay-header__top {
@@ -10404,35 +10533,35 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   Mobile
+   MOBILE
    ========================================================= */
 @media (max-width: 768px) {
   .luxury-overlay-hero {
     min-height: 100svh !important;
   }
+  /* Header */
   .luxury-overlay-header__top {
     min-height: 72px;
     padding: 10px 15px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 8px;
   }
+  /* Logo */
   .luxury-overlay-header__logo {
     order: 2;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+    justify-content: center;
   }
   .luxury-overlay-header__logo img {
     max-width: 120px;
     max-height: 45px;
   }
+  /* Controls */
   .luxury-overlay-header__controls {
     order: 1;
     justify-content: flex-start;
-  }
-  .luxury-overlay-header__actions {
-    order: 3;
-    justify-content: flex-end;
   }
   .luxury-overlay-header__control span {
     display: none;
@@ -10440,20 +10569,48 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .luxury-overlay-header__search {
     display: none;
   }
+  /* Navigation */
   .luxury-overlay-navigation {
     display: none;
   }
-  .luxury-overlay-header__actions .luxury-user-menu {
-    max-width: 38px;
-    overflow: hidden;
+  /* Actions */
+  .luxury-overlay-header__actions {
+    order: 3;
+    justify-content: flex-end;
+    gap: 5px;
+  }
+  .luxury-overlay-header__action {
+    width: 38px;
+    height: 38px;
+    flex-basis: 38px;
+  }
+  .luxury-user-menu {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    max-width: 38px !important;
+  }
+  .luxury-user-menu button {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
   }
   .luxury-overlay-header__icon {
     width: 38px;
     height: 38px;
+    flex-basis: 38px;
   }
   .luxury-overlay-cart {
-    min-width: 38px;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
   }
+  .luxury-overlay-cart .s-cart-summary-content,
+  .luxury-overlay-cart .s-cart-summary-icon {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  /* Hero */
   .luxury-overlay-hero__content {
     min-height: 100svh;
     padding: 130px 20px 80px;
@@ -10468,10 +10625,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     font-size: 15px;
     line-height: 1.9;
   }
+  /* Rating */
   .luxury-overlay-hero__rating {
     flex-direction: column;
     gap: 5px;
   }
+  /* Buttons */
   .luxury-overlay-hero__buttons {
     width: 100%;
     flex-direction: column;
@@ -10481,9 +10640,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     width: 100%;
     max-width: 300px;
   }
+  /* Scroll */
   .luxury-overlay-hero__scroll {
     display: none;
   }
+  /* Glow */
   .luxury-overlay-hero__glow {
     width: 300px;
     height: 300px;
@@ -10491,7 +10652,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   Reduced motion
+   REDUCED MOTION
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
   .luxury-overlay-hero *,
