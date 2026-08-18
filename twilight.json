@@ -3360,6 +3360,154 @@
       "value": true
     }
   ]
+},
+{
+  "key": "c7a4e291-6f52-4d83-b921-8e5c7a2026af",
+  "title": {
+    "en": "FAQ Section",
+    "ar": "الأسئلة الشائعة"
+  },
+  "description": "قسم الأسئلة الشائعة بتصميم فاخر وقابل للتخصيص.",
+  "icon": "sicon-question",
+  "path": "home.faq",
+  "is_default": true,
+  "fields": [
+    {
+      "id": "show_section",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار القسم",
+      "value": true
+    },
+    {
+      "id": "badge",
+      "type": "string",
+      "format": "text",
+      "label": "النص العلوي",
+      "multilanguage": true,
+      "value": "الدعم والمساعدة"
+    },
+    {
+      "id": "show_badge",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار النص العلوي",
+      "value": true
+    },
+    {
+      "id": "title",
+      "type": "string",
+      "format": "text",
+      "label": "العنوان الرئيسي",
+      "multilanguage": true,
+      "value": "الأسئلة الشائعة"
+    },
+    {
+      "id": "subtitle",
+      "type": "string",
+      "format": "textarea",
+      "label": "الوصف",
+      "multilanguage": true,
+      "value": "كل ما تود معرفته عن الشحن، الاستبدال، وطرق الدفع"
+    },
+    {
+      "id": "title_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون العنوان",
+      "value": "#4A0F27"
+    },
+    {
+      "id": "subtitle_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون الوصف",
+      "value": "#6B7280"
+    },
+    {
+      "id": "accent_color",
+      "type": "string",
+      "format": "color",
+      "label": "اللون الرئيسي",
+      "value": "#E62973"
+    },
+    {
+      "id": "background_color",
+      "type": "string",
+      "format": "color",
+      "label": "لون الخلفية",
+      "value": "#FFF8FB"
+    },
+    {
+      "id": "questions",
+      "type": "collection",
+      "format": "collection",
+      "label": "الأسئلة",
+      "minLength": 1,
+      "maxLength": 12,
+      "required": false,
+      "fields": [
+        {
+          "id": "question",
+          "type": "string",
+          "format": "text",
+          "label": "السؤال",
+          "multilanguage": true
+        },
+        {
+          "id": "answer",
+          "type": "string",
+          "format": "textarea",
+          "label": "الإجابة",
+          "multilanguage": true
+        },
+        {
+          "id": "open",
+          "type": "boolean",
+          "format": "switch",
+          "label": "فتح السؤال افتراضياً",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "show_cta",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار منطقة التواصل",
+      "value": true
+    },
+    {
+      "id": "cta_text",
+      "type": "string",
+      "format": "text",
+      "label": "نص منطقة التواصل",
+      "multilanguage": true,
+      "value": "لم تجد إجابة لسؤالك؟"
+    },
+    {
+      "id": "cta_button_text",
+      "type": "string",
+      "format": "text",
+      "label": "نص زر التواصل",
+      "multilanguage": true,
+      "value": "تواصل مع الدعم مباشرة"
+    },
+    {
+      "id": "cta_url",
+      "type": "string",
+      "format": "text",
+      "label": "رابط التواصل",
+      "value": "#"
+    },
+    {
+      "id": "show_animation",
+      "type": "boolean",
+      "format": "switch",
+      "label": "تفعيل الحركة",
+      "value": true
+    }
+  ]
 }
 
 
