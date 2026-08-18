@@ -269,7 +269,332 @@
             "required": false,
             "value": false,
             "selected": false
+        },
+        {
+    "type": "static",
+    "id": "footer-custom-line",
+    "format": "line"
+},
+{
+    "type": "static",
+    "format": "title",
+    "id": "footer-custom-title",
+    "value": "<div class='rounded-lg' style='background:#21636d;padding:15px;text-align:center'><h6 style='color:#fff;font-size:15px;font-weight:bold'>إعدادات الفوتر</h6></div>",
+    "variant": "h6"
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار وصف المتجر",
+    "id": "footer_show_description",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "string",
+    "icon": "sicon-format-text-alt",
+    "label": "وصف المتجر في الفوتر",
+    "multilanguage": true,
+    "id": "footer_description",
+    "format": "textarea",
+    "required": false,
+    "value": "نقدّم لك تجربة تسوق أنيقة تجمع بين الجودة وحسن الاختيار، مع منتجات مختارة بعناية وخدمة نهتم بتفاصيلها."
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار روابط التواصل الاجتماعي",
+    "id": "footer_show_social",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "collection",
+    "format": "collection",
+    "label": "روابط التواصل الاجتماعي",
+    "id": "footer_social_links",
+    "minLength": 0,
+    "maxLength": 6,
+    "required": false,
+    "fields": [
+        {
+            "type": "string",
+            "id": "name",
+            "label": "اسم المنصة",
+            "format": "text",
+            "value": "Instagram"
+        },
+        {
+            "type": "string",
+            "id": "url",
+            "label": "رابط المنصة",
+            "format": "url",
+            "value": ""
+        },
+        {
+            "type": "string",
+            "id": "icon",
+            "label": "أيقونة المنصة",
+            "format": "text",
+            "value": "sicon-instagram"
         }
+    ]
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار الروابط المهمة",
+    "id": "footer_show_links",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "string",
+    "icon": "sicon-format-text-alt",
+    "label": "عنوان الروابط المهمة",
+    "multilanguage": true,
+    "id": "footer_links_title",
+    "format": "text",
+    "required": false,
+    "value": "روابط مهمة"
+},
+{
+    "type": "collection",
+    "format": "collection",
+    "label": "الروابط المهمة",
+    "id": "footer_links",
+    "minLength": 0,
+    "maxLength": 8,
+    "required": false,
+    "fields": [
+        {
+            "type": "string",
+            "id": "title",
+            "label": "عنوان الرابط",
+            "multilanguage": true,
+            "format": "text",
+            "value": "الرئيسية"
+        },
+        {
+            "type": "string",
+            "id": "url",
+            "label": "رابط الصفحة",
+            "format": "url",
+            "value": ""
+        }
+    ]
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار معلومات التواصل",
+    "id": "footer_show_contact",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "string",
+    "icon": "sicon-format-text-alt",
+    "label": "عنوان التواصل",
+    "multilanguage": true,
+    "id": "footer_contact_title",
+    "format": "text",
+    "required": false,
+    "value": "تواصل معنا"
+},
+{
+    "type": "string",
+    "icon": "sicon-phone",
+    "label": "رقم الهاتف",
+    "id": "footer_phone",
+    "format": "text",
+    "required": false,
+    "value": ""
+},
+{
+    "type": "string",
+    "icon": "sicon-mail",
+    "label": "البريد الإلكتروني",
+    "id": "footer_email",
+    "format": "text",
+    "required": false,
+    "value": ""
+},
+{
+    "type": "string",
+    "icon": "sicon-whatsapp",
+    "label": "رابط واتساب",
+    "id": "footer_whatsapp",
+    "format": "url",
+    "required": false,
+    "value": ""
+},
+{
+    "type": "string",
+    "icon": "sicon-location",
+    "label": "موقع المتجر",
+    "id": "footer_location",
+    "multilanguage": true,
+    "format": "text",
+    "required": false,
+    "value": "الرياض - المملكة العربية السعودية"
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار تطبيقات الجوال",
+    "id": "footer_show_apps",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "string",
+    "icon": "sicon-format-text-alt",
+    "label": "عنوان تطبيقات الجوال",
+    "multilanguage": true,
+    "id": "footer_apps_title",
+    "format": "text",
+    "required": false,
+    "value": "تطبيق الجوال"
+},
+{
+    "type": "string",
+    "icon": "sicon-apple",
+    "label": "رابط App Store",
+    "id": "footer_apple_url",
+    "format": "url",
+    "required": false,
+    "value": ""
+},
+{
+    "type": "string",
+    "icon": "sicon-google-play",
+    "label": "رابط Google Play",
+    "id": "footer_google_url",
+    "format": "url",
+    "required": false,
+    "value": ""
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار زر العودة للأعلى",
+    "id": "footer_show_scroll_top",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "string",
+    "icon": "sicon-format-text-alt",
+    "label": "نص الحقوق",
+    "multilanguage": true,
+    "id": "footer_copyright",
+    "format": "text",
+    "required": false,
+    "value": "© 2026 جميع الحقوق محفوظة"
+},
+{
+    "type": "string",
+    "icon": "sicon-store",
+    "label": "اسم المتجر في الحقوق",
+    "multilanguage": true,
+    "id": "footer_brand_name",
+    "format": "text",
+    "required": false,
+    "value": "روان"
+},
+{
+    "type": "string",
+    "icon": "sicon-format-text-alt",
+    "label": "النص أسفل الفوتر",
+    "multilanguage": true,
+    "id": "footer_credit",
+    "format": "text",
+    "required": false,
+    "value": "جودة تبدأ في الاختيار، وثقة تُبنى مع كل تجربة."
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون خلفية الفوتر",
+    "id": "footer_background_color",
+    "format": "color",
+    "required": false,
+    "value": "#0B0A0C"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون نص الفوتر",
+    "id": "footer_text_color",
+    "format": "color",
+    "required": false,
+    "value": "#A1A1AA"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون عناوين الفوتر",
+    "id": "footer_title_color",
+    "format": "color",
+    "required": false,
+    "value": "#FFFFFF"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "اللون الرئيسي للفوتر",
+    "id": "footer_accent_color",
+    "format": "color",
+    "required": false,
+    "value": "#E62973"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون حدود الفوتر",
+    "id": "footer_border_color",
+    "format": "color",
+    "required": false,
+    "value": "#E6297333"
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار التوهج في الفوتر",
+    "id": "footer_show_glow",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار النقوش في خلفية الفوتر",
+    "id": "footer_show_pattern",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+}  
+
+
+
+
+
     ],
     "components": [
         {
