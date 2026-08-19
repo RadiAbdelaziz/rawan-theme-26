@@ -20,6 +20,12 @@
 
         {# =====================================================
            BACKGROUND VIDEO
+
+           الفيديو:
+           - يعمل تلقائياً
+           - صامت
+           - يعمل بشكل متكرر
+           - بدون Controls
            ===================================================== #}
 
         {% set luxury_video = component.luxury_video ?: asset('videos/banner.mp4') %}
@@ -101,15 +107,12 @@
             data-testid="luxury-overlay-header"
         >
 
-            {# =================================================
-               HEADER TOP
-               ================================================= #}
-
             <div class="luxury-overlay-header__top">
 
 
                 {# =================================================
                    LOGO
+                   استخدام اللوجو الحقيقي من assets
                    ================================================= #}
 
                 <div class="luxury-overlay-header__logo">
@@ -137,18 +140,19 @@
                 <div class="luxury-overlay-header__controls">
 
 
-                    {# =================================================
-                       MENU BUTTON
-                       يعمل على الجوال والتابلت
-                       ================================================= #}
+                    {# MENU #}
 
                     <button
                         type="button"
                         class="luxury-overlay-header__control luxury-menu-toggle"
-                        id="luxury-menu-toggle"
-                        aria-label="فتح القائمة"
-                        aria-expanded="false"
-                        aria-controls="luxury-overlay-mobile-menu"
+                        onclick="
+                            var menu = document.querySelector('.luxury-overlay-header__mobile-menu');
+
+                            if (menu) {
+                                menu.classList.toggle('is-open');
+                            }
+                        "
+                        aria-label="القائمة"
                     >
 
                         <i class="sicon-menu"></i>
@@ -160,9 +164,7 @@
                     </button>
 
 
-                    {# =================================================
-                       LANGUAGE + CURRENCY
-                       ================================================= #}
+                    {# LANGUAGE + CURRENCY #}
 
                     {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
 
@@ -177,9 +179,7 @@
                     {% endif %}
 
 
-                    {# =================================================
-                       SEARCH
-                       ================================================= #}
+                    {# SEARCH #}
 
                     <div class="luxury-overlay-header__search">
 
@@ -197,6 +197,7 @@
 
                 {# =================================================
                    USER ACTIONS
+                   جميع الأيقونات بنفس الحجم والمحاذاة
                    ================================================= #}
 
                 <div class="luxury-overlay-header__actions">
@@ -204,12 +205,7 @@
 
                     {# USER #}
 
-                    <div
-                        class="
-                            luxury-overlay-header__action
-                            luxury-overlay-header__user
-                        "
-                    >
+                    <div class="luxury-overlay-header__action luxury-overlay-header__user">
 
                         <salla-user-menu
                             class="luxury-user-menu"
@@ -224,10 +220,7 @@
 
                     <a
                         href="{{ link('wishlist') }}"
-                        class="
-                            luxury-overlay-header__action
-                            luxury-overlay-header__icon
-                        "
+                        class="luxury-overlay-header__action luxury-overlay-header__icon"
                         aria-label="المفضلة"
                     >
 
@@ -239,10 +232,7 @@
                     {# CART #}
 
                     <div
-                        class="
-                            luxury-overlay-header__action
-                            luxury-overlay-header__cart
-                        "
+                        class="luxury-overlay-header__action luxury-overlay-header__cart"
                     >
 
                         <salla-cart-summary
@@ -266,7 +256,7 @@
 
 
             {# =====================================================
-               DESKTOP CATEGORY NAVIGATION
+               CATEGORY NAVIGATION
                ===================================================== #}
 
             <nav
@@ -280,58 +270,12 @@
 
 
             {# =====================================================
-               MOBILE / TABLET MENU
+               MOBILE MENU
                ===================================================== #}
 
-            <div
-                class="luxury-overlay-header__mobile-menu"
-                id="luxury-overlay-mobile-menu"
-                aria-hidden="true"
-            >
+            <div class="luxury-overlay-header__mobile-menu">
 
-                <div class="luxury-overlay-header__mobile-menu-inner">
-
-
-                    {# =================================================
-                       MOBILE MENU HEADER
-                       ================================================= #}
-
-                    <div class="luxury-overlay-header__mobile-menu-top">
-
-                        <span
-                            class="luxury-overlay-header__mobile-menu-title"
-                        >
-                            القائمة الرئيسية
-                        </span>
-
-
-                        <button
-                            type="button"
-                            class="luxury-overlay-header__mobile-menu-close"
-                            id="luxury-menu-close"
-                            aria-label="إغلاق القائمة"
-                        >
-
-                            <i class="sicon-cancel"></i>
-
-                        </button>
-
-                    </div>
-
-
-                    {# =================================================
-                       MOBILE MENU CONTENT
-                       ================================================= #}
-
-                    <div
-                        class="luxury-overlay-header__mobile-menu-content"
-                    >
-
-                        <custom-main-menu></custom-main-menu>
-
-                    </div>
-
-                </div>
+                <custom-main-menu></custom-main-menu>
 
             </div>
 
@@ -375,9 +319,7 @@
 
                     {% if component.luxury_highlight %}
 
-                        <span
-                            class="luxury-overlay-hero__highlight"
-                        >
+                        <span class="luxury-overlay-hero__highlight">
 
                             {{ component.luxury_highlight }}
 
@@ -428,6 +370,7 @@
 
             {# =================================================
                BUTTONS
+               الهوية الوردية
                ================================================= #}
 
             {% if component.luxury_button_text or component.luxury_show_second_button %}
@@ -482,11 +425,9 @@
 
                     {% endif %}
 
-
                 </div>
 
             {% endif %}
-
 
         </div>
 
@@ -510,309 +451,5 @@
 
 
     </section>
-
-
-    {# =========================================================
-       LUXURY MENU JAVASCRIPT
-       فتح وإغلاق القائمة على الجوال والتابلت
-       ========================================================= #}
-
-    <script>
-    (function () {
-
-        function initLuxuryOverlayMenu() {
-
-            var button = document.getElementById(
-                'luxury-menu-toggle'
-            );
-
-            var menu = document.getElementById(
-                'luxury-overlay-mobile-menu'
-            );
-
-            var closeButton = document.getElementById(
-                'luxury-menu-close'
-            );
-
-
-            /*
-             * إذا لم توجد العناصر، نخرج
-             */
-            if (!button || !menu) {
-                return;
-            }
-
-
-            /*
-             * منع تسجيل الأحداث أكثر من مرة
-             */
-            if (
-                button.dataset &&
-                button.dataset.luxuryMenuInitialized === 'true'
-            ) {
-                return;
-            }
-
-
-            if (button.dataset) {
-                button.dataset.luxuryMenuInitialized = 'true';
-            }
-
-
-            /*
-             * فتح / إغلاق القائمة
-             */
-            function toggleLuxuryMenu() {
-
-                var isOpen =
-                    menu.classList.contains('is-open');
-
-
-                if (isOpen) {
-
-                    closeLuxuryMenu();
-
-                } else {
-
-                    openLuxuryMenu();
-
-                }
-
-            }
-
-
-            /*
-             * فتح القائمة
-             */
-            function openLuxuryMenu() {
-
-                menu.classList.add('is-open');
-
-                menu.setAttribute(
-                    'aria-hidden',
-                    'false'
-                );
-
-                button.setAttribute(
-                    'aria-expanded',
-                    'true'
-                );
-
-                button.setAttribute(
-                    'aria-label',
-                    'إغلاق القائمة'
-                );
-
-
-                /*
-                 * تغيير الأيقونة
-                 */
-                var icon = button.querySelector('i');
-
-                if (icon) {
-
-                    icon.classList.remove(
-                        'sicon-menu'
-                    );
-
-                    icon.classList.add(
-                        'sicon-cancel'
-                    );
-
-                }
-
-            }
-
-
-            /*
-             * إغلاق القائمة
-             */
-            function closeLuxuryMenu() {
-
-                menu.classList.remove('is-open');
-
-                menu.setAttribute(
-                    'aria-hidden',
-                    'true'
-                );
-
-                button.setAttribute(
-                    'aria-expanded',
-                    'false'
-                );
-
-                button.setAttribute(
-                    'aria-label',
-                    'فتح القائمة'
-                );
-
-
-                /*
-                 * إعادة أيقونة القائمة
-                 */
-                var icon = button.querySelector('i');
-
-                if (icon) {
-
-                    icon.classList.remove(
-                        'sicon-cancel'
-                    );
-
-                    icon.classList.add(
-                        'sicon-menu'
-                    );
-
-                }
-
-            }
-
-
-            /*
-             * زر القائمة
-             */
-            button.addEventListener(
-                'click',
-                function (event) {
-
-                    event.preventDefault();
-                    event.stopPropagation();
-
-                    toggleLuxuryMenu();
-
-                }
-            );
-
-
-            /*
-             * زر الإغلاق
-             */
-            if (closeButton) {
-
-                closeButton.addEventListener(
-                    'click',
-                    function (event) {
-
-                        event.preventDefault();
-                        event.stopPropagation();
-
-                        closeLuxuryMenu();
-
-                    }
-                );
-
-            }
-
-
-            /*
-             * الضغط خارج القائمة
-             */
-            document.addEventListener(
-                'click',
-                function (event) {
-
-                    if (
-                        !menu.classList.contains('is-open')
-                    ) {
-                        return;
-                    }
-
-
-                    if (
-                        menu.contains(event.target) ||
-                        button.contains(event.target)
-                    ) {
-                        return;
-                    }
-
-
-                    closeLuxuryMenu();
-
-                }
-            );
-
-
-            /*
-             * الضغط على أحد روابط القائمة
-             */
-            menu.addEventListener(
-                'click',
-                function (event) {
-
-                    var link =
-                        event.target.closest('a');
-
-
-                    if (!link) {
-                        return;
-                    }
-
-
-                    closeLuxuryMenu();
-
-                }
-            );
-
-
-            /*
-             * زر ESC
-             */
-            document.addEventListener(
-                'keydown',
-                function (event) {
-
-                    if (
-                        event.key === 'Escape' &&
-                        menu.classList.contains('is-open')
-                    ) {
-
-                        closeLuxuryMenu();
-
-                    }
-
-                }
-            );
-
-        }
-
-
-        /*
-         * DOM جاهز
-         */
-        if (
-            document.readyState === 'loading'
-        ) {
-
-            document.addEventListener(
-                'DOMContentLoaded',
-                initLuxuryOverlayMenu
-            );
-
-        } else {
-
-            initLuxuryOverlayMenu();
-
-        }
-
-
-        /*
-         * محاولة إضافية بعد تحميل مكونات Salla
-         */
-        setTimeout(
-            initLuxuryOverlayMenu,
-            300
-        );
-
-        setTimeout(
-            initLuxuryOverlayMenu,
-            1000
-        );
-
-        setTimeout(
-            initLuxuryOverlayMenu,
-            2000
-        );
-
-    })();
-    </script>
 
 {% endif %}
