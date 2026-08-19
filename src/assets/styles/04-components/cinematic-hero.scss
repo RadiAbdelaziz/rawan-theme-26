@@ -1,31 +1,41 @@
 /* =========================================================
-   CINEMATIC HERO
-   Header + Video + Hero Content
-   ========================================================= */
+   CINEMATIC LUXURY HERO
+   Header + Navigation + Video + Content
+========================================================= */
 
 .luxury-overlay-hero {
+
     position: relative;
+
     width: 100%;
+
     min-height: 100vh;
+    min-height: 100svh;
+
     overflow: hidden;
+
     isolation: isolate;
 
     background: #000;
+
     color: #fff;
 
     --luxury-primary: #E62973;
     --luxury-primary-hover: #C91F62;
+
 }
 
 
 /* =========================================================
    VIDEO
-   يعمل تلقائياً ولا يظهر أي تحكم
-   ========================================================= */
+========================================================= */
 
 .luxury-overlay-hero__video {
+
     position: absolute;
+
     inset: 0;
+
     z-index: 0;
 
     display: block;
@@ -39,37 +49,50 @@
 
     background: #000;
 
-    /*
-     * حركة بسيطة للفيديو نفسه
-     * بدون التأثير على التشغيل
-     */
-    animation: luxuryHeroZoom 18s ease-in-out infinite alternate;
+    transform:
+        scale(1.01);
+
+    animation:
+        luxuryHeroZoom
+        18s
+        ease-in-out
+        infinite
+        alternate;
+
 }
 
 
 /* =========================================================
    DARK OVERLAY
-   ========================================================= */
+========================================================= */
 
 .luxury-overlay-hero__dark-overlay {
+
     position: absolute;
+
     inset: 0;
 
     z-index: 1;
 
-    background: var(--luxury-overlay, #000);
-    opacity: var(--luxury-overlay-opacity, 0.28);
+    background:
+        var(--luxury-overlay, #000);
+
+    opacity:
+        var(--luxury-overlay-opacity, .28);
 
     pointer-events: none;
+
 }
 
 
 /* =========================================================
    GRADIENT
-   ========================================================= */
+========================================================= */
 
 .luxury-overlay-hero__gradient {
+
     position: absolute;
+
     inset: 0;
 
     z-index: 2;
@@ -79,19 +102,22 @@
     background:
         linear-gradient(
             to bottom,
-            rgba(0, 0, 0, 0.48) 0%,
-            rgba(0, 0, 0, 0.08) 35%,
-            rgba(0, 0, 0, 0.12) 55%,
-            rgba(0, 0, 0, 0.68) 100%
+            rgba(0,0,0,.62) 0%,
+            rgba(0,0,0,.18) 27%,
+            rgba(0,0,0,.08) 48%,
+            rgba(0,0,0,.25) 70%,
+            rgba(0,0,0,.72) 100%
         );
+
 }
 
 
 /* =========================================================
    PINK GLOW
-   ========================================================= */
+========================================================= */
 
 .luxury-overlay-hero__glow {
+
     position: absolute;
 
     width: 500px;
@@ -105,29 +131,47 @@
 
     z-index: 2;
 
-    opacity: 0.18;
+    opacity: .15;
+
+    animation:
+        luxuryGlow
+        10s
+        ease-in-out
+        infinite
+        alternate;
+
 }
+
 
 .luxury-overlay-hero__glow--left {
-    top: -180px;
-    left: -180px;
+
+    top: -190px;
+    left: -190px;
 
     background: #E62973;
+
 }
 
+
 .luxury-overlay-hero__glow--right {
-    right: -180px;
-    bottom: -180px;
+
+    right: -190px;
+    bottom: -190px;
 
     background: #FF7EB3;
+
+    animation-delay:
+        2s;
+
 }
 
 
 /* =========================================================
    HEADER
-   ========================================================= */
+========================================================= */
 
 .luxury-overlay-header {
+
     position: absolute;
 
     top: 0;
@@ -140,31 +184,36 @@
 
     color: #fff;
 
-    background: transparent;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.34),
+            rgba(0,0,0,.08)
+        );
 
     border: 0;
 
     box-shadow: none;
 
-    transition:
-        background 0.35s ease,
-        backdrop-filter 0.35s ease;
 }
 
 
 /* =========================================================
    HEADER TOP
-   ========================================================= */
+========================================================= */
 
 .luxury-overlay-header__top {
+
     width: 100%;
+
     max-width: 1500px;
 
-    min-height: 82px;
+    min-height: 78px;
 
     margin: 0 auto;
 
-    padding: 15px 32px;
+    padding:
+        12px 30px;
 
     display: grid;
 
@@ -176,151 +225,127 @@
     align-items: center;
 
     gap: 25px;
+
 }
 
 
 /* =========================================================
    LOGO
-   ========================================================= */
+========================================================= */
 
 .luxury-overlay-header__logo {
+
+    grid-column: 3;
+
     justify-self: end;
 
-    order: 3;
-
     display: flex;
+
     align-items: center;
+
 }
 
+
 .luxury-overlay-header__logo a {
+
     display: flex;
+
     align-items: center;
 
     text-decoration: none;
+
 }
 
+
 .luxury-overlay-header__logo img {
+
     display: block;
 
     width: auto;
 
     max-width: 175px;
+
     max-height: 58px;
 
     object-fit: contain;
 
-    /*
-     * اللوجو الحقيقي:
-     * theme-logo.png
-     *
-     * لا نفرض عليه filter حتى يظهر بشكله الحقيقي.
-     */
     filter: none;
 
     transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
+        opacity .3s ease,
+        transform .3s ease;
+
 }
 
-.luxury-overlay-header__logo:hover img {
-    opacity: 0.88;
 
-    transform: translateY(-1px);
+.luxury-overlay-header__logo:hover img {
+
+    opacity: .88;
+
+    transform:
+        translateY(-2px);
+
 }
 
 
 /* =========================================================
    CENTER CONTROLS
-   ========================================================= */
+========================================================= */
 
 .luxury-overlay-header__controls {
+
+    grid-column: 2;
+
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
-    gap: 8px;
+    gap: 10px;
 
-    order: 2;
 }
 
-.luxury-overlay-header__control {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 8px;
-
-    min-height: 42px;
-
-    padding: 8px 13px;
-
-    border: 0;
-    outline: 0;
-
-    background: transparent;
-
-    color: #fff;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition:
-        opacity 0.3s ease,
-        background 0.3s ease,
-        color 0.3s ease;
-}
-
-.luxury-overlay-header__control:hover {
-    color: var(--luxury-primary);
-
-    opacity: 1;
-
-    background:
-        rgba(230, 41, 115, 0.12);
-
-    border-radius: 999px;
-}
-
-.luxury-overlay-header__control i {
-    font-size: 18px;
-}
-
-
-/* =========================================================
-   LOCALIZATION
-   ========================================================= */
 
 .luxury-overlay-header__localization {
+
     display: flex;
 
     align-items: center;
 
+    justify-content: center;
+
     color: #fff;
+
 }
+
 
 .luxury-overlay-header__localization
 salla-localization-modal {
+
     color: #fff;
+
 }
 
 
 /* =========================================================
    SEARCH
-   ========================================================= */
+========================================================= */
 
 .luxury-overlay-header__search {
-    width: 150px;
+
+    width: 180px;
 
     display: flex;
+
     align-items: center;
+
 }
+
 
 .luxury-overlay-header__search
 .s-search-input {
+
     width: 100% !important;
 
     min-height: 40px;
@@ -328,82 +353,103 @@ salla-localization-modal {
     color: #fff !important;
 
     background:
-        rgba(255, 255, 255, 0.08) !important;
+        rgba(255,255,255,.08) !important;
 
     border:
-        1px solid rgba(255, 255, 255, 0.25) !important;
+        1px solid rgba(255,255,255,.24) !important;
 
     border-radius: 999px !important;
 
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
 
     transition:
-        background 0.3s ease,
-        border-color 0.3s ease;
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+
 }
+
 
 .luxury-overlay-header__search
 .s-search-input::placeholder {
+
     color:
-        rgba(255, 255, 255, 0.75) !important;
+        rgba(255,255,255,.75) !important;
+
 }
+
 
 .luxury-overlay-header__search
 .s-search-input:focus {
+
     background:
-        rgba(255, 255, 255, 0.15) !important;
+        rgba(255,255,255,.14) !important;
 
     border-color:
-        rgba(230, 41, 115, 0.75) !important;
+        rgba(230,41,115,.75) !important;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(230,41,115,.10);
+
 }
 
 
 /* =========================================================
    USER ACTIONS
-   ========================================================= */
+========================================================= */
 
 .luxury-overlay-header__actions {
-    justify-self: start;
 
-    order: 1;
+    grid-column: 1;
+
+    justify-self: start;
 
     display: flex;
 
     align-items: center;
+
     justify-content: flex-start;
 
-    gap: 8px;
+    gap: 6px;
 
     color: #fff;
+
 }
 
 
 /* =========================================================
-   ACTION WRAPPER
-   يجعل كل عنصر بنفس الحجم
-   ========================================================= */
+   ACTION
+========================================================= */
 
 .luxury-overlay-header__action {
+
     position: relative;
 
     width: 42px;
     height: 42px;
 
-    flex: 0 0 42px;
+    flex:
+        0 0 42px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
+
 }
 
 
 /* =========================================================
    USER MENU
-   ========================================================= */
+========================================================= */
 
 .luxury-user-menu {
+
     width: 42px !important;
     height: 42px !important;
 
@@ -420,49 +466,58 @@ salla-localization-modal {
     --color-primary: #fff;
 
     overflow: visible !important;
+
 }
+
 
 .luxury-user-menu * {
+
     color: #fff !important;
+
 }
 
+
 .luxury-user-menu button {
+
     width: 42px !important;
     height: 42px !important;
 
     min-width: 42px !important;
+
+    padding: 0 !important;
 
     display: flex !important;
 
     align-items: center !important;
     justify-content: center !important;
 
-    padding: 0 !important;
-
     background: transparent !important;
 
     border: 0 !important;
+
 }
 
 
 /* =========================================================
-   GENERIC HEADER ICON
-   ========================================================= */
+   HEADER ICON
+========================================================= */
 
 .luxury-overlay-header__icon {
+
     position: relative;
 
     width: 42px;
     height: 42px;
 
-    flex: 0 0 42px;
+    flex:
+        0 0 42px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    color: #fff;
+    color: #fff !important;
 
     text-decoration: none;
 
@@ -471,49 +526,48 @@ salla-localization-modal {
     background: transparent;
 
     transition:
-        background 0.3s ease,
-        color 0.3s ease,
-        transform 0.3s ease;
+        background .3s ease,
+        transform .3s ease;
+
 }
+
 
 .luxury-overlay-header__icon:hover {
-    color: #fff;
+
+    color: #fff !important;
 
     background:
-        rgba(230, 41, 115, 0.20);
+        rgba(230,41,115,.20);
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
+
 }
 
+
 .luxury-overlay-header__icon i {
+
+    width: 20px;
+    height: 20px;
+
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    width: 20px;
-    height: 20px;
-
     font-size: 20px;
 
     line-height: 1;
-}
 
-
-/* =========================================================
-   CART WRAPPER
-   ========================================================= */
-
-.luxury-overlay-header__cart-wrapper {
-    overflow: visible;
 }
 
 
 /* =========================================================
    CART
-   ========================================================= */
+========================================================= */
 
 .luxury-overlay-cart {
+
     position: relative;
 
     width: 42px !important;
@@ -524,33 +578,42 @@ salla-localization-modal {
 
     max-width: 42px !important;
 
+    padding: 0 !important;
+
     display: flex !important;
 
     align-items: center !important;
     justify-content: center !important;
-
-    padding: 0 !important;
 
     color: #fff !important;
 
     overflow: visible !important;
+
 }
+
 
 .luxury-overlay-cart * {
+
     color: #fff !important;
+
 }
+
 
 .luxury-overlay-cart .s-cart-summary-content {
+
+    width: 42px !important;
+    height: 42px !important;
+
     display: flex !important;
 
     align-items: center !important;
     justify-content: center !important;
 
-    width: 42px !important;
-    height: 42px !important;
 }
+
 
 .luxury-overlay-cart .s-cart-summary-icon {
+
     width: 42px !important;
     height: 42px !important;
 
@@ -558,19 +621,26 @@ salla-localization-modal {
 
     align-items: center !important;
     justify-content: center !important;
+
 }
+
 
 .luxury-overlay-cart .s-cart-summary-total {
+
     display: none !important;
+
 }
 
+
 .luxury-overlay-cart .s-cart-summary-count {
+
     position: absolute !important;
 
     top: -3px !important;
     right: -3px !important;
 
     min-width: 18px !important;
+
     height: 18px !important;
 
     padding: 0 4px !important;
@@ -583,188 +653,440 @@ salla-localization-modal {
     border-radius: 999px !important;
 
     background:
-        var(--luxury-primary) !important;
+        #E62973 !important;
 
     color: #fff !important;
 
     border:
-        2px solid rgba(0, 0, 0, 0.35) !important;
+        2px solid rgba(0,0,0,.40) !important;
 
     box-shadow:
         0 5px 15px
-        rgba(230, 41, 115, 0.50) !important;
+        rgba(230,41,115,.50) !important;
 
     font-size: 10px !important;
+
     font-weight: 800 !important;
+
 }
 
-.luxury-overlay-cart .sicon-shopping-bag {
-    display: flex !important;
 
-    align-items: center;
-    justify-content: center;
+.luxury-overlay-cart .sicon-shopping-bag {
 
     width: 20px;
     height: 20px;
 
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
     font-size: 20px;
 
     line-height: 1;
+
 }
 
 
 /* =========================================================
-   MAIN NAVIGATION
-   ========================================================= */
+   CATEGORY NAVIGATION
+   ALWAYS VISIBLE
+========================================================= */
 
 .luxury-overlay-navigation {
+
     position: relative;
 
     width: 100%;
-    min-height: 55px;
+
+    height: 52px;
+
+    min-height: 52px;
+
+    padding:
+        0 20px;
 
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    padding: 8px 30px;
-
-    background: transparent;
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.22),
+            rgba(0,0,0,.10)
+        );
 
     border-top:
-        1px solid rgba(255, 255, 255, 0.10);
+        1px solid rgba(255,255,255,.10);
 
     border-bottom:
-        1px solid rgba(255, 255, 255, 0.10);
+        1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
+
+    overflow: hidden;
+
 }
 
+
+.luxury-overlay-navigation__inner {
+
+    width: 100%;
+
+    max-width: 1400px;
+
+    height: 100%;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+/* =========================================================
+   CUSTOM MAIN MENU
+========================================================= */
+
 .luxury-overlay-navigation custom-main-menu {
+
     display: block;
 
     width: 100%;
 
-    min-height: auto;
+    height: 100%;
 
     color: #fff;
+
 }
+
+
+/* =========================================================
+   MAIN MENU
+========================================================= */
 
 .luxury-overlay-navigation
 .main-menu {
+
+    width: 100%;
+
+    min-height: 52px;
+
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    gap: 8px;
+    gap: 4px;
 
-    background: transparent !important;
+    background:
+        transparent !important;
+
+    list-style: none;
+
 }
+
+
+/* =========================================================
+   MENU ITEMS
+========================================================= */
 
 .luxury-overlay-navigation
 .main-menu > li {
-    background: transparent !important;
+
+    position: relative;
+
+    flex:
+        0 0 auto;
+
+    margin: 0;
+    padding: 0;
+
+    background:
+        transparent !important;
+
 }
+
+
+/* =========================================================
+   MENU LINKS
+========================================================= */
 
 .luxury-overlay-navigation
 .main-menu > li > a {
-    color: #fff !important;
 
-    background: transparent !important;
+    position: relative;
 
-    font-size: 14px;
-    font-weight: 600;
+    min-height: 44px;
 
-    padding: 10px 15px;
+    padding:
+        8px 16px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color:
+        rgba(255,255,255,.93) !important;
+
+    background:
+        transparent !important;
+
+    border-radius:
+        999px;
+
+    font-size:
+        14px;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.2;
+
+    text-decoration:
+        none;
+
+    white-space:
+        nowrap;
 
     transition:
-        opacity 0.3s ease,
-        color 0.3s ease;
+        color .3s ease,
+        background .3s ease,
+        transform .3s ease,
+        box-shadow .3s ease;
+
 }
+
+
+/* =========================================================
+   UNDERLINE
+========================================================= */
+
+.luxury-overlay-navigation
+.main-menu > li > a::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: 17px;
+    left: 17px;
+
+    bottom: 3px;
+
+    height: 2px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #E62973,
+            transparent
+        );
+
+    transform:
+        scaleX(0);
+
+    transform-origin:
+        center;
+
+    opacity: 0;
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
+
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
 
 .luxury-overlay-navigation
 .main-menu > li > a:hover {
-    color: var(--luxury-primary) !important;
+
+    color: #fff !important;
+
+    background:
+        rgba(230,41,115,.14) !important;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.12);
+
+}
+
+
+.luxury-overlay-navigation
+.main-menu > li > a:hover::after {
+
+    transform:
+        scaleX(1);
 
     opacity: 1;
+
+}
+
+
+/* =========================================================
+   ACTIVE
+========================================================= */
+
+.luxury-overlay-navigation
+.main-menu > li.active > a,
+.luxury-overlay-navigation
+.main-menu > li.is-active > a {
+
+    color: #fff !important;
+
+    background:
+        rgba(230,41,115,.18) !important;
+
+    box-shadow:
+        inset 0 0 0 1px
+        rgba(230,41,115,.20);
+
+}
+
+
+.luxury-overlay-navigation
+.main-menu > li.active > a::after,
+.luxury-overlay-navigation
+.main-menu > li.is-active > a::after {
+
+    transform:
+        scaleX(1);
+
+    opacity: 1;
+
 }
 
 
 /* =========================================================
    HERO CONTENT
-   ========================================================= */
+========================================================= */
 
 .luxury-overlay-hero__content {
+
     position: relative;
 
     z-index: 10;
 
     width: 100%;
+
     max-width: 1100px;
 
     min-height: 100vh;
+    min-height: 100svh;
 
     margin: 0 auto;
 
     padding:
-        180px
-        30px
-        100px;
+        145px 30px 85px;
+
+    box-sizing: border-box;
 
     display: flex;
 
     flex-direction: column;
 
     justify-content: center;
+
 }
+
 
 .luxury-overlay-hero__content.is-center {
+
     align-items: center;
+
     text-align: center;
+
 }
+
 
 .luxury-overlay-hero__content.is-right {
+
     align-items: flex-end;
+
     text-align: right;
+
 }
 
+
 .luxury-overlay-hero__content.is-left {
+
     align-items: flex-start;
+
     text-align: left;
+
 }
 
 
 /* =========================================================
    TITLE
-   ========================================================= */
+========================================================= */
 
 .luxury-overlay-hero__title {
+
     max-width: 1000px;
 
     margin: 0;
 
     color:
-        var(--luxury-title-color, #fff);
+        var(--luxury-title-color,#fff);
 
     font-size:
-        clamp(42px, 6vw, 82px);
+        clamp(42px,6vw,82px);
 
-    line-height: 1.12;
+    line-height:
+        1.12;
 
-    font-weight: 900;
+    font-weight:
+        900;
 
-    letter-spacing: -2px;
+    letter-spacing:
+        -2px;
 
-    text-wrap: balance;
+    text-wrap:
+        balance;
 
     text-shadow:
-        0 8px 35px rgba(0, 0, 0, 0.35);
+        0 8px 35px
+        rgba(0,0,0,.40);
 
     animation:
-        luxuryHeroFadeUp 0.9s ease both;
+        luxuryHeroFadeUp
+        .9s
+        ease
+        both;
+
 }
 
+
 .luxury-overlay-hero__highlight {
+
     display: block;
 
     margin-top: 8px;
@@ -776,18 +1098,22 @@ salla-localization-modal {
         );
 
     text-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.35);
+        0 8px 30px
+        rgba(0,0,0,.35);
+
 }
 
 
 /* =========================================================
    DESCRIPTION
-   ========================================================= */
+========================================================= */
 
 .luxury-overlay-hero__description {
+
     max-width: 720px;
 
-    margin: 22px 0 0;
+    margin:
+        22px 0 0;
 
     color:
         var(
@@ -795,25 +1121,35 @@ salla-localization-modal {
             #fff
         );
 
-    font-size: 18px;
+    font-size:
+        18px;
 
-    line-height: 1.9;
+    line-height:
+        1.9;
 
-    font-weight: 400;
+    font-weight:
+        400;
 
     text-shadow:
-        0 4px 20px rgba(0, 0, 0, 0.35);
+        0 4px 20px
+        rgba(0,0,0,.35);
 
     animation:
-        luxuryHeroFadeUp 1s 0.1s ease both;
+        luxuryHeroFadeUp
+        1s
+        .1s
+        ease
+        both;
+
 }
 
 
 /* =========================================================
    RATING
-   ========================================================= */
+========================================================= */
 
 .luxury-overlay-hero__rating {
+
     display: flex;
 
     align-items: center;
@@ -825,31 +1161,46 @@ salla-localization-modal {
     color: #fff;
 
     animation:
-        luxuryHeroFadeUp 1s 0.15s ease both;
+        luxuryHeroFadeUp
+        1s
+        .15s
+        ease
+        both;
+
 }
+
 
 .luxury-overlay-hero__rating span {
-    color: #FFD54F;
-
-    font-size: 21px;
-
-    letter-spacing: 2px;
-}
-
-.luxury-overlay-hero__rating small {
-    font-size: 14px;
 
     color:
-        rgba(255, 255, 255, 0.9);
+        #FFD54F;
+
+    font-size:
+        21px;
+
+    letter-spacing:
+        2px;
+
+}
+
+
+.luxury-overlay-hero__rating small {
+
+    color:
+        rgba(255,255,255,.90);
+
+    font-size:
+        14px;
+
 }
 
 
 /* =========================================================
    BUTTONS
-   الهوية الوردية
-   ========================================================= */
+========================================================= */
 
 .luxury-overlay-hero__buttons {
+
     display: flex;
 
     align-items: center;
@@ -862,148 +1213,234 @@ salla-localization-modal {
     margin-top: 32px;
 
     animation:
-        luxuryHeroFadeUp 1s 0.2s ease both;
+        luxuryHeroFadeUp
+        1s
+        .2s
+        ease
+        both;
+
 }
 
+
 .luxury-overlay-hero__button {
+
+    position: relative;
+
     min-width: 180px;
+
     min-height: 52px;
 
-    padding: 14px 28px;
+    padding:
+        14px 28px;
 
     display: inline-flex;
 
     align-items: center;
     justify-content: center;
 
-    border-radius: 999px;
+    border-radius:
+        999px;
 
-    text-decoration: none;
+    text-decoration:
+        none;
 
-    font-size: 14px;
-    font-weight: 800;
+    font-size:
+        14px;
+
+    font-weight:
+        800;
+
+    overflow:
+        hidden;
 
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease,
-        color 0.3s ease,
-        border-color 0.3s ease;
+        transform .3s ease,
+        box-shadow .3s ease,
+        background .3s ease,
+        color .3s ease;
+
+}
+
+
+.luxury-overlay-hero__button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    left: -120%;
+
+    width: 70%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.35),
+            transparent
+        );
+
+    transform:
+        skewX(-20deg);
+
+    transition:
+        left .7s ease;
+
+}
+
+
+.luxury-overlay-hero__button:hover::before {
+
+    left: 150%;
+
+}
+
+
+.luxury-overlay-hero__button span {
+
+    position: relative;
+
+    z-index: 2;
+
 }
 
 
 /* =========================================================
-   PRIMARY BUTTON
-   ========================================================= */
+   PRIMARY
+========================================================= */
 
 .luxury-overlay-hero__button--primary {
+
     background:
         linear-gradient(
             135deg,
             #E62973,
             #EC4899
-        ) !important;
+        );
 
-    color: #fff !important;
+    color:
+        #fff !important;
 
     border:
-        1px solid #E62973 !important;
+        1px solid #E62973;
 
     box-shadow:
         0 12px 35px
-        rgba(230, 41, 115, 0.32);
+        rgba(230,41,115,.32);
+
 }
 
+
 .luxury-overlay-hero__button--primary:hover {
-    background:
-        linear-gradient(
-            135deg,
-            #C91F62,
-            #DB2777
-        ) !important;
 
-    color: #fff !important;
+    color:
+        #fff !important;
 
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 
     box-shadow:
         0 20px 45px
-        rgba(230, 41, 115, 0.45);
+        rgba(230,41,115,.45);
+
 }
 
 
 /* =========================================================
-   SECONDARY BUTTON
-   ========================================================= */
+   SECONDARY
+========================================================= */
 
 .luxury-overlay-hero__button--secondary {
-    background:
-        rgba(230, 41, 115, 0.14) !important;
 
-    color: #fff !important;
+    background:
+        rgba(255,255,255,.10);
+
+    color:
+        #fff !important;
 
     border:
         1px solid
-        rgba(230, 41, 115, 0.65) !important;
+        rgba(230,41,115,.65);
 
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
 
     box-shadow:
         0 12px 35px
-        rgba(0, 0, 0, 0.18);
+        rgba(0,0,0,.18);
+
 }
 
-.luxury-overlay-hero__button--secondary:hover {
-    background:
-        #E62973 !important;
 
-    color: #fff !important;
+.luxury-overlay-hero__button--secondary:hover {
+
+    background:
+        #E62973;
+
+    color:
+        #fff !important;
 
     border-color:
-        #E62973 !important;
+        #E62973;
 
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 
     box-shadow:
         0 20px 45px
-        rgba(230, 41, 115, 0.35);
+        rgba(230,41,115,.35);
+
 }
 
 
 /* =========================================================
-   SCROLL
-   ========================================================= */
+   SCROLL INDICATOR
+========================================================= */
 
 .luxury-overlay-hero__scroll {
+
     position: absolute;
 
     z-index: 12;
 
-    bottom: 28px;
+    bottom: 25px;
 
     left: 50%;
 
     transform:
         translateX(-50%);
+
 }
 
+
 .luxury-overlay-hero__scroll span {
+
     position: relative;
 
     display: block;
 
     width: 26px;
+
     height: 44px;
 
     border:
         1.5px solid
-        rgba(255, 255, 255, 0.75);
+        rgba(255,255,255,.75);
 
-    border-radius: 999px;
+    border-radius:
+        999px;
+
 }
 
+
 .luxury-overlay-hero__scroll span::before {
+
     content: "";
 
     position: absolute;
@@ -1024,172 +1461,141 @@ salla-localization-modal {
         translateX(-50%);
 
     animation:
-        luxuryScroll 1.8s ease-in-out infinite;
-}
-
-
-/* =========================================================
-   MOBILE MENU
-   ========================================================= */
-
-.luxury-overlay-header__mobile-menu {
-    display: none;
-
-    position: absolute;
-
-    top: 100%;
-
-    right: 15px;
-    left: 15px;
-
-    padding: 15px;
-
-    background:
-        rgba(10, 10, 10, 0.90);
-
-    border:
-        1px solid
-        rgba(230, 41, 115, 0.30);
-
-    border-radius: 18px;
-
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-}
-
-.luxury-overlay-header__mobile-menu.is-open {
-    display: block;
-}
-
-.luxury-overlay-header__mobile-menu
-custom-main-menu {
-    display: block;
-}
-
-.luxury-overlay-header__mobile-menu
-.main-menu {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: stretch;
-
-    background: transparent !important;
-}
-
-.luxury-overlay-header__mobile-menu
-.main-menu > li > a {
-    display: block;
-
-    color: #fff !important;
-
-    padding: 13px 15px;
-
-    background: transparent !important;
-
-    border-bottom:
-        1px solid
-        rgba(255, 255, 255, 0.08);
-}
-
-.luxury-overlay-header__mobile-menu
-.main-menu > li > a:hover {
-    color:
-        var(--luxury-primary) !important;
-}
-
-
-/* =========================================================
-   ANIMATIONS
-   ========================================================= */
-
-@keyframes luxuryHeroZoom {
-
-    from {
-        transform: scale(1);
-    }
-
-    to {
-        transform: scale(1.07);
-    }
-
-}
-
-@keyframes luxuryHeroFadeUp {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(35px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-
-}
-
-@keyframes luxuryScroll {
-
-    0% {
-        opacity: 1;
-
-        transform:
-            translate(-50%, 0);
-    }
-
-    70% {
-        opacity: 0;
-
-        transform:
-            translate(-50%, 18px);
-    }
-
-    100% {
-        opacity: 0;
-
-        transform:
-            translate(-50%, 18px);
-    }
+        luxuryScroll
+        1.8s
+        ease-in-out
+        infinite;
 
 }
 
 
 /* =========================================================
    TABLET
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 991px) {
 
     .luxury-overlay-header__top {
-        grid-template-columns:
-            auto
-            1fr
-            auto;
+
+        min-height: 72px;
 
         padding:
-            12px 20px;
+            10px 20px;
+
+        gap: 15px;
+
     }
+
 
     .luxury-overlay-header__search {
-        width: 120px;
+
+        width: 130px;
+
     }
 
-    .luxury-overlay-hero__content {
-        padding-top: 180px;
-    }
 
     .luxury-overlay-navigation {
-        padding-left: 15px;
-        padding-right: 15px;
+
+        height: 48px;
+
+        min-height: 48px;
+
+        padding:
+            0 10px;
+
+        justify-content:
+            flex-start;
+
+        overflow-x:
+            auto;
+
+        overflow-y:
+            hidden;
+
+        scrollbar-width:
+            none;
+
+        -ms-overflow-style:
+            none;
+
     }
 
+
+    .luxury-overlay-navigation::-webkit-scrollbar {
+
+        display: none;
+
+    }
+
+
+    .luxury-overlay-navigation__inner {
+
+        width:
+            max-content;
+
+        max-width:
+            none;
+
+        margin:
+            0;
+
+        flex:
+            0 0 auto;
+
+    }
+
+
+    .luxury-overlay-navigation custom-main-menu {
+
+        width:
+            max-content;
+
+    }
+
+
+    .luxury-overlay-navigation
+    .main-menu {
+
+        width:
+            max-content;
+
+        min-height:
+            48px;
+
+        justify-content:
+            flex-start;
+
+    }
+
+
+    .luxury-overlay-navigation
+    .main-menu > li > a {
+
+        min-height:
+            40px;
+
+        padding:
+            7px 13px;
+
+        font-size:
+            13px;
+
+    }
+
+
+    .luxury-overlay-hero__content {
+
+        padding:
+            130px 25px 80px;
+
+    }
+
+
     .luxury-overlay-hero__title {
-        font-size: 56px;
+
+        font-size:
+            56px;
+
     }
 
 }
@@ -1197,198 +1603,825 @@ custom-main-menu {
 
 /* =========================================================
    MOBILE
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 768px) {
 
     .luxury-overlay-hero {
-        min-height: 100svh !important;
+
+        min-height:
+            100svh !important;
+
     }
 
 
-    /* Header */
+    /* ================================================
+       HEADER
+    ================================================ */
 
     .luxury-overlay-header__top {
-        min-height: 72px;
+
+        min-height:
+            64px;
 
         padding:
-            10px 15px;
+            8px 12px;
 
-        display: flex;
+        display:
+            grid;
 
-        align-items: center;
-        justify-content: space-between;
+        grid-template-columns:
+            auto
+            1fr
+            auto;
 
-        gap: 8px;
+        gap:
+            5px;
+
     }
 
 
-    /* Logo */
-
-    .luxury-overlay-header__logo {
-        order: 2;
-
-        margin:
-            0 auto;
-
-        justify-content: center;
-    }
-
-    .luxury-overlay-header__logo img {
-        max-width: 120px;
-        max-height: 45px;
-    }
-
-
-    /* Controls */
-
-    .luxury-overlay-header__controls {
-        order: 1;
-
-        justify-content:
-            flex-start;
-    }
-
-    .luxury-overlay-header__control span {
-        display: none;
-    }
-
-    .luxury-overlay-header__search {
-        display: none;
-    }
-
-
-    /* Navigation */
-
-    .luxury-overlay-navigation {
-        display: none;
-    }
-
-
-    /* Actions */
+    /* ================================================
+       ACTIONS
+    ================================================ */
 
     .luxury-overlay-header__actions {
-        order: 3;
 
-        justify-content:
-            flex-end;
+        grid-column:
+            1;
 
-        gap: 5px;
+        gap:
+            2px;
+
     }
+
 
     .luxury-overlay-header__action {
-        width: 38px;
-        height: 38px;
 
-        flex-basis: 38px;
+        width:
+            36px;
+
+        height:
+            36px;
+
+        flex-basis:
+            36px;
+
     }
+
 
     .luxury-user-menu {
-        width: 38px !important;
-        height: 38px !important;
 
-        min-width: 38px !important;
-        max-width: 38px !important;
+        width:
+            36px !important;
+
+        height:
+            36px !important;
+
+        min-width:
+            36px !important;
+
+        max-width:
+            36px !important;
+
     }
+
 
     .luxury-user-menu button {
-        width: 38px !important;
-        height: 38px !important;
 
-        min-width: 38px !important;
+        width:
+            36px !important;
+
+        height:
+            36px !important;
+
+        min-width:
+            36px !important;
+
     }
+
 
     .luxury-overlay-header__icon {
-        width: 38px;
-        height: 38px;
 
-        flex-basis: 38px;
+        width:
+            36px;
+
+        height:
+            36px;
+
+        flex-basis:
+            36px;
+
     }
+
+
+    .luxury-overlay-header__icon i {
+
+        width:
+            18px;
+
+        height:
+            18px;
+
+        font-size:
+            18px;
+
+    }
+
 
     .luxury-overlay-cart {
-        width: 38px !important;
-        height: 38px !important;
 
-        min-width: 38px !important;
+        width:
+            36px !important;
+
+        height:
+            36px !important;
+
+        min-width:
+            36px !important;
+
     }
+
 
     .luxury-overlay-cart
     .s-cart-summary-content,
     .luxury-overlay-cart
     .s-cart-summary-icon {
-        width: 38px !important;
-        height: 38px !important;
+
+        width:
+            36px !important;
+
+        height:
+            36px !important;
+
     }
 
 
-    /* Hero */
+    /* ================================================
+       LOGO
+    ================================================ */
 
-    .luxury-overlay-hero__content {
-        min-height: 100svh;
+    .luxury-overlay-header__logo {
+
+        grid-column:
+            2;
+
+        justify-self:
+            center;
+
+    }
+
+
+    .luxury-overlay-header__logo img {
+
+        max-width:
+            105px;
+
+        max-height:
+            40px;
+
+    }
+
+
+    /* ================================================
+       CONTROLS
+    ================================================ */
+
+    .luxury-overlay-header__controls {
+
+        grid-column:
+            3;
+
+        justify-content:
+            flex-end;
+
+    }
+
+
+    .luxury-overlay-header__localization {
+
+        display:
+            none;
+
+    }
+
+
+    .luxury-overlay-header__search {
+
+        width:
+            auto;
+
+    }
+
+
+    .luxury-overlay-header__search
+    salla-search {
+
+        display:
+            none;
+
+    }
+
+
+    /* ================================================
+       NAVIGATION
+       لا يتم إخفاؤها
+    ================================================ */
+
+    .luxury-overlay-navigation {
+
+        display:
+            flex !important;
+
+        height:
+            46px;
+
+        min-height:
+            46px;
 
         padding:
-            130px
-            20px
-            80px;
+            0 8px;
+
+        justify-content:
+            flex-start;
+
+        background:
+            rgba(0,0,0,.30);
+
+        border-top:
+            1px solid
+            rgba(255,255,255,.08);
+
+        border-bottom:
+            1px solid
+            rgba(255,255,255,.12);
+
+        backdrop-filter:
+            blur(18px);
+
+        -webkit-backdrop-filter:
+            blur(18px);
+
+        overflow-x:
+            auto;
+
+        overflow-y:
+            hidden;
+
+        scrollbar-width:
+            none;
+
+        -ms-overflow-style:
+            none;
+
     }
+
+
+    .luxury-overlay-navigation::-webkit-scrollbar {
+
+        display:
+            none;
+
+    }
+
+
+    .luxury-overlay-navigation__inner {
+
+        width:
+            max-content;
+
+        height:
+            100%;
+
+        margin:
+            0;
+
+        flex:
+            0 0 auto;
+
+        justify-content:
+            flex-start;
+
+    }
+
+
+    .luxury-overlay-navigation custom-main-menu {
+
+        width:
+            max-content;
+
+        height:
+            100%;
+
+    }
+
+
+    .luxury-overlay-navigation
+    .main-menu {
+
+        width:
+            max-content;
+
+        min-height:
+            46px;
+
+        height:
+            46px;
+
+        justify-content:
+            flex-start;
+
+        gap:
+            2px;
+
+    }
+
+
+    .luxury-overlay-navigation
+    .main-menu > li {
+
+        flex:
+            0 0 auto;
+
+    }
+
+
+    .luxury-overlay-navigation
+    .main-menu > li > a {
+
+        min-height:
+            38px;
+
+        padding:
+            6px 12px;
+
+        border-radius:
+            999px;
+
+        font-size:
+            12px;
+
+        font-weight:
+            700;
+
+    }
+
+
+    .luxury-overlay-navigation
+    .main-menu > li > a::after {
+
+        right:
+            12px;
+
+        left:
+            12px;
+
+        bottom:
+            2px;
+
+    }
+
+
+    .luxury-overlay-navigation
+    .main-menu > li > a:hover {
+
+        transform:
+            none;
+
+    }
+
+
+    /* ================================================
+       HERO CONTENT
+       تقليل الفراغ العلوي
+    ================================================ */
+
+    .luxury-overlay-hero__content {
+
+        min-height:
+            100svh;
+
+        padding:
+            125px 18px 70px;
+
+        justify-content:
+            center;
+
+    }
+
 
     .luxury-overlay-hero__title {
-        font-size: 40px;
 
-        line-height: 1.25;
+        max-width:
+            100%;
 
-        letter-spacing: -1px;
+        font-size:
+            38px;
+
+        line-height:
+            1.22;
+
+        letter-spacing:
+            -.8px;
+
     }
+
+
+    .luxury-overlay-hero__highlight {
+
+        margin-top:
+            5px;
+
+    }
+
 
     .luxury-overlay-hero__description {
-        margin-top: 16px;
 
-        font-size: 15px;
+        margin-top:
+            15px;
 
-        line-height: 1.9;
+        font-size:
+            14px;
+
+        line-height:
+            1.9;
+
     }
 
 
-    /* Rating */
+    /* ================================================
+       RATING
+    ================================================ */
 
     .luxury-overlay-hero__rating {
-        flex-direction: column;
 
-        gap: 5px;
+        flex-direction:
+            column;
+
+        gap:
+            4px;
+
+        margin-top:
+            18px;
+
     }
 
 
-    /* Buttons */
+    .luxury-overlay-hero__rating span {
+
+        font-size:
+            18px;
+
+    }
+
+
+    .luxury-overlay-hero__rating small {
+
+        font-size:
+            12px;
+
+    }
+
+
+    /* ================================================
+       BUTTONS
+    ================================================ */
 
     .luxury-overlay-hero__buttons {
-        width: 100%;
 
-        flex-direction: column;
+        width:
+            100%;
 
-        margin-top: 25px;
+        flex-direction:
+            column;
+
+        gap:
+            9px;
+
+        margin-top:
+            22px;
+
     }
+
 
     .luxury-overlay-hero__button {
-        width: 100%;
 
-        max-width: 300px;
+        width:
+            100%;
+
+        max-width:
+            290px;
+
+        min-height:
+            48px;
+
+        padding:
+            12px 22px;
+
     }
 
 
-    /* Scroll */
+    /* ================================================
+       SCROLL
+    ================================================ */
 
     .luxury-overlay-hero__scroll {
-        display: none;
+
+        display:
+            none;
+
     }
 
 
-    /* Glow */
+    /* ================================================
+       GLOW
+    ================================================ */
 
     .luxury-overlay-hero__glow {
-        width: 300px;
-        height: 300px;
 
-        filter: blur(100px);
+        width:
+            300px;
+
+        height:
+            300px;
+
+        filter:
+            blur(100px);
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .luxury-overlay-header__top {
+
+        min-height:
+            60px;
+
+        padding:
+            7px 9px;
+
+    }
+
+
+    .luxury-overlay-header__logo img {
+
+        max-width:
+            90px;
+
+        max-height:
+            35px;
+
+    }
+
+
+    .luxury-overlay-header__action,
+    .luxury-overlay-header__icon {
+
+        width:
+            33px;
+
+        height:
+            33px;
+
+        flex-basis:
+            33px;
+
+    }
+
+
+    .luxury-user-menu {
+
+        width:
+            33px !important;
+
+        height:
+            33px !important;
+
+        min-width:
+            33px !important;
+
+        max-width:
+            33px !important;
+
+    }
+
+
+    .luxury-user-menu button {
+
+        width:
+            33px !important;
+
+        height:
+            33px !important;
+
+        min-width:
+            33px !important;
+
+    }
+
+
+    .luxury-overlay-cart {
+
+        width:
+            33px !important;
+
+        height:
+            33px !important;
+
+        min-width:
+            33px !important;
+
+    }
+
+
+    .luxury-overlay-cart
+    .s-cart-summary-content,
+    .luxury-overlay-cart
+    .s-cart-summary-icon {
+
+        width:
+            33px !important;
+
+        height:
+            33px !important;
+
+    }
+
+
+    .luxury-overlay-navigation {
+
+        height:
+            44px;
+
+        min-height:
+            44px;
+
+    }
+
+
+    .luxury-overlay-navigation
+    .main-menu {
+
+        min-height:
+            44px;
+
+        height:
+            44px;
+
+    }
+
+
+    .luxury-overlay-navigation
+    .main-menu > li > a {
+
+        min-height:
+            36px;
+
+        padding:
+            6px 10px;
+
+        font-size:
+            11px;
+
+    }
+
+
+    .luxury-overlay-hero__content {
+
+        padding:
+            115px 15px 60px;
+
+    }
+
+
+    .luxury-overlay-hero__title {
+
+        font-size:
+            32px;
+
+    }
+
+
+    .luxury-overlay-hero__description {
+
+        font-size:
+            13px;
+
+    }
+
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes luxuryHeroZoom {
+
+    from {
+
+        transform:
+            scale(1.01);
+
+    }
+
+    to {
+
+        transform:
+            scale(1.07);
+
+    }
+
+}
+
+
+@keyframes luxuryHeroFadeUp {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            translateY(35px);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes luxuryGlow {
+
+    from {
+
+        opacity:
+            .10;
+
+        transform:
+            scale(1);
+
+    }
+
+    to {
+
+        opacity:
+            .20;
+
+        transform:
+            scale(1.12);
+
+    }
+
+}
+
+
+@keyframes luxuryScroll {
+
+    0% {
+
+        opacity:
+            1;
+
+        transform:
+            translate(-50%,0);
+
+    }
+
+    70% {
+
+        opacity:
+            0;
+
+        transform:
+            translate(-50%,18px);
+
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translate(-50%,18px);
+
     }
 
 }
@@ -1396,22 +2429,20 @@ custom-main-menu {
 
 /* =========================================================
    REDUCED MOTION
-   ========================================================= */
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-    .luxury-overlay-hero
-    *,
+    .luxury-overlay-hero *,
+    .luxury-overlay-hero *::before,
+    .luxury-overlay-hero *::after {
 
-    .luxury-overlay-hero
-    *::before,
+        animation:
+            none !important;
 
-    .luxury-overlay-hero
-    *::after {
+        transition:
+            none !important;
 
-        animation: none !important;
-
-        transition: none !important;
     }
 
 }
