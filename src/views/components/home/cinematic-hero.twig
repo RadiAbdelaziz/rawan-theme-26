@@ -145,6 +145,7 @@
                     <button
                         type="button"
                         class="luxury-overlay-header__control luxury-menu-toggle"
+                        id="luxury-menu-toggle"
                         aria-label="فتح القائمة"
                         aria-expanded="false"
                         aria-controls="luxury-overlay-mobile-menu"
@@ -266,9 +267,6 @@
 
             {# =====================================================
                DESKTOP CATEGORY NAVIGATION
-               
-               تظهر على الشاشات الكبيرة فقط.
-               لا نحذف custom-main-menu.
                ===================================================== #}
 
             <nav
@@ -283,9 +281,6 @@
 
             {# =====================================================
                MOBILE / TABLET MENU
-               
-               مخفية افتراضياً.
-               تظهر فقط بعد الضغط على زر القائمة.
                ===================================================== #}
 
             <div
@@ -313,6 +308,7 @@
                         <button
                             type="button"
                             class="luxury-overlay-header__mobile-menu-close"
+                            id="luxury-menu-close"
                             aria-label="إغلاق القائمة"
                         >
 
@@ -514,5 +510,309 @@
 
 
     </section>
+
+
+    {# =========================================================
+       LUXURY MENU JAVASCRIPT
+       فتح وإغلاق القائمة على الجوال والتابلت
+       ========================================================= #}
+
+    <script>
+    (function () {
+
+        function initLuxuryOverlayMenu() {
+
+            var button = document.getElementById(
+                'luxury-menu-toggle'
+            );
+
+            var menu = document.getElementById(
+                'luxury-overlay-mobile-menu'
+            );
+
+            var closeButton = document.getElementById(
+                'luxury-menu-close'
+            );
+
+
+            /*
+             * إذا لم توجد العناصر، نخرج
+             */
+            if (!button || !menu) {
+                return;
+            }
+
+
+            /*
+             * منع تسجيل الأحداث أكثر من مرة
+             */
+            if (
+                button.dataset &&
+                button.dataset.luxuryMenuInitialized === 'true'
+            ) {
+                return;
+            }
+
+
+            if (button.dataset) {
+                button.dataset.luxuryMenuInitialized = 'true';
+            }
+
+
+            /*
+             * فتح / إغلاق القائمة
+             */
+            function toggleLuxuryMenu() {
+
+                var isOpen =
+                    menu.classList.contains('is-open');
+
+
+                if (isOpen) {
+
+                    closeLuxuryMenu();
+
+                } else {
+
+                    openLuxuryMenu();
+
+                }
+
+            }
+
+
+            /*
+             * فتح القائمة
+             */
+            function openLuxuryMenu() {
+
+                menu.classList.add('is-open');
+
+                menu.setAttribute(
+                    'aria-hidden',
+                    'false'
+                );
+
+                button.setAttribute(
+                    'aria-expanded',
+                    'true'
+                );
+
+                button.setAttribute(
+                    'aria-label',
+                    'إغلاق القائمة'
+                );
+
+
+                /*
+                 * تغيير الأيقونة
+                 */
+                var icon = button.querySelector('i');
+
+                if (icon) {
+
+                    icon.classList.remove(
+                        'sicon-menu'
+                    );
+
+                    icon.classList.add(
+                        'sicon-cancel'
+                    );
+
+                }
+
+            }
+
+
+            /*
+             * إغلاق القائمة
+             */
+            function closeLuxuryMenu() {
+
+                menu.classList.remove('is-open');
+
+                menu.setAttribute(
+                    'aria-hidden',
+                    'true'
+                );
+
+                button.setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+
+                button.setAttribute(
+                    'aria-label',
+                    'فتح القائمة'
+                );
+
+
+                /*
+                 * إعادة أيقونة القائمة
+                 */
+                var icon = button.querySelector('i');
+
+                if (icon) {
+
+                    icon.classList.remove(
+                        'sicon-cancel'
+                    );
+
+                    icon.classList.add(
+                        'sicon-menu'
+                    );
+
+                }
+
+            }
+
+
+            /*
+             * زر القائمة
+             */
+            button.addEventListener(
+                'click',
+                function (event) {
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                    toggleLuxuryMenu();
+
+                }
+            );
+
+
+            /*
+             * زر الإغلاق
+             */
+            if (closeButton) {
+
+                closeButton.addEventListener(
+                    'click',
+                    function (event) {
+
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        closeLuxuryMenu();
+
+                    }
+                );
+
+            }
+
+
+            /*
+             * الضغط خارج القائمة
+             */
+            document.addEventListener(
+                'click',
+                function (event) {
+
+                    if (
+                        !menu.classList.contains('is-open')
+                    ) {
+                        return;
+                    }
+
+
+                    if (
+                        menu.contains(event.target) ||
+                        button.contains(event.target)
+                    ) {
+                        return;
+                    }
+
+
+                    closeLuxuryMenu();
+
+                }
+            );
+
+
+            /*
+             * الضغط على أحد روابط القائمة
+             */
+            menu.addEventListener(
+                'click',
+                function (event) {
+
+                    var link =
+                        event.target.closest('a');
+
+
+                    if (!link) {
+                        return;
+                    }
+
+
+                    closeLuxuryMenu();
+
+                }
+            );
+
+
+            /*
+             * زر ESC
+             */
+            document.addEventListener(
+                'keydown',
+                function (event) {
+
+                    if (
+                        event.key === 'Escape' &&
+                        menu.classList.contains('is-open')
+                    ) {
+
+                        closeLuxuryMenu();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /*
+         * DOM جاهز
+         */
+        if (
+            document.readyState === 'loading'
+        ) {
+
+            document.addEventListener(
+                'DOMContentLoaded',
+                initLuxuryOverlayMenu
+            );
+
+        } else {
+
+            initLuxuryOverlayMenu();
+
+        }
+
+
+        /*
+         * محاولة إضافية بعد تحميل مكونات Salla
+         */
+        setTimeout(
+            initLuxuryOverlayMenu,
+            300
+        );
+
+        setTimeout(
+            initLuxuryOverlayMenu,
+            1000
+        );
+
+        setTimeout(
+            initLuxuryOverlayMenu,
+            2000
+        );
+
+    })();
+    </script>
 
 {% endif %}
