@@ -1021,35 +1021,6 @@
     }
 }
 
-
-/* =========================================================
-   RESPONSIVE MEDIA QUERIES
-   ========================================================= */
-
-@media (max-width: 991px) {
-    .luxury-overlay-header__top {
-        grid-template-columns: auto 1fr auto;
-        padding: 12px 20px;
-    }
-
-    .luxury-overlay-header__search {
-        width: 120px;
-    }
-
-    .luxury-overlay-hero__content {
-        padding-top: 180px;
-    }
-
-    .luxury-overlay-navigation {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-
-    .luxury-overlay-hero__title {
-        font-size: 56px;
-    }
-}
-
 @media (max-width: 768px) {
     .luxury-overlay-hero {
         min-height: 100svh !important;
@@ -1075,13 +1046,27 @@
         max-height: 45px;
     }
 
+    /* تعديل عناصر التحكم لإظهار النص والأيقونة معاً */
     .luxury-overlay-header__controls {
         order: 1;
         justify-content: flex-start;
+        gap: 4px;
+    }
+
+    .luxury-overlay-header__control {
+        min-height: 36px;
+        padding: 6px 10px;
+        font-size: 12px;
+        white-space: nowrap;
     }
 
     .luxury-overlay-header__control span {
-        display: none;
+        display: inline-block !important; /* إظهار النص فوراً */
+        font-size: 12px;
+    }
+
+    .luxury-overlay-header__control i {
+        font-size: 16px;
     }
 
     .luxury-overlay-header__search {
@@ -1157,14 +1142,5 @@
         width: 300px;
         height: 300px;
         filter: blur(100px);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .luxury-overlay-hero *,
-    .luxury-overlay-hero *::before,
-    .luxury-overlay-hero *::after {
-        animation: none !important;
-        transition: none !important;
     }
 }
