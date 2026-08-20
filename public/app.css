@@ -11785,12 +11785,23 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     height: 160px;
   }
 }
+/* =========================================================
+   LUXURY CRYSTAL CATEGORIES
+   RESPONSIVE GRID
+   5 DESKTOP → 3 TABLET → 2 MOBILE
+========================================================= */
+/* =========================================================
+   GLOBAL BOX SIZING
+========================================================= */
 .crystal-categories-section,
 .crystal-categories-section *,
 .crystal-categories-section *::before,
 .crystal-categories-section *::after {
   box-sizing: border-box;
 }
+/* =========================================================
+   SECTION
+========================================================= */
 .crystal-categories-section {
   position: relative;
   display: block;
@@ -11803,6 +11814,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   isolation: isolate;
   background: radial-gradient(circle at 15% 20%, rgba(230, 41, 115, 0.055), transparent 30%), radial-gradient(circle at 85% 80%, rgba(255, 126, 179, 0.07), transparent 32%), linear-gradient(180deg, #ffffff 0%, #fffafd 55%, #fff5f9 100%);
 }
+/* =========================================================
+   CONTAINER
+========================================================= */
 .crystal-categories-section > .container,
 .crystal-categories-section .container {
   position: relative;
@@ -11812,6 +11826,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   margin-left: auto;
   margin-right: auto;
 }
+/* =========================================================
+   AMBIENT BACKGROUND LEFT
+========================================================= */
 .crystal-categories-section::before {
   content: "";
   position: absolute;
@@ -11826,6 +11843,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   z-index: -1;
   animation: crystalAmbientLeft 8s ease-in-out infinite alternate;
 }
+/* =========================================================
+   AMBIENT BACKGROUND RIGHT
+========================================================= */
 .crystal-categories-section::after {
   content: "";
   position: absolute;
@@ -11840,6 +11860,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   z-index: -1;
   animation: crystalAmbientRight 10s ease-in-out infinite alternate;
 }
+/* =========================================================
+   SECTION HEADER
+========================================================= */
 .crystal-section-header {
   position: relative;
   z-index: 5;
@@ -11850,6 +11873,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   padding: 0 15px;
   text-align: center;
 }
+/* =========================================================
+   CRYSTAL BADGE
+========================================================= */
 .crystal-badge {
   display: inline-flex;
   align-items: center;
@@ -11869,6 +11895,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   letter-spacing: 0.5px;
   animation: crystalBadgeFloat 4s ease-in-out infinite;
 }
+/* =========================================================
+   BADGE GEM
+========================================================= */
 .crystal-badge__gem {
   position: relative;
   display: inline-block;
@@ -11913,6 +11942,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border: 1px solid rgba(255, 255, 255, 0.7);
   opacity: 0.7;
 }
+/* =========================================================
+   TITLE
+========================================================= */
 .crystal-section-title {
   width: 100%;
   max-width: 800px;
@@ -11925,6 +11957,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   text-wrap: balance;
   text-shadow: 0 5px 25px rgba(74, 15, 39, 0.05);
 }
+/* =========================================================
+   SUBTITLE
+========================================================= */
 .crystal-subtitle-wrapper {
   position: relative;
   width: 100%;
@@ -11944,6 +11979,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-weight: 400;
   opacity: 0.9;
 }
+/* =========================================================
+   DIVIDER
+========================================================= */
 .crystal-divider {
   display: flex;
   align-items: center;
@@ -11962,6 +12000,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .crystal-divider__line--right {
   background: linear-gradient(90deg, rgba(230, 41, 115, 0.42), transparent);
 }
+/* =========================================================
+   DIVIDER GEM
+========================================================= */
 .crystal-divider__gem {
   position: relative;
   width: 15px;
@@ -11981,51 +12022,55 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   left: 3px;
   border: 1px solid rgba(255, 255, 255, 0.75);
 }
+/* =========================================================
+   CATEGORIES LIST
+   MAIN RESPONSIVE GRID
+========================================================= */
 .crystal-categories-list {
   position: relative;
   z-index: 5;
-  display: flex;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-gap: 22px;
+  gap: 22px;
   width: 100%;
-  max-width: 100%;
+  max-width: 1180px;
   min-width: 0;
-  gap: 18px;
-  margin: 0;
-  padding: 15px 5px 35px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  scroll-behavior: smooth;
-  scroll-snap-type: x proximity;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain;
+  margin: 0 auto;
+  padding: 15px 10px 35px;
 }
-.crystal-categories-list::-webkit-scrollbar {
-  display: none;
-}
+/* =========================================================
+   CATEGORY CARD
+========================================================= */
 .crystal-category-card {
+  --card-radius: 28px;
   position: relative;
-  flex: 0 0 145px;
-  width: 145px;
-  min-width: 145px;
-  max-width: 145px;
-  height: 205px;
-  scroll-snap-align: center;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  height: 220px;
   -webkit-text-decoration: none;
   text-decoration: none;
   color: #4A0F27;
   border-radius: 28px;
+  border-radius: var(--card-radius);
   opacity: 0;
   transform: translateY(35px) scale(0.94);
   transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.45s ease, opacity 0.7s ease;
 }
+/* =========================================================
+   CARD REVEAL
+========================================================= */
 .crystal-categories-section.is-visible .crystal-category-card {
   opacity: 1;
   transform: translateY(0) scale(1);
   transition-delay: calc(0 * 90ms);
   transition-delay: calc(var(--card-index, 0) * 90ms);
 }
+/* =========================================================
+   CARD INNER
+========================================================= */
 .crystal-category-card__inner {
   position: relative;
   width: 100%;
@@ -12038,7 +12083,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   align-items: center;
   justify-content: space-between;
   overflow: hidden;
-  border-radius: 28px;
+  border-radius: var(--card-radius);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 245, 249, 0.72));
   border: 1px solid rgba(230, 41, 115, 0.12);
   box-shadow: 0 12px 35px rgba(74, 15, 39, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.95);
@@ -12046,6 +12091,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   -webkit-backdrop-filter: blur(18px);
   transition: box-shadow 0.45s ease, border-color 0.45s ease, background 0.45s ease;
 }
+/* =========================================================
+   GLASS SHINE
+========================================================= */
 .crystal-category-card__inner::before {
   content: "";
   position: absolute;
@@ -12063,6 +12111,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   left: 130%;
   opacity: 1;
 }
+/* =========================================================
+   GLOW
+========================================================= */
 .crystal-category-card__glow {
   position: absolute;
   width: 100px;
@@ -12077,6 +12128,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   pointer-events: none;
   transition: opacity 0.45s ease, transform 0.45s ease;
 }
+/* =========================================================
+   CRYSTAL OBJECT
+========================================================= */
 .crystal-category-card__crystal {
   position: relative;
   width: 112px;
@@ -12089,6 +12143,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transform: rotate(0deg);
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
+/* =========================================================
+   CRYSTAL OUTER
+========================================================= */
 .crystal-category-card__crystal::before {
   content: "";
   position: absolute;
@@ -12102,6 +12159,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border: 1px solid rgba(230, 41, 115, 0.13);
   box-shadow: 0 18px 35px rgba(230, 41, 115, 0.11), inset 8px 8px 18px rgba(255, 255, 255, 0.9), inset -8px -8px 18px rgba(230, 41, 115, 0.06);
 }
+/* =========================================================
+   CRYSTAL INNER
+========================================================= */
 .crystal-category-card__crystal::after {
   content: "";
   position: absolute;
@@ -12115,6 +12175,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border: 1px solid rgba(255, 255, 255, 0.85);
   box-shadow: inset 0 0 20px rgba(230, 41, 115, 0.06);
 }
+/* =========================================================
+   CATEGORY IMAGE
+========================================================= */
 .crystal-category-card__image {
   position: relative;
   z-index: 5;
@@ -12138,6 +12201,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   filter: drop-shadow(0 10px 10px rgba(74, 15, 39, 0.1));
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.45s ease;
 }
+/* =========================================================
+   CRYSTAL FACETS
+========================================================= */
 .crystal-facet {
   position: absolute;
   z-index: 4;
@@ -12170,6 +12236,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transform: rotate(15deg);
   opacity: 0.75;
 }
+/* =========================================================
+   CRYSTAL SHINE
+========================================================= */
 .crystal-shine {
   position: absolute;
   z-index: 8;
@@ -12184,6 +12253,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   pointer-events: none;
   animation: crystalShine 4s ease-in-out infinite;
 }
+/* =========================================================
+   CATEGORY INFO
+========================================================= */
 .crystal-category-card__info {
   position: relative;
   z-index: 10;
@@ -12193,6 +12265,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   padding: 0 3px;
   text-align: center;
 }
+/* =========================================================
+   CATEGORY NAME
+========================================================= */
 .crystal-category-card__name {
   display: block;
   width: 100%;
@@ -12206,6 +12281,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   line-height: 1.5;
   transition: color 0.3s ease;
 }
+/* =========================================================
+   PRODUCT COUNT
+========================================================= */
 .crystal-category-card__count {
   display: block;
   width: 100%;
@@ -12219,6 +12297,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .crystal-category-card__count span {
   color: inherit;
 }
+/* =========================================================
+   BOTTOM ACCENT
+========================================================= */
 .crystal-category-card__accent {
   position: absolute;
   left: 50%;
@@ -12231,6 +12312,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 0.25;
   transition: transform 0.4s ease, opacity 0.4s ease, width 0.4s ease;
 }
+/* =========================================================
+   HOVER CARD
+========================================================= */
 .crystal-category-card:hover {
   transform: translateY(-9px);
 }
@@ -12258,6 +12342,240 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 0.8;
   transform: translateX(-50%) scaleX(1);
 }
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+.crystal-categories-empty {
+  grid-column: 1/-1;
+  width: 100%;
+  padding: 40px 20px;
+  text-align: center;
+  color: #85808A;
+  font-size: 14px;
+}
+/* =========================================================
+   LARGE DESKTOP
+   5 COLUMNS
+========================================================= */
+@media (min-width: 1201px) {
+  .crystal-categories-list {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 22px;
+    max-width: 1180px;
+  }
+  .crystal-category-card {
+    height: 220px;
+  }
+}
+/* =========================================================
+   DESKTOP / TABLET
+   3 COLUMNS
+========================================================= */
+@media (max-width: 1200px) {
+  .crystal-categories-section {
+    padding: 70px 0;
+  }
+  .crystal-categories-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    max-width: 850px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .crystal-category-card {
+    height: 215px;
+  }
+  .crystal-category-card__crystal {
+    width: 105px;
+    height: 105px;
+  }
+  .crystal-category-card__image {
+    width: 76px;
+    height: 76px;
+  }
+}
+/* =========================================================
+   TABLET
+   3 COLUMNS
+========================================================= */
+@media (max-width: 900px) and (min-width: 769px) {
+  .crystal-categories-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    max-width: 760px;
+    padding: 10px 12px 30px;
+  }
+  .crystal-category-card {
+    height: 205px;
+  }
+  .crystal-category-card__inner {
+    padding: 14px 10px;
+  }
+  .crystal-category-card__crystal {
+    width: 98px;
+    height: 98px;
+  }
+  .crystal-category-card__image {
+    width: 72px;
+    height: 72px;
+  }
+  .crystal-category-card__name {
+    font-size: 13px;
+  }
+}
+/* =========================================================
+   MOBILE
+   2 COLUMNS
+========================================================= */
+@media (max-width: 768px) {
+  .crystal-categories-section {
+    padding: 55px 0 45px;
+  }
+  .crystal-section-header {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 35px;
+    padding: 0 12px;
+  }
+  .crystal-badge {
+    padding: 7px 15px;
+    font-size: 12px;
+  }
+  .crystal-section-title {
+    margin-top: 15px;
+    font-size: 27px;
+    letter-spacing: -0.7px;
+  }
+  .crystal-subtitle-wrapper {
+    width: 100%;
+    max-width: 100%;
+    min-height: 72px;
+    padding: 0 12px;
+  }
+  .crystal-section-subtitle {
+    width: 100%;
+    max-width: 100%;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  .crystal-divider {
+    width: 220px;
+    max-width: 80%;
+    margin-top: 20px;
+  }
+  /* GRID */
+  .crystal-categories-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 12px;
+    gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    padding: 10px 12px 30px;
+    margin: 0;
+    overflow: visible;
+  }
+  /* CARD */
+  .crystal-category-card {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    height: 185px;
+    border-radius: 24px;
+  }
+  .crystal-category-card__inner {
+    padding: 12px 9px;
+    border-radius: 24px;
+  }
+  .crystal-category-card__crystal {
+    width: 96px;
+    height: 96px;
+  }
+  .crystal-category-card__image {
+    width: 69px;
+    height: 69px;
+  }
+  .crystal-category-card__name {
+    font-size: 13px;
+  }
+  .crystal-category-card__count {
+    font-size: 10px;
+  }
+  .crystal-category-card__glow {
+    width: 80px;
+    height: 80px;
+  }
+  .crystal-category-card:hover {
+    transform: translateY(-5px);
+  }
+}
+/* =========================================================
+   SMALL MOBILE
+   2 COLUMNS
+========================================================= */
+@media (max-width: 480px) {
+  .crystal-categories-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding: 8px 10px 25px;
+  }
+  .crystal-category-card {
+    height: 180px;
+  }
+  .crystal-category-card__inner {
+    padding: 10px 7px;
+  }
+  .crystal-category-card__crystal {
+    width: 91px;
+    height: 91px;
+  }
+  .crystal-category-card__image {
+    width: 65px;
+    height: 65px;
+  }
+  .crystal-category-card__name {
+    font-size: 12px;
+  }
+  .crystal-category-card__count {
+    font-size: 9px;
+  }
+}
+/* =========================================================
+   VERY SMALL MOBILE
+   2 COLUMNS
+========================================================= */
+@media (max-width: 360px) {
+  .crystal-categories-list {
+    gap: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .crystal-category-card {
+    height: 172px;
+    border-radius: 21px;
+  }
+  .crystal-category-card__inner {
+    border-radius: 21px;
+    padding: 9px 6px;
+  }
+  .crystal-category-card__crystal {
+    width: 84px;
+    height: 84px;
+  }
+  .crystal-category-card__image {
+    width: 60px;
+    height: 60px;
+  }
+  .crystal-category-card__name {
+    font-size: 11px;
+  }
+  .crystal-category-card__count {
+    font-size: 8px;
+  }
+}
+/* =========================================================
+   ANIMATIONS
+========================================================= */
 @keyframes crystalBadgeFloat {
   0%, 100% {
     transform: translateY(0);
@@ -12315,130 +12633,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: translate3d(-25px, -18px, 0) scale(1.08);
   }
 }
-@media (min-width: 769px) {
-  .crystal-categories-list {
-    justify-content: center;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-}
-@media (max-width: 1100px) {
-  .crystal-category-card {
-    flex-basis: 135px;
-    width: 135px;
-    min-width: 135px;
-    max-width: 135px;
-    height: 198px;
-  }
-  .crystal-category-card__crystal {
-    width: 105px;
-    height: 105px;
-  }
-  .crystal-category-card__image {
-    width: 76px;
-    height: 76px;
-  }
-}
-@media (max-width: 768px) {
-  .crystal-categories-section {
-    padding: 55px 0 45px;
-  }
-  .crystal-section-header {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 35px;
-    padding: 0 12px;
-  }
-  .crystal-badge {
-    padding: 7px 15px;
-    font-size: 12px;
-  }
-  .crystal-section-title {
-    margin-top: 15px;
-    font-size: 27px;
-    letter-spacing: -0.7px;
-  }
-  .crystal-subtitle-wrapper {
-    width: 100%;
-    max-width: 100%;
-    min-height: 72px;
-    padding: 0 12px;
-  }
-  .crystal-section-subtitle {
-    width: 100%;
-    max-width: 100%;
-    font-size: 13px;
-    line-height: 1.9;
-  }
-  .crystal-divider {
-    width: 220px;
-    max-width: 80%;
-    margin-top: 20px;
-  }
-  .crystal-categories-list {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    justify-content: flex-start;
-    gap: 13px;
-    margin: 0;
-    padding: 10px 12px 30px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-padding-inline: 12px;
-    overscroll-behavior-x: contain;
-  }
-  .crystal-category-card {
-    flex: 0 0 125px;
-    width: 125px;
-    min-width: 125px;
-    max-width: 125px;
-    height: 185px;
-    border-radius: 24px;
-  }
-  .crystal-category-card__inner {
-    padding: 12px 9px;
-    border-radius: 24px;
-  }
-  .crystal-category-card__crystal {
-    width: 96px;
-    height: 96px;
-  }
-  .crystal-category-card__image {
-    width: 69px;
-    height: 69px;
-  }
-  .crystal-category-card__name {
-    font-size: 13px;
-  }
-  .crystal-category-card__count {
-    font-size: 10px;
-  }
-  .crystal-category-card__glow {
-    width: 80px;
-    height: 80px;
-  }
-  .crystal-category-card:hover {
-    transform: translateY(-5px);
-  }
-}
-@media (max-width: 420px) {
-  .crystal-category-card {
-    flex-basis: 116px;
-    width: 116px;
-    min-width: 116px;
-    max-width: 116px;
-    height: 178px;
-  }
-  .crystal-category-card__crystal {
-    width: 90px;
-    height: 90px;
-  }
-  .crystal-category-card__image {
-    width: 64px;
-    height: 64px;
-  }
-}
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
 @media (prefers-reduced-motion: reduce) {
   .crystal-categories-section *,
   .crystal-categories-section *::before,
@@ -12447,8 +12644,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transition: none !important;
   }
   .crystal-category-card {
-    opacity: 1;
-    transform: none;
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 /* =========================================================
