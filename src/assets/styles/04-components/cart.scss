@@ -1,0 +1,701 @@
+/* =========================================================
+   RAWAN CART
+   Luxury Pink / White
+========================================================= */
+
+.rawan-cart-page {
+    --rawan-pink: #e62973;
+    --rawan-pink-dark: #c9185d;
+    --rawan-pink-light: #fff1f6;
+    --rawan-text: #242424;
+    --rawan-muted: #858585;
+    --rawan-border: #eeeeee;
+    --rawan-bg: #faf9fa;
+    --rawan-white: #ffffff;
+
+    background: var(--rawan-bg);
+    min-height: 100vh;
+    padding-bottom: 100px;
+}
+
+
+/* =========================================================
+   BREADCRUMBS
+========================================================= */
+
+.rawan-cart-breadcrumbs {
+    padding: 22px 0 5px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.rawan-cart-header {
+    text-align: center;
+    padding: 45px 20px 35px;
+}
+
+.rawan-cart-header__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--rawan-pink);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.rawan-cart-header__badge span {
+    width: 7px;
+    height: 7px;
+    background: var(--rawan-pink);
+    border-radius: 50%;
+    display: block;
+    box-shadow: 0 0 0 5px rgba(230, 41, 115, .08);
+}
+
+.rawan-cart-header h2 {
+    margin: 0;
+    color: var(--rawan-text);
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 800;
+    letter-spacing: -.7px;
+}
+
+.rawan-cart-header p {
+    max-width: 600px;
+    margin: 12px auto 0;
+    color: var(--rawan-muted);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.rawan-cart-header__line {
+    width: 110px;
+    height: 1px;
+    background: #ddd;
+    margin: 24px auto 0;
+    position: relative;
+}
+
+.rawan-cart-header__line i {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--rawan-pink);
+    border-radius: 50%;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.rawan-cart-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 390px;
+    gap: 30px;
+    align-items: start;
+    direction: rtl;
+}
+
+.rawan-cart-products {
+    min-width: 0;
+}
+
+.rawan-cart-sidebar {
+    position: sticky;
+    top: 25px;
+}
+
+
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
+
+.rawan-cart-item-form {
+    margin-bottom: 18px;
+}
+
+.rawan-cart-item {
+    background: var(--rawan-white);
+    border: 1px solid var(--rawan-border);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    gap: 22px;
+    direction: rtl;
+    transition:
+        box-shadow .25s ease,
+        transform .25s ease,
+        border-color .25s ease;
+}
+
+.rawan-cart-item:hover {
+    border-color: #f2c7d8;
+    box-shadow: 0 12px 35px rgba(30, 20, 25, .07);
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.rawan-cart-item__image {
+    width: 145px;
+    height: 165px;
+    flex: 0 0 145px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    background: #f7f7f7;
+}
+
+.rawan-cart-item__image a,
+.rawan-cart-item__image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.rawan-cart-item__image img {
+    object-fit: cover;
+    transition: transform .45s ease;
+}
+
+.rawan-cart-item:hover .rawan-cart-item__image img {
+    transform: scale(1.04);
+}
+
+
+/* =========================================================
+   FREE PRODUCT
+========================================================= */
+
+.rawan-cart-free {
+    position: absolute;
+    top: 12px;
+    right: -28px;
+    width: 110px;
+    text-align: center;
+    background: var(--rawan-pink);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 5px;
+    transform: rotate(45deg);
+}
+
+
+/* =========================================================
+   PRODUCT INFO
+========================================================= */
+
+.rawan-cart-item__info {
+    flex: 1;
+    min-width: 0;
+}
+
+.rawan-cart-item__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.rawan-cart-item__label {
+    color: var(--rawan-pink);
+    font-size: 11px;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.rawan-cart-item h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+.rawan-cart-item h3 a {
+    color: var(--rawan-text);
+    text-decoration: none;
+    transition: color .2s ease;
+}
+
+.rawan-cart-item h3 a:hover {
+    color: var(--rawan-pink);
+}
+
+
+/* =========================================================
+   DELETE
+========================================================= */
+
+.rawan-cart-delete {
+    width: 38px;
+    height: 38px;
+    border: 1px solid #f0e4e8;
+    background: #fff;
+    color: #999;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all .2s ease;
+    flex: 0 0 auto;
+}
+
+.rawan-cart-delete:hover {
+    background: #fff0f4;
+    border-color: #f4c5d5;
+    color: #df225f;
+}
+
+
+/* =========================================================
+   PRICES
+========================================================= */
+
+.rawan-cart-prices {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.rawan-cart-price {
+    color: var(--rawan-pink);
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.rawan-cart-price.is-discounted {
+    color: var(--rawan-pink);
+}
+
+.rawan-cart-old-price {
+    color: #aaa;
+    font-size: 13px;
+    text-decoration: line-through;
+}
+
+
+/* =========================================================
+   OFFER
+========================================================= */
+
+.rawan-cart-offer {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #777;
+    background: #fafafa;
+    border-radius: 8px;
+    padding: 6px 9px;
+    margin-top: 10px;
+    font-size: 11px;
+}
+
+.rawan-cart-offer i {
+    color: var(--rawan-pink);
+}
+
+
+/* =========================================================
+   BOTTOM
+========================================================= */
+
+.rawan-cart-item__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #f1f1f1;
+    margin-top: 18px;
+    padding-top: 17px;
+}
+
+.rawan-cart-quantity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rawan-cart-quantity > span {
+    color: #888;
+    font-size: 12px;
+}
+
+.rawan-cart-quantity-static {
+    font-weight: 700;
+    color: var(--rawan-text);
+}
+
+.rawan-cart-item__bottom salla-quantity-input {
+    --salla-quantity-input-border-color: #eee;
+}
+
+.rawan-cart-item-total {
+    text-align: left;
+}
+
+.rawan-cart-item-total span {
+    display: block;
+    color: #999;
+    font-size: 11px;
+    margin-bottom: 4px;
+}
+
+.rawan-cart-item-total strong {
+    color: var(--rawan-text);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   SHIPPING
+========================================================= */
+
+.rawan-shipping-card {
+    background: linear-gradient(
+        135deg,
+        #fff7fa,
+        #ffffff
+    );
+    border: 1px solid #f4d7e2;
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 15px;
+}
+
+.rawan-shipping-card__top {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.rawan-shipping-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 14px;
+    background: var(--rawan-pink);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 7px 18px rgba(230, 41, 115, .2);
+}
+
+.rawan-shipping-card strong {
+    font-size: 14px;
+    color: var(--rawan-text);
+}
+
+.rawan-shipping-card p {
+    margin: 4px 0 0;
+    color: #888;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.rawan-shipping-progress {
+    height: 7px;
+    background: #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 16px;
+}
+
+.rawan-shipping-progress__bar {
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        var(--rawan-pink-dark),
+        var(--rawan-pink)
+    );
+    border-radius: inherit;
+    transition: width .5s ease;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.rawan-sidebar-widget {
+    background: white;
+    border-radius: 18px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    border: 1px solid var(--rawan-border);
+}
+
+.rawan-coupon-card {
+    background: white;
+    border: 1px solid var(--rawan-border);
+    border-radius: 18px;
+    padding: 18px;
+    margin-bottom: 15px;
+}
+
+.rawan-sidebar-title {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.rawan-sidebar-title i {
+    color: var(--rawan-pink);
+}
+
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.rawan-summary-card {
+    background: white;
+    border-radius: 20px;
+    border: 1px solid var(--rawan-border);
+    padding: 20px;
+    box-shadow: 0 10px 35px rgba(20, 15, 20, .05);
+}
+
+.rawan-summary-card__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.rawan-summary-card__heading i {
+    color: var(--rawan-pink);
+}
+
+
+/*
+   Make Salla summary action area visually pink
+*/
+
+.rawan-summary-card salla-cart-summary-card {
+    --color-primary: var(--rawan-pink);
+}
+
+
+/* =========================================================
+   EMPTY CART
+========================================================= */
+
+.rawan-empty-cart {
+    background: white;
+    border: 1px solid var(--rawan-border);
+    border-radius: 24px;
+    text-align: center;
+    padding: 75px 25px;
+}
+
+.rawan-empty-cart__icon {
+    width: 85px;
+    height: 85px;
+    margin: 0 auto 22px;
+    border-radius: 50%;
+    background: var(--rawan-pink-light);
+    color: var(--rawan-pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+
+.rawan-empty-cart > span {
+    color: var(--rawan-pink);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.rawan-empty-cart h2 {
+    margin: 8px 0;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.rawan-empty-cart p {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.rawan-cart-home-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 190px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--rawan-pink);
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+.rawan-cart-home-btn:hover {
+    background: var(--rawan-pink-dark);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(230, 41, 115, .22);
+}
+
+
+/* =========================================================
+   HIDDEN
+========================================================= */
+
+.rawan-cart-page .hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .rawan-cart-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .rawan-cart-sidebar {
+        position: static;
+    }
+
+}
+
+
+@media (max-width: 640px) {
+
+    .rawan-cart-page {
+        padding-bottom: 60px;
+    }
+
+    .rawan-cart-header {
+        padding: 30px 10px 25px;
+    }
+
+    .rawan-cart-header h2 {
+        font-size: 28px;
+    }
+
+    .rawan-cart-header p {
+        font-size: 12px;
+    }
+
+    .rawan-cart-item {
+        padding: 14px;
+        gap: 13px;
+        border-radius: 16px;
+    }
+
+    .rawan-cart-item__image {
+        width: 92px;
+        height: 112px;
+        flex-basis: 92px;
+        border-radius: 11px;
+    }
+
+    .rawan-cart-item h3 {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .rawan-cart-item__label {
+        font-size: 9px;
+    }
+
+    .rawan-cart-price {
+        font-size: 15px;
+    }
+
+    .rawan-cart-old-price {
+        font-size: 10px;
+    }
+
+    .rawan-cart-delete {
+        width: 32px;
+        height: 32px;
+    }
+
+    .rawan-cart-item__bottom {
+        margin-top: 12px;
+        padding-top: 12px;
+        display: block;
+    }
+
+    .rawan-cart-quantity {
+        justify-content: space-between;
+        margin-bottom: 12px;
+    }
+
+    .rawan-cart-item-total {
+        text-align: right;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .rawan-cart-item-total span {
+        margin: 0;
+    }
+
+    .rawan-cart-item-total strong {
+        font-size: 15px;
+    }
+
+    .rawan-summary-card,
+    .rawan-coupon-card,
+    .rawan-shipping-card {
+        border-radius: 16px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+========================================================= */
+
+@media (max-width: 390px) {
+
+    .rawan-cart-item {
+        display: block;
+    }
+
+    .rawan-cart-item__image {
+        width: 100%;
+        height: 210px;
+        margin-bottom: 14px;
+    }
+
+    .rawan-cart-item__top {
+        align-items: flex-start;
+    }
+
+}
