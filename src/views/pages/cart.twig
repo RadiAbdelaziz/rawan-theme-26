@@ -90,7 +90,9 @@
                             class="rawan-cart-item"
                         >
 
-                            {# PRODUCT IMAGE #}
+                            {# =================================================
+                               PRODUCT IMAGE
+                            ================================================== #}
 
                             <div class="rawan-cart-item__image">
 
@@ -116,7 +118,9 @@
                             </div>
 
 
-                            {# PRODUCT INFORMATION #}
+                            {# =================================================
+                               PRODUCT INFORMATION
+                            ================================================== #}
 
                             <div class="rawan-cart-item__info">
 
@@ -151,53 +155,54 @@
                                 </div>
 
 
-                                {# PRICE #}
+                                {# =================================================
+                                   PRICE
+                                   العملة تأتي من سلة عبر money
+                                ================================================== #}
 
-                                {# Price #}
+                                <div class="premium-price-row">
 
-<div class="premium-price-row">
+                                    <div class="premium-price-main">
 
-    <div class="premium-price-main">
+                                        <strong class="premium-price">
 
-        <strong class="premium-price">
+                                            {% if item.has_discount %}
 
-            {% if product.is_on_sale and product.sale_price %}
+                                                {{ item.price|money }}
 
-                {{ product.sale_price|money }}
+                                            {% else %}
 
-            {% else %}
+                                                {{ item.product_price|money }}
 
-                {{ product.price|money }}
+                                            {% endif %}
 
-            {% endif %}
+                                        </strong>
 
-        </strong>
-
-    </div>
-
-
-    {% if component.show_old_price != false %}
-
-        {% if product.is_on_sale and product.regular_price %}
-
-            <del class="premium-old-price">
-                {{ product.regular_price|money }}
-            </del>
-
-        {% elseif product.price_before_discount %}
-
-            <del class="premium-old-price">
-                {{ product.price_before_discount|money }}
-            </del>
-
-        {% endif %}
-
-    {% endif %}
-
-</div>
+                                    </div>
 
 
-                                {# OFFER #}
+                                    {# OLD PRICE #}
+
+                                    {% if item.offer %}
+
+                                        <del class="premium-old-price">
+                                            {{ item.product_price|money }}
+                                        </del>
+
+                                    {% elseif item.is_on_sale and item.original_price %}
+
+                                        <del class="premium-old-price">
+                                            {{ item.original_price|money }}
+                                        </del>
+
+                                    {% endif %}
+
+                                </div>
+
+
+                                {# =================================================
+                                   OFFER
+                                ================================================== #}
 
                                 <div class="rawan-cart-offer {{ item.offer ? '' : 'hidden' }}">
 
@@ -218,7 +223,9 @@
                                 </salla-cart-item-offers>
 
 
-                                {# BOTTOM #}
+                                {# =================================================
+                                   BOTTOM
+                                ================================================== #}
 
                                 <div class="rawan-cart-item__bottom">
 
@@ -265,7 +272,10 @@
                                     </div>
 
 
-                                    {# TOTAL #}
+                                    {# =================================================
+                                       ITEM TOTAL
+                                       العملة من سلة
+                                    ================================================== #}
 
                                     {% set item_total =
                                         item.detailed_offers|length > 0
@@ -344,7 +354,9 @@
                 {% endfor %}
 
 
-                {# CART OPTIONS #}
+                {# =================================================
+                   CART OPTIONS
+                ================================================== #}
 
                 {% if cart.options|length %}
 
@@ -404,7 +416,9 @@
                 <aside class="rawan-cart-sidebar">
 
 
-                    {# FREE SHIPPING #}
+                    {# =================================================
+                       FREE SHIPPING
+                    ================================================== #}
 
                     {% if cart.free_shipping_bar %}
 
@@ -479,7 +493,9 @@
                     {% endif %}
 
 
-                    {# LOYALTY #}
+                    {# =================================================
+                       LOYALTY
+                    ================================================== #}
 
                     {% if loyalty %}
 
@@ -496,7 +512,9 @@
                     {% endif %}
 
 
-                    {# GIFTING #}
+                    {# =================================================
+                       GIFTING
+                    ================================================== #}
 
                     <div
                         id="cart-gifting"
@@ -515,7 +533,9 @@
                     </div>
 
 
-                    {# COUPON #}
+                    {# =================================================
+                       COUPON
+                    ================================================== #}
 
                     {% if store.settings.cart.apply_coupon_enabled %}
 
@@ -539,7 +559,10 @@
                     {% endif %}
 
 
-                    {# SUMMARY #}
+                    {# =================================================
+                       SUMMARY
+                       سلة هي المسؤولة عن تنسيق العملة هنا
+                    ================================================== #}
 
                     {% hook 'cart:summary-card.start' %}
 
@@ -564,7 +587,9 @@
                     {% hook 'cart:summary-card.end' %}
 
 
-                    {# TIERED OFFER #}
+                    {# =================================================
+                       TIERED OFFER
+                    ================================================== #}
 
                     <div class="rawan-tiered-offer">
 
