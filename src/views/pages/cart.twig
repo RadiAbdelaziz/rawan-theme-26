@@ -9,18 +9,14 @@
     ========================================================== #}
 
     <div class="container">
-
         <nav class="rawan-cart-breadcrumbs">
             <salla-breadcrumb></salla-breadcrumb>
         </nav>
-
     </div>
-
 
     <h1 class="sr-only">
         {{ trans('blocks.header.cart') }}
     </h1>
-
 
     {# =========================================================
        CONDITIONAL OFFERS
@@ -40,23 +36,17 @@
         <header class="rawan-cart-header">
 
             <div class="rawan-cart-header__badge">
-
                 <span></span>
-
                 سلة التسوق
-
             </div>
-
 
             <h2>
                 مشترياتك المختارة
             </h2>
 
-
             <p>
                 راجع منتجاتك قبل إتمام الطلب واستمتع بتجربة تسوق أنيقة وسهلة.
             </p>
-
 
             <div class="rawan-cart-header__line">
                 <i></i>
@@ -70,7 +60,6 @@
         ====================================================== #}
 
         <div class="rawan-cart-layout">
-
 
             {# =================================================
                PRODUCTS
@@ -100,7 +89,6 @@
                             data-testid="store-cart-item-{{ item.id }}"
                             class="rawan-cart-item"
                         >
-
 
                             {# =================================================
                                PRODUCT IMAGE
@@ -136,11 +124,6 @@
 
                             <div class="rawan-cart-item__info">
 
-
-                                {# =================================================
-                                   TOP
-                                ================================================== #}
-
                                 <div class="rawan-cart-item__top">
 
                                     <div>
@@ -149,13 +132,10 @@
                                             منتج
                                         </span>
 
-
                                         <h3>
-
                                             <a href="{{ item.url }}">
                                                 {{ item.product_name }}
                                             </a>
-
                                         </h3>
 
                                     </div>
@@ -169,9 +149,7 @@
                                         aria-label="حذف المنتج"
                                         onclick="salla.cart.deleteItem('{{ item.id }}').then(() => document.querySelector('#item-{{ item.id }}').remove())"
                                     >
-
                                         <i class="sicon-trash"></i>
-
                                     </button>
 
                                 </div>
@@ -179,7 +157,7 @@
 
                                 {# =================================================
                                    PRODUCT PRICE
-                                   العملة يتم توليدها بواسطة سلة
+                                   العملة يتم جلبها من سلة
                                 ================================================== #}
 
                                 <div class="premium-price-row">
@@ -203,14 +181,18 @@
                                     </div>
 
 
-                                    {# =================================================
-                                       OLD PRICE
-                                    ================================================== #}
+                                    {# OLD PRICE #}
 
-                                    {% if item.offer and item.product_price %}
+                                    {% if item.offer %}
 
                                         <del class="premium-old-price">
                                             {{ item.product_price|money }}
+                                        </del>
+
+                                    {% elseif item.is_on_sale and item.original_price %}
+
+                                        <del class="premium-old-price">
+                                            {{ item.original_price|money }}
                                         </del>
 
                                     {% endif %}
@@ -222,24 +204,16 @@
                                    OFFER
                                 ================================================== #}
 
-                                {% if item.offer %}
+                                <div class="rawan-cart-offer {{ item.offer ? '' : 'hidden' }}">
 
-                                    <div class="rawan-cart-offer">
+                                    <i class="sicon-discount-calculator"></i>
 
-                                        <i class="sicon-discount-calculator"></i>
+                                    <span>
+                                        {{ item.offer.names }}
+                                    </span>
 
-                                        <span>
-                                            {{ item.offer.names }}
-                                        </span>
+                                </div>
 
-                                    </div>
-
-                                {% endif %}
-
-
-                                {# =================================================
-                                   DETAILED OFFERS
-                                ================================================== #}
 
                                 <salla-cart-item-offers
                                     quantity="{{ item.quantity }}"
@@ -256,9 +230,7 @@
                                 <div class="rawan-cart-item__bottom">
 
 
-                                    {# =================================================
-                                       QUANTITY
-                                    ================================================== #}
+                                    {# QUANTITY #}
 
                                     <div class="rawan-cart-quantity">
 
@@ -273,7 +245,6 @@
                                                 {{ item.quantity }}
                                             </span>
 
-
                                         {% elseif item.is_hidden_quantity %}
 
                                             <input
@@ -285,7 +256,6 @@
                                             <span class="rawan-cart-quantity-static">
                                                 {{ item.quantity }}
                                             </span>
-
 
                                         {% else %}
 
@@ -307,12 +277,18 @@
                                        العملة من سلة
                                     ================================================== #}
 
+                                    {% set item_total =
+                                        item.detailed_offers|length > 0
+                                        ? item.total_special_price|money
+                                        : item.total|money
+                                    %}
+
+
                                     <div class="rawan-cart-item-total">
 
                                         <span>
                                             الإجمالي
                                         </span>
-
 
                                         <strong
                                             data-testid="store-cart-item-total"
@@ -321,15 +297,7 @@
 
                                             {% if item.is_available %}
 
-                                                {% if item.detailed_offers|length > 0 %}
-
-                                                    {{ item.total_special_price|money }}
-
-                                                {% else %}
-
-                                                    {{ item.total|money }}
-
-                                                {% endif %}
+                                                {{ item_total }}
 
                                             {% else %}
 
@@ -345,13 +313,12 @@
 
 
                                 {# =================================================
-                                   PRODUCT OPTIONS
+                                   OPTIONS
                                 ================================================== #}
 
                                 {% include 'pages.partials.product.options' with {
                                     product: item
                                 } %}
-
 
                             </div>
 
@@ -359,9 +326,7 @@
 
                     </form>
 
-
                 {% else %}
-
 
                     {# =================================================
                        EMPTY CART
@@ -373,26 +338,20 @@
                     >
 
                         <div class="rawan-empty-cart__icon">
-
                             <i class="sicon-shopping-bag"></i>
-
                         </div>
-
 
                         <span>
                             سلة التسوق
                         </span>
 
-
                         <h2>
                             سلتك فارغة
                         </h2>
 
-
                         <p>
                             لم تضف أي منتجات إلى سلة التسوق بعد.
                         </p>
-
 
                         <a
                             data-testid="store-cart-back-home"
@@ -428,13 +387,11 @@
                                     value="{{ product_option.id }}"
                                 >
 
-
                                 <input
                                     type="hidden"
                                     name="quantity"
                                     value="{{ product_option.quantity }}"
                                 >
-
 
                                 {% include 'pages.partials.product.options' with {
                                     product: product_option
@@ -449,10 +406,6 @@
                 {% endif %}
 
 
-                {# =================================================
-                   CART OFFERS
-                ================================================== #}
-
                 <salla-offer
                     data-testid="store-cart-offer">
                 </salla-offer>
@@ -464,7 +417,7 @@
 
 
             {# =================================================
-               CART SUMMARY SIDEBAR
+               CART SUMMARY
             ================================================== #}
 
             {% hook 'cart:summary.start' %}
@@ -481,10 +434,7 @@
 
                     {% if cart.free_shipping_bar %}
 
-                        {% set is_free =
-                            cart.free_shipping_bar.has_free_shipping
-                        %}
-
+                        {% set is_free = cart.free_shipping_bar.has_free_shipping %}
 
                         <div
                             id="free-shipping"
@@ -493,13 +443,9 @@
 
                             <div class="rawan-shipping-card__top">
 
-
                                 <div class="rawan-shipping-icon">
-
                                     <i class="sicon-shipping-fast"></i>
-
                                 </div>
-
 
                                 <div>
 
@@ -507,31 +453,25 @@
                                         شحن مجاني
                                     </strong>
 
-
                                     <p>
 
                                         <span id="free-shipping-msg">
 
-                                            {% if is_free %}
-
-                                                {{ trans('pages.cart.has_free_shipping') }}
-
-                                            {% else %}
-
-                                                {{
-                                                    trans(
+                                            {{
+                                                (
+                                                    is_free
+                                                    ? trans('pages.cart.has_free_shipping')
+                                                    : trans(
                                                         'pages.cart.free_shipping_alert',
                                                         {
                                                             'amount':
                                                             cart.free_shipping_bar.remaining|money
                                                         }
-                                                    )|raw
-                                                }}
-
-                                            {% endif %}
+                                                    )
+                                                )|raw
+                                            }}
 
                                         </span>
-
 
                                         <span
                                             id="free-shipping-applied"
@@ -555,8 +495,7 @@
                                 <div
                                     class="rawan-shipping-progress__bar"
                                     style="width:{{ cart.free_shipping_bar.percent }}%"
-                                >
-                                </div>
+                                ></div>
 
                             </div>
 
@@ -615,22 +554,14 @@
 
                             {% hook 'cart:coupon.start' %}
 
-
                             <div class="rawan-sidebar-title">
-
                                 <i class="sicon-discount"></i>
-
-                                <span>
-                                    كود الخصم
-                                </span>
-
+                                <span>كود الخصم</span>
                             </div>
-
 
                             <salla-cart-coupons
                                 data-testid="store-cart-coupons">
                             </salla-cart-coupons>
-
 
                             {% hook 'cart:coupon.end' %}
 
@@ -641,11 +572,9 @@
 
                     {# =================================================
                        SUMMARY
-                       سلة تتولى عرض العملة والقيم النهائية
                     ================================================== #}
 
                     {% hook 'cart:summary-card.start' %}
-
 
                     <div class="rawan-summary-card">
 
@@ -655,18 +584,20 @@
                                 ملخص الطلب
                             </span>
 
-
                             <i class="sicon-shopping-bag"></i>
 
                         </div>
 
+                        {#
+                            لا نضيف أي عملة يدويًا هنا.
+                            Salla تعرض العملة حسب إعدادات المتجر.
+                        #}
 
                         <salla-cart-summary-card
                             data-testid="store-cart-summary">
                         </salla-cart-summary-card>
 
                     </div>
-
 
                     {% hook 'cart:summary-card.end' %}
 
@@ -701,9 +632,9 @@
 
 {% block scripts %}
 
-<script
-    defer
-    src="{{ 'checkout.js' | asset }}">
-</script>
+    <script
+        defer
+        src="{{ 'checkout.js' | asset }}">
+    </script>
 
 {% endblock %}
