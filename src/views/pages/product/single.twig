@@ -14,6 +14,7 @@
         </div>
     {% endif %}
 
+
     {# =========================================================
        BEFORE PRODUCT INFO
     ========================================================== #}
@@ -22,7 +23,9 @@
         {% hook 'product.single.before_product_info' %}
     </div>
 
+
     <main class="rawan-product-page">
+
 
         {# =====================================================
            RAWAN PRODUCT HEADER
@@ -62,6 +65,7 @@
                 id="product-{{ product.id }}"
             >
 
+
                 {# =================================================
                    PRODUCT MEDIA
                 ================================================== #}
@@ -83,12 +87,12 @@
                             show-thumbs-controls="false"
                         >
 
-                            {# Promotion #}
-
                             {% if product.promotion_title %}
+
                                 <div class="rawan-promotion">
                                     {{ product.promotion_title }}
                                 </div>
+
                             {% endif %}
 
 
@@ -189,7 +193,7 @@
                             </div>
 
 
-                            {# Product Thumbnails #}
+                            {# Thumbnails #}
 
                             {% if has_many_images %}
 
@@ -605,8 +609,6 @@
                         {% hook 'product:single.form.start' %}
 
 
-                        {# PRODUCT OPTIONS #}
-
                         {% include 'pages.partials.product.options' %}
 
 
@@ -718,7 +720,7 @@
                             {% endif %}
 
 
-                            {# ADD TO CART — PINK #}
+                            {# ADD TO CART #}
 
                             <salla-add-product-button
                                 data-testid="store-product-add-to-cart"
@@ -787,8 +789,6 @@
             </div>
 
 
-            {# PRODUCT OFFER #}
-
             <salla-offer
                 data-testid="store-product-offer"
             ></salla-offer>
@@ -797,17 +797,13 @@
 
 
         {# =========================================================
-           BEFORE REVIEWS
+           REVIEWS
         ========================================================== #}
 
         <div class="s-blocks-wrapper s-before-reviews">
             {% hook 'product.single.before_customer_reviews' %}
         </div>
 
-
-        {# =========================================================
-           REVIEWS
-        ========================================================== #}
 
         {% if store.settings.rating.show_on_product %}
 
@@ -825,7 +821,7 @@
 
 
         {# =========================================================
-           BEFORE RELATED PRODUCTS
+           RELATED PRODUCTS
         ========================================================== #}
 
         <div class="s-blocks-wrapper s-before-related">
@@ -833,14 +829,13 @@
         </div>
 
 
-        {# =========================================================
-           YOU MAY ALSO LIKE
-           SALLA REAL RELATED PRODUCTS
-        ========================================================== #}
-
         <section class="rawan-recommendations">
 
-            <div class="rawan-section-heading rawan-section-heading--related">
+            {# =====================================================
+               RAWAN TITLE
+            ===================================================== #}
+
+            <section class="rawan-section-heading rawan-section-heading--related">
 
                 <div class="rawan-heading-line"></div>
 
@@ -860,15 +855,14 @@
 
                 <div class="rawan-heading-line"></div>
 
-            </div>
+            </section>
 
 
             {# =====================================================
-               REAL SALLA RELATED PRODUCTS
+               SALLA RELATED PRODUCTS
 
-               لا نستخدم component.products هنا.
-               سلة هي التي تجلب المنتجات المرتبطة بالمنتج الحالي.
-            ====================================================== #}
+               هذا هو الجزء الذي يجلب المنتجات الفعلية.
+            ===================================================== #}
 
             <div class="container rawan-related-products">
 
@@ -876,7 +870,6 @@
                     data-testid="store-product-related"
                     source="related"
                     source-value="{{ product.id }}"
-                    block-title=""
                     display-all-url
                 ></salla-products-slider>
 
@@ -885,13 +878,10 @@
         </section>
 
 
-        {# =========================================================
-           AFTER RELATED PRODUCTS
-        ========================================================== #}
-
         <div class="s-blocks-wrapper s-after-related">
             {% hook 'product.single.after_product_recommendations' %}
         </div>
+
 
     </main>
 
