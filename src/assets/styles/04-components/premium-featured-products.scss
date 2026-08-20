@@ -1752,3 +1752,276 @@ salla-add-product-button .s-button-element:hover {
         translateY(0);
 
 }
+/* =========================================================
+   PREMIUM PRODUCTS
+   LUXURY HEADER DESIGN
+   بدون تغيير النص
+========================================================= */
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.featured-products-premium .featured-header {
+
+    width: 100%;
+
+    max-width: 760px;
+
+    margin:
+        0 auto 42px;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   BADGE
+========================================================= */
+
+.featured-products-premium .featured-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-bottom: 14px;
+
+    padding:
+        7px 15px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(230, 41, 115, .06);
+
+    color:
+        var(--premium-accent, #E62973);
+
+    border:
+        1px solid rgba(230, 41, 115, .12);
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+}
+
+
+/* =========================================================
+   BADGE DOT
+========================================================= */
+
+.featured-products-premium .featured-badge-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    flex:
+        0 0 7px;
+
+    border-radius: 50%;
+
+    background:
+        var(--premium-accent, #E62973);
+
+    box-shadow:
+        0 0 0 4px rgba(230, 41, 115, .08);
+
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.featured-products-premium .featured-header h2 {
+
+    width: 100%;
+
+    max-width: none;
+
+    margin:
+        0;
+
+    color:
+        #111111;
+
+    font-size:
+        clamp(28px, 4vw, 42px);
+
+    line-height:
+        1.35;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        -.7px;
+
+}
+
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.featured-products-premium .featured-header p {
+
+    width: 100%;
+
+    max-width:
+        650px;
+
+    margin:
+        13px auto 0;
+
+    padding:
+        0;
+
+    color:
+        #888888;
+
+    font-size:
+        14px;
+
+    line-height:
+        1.9;
+
+    font-weight:
+        400;
+
+}
+
+
+/* =========================================================
+   DECORATIVE LINE
+========================================================= */
+
+.featured-products-premium .featured-line {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        9px;
+
+    width:
+        180px;
+
+    margin:
+        20px auto 0;
+
+}
+
+
+/* LEFT LINE */
+
+.featured-products-premium .featured-line span {
+
+    flex:
+        1;
+
+    height:
+        1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(230, 41, 115, .30)
+        );
+
+}
+
+
+/* RIGHT LINE */
+
+.featured-products-premium .featured-line span:last-child {
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(230, 41, 115, .30),
+            transparent
+        );
+
+}
+
+
+/* CENTER DOT */
+
+.featured-products-premium .featured-line i {
+
+    width:
+        7px;
+
+    height:
+        7px;
+
+    flex:
+        0 0 7px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--premium-accent, #E62973);
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .featured-products-premium .featured-header {
+
+        margin-bottom:
+            30px;
+
+    }
+
+
+    .featured-products-premium .featured-header h2 {
+
+        font-size:
+            27px;
+
+        letter-spacing:
+            -.5px;
+
+    }
+
+
+    .featured-products-premium .featured-header p {
+
+        padding:
+            0 8px;
+
+        font-size:
+            12px;
+
+        line-height:
+            1.85;
+
+    }
+
+}
