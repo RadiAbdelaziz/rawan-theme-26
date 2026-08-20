@@ -42,26 +42,68 @@
 		{% endif %}
 
 		<div class="main-content flex-1 w-full {{ filters ? 'ltr:lg:ml-8 rtl:lg:mr-8' : '' }}">
-			<div class="mb-4 sm:mb-6 flex justify-between items-center">
-				<h1 class="font-bold text-xl rtl:pl-3 ltr:pr-3" id="page-main-title">{{ page.title|raw }}</h1>
-				<div class="flex items-center space-x-2 rtl:space-x-reverse">
-					{% if filters %}
-						<a data-testid="store-products-filters-mobile-trigger" href="#filters-menu" class="filters-trigger bg-border-color text-primary lg:hidden mt-2">
-							<i class="sicon-filter text-gray-text text-2xl me-2.5"></i>
-						</a>
-					{% endif %}
-					{% if sort_options|length %}
-						<div class="flex items-center">
-							<label class="hidden sm:block rtl:ml-3 ltr:mr-3 whitespace-nowrap" for="product-filter">{{ trans('pages.categories.sorting') }}</label>
-							<select id="product-filter" class="form-input pt-0 pb-1 rtl:md:pl-10 ltr:md:pr-10">
-								{% for sort in sort_options %}
-									<option value="{{ sort.id }}" {{ sort.is_selected?'selected':'' }}>{{ sort.name }}</option>
-								{% endfor %}
-							</select>
-						</div>
-					{% endif %}
-				</div>
-			</div>
+			<div class="rawan-category-header">
+
+    <div class="rawan-category-title-wrap">
+
+        <span class="rawan-category-kicker">
+            RAWAN
+        </span>
+
+        <h1
+            class="rawan-category-title"
+            id="page-main-title"
+        >
+            {{ page.title|raw }}
+        </h1>
+
+        <span class="rawan-category-line"></span>
+
+    </div>
+
+    <div class="rawan-category-tools">
+
+        {% if filters %}
+            <a
+                data-testid="store-products-filters-mobile-trigger"
+                href="#filters-menu"
+                class="rawan-filter-btn filters-trigger lg:hidden"
+            >
+                <i class="sicon-filter"></i>
+                <span>فلترة</span>
+            </a>
+        {% endif %}
+
+        {% if sort_options|length %}
+            <div class="rawan-sort-box">
+
+                <label
+                    class="hidden sm:block"
+                    for="product-filter"
+                >
+                    {{ trans('pages.categories.sorting') }}
+                </label>
+
+                <select
+                    id="product-filter"
+                    class="rawan-sort-select"
+                >
+                    {% for sort in sort_options %}
+                        <option
+                            value="{{ sort.id }}"
+                            {{ sort.is_selected ? 'selected' : '' }}
+                        >
+                            {{ sort.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+            </div>
+        {% endif %}
+
+    </div>
+
+</div>
 
 			{% hook 'product:index.items.start' %}
 
