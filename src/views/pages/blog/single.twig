@@ -17,101 +17,497 @@
 | article.tags[].name     | string         |             |
 | article.tags[].url      | string         |             |
 #}
+
 {% extends "layouts.master" %}
+
 {% block content %}
-    <div class="container mb-8 sm:mb-24">
-        {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
-        <nav class="breadcrumbs w-full py-5 center-between">
+
+<div class="rawan-blog-page">
+
+    {# =========================================================
+       BREADCRUMBS
+    ========================================================== #}
+
+    <div class="container">
+
+        <nav class="rawan-blog-breadcrumbs">
             <salla-breadcrumb></salla-breadcrumb>
         </nav>
-        <div class="md:flex items-start">
-            <div class="main-content blog-category md:w-96 flex-1 bg-white lg:p-8 rounded-md mb-10 md:mb-0">
-                <h1 class="font-bold text-3xl mb-5 leading-10">{{ article.title }}</h1>
-                <div class="mb-10 text-gray-500 rounded-md inline-flex text-sm rtl:space-x-reverse space-x-5">
-                    <div class=" flex items-center">
-                        <i class="sicon-calendar-date rtl:ml-1 ltr:mr-1"></i>
-                        <span class="">{{ article.created_at|date }}</span>
-                    </div>
-                    <a href="{{ article.author.url }}" class=" flex items-center hover:text-dark">
-                        <i class="sicon-user rtl:ml-1 ltr:mr-1"></i>
-                        <span class="">{{ article.author.name }}</span>
-                    </a>
-                </div>
-                {% if article.has_image %}
-                    <img src="{{ article.image.url }}" alt="{{ article.image.alt }}" title="{{ article.image.alt }}"
-                         class="h-80 mb-10 w-full object-cover rounded-md"/>
-                {% endif %}
-                
-                {% if store.settings.blog.allow_likes_and_comments %}
-                <div class="flex items-center gap-2.5 text-gray-500 text-base mb-2">
-                    <button id="blog-like" data-blog-id="{{ article.key }}" class="flex items-center gap-1">
-                        <i class="sicon-thumbs-up text-primary"></i>
-                        <span>{{article.likes_count}}</span>
-                    </button>                    
-                    {% if article.comments_count %}
-                        <div class="flex items-center gap-1">
-                            <i class="sicon-chat text-primary"></i>
-                            {{article.comments_count}}
-                        </div>
-                    {% endif %}
-                </div>
-                {% endif %}
 
-                <article class="leading-7 text-sm mb-10">{{ article.body|replace({'&nbsp;': ' '})|raw }}</article>
-                {% if article.tags|length %}
-                    <div class="p-4 flex flex-wrap items-center border-t border-gray-200">
-                        {% for tag in article.tags %}
-                            <a href="{{ tag.url }}"
-                               class="py-2 px-4 rounded-large inline-flex items-center text-gray-500 hover:text-dark justify-center text-sm">
-                                <i class="font-medium sicon-tag rtl:ml-1.5 ltr:mr-1.5"></i>
-                                <span class="fix-align whitespace-nowrap">{{ tag.name }}</span>
-                            </a>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-                {% if store.settings.blog.allow_likes_and_comments %}
-                    <salla-comments data-testid="store-blog-comments" item-id="{{article.key}}"   type="blog"></salla-comments>
-                {% endif %}
+    </div>
+
+
+    {# =========================================================
+       ARTICLE HERO
+    ========================================================== #}
+
+    <div class="container">
+
+        <header class="rawan-article-hero">
+
+            <div class="rawan-article-hero__badge">
+
+                <span class="rawan-article-hero__dot"></span>
+
+                <span>
+                    مدونة روان
+                </span>
+
             </div>
 
-            <aside aria-label="Sidebar" class="sticky shrink-0 top-24 md:w-96 rtl:lg:mr-8 ltr:lg:ml-8 pb-11">
-                {% if related|length %}
-                    <h2 class="font-bold mb-3">{{ trans('pages.blog_articles.related') }}</h2>
+
+            <h1>
+                {{ article.title }}
+            </h1>
+
+
+            <div class="rawan-article-meta">
+
+                <div class="rawan-article-meta__item">
+
+                    <span class="rawan-meta-icon">
+                        <i class="sicon-calendar-date"></i>
+                    </span>
+
+                    <div>
+                        <small>
+                            تاريخ النشر
+                        </small>
+
+                        <strong>
+                            {{ article.created_at|date }}
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <span class="rawan-meta-divider"></span>
+
+
+                <a
+                    href="{{ article.author.url }}"
+                    class="rawan-article-meta__item rawan-author"
+                >
+
+                    <span class="rawan-meta-icon">
+                        <i class="sicon-user"></i>
+                    </span>
+
+                    <div>
+                        <small>
+                            بقلم
+                        </small>
+
+                        <strong>
+                            {{ article.author.name }}
+                        </strong>
+                    </div>
+
+                </a>
+
+            </div>
+
+        </header>
+
+
+        {# =========================================================
+           MAIN LAYOUT
+        ========================================================== #}
+
+        <div class="rawan-article-layout">
+
+
+            {# =====================================================
+               ARTICLE
+            ====================================================== #}
+
+            <main class="rawan-article-card">
+
+
+                {# =================================================
+                   FEATURED IMAGE
+                ================================================== #}
+
+                {% if article.has_image %}
+
+                    <div class="rawan-article-cover">
+
+                        <img
+                            src="{{ article.image.url }}"
+                            alt="{{ article.image.alt }}"
+                            title="{{ article.image.alt }}"
+                            loading="eager"
+                        >
+
+                        <div class="rawan-article-cover__overlay"></div>
+
+                        <div class="rawan-article-cover__label">
+
+                            <span></span>
+
+                            قراءة المقال
+
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+
+                {# =================================================
+                   ARTICLE BODY WRAPPER
+                ================================================== #}
+
+                <div class="rawan-article-content">
+
+
+                    {# =================================================
+                       SOCIAL / ENGAGEMENT
+                    ================================================== #}
+
+                    {% if store.settings.blog.allow_likes_and_comments %}
+
+                        <div class="rawan-article-engagement">
+
+                            <div class="rawan-engagement-item">
+
+                                <button
+                                    id="blog-like"
+                                    data-blog-id="{{ article.key }}"
+                                    type="button"
+                                    class="rawan-like-button"
+                                    aria-label="إعجاب بالمقال"
+                                >
+
+                                    <span class="rawan-like-icon">
+                                        <i class="sicon-thumbs-up"></i>
+                                    </span>
+
+                                    <span>
+                                        إعجاب
+                                    </span>
+
+                                    <strong>
+                                        {{ article.likes_count }}
+                                    </strong>
+
+                                </button>
+
+                            </div>
+
+
+                            {% if article.comments_count %}
+
+                                <div class="rawan-engagement-item">
+
+                                    <span class="rawan-comment-icon">
+                                        <i class="sicon-chat"></i>
+                                    </span>
+
+                                    <span>
+                                        التعليقات
+                                    </span>
+
+                                    <strong>
+                                        {{ article.comments_count }}
+                                    </strong>
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    {% endif %}
+
+
+                    {# =================================================
+                       ARTICLE BODY
+                    ================================================== #}
+
+                    <article class="rawan-article-body">
+
+                        {{ article.body|replace({'&nbsp;': ' '})|raw }}
+
+                    </article>
+
+
+                    {# =================================================
+                       TAGS
+                    ================================================== #}
+
+                    {% if article.tags|length %}
+
+                        <div class="rawan-article-tags">
+
+                            <div class="rawan-tags-title">
+
+                                <i class="sicon-tag"></i>
+
+                                <span>
+                                    التصنيفات
+                                </span>
+
+                            </div>
+
+
+                            <div class="rawan-tags-list">
+
+                                {% for tag in article.tags %}
+
+                                    <a
+                                        href="{{ tag.url }}"
+                                        class="rawan-tag"
+                                    >
+
+                                        <span>
+                                            {{ tag.name }}
+                                        </span>
+
+                                    </a>
+
+                                {% endfor %}
+
+                            </div>
+
+                        </div>
+
+                    {% endif %}
+
+
+                    {# =================================================
+                       AUTHOR FOOTER
+                    ================================================== #}
+
+                    <div class="rawan-article-author">
+
+                        <div class="rawan-author-avatar">
+
+                            <span>
+                                {{ article.author.name|first }}
+                            </span>
+
+                        </div>
+
+
+                        <div class="rawan-author-info">
+
+                            <small>
+                                كاتب المقال
+                            </small>
+
+                            <a href="{{ article.author.url }}">
+                                {{ article.author.name }}
+                            </a>
+
+                        </div>
+
+
+                        <div class="rawan-author-line"></div>
+
+                        <div class="rawan-author-brand">
+                            Rawan
+                        </div>
+
+                    </div>
+
+
+                    {# =================================================
+                       COMMENTS
+                    ================================================== #}
+
+                    {% if store.settings.blog.allow_likes_and_comments %}
+
+                        <section class="rawan-comments">
+
+                            <div class="rawan-comments-header">
+
+                                <div>
+
+                                    <span class="rawan-comments-kicker">
+                                        شاركنا رأيك
+                                    </span>
+
+                                    <h2>
+                                        التعليقات
+                                    </h2>
+
+                                </div>
+
+                                <span class="rawan-comments-line"></span>
+
+                            </div>
+
+
+                            <salla-comments
+                                data-testid="store-blog-comments"
+                                item-id="{{ article.key }}"
+                                type="blog"
+                            ></salla-comments>
+
+                        </section>
+
+                    {% endif %}
+
+                </div>
+
+            </main>
+
+
+            {# =====================================================
+               SIDEBAR
+            ====================================================== #}
+
+            {% if related|length %}
+
+                <aside
+                    aria-label="مقالات ذات صلة"
+                    class="rawan-article-sidebar"
+                >
+
+
+                    {# SIDEBAR HEADER #}
+
+                    <div class="rawan-sidebar-heading">
+
+                        <div>
+
+                            <span>
+                                اكتشف المزيد
+                            </span>
+
+                            <h2>
+                                مقالات ذات صلة
+                            </h2>
+
+                        </div>
+
+                        <i class="sicon-book"></i>
+
+                    </div>
+
+
+                    <div class="rawan-sidebar-line"></div>
+
 
                     {% hook 'blog:single.items.start' %}
 
-                    {% for article in related %}
-                        <div class="mt-5 flex items-center bg-white p-5 rounded-md">
-                            <div class="shrink-0">
-                                <a href="{{ article.url }}"
-                                   class="bg-border-color h-24 w-24 rounded-md overflow-hidden flex items-center justify-center">
-                                    <span class="sr-only">{{ article.name }}</span>
+
+                    {# RELATED ARTICLES #}
+
+                    <div class="rawan-related-list">
+
+                        {% for article in related %}
+
+                            <article class="rawan-related-card">
+
+                                <a
+                                    href="{{ article.url }}"
+                                    class="rawan-related-image"
+                                >
 
                                     {% if article.has_image %}
-                                        <img class="h-full w-full object-cover" src="{{ article.image.url }}"
-                                             alt="{{ article.image.alt }}">
+
+                                        <img
+                                            src="{{ article.image.url }}"
+                                            alt="{{ article.image.alt }}"
+                                            loading="lazy"
+                                        >
+
                                     {% else %}
-                                        <img class="sm:h-full w-10 object-contain opacity-60"
-                                             src="{{ 'images/placeholder.png' | asset }}" alt="post image"/>
+
+                                        <img
+                                            src="{{ 'images/placeholder.png' | asset }}"
+                                            alt="post image"
+                                            loading="lazy"
+                                        >
+
                                     {% endif %}
+
+
+                                    <span class="rawan-related-number">
+                                        {{ '%02d'|format(loop.index) }}
+                                    </span>
+
                                 </a>
-                            </div>
-                            <div class="rtl:mr-3 ltr:ml-3">
-                                <div class="flex items-center text-sm text-gray-500 mb-2">
-                                    <i class="sicon-calendar-date rtl:ml-1 ltr:mr-1 rtl:pl-px ltr:pr-px"></i>
-                                    <time>{{ article.created_at|date }}</time>
+
+
+                                <div class="rawan-related-content">
+
+                                    <div class="rawan-related-date">
+
+                                        <i class="sicon-calendar-date"></i>
+
+                                        <time>
+                                            {{ article.created_at|date }}
+                                        </time>
+
+                                    </div>
+
+
+                                    <h3>
+
+                                        <a href="{{ article.url }}">
+                                            {{ article.title }}
+                                        </a>
+
+                                    </h3>
+
+
+                                    <a
+                                        href="{{ article.url }}"
+                                        class="rawan-related-read"
+                                    >
+
+                                        <span>
+                                            قراءة المقال
+                                        </span>
+
+                                        <i class="sicon-arrow-left"></i>
+
+                                    </a>
+
                                 </div>
 
-                                <h3 class="text-sm font-bold text-gray-800 leading-6">
-                                    <a href="{{ article.url }}" class="hover:underline">{{ article.title }}</a>
-                                </h3>
-                            </div>
-                        </div>
-                    {% endfor %}
+                            </article>
+
+                        {% endfor %}
+
+                    </div>
+
 
                     {% hook 'blog:single.items.end' %}
-                {% endif %}
-            </aside>
+
+
+                    {# SIDEBAR BRAND CARD #}
+
+                    <div class="rawan-blog-brand-card">
+
+                        <div class="rawan-blog-brand-card__ornament">
+                            <span></span>
+                            <i></i>
+                            <span></span>
+                        </div>
+
+                        <span>
+                            Rawan
+                        </span>
+
+                        <p>
+                            تفاصيل صغيرة تصنع تجربة مختلفة.
+                        </p>
+
+                    </div>
+
+                </aside>
+
+            {% endif %}
+
         </div>
+
     </div>
+
+</div>
+
 {% endblock %}

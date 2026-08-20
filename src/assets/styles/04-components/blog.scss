@@ -1,420 +1,779 @@
-/* Luxury fashion blog */
+/* =========================================================
+   RAWAN — PREMIUM BLOG ARTICLE
+========================================================= */
 
-.luxury-blog-section {
-    position: relative;
-    overflow: hidden;
-    padding: 80px 0;
+.rawan-blog-page {
+    --rawan-pink: #e62973;
+    --rawan-pink-dark: #c91d60;
+    --rawan-gold: #b99a5f;
+    --rawan-black: #171717;
+    --rawan-text: #292929;
+    --rawan-muted: #858585;
+    --rawan-border: #eee9e7;
+    --rawan-bg: #faf8f7;
+    --rawan-white: #ffffff;
+
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(230, 41, 115, .045),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 30%,
+            rgba(185, 154, 95, .04),
+            transparent 25%
+        );
+    padding-bottom: 100px;
 }
 
-/* Background effects */
 
-.luxury-blog-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: radial-gradient(
-        circle at top right,
-        rgba(230, 41, 115, 0.12),
-        transparent 40%
-    );
+/* =========================================================
+   BREADCRUMBS
+========================================================= */
+
+.rawan-blog-breadcrumbs {
+    padding: 22px 0;
 }
 
-.luxury-blog-section::after {
-    content: "";
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.rawan-article-hero {
+    text-align: center;
+    max-width: 900px;
+    margin: 25px auto 55px;
+}
+
+.rawan-article-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--rawan-pink);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    margin-bottom: 18px;
+}
+
+.rawan-article-hero__dot {
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
-    background: rgba(244, 114, 182, 0.08);
-    filter: blur(90px);
-    pointer-events: none;
+    background: var(--rawan-pink);
+    box-shadow: 0 0 0 5px rgba(230, 41, 115, .08);
 }
 
-/* Header */
+.rawan-article-hero h1 {
+    margin: 0;
+    color: var(--rawan-black);
+    font-size: clamp(32px, 5vw, 58px);
+    line-height: 1.25;
+    font-weight: 800;
+    letter-spacing: -.04em;
+}
 
-.luxury-blog-section .luxury-blog-header {
-    position: relative;
-    z-index: 2;
-    margin-bottom: 55px;
+.rawan-article-meta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.rawan-article-meta__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     text-align: right;
 }
 
-.luxury-blog-section .luxury-blog-badge {
-    display: inline-flex;
+.rawan-meta-icon {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--rawan-border);
+    background: white;
+    border-radius: 50%;
+    display: flex;
     align-items: center;
-    flex-direction: row-reverse;
-    gap: 10px;
-    padding: 9px 20px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.72);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(230, 41, 115, 0.18);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.25em;
-    box-shadow: 0 8px 30px rgba(230, 41, 115, 0.05);
+    justify-content: center;
+    color: var(--rawan-pink);
 }
 
-.luxury-blog-section .luxury-blog-badge i {
-    font-size: 14px;
+.rawan-article-meta small {
+    display: block;
+    color: #aaa;
+    font-size: 11px;
+    margin-bottom: 3px;
 }
 
-.luxury-blog-section .luxury-blog-title {
-    margin: 20px 0 0;
-    font-size: clamp(32px, 4vw, 50px);
-    line-height: 1.25;
-    font-weight: 900;
-    letter-spacing: -0.02em;
+.rawan-article-meta strong {
+    color: var(--rawan-text);
+    font-size: 13px;
 }
 
-.luxury-blog-section .luxury-blog-subtitle {
-    margin-top: 12px;
-    font-size: 22px;
-    line-height: 1.7;
-    font-weight: 500;
+.rawan-meta-divider {
+    width: 1px;
+    height: 30px;
+    background: var(--rawan-border);
 }
 
-/* Article grid */
 
-.luxury-blog-section .luxury-blog-grid {
-    position: relative;
-    z-index: 2;
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.rawan-article-layout {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 32px;
+    grid-template-columns: minmax(0, 1fr) 350px;
+    gap: 35px;
+    align-items: start;
 }
 
-/* Article card */
 
-.luxury-blog-section .luxury-blog-card {
-    position: relative;
+/* =========================================================
+   ARTICLE CARD
+========================================================= */
+
+.rawan-article-card {
+    background: var(--rawan-white);
+    border: 1px solid rgba(0, 0, 0, .045);
+    border-radius: 24px;
     overflow: hidden;
-    border-radius: 32px;
-    background: rgba(255, 255, 255, 0.72);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(230, 41, 115, 0.15);
-    box-shadow: 0 10px 40px rgba(75, 15, 39, 0.04);
-    transition:
-        transform 0.5s cubic-bezier(.2, .8, .2, 1),
-        box-shadow 0.5s ease,
-        border-color 0.35s ease;
+    box-shadow:
+        0 18px 60px rgba(30, 20, 20, .055);
 }
 
-.luxury-blog-section .luxury-blog-card:hover {
-    transform: translateY(-12px) scale(1.02);
-    border-color: rgba(230, 41, 115, 0.8);
-    box-shadow: 0 30px 70px rgba(230, 41, 115, 0.20);
-}
 
-/* Image */
+/* =========================================================
+   COVER
+========================================================= */
 
-.luxury-blog-section .luxury-blog-card > a:first-child {
+.rawan-article-cover {
     position: relative;
-    display: block;
+    height: 500px;
     overflow: hidden;
-    aspect-ratio: 16 / 10;
+    background: #f2efed;
 }
 
-.luxury-blog-section .luxury-blog-card > a:first-child img {
-    display: block;
+.rawan-article-cover img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.7s cubic-bezier(.2, .8, .2, 1);
+    display: block;
+    transition: transform .7s ease;
 }
 
-.luxury-blog-section .luxury-blog-card:hover > a:first-child img {
-    transform: scale(1.10) rotate(1deg);
+.rawan-article-card:hover .rawan-article-cover img {
+    transform: scale(1.025);
 }
 
-/* Image overlay */
-
-.luxury-blog-section .luxury-blog-card > a:first-child::after {
-    content: "";
+.rawan-article-cover__overlay {
     position: absolute;
     inset: 0;
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.25),
+            transparent 45%
+        );
     pointer-events: none;
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.62),
-        rgba(0, 0, 0, 0.05) 65%,
-        transparent
-    );
 }
 
-/* Category badge */
-
-.luxury-blog-section .luxury-blog-card > a:first-child span {
+.rawan-article-cover__label {
     position: absolute;
-    z-index: 3;
-    top: 20px;
-    right: 20px;
-    padding: 8px 17px;
-    border-radius: 999px;
-    color: #fff;
+    bottom: 25px;
+    right: 25px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 16px;
+    background: rgba(255,255,255,.94);
+    backdrop-filter: blur(12px);
+    border-radius: 50px;
     font-size: 12px;
-    font-weight: 900;
-    box-shadow: 0 8px 20px rgba(230, 41, 115, 0.25);
-    transition:
-        background 0.3s ease,
-        transform 0.3s ease;
+    font-weight: 700;
+    color: var(--rawan-black);
 }
 
-.luxury-blog-section .luxury-blog-card:hover > a:first-child span {
-    transform: translateY(-2px);
+.rawan-article-cover__label span {
+    width: 6px;
+    height: 6px;
+    background: var(--rawan-pink);
+    border-radius: 50%;
 }
 
-/* Card content */
 
-.luxury-blog-section .luxury-blog-card > div {
-    padding: 28px;
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.rawan-article-content {
+    padding: 35px clamp(22px, 5vw, 65px) 55px;
 }
 
-/* Meta */
 
-.luxury-blog-section .luxury-blog-card .text-xs {
+/* =========================================================
+   ENGAGEMENT
+========================================================= */
+
+.rawan-article-engagement {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 25px;
+    margin-bottom: 35px;
+    border-bottom: 1px solid var(--rawan-border);
+}
+
+.rawan-engagement-item {
+    display: flex;
+    align-items: center;
+}
+
+.rawan-like-button,
+.rawan-engagement-item {
+    color: var(--rawan-muted);
+    font-size: 13px;
+}
+
+.rawan-like-button {
+    border: 1px solid var(--rawan-border);
+    background: #fff;
+    border-radius: 50px;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.rawan-like-button:hover {
+    color: var(--rawan-pink);
+    border-color: rgba(230,41,115,.25);
+    background: rgba(230,41,115,.03);
+}
+
+.rawan-like-icon,
+.rawan-comment-icon {
+    color: var(--rawan-pink);
+}
+
+.rawan-like-button strong,
+.rawan-engagement-item strong {
+    font-weight: 700;
+    color: var(--rawan-black);
+}
+
+
+/* =========================================================
+   ARTICLE BODY
+========================================================= */
+
+.rawan-article-body {
+    color: #424242;
+    font-size: 16px;
+    line-height: 2.05;
+}
+
+.rawan-article-body p {
+    margin: 0 0 25px;
+}
+
+.rawan-article-body h2 {
+    margin: 45px 0 18px;
+    color: var(--rawan-black);
+    font-size: 27px;
+    line-height: 1.5;
+    font-weight: 800;
+}
+
+.rawan-article-body h3 {
+    margin: 35px 0 15px;
+    color: var(--rawan-black);
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.rawan-article-body strong {
+    color: var(--rawan-black);
+}
+
+.rawan-article-body a {
+    color: var(--rawan-pink);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.rawan-article-body img {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    margin: 30px 0;
+}
+
+.rawan-article-body blockquote {
+    position: relative;
+    margin: 35px 0;
+    padding: 25px 30px;
+    border-right: 3px solid var(--rawan-pink);
+    background: #fcf7f9;
+    border-radius: 12px;
+    color: #555;
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   TAGS
+========================================================= */
+
+.rawan-article-tags {
+    margin-top: 45px;
+    padding-top: 25px;
+    border-top: 1px solid var(--rawan-border);
+}
+
+.rawan-tags-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--rawan-black);
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 14px;
+}
+
+.rawan-tags-title i {
+    color: var(--rawan-pink);
+}
+
+.rawan-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.rawan-tag {
+    padding: 8px 15px;
+    border: 1px solid var(--rawan-border);
+    background: #fff;
+    border-radius: 50px;
+    color: #777;
+    font-size: 12px;
+    transition: .25s ease;
+}
+
+.rawan-tag:hover {
+    color: white;
+    background: var(--rawan-pink);
+    border-color: var(--rawan-pink);
+}
+
+
+/* =========================================================
+   AUTHOR
+========================================================= */
+
+.rawan-article-author {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-top: 45px;
+    padding: 18px;
+    background: #fcfaf9;
+    border: 1px solid var(--rawan-border);
+    border-radius: 16px;
+}
+
+.rawan-author-avatar {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(
+            135deg,
+            var(--rawan-pink),
+            var(--rawan-pink-dark)
+        );
+    color: white;
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.rawan-author-info small {
+    display: block;
+    color: #999;
+    font-size: 10px;
+    margin-bottom: 2px;
+}
+
+.rawan-author-info a {
+    color: var(--rawan-black);
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.rawan-author-line {
+    flex: 1;
+    height: 1px;
+    background: var(--rawan-border);
+}
+
+.rawan-author-brand {
+    color: var(--rawan-gold);
+    font-size: 20px;
+    font-weight: 800;
+    font-style: italic;
+}
+
+
+/* =========================================================
+   COMMENTS
+========================================================= */
+
+.rawan-comments {
+    margin-top: 55px;
+    padding-top: 35px;
+    border-top: 1px solid var(--rawan-border);
+}
+
+.rawan-comments-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.rawan-comments-kicker {
+    display: block;
+    color: var(--rawan-pink);
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.rawan-comments-header h2 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 800;
+    color: var(--rawan-black);
+}
+
+.rawan-comments-line {
+    flex: 1;
+    height: 1px;
+    background: var(--rawan-border);
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.rawan-article-sidebar {
+    position: sticky;
+    top: 100px;
+}
+
+.rawan-sidebar-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rawan-sidebar-heading span {
+    display: block;
+    color: var(--rawan-pink);
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.rawan-sidebar-heading h2 {
+    margin: 0;
+    color: var(--rawan-black);
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.rawan-sidebar-heading > i {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--rawan-pink);
+    background: #fff;
+    border: 1px solid var(--rawan-border);
+}
+
+.rawan-sidebar-line {
+    width: 55px;
+    height: 3px;
+    background: var(--rawan-pink);
+    border-radius: 5px;
+    margin: 17px 0 22px;
+}
+
+
+/* =========================================================
+   RELATED
+========================================================= */
+
+.rawan-related-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.rawan-related-card {
+    display: flex;
+    gap: 14px;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid var(--rawan-border);
+    border-radius: 17px;
+    transition: .3s ease;
+}
+
+.rawan-related-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(230,41,115,.2);
+    box-shadow: 0 12px 35px rgba(20,20,20,.06);
+}
+
+.rawan-related-image {
+    position: relative;
+    width: 100px;
+    height: 105px;
+    flex: 0 0 100px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #f2efed;
+}
+
+.rawan-related-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .4s ease;
+}
+
+.rawan-related-card:hover .rawan-related-image img {
+    transform: scale(1.06);
+}
+
+.rawan-related-number {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,.92);
+    border-radius: 50%;
+    color: var(--rawan-pink);
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.rawan-related-content {
+    min-width: 0;
+    padding: 4px 0;
+}
+
+.rawan-related-date {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #aaa;
+    font-size: 10px;
+    margin-bottom: 8px;
+}
+
+.rawan-related-date i {
+    color: var(--rawan-pink);
+}
+
+.rawan-related-content h3 {
+    margin: 0;
     line-height: 1.6;
 }
 
-.luxury-blog-section .luxury-blog-card .text-xs span {
-    white-space: nowrap;
-}
-
-/* Title */
-
-.luxury-blog-section .luxury-blog-card h3 {
-    margin: 0 0 16px;
-    font-size: 23px;
-    line-height: 1.5;
-    font-weight: 900;
-    letter-spacing: -0.01em;
-}
-
-.luxury-blog-section .luxury-blog-card h3 a {
-    color: #111;
-    transition: color 0.3s ease;
-}
-
-.luxury-blog-section .luxury-blog-card:hover h3 a {
-    color: #E62973 !important;
-}
-
-/* Summary */
-
-.luxury-blog-section .luxury-blog-card p {
-    margin: 0;
-    color: #666;
-    font-size: 15px;
-    line-height: 2;
+.rawan-related-content h3 a {
+    color: var(--rawan-black);
+    font-size: 13px;
+    font-weight: 800;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-/* Card footer */
-
-.luxury-blog-section .luxury-blog-card .border-t {
-    border-color: rgba(230, 41, 115, 0.12) !important;
+.rawan-related-content h3 a:hover {
+    color: var(--rawan-pink);
 }
 
-/* Author */
-
-.luxury-blog-section .luxury-blog-card .text-sm {
-    font-weight: 500;
-}
-
-/* Read more */
-
-.luxury-blog-section .luxury-blog-card a[class*="group/link"] {
-    position: relative;
-    white-space: nowrap;
-    transition:
-        color 0.3s ease,
-        transform 0.3s ease;
-}
-
-.luxury-blog-section .luxury-blog-card a[class*="group/link"]:hover {
-    transform: translateX(-4px);
-}
-
-.luxury-blog-section .luxury-blog-card a[class*="group/link"] i {
-    transition: transform 0.3s ease;
-}
-
-.luxury-blog-section .luxury-blog-card a[class*="group/link"]:hover i {
-    transform: translateX(-4px);
-}
-
-/* All articles button */
-
-.luxury-blog-section .luxury-blog-all {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    margin-top: 55px;
-}
-
-.luxury-blog-section .luxury-blog-all-button {
+.rawan-related-read {
     display: inline-flex;
     align-items: center;
+    gap: 5px;
+    margin-top: 9px;
+    color: var(--rawan-pink);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.rawan-related-read i {
+    transition: transform .2s ease;
+}
+
+.rawan-related-read:hover i {
+    transform: translateX(-3px);
+}
+
+
+/* =========================================================
+   BRAND CARD
+========================================================= */
+
+.rawan-blog-brand-card {
+    margin-top: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    background:
+        linear-gradient(
+            145deg,
+            #fff,
+            #faf5f7
+        );
+    border: 1px solid var(--rawan-border);
+    border-radius: 20px;
+}
+
+.rawan-blog-brand-card__ornament {
+    display: flex;
+    align-items: center;
     justify-content: center;
-    min-width: 190px;
-    padding: 13px 28px;
-    border: 1px solid;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    font-size: 14px;
+    gap: 7px;
+    margin-bottom: 13px;
+}
+
+.rawan-blog-brand-card__ornament span {
+    width: 35px;
+    height: 1px;
+    background: var(--rawan-gold);
+}
+
+.rawan-blog-brand-card__ornament i {
+    width: 6px;
+    height: 6px;
+    background: var(--rawan-pink);
+    transform: rotate(45deg);
+}
+
+.rawan-blog-brand-card > span {
+    color: var(--rawan-gold);
+    font-size: 27px;
     font-weight: 800;
-    transition:
-        background 0.3s ease,
-        color 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+    font-style: italic;
 }
 
-.luxury-blog-section .luxury-blog-all-button:hover {
-    background: #E62973 !important;
-    color: #fff !important;
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(230, 41, 115, 0.22);
+.rawan-blog-brand-card p {
+    margin: 7px 0 0;
+    color: #999;
+    font-size: 11px;
 }
 
-/* Animation */
 
-[data-blog-animation="true"] .luxury-blog-card {
-    opacity: 0;
-    animation: luxuryBlogReveal 0.75s cubic-bezier(.2, .8, .2, 1) forwards;
-}
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
-[data-blog-animation="true"] .luxury-blog-card:nth-child(1) {
-    animation-delay: 0.05s;
-}
+@media (max-width: 1024px) {
 
-[data-blog-animation="true"] .luxury-blog-card:nth-child(2) {
-    animation-delay: 0.15s;
-}
-
-[data-blog-animation="true"] .luxury-blog-card:nth-child(3) {
-    animation-delay: 0.25s;
-}
-
-[data-blog-animation="true"] .luxury-blog-card:nth-child(4) {
-    animation-delay: 0.35s;
-}
-
-[data-blog-animation="true"] .luxury-blog-card:nth-child(5) {
-    animation-delay: 0.45s;
-}
-
-[data-blog-animation="true"] .luxury-blog-card:nth-child(6) {
-    animation-delay: 0.55s;
-}
-
-@keyframes luxuryBlogReveal {
-    from {
-        opacity: 0;
-        transform: translateY(35px);
+    .rawan-article-layout {
+        grid-template-columns: 1fr;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .rawan-article-sidebar {
+        position: static;
     }
+
+    .rawan-related-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
 }
 
-/* Tablet */
-
-@media (max-width: 992px) {
-    .luxury-blog-section {
-        padding: 65px 0;
-    }
-
-    .luxury-blog-section .luxury-blog-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 24px;
-    }
-
-    .luxury-blog-section .luxury-blog-title {
-        font-size: 38px;
-    }
-
-    .luxury-blog-section .luxury-blog-subtitle {
-        font-size: 19px;
-    }
-}
-
-/* Mobile */
 
 @media (max-width: 640px) {
-    .luxury-blog-section {
-        padding: 55px 0;
+
+    .rawan-blog-page {
+        padding-bottom: 60px;
     }
 
-    .luxury-blog-section .luxury-blog-header {
-        margin-bottom: 35px;
-        text-align: right;
+    .rawan-article-hero {
+        margin: 15px auto 35px;
     }
 
-    .luxury-blog-section .luxury-blog-title {
-        font-size: 30px;
-        line-height: 1.35;
+    .rawan-article-hero h1 {
+        font-size: 31px;
     }
 
-    .luxury-blog-section .luxury-blog-subtitle {
-        font-size: 17px;
-        line-height: 1.8;
+    .rawan-article-meta {
+        gap: 12px;
+        width: 100%;
     }
 
-    .luxury-blog-section .luxury-blog-grid {
+    .rawan-meta-divider {
+        height: 24px;
+    }
+
+    .rawan-meta-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .rawan-article-cover {
+        height: 300px;
+    }
+
+    .rawan-article-content {
+        padding: 25px 18px 35px;
+    }
+
+    .rawan-article-body {
+        font-size: 15px;
+        line-height: 1.95;
+    }
+
+    .rawan-article-body h2 {
+        font-size: 23px;
+    }
+
+    .rawan-article-author {
+        flex-wrap: wrap;
+    }
+
+    .rawan-author-line {
+        display: none;
+    }
+
+    .rawan-related-list {
         grid-template-columns: 1fr;
-        gap: 22px;
     }
 
-    .luxury-blog-section .luxury-blog-card {
-        border-radius: 26px;
-    }
-
-    .luxury-blog-section .luxury-blog-card > div {
-        padding: 22px;
-    }
-
-    .luxury-blog-section .luxury-blog-card h3 {
-        font-size: 21px;
-    }
-
-    .luxury-blog-section .luxury-blog-card p {
-        font-size: 14px;
-        line-height: 1.9;
-    }
-
-    .luxury-blog-section .luxury-blog-card > a:first-child span {
-        top: 15px;
-        right: 15px;
-        padding: 7px 14px;
-    }
-
-    .luxury-blog-section .luxury-blog-all {
-        margin-top: 35px;
-    }
-}
-
-/* Reduced motion */
-
-@media (prefers-reduced-motion: reduce) {
-    .luxury-blog-section *,
-    .luxury-blog-section *::before,
-    .luxury-blog-section *::after {
-        animation: none !important;
-        transition: none !important;
-    }
 }
