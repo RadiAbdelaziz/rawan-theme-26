@@ -20,6 +20,7 @@
 
 /* =========================================================
    VIDEO
+   يعمل تلقائياً ولا يظهر أي تحكم
    ========================================================= */
 
 .luxury-overlay-hero__video {
@@ -38,17 +39,22 @@
 
     background: #000;
 
+    /*
+     * حركة بسيطة للفيديو نفسه
+     * بدون التأثير على التشغيل
+     */
     animation: luxuryHeroZoom 18s ease-in-out infinite alternate;
 }
 
 
 /* =========================================================
-   DARK OVERLAY & GRADIENT
+   DARK OVERLAY
    ========================================================= */
 
 .luxury-overlay-hero__dark-overlay {
     position: absolute;
     inset: 0;
+
     z-index: 1;
 
     background: var(--luxury-overlay, #000);
@@ -57,9 +63,15 @@
     pointer-events: none;
 }
 
+
+/* =========================================================
+   GRADIENT
+   ========================================================= */
+
 .luxury-overlay-hero__gradient {
     position: absolute;
     inset: 0;
+
     z-index: 2;
 
     pointer-events: none;
@@ -197,6 +209,12 @@
 
     object-fit: contain;
 
+    /*
+     * اللوجو الحقيقي:
+     * theme-logo.png
+     *
+     * لا نفرض عليه filter حتى يظهر بشكله الحقيقي.
+     */
     filter: none;
 
     transition:
@@ -212,7 +230,7 @@
 
 
 /* =========================================================
-   CENTER CONTROLS & MENU TOGGLE
+   CENTER CONTROLS
    ========================================================= */
 
 .luxury-overlay-header__controls {
@@ -273,7 +291,7 @@
 
 
 /* =========================================================
-   LOCALIZATION & SEARCH
+   LOCALIZATION
    ========================================================= */
 
 .luxury-overlay-header__localization {
@@ -284,9 +302,15 @@
     color: #fff;
 }
 
-.luxury-overlay-header__localization salla-localization-modal {
+.luxury-overlay-header__localization
+salla-localization-modal {
     color: #fff;
 }
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
 
 .luxury-overlay-header__search {
     width: 150px;
@@ -295,7 +319,8 @@
     align-items: center;
 }
 
-.luxury-overlay-header__search .s-search-input {
+.luxury-overlay-header__search
+.s-search-input {
     width: 100% !important;
 
     min-height: 40px;
@@ -318,12 +343,14 @@
         border-color 0.3s ease;
 }
 
-.luxury-overlay-header__search .s-search-input::placeholder {
+.luxury-overlay-header__search
+.s-search-input::placeholder {
     color:
         rgba(255, 255, 255, 0.75) !important;
 }
 
-.luxury-overlay-header__search .s-search-input:focus {
+.luxury-overlay-header__search
+.s-search-input:focus {
     background:
         rgba(255, 255, 255, 0.15) !important;
 
@@ -333,7 +360,7 @@
 
 
 /* =========================================================
-   USER ACTIONS & CART
+   USER ACTIONS
    ========================================================= */
 
 .luxury-overlay-header__actions {
@@ -351,6 +378,12 @@
     color: #fff;
 }
 
+
+/* =========================================================
+   ACTION WRAPPER
+   يجعل كل عنصر بنفس الحجم
+   ========================================================= */
+
 .luxury-overlay-header__action {
     position: relative;
 
@@ -364,6 +397,11 @@
     align-items: center;
     justify-content: center;
 }
+
+
+/* =========================================================
+   USER MENU
+   ========================================================= */
 
 .luxury-user-menu {
     width: 42px !important;
@@ -405,6 +443,11 @@
 
     border: 0 !important;
 }
+
+
+/* =========================================================
+   GENERIC HEADER ICON
+   ========================================================= */
 
 .luxury-overlay-header__icon {
     position: relative;
@@ -456,9 +499,19 @@
     line-height: 1;
 }
 
+
+/* =========================================================
+   CART WRAPPER
+   ========================================================= */
+
 .luxury-overlay-header__cart-wrapper {
     overflow: visible;
 }
+
+
+/* =========================================================
+   CART
+   ========================================================= */
 
 .luxury-overlay-cart {
     position: relative;
@@ -561,7 +614,7 @@
 
 
 /* =========================================================
-   DESKTOP MAIN NAVIGATION
+   MAIN NAVIGATION
    ========================================================= */
 
 .luxury-overlay-navigation {
@@ -596,7 +649,8 @@
     color: #fff;
 }
 
-.luxury-overlay-navigation .main-menu {
+.luxury-overlay-navigation
+.main-menu {
     display: flex;
 
     align-items: center;
@@ -607,11 +661,13 @@
     background: transparent !important;
 }
 
-.luxury-overlay-navigation .main-menu > li {
+.luxury-overlay-navigation
+.main-menu > li {
     background: transparent !important;
 }
 
-.luxury-overlay-navigation .main-menu > li > a {
+.luxury-overlay-navigation
+.main-menu > li > a {
     color: #fff !important;
 
     background: transparent !important;
@@ -626,7 +682,8 @@
         color 0.3s ease;
 }
 
-.luxury-overlay-navigation .main-menu > li > a:hover {
+.luxury-overlay-navigation
+.main-menu > li > a:hover {
     color: var(--luxury-primary) !important;
 
     opacity: 1;
@@ -634,84 +691,7 @@
 
 
 /* =========================================================
-   DRAWER / MOBILE MENU FIXED FIX
-   ========================================================= */
-
-.luxury-overlay-header__mobile-menu {
-    position: fixed !important;
-
-    top: 0 !important;
-    right: -100% !important; /* مخفية تماماً خارج الشاشة جهة اليمين */
-    left: auto !important;
-
-    width: 320px !important;
-    max-width: 85vw !important;
-    height: 100vh !important;
-    height: 100dvh !important;
-
-    padding: 80px 20px 30px !important;
-
-    background: rgba(10, 10, 10, 0.96) !important;
-
-    border-left: 1px solid rgba(230, 41, 115, 0.30) !important;
-    border-radius: 0 !important;
-
-    backdrop-filter: blur(25px) !important;
-    -webkit-backdrop-filter: blur(25px) !important;
-
-    z-index: 9999 !important;
-
-    overflow-y: auto !important;
-
-    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    display: block !important;
-    visibility: hidden;
-}
-
-.luxury-overlay-header__mobile-menu.is-open {
-    right: 0 !important; /* تظهر بسلاسة عند إعطاء كلاس is-open */
-    visibility: visible !important;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.8) !important;
-}
-
-.luxury-overlay-header__mobile-menu custom-main-menu {
-    display: block;
-}
-
-.luxury-overlay-header__mobile-menu .main-menu {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: stretch;
-
-    background: transparent !important;
-}
-
-.luxury-overlay-header__mobile-menu .main-menu > li > a {
-    display: block;
-
-    color: #fff !important;
-
-    padding: 15px 10px;
-
-    background: transparent !important;
-
-    border-bottom:
-        1px solid
-        rgba(255, 255, 255, 0.08);
-
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.luxury-overlay-header__mobile-menu .main-menu > li > a:hover {
-    color: var(--luxury-primary) !important;
-}
-
-
-/* =========================================================
-   HERO CONTENT & BUTTONS
+   HERO CONTENT
    ========================================================= */
 
 .luxury-overlay-hero__content {
@@ -753,14 +733,21 @@
     text-align: left;
 }
 
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
 .luxury-overlay-hero__title {
     max-width: 1000px;
 
     margin: 0;
 
-    color: var(--luxury-title-color, #fff);
+    color:
+        var(--luxury-title-color, #fff);
 
-    font-size: clamp(42px, 6vw, 82px);
+    font-size:
+        clamp(42px, 6vw, 82px);
 
     line-height: 1.12;
 
@@ -770,9 +757,11 @@
 
     text-wrap: balance;
 
-    text-shadow: 0 8px 35px rgba(0, 0, 0, 0.35);
+    text-shadow:
+        0 8px 35px rgba(0, 0, 0, 0.35);
 
-    animation: luxuryHeroFadeUp 0.9s ease both;
+    animation:
+        luxuryHeroFadeUp 0.9s ease both;
 }
 
 .luxury-overlay-hero__highlight {
@@ -780,17 +769,31 @@
 
     margin-top: 8px;
 
-    color: var(--luxury-highlight-color, #E62973);
+    color:
+        var(
+            --luxury-highlight-color,
+            #E62973
+        );
 
-    text-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    text-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.35);
 }
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
 
 .luxury-overlay-hero__description {
     max-width: 720px;
 
     margin: 22px 0 0;
 
-    color: var(--luxury-description-color, #fff);
+    color:
+        var(
+            --luxury-description-color,
+            #fff
+        );
 
     font-size: 18px;
 
@@ -798,10 +801,17 @@
 
     font-weight: 400;
 
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    text-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.35);
 
-    animation: luxuryHeroFadeUp 1s 0.1s ease both;
+    animation:
+        luxuryHeroFadeUp 1s 0.1s ease both;
 }
+
+
+/* =========================================================
+   RATING
+   ========================================================= */
 
 .luxury-overlay-hero__rating {
     display: flex;
@@ -814,7 +824,8 @@
 
     color: #fff;
 
-    animation: luxuryHeroFadeUp 1s 0.15s ease both;
+    animation:
+        luxuryHeroFadeUp 1s 0.15s ease both;
 }
 
 .luxury-overlay-hero__rating span {
@@ -828,8 +839,15 @@
 .luxury-overlay-hero__rating small {
     font-size: 14px;
 
-    color: rgba(255, 255, 255, 0.9);
+    color:
+        rgba(255, 255, 255, 0.9);
 }
+
+
+/* =========================================================
+   BUTTONS
+   الهوية الوردية
+   ========================================================= */
 
 .luxury-overlay-hero__buttons {
     display: flex;
@@ -843,7 +861,8 @@
 
     margin-top: 32px;
 
-    animation: luxuryHeroFadeUp 1s 0.2s ease both;
+    animation:
+        luxuryHeroFadeUp 1s 0.2s ease both;
 }
 
 .luxury-overlay-hero__button {
@@ -872,6 +891,11 @@
         border-color 0.3s ease;
 }
 
+
+/* =========================================================
+   PRIMARY BUTTON
+   ========================================================= */
+
 .luxury-overlay-hero__button--primary {
     background:
         linear-gradient(
@@ -882,7 +906,8 @@
 
     color: #fff !important;
 
-    border: 1px solid #E62973 !important;
+    border:
+        1px solid #E62973 !important;
 
     box-shadow:
         0 12px 35px
@@ -906,8 +931,14 @@
         rgba(230, 41, 115, 0.45);
 }
 
+
+/* =========================================================
+   SECONDARY BUTTON
+   ========================================================= */
+
 .luxury-overlay-hero__button--secondary {
-    background: rgba(230, 41, 115, 0.14) !important;
+    background:
+        rgba(230, 41, 115, 0.14) !important;
 
     color: #fff !important;
 
@@ -924,11 +955,13 @@
 }
 
 .luxury-overlay-hero__button--secondary:hover {
-    background: #E62973 !important;
+    background:
+        #E62973 !important;
 
     color: #fff !important;
 
-    border-color: #E62973 !important;
+    border-color:
+        #E62973 !important;
 
     transform: translateY(-4px);
 
@@ -936,6 +969,11 @@
         0 20px 45px
         rgba(230, 41, 115, 0.35);
 }
+
+
+/* =========================================================
+   SCROLL
+   ========================================================= */
 
 .luxury-overlay-hero__scroll {
     position: absolute;
@@ -946,7 +984,8 @@
 
     left: 50%;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 }
 
 .luxury-overlay-hero__scroll span {
@@ -978,11 +1017,85 @@
 
     border-radius: 50%;
 
-    background: var(--luxury-primary);
+    background:
+        var(--luxury-primary);
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
-    animation: luxuryScroll 1.8s ease-in-out infinite;
+    animation:
+        luxuryScroll 1.8s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
+.luxury-overlay-header__mobile-menu {
+    display: none;
+
+    position: absolute;
+
+    top: 100%;
+
+    right: 15px;
+    left: 15px;
+
+    padding: 15px;
+
+    background:
+        rgba(10, 10, 10, 0.90);
+
+    border:
+        1px solid
+        rgba(230, 41, 115, 0.30);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.luxury-overlay-header__mobile-menu.is-open {
+    display: block;
+}
+
+.luxury-overlay-header__mobile-menu
+custom-main-menu {
+    display: block;
+}
+
+.luxury-overlay-header__mobile-menu
+.main-menu {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    background: transparent !important;
+}
+
+.luxury-overlay-header__mobile-menu
+.main-menu > li > a {
+    display: block;
+
+    color: #fff !important;
+
+    padding: 13px 15px;
+
+    background: transparent !important;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+}
+
+.luxury-overlay-header__mobile-menu
+.main-menu > li > a:hover {
+    color:
+        var(--luxury-primary) !important;
 }
 
 
@@ -991,53 +1104,133 @@
    ========================================================= */
 
 @keyframes luxuryHeroZoom {
-    from { transform: scale(1); }
-    to { transform: scale(1.07); }
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.07);
+    }
+
 }
 
 @keyframes luxuryHeroFadeUp {
+
     from {
         opacity: 0;
-        transform: translateY(35px);
+
+        transform:
+            translateY(35px);
     }
+
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
+
 }
 
 @keyframes luxuryScroll {
+
     0% {
         opacity: 1;
-        transform: translate(-50%, 0);
+
+        transform:
+            translate(-50%, 0);
     }
+
     70% {
         opacity: 0;
-        transform: translate(-50%, 18px);
+
+        transform:
+            translate(-50%, 18px);
     }
+
     100% {
         opacity: 0;
-        transform: translate(-50%, 18px);
+
+        transform:
+            translate(-50%, 18px);
     }
+
 }
 
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .luxury-overlay-header__top {
+        grid-template-columns:
+            auto
+            1fr
+            auto;
+
+        padding:
+            12px 20px;
+    }
+
+    .luxury-overlay-header__search {
+        width: 120px;
+    }
+
+    .luxury-overlay-hero__content {
+        padding-top: 180px;
+    }
+
+    .luxury-overlay-navigation {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .luxury-overlay-hero__title {
+        font-size: 56px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 768px) {
+
     .luxury-overlay-hero {
         min-height: 100svh !important;
     }
 
+
+    /* Header */
+
     .luxury-overlay-header__top {
         min-height: 72px;
-        padding: 10px 15px;
+
+        padding:
+            10px 15px;
+
         display: flex;
+
         align-items: center;
         justify-content: space-between;
+
         gap: 8px;
     }
 
+
+    /* Logo */
+
     .luxury-overlay-header__logo {
         order: 2;
-        margin: 0 auto;
+
+        margin:
+            0 auto;
+
         justify-content: center;
     }
 
@@ -1046,101 +1239,179 @@
         max-height: 45px;
     }
 
-    /* تعديل عناصر التحكم لإظهار النص والأيقونة معاً */
+
+    /* Controls */
+
     .luxury-overlay-header__controls {
         order: 1;
-        justify-content: flex-start;
-        gap: 4px;
-    }
 
-    .luxury-overlay-header__control {
-        min-height: 36px;
-        padding: 6px 10px;
-        font-size: 12px;
-        white-space: nowrap;
+        justify-content:
+            flex-start;
     }
 
     .luxury-overlay-header__control span {
-        display: inline-block !important; /* إظهار النص فوراً */
-        font-size: 12px;
-    }
-
-    .luxury-overlay-header__control i {
-        font-size: 16px;
+        display: none;
     }
 
     .luxury-overlay-header__search {
         display: none;
     }
 
-    /* إخفاء القائمة الأفقية في الموبايل */
+
+    /* Navigation */
+
     .luxury-overlay-navigation {
-        display: none !important;
+        display: none;
     }
+
+
+    /* Actions */
 
     .luxury-overlay-header__actions {
         order: 3;
-        justify-content: flex-end;
+
+        justify-content:
+            flex-end;
+
         gap: 5px;
     }
 
-    .luxury-overlay-header__action,
-    .luxury-overlay-header__icon {
+    .luxury-overlay-header__action {
         width: 38px;
         height: 38px;
+
         flex-basis: 38px;
     }
 
-    .luxury-user-menu,
-    .luxury-user-menu button,
-    .luxury-overlay-cart,
-    .luxury-overlay-cart .s-cart-summary-content,
-    .luxury-overlay-cart .s-cart-summary-icon {
+    .luxury-user-menu {
         width: 38px !important;
         height: 38px !important;
+
+        min-width: 38px !important;
+        max-width: 38px !important;
+    }
+
+    .luxury-user-menu button {
+        width: 38px !important;
+        height: 38px !important;
+
         min-width: 38px !important;
     }
 
+    .luxury-overlay-header__icon {
+        width: 38px;
+        height: 38px;
+
+        flex-basis: 38px;
+    }
+
+    .luxury-overlay-cart {
+        width: 38px !important;
+        height: 38px !important;
+
+        min-width: 38px !important;
+    }
+
+    .luxury-overlay-cart
+    .s-cart-summary-content,
+    .luxury-overlay-cart
+    .s-cart-summary-icon {
+        width: 38px !important;
+        height: 38px !important;
+    }
+
+
+    /* Hero */
+
     .luxury-overlay-hero__content {
         min-height: 100svh;
-        padding: 130px 20px 80px;
+
+        padding:
+            130px
+            20px
+            80px;
     }
 
     .luxury-overlay-hero__title {
         font-size: 40px;
+
         line-height: 1.25;
+
         letter-spacing: -1px;
     }
 
     .luxury-overlay-hero__description {
         margin-top: 16px;
+
         font-size: 15px;
+
         line-height: 1.9;
     }
 
+
+    /* Rating */
+
     .luxury-overlay-hero__rating {
         flex-direction: column;
+
         gap: 5px;
     }
 
+
+    /* Buttons */
+
     .luxury-overlay-hero__buttons {
         width: 100%;
+
         flex-direction: column;
+
         margin-top: 25px;
     }
 
     .luxury-overlay-hero__button {
         width: 100%;
+
         max-width: 300px;
     }
+
+
+    /* Scroll */
 
     .luxury-overlay-hero__scroll {
         display: none;
     }
 
+
+    /* Glow */
+
     .luxury-overlay-hero__glow {
         width: 300px;
         height: 300px;
+
         filter: blur(100px);
     }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .luxury-overlay-hero
+    *,
+
+    .luxury-overlay-hero
+    *::before,
+
+    .luxury-overlay-hero
+    *::after {
+
+        animation: none !important;
+
+        transition: none !important;
+    }
+
 }
