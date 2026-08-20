@@ -153,34 +153,48 @@
 
                                 {# PRICE #}
 
-                                <div class="rawan-cart-prices">
+                                {# Price #}
 
-                                    {% if item.offer %}
+<div class="premium-price-row">
 
-                                        <span class="rawan-cart-old-price">
-                                            {{ item.product_price|money }}
-                                        </span>
+    <div class="premium-price-main">
 
-                                    {% endif %}
+        <strong class="premium-price">
+
+            {% if product.is_on_sale and product.sale_price %}
+
+                {{ product.sale_price|money }}
+
+            {% else %}
+
+                {{ product.price|money }}
+
+            {% endif %}
+
+        </strong>
+
+    </div>
 
 
-                                    {% if item.is_on_sale %}
+    {% if component.show_old_price != false %}
 
-                                        <span class="rawan-cart-old-price">
-                                            {{ item.original_price|money }}
-                                        </span>
+        {% if product.is_on_sale and product.regular_price %}
 
-                                    {% endif %}
+            <del class="premium-old-price">
+                {{ product.regular_price|money }}
+            </del>
 
+        {% elseif product.price_before_discount %}
 
-                                    <strong
-                                        data-testid="store-cart-item-price"
-                                        class="rawan-cart-price {{ item.has_discount ? 'is-discounted' : '' }}"
-                                    >
-                                        {{ item.price|money }}
-                                    </strong>
+            <del class="premium-old-price">
+                {{ product.price_before_discount|money }}
+            </del>
 
-                                </div>
+        {% endif %}
+
+    {% endif %}
+
+</div>
 
 
                                 {# OFFER #}
