@@ -9898,7 +9898,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 /* =========================================================
    VIDEO
-   يعمل تلقائياً ولا يظهر أي تحكم
    ========================================================= */
 .luxury-overlay-hero__video {
   position: absolute;
@@ -9914,10 +9913,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
      object-fit: cover;
   pointer-events: none;
   background: #000;
-  /*
-   * حركة بسيطة للفيديو نفسه
-   * بدون التأثير على التشغيل
-   */
   animation: luxuryHeroZoom 18s ease-in-out infinite alternate;
 }
 /* =========================================================
@@ -9980,7 +9975,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 50;
+  z-index: 100;
   width: 100%;
   color: #fff;
   background: transparent;
@@ -10025,12 +10020,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   max-height: 58px;
   -o-object-fit: contain;
      object-fit: contain;
-  /*
-   * اللوجو الحقيقي:
-   * theme-logo.png
-   *
-   * لا نفرض عليه filter حتى يظهر بشكله الحقيقي.
-   */
   filter: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -10127,7 +10116,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 /* =========================================================
    ACTION WRAPPER
-   يجعل كل عنصر بنفس الحجم
    ========================================================= */
 .luxury-overlay-header__action {
   position: relative;
@@ -10200,14 +10188,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   line-height: 1;
 }
 /* =========================================================
-   CART WRAPPER
+   CART
    ========================================================= */
 .luxury-overlay-header__cart-wrapper {
   overflow: visible;
 }
-/* =========================================================
-   CART
-   ========================================================= */
 .luxury-overlay-cart {
   position: relative;
   width: 42px !important;
@@ -10271,6 +10256,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 /* =========================================================
    MAIN NAVIGATION
+   DESKTOP
    ========================================================= */
 .luxury-overlay-navigation {
   position: relative;
@@ -10285,13 +10271,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .luxury-overlay-navigation custom-main-menu {
-  display: block;
+  display: block !important;
   width: 100%;
   min-height: auto;
   color: #fff;
 }
 .luxury-overlay-navigation .main-menu {
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   gap: 8px;
@@ -10311,6 +10297,120 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .luxury-overlay-navigation .main-menu > li > a:hover {
   color: var(--luxury-primary) !important;
   opacity: 1;
+}
+/* =========================================================
+   MOBILE MENU
+   مهم:
+   لا يتم إخفاء محتوى custom-main-menu داخله.
+   ========================================================= */
+.luxury-overlay-header__mobile-menu {
+  position: absolute;
+  top: 100%;
+  right: 15px;
+  left: 15px;
+  display: none;
+  width: auto;
+  padding: 12px;
+  background: rgba(10, 10, 10, 0.96);
+  border: 1px solid rgba(230, 41, 115, 0.3);
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 9999;
+  max-height: calc(100vh - 90px);
+  overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+}
+/* =========================================================
+   MOBILE MENU OPEN
+   ========================================================= */
+.luxury-overlay-header__mobile-menu.is-open {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateY(0);
+}
+/* =========================================================
+   MOBILE CUSTOM MAIN MENU
+   إجبار المحتوى على الظهور
+   ========================================================= */
+.luxury-overlay-header__mobile-menu custom-main-menu {
+  display: block !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+/* =========================================================
+   MOBILE MAIN MENU
+   ========================================================= */
+.luxury-overlay-header__mobile-menu .main-menu {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  background: transparent !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+/* =========================================================
+   MOBILE MENU ITEMS
+   ========================================================= */
+.luxury-overlay-header__mobile-menu .main-menu > li {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+/* =========================================================
+   MOBILE MENU LINKS
+   ========================================================= */
+.luxury-overlay-header__mobile-menu .main-menu > li > a {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  min-height: 48px;
+  padding: 14px 16px !important;
+  color: #fff !important;
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  -webkit-text-decoration: none !important;
+  text-decoration: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  box-sizing: border-box;
+}
+.luxury-overlay-header__mobile-menu .main-menu > li:last-child > a {
+  border-bottom: 0 !important;
+}
+.luxury-overlay-header__mobile-menu .main-menu > li > a:hover {
+  color: var(--luxury-primary) !important;
+  background: rgba(230, 41, 115, 0.1) !important;
+  border-radius: 10px;
+}
+/* =========================================================
+   MOBILE MENU CHILD ELEMENTS
+   ========================================================= */
+.luxury-overlay-header__mobile-menu .main-menu > li > a * {
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: inherit !important;
 }
 /* =========================================================
    HERO CONTENT
@@ -10398,7 +10498,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 /* =========================================================
    BUTTONS
-   الهوية الوردية
    ========================================================= */
 .luxury-overlay-hero__buttons {
   display: flex;
@@ -10409,6 +10508,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   margin-top: 32px;
   animation: luxuryHeroFadeUp 1s 0.2s ease both;
 }
+/* =========================================================
+   HERO BUTTON
+   ========================================================= */
 .luxury-overlay-hero__button {
   min-width: 180px;
   min-height: 52px;
@@ -10487,79 +10589,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   animation: luxuryScroll 1.8s ease-in-out infinite;
 }
 /* =========================================================
-   MOBILE MENU
-   ========================================================= */
-.luxury-overlay-header__mobile-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 15px;
-  left: 15px;
-  padding: 15px;
-  background: rgba(10, 10, 10, 0.9);
-  border: 1px solid rgba(230, 41, 115, 0.3);
-  border-radius: 18px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-.luxury-overlay-header__mobile-menu.is-open {
-  display: block;
-}
-.luxury-overlay-header__mobile-menu custom-main-menu {
-  display: block;
-}
-.luxury-overlay-header__mobile-menu .main-menu {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  background: transparent !important;
-}
-.luxury-overlay-header__mobile-menu .main-menu > li > a {
-  display: block;
-  color: #fff !important;
-  padding: 13px 15px;
-  background: transparent !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-.luxury-overlay-header__mobile-menu .main-menu > li > a:hover {
-  color: var(--luxury-primary) !important;
-}
-/* =========================================================
-   ANIMATIONS
-   ========================================================= */
-@keyframes luxuryHeroZoom {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.07);
-  }
-}
-@keyframes luxuryHeroFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(35px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes luxuryScroll {
-  0% {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-  70% {
-    opacity: 0;
-    transform: translate(-50%, 18px);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, 18px);
-  }
-}
-/* =========================================================
    TABLET
    ========================================================= */
 @media (max-width: 991px) {
@@ -10588,7 +10617,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .luxury-overlay-hero {
     min-height: 100svh !important;
   }
-  /* Header */
+  /* =====================================================
+     HEADER
+     ===================================================== */
   .luxury-overlay-header__top {
     min-height: 72px;
     padding: 10px 15px;
@@ -10597,7 +10628,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     justify-content: space-between;
     gap: 8px;
   }
-  /* Logo */
+  /* =====================================================
+     LOGO
+     ===================================================== */
   .luxury-overlay-header__logo {
     order: 2;
     margin: 0 auto;
@@ -10607,7 +10640,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     max-width: 120px;
     max-height: 45px;
   }
-  /* Controls */
+  /* =====================================================
+     CONTROLS
+     ===================================================== */
   .luxury-overlay-header__controls {
     order: 1;
     justify-content: flex-start;
@@ -10618,11 +10653,15 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .luxury-overlay-header__search {
     display: none;
   }
-  /* Navigation */
+  /* =====================================================
+     DESKTOP NAVIGATION HIDDEN
+     ===================================================== */
   .luxury-overlay-navigation {
-    display: none;
+    display: none !important;
   }
-  /* Actions */
+  /* =====================================================
+     ACTIONS
+     ===================================================== */
   .luxury-overlay-header__actions {
     order: 3;
     justify-content: flex-end;
@@ -10659,7 +10698,97 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     width: 38px !important;
     height: 38px !important;
   }
-  /* Hero */
+  /* =====================================================
+     MOBILE MENU
+     ===================================================== */
+  .luxury-overlay-header__mobile-menu {
+    position: absolute !important;
+    top: 100% !important;
+    right: 12px !important;
+    left: 12px !important;
+    width: auto !important;
+    display: none;
+    padding: 10px !important;
+    max-height: calc(100svh - 90px);
+    overflow-y: auto !important;
+    background: rgba(10, 10, 10, 0.96) !important;
+    border: 1px solid rgba(230, 41, 115, 0.35) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    z-index: 9999 !important;
+  }
+  .luxury-overlay-header__mobile-menu.is-open {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+  /* =====================================================
+     MOBILE CUSTOM MENU
+     ===================================================== */
+  .luxury-overlay-header__mobile-menu custom-main-menu {
+    display: block !important;
+    width: 100% !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  .luxury-overlay-header__mobile-menu .main-menu {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    background: transparent !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  .luxury-overlay-header__mobile-menu .main-menu > li {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  .luxury-overlay-header__mobile-menu .main-menu > li > a {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    min-height: 48px;
+    padding: 14px 16px !important;
+    color: #fff !important;
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    -webkit-text-decoration: none !important;
+    text-decoration: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    box-sizing: border-box;
+  }
+  .luxury-overlay-header__mobile-menu .main-menu > li:last-child > a {
+    border-bottom: 0 !important;
+  }
+  .luxury-overlay-header__mobile-menu .main-menu > li > a:hover {
+    color: var(--luxury-primary) !important;
+    background: rgba(230, 41, 115, 0.1) !important;
+    border-radius: 10px;
+  }
+  .luxury-overlay-header__mobile-menu .main-menu > li > a * {
+    color: inherit !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  /* =====================================================
+     HERO
+     ===================================================== */
   .luxury-overlay-hero__content {
     min-height: 100svh;
     padding: 130px 20px 80px;
@@ -10674,12 +10803,16 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     font-size: 15px;
     line-height: 1.9;
   }
-  /* Rating */
+  /* =====================================================
+     RATING
+     ===================================================== */
   .luxury-overlay-hero__rating {
     flex-direction: column;
     gap: 5px;
   }
-  /* Buttons */
+  /* =====================================================
+     BUTTONS
+     ===================================================== */
   .luxury-overlay-hero__buttons {
     width: 100%;
     flex-direction: column;
@@ -10689,15 +10822,113 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     width: 100%;
     max-width: 300px;
   }
-  /* Scroll */
+  /* =====================================================
+     SCROLL
+     ===================================================== */
   .luxury-overlay-hero__scroll {
     display: none;
   }
-  /* Glow */
+  /* =====================================================
+     GLOW
+     ===================================================== */
   .luxury-overlay-hero__glow {
     width: 300px;
     height: 300px;
     filter: blur(100px);
+  }
+}
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+@media (max-width: 480px) {
+  .luxury-overlay-header__top {
+    padding: 9px 10px;
+  }
+  .luxury-overlay-header__logo img {
+    max-width: 105px;
+    max-height: 40px;
+  }
+  .luxury-overlay-header__actions {
+    gap: 2px;
+  }
+  .luxury-overlay-header__action {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+  .luxury-user-menu {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    max-width: 36px !important;
+  }
+  .luxury-user-menu button {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+  }
+  .luxury-overlay-header__icon {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+  .luxury-overlay-cart {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+  }
+  .luxury-overlay-cart .s-cart-summary-content,
+  .luxury-overlay-cart .s-cart-summary-icon {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .luxury-overlay-hero__content {
+    padding: 120px 16px 60px;
+  }
+  .luxury-overlay-hero__title {
+    font-size: 34px;
+  }
+  .luxury-overlay-hero__description {
+    font-size: 14px;
+  }
+  .luxury-overlay-header__mobile-menu {
+    right: 8px !important;
+    left: 8px !important;
+  }
+}
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+@keyframes luxuryHeroZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.07);
+  }
+}
+@keyframes luxuryHeroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes luxuryScroll {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  70% {
+    opacity: 0;
+    transform: translate(-50%, 18px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 18px);
   }
 }
 /* =========================================================
