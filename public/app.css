@@ -9882,13 +9882,18 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   CINEMATIC HERO
-   Header + Video + Hero Content
+   CINEMATIC LUXURY HERO
+   HEADER + VIDEO + RESPONSIVE MENU
+   FIXED MOBILE MENU
+   ========================================================= */
+/* =========================================================
+   ROOT
    ========================================================= */
 .luxury-overlay-hero {
   position: relative;
   width: 100%;
   min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
   isolation: isolate;
   background: #000;
@@ -9906,9 +9911,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   bottom: 0;
   left: 0;
   z-index: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
   -o-object-fit: cover;
      object-fit: cover;
   pointer-events: none;
@@ -9942,7 +9948,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   left: 0;
   z-index: 2;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.48) 0%, rgba(0, 0, 0, 0.08) 35%, rgba(0, 0, 0, 0.12) 55%, rgba(0, 0, 0, 0.68) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.52) 0%, rgba(0, 0, 0, 0.12) 32%, rgba(0, 0, 0, 0.1) 55%, rgba(0, 0, 0, 0.72) 100%);
 }
 /* =========================================================
    PINK GLOW
@@ -9952,9 +9958,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   width: 500px;
   height: 500px;
   border-radius: 50%;
+  z-index: 2;
   pointer-events: none;
   filter: blur(140px);
-  z-index: 2;
   opacity: 0.18;
 }
 .luxury-overlay-hero__glow--left {
@@ -9981,7 +9987,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background: transparent;
   border: 0;
   box-shadow: none;
-  transition: background 0.35s ease, backdrop-filter 0.35s ease;
+  isolation: isolate;
 }
 /* =========================================================
    HEADER TOP
@@ -10006,6 +10012,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   order: 3;
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 110;
 }
 .luxury-overlay-header__logo a {
   display: flex;
@@ -10036,6 +10044,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   justify-content: center;
   gap: 8px;
   order: 2;
+  position: relative;
+  z-index: 110;
 }
 .luxury-overlay-header__control {
   display: inline-flex;
@@ -10061,6 +10071,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .luxury-overlay-header__control i {
   font-size: 18px;
+  line-height: 1;
 }
 /* =========================================================
    LOCALIZATION
@@ -10069,6 +10080,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   display: flex;
   align-items: center;
   color: #fff;
+  position: relative;
+  z-index: 110;
 }
 .luxury-overlay-header__localization salla-localization-modal {
   color: #fff;
@@ -10080,6 +10093,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   width: 150px;
   display: flex;
   align-items: center;
+  position: relative;
+  z-index: 110;
 }
 .luxury-overlay-header__search .s-search-input {
   width: 100% !important;
@@ -10090,7 +10105,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border-radius: 999px !important;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  transition: background 0.3s ease, border-color 0.3s ease;
 }
 .luxury-overlay-header__search .s-search-input::-moz-placeholder {
   color: rgba(255, 255, 255, 0.75) !important;
@@ -10113,9 +10127,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   justify-content: flex-start;
   gap: 8px;
   color: #fff;
+  position: relative;
+  z-index: 110;
 }
 /* =========================================================
-   ACTION WRAPPER
+   ACTION
    ========================================================= */
 .luxury-overlay-header__action {
   position: relative;
@@ -10156,7 +10172,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border: 0 !important;
 }
 /* =========================================================
-   GENERIC HEADER ICON
+   GENERIC ICON
    ========================================================= */
 .luxury-overlay-header__icon {
   position: relative;
@@ -10190,9 +10206,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 /* =========================================================
    CART
    ========================================================= */
-.luxury-overlay-header__cart-wrapper {
-  overflow: visible;
-}
 .luxury-overlay-cart {
   position: relative;
   width: 42px !important;
@@ -10255,8 +10268,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   line-height: 1;
 }
 /* =========================================================
-   MAIN NAVIGATION
-   DESKTOP
+   DESKTOP NAVIGATION
    ========================================================= */
 .luxury-overlay-navigation {
   position: relative;
@@ -10269,10 +10281,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background: transparent;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 105;
 }
 .luxury-overlay-navigation custom-main-menu {
   display: block !important;
-  width: 100%;
+  width: 100% !important;
   min-height: auto;
   color: #fff;
 }
@@ -10299,82 +10312,96 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 1;
 }
 /* =========================================================
-   MOBILE MENU
-   مهم:
-   لا يتم إخفاء محتوى custom-main-menu داخله.
+   MOBILE MENU CONTAINER
+   IMPORTANT FIX
    ========================================================= */
 .luxury-overlay-header__mobile-menu {
+  /*
+   * مخفي افتراضياً
+   */
+  display: none !important;
   position: absolute;
   top: 100%;
-  right: 15px;
-  left: 15px;
-  display: none;
+  right: 12px;
+  left: 12px;
   width: auto;
+  max-height: calc(100svh - 90px);
+  overflow-y: auto;
   padding: 12px;
   background: rgba(10, 10, 10, 0.96);
-  border: 1px solid rgba(230, 41, 115, 0.3);
-  border-radius: 18px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(230, 41, 115, 0.35);
+  border-radius: 20px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   z-index: 9999;
-  max-height: calc(100vh - 90px);
-  overflow-y: auto;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-8px);
-  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  /*
+   * مهم جداً:
+   * لا نسمح للقائمة الداخلية أن تقطع المحتوى
+   */
+  overflow-x: hidden;
+  isolation: isolate;
 }
 /* =========================================================
-   MOBILE MENU OPEN
+   OPEN MOBILE MENU
    ========================================================= */
 .luxury-overlay-header__mobile-menu.is-open {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
   pointer-events: auto !important;
-  transform: translateY(0);
 }
 /* =========================================================
-   MOBILE CUSTOM MAIN MENU
-   إجبار المحتوى على الظهور
+   MOBILE MENU CUSTOM ELEMENT
+   FIX
    ========================================================= */
 .luxury-overlay-header__mobile-menu custom-main-menu {
   display: block !important;
-  width: 100% !important;
-  min-height: 0 !important;
   visibility: visible !important;
   opacity: 1 !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  color: #fff !important;
+  background: transparent !important;
 }
 /* =========================================================
-   MOBILE MAIN MENU
+   MOBILE MENU ROOT
    ========================================================= */
 .luxury-overlay-header__mobile-menu .main-menu {
   display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
   flex-direction: column !important;
   align-items: stretch !important;
   justify-content: flex-start !important;
-  width: 100% !important;
-  min-height: 0 !important;
+  gap: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
-  gap: 0 !important;
+  list-style: none !important;
   background: transparent !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+  overflow: visible !important;
 }
 /* =========================================================
-   MOBILE MENU ITEMS
+   MOBILE MENU LIST ITEMS
    ========================================================= */
 .luxury-overlay-header__mobile-menu .main-menu > li {
   display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
   width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
   background: transparent !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+  position: relative !important;
 }
 /* =========================================================
    MOBILE MENU LINKS
@@ -10382,35 +10409,49 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .luxury-overlay-header__mobile-menu .main-menu > li > a {
   display: flex !important;
   align-items: center !important;
+  justify-content: space-between !important;
   width: 100% !important;
-  min-height: 48px;
+  min-height: 50px !important;
   padding: 14px 16px !important;
+  margin: 0 !important;
   color: #fff !important;
   background: transparent !important;
+  border: 0 !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   font-size: 15px !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
+  line-height: 1.5 !important;
   -webkit-text-decoration: none !important;
   text-decoration: none !important;
-  visibility: visible !important;
+  white-space: normal !important;
   opacity: 1 !important;
-  box-sizing: border-box;
+  visibility: visible !important;
+  transition: color 0.25s ease, background 0.25s ease, padding 0.25s ease;
 }
-.luxury-overlay-header__mobile-menu .main-menu > li:last-child > a {
-  border-bottom: 0 !important;
-}
-.luxury-overlay-header__mobile-menu .main-menu > li > a:hover {
-  color: var(--luxury-primary) !important;
-  background: rgba(230, 41, 115, 0.1) !important;
-  border-radius: 10px;
+.luxury-overlay-header__mobile-menu .main-menu > li > a:hover,
+.luxury-overlay-header__mobile-menu .main-menu > li > a:focus {
+  color: #fff !important;
+  background: rgba(230, 41, 115, 0.14) !important;
+  padding-right: 20px !important;
+  padding-left: 20px !important;
 }
 /* =========================================================
-   MOBILE MENU CHILD ELEMENTS
+   MOBILE SUBMENUS
    ========================================================= */
-.luxury-overlay-header__mobile-menu .main-menu > li > a * {
+.luxury-overlay-header__mobile-menu .main-menu ul {
   visibility: visible !important;
   opacity: 1 !important;
-  color: inherit !important;
+  width: 100% !important;
+  max-width: none !important;
+  background: rgba(255, 255, 255, 0.035) !important;
+}
+/* =========================================================
+   MOBILE MENU ALL TEXT
+   ========================================================= */
+.luxury-overlay-header__mobile-menu .main-menu span,
+.luxury-overlay-header__mobile-menu .main-menu a,
+.luxury-overlay-header__mobile-menu .main-menu li {
+  visibility: visible !important;
 }
 /* =========================================================
    HERO CONTENT
@@ -10421,6 +10462,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   width: 100%;
   max-width: 1100px;
   min-height: 100vh;
+  min-height: 100svh;
   margin: 0 auto;
   padding: 180px 30px 100px;
   display: flex;
@@ -10508,9 +10550,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   margin-top: 32px;
   animation: luxuryHeroFadeUp 1s 0.2s ease both;
 }
-/* =========================================================
-   HERO BUTTON
-   ========================================================= */
 .luxury-overlay-hero__button {
   min-width: 180px;
   min-height: 52px;
@@ -10614,12 +10653,19 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
    MOBILE
    ========================================================= */
 @media (max-width: 768px) {
+  /* =====================================================
+     HERO
+     ===================================================== */
   .luxury-overlay-hero {
     min-height: 100svh !important;
+    overflow: hidden;
   }
   /* =====================================================
      HEADER
      ===================================================== */
+  .luxury-overlay-header {
+    z-index: 1000 !important;
+  }
   .luxury-overlay-header__top {
     min-height: 72px;
     padding: 10px 15px;
@@ -10635,6 +10681,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     order: 2;
     margin: 0 auto;
     justify-content: center;
+    z-index: 1100;
   }
   .luxury-overlay-header__logo img {
     max-width: 120px;
@@ -10646,6 +10693,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .luxury-overlay-header__controls {
     order: 1;
     justify-content: flex-start;
+    z-index: 1100;
+  }
+  .luxury-overlay-header__control {
+    min-width: 42px;
+    width: 42px;
+    height: 42px;
+    padding: 0 !important;
   }
   .luxury-overlay-header__control span {
     display: none;
@@ -10654,10 +10708,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     display: none;
   }
   /* =====================================================
-     DESKTOP NAVIGATION HIDDEN
+     DESKTOP NAV HIDDEN
      ===================================================== */
   .luxury-overlay-navigation {
     display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
   }
   /* =====================================================
      ACTIONS
@@ -10666,6 +10724,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     order: 3;
     justify-content: flex-end;
     gap: 5px;
+    z-index: 1100;
   }
   .luxury-overlay-header__action {
     width: 38px;
@@ -10699,97 +10758,137 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     height: 38px !important;
   }
   /* =====================================================
-     MOBILE MENU
+     MOBILE MENU — FINAL FORCE FIX
      ===================================================== */
   .luxury-overlay-header__mobile-menu {
+    display: none !important;
     position: absolute !important;
     top: 100% !important;
     right: 12px !important;
     left: 12px !important;
     width: auto !important;
-    display: none;
-    padding: 10px !important;
-    max-height: calc(100svh - 90px);
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: calc(100svh - 90px) !important;
     overflow-y: auto !important;
-    background: rgba(10, 10, 10, 0.96) !important;
-    border: 1px solid rgba(230, 41, 115, 0.35) !important;
-    border-radius: 18px !important;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    z-index: 9999 !important;
+    overflow-x: hidden !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(-8px);
+    background: rgba(10, 10, 10, 0.97) !important;
+    z-index: 999999 !important;
   }
+  /*
+   * عند الضغط على القائمة:
+   * لا نعتمد على أي CSS آخر.
+   */
   .luxury-overlay-header__mobile-menu.is-open {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
+    transform: translateY(0) !important;
   }
   /* =====================================================
-     MOBILE CUSTOM MENU
+     MOBILE CUSTOM MAIN MENU
      ===================================================== */
   .luxury-overlay-header__mobile-menu custom-main-menu {
     display: block !important;
-    width: 100% !important;
     visibility: visible !important;
     opacity: 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    position: relative !important;
+    background: transparent !important;
+    color: #fff !important;
   }
-  .luxury-overlay-header__mobile-menu .main-menu {
+  /* =====================================================
+     MOBILE MAIN MENU
+     ===================================================== */
+  .luxury-overlay-header__mobile-menu custom-main-menu .main-menu {
     display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
     flex-direction: column !important;
     align-items: stretch !important;
     justify-content: flex-start !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
     gap: 0 !important;
     background: transparent !important;
+    overflow: visible !important;
+  }
+  /* =====================================================
+     MOBILE MENU ITEMS
+     ===================================================== */
+  .luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li {
+    display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-  }
-  .luxury-overlay-header__mobile-menu .main-menu > li {
-    display: block !important;
     width: 100% !important;
+    height: auto !important;
     margin: 0 !important;
     padding: 0 !important;
+    position: relative !important;
     background: transparent !important;
+  }
+  /* =====================================================
+     MOBILE MENU LINKS
+     ===================================================== */
+  .luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li > a {
+    display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
-  }
-  .luxury-overlay-header__mobile-menu .main-menu > li > a {
-    display: flex !important;
     align-items: center !important;
+    justify-content: space-between !important;
     width: 100% !important;
-    min-height: 48px;
+    min-height: 52px !important;
+    margin: 0 !important;
     padding: 14px 16px !important;
     color: #fff !important;
     background: transparent !important;
+    border: 0 !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
     font-size: 15px !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
+    line-height: 1.5 !important;
     -webkit-text-decoration: none !important;
     text-decoration: none !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    box-sizing: border-box;
+    white-space: normal !important;
   }
-  .luxury-overlay-header__mobile-menu .main-menu > li:last-child > a {
-    border-bottom: 0 !important;
-  }
-  .luxury-overlay-header__mobile-menu .main-menu > li > a:hover {
-    color: var(--luxury-primary) !important;
-    background: rgba(230, 41, 115, 0.1) !important;
-    border-radius: 10px;
-  }
-  .luxury-overlay-header__mobile-menu .main-menu > li > a * {
-    color: inherit !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+  .luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li > a:hover {
+    color: #fff !important;
+    background: rgba(230, 41, 115, 0.14) !important;
   }
   /* =====================================================
-     HERO
+     MOBILE SUBMENU
+     ===================================================== */
+  .luxury-overlay-header__mobile-menu custom-main-menu .main-menu ul {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: rgba(255, 255, 255, 0.035) !important;
+    overflow: visible !important;
+  }
+  /* =====================================================
+     HERO CONTENT
      ===================================================== */
   .luxury-overlay-hero__content {
+    position: relative;
+    z-index: 10;
     min-height: 100svh;
     padding: 130px 20px 80px;
   }
@@ -10838,62 +10937,26 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   SMALL MOBILE
+   VERY SMALL MOBILE
    ========================================================= */
 @media (max-width: 480px) {
-  .luxury-overlay-header__top {
-    padding: 9px 10px;
-  }
-  .luxury-overlay-header__logo img {
-    max-width: 105px;
-    max-height: 40px;
-  }
-  .luxury-overlay-header__actions {
-    gap: 2px;
-  }
-  .luxury-overlay-header__action {
-    width: 36px;
-    height: 36px;
-    flex-basis: 36px;
-  }
-  .luxury-user-menu {
-    width: 36px !important;
-    height: 36px !important;
-    min-width: 36px !important;
-    max-width: 36px !important;
-  }
-  .luxury-user-menu button {
-    width: 36px !important;
-    height: 36px !important;
-    min-width: 36px !important;
-  }
-  .luxury-overlay-header__icon {
-    width: 36px;
-    height: 36px;
-    flex-basis: 36px;
-  }
-  .luxury-overlay-cart {
-    width: 36px !important;
-    height: 36px !important;
-    min-width: 36px !important;
-  }
-  .luxury-overlay-cart .s-cart-summary-content,
-  .luxury-overlay-cart .s-cart-summary-icon {
-    width: 36px !important;
-    height: 36px !important;
-  }
-  .luxury-overlay-hero__content {
-    padding: 120px 16px 60px;
-  }
-  .luxury-overlay-hero__title {
-    font-size: 34px;
-  }
-  .luxury-overlay-hero__description {
-    font-size: 14px;
-  }
   .luxury-overlay-header__mobile-menu {
     right: 8px !important;
     left: 8px !important;
+    padding: 10px !important;
+    border-radius: 17px !important;
+  }
+  .luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li > a {
+    min-height: 48px !important;
+    padding: 12px 14px !important;
+    font-size: 14px !important;
+  }
+  .luxury-overlay-hero__title {
+    font-size: 34px;
+    line-height: 1.25;
+  }
+  .luxury-overlay-hero__description {
+    font-size: 14px;
   }
 }
 /* =========================================================
