@@ -9883,8 +9883,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 /* =========================================================
    CINEMATIC LUXURY HERO
-   HEADER + VIDEO + RESPONSIVE MENU
-   FIXED MOBILE MENU
+   HEADER + VIDEO + RESPONSIVE MOBILE MENU
+   CLEAN VERSION
    ========================================================= */
 /* =========================================================
    ROOT
@@ -9915,6 +9915,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   width: 100% !important;
   height: 100% !important;
   max-width: none !important;
+  max-height: none !important;
   -o-object-fit: cover;
      object-fit: cover;
   pointer-events: none;
@@ -9948,17 +9949,17 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   left: 0;
   z-index: 2;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.52) 0%, rgba(0, 0, 0, 0.12) 32%, rgba(0, 0, 0, 0.1) 55%, rgba(0, 0, 0, 0.72) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.16) 32%, rgba(0, 0, 0, 0.12) 55%, rgba(0, 0, 0, 0.78) 100%);
 }
 /* =========================================================
-   PINK GLOW
+   GLOW
    ========================================================= */
 .luxury-overlay-hero__glow {
   position: absolute;
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  z-index: 2;
+  z-index: 3;
   pointer-events: none;
   filter: blur(140px);
   opacity: 0.18;
@@ -9981,7 +9982,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 100;
+  z-index: 1000;
   width: 100%;
   color: #fff;
   background: transparent;
@@ -10013,7 +10014,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   display: flex;
   align-items: center;
   position: relative;
-  z-index: 110;
+  z-index: 1100;
 }
 .luxury-overlay-header__logo a {
   display: flex;
@@ -10021,32 +10022,34 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
-.luxury-overlay-header__logo img {
+.luxury-overlay-header__logo-image {
   display: block;
   width: auto;
   max-width: 175px;
   max-height: 58px;
   -o-object-fit: contain;
      object-fit: contain;
-  filter: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
-.luxury-overlay-header__logo:hover img {
+.luxury-overlay-header__logo:hover .luxury-overlay-header__logo-image {
   opacity: 0.88;
   transform: translateY(-1px);
 }
 /* =========================================================
-   CENTER CONTROLS
+   HEADER CONTROLS
    ========================================================= */
 .luxury-overlay-header__controls {
+  order: 2;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  order: 2;
   position: relative;
-  z-index: 110;
+  z-index: 1100;
 }
+/* =========================================================
+   MENU BUTTON
+   ========================================================= */
 .luxury-overlay-header__control {
   display: inline-flex;
   align-items: center;
@@ -10054,22 +10057,27 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   gap: 8px;
   min-height: 42px;
   padding: 8px 13px;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  color: #fff;
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  color: #fff !important;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: opacity 0.3s ease, background 0.3s ease, color 0.3s ease;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  transition: color 0.25s ease, background 0.25s ease, opacity 0.25s ease;
 }
 .luxury-overlay-header__control:hover {
-  color: var(--luxury-primary);
-  opacity: 1;
-  background: rgba(230, 41, 115, 0.12);
+  color: var(--luxury-primary) !important;
+  background: rgba(230, 41, 115, 0.12) !important;
   border-radius: 999px;
 }
 .luxury-overlay-header__control i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 18px;
   line-height: 1;
 }
@@ -10079,9 +10087,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .luxury-overlay-header__localization {
   display: flex;
   align-items: center;
-  color: #fff;
   position: relative;
-  z-index: 110;
+  z-index: 1100;
+  color: #fff;
 }
 .luxury-overlay-header__localization salla-localization-modal {
   color: #fff;
@@ -10094,7 +10102,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   display: flex;
   align-items: center;
   position: relative;
-  z-index: 110;
+  z-index: 1100;
 }
 .luxury-overlay-header__search .s-search-input {
   width: 100% !important;
@@ -10117,18 +10125,18 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border-color: rgba(230, 41, 115, 0.75) !important;
 }
 /* =========================================================
-   USER ACTIONS
+   ACTIONS
    ========================================================= */
 .luxury-overlay-header__actions {
-  justify-self: start;
   order: 1;
+  justify-self: start;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 8px;
-  color: #fff;
   position: relative;
-  z-index: 110;
+  z-index: 1100;
+  color: #fff;
 }
 /* =========================================================
    ACTION
@@ -10137,6 +10145,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   position: relative;
   width: 42px;
   height: 42px;
+  min-width: 42px;
   flex: 0 0 42px;
   display: flex;
   align-items: center;
@@ -10172,17 +10181,17 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border: 0 !important;
 }
 /* =========================================================
-   GENERIC ICON
+   ICON
    ========================================================= */
 .luxury-overlay-header__icon {
-  position: relative;
   width: 42px;
   height: 42px;
+  min-width: 42px;
   flex: 0 0 42px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #fff !important;
   -webkit-text-decoration: none;
   text-decoration: none;
   border-radius: 50%;
@@ -10190,7 +10199,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 .luxury-overlay-header__icon:hover {
-  color: #fff;
+  color: #fff !important;
   background: rgba(230, 41, 115, 0.2);
   transform: translateY(-2px);
 }
@@ -10281,120 +10290,120 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background: transparent;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 105;
+  z-index: 1050;
 }
 .luxury-overlay-navigation custom-main-menu {
   display: block !important;
   width: 100% !important;
-  min-height: auto;
-  color: #fff;
+  color: #fff !important;
 }
-.luxury-overlay-navigation .main-menu {
+.luxury-overlay-navigation custom-main-menu .main-menu {
   display: flex !important;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin: 0 !important;
+  padding: 0 !important;
   background: transparent !important;
 }
-.luxury-overlay-navigation .main-menu > li {
+.luxury-overlay-navigation custom-main-menu .main-menu > li {
   background: transparent !important;
 }
-.luxury-overlay-navigation .main-menu > li > a {
+.luxury-overlay-navigation custom-main-menu .main-menu > li > a {
   color: #fff !important;
   background: transparent !important;
   font-size: 14px;
   font-weight: 600;
   padding: 10px 15px;
-  transition: opacity 0.3s ease, color 0.3s ease;
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
-.luxury-overlay-navigation .main-menu > li > a:hover {
+.luxury-overlay-navigation custom-main-menu .main-menu > li > a:hover {
   color: var(--luxury-primary) !important;
-  opacity: 1;
 }
 /* =========================================================
-   MOBILE MENU CONTAINER
-   IMPORTANT FIX
+   MOBILE MENU
    ========================================================= */
+/*
+   مهم:
+   القائمة مخفية بالكامل افتراضياً.
+*/
 .luxury-overlay-header__mobile-menu {
-  /*
-   * مخفي افتراضياً
-   */
-  display: none !important;
   position: absolute;
-  top: 100%;
+  top: calc(100% + 8px);
   right: 12px;
   left: 12px;
   width: auto;
-  max-height: calc(100svh - 90px);
+  max-height: calc(100svh - 95px);
+  display: none;
+  overflow-x: hidden;
   overflow-y: auto;
-  padding: 12px;
-  background: rgba(10, 10, 10, 0.96);
-  border: 1px solid rgba(230, 41, 115, 0.35);
+  padding: 10px;
+  background: rgba(10, 10, 10, 0.97);
+  border: 1px solid rgba(230, 41, 115, 0.4);
   border-radius: 20px;
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  z-index: 9999;
-  /*
-   * مهم جداً:
-   * لا نسمح للقائمة الداخلية أن تقطع المحتوى
-   */
-  overflow-x: hidden;
-  isolation: isolate;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  z-index: 999999;
 }
 /* =========================================================
-   OPEN MOBILE MENU
+   MOBILE MENU OPEN
    ========================================================= */
 .luxury-overlay-header__mobile-menu.is-open {
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
   pointer-events: auto !important;
+  transform: translateY(0) !important;
 }
 /* =========================================================
-   MOBILE MENU CUSTOM ELEMENT
-   FIX
+   MOBILE CUSTOM MENU
    ========================================================= */
 .luxury-overlay-header__mobile-menu custom-main-menu {
   display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
   width: 100% !important;
   height: auto !important;
-  max-height: none !important;
   min-height: 0 !important;
-  overflow: visible !important;
-  color: #fff !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
   background: transparent !important;
+  color: #fff !important;
+  overflow: visible !important;
 }
 /* =========================================================
-   MOBILE MENU ROOT
+   MOBILE MAIN MENU
    ========================================================= */
-.luxury-overlay-header__mobile-menu .main-menu {
+.luxury-overlay-header__mobile-menu custom-main-menu .main-menu {
   display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  width: 100% !important;
-  height: auto !important;
-  min-height: 0 !important;
-  max-height: none !important;
   flex-direction: column !important;
   align-items: stretch !important;
   justify-content: flex-start !important;
   gap: 0 !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
   margin: 0 !important;
   padding: 0 !important;
   list-style: none !important;
   background: transparent !important;
+  visibility: visible !important;
+  opacity: 1 !important;
   overflow: visible !important;
 }
 /* =========================================================
-   MOBILE MENU LIST ITEMS
+   MOBILE ITEMS
    ========================================================= */
-.luxury-overlay-header__mobile-menu .main-menu > li {
+.luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li {
   display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
   width: 100% !important;
   height: auto !important;
   min-height: 0 !important;
@@ -10402,18 +10411,20 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   padding: 0 !important;
   background: transparent !important;
   position: relative !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 /* =========================================================
-   MOBILE MENU LINKS
+   MOBILE LINKS
    ========================================================= */
-.luxury-overlay-header__mobile-menu .main-menu > li > a {
+.luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li > a {
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
   width: 100% !important;
-  min-height: 50px !important;
-  padding: 14px 16px !important;
+  min-height: 52px !important;
   margin: 0 !important;
+  padding: 14px 16px !important;
   color: #fff !important;
   background: transparent !important;
   border: 0 !important;
@@ -10424,34 +10435,33 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   -webkit-text-decoration: none !important;
   text-decoration: none !important;
   white-space: normal !important;
-  opacity: 1 !important;
   visibility: visible !important;
+  opacity: 1 !important;
+  box-sizing: border-box !important;
   transition: color 0.25s ease, background 0.25s ease, padding 0.25s ease;
 }
-.luxury-overlay-header__mobile-menu .main-menu > li > a:hover,
-.luxury-overlay-header__mobile-menu .main-menu > li > a:focus {
+.luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li > a:hover,
+.luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li > a:focus {
   color: #fff !important;
-  background: rgba(230, 41, 115, 0.14) !important;
+  background: rgba(230, 41, 115, 0.15) !important;
   padding-right: 20px !important;
-  padding-left: 20px !important;
 }
 /* =========================================================
-   MOBILE SUBMENUS
+   MOBILE SUBMENU
    ========================================================= */
-.luxury-overlay-header__mobile-menu .main-menu ul {
+.luxury-overlay-header__mobile-menu custom-main-menu .main-menu ul {
+  display: block !important;
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: rgba(255, 255, 255, 0.035) !important;
   visibility: visible !important;
   opacity: 1 !important;
-  width: 100% !important;
-  max-width: none !important;
-  background: rgba(255, 255, 255, 0.035) !important;
-}
-/* =========================================================
-   MOBILE MENU ALL TEXT
-   ========================================================= */
-.luxury-overlay-header__mobile-menu .main-menu span,
-.luxury-overlay-header__mobile-menu .main-menu a,
-.luxury-overlay-header__mobile-menu .main-menu li {
-  visibility: visible !important;
+  overflow: visible !important;
 }
 /* =========================================================
    HERO CONTENT
@@ -10562,10 +10572,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   text-decoration: none;
   font-size: 14px;
   font-weight: 800;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
 }
 /* =========================================================
-   PRIMARY BUTTON
+   PRIMARY
    ========================================================= */
 .luxury-overlay-hero__button--primary {
   background: linear-gradient(135deg, #E62973, #EC4899) !important;
@@ -10580,7 +10590,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   box-shadow: 0 20px 45px rgba(230, 41, 115, 0.45);
 }
 /* =========================================================
-   SECONDARY BUTTON
+   SECONDARY
    ========================================================= */
 .luxury-overlay-hero__button--secondary {
   background: rgba(230, 41, 115, 0.14) !important;
@@ -10653,18 +10663,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
    MOBILE
    ========================================================= */
 @media (max-width: 768px) {
-  /* =====================================================
-     HERO
-     ===================================================== */
+  /* HERO */
   .luxury-overlay-hero {
     min-height: 100svh !important;
-    overflow: hidden;
   }
-  /* =====================================================
-     HEADER
-     ===================================================== */
+  /* HEADER */
   .luxury-overlay-header {
-    z-index: 1000 !important;
+    z-index: 10000 !important;
   }
   .luxury-overlay-header__top {
     min-height: 72px;
@@ -10674,61 +10679,54 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     justify-content: space-between;
     gap: 8px;
   }
-  /* =====================================================
-     LOGO
-     ===================================================== */
+  /* LOGO */
   .luxury-overlay-header__logo {
     order: 2;
     margin: 0 auto;
     justify-content: center;
-    z-index: 1100;
+    z-index: 10001;
   }
-  .luxury-overlay-header__logo img {
+  .luxury-overlay-header__logo-image {
     max-width: 120px;
     max-height: 45px;
   }
-  /* =====================================================
-     CONTROLS
-     ===================================================== */
+  /* CONTROLS */
   .luxury-overlay-header__controls {
     order: 1;
     justify-content: flex-start;
-    z-index: 1100;
+    z-index: 10001;
   }
   .luxury-overlay-header__control {
-    min-width: 42px;
     width: 42px;
     height: 42px;
+    min-width: 42px;
     padding: 0 !important;
   }
   .luxury-overlay-header__control span {
     display: none;
   }
   .luxury-overlay-header__search {
-    display: none;
+    display: none !important;
   }
-  /* =====================================================
-     DESKTOP NAV HIDDEN
-     ===================================================== */
+  /* LOCALIZATION */
+  .luxury-overlay-header__localization {
+    display: flex;
+  }
+  /* DESKTOP NAV */
   .luxury-overlay-navigation {
     display: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    min-height: 0 !important;
-    overflow: hidden !important;
   }
-  /* =====================================================
-     ACTIONS
-     ===================================================== */
+  /* ACTIONS */
   .luxury-overlay-header__actions {
     order: 3;
     justify-content: flex-end;
-    gap: 5px;
-    z-index: 1100;
+    gap: 4px;
+    z-index: 10001;
   }
   .luxury-overlay-header__action {
     width: 38px;
     height: 38px;
+    min-width: 38px;
     flex-basis: 38px;
   }
   .luxury-user-menu {
@@ -10745,6 +10743,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .luxury-overlay-header__icon {
     width: 38px;
     height: 38px;
+    min-width: 38px;
     flex-basis: 38px;
   }
   .luxury-overlay-cart {
@@ -10758,31 +10757,30 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     height: 38px !important;
   }
   /* =====================================================
-     MOBILE MENU — FINAL FORCE FIX
+     MOBILE MENU
      ===================================================== */
   .luxury-overlay-header__mobile-menu {
-    display: none !important;
-    position: absolute !important;
-    top: 100% !important;
-    right: 12px !important;
-    left: 12px !important;
+    top: calc(100% + 8px) !important;
+    right: 10px !important;
+    left: 10px !important;
     width: auto !important;
-    height: auto !important;
-    min-height: 0 !important;
     max-height: calc(100svh - 90px) !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
+    display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
     pointer-events: none !important;
-    transform: translateY(-8px);
-    background: rgba(10, 10, 10, 0.97) !important;
+    transform: translateY(-10px) !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    background: rgba(8, 8, 8, 0.98) !important;
+    border: 1px solid rgba(230, 41, 115, 0.45) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6) !important;
     z-index: 999999 !important;
   }
-  /*
-   * عند الضغط على القائمة:
-   * لا نعتمد على أي CSS آخر.
-   */
+  /* =====================================================
+     OPEN
+     ===================================================== */
   .luxury-overlay-header__mobile-menu.is-open {
     display: block !important;
     visibility: visible !important;
@@ -10791,67 +10789,71 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: translateY(0) !important;
   }
   /* =====================================================
-     MOBILE CUSTOM MAIN MENU
+     MOBILE CUSTOM MENU
      ===================================================== */
   .luxury-overlay-header__mobile-menu custom-main-menu {
     display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
     width: 100% !important;
     height: auto !important;
+    min-height: 0 !important;
     max-height: none !important;
-    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
     position: relative !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     background: transparent !important;
     color: #fff !important;
+    overflow: visible !important;
   }
   /* =====================================================
-     MOBILE MAIN MENU
+     MENU ROOT
      ===================================================== */
   .luxury-overlay-header__mobile-menu custom-main-menu .main-menu {
     display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    width: 100% !important;
-    height: auto !important;
-    max-height: none !important;
-    min-height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
     flex-direction: column !important;
     align-items: stretch !important;
     justify-content: flex-start !important;
     gap: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
     background: transparent !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     overflow: visible !important;
   }
   /* =====================================================
-     MOBILE MENU ITEMS
+     ITEMS
      ===================================================== */
   .luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li {
     display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
     width: 100% !important;
     height: auto !important;
+    min-height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
     position: relative !important;
     background: transparent !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
   /* =====================================================
-     MOBILE MENU LINKS
+     LINKS
      ===================================================== */
   .luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li > a {
     display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
     align-items: center !important;
     justify-content: space-between !important;
     width: 100% !important;
     min-height: 52px !important;
     margin: 0 !important;
     padding: 14px 16px !important;
+    box-sizing: border-box !important;
     color: #fff !important;
     background: transparent !important;
     border: 0 !important;
@@ -10861,31 +10863,32 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     line-height: 1.5 !important;
     -webkit-text-decoration: none !important;
     text-decoration: none !important;
-    white-space: normal !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
-  .luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li > a:hover {
+  .luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li > a:hover,
+  .luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li > a:focus {
     color: #fff !important;
-    background: rgba(230, 41, 115, 0.14) !important;
+    background: rgba(230, 41, 115, 0.15) !important;
   }
   /* =====================================================
-     MOBILE SUBMENU
+     SUBMENU
      ===================================================== */
   .luxury-overlay-header__mobile-menu custom-main-menu .main-menu ul {
     display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
     position: relative !important;
     width: 100% !important;
     height: auto !important;
+    min-height: 0 !important;
     max-height: none !important;
     margin: 0 !important;
     padding: 0 !important;
     background: rgba(255, 255, 255, 0.035) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     overflow: visible !important;
   }
-  /* =====================================================
-     HERO CONTENT
-     ===================================================== */
+  /* HERO CONTENT */
   .luxury-overlay-hero__content {
     position: relative;
     z-index: 10;
@@ -10902,16 +10905,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     font-size: 15px;
     line-height: 1.9;
   }
-  /* =====================================================
-     RATING
-     ===================================================== */
+  /* RATING */
   .luxury-overlay-hero__rating {
     flex-direction: column;
     gap: 5px;
   }
-  /* =====================================================
-     BUTTONS
-     ===================================================== */
+  /* BUTTONS */
   .luxury-overlay-hero__buttons {
     width: 100%;
     flex-direction: column;
@@ -10921,15 +10920,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     width: 100%;
     max-width: 300px;
   }
-  /* =====================================================
-     SCROLL
-     ===================================================== */
+  /* SCROLL */
   .luxury-overlay-hero__scroll {
     display: none;
   }
-  /* =====================================================
-     GLOW
-     ===================================================== */
+  /* GLOW */
   .luxury-overlay-hero__glow {
     width: 300px;
     height: 300px;
@@ -10937,13 +10932,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   VERY SMALL MOBILE
+   SMALL MOBILE
    ========================================================= */
 @media (max-width: 480px) {
   .luxury-overlay-header__mobile-menu {
     right: 8px !important;
     left: 8px !important;
-    padding: 10px !important;
+    padding: 8px !important;
     border-radius: 17px !important;
   }
   .luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li > a {
