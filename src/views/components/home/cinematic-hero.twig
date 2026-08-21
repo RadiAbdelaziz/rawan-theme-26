@@ -1,7 +1,6 @@
 {# =========================================================
    CINEMATIC LUXURY HERO
-   HEADER + VIDEO + ALWAYS VISIBLE CATEGORIES
-   NO MOBILE MENU / NO MENU TOGGLE / NO JAVASCRIPT
+   Header + Video + Navigation + Hero Content
    ========================================================= #}
 
 {% if component.luxury_show_section != false %}
@@ -19,8 +18,9 @@
     "
 >
 
+
     {# =========================================================
-       VIDEO
+       BACKGROUND VIDEO
        ========================================================= #}
 
     {% set luxury_video = component.luxury_video ?: asset('videos/banner.mp4') %}
@@ -102,16 +102,12 @@
         data-testid="luxury-overlay-header"
     >
 
-        {# =====================================================
-           HEADER TOP
-           ===================================================== #}
-
         <div class="luxury-overlay-header__top">
 
 
-            {# =================================================
+            {# =====================================================
                LOGO
-               ================================================= #}
+               ===================================================== #}
 
             <div class="luxury-overlay-header__logo">
 
@@ -131,12 +127,39 @@
             </div>
 
 
-            {# =================================================
+            {# =====================================================
                CENTER CONTROLS
-               لا يوجد زر قائمة
-               ================================================= #}
+               ===================================================== #}
 
             <div class="luxury-overlay-header__controls">
+
+
+                {# =================================================
+                   MENU BUTTON
+                   لا يوجد onclick هنا
+                   ================================================= #}
+
+                {# <button
+                    type="button"
+                    id="luxury-menu-toggle"
+                    class="luxury-overlay-header__control luxury-menu-toggle"
+                    aria-label="القائمة"
+                    aria-controls="luxury-mobile-menu"
+                    aria-expanded="false"
+                >
+
+                    <i class="sicon-menu"></i>
+
+                    <span>
+                        القائمة
+                    </span>
+
+                </button> #}
+
+
+                {# =================================================
+                   LANGUAGE / CURRENCY
+                   ================================================= #}
 
                 {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
 
@@ -151,7 +174,9 @@
                 {% endif %}
 
 
-                {# SEARCH #}
+                {# =================================================
+                   SEARCH
+                   ================================================= #}
 
                 <div class="luxury-overlay-header__search">
 
@@ -166,9 +191,9 @@
             </div>
 
 
-            {# =================================================
+            {# =====================================================
                USER ACTIONS
-               ================================================= #}
+               ===================================================== #}
 
             <div class="luxury-overlay-header__actions">
 
@@ -236,17 +261,17 @@
 
 
         {# =========================================================
-           ALWAYS VISIBLE CATEGORIES
-           
-           لا يوجد Mobile Menu
-           لا يوجد Toggle
-           لا يوجد JavaScript
-           القائمة واحدة فقط
+           DESKTOP NAVIGATION
+
+           مهم:
+           custom-main-menu موجود مرة واحدة فقط.
+           JavaScript سينقله للموبايل عند الحاجة.
            ========================================================= #}
 
         <nav
             class="luxury-overlay-navigation"
             aria-label="التصنيفات الرئيسية"
+            data-luxury-main-navigation
         >
 
             <div class="luxury-overlay-navigation__inner">
@@ -256,6 +281,30 @@
             </div>
 
         </nav>
+
+
+        {# =========================================================
+           MOBILE MENU CONTAINER
+
+           لا نضع custom-main-menu هنا.
+           سيتم نقل نفس العنصر إليه بواسطة JS.
+           ========================================================= #}
+
+        <div
+            id="luxury-mobile-menu"
+            class="luxury-overlay-header__mobile-menu"
+            aria-hidden="true"
+        >
+
+            <div class="luxury-overlay-header__mobile-menu-inner">
+
+                <div
+                    class="luxury-overlay-header__mobile-menu-placeholder"
+                ></div>
+
+            </div>
+
+        </div>
 
     </header>
 
@@ -313,7 +362,9 @@
         {% if component.luxury_description %}
 
             <p class="luxury-overlay-hero__description">
+
                 {{ component.luxury_description }}
+
             </p>
 
         {% endif %}
@@ -327,7 +378,9 @@
 
             <div class="luxury-overlay-hero__rating">
 
-                <span>★★★★★</span>
+                <span>
+                    ★★★★★
+                </span>
 
                 <small>
                     {{ component.luxury_rating_text ?: 'أكثر من 5000 عميل يثق بنا' }}
@@ -347,6 +400,8 @@
             <div class="luxury-overlay-hero__buttons">
 
 
+                {# PRIMARY BUTTON #}
+
                 {% if component.luxury_button_text %}
 
                     <a
@@ -356,11 +411,15 @@
                             luxury-overlay-hero__button--primary
                         "
                     >
+
                         {{ component.luxury_button_text }}
+
                     </a>
 
                 {% endif %}
 
+
+                {# SECONDARY BUTTON #}
 
                 {% if component.luxury_show_second_button %}
 
@@ -371,7 +430,9 @@
                             luxury-overlay-hero__button--secondary
                         "
                     >
+
                         {{ component.luxury_second_button_text ?: 'اكتشف المزيد' }}
+
                     </a>
 
                 {% endif %}
@@ -384,7 +445,7 @@
 
 
     {# =========================================================
-       SCROLL
+       SCROLL INDICATOR
        ========================================================= #}
 
     {% if component.luxury_show_scroll %}
@@ -393,11 +454,367 @@
             class="luxury-overlay-hero__scroll"
             aria-hidden="true"
         >
+
             <span></span>
+
         </div>
 
     {% endif %}
 
+
 </section>
+
+
+{# =========================================================
+   LUXURY MENU JAVASCRIPT
+
+   نفس custom-main-menu يتم نقله بين:
+   Desktop Navigation
+   و
+   Mobile Menu
+
+   لا توجد نسخة ثانية من القائمة.
+   ========================================================= #}
+
+<script>
+(function () {
+
+    function initLuxuryNavigation() {
+
+        var hero =
+            document.querySelector(
+                '.luxury-overlay-hero'
+            );
+
+        if (!hero) {
+            return;
+        }
+
+
+        var toggle =
+            hero.querySelector(
+                '#luxury-menu-toggle'
+            );
+
+        var mobileMenu =
+            hero.querySelector(
+                '#luxury-mobile-menu'
+            );
+
+        var navigation =
+            hero.querySelector(
+                '[data-luxury-main-navigation]'
+            );
+
+        if (
+            !toggle ||
+            !mobileMenu ||
+            !navigation
+        ) {
+            return;
+        }
+
+
+        var navigationInner =
+            navigation.querySelector(
+                '.luxury-overlay-navigation__inner'
+            );
+
+        var placeholder =
+            mobileMenu.querySelector(
+                '.luxury-overlay-header__mobile-menu-placeholder'
+            );
+
+        if (
+            !navigationInner ||
+            !placeholder
+        ) {
+            return;
+        }
+
+
+        var mainMenu =
+            navigationInner.querySelector(
+                'custom-main-menu'
+            );
+
+        if (!mainMenu) {
+            return;
+        }
+
+
+        var mobileBreakpoint = 768;
+
+
+        function isMobile() {
+
+            return window.innerWidth <= mobileBreakpoint;
+
+        }
+
+
+        function moveMenu() {
+
+            if (isMobile()) {
+
+                /*
+                 * نقل القائمة نفسها للموبايل
+                 */
+
+                if (
+                    mainMenu.parentElement !== placeholder
+                ) {
+
+                    placeholder.appendChild(
+                        mainMenu
+                    );
+
+                }
+
+            } else {
+
+                /*
+                 * إعادتها إلى Desktop
+                 */
+
+                if (
+                    mainMenu.parentElement !== navigationInner
+                ) {
+
+                    navigationInner.appendChild(
+                        mainMenu
+                    );
+
+                }
+
+
+                /*
+                 * إغلاق القائمة عند العودة
+                 * إلى Desktop
+                 */
+
+                mobileMenu.classList.remove(
+                    'is-open'
+                );
+
+                mobileMenu.setAttribute(
+                    'aria-hidden',
+                    'true'
+                );
+
+                toggle.setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+
+            }
+
+        }
+
+
+        function toggleMenu() {
+
+            if (!isMobile()) {
+                return;
+            }
+
+            var open =
+                !mobileMenu.classList.contains(
+                    'is-open'
+                );
+
+
+            if (open) {
+
+                mobileMenu.classList.add(
+                    'is-open'
+                );
+
+                mobileMenu.setAttribute(
+                    'aria-hidden',
+                    'false'
+                );
+
+                toggle.setAttribute(
+                    'aria-expanded',
+                    'true'
+                );
+
+            } else {
+
+                mobileMenu.classList.remove(
+                    'is-open'
+                );
+
+                mobileMenu.setAttribute(
+                    'aria-hidden',
+                    'true'
+                );
+
+                toggle.setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+
+            }
+
+        }
+
+
+        /*
+         * فتح / إغلاق
+         */
+
+        toggle.addEventListener(
+            'click',
+            toggleMenu
+        );
+
+
+        /*
+         * عند تغيير حجم الشاشة
+         */
+
+        var resizeTimer;
+
+        window.addEventListener(
+            'resize',
+            function () {
+
+                clearTimeout(
+                    resizeTimer
+                );
+
+                resizeTimer =
+                    setTimeout(
+                        moveMenu,
+                        100
+                    );
+
+            }
+        );
+
+
+        /*
+         * إغلاق عند الضغط خارج القائمة
+         */
+
+        document.addEventListener(
+            'click',
+            function (event) {
+
+                if (!isMobile()) {
+                    return;
+                }
+
+
+                if (
+                    !mobileMenu.classList.contains(
+                        'is-open'
+                    )
+                ) {
+                    return;
+                }
+
+
+                if (
+                    mobileMenu.contains(
+                        event.target
+                    )
+                ) {
+                    return;
+                }
+
+
+                if (
+                    toggle.contains(
+                        event.target
+                    )
+                ) {
+                    return;
+                }
+
+
+                mobileMenu.classList.remove(
+                    'is-open'
+                );
+
+                mobileMenu.setAttribute(
+                    'aria-hidden',
+                    'true'
+                );
+
+                toggle.setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+
+            }
+        );
+
+
+        /*
+         * إغلاق بزر ESC
+         */
+
+        document.addEventListener(
+            'keydown',
+            function (event) {
+
+                if (
+                    event.key !== 'Escape'
+                ) {
+                    return;
+                }
+
+
+                mobileMenu.classList.remove(
+                    'is-open'
+                );
+
+                mobileMenu.setAttribute(
+                    'aria-hidden',
+                    'true'
+                );
+
+                toggle.setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+
+            }
+        );
+
+
+        /*
+         * تشغيل أولي
+         */
+
+        moveMenu();
+
+    }
+
+
+    /*
+     * انتظار DOM
+     */
+
+    if (
+        document.readyState === 'loading'
+    ) {
+
+        document.addEventListener(
+            'DOMContentLoaded',
+            initLuxuryNavigation
+        );
+
+    } else {
+
+        initLuxuryNavigation();
+
+    }
+
+})();
+</script>
 
 {% endif %}
