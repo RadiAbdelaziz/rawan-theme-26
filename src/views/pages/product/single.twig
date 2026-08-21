@@ -47,7 +47,24 @@
         ====================================================== #}
 
         <section class="rawan-section-heading">
+<div
+    style="
+        margin:30px auto;
+        max-width:1200px;
+        padding:25px;
+        background:#f8f8f8;
+        direction:ltr;
+        text-align:left;
+        border:1px solid #ddd;
+        border-radius:12px;
+    "
+>
+    <h3>PRODUCT CATEGORY DEBUG</h3>
 
+    <pre style="white-space:pre-wrap;">
+{{ product.category|json_encode(constant('JSON_PRETTY_PRINT')) }}
+    </pre>
+</div>
             <div class="rawan-heading-line"></div>
 
             <div class="rawan-heading-content">
