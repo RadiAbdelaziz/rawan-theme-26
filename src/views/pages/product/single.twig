@@ -9,6 +9,609 @@
 
 
 {# =========================================================
+   LUXURY PRODUCT CARD STYLE
+   Applied to Salla Products Slider cards
+========================================================= #}
+
+<style>
+
+    /* =====================================================
+       LUXURY RELATED PRODUCTS SECTION
+    ===================================================== */
+
+    .rawan-lux-products {
+
+        --lux-accent: #E62973;
+
+        width: 100%;
+
+        position: relative;
+
+        padding: 20px 0 70px;
+
+    }
+
+
+    .rawan-lux-products .rawan-lux-products__inner {
+
+        position: relative;
+
+        width: 100%;
+
+    }
+
+
+    /* =====================================================
+       SALLA SLIDER
+    ===================================================== */
+
+    .rawan-lux-products salla-products-slider {
+
+        display: block;
+
+        width: 100%;
+
+    }
+
+
+    .rawan-lux-products
+    salla-products-slider .s-slider-block__title {
+
+        display: none !important;
+
+    }
+
+
+    .rawan-lux-products
+    salla-products-slider .s-slider-block {
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+    }
+
+
+    .rawan-lux-products
+    salla-products-slider .swiper {
+
+        padding: 15px 8px 35px !important;
+
+    }
+
+
+    .rawan-lux-products
+    salla-products-slider .swiper-wrapper {
+
+        align-items: stretch;
+
+    }
+
+
+    .rawan-lux-products
+    salla-products-slider .swiper-slide {
+
+        height: auto !important;
+
+        display: flex;
+
+    }
+
+
+    /* =====================================================
+       PRODUCT CARD
+       SALLA NATIVE CARD
+    ===================================================== */
+
+    .rawan-lux-products
+    .s-product-card-entry {
+
+        background: #ffffff !important;
+
+        border-radius: 24px !important;
+
+        overflow: hidden !important;
+
+        border: none !important;
+
+        box-shadow:
+            0 15px 40px rgba(0,0,0,.12) !important;
+
+        position: relative !important;
+
+        width: 100% !important;
+
+        height: 100% !important;
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        transition:
+            transform .45s cubic-bezier(.22,1,.36,1),
+            box-shadow .45s cubic-bezier(.22,1,.36,1) !important;
+
+    }
+
+
+    .rawan-lux-products
+    .s-product-card-entry:hover {
+
+        transform: translateY(-10px) !important;
+
+        box-shadow:
+            0 30px 70px rgba(230,41,115,.25) !important;
+
+    }
+
+
+    /* =====================================================
+       IMAGE AREA
+    ===================================================== */
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-image {
+
+        background: #fafafa !important;
+
+        padding: 18px !important;
+
+        position: relative !important;
+
+        overflow: hidden !important;
+
+        flex-shrink: 0 !important;
+
+    }
+
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-image
+    .s-product-card-image-cover {
+
+        width: 100% !important;
+
+        aspect-ratio: 1 / 1 !important;
+
+        object-fit: contain !important;
+
+        border-radius: 20px !important;
+
+        transition:
+            transform .6s ease !important;
+
+        display: block !important;
+
+    }
+
+
+    .rawan-lux-products
+    .s-product-card-entry:hover
+    .s-product-card-image-cover {
+
+        transform: scale(1.08) !important;
+
+    }
+
+
+    /* =====================================================
+       PROMOTION BADGE
+    ===================================================== */
+
+    .rawan-lux-products
+    .s-product-card-promotion-title {
+
+        position: absolute !important;
+
+        top: 15px !important;
+
+        left: 15px !important;
+
+        right: auto !important;
+
+        background: #E62973 !important;
+
+        color: #ffffff !important;
+
+        padding: 6px 12px !important;
+
+        border-radius: 999px !important;
+
+        font-size: 11px !important;
+
+        font-weight: 800 !important;
+
+        line-height: 1.4 !important;
+
+        z-index: 5 !important;
+
+        box-shadow:
+            0 5px 15px rgba(230,41,115,.20) !important;
+
+    }
+
+
+    /* =====================================================
+       WISHLIST
+    ===================================================== */
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-wishlist-btn {
+
+        top: 15px !important;
+
+        right: 15px !important;
+
+        left: auto !important;
+
+        z-index: 10 !important;
+
+    }
+
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-wishlist-btn button {
+
+        width: 42px !important;
+
+        height: 42px !important;
+
+        min-width: 42px !important;
+
+        border-radius: 50% !important;
+
+        background: #ffffff !important;
+
+        color: #E62973 !important;
+
+        border: none !important;
+
+        box-shadow:
+            0 5px 15px rgba(0,0,0,.12) !important;
+
+        transition:
+            transform .3s ease,
+            background .3s ease,
+            color .3s ease !important;
+
+    }
+
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-wishlist-btn button:hover {
+
+        background: #E62973 !important;
+
+        color: #ffffff !important;
+
+        transform: scale(1.1) !important;
+
+    }
+
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-wishlist-btn button
+    i {
+
+        color: inherit !important;
+
+    }
+
+
+    /* =====================================================
+       CONTENT
+    ===================================================== */
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-content {
+
+        padding: 18px !important;
+
+        text-align: right !important;
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        flex: 1 !important;
+
+        background: #ffffff !important;
+
+    }
+
+
+    /* =====================================================
+       PRODUCT TITLE
+    ===================================================== */
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-content-title {
+
+        margin: 0 0 8px !important;
+
+        min-height: auto !important;
+
+    }
+
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-content-title a {
+
+        color: #111111 !important;
+
+        font-size: 16px !important;
+
+        font-weight: 900 !important;
+
+        line-height: 1.7 !important;
+
+        text-decoration: none !important;
+
+        transition: color .3s ease !important;
+
+    }
+
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-content-title a:hover {
+
+        color: #E62973 !important;
+
+    }
+
+
+    /* =====================================================
+       RATING
+    ===================================================== */
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-rating {
+
+        color: #E62973 !important;
+
+        font-size: 13px !important;
+
+        margin-top: 8px !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+
+        gap: 4px !important;
+
+    }
+
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-rating
+    i {
+
+        color: #E62973 !important;
+
+    }
+
+
+    /* =====================================================
+       PRICE
+    ===================================================== */
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-sale-price {
+
+        display: flex !important;
+
+        align-items: center !important;
+
+        gap: 8px !important;
+
+        margin-top: 12px !important;
+
+        flex-wrap: wrap !important;
+
+    }
+
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-sale-price h4 {
+
+        color: #111111 !important;
+
+        font-size: 22px !important;
+
+        font-weight: 900 !important;
+
+        margin: 0 !important;
+
+    }
+
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-sale-price span {
+
+        color: #999999 !important;
+
+        font-size: 14px !important;
+
+        text-decoration: line-through !important;
+
+    }
+
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-price {
+
+        color: #111111 !important;
+
+        font-size: 20px !important;
+
+        font-weight: 900 !important;
+
+    }
+
+
+    /* =====================================================
+       ADD TO CART
+    ===================================================== */
+
+    .rawan-lux-products
+    .s-product-card-entry
+    .s-product-card-content-footer {
+
+        margin-top: auto !important;
+
+        padding-top: 18px !important;
+
+    }
+
+
+    .rawan-lux-products
+    .s-product-card-entry
+    salla-add-product-button {
+
+        width: 100% !important;
+
+        display: block !important;
+
+    }
+
+
+    .rawan-lux-products
+    .s-product-card-entry
+    salla-add-product-button button {
+
+        width: 100% !important;
+
+        min-height: 48px !important;
+
+        height: 48px !important;
+
+        border-radius: 14px !important;
+
+        background: #E62973 !important;
+
+        color: #ffffff !important;
+
+        font-weight: 900 !important;
+
+        font-size: 14px !important;
+
+        border: none !important;
+
+        box-shadow: none !important;
+
+        transition:
+            background .3s ease,
+            transform .3s ease,
+            box-shadow .3s ease !important;
+
+    }
+
+
+    .rawan-lux-products
+    .s-product-card-entry
+    salla-add-product-button button:hover {
+
+        background: #c2185b !important;
+
+        transform: scale(1.03) !important;
+
+        box-shadow:
+            0 10px 25px rgba(194,24,91,.20) !important;
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ===================================================== */
+
+    @media (max-width: 767px) {
+
+        .rawan-lux-products {
+
+            padding-top: 10px;
+
+            padding-bottom: 45px;
+
+        }
+
+
+        .rawan-lux-products
+        salla-products-slider .swiper {
+
+            padding-left: 5px !important;
+
+            padding-right: 5px !important;
+
+        }
+
+
+        .rawan-lux-products
+        .s-product-card-entry {
+
+            border-radius: 20px !important;
+
+        }
+
+
+        .rawan-lux-products
+        .s-product-card-entry
+        .s-product-card-image {
+
+            padding: 12px !important;
+
+        }
+
+
+        .rawan-lux-products
+        .s-product-card-entry
+        .s-product-card-content {
+
+            padding: 14px !important;
+
+        }
+
+
+        .rawan-lux-products
+        .s-product-card-entry
+        .s-product-card-content-title a {
+
+            font-size: 14px !important;
+
+        }
+
+
+        .rawan-lux-products
+        .s-product-card-entry
+        .s-product-card-sale-price h4 {
+
+            font-size: 18px !important;
+
+        }
+
+    }
+
+
+</style>
+
+
+{# =========================================================
    BREADCRUMBS
 ========================================================= #}
 
@@ -115,8 +718,6 @@
                         show-thumbs-controls="false"
                     >
 
-                        {# PROMOTION #}
-
                         {% if product.promotion_title %}
 
                             <div class="rawan-promotion">
@@ -125,8 +726,6 @@
 
                         {% endif %}
 
-
-                        {# WISHLIST #}
 
                         <salla-button
                             class="btn--wishlist rawan-image-wishlist"
@@ -142,8 +741,6 @@
 
                         </salla-button>
 
-
-                        {# CALORIES #}
 
                         {% if product.calories %}
 
@@ -161,8 +758,6 @@
 
                         {% endif %}
 
-
-                        {# PRODUCT IMAGES #}
 
                         <div slot="items">
 
@@ -230,8 +825,6 @@
                         </div>
 
 
-                        {# THUMBNAILS #}
-
                         {% if has_many_images %}
 
                             <div
@@ -283,8 +876,6 @@
                 {% hook 'product:single.description.start' %}
 
 
-                {# BRAND #}
-
                 {% if product.brand and product.brand.name %}
 
                     <div class="rawan-brand">
@@ -318,8 +909,6 @@
                 {% endif %}
 
 
-                {# TITLE #}
-
                 <h1
                     data-testid="store-product-title"
                     class="rawan-product-title"
@@ -329,8 +918,6 @@
                 </h1>
 
 
-                {# SUBTITLE #}
-
                 {% if product.subtitle %}
 
                     <div class="rawan-product-subtitle">
@@ -339,8 +926,6 @@
 
                 {% endif %}
 
-
-                {# RATING #}
 
                 {% if product.rating %}
 
@@ -357,8 +942,6 @@
                 {% endif %}
 
 
-                {# TAX #}
-
                 {% if product.is_taxable %}
 
                     <div class="rawan-tax">
@@ -367,8 +950,6 @@
 
                 {% endif %}
 
-
-                {# PRICE #}
 
                 <div
                     data-testid="store-product-price"
@@ -425,8 +1006,6 @@
                 </div>
 
 
-                {# DESCRIPTION #}
-
                 <div
                     data-testid="store-product-description"
                     class="product__description rawan-description"
@@ -462,8 +1041,6 @@
                 </div>
 
 
-                {# TAGS #}
-
                 {% if product.tags|length and theme.settings.get('show_tags', true) %}
 
                     <div class="rawan-tags">
@@ -480,8 +1057,6 @@
 
                 {% endif %}
 
-
-                {# SHARE + WISHLIST #}
 
                 <div class="rawan-actions">
 
@@ -507,8 +1082,6 @@
 
                 </div>
 
-
-                {# STOCK #}
 
                 {% if product.sold_quantity or product.can_show_remained_quantity %}
 
@@ -557,8 +1130,6 @@
                 {% endif %}
 
 
-                {# SKU #}
-
                 {% if product.sku %}
 
                     <div class="rawan-sku">
@@ -583,15 +1154,11 @@
                 {% hook 'product:single.description' %}
 
 
-                {# INSTALLMENTS #}
-
                 <salla-installment
                     data-testid="store-product-installment"
                     price="{{ product.price }}"
                 ></salla-installment>
 
-
-                {# METADATA #}
 
                 {% if product.has_metadata %}
 
@@ -601,8 +1168,6 @@
 
                 {% endif %}
 
-
-                {# AVAILABILITY #}
 
                 {% if product.show_availability %}
 
@@ -634,8 +1199,6 @@
 
                 {% endif %}
 
-
-                {# DIGITAL FILES #}
 
                 {% if product.digital_files_settings %}
 
@@ -669,15 +1232,11 @@
                     {% hook 'product:single.form.start' %}
 
 
-                    {# PRODUCT OPTIONS #}
-
                     {% include 'pages.partials.product.options' %}
 
 
                     {% hook 'product:single.form.end' %}
 
-
-                    {# TOTAL PRICE #}
 
                     <section class="rawan-cart-price">
 
@@ -732,8 +1291,6 @@
                     </section>
 
 
-                    {# PREORDER #}
-
                     {% if product.has_preorder_campaign %}
 
                         <section class="rawan-preorder">
@@ -749,8 +1306,6 @@
 
                     {% endif %}
 
-
-                    {# QUANTITY + ADD TO CART #}
 
                     <section class="sticky-product-bar rawan-cart-box">
 
@@ -783,8 +1338,6 @@
 
                         {% endif %}
 
-
-                        {# ADD TO CART #}
 
                         <salla-add-product-button
                             data-testid="store-product-add-to-cart"
@@ -823,8 +1376,6 @@
                 </form>
 
 
-                {# GIFTING #}
-
                 {% if product.is_giftable %}
 
                     <salla-gifting
@@ -841,8 +1392,6 @@
                 {% hook 'product:single.description.end' %}
 
 
-                {# QUICK ORDER #}
-
                 <salla-quick-order
                     data-testid="store-product-quick-order"
                     class="rawan-quick-order"
@@ -852,8 +1401,6 @@
 
         </div>
 
-
-        {# PRODUCT OFFER #}
 
         <salla-offer
             data-testid="store-product-offer"
@@ -906,54 +1453,38 @@
     {% if product.category %}
 
         <section
-            class="rawan-recommendations"
+            class="rawan-recommendations rawan-lux-products"
             id="category-products"
         >
 
-            <div class="rawan-related-header">
+            <div class="container">
 
-                <div class="rawan-related-header__line"></div>
+                <div class="rawan-related-header">
 
-                <div class="rawan-related-header__content">
+                    <div class="rawan-related-header__line"></div>
 
-                    <span class="rawan-related-header__eyebrow">
-                        {{ product.category.name }}
-                    </span>
+                    <div class="rawan-related-header__content">
 
-                     <div class="rawan-related-header">
+                        <span class="rawan-related-header__eyebrow">
+                            {{ product.category.name }}
+                        </span>
 
-            <div class="rawan-related-header__line"></div>
+                        <h2 class="rawan-related-header__title">
+                            قد يعجبك أيضًا
+                        </h2>
 
-            <div class="rawan-related-header__content">
+                        <p class="rawan-related-header__description">
+                            منتجات أخرى قد تناسب اختيارك
+                        </p>
 
-                <span class="rawan-related-header__eyebrow">
-                    منتجات مقترحة
-                </span>
+                    </div>
 
-                <h2 class="rawan-related-header__title">
-                    قد يعجبك أيضًا
-                </h2>
-
-                <p class="rawan-related-header__description">
-                    منتجات أخرى قد تناسب اختيارك
-                </p>
-
-            </div>
-
-            <div class="rawan-related-header__line"></div>
-
-        </div>
+                    <div class="rawan-related-header__line"></div>
 
                 </div>
 
-                <div class="rawan-related-header__line"></div>
 
-            </div>
-
-
-            <div class="container rawan-related-products">
-
-                <div class="rawan-related-products__inner">
+                <div class="rawan-lux-products__inner">
 
                     <salla-products-slider
                         data-testid="store-product-category-products"
@@ -978,16 +1509,38 @@
     ========================================================== #}
 
     <section
-        class="rawan-recommendations rawan-recommendations--related"
+        class="rawan-recommendations rawan-lux-products"
         id="related-products"
     >
 
-       
+        <div class="container">
+
+            <div class="rawan-related-header">
+
+                <div class="rawan-related-header__line"></div>
+
+                <div class="rawan-related-header__content">
+
+                    <span class="rawan-related-header__eyebrow">
+                        منتجات مقترحة
+                    </span>
+
+                    <h2 class="rawan-related-header__title">
+                        منتجات قد تعجبك
+                    </h2>
+
+                    <p class="rawan-related-header__description">
+                        منتجات أخرى قد تناسب اختيارك
+                    </p>
+
+                </div>
+
+                <div class="rawan-related-header__line"></div>
+
+            </div>
 
 
-        <div class="container rawan-related-products">
-
-            <div class="rawan-related-products__inner">
+            <div class="rawan-lux-products__inner">
 
                 <salla-products-slider
                     data-testid="store-product-related"
@@ -1026,9 +1579,6 @@
 >
 
     <div class="rawan-sticky-product__inner">
-
-
-        {# PRODUCT IMAGE #}
 
         <div class="rawan-sticky-product__product">
 
@@ -1071,8 +1621,6 @@
         </div>
 
 
-        {# STICKY ACTION #}
-
         <div class="rawan-sticky-product__action">
 
             <button
@@ -1090,7 +1638,6 @@
             </button>
 
         </div>
-
 
     </div>
 
@@ -1140,6 +1687,10 @@
     'use strict';
 
 
+    /* =====================================================
+       PRODUCT PAGE
+    ====================================================== */
+
     function initProductPage() {
 
         var sticky =
@@ -1168,7 +1719,9 @@
             !stickyButton ||
             !productForm
         ) {
+
             return;
+
         }
 
 
@@ -1179,7 +1732,9 @@
         function updateSticky() {
 
             if (!cartBox) {
+
                 return;
+
             }
 
 
@@ -1338,7 +1893,9 @@
             var priceObserver =
                 new MutationObserver(
                     function () {
+
                         syncPrice();
+
                     }
                 );
 
@@ -1361,6 +1918,10 @@
     }
 
 
+    /* =====================================================
+       INIT
+    ====================================================== */
+
     if (
         document.readyState ===
         'loading'
@@ -1381,5 +1942,6 @@
 })();
 
 </script>
+
 
 {% endblock %}
