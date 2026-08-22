@@ -878,3 +878,322 @@
     background: #f00 !important;
     padding: 50px !important;
 }
+/* =========================================================
+   PRODUCT SLIDER — LUXURY CARD STYLE
+========================================================= */
+
+#category-products,
+#related-products {
+
+    .s-product-card-entry {
+
+        background: #ffffff !important;
+        border-radius: 24px !important;
+        overflow: hidden !important;
+        border: none !important;
+
+        box-shadow:
+            0 15px 40px rgba(0, 0, 0, .12) !important;
+
+        position: relative;
+
+        transition:
+            transform .45s cubic-bezier(.22, 1, .36, 1),
+            box-shadow .45s cubic-bezier(.22, 1, .36, 1);
+
+        height: 100%;
+
+
+        &:hover {
+
+            transform: translateY(-10px);
+
+            box-shadow:
+                0 30px 70px rgba(230, 41, 115, .25) !important;
+
+        }
+
+
+        /* =====================================================
+           IMAGE
+        ===================================================== */
+
+        .s-product-card-image {
+
+            background: #fafafa !important;
+
+            padding: 18px !important;
+
+            position: relative;
+
+
+            .s-product-card-image-cover {
+
+                width: 100% !important;
+
+                aspect-ratio: 1 / 1;
+
+                object-fit: contain !important;
+
+                border-radius: 20px;
+
+                transition:
+                    transform .6s ease;
+
+            }
+
+        }
+
+
+        &:hover {
+
+            .s-product-card-image-cover {
+
+                transform: scale(1.08);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           PROMOTION
+        ===================================================== */
+
+        .s-product-card-promotion-title {
+
+            position: absolute;
+
+            top: 15px;
+            left: 15px;
+
+            background: #E62973 !important;
+
+            color: #fff !important;
+
+            padding: 6px 12px;
+
+            border-radius: 999px;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            z-index: 5;
+
+        }
+
+
+        /* =====================================================
+           WISHLIST
+        ===================================================== */
+
+        .s-product-card-wishlist-btn {
+
+            top: 15px !important;
+            right: 15px !important;
+
+            z-index: 10;
+
+
+            button {
+
+                width: 42px !important;
+                height: 42px !important;
+
+                border-radius: 50% !important;
+
+                background: #fff !important;
+
+                color: #E62973 !important;
+
+                border: none !important;
+
+                box-shadow:
+                    0 5px 15px rgba(0, 0, 0, .12);
+
+                transition: .3s;
+
+
+                &:hover {
+
+                    background: #E62973 !important;
+
+                    color: #fff !important;
+
+                    transform: scale(1.1);
+
+                }
+
+            }
+
+        }
+
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        .s-product-card-content {
+
+            padding: 18px !important;
+
+            text-align: right;
+
+        }
+
+
+        /* =====================================================
+           TITLE
+        ===================================================== */
+
+        .s-product-card-content-title {
+
+            margin-bottom: 8px;
+
+
+            a {
+
+                color: #111 !important;
+
+                font-size: 16px !important;
+
+                font-weight: 900 !important;
+
+                line-height: 1.7;
+
+                transition: .3s;
+
+
+                &:hover {
+
+                    color: #E62973 !important;
+
+                }
+
+            }
+
+        }
+
+
+        /* =====================================================
+           RATING
+        ===================================================== */
+
+        .s-product-card-rating {
+
+            color: #E62973 !important;
+
+            font-size: 13px;
+
+            margin-top: 8px;
+
+        }
+
+
+        /* =====================================================
+           SALE PRICE
+        ===================================================== */
+
+        .s-product-card-sale-price {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-top: 12px;
+
+
+            h4 {
+
+                color: #111 !important;
+
+                font-size: 22px !important;
+
+                font-weight: 900 !important;
+
+            }
+
+
+            span {
+
+                color: #999 !important;
+
+                font-size: 14px;
+
+                text-decoration: line-through;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           NORMAL PRICE
+        ===================================================== */
+
+        .s-product-card-price {
+
+            color: #111 !important;
+
+            font-size: 20px !important;
+
+            font-weight: 900 !important;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .s-product-card-content-footer {
+
+            margin-top: 18px;
+
+
+            salla-add-product-button {
+
+                width: 100%;
+
+
+                button {
+
+                    width: 100% !important;
+
+                    height: 48px !important;
+
+                    min-height: 48px !important;
+
+                    border-radius: 14px !important;
+
+                    background: #E62973 !important;
+
+                    color: #fff !important;
+
+                    font-weight: 900 !important;
+
+                    border: none !important;
+
+                    transition: .3s;
+
+
+                    &:hover {
+
+                        background: #c2185b !important;
+
+                        transform: scale(1.03);
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
