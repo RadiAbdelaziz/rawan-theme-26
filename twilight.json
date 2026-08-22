@@ -1291,51 +1291,174 @@
             ]
         },
         {
-            "key": "25f6cf26-a53f-4954-9b32-739b311b32c7",
-            "title": {
-                "en": "Brands",
-                "ar": "الماركات التجارية"
-            },
+    "key": "25f6cf26-a53f-4954-9b32-739b311b32c7",
+    "title": {
+        "en": "Premium Brands",
+        "ar": "العلامات التجارية"
+    },
+    "icon": "sicon-award-ribbon",
+    "path": "home.brands",
+    "image": "https://cdn.salla.network/images/themes/raed/preview-images/brands.png?v=1.1",
+    "fields": [
+        {
+            "type": "static",
+            "format": "description",
+            "id": "with-bg",
+            "value": "<div><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/brands.png?v=1.1'></div>"
+        },
+
+        {
+            "type": "string",
+            "icon": "sicon-format-text-alt",
+            "label": "العنوان الرئيسي",
+            "multilanguage": true,
+            "id": "title",
+            "required": false,
+            "format": "text",
+            "description": "العنوان الرئيسي الذي يظهر أعلى قسم العلامات التجارية",
+            "placeholder": "مثال: اكتشف أشهر العلامات التجارية",
+            "minLength": 0,
+            "maxLength": 200,
+            "value": "اكتشف أشهر العلامات التجارية"
+        },
+
+        {
+            "type": "string",
+            "icon": "sicon-align-center",
+            "label": "الوصف",
+            "multilanguage": true,
+            "id": "subtitle",
+            "required": false,
+            "format": "text",
+            "description": "وصف قصير يظهر أسفل العنوان",
+            "placeholder": "مثال: مجموعة مختارة من أفضل العلامات التجارية",
+            "minLength": 0,
+            "maxLength": 300,
+            "value": "اكتشف تشكيلتنا المختارة من أشهر العلامات التجارية"
+        },
+
+        {
+            "type": "items",
             "icon": "sicon-award-ribbon",
-            "path": "home.brands",
-            "image": "https://cdn.salla.network/images/themes/raed/preview-images/brands.png?v=1.1",
-            "fields": [
+            "label": "العلامات التجارية",
+            "id": "brands",
+            "format": "dropdown-list",
+            "description": "اختر العلامات التجارية التي تريد عرضها",
+            "selected": [],
+            "options": [],
+            "required": true,
+            "multichoice": true,
+            "searchable": true,
+            "source": "brands"
+        },
+
+        {
+            "type": "number",
+            "icon": "sicon-grid",
+            "label": "عدد العلامات التجارية",
+            "id": "columns",
+            "required": false,
+            "min": 2,
+            "max": 8,
+            "step": 1,
+            "value": 6
+        },
+
+        {
+            "type": "boolean",
+            "icon": "sicon-eye",
+            "label": "إظهار أسماء العلامات",
+            "id": "show_names",
+            "required": false,
+            "value": true
+        },
+
+        {
+            "type": "boolean",
+            "icon": "sicon-arrow-left",
+            "label": "إظهار زر عرض الكل",
+            "id": "show_all",
+            "required": false,
+            "value": true
+        },
+
+        {
+            "type": "string",
+            "icon": "sicon-arrow-left",
+            "label": "نص زر عرض الكل",
+            "multilanguage": true,
+            "id": "all_button_text",
+            "required": false,
+            "format": "text",
+            "placeholder": "مثال: عرض جميع العلامات",
+            "minLength": 0,
+            "maxLength": 100,
+            "value": "عرض جميع العلامات"
+        },
+
+        {
+            "type": "select",
+            "icon": "sicon-layout-grid",
+            "label": "نمط العرض",
+            "id": "style",
+            "required": false,
+            "value": "cards",
+            "options": [
                 {
-                    "type": "static",
-                    "format": "description",
-                    "id": "with-bg",
-                    "value": "<div ><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/brands.png?v=1.1'></div>"
+                    "value": "cards",
+                    "label": "بطاقات فاخرة"
                 },
                 {
-                    "type": "string",
-                    "icon": "sicon-format-text-alt",
-                    "label": "العنوان",
-                    "multilanguage": true,
-                    "id": "title",
-                    "required": false,
-                    "format": "text",
-                    "description": null,
-                    "placeholder": "أدخل العنوان هنا...",
-                    "minLength": 0,
-                    "maxLength": 200,
-                    "value": "تصفح من خلال العلامات التجارية"
+                    "value": "logos",
+                    "label": "شعارات فقط"
                 },
                 {
-                    "type": "items",
-                    "icon": "sicon-keyboard_arrow_down",
-                    "label": "الماركات التجارية",
-                    "id": "brands",
-                    "format": "dropdown-list",
-                    "description": null,
-                    "selected": [],
-                    "options": [],
-                    "required": true,
-                    "multichoice": true,
-                    "searchable": true,
-                    "source": "brands"
+                    "value": "minimal",
+                    "label": "تصميم بسيط"
                 }
             ]
         },
+
+        {
+            "type": "color",
+            "icon": "sicon-palette",
+            "label": "لون الخلفية",
+            "id": "background_color",
+            "required": false,
+            "value": "#FAFAFA"
+        },
+
+        {
+            "type": "color",
+            "icon": "sicon-palette",
+            "label": "لون البطاقات",
+            "id": "card_color",
+            "required": false,
+            "value": "#FFFFFF"
+        },
+
+        {
+            "type": "color",
+            "icon": "sicon-palette",
+            "label": "اللون الرئيسي",
+            "id": "accent_color",
+            "required": false,
+            "value": "#E62973"
+        },
+
+        {
+            "type": "number",
+            "icon": "sicon-expand",
+            "label": "المسافة الداخلية للقسم",
+            "id": "section_padding",
+            "required": false,
+            "min": 20,
+            "max": 160,
+            "step": 5,
+            "value": 80
+        }
+    ]
+},
         {
             "key": "541cc423-90c7-4230-8a33-a0342cfde4ad",
             "title": {
