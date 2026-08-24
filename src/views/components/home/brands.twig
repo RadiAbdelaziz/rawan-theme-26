@@ -1,42 +1,171 @@
-{#
-| Variable                       | Type    | Description                                                                  |
-|--------------------------------|---------|------------------------------------------------------------------------------|
-| component                      | object  | Contains merchant settings for fields from twilight.json `component` section |
-| component.brands               | Brand[] | list of selected brands @see views/pages/brands/single.twig                  |
-| position                       | int     | Sorting number start from zero                                               |
-#}
-{% set display_all_url = theme.settings.get('is_more_button_enabled') %}
-<section data-testid="store-home-brands" class="s-block s-block--logos-slider s-block--full-bg bg-gray-100 pt-8 sm:pt-12 pb-8 sm:pb-20">
-    <div class="container">
-    
-        {% if component.title or component.show_all %}
-          <div class="s-block__title">
-            {% if component.title %}
-              <div class="right-side">
-                <h2>{{ (component.title is iterable ? component.title[language.code]|default(component.title|first) : component.title) }}</h2>
-                {# <p>عنوان فرعي توصيفي صغير</p> #}
-              </div>
-            {% endif %}
-            {% if display_all_url %}
-              <a href="{{ link('brands') }}" class="s-block__display-all"> {{ trans('blocks.home.display_all') }} <i class="sicon-arrow-left"></i></a>
-            {% endif %}
-          </div>
-        {% endif %}
+{# =========================================================
+   LUXURY BRANDS
+   الماركات التجارية - Luxury Brands Showcase
+========================================================= #}
 
-        <div class="grid grid-cols-2 {{ component.brands|length > 5 ? 'md:grid-cols-4' : 'md:grid-cols-5' }} grid-flow-row gap-4 lg:gap-8">
-            {% for brand in component.brands %}
-                {% if loop.first or loop.index0%3==0 %}
-                    <a href="{{ brand.url }}"
-                       class="brand-item {{ component.brands|length > 5  ? 'sm:row-span-2 sm:h-auto': '' }}">
-                        <img class="max-h-full" width="400" height="300" src="{{ brand.logo }}" alt="{{ brand.name }}"/>
+{% if component.brands|length %}
+
+<section class="luxury-brands">
+
+    {# =====================================================
+       BACKGROUND DECORATION
+    ===================================================== #}
+
+    <div
+        class="luxury-brands__glow luxury-brands__glow--one"
+        aria-hidden="true"
+    ></div>
+
+    <div
+        class="luxury-brands__glow luxury-brands__glow--two"
+        aria-hidden="true"
+    ></div>
+
+    <div
+        class="luxury-brands__pattern"
+        aria-hidden="true"
+    ></div>
+
+
+    <div class="container">
+
+        {# =================================================
+           HEADER
+        ================================================= #}
+
+        <header class="luxury-brands__header">
+
+            <div class="luxury-brands__eyebrow" aria-hidden="true">
+
+                <span></span>
+
+                <i class="sicon-award-ribbon"></i>
+
+                <span></span>
+
+            </div>
+
+
+            <h2 class="luxury-brands__title">
+
+                {{ component.title ?: 'تصفح من خلال العلامات التجارية' }}
+
+            </h2>
+
+
+            <div class="luxury-brands__line" aria-hidden="true"></div>
+
+        </header>
+
+
+        {# =================================================
+           BRANDS SHOWCASE
+        ================================================= #}
+
+        <div class="luxury-brands__showcase">
+
+            <div class="luxury-brands__track">
+
+                {% for brand in component.brands %}
+
+                    {# =========================================
+                       BRAND ITEM
+                    ========================================= #}
+
+                    <a
+                        href="{{ brand.url ?: '#' }}"
+                        class="luxury-brand"
+                        aria-label="{{ brand.name ?: 'ماركة تجارية' }}"
+                    >
+
+                        <span class="luxury-brand__inner">
+
+                            {# =================================
+                               BRAND IMAGE
+                            ================================= #}
+
+                            <span class="luxury-brand__logo">
+
+                                {% if brand.image %}
+
+                                    <img
+                                        src="{{ brand.image.url ?: brand.image }}"
+                                        alt="{{ brand.name ?: 'ماركة تجارية' }}"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+
+                                {% else %}
+
+                                    <span class="luxury-brand__fallback">
+
+                                        <i class="sicon-award-ribbon"></i>
+
+                                    </span>
+
+                                {% endif %}
+
+                            </span>
+
+
+                            {# =================================
+                               BRAND NAME
+                            ================================= #}
+
+                            {% if brand.name %}
+
+                                <span class="luxury-brand__name">
+
+                                    {{ brand.name }}
+
+                                </span>
+
+                            {% endif %}
+
+
+                            {# =================================
+                               DECORATIVE ARROW
+                            ================================= #}
+
+                            <span
+                                class="luxury-brand__arrow"
+                                aria-hidden="true"
+                            >
+
+                                <i class="sicon-arrow-left"></i>
+
+                            </span>
+
+                        </span>
+
                     </a>
-                {% else %}
-                    <a href="{{ brand.url }}"
-                       class="brand-item">
-                        <img class="max-h-full" width="400" height="300" src="{{ brand.logo }}" alt="{{ brand.name }}"/>
-                    </a>
-                {% endif %}
-            {% endfor %}
+
+                {% endfor %}
+
+            </div>
+
         </div>
+
+
+        {# =================================================
+           BOTTOM DECORATION
+        ================================================= #}
+
+        <div
+            class="luxury-brands__bottom-line"
+            aria-hidden="true"
+        >
+
+            <span></span>
+
+            <i class="sicon-heart"></i>
+
+            <span></span>
+
+        </div>
+
     </div>
+
 </section>
+
+{% endif %}

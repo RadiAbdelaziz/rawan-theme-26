@@ -1,43 +1,1555 @@
-.brands-nav {
-  @apply flex flex-wrap justify-center rtl:space-x-reverse space-x-2 space-y-2;
+/* =========================================================
+   LUXURY BRANDS
+   الماركات التجارية - Luxury Brands Showcase
+========================================================= */
 
-  &__item {
-    @apply flex items-center justify-center rounded-md hover:shadow-sm focus:border-primary text-sm w-10 h-10 bg-white text-gray-500 p-1 transition;
+.luxury-brands {
 
-    &.is-selected{
-      @apply bg-primary text-primary-reverse #{!important};
-    }
+    --brands-bg: #FFF8FB;
+    --brands-card: #FFFFFF;
+    --brands-accent: #E62973;
+    --brands-accent-soft: #F9A8D4;
+    --brands-text: #231F20;
+    --brands-muted: #7A7377;
+    --brands-border: rgba(230, 41, 115, .12);
 
-    span{
-      @apply pointer-events-none;
-    }
-  }
+    position: relative;
 
-  &.is-sticky{
-    @apply flex-col flex-wrap h-full fixed z-0 top-9 rtl:right-2 ltr:left-2 space-y-0.5 pt-16 pb-10;
+    width: 100%;
+    max-width: 100%;
 
-    .brands-nav__item{
-      @apply bg-white;
+    padding: 85px 0;
 
-      @media (max-width: 1280px) {
-        @apply w-6 h-6;
-      }
-    }
-  }
+    overflow: hidden;
+
+    direction: rtl;
+
+    background:
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(230, 41, 115, .075),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 10% 85%,
+            rgba(249, 168, 212, .09),
+            transparent 30%
+        ),
+        var(--brands-bg);
+
+    color: var(--brands-text);
+
+    isolation: isolate;
 }
 
-.brand-char {
-  @apply rtl:ml-5 ltr:mr-5 rtl:md:ml-12 ltr:md:mr-12 bg-white rounded-md w-10 h-10 flex items-center transition justify-center hover:shadow-sm border border-transparent focus:border-primary text-sm;
+
+/* =========================================================
+   BACKGROUND GLOWS
+========================================================= */
+
+.luxury-brands__glow {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: -2;
+
+    filter: blur(100px);
+
+    will-change: transform;
+
 }
 
-.brand-item {
-  @apply flex justify-center items-center bg-white transition hover:opacity-95 bg-cover h-20 sm:h-24 md:h-32 text-white text-center p-3 sm:p-4 md:p-8 rounded-md overflow-hidden relative;
 
-  .index & {
-    @apply p-4;
+.luxury-brands__glow--one {
 
-    img{
-      @apply xs:max-w-[150px] w-auto;
+    width: 430px;
+    height: 430px;
+
+    top: -240px;
+    right: -150px;
+
+    background: var(--brands-accent);
+
+    opacity: .13;
+
+    animation:
+        luxuryBrandsGlowOne 8s ease-in-out infinite alternate;
+
+}
+
+
+.luxury-brands__glow--two {
+
+    width: 380px;
+    height: 380px;
+
+    bottom: -220px;
+    left: -140px;
+
+    background: var(--brands-accent-soft);
+
+    opacity: .17;
+
+    animation:
+        luxuryBrandsGlowTwo 10s ease-in-out infinite alternate;
+
+}
+
+
+/* =========================================================
+   SUBTLE BACKGROUND PATTERN
+========================================================= */
+
+.luxury-brands__pattern {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    pointer-events: none;
+
+    opacity: .35;
+
+    background-image:
+        radial-gradient(
+            rgba(230, 41, 115, .10) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 20%,
+            black 80%,
+            transparent
+        );
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 20%,
+            black 80%,
+            transparent
+        );
+
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.luxury-brands__header {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 800px;
+
+    margin: 0 auto 42px;
+
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.luxury-brands__eyebrow {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    margin-bottom: 17px;
+
+}
+
+
+.luxury-brands__eyebrow span {
+
+    display: block;
+
+    width: 65px;
+    height: 1px;
+
+    opacity: .7;
+
+}
+
+
+.luxury-brands__eyebrow span:first-child {
+
+    background:
+        linear-gradient(
+            to left,
+            transparent,
+            var(--brands-accent)
+        );
+
+}
+
+
+.luxury-brands__eyebrow span:last-child {
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            var(--brands-accent)
+        );
+
+}
+
+
+.luxury-brands__eyebrow i {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 36px;
+    height: 36px;
+
+    flex: 0 0 36px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(230, 41, 115, .18);
+
+    background:
+        rgba(230, 41, 115, .07);
+
+    color: var(--brands-accent);
+
+    font-size: 15px;
+
+    box-shadow:
+        0 8px 25px rgba(230, 41, 115, .08);
+
+    animation:
+        luxuryBrandsIconPulse 3s ease-in-out infinite;
+
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.luxury-brands__title {
+
+    margin: 0;
+
+    color: var(--brands-text);
+
+    font-size:
+        clamp(28px, 4vw, 42px);
+
+    font-weight: 900;
+
+    line-height: 1.35;
+
+    letter-spacing: -.7px;
+
+}
+
+
+/* =========================================================
+   HEADER LINE
+========================================================= */
+
+.luxury-brands__line {
+
+    width: 55px;
+    height: 3px;
+
+    margin: 17px auto 0;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--brands-accent),
+            transparent
+        );
+
+    opacity: .75;
+
+}
+
+
+/* =========================================================
+   SHOWCASE
+========================================================= */
+
+.luxury-brands__showcase {
+
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+
+}
+
+
+/* =========================================================
+   EDGE FADE
+   يعطي إحساس Carousel حتى بدون JS
+========================================================= */
+
+.luxury-brands__showcase::before,
+.luxury-brands__showcase::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+
+    width: 70px;
+
+    z-index: 5;
+
+    pointer-events: none;
+
+}
+
+
+.luxury-brands__showcase::before {
+
+    right: 0;
+
+    background:
+        linear-gradient(
+            to left,
+            var(--brands-bg),
+            transparent
+        );
+
+}
+
+
+.luxury-brands__showcase::after {
+
+    left: 0;
+
+    background:
+        linear-gradient(
+            to right,
+            var(--brands-bg),
+            transparent
+        );
+
+}
+
+
+/* =========================================================
+   TRACK
+========================================================= */
+
+.luxury-brands__track {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(170px, 1fr)
+        );
+
+    gap: 18px;
+
+    width: 100%;
+
+}
+
+
+/* =========================================================
+   BRAND CARD
+========================================================= */
+
+.luxury-brand {
+
+    position: relative;
+
+    display: block;
+
+    min-width: 0;
+
+    color: inherit;
+
+    text-decoration: none;
+
+    outline: none;
+
+    animation:
+        luxuryBrandReveal .7s
+        cubic-bezier(.22, 1, .36, 1)
+        both;
+
+}
+
+
+.luxury-brand:nth-child(1) {
+    animation-delay: .04s;
+}
+
+.luxury-brand:nth-child(2) {
+    animation-delay: .09s;
+}
+
+.luxury-brand:nth-child(3) {
+    animation-delay: .14s;
+}
+
+.luxury-brand:nth-child(4) {
+    animation-delay: .19s;
+}
+
+.luxury-brand:nth-child(5) {
+    animation-delay: .24s;
+}
+
+.luxury-brand:nth-child(6) {
+    animation-delay: .29s;
+}
+
+.luxury-brand:nth-child(7) {
+    animation-delay: .34s;
+}
+
+.luxury-brand:nth-child(8) {
+    animation-delay: .39s;
+}
+
+.luxury-brand:nth-child(9) {
+    animation-delay: .44s;
+}
+
+.luxury-brand:nth-child(10) {
+    animation-delay: .49s;
+}
+
+
+/* =========================================================
+   CARD INNER
+========================================================= */
+
+.luxury-brand__inner {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    min-height: 205px;
+
+    padding: 28px 20px 22px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--brands-border);
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, .98),
+            rgba(255, 255, 255, .84)
+        );
+
+    box-shadow:
+        0 12px 35px
+        rgba(35, 31, 32, .045);
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+
+    transition:
+        transform .45s
+            cubic-bezier(.22, 1, .36, 1),
+        box-shadow .45s ease,
+        border-color .45s ease,
+        background .45s ease;
+
+}
+
+
+/* =========================================================
+   TOP DECORATIVE LIGHT
+========================================================= */
+
+.luxury-brand__inner::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    top: -110px;
+    right: -70px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(230, 41, 115, .13),
+            transparent 68%
+        );
+
+    pointer-events: none;
+
+    transition:
+        transform .55s ease,
+        opacity .45s ease;
+
+}
+
+
+/* =========================================================
+   BOTTOM ACCENT
+========================================================= */
+
+.luxury-brand__inner::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: 22px;
+    left: 22px;
+
+    bottom: 0;
+
+    height: 2px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--brands-accent),
+            transparent
+        );
+
+    opacity: 0;
+
+    transform:
+        scaleX(.35);
+
+    transition:
+        opacity .4s ease,
+        transform .45s
+            cubic-bezier(.22, 1, .36, 1);
+
+}
+
+
+/* =========================================================
+   BRAND LOGO
+========================================================= */
+
+.luxury-brand__logo {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 105px;
+    height: 105px;
+
+    flex: 0 0 105px;
+
+    padding: 17px;
+
+    box-sizing: border-box;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #FFFFFF,
+            #FFF7FA
+        );
+
+    border:
+        1px solid
+        rgba(230, 41, 115, .10);
+
+    box-shadow:
+        0 10px 28px
+        rgba(35, 31, 32, .06);
+
+    transition:
+        transform .5s
+            cubic-bezier(.22, 1, .36, 1),
+        box-shadow .5s ease,
+        border-color .4s ease,
+        background .4s ease;
+
+}
+
+
+/* =========================================================
+   LOGO RING
+========================================================= */
+
+.luxury-brand__logo::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -5px;
+
+    border-radius: inherit;
+
+    border:
+        1px solid
+        rgba(230, 41, 115, .10);
+
+    opacity: .7;
+
+    transition:
+        transform .5s ease,
+        opacity .4s ease;
+
+}
+
+
+/* =========================================================
+   BRAND IMAGE
+========================================================= */
+
+.luxury-brand__logo img {
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    filter:
+        grayscale(100%)
+        contrast(.9)
+        opacity(.72);
+
+    transition:
+        filter .45s ease,
+        opacity .45s ease,
+        transform .5s
+            cubic-bezier(.22, 1, .36, 1);
+
+}
+
+
+/* =========================================================
+   FALLBACK
+========================================================= */
+
+.luxury-brand__fallback {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    color: var(--brands-accent);
+
+    font-size: 27px;
+
+    opacity: .65;
+
+}
+
+
+/* =========================================================
+   BRAND NAME
+========================================================= */
+
+.luxury-brand__name {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: block;
+
+    width: 100%;
+
+    margin-top: 19px;
+
+    overflow: hidden;
+
+    color: var(--brands-text);
+
+    font-size: 14px;
+
+    font-weight: 850;
+
+    line-height: 1.6;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+    transition:
+        color .35s ease,
+        transform .35s ease;
+
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.luxury-brand__arrow {
+
+    position: absolute;
+
+    bottom: 17px;
+    right: 17px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 27px;
+    height: 27px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(230, 41, 115, .06);
+
+    color: var(--brands-accent);
+
+    font-size: 11px;
+
+    opacity: 0;
+
+    transform:
+        translateX(8px)
+        scale(.8);
+
+    transition:
+        opacity .35s ease,
+        transform .45s
+            cubic-bezier(.22, 1, .36, 1),
+        background .35s ease,
+        color .35s ease;
+
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.luxury-brand:hover .luxury-brand__inner,
+.luxury-brand:focus-visible .luxury-brand__inner {
+
+    transform: translateY(-9px);
+
+    border-color:
+        rgba(230, 41, 115, .24);
+
+    background:
+        linear-gradient(
+            145deg,
+            #FFFFFF,
+            #FFF9FC
+        );
+
+    box-shadow:
+        0 25px 55px
+        rgba(230, 41, 115, .10),
+        0 8px 20px
+        rgba(35, 31, 32, .055);
+
+}
+
+
+.luxury-brand:hover .luxury-brand__inner::before,
+.luxury-brand:focus-visible .luxury-brand__inner::before {
+
+    transform: scale(1.35);
+
+}
+
+
+.luxury-brand:hover .luxury-brand__inner::after,
+.luxury-brand:focus-visible .luxury-brand__inner::after {
+
+    opacity: .8;
+
+    transform: scaleX(1);
+
+}
+
+
+.luxury-brand:hover .luxury-brand__logo,
+.luxury-brand:focus-visible .luxury-brand__logo {
+
+    transform:
+        translateY(-3px)
+        scale(1.045);
+
+    border-color:
+        rgba(230, 41, 115, .24);
+
+    background:
+        linear-gradient(
+            145deg,
+            #FFFFFF,
+            #FFF3F8
+        );
+
+    box-shadow:
+        0 16px 35px
+        rgba(230, 41, 115, .13);
+
+}
+
+
+.luxury-brand:hover .luxury-brand__logo::before,
+.luxury-brand:focus-visible .luxury-brand__logo::before {
+
+    opacity: 1;
+
+    transform: scale(1.08);
+
+}
+
+
+.luxury-brand:hover .luxury-brand__logo img,
+.luxury-brand:focus-visible .luxury-brand__logo img {
+
+    filter:
+        grayscale(0%)
+        contrast(1)
+        opacity(1);
+
+    transform: scale(1.06);
+
+}
+
+
+.luxury-brand:hover .luxury-brand__name,
+.luxury-brand:focus-visible .luxury-brand__name {
+
+    color: var(--brands-accent);
+
+    transform: translateY(-1px);
+
+}
+
+
+.luxury-brand:hover .luxury-brand__arrow,
+.luxury-brand:focus-visible .luxury-brand__arrow {
+
+    opacity: 1;
+
+    transform:
+        translateX(0)
+        scale(1);
+
+}
+
+
+/* =========================================================
+   ACTIVE / FOCUS
+========================================================= */
+
+.luxury-brand:focus-visible {
+
+    border-radius: 24px;
+
+    outline:
+        3px solid
+        rgba(230, 41, 115, .18);
+
+    outline-offset: 5px;
+
+}
+
+
+/* =========================================================
+   BOTTOM LINE
+========================================================= */
+
+.luxury-brands__bottom-line {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    margin-top: 38px;
+
+}
+
+
+.luxury-brands__bottom-line span {
+
+    display: block;
+
+    width: 90px;
+    height: 1px;
+
+    opacity: .45;
+
+}
+
+
+.luxury-brands__bottom-line span:first-child {
+
+    background:
+        linear-gradient(
+            to left,
+            transparent,
+            var(--brands-accent)
+        );
+
+}
+
+
+.luxury-brands__bottom-line span:last-child {
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            var(--brands-accent)
+        );
+
+}
+
+
+.luxury-brands__bottom-line i {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+
+    color: var(--brands-accent);
+
+    font-size: 11px;
+
+    opacity: .75;
+
+    animation:
+        luxuryBrandsHeart 2.8s
+        ease-in-out infinite;
+
+}
+
+
+/* =========================================================
+   DESKTOP LARGE
+========================================================= */
+
+@media (min-width: 1200px) {
+
+    .luxury-brands {
+
+        padding: 95px 0;
+
     }
-  }
+
+
+    .luxury-brands__track {
+
+        grid-template-columns:
+            repeat(
+                6,
+                minmax(0, 1fr)
+            );
+
+        gap: 20px;
+
+    }
+
+
+    .luxury-brand__inner {
+
+        min-height: 215px;
+
+        padding: 30px 18px 24px;
+
+    }
+
+
+    .luxury-brand__logo {
+
+        width: 112px;
+        height: 112px;
+
+        flex-basis: 112px;
+
+    }
+
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 993px) and (max-width: 1199px) {
+
+    .luxury-brands__track {
+
+        grid-template-columns:
+            repeat(
+                5,
+                minmax(0, 1fr)
+            );
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (min-width: 601px) and (max-width: 992px) {
+
+    .luxury-brands {
+
+        padding: 72px 0;
+
+    }
+
+
+    .luxury-brands__header {
+
+        margin-bottom: 35px;
+
+    }
+
+
+    .luxury-brands__track {
+
+        grid-template-columns:
+            repeat(
+                3,
+                minmax(0, 1fr)
+            );
+
+        gap: 15px;
+
+    }
+
+
+    .luxury-brand__inner {
+
+        min-height: 190px;
+
+        padding: 24px 15px 21px;
+
+        border-radius: 21px;
+
+    }
+
+
+    .luxury-brand__logo {
+
+        width: 92px;
+        height: 92px;
+
+        flex-basis: 92px;
+
+        padding: 15px;
+
+    }
+
+
+    .luxury-brand__name {
+
+        margin-top: 16px;
+
+        font-size: 13px;
+
+    }
+
+
+    .luxury-brand__arrow {
+
+        display: none;
+
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .luxury-brands {
+
+        padding: 58px 0;
+
+    }
+
+
+    .luxury-brands__header {
+
+        margin-bottom: 30px;
+
+    }
+
+
+    .luxury-brands__eyebrow {
+
+        gap: 9px;
+
+        margin-bottom: 14px;
+
+    }
+
+
+    .luxury-brands__eyebrow span {
+
+        width: 40px;
+
+    }
+
+
+    .luxury-brands__eyebrow i {
+
+        width: 30px;
+        height: 30px;
+
+        flex-basis: 30px;
+
+        font-size: 12px;
+
+    }
+
+
+    .luxury-brands__title {
+
+        padding: 0 15px;
+
+        font-size: 27px;
+
+        line-height: 1.45;
+
+        letter-spacing: -.3px;
+
+    }
+
+
+    .luxury-brands__line {
+
+        width: 45px;
+
+        margin-top: 14px;
+
+    }
+
+
+    /* =====================================================
+       HORIZONTAL MOBILE SHOWCASE
+    ===================================================== */
+
+    .luxury-brands__showcase {
+
+        width: calc(100% + 30px);
+
+        margin-right: -15px;
+
+    }
+
+
+    .luxury-brands__showcase::before,
+    .luxury-brands__showcase::after {
+
+        width: 30px;
+
+    }
+
+
+    .luxury-brands__track {
+
+        display: flex;
+
+        gap: 12px;
+
+        width: 100%;
+
+        padding:
+            8px 15px 22px;
+
+        overflow-x: auto;
+
+        overflow-y: visible;
+
+        scroll-snap-type: x mandatory;
+
+        scrollbar-width: none;
+
+        -webkit-overflow-scrolling: touch;
+
+    }
+
+
+    .luxury-brands__track::-webkit-scrollbar {
+
+        display: none;
+
+    }
+
+
+    .luxury-brand {
+
+        flex:
+            0 0
+            145px;
+
+        width: 145px;
+
+        scroll-snap-align: start;
+
+    }
+
+
+    .luxury-brand__inner {
+
+        min-height: 175px;
+
+        padding: 21px 12px 19px;
+
+        border-radius: 19px;
+
+        box-shadow:
+            0 10px 28px
+            rgba(35, 31, 32, .045);
+
+    }
+
+
+    .luxury-brand__logo {
+
+        width: 82px;
+        height: 82px;
+
+        flex-basis: 82px;
+
+        padding: 13px;
+
+    }
+
+
+    .luxury-brand__name {
+
+        margin-top: 14px;
+
+        font-size: 12px;
+
+    }
+
+
+    .luxury-brand__arrow {
+
+        display: none;
+
+    }
+
+
+    .luxury-brands__bottom-line {
+
+        margin-top: 25px;
+
+        gap: 9px;
+
+    }
+
+
+    .luxury-brands__bottom-line span {
+
+        width: 55px;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .luxury-brands {
+
+        padding: 50px 0;
+
+    }
+
+
+    .luxury-brands__title {
+
+        font-size: 24px;
+
+    }
+
+
+    .luxury-brand {
+
+        flex-basis: 138px;
+
+        width: 138px;
+
+    }
+
+
+    .luxury-brand__inner {
+
+        min-height: 165px;
+
+        padding: 19px 10px 17px;
+
+    }
+
+
+    .luxury-brand__logo {
+
+        width: 76px;
+        height: 76px;
+
+        flex-basis: 76px;
+
+        padding: 12px;
+
+    }
+
+
+    .luxury-brand__name {
+
+        font-size: 11px;
+
+    }
+
+}
+
+
+/* =========================================================
+   GLOW ANIMATIONS
+========================================================= */
+
+@keyframes luxuryBrandsGlowOne {
+
+    from {
+
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
+
+    }
+
+    to {
+
+        transform:
+            translate3d(-35px, 25px, 0)
+            scale(1.12);
+
+    }
+
+}
+
+
+@keyframes luxuryBrandsGlowTwo {
+
+    from {
+
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
+
+    }
+
+    to {
+
+        transform:
+            translate3d(30px, -25px, 0)
+            scale(1.1);
+
+    }
+
+}
+
+
+/* =========================================================
+   ICON ANIMATION
+========================================================= */
+
+@keyframes luxuryBrandsIconPulse {
+
+    0%,
+    100% {
+
+        transform: scale(1);
+
+        box-shadow:
+            0 8px 25px
+            rgba(230, 41, 115, .08);
+
+    }
+
+    50% {
+
+        transform: scale(1.045);
+
+        box-shadow:
+            0 10px 30px
+            rgba(230, 41, 115, .14);
+
+    }
+
+}
+
+
+/* =========================================================
+   HEART ANIMATION
+========================================================= */
+
+@keyframes luxuryBrandsHeart {
+
+    0%,
+    100% {
+
+        transform: scale(1);
+
+        opacity: .65;
+
+    }
+
+    50% {
+
+        transform: scale(1.12);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =========================================================
+   CARD REVEAL
+========================================================= */
+
+@keyframes luxuryBrandReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(28px)
+            scale(.97);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .luxury-brands *,
+    .luxury-brands *::before,
+    .luxury-brands *::after {
+
+        animation: none !important;
+
+        transition: none !important;
+
+        scroll-behavior: auto !important;
+
+    }
+
+
+    .luxury-brands__track {
+
+        scroll-behavior: auto;
+
+    }
+
 }
