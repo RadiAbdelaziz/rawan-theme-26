@@ -1,283 +1,308 @@
-{% if component.show_section != false %}
+{# =========================================================
+   LUXURY BRANDS
+   الماركات الفاخرة
+========================================================= #}
+
+{% if component.brands|length %}
 
 <section
-    id="luxury-testimonials"
     class="
-        luxury-testimonials
+        luxury-brands-section
         {% if component.enable_animation %}
-            luxury-testimonials--animated
+            is-animated
+        {% endif %}
+        {% if component.enable_hover %}
+            is-hover-enabled
+        {% endif %}
+        {% if component.show_glow %}
+            is-glowing
         {% endif %}
     "
     style="
-        --testimonials-bg: {{ component.background_color ?: '#FFF8FB' }};
-        --testimonials-card: #FFFFFF;
-        --testimonials-accent: {{ component.accent_color ?: '#E62973' }};
-        --testimonials-title: #231F20;
-        --testimonials-text: #6B7280;
-        --testimonials-border: rgba(230, 41, 115, .13);
-        --testimonials-radius: 24px;
+        --brands-bg: {{ component.background_color ?: '#FFF8FB' }};
+        --brands-accent: {{ component.accent_color ?: '#E62973' }};
+        --brands-card: {{ component.card_color ?: '#FFFFFF' }};
+        --brands-text: {{ component.text_color ?: '#231F20' }};
+        --brands-padding: {{ component.section_padding ?: 70 }}px;
+        --brands-columns: {{ component.columns ?: '5' }};
     "
 >
 
-    <!-- Background -->
-    <div class="luxury-testimonials__background" aria-hidden="true">
-        <span class="luxury-testimonials__orb luxury-testimonials__orb--one"></span>
-        <span class="luxury-testimonials__orb luxury-testimonials__orb--two"></span>
-        <span class="luxury-testimonials__orb luxury-testimonials__orb--three"></span>
-        <span class="luxury-testimonials__grid-pattern"></span>
-    </div>
+    {# =====================================================
+       BACKGROUND GLOW
+    ===================================================== #}
+
+    {% if component.show_glow %}
+
+        <div
+            class="luxury-brands__glow luxury-brands__glow--one"
+            aria-hidden="true"
+        ></div>
+
+        <div
+            class="luxury-brands__glow luxury-brands__glow--two"
+            aria-hidden="true"
+        ></div>
+
+        <div
+            class="luxury-brands__glow luxury-brands__glow--center"
+            aria-hidden="true"
+        ></div>
+
+    {% endif %}
 
 
-    <div class="container luxury-testimonials__container">
+    {# =====================================================
+       BACKGROUND PATTERN
+    ===================================================== #}
 
-        <!-- Header -->
-        <header class="luxury-testimonials__header">
-
-            <div class="luxury-testimonials__eyebrow">
-
-                <span class="luxury-testimonials__eyebrow-line"></span>
-
-                <span class="luxury-testimonials__eyebrow-icon">
-                    <i class="sicon-heart"></i>
-                </span>
-
-                <span class="luxury-testimonials__eyebrow-line luxury-testimonials__eyebrow-line--reverse"></span>
-
-            </div>
+    <div
+        class="luxury-brands__background-pattern"
+        aria-hidden="true"
+    ></div>
 
 
-            {% if component.title %}
-                <h2 class="luxury-testimonials__title">
-                    {{ component.title }}
-                    <span class="luxury-testimonials__title-shine"></span>
-                </h2>
-            {% else %}
-                <h2 class="luxury-testimonials__title">
-                    تجارب عملائنا
-                    <span class="luxury-testimonials__title-shine"></span>
-                </h2>
-            {% endif %}
+    {# =====================================================
+       CONTAINER
+    ===================================================== #}
+
+    <div class="container luxury-brands__container">
 
 
-            {% if component.subtitle %}
-                <p class="luxury-testimonials__subtitle">
-                    {{ component.subtitle }}
-                </p>
-            {% else %}
-                <p class="luxury-testimonials__subtitle">
-                    آراء حقيقية من عملاء اختاروا الجودة والفخامة
-                </p>
-            {% endif %}
+        {# =================================================
+           HEADER
+        ================================================= #}
 
-        </header>
+        {% if component.show_header %}
 
+            <header class="luxury-brands__header">
 
-        <!-- Summary -->
-        {% if component.show_summary %}
+                {% if component.eyebrow %}
 
-            <div class="luxury-testimonials__summary">
+                    <div class="luxury-brands__eyebrow">
 
-                <div class="luxury-testimonials__summary-glow"></div>
+                        <span class="luxury-brands__eyebrow-line"></span>
 
-                <div class="luxury-testimonials__summary-rating">
+                        <span class="luxury-brands__eyebrow-text">
+                            {{ component.eyebrow }}
+                        </span>
 
-                    <strong>
-                        {{ component.average_rating ?: '4.9' }}
-                    </strong>
+                        <span class="luxury-brands__eyebrow-line"></span>
 
-                    <div class="luxury-testimonials__summary-stars">
-                        ★★★★★
                     </div>
 
-                </div>
+                {% endif %}
 
 
-                <div class="luxury-testimonials__summary-divider"></div>
+                {% if component.title %}
+
+                    <h2 class="luxury-brands__title">
+                        {{ component.title }}
+                    </h2>
+
+                {% endif %}
 
 
-                <div class="luxury-testimonials__summary-info">
+                {% if component.description %}
 
-                    <span>
-                        {{ component.total_reviews ?: '350+' }}
-                    </span>
+                    <p class="luxury-brands__description">
+                        {{ component.description }}
+                    </p>
 
-                    <small>
-                        {{ component.rating_text ?: 'تقييمات موثوقة من عملائنا' }}
-                    </small>
-
-                </div>
-
-            </div>
-
-        {% endif %}
+                {% endif %}
 
 
-        <!-- Testimonials -->
-        {% if component.reviews|length > 0 %}
-
-            <div class="luxury-testimonials__slider-wrapper">
-
-                <div class="luxury-testimonials__side-glow"></div>
-
-
-                <salla-slider
-                    id="luxury-testimonials-slider"
-                    type="carousel"
-                    loop="true"
-                    show-controls="false"
-                    auto-play="true"
+                <div
+                    class="luxury-brands__header-accent"
+                    aria-hidden="true"
                 >
 
-                    <div
-                        slot="items"
-                        class="luxury-testimonials__slides"
-                    >
+                    <span></span>
 
-                        {% for review in component.reviews %}
+                    <i class="sicon-award-ribbon"></i>
 
-                            {% set review_stars = review.stars ?: 5 %}
+                    <span></span>
 
-                            <article
-                                class="
-                                    luxury-testimonial-card
-                                    {% if component.enable_animation %}
-                                        luxury-testimonial-card--reveal
-                                    {% endif %}
-                                "
+                </div>
+
+            </header>
+
+        {% endif %}
+
+
+        {# =================================================
+           BRANDS GRID
+        ================================================= #}
+
+        <div
+            class="
+                luxury-brands__grid
+                luxury-brands__grid--{{ component.columns ?: '5' }}
+            "
+        >
+
+            {% for brand in component.brands %}
+
+                {# =========================================
+                   BRAND DATA
+                ========================================= #}
+
+                {% set brand_name = brand.name ?: brand.title ?: 'ماركة' %}
+
+                {% set brand_url = brand.url ?: brand.link ?: '#' %}
+
+                {% set brand_image = '' %}
+
+
+                {% if brand.logo %}
+
+                    {% if brand.logo.url %}
+
+                        {% set brand_image = brand.logo.url %}
+
+                    {% else %}
+
+                        {% set brand_image = brand.logo %}
+
+                    {% endif %}
+
+                {% elseif brand.image %}
+
+                    {% if brand.image.url %}
+
+                        {% set brand_image = brand.image.url %}
+
+                    {% else %}
+
+                        {% set brand_image = brand.image %}
+
+                    {% endif %}
+
+                {% elseif brand.icon %}
+
+                    {% if brand.icon.url %}
+
+                        {% set brand_image = brand.icon.url %}
+
+                    {% else %}
+
+                        {% set brand_image = brand.icon %}
+
+                    {% endif %}
+
+                {% endif %}
+
+
+                {# =========================================
+                   BRAND CARD
+                ========================================= #}
+
+                <article class="luxury-brand-card">
+
+                    <div class="luxury-brand-card__inner">
+
+
+                        {# Shine #}
+
+                        <span
+                            class="luxury-brand-card__shine"
+                            aria-hidden="true"
+                        ></span>
+
+
+                        {# Decorative Top Mark #}
+
+                        <span
+                            class="luxury-brand-card__top-mark"
+                            aria-hidden="true"
+                        ></span>
+
+
+                        {# Brand Link #}
+
+                        <a
+                            href="{{ brand_url }}"
+                            class="luxury-brand-card__link"
+                            aria-label="{{ brand_name }}"
+                        >
+
+
+                            {# Logo #}
+
+                            <span class="luxury-brand-card__logo">
+
+                                {% if brand_image %}
+
+                                    <img
+                                        src="{{ brand_image }}"
+                                        alt="{{ brand_name }}"
+                                        loading="lazy"
+                                        decoding="async"
+                                    >
+
+                                {% else %}
+
+                                    <span class="luxury-brand-card__fallback">
+                                        {{ brand_name|slice(0, 1) }}
+                                    </span>
+
+                                {% endif %}
+
+                            </span>
+
+
+                            {# Brand Name #}
+
+                            <span class="luxury-brand-card__name">
+                                {{ brand_name }}
+                            </span>
+
+
+                            {# Bottom Accent #}
+
+                            <span
+                                class="luxury-brand-card__accent"
+                                aria-hidden="true"
+                            ></span>
+
+
+                            {# Arrow #}
+
+                            <span
+                                class="luxury-brand-card__arrow"
+                                aria-hidden="true"
                             >
-
-                                <!-- Card shine -->
-                                <span
-                                    class="luxury-testimonial-card__shine"
-                                    aria-hidden="true"
-                                ></span>
+                                <i class="sicon-arrow-left"></i>
+                            </span>
 
 
-                                <!-- Quote mark -->
-                                <span
-                                    class="luxury-testimonial-card__quote-decoration"
-                                    aria-hidden="true"
-                                >
-                                    “
-                                </span>
-
-
-                                <!-- Avatar -->
-                                <div class="luxury-testimonial-card__avatar-wrapper">
-
-                                    <span class="luxury-testimonial-card__avatar-ring"></span>
-
-                                    {% if review.image %}
-
-                                        <img
-                                            src="{{ review.image }}"
-                                            alt="{{ review.name ?: 'عميل' }}"
-                                            class="luxury-testimonial-card__avatar"
-                                            loading="lazy"
-                                            decoding="async"
-                                        >
-
-                                    {% else %}
-
-                                        <div
-                                            class="
-                                                luxury-testimonial-card__avatar
-                                                luxury-testimonial-card__avatar--fallback
-                                            "
-                                            aria-hidden="true"
-                                        >
-                                            <i class="sicon-user"></i>
-                                        </div>
-
-                                    {% endif %}
-
-                                    <span class="luxury-testimonial-card__verified">
-                                        <i class="sicon-check"></i>
-                                    </span>
-
-                                </div>
-
-
-                                <!-- Customer -->
-                                <div class="luxury-testimonial-card__customer">
-
-                                    <h3 class="luxury-testimonial-card__name">
-                                        {{ review.name ?: 'عميل مميز' }}
-                                    </h3>
-
-                                    {% if review.role %}
-                                        <span class="luxury-testimonial-card__role">
-                                            {{ review.role }}
-                                        </span>
-                                    {% endif %}
-
-                                </div>
-
-
-                                <!-- Stars -->
-                                <div
-                                    class="luxury-testimonial-card__stars"
-                                    aria-label="التقييم {{ review_stars }} من 5"
-                                >
-
-                                    {% for i in 1..5 %}
-
-                                        <span
-                                            class="{% if i <= review_stars %}is-active{% endif %}"
-                                        >
-                                            ★
-                                        </span>
-
-                                    {% endfor %}
-
-                                </div>
-
-
-                                <!-- Quote -->
-                                <div class="luxury-testimonial-card__quote">
-
-                                    <span class="luxury-testimonial-card__quote-icon">
-                                        “
-                                    </span>
-
-                                    <p>
-                                        {{ review.text ?: 'تجربة رائعة وخدمة مميزة، بالتأكيد سأكرر التجربة مرة أخرى.' }}
-                                    </p>
-
-                                </div>
-
-
-                                <!-- Bottom decoration -->
-                                <div
-                                    class="luxury-testimonial-card__bottom"
-                                    aria-hidden="true"
-                                >
-                                    <span></span>
-                                </div>
-
-                            </article>
-
-                        {% endfor %}
+                        </a>
 
                     </div>
 
-                </salla-slider>
+                </article>
 
-            </div>
+            {% endfor %}
 
-        {% else %}
+        </div>
 
-            <div class="luxury-testimonials__empty">
 
-                <i class="sicon-message-text"></i>
+        {# =================================================
+           BOTTOM DECORATION
+        ================================================= #}
 
-                <span>
-                    آراء عملائنا ستظهر هنا
-                </span>
+        <div
+            class="luxury-brands__bottom-decoration"
+            aria-hidden="true"
+        >
 
-            </div>
+            <span></span>
 
-        {% endif %}
+            <i class="sicon-heart"></i>
+
+            <span></span>
+
+        </div>
 
     </div>
 

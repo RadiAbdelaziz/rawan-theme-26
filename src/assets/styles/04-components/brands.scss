@@ -4,22 +4,26 @@
 ========================================================= */
 
 .luxury-brands-section {
+
     --brands-bg: #FFF8FB;
     --brands-accent: #E62973;
     --brands-card: #FFFFFF;
     --brands-text: #231F20;
-    --brands-muted: #6B7280;
+    --brands-muted: #737373;
 
     position: relative;
+
     width: 100%;
-    overflow: hidden;
-    isolation: isolate;
+    max-width: 100%;
 
     padding-top: var(--brands-padding, 70px);
     padding-bottom: var(--brands-padding, 70px);
 
-    background:
-        var(--brands-bg);
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background: var(--brands-bg);
 
     color: var(--brands-text);
 
@@ -28,53 +32,214 @@
 
 
 /* =========================================================
-   BACKGROUND
+   CONTAINER
 ========================================================= */
 
-.luxury-brands-section::before,
-.luxury-brands-section::after {
-    content: "";
+.luxury-brands__container {
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+.luxury-brands__glow {
 
     position: absolute;
 
-    width: 420px;
-    height: 420px;
+    width: 380px;
+    height: 380px;
 
     border-radius: 50%;
 
     pointer-events: none;
 
-    filter: blur(110px);
+    filter: blur(100px);
+
+    opacity: 0;
 
     z-index: -2;
+
+    will-change: transform;
 }
 
-.luxury-brands-section::before {
-    top: -250px;
-    right: -150px;
 
-    background: var(--brands-accent);
+.luxury-brands-section.is-glowing
+.luxury-brands__glow {
 
-    opacity: .10;
+    opacity: 1;
 }
 
-.luxury-brands-section::after {
-    bottom: -260px;
-    left: -160px;
 
-    background: #F9A8D4;
+.luxury-brands__glow--one {
 
-    opacity: .12;
+    top: -180px;
+    right: -120px;
+
+    background: rgba(230, 41, 115, .16);
+}
+
+
+.luxury-brands__glow--two {
+
+    bottom: -200px;
+    left: -140px;
+
+    background: rgba(249, 168, 212, .20);
+}
+
+
+.luxury-brands__glow--center {
+
+    top: 35%;
+    left: 45%;
+
+    width: 260px;
+    height: 260px;
+
+    background: rgba(230, 41, 115, .055);
 }
 
 
 /* =========================================================
-   CONTAINER
+   GLOW ANIMATION
 ========================================================= */
 
-.luxury-brands-section .container {
-    position: relative;
-    z-index: 2;
+.luxury-brands-section.is-glowing
+.luxury-brands__glow--one {
+
+    animation:
+        luxuryBrandsGlowOne
+        8s ease-in-out infinite alternate;
+}
+
+
+.luxury-brands-section.is-glowing
+.luxury-brands__glow--two {
+
+    animation:
+        luxuryBrandsGlowTwo
+        10s ease-in-out infinite alternate;
+}
+
+
+.luxury-brands-section.is-glowing
+.luxury-brands__glow--center {
+
+    animation:
+        luxuryBrandsGlowCenter
+        7s ease-in-out infinite alternate;
+}
+
+
+@keyframes luxuryBrandsGlowOne {
+
+    from {
+
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
+
+    }
+
+    to {
+
+        transform:
+            translate3d(-45px, 35px, 0)
+            scale(1.18);
+
+    }
+
+}
+
+
+@keyframes luxuryBrandsGlowTwo {
+
+    from {
+
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
+
+    }
+
+    to {
+
+        transform:
+            translate3d(45px, -30px, 0)
+            scale(1.15);
+
+    }
+
+}
+
+
+@keyframes luxuryBrandsGlowCenter {
+
+    from {
+
+        transform:
+            translate3d(0, 0, 0)
+            scale(.9);
+
+        opacity: .5;
+
+    }
+
+    to {
+
+        transform:
+            translate3d(20px, -15px, 0)
+            scale(1.15);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+/* =========================================================
+   BACKGROUND PATTERN
+========================================================= */
+
+.luxury-brands__background-pattern {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    opacity: .35;
+
+    background-image:
+        linear-gradient(
+            rgba(230, 41, 115, .025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(230, 41, 115, .025) 1px,
+            transparent 1px
+        );
+
+    background-size: 55px 55px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 20%,
+            black 80%,
+            transparent
+        );
 }
 
 
@@ -83,13 +248,16 @@
 ========================================================= */
 
 .luxury-brands__header {
+
     position: relative;
 
-    max-width: 720px;
+    max-width: 760px;
 
     margin: 0 auto 48px;
 
     text-align: center;
+
+    z-index: 3;
 }
 
 
@@ -98,6 +266,7 @@
 ========================================================= */
 
 .luxury-brands__eyebrow {
+
     display: inline-flex;
 
     align-items: center;
@@ -105,28 +274,25 @@
 
     gap: 11px;
 
-    margin-bottom: 15px;
+    margin-bottom: 14px;
 
     color: var(--brands-accent);
 
     font-size: 11px;
+
     font-weight: 900;
 
-    letter-spacing: .16em;
+    letter-spacing: .14em;
 
     line-height: 1.5;
 }
 
 
-/* decorative lines */
-
-.luxury-brands__eyebrow::before,
-.luxury-brands__eyebrow::after {
-    content: "";
+.luxury-brands__eyebrow-line {
 
     display: block;
 
-    width: 38px;
+    width: 35px;
     height: 1px;
 
     background:
@@ -139,13 +305,10 @@
     opacity: .45;
 }
 
-.luxury-brands__eyebrow::after {
-    background:
-        linear-gradient(
-            270deg,
-            transparent,
-            var(--brands-accent)
-        );
+
+.luxury-brands__eyebrow-line:last-child {
+
+    transform: rotate(180deg);
 }
 
 
@@ -154,16 +317,17 @@
 ========================================================= */
 
 .luxury-brands__title {
+
     margin: 0;
 
     color: var(--brands-text);
 
     font-size:
-        clamp(28px, 4vw, 44px);
+        clamp(29px, 4vw, 46px);
 
     font-weight: 900;
 
-    line-height: 1.35;
+    line-height: 1.3;
 
     letter-spacing: -.7px;
 }
@@ -174,15 +338,79 @@
 ========================================================= */
 
 .luxury-brands__description {
-    max-width: 620px;
 
-    margin: 13px auto 0;
+    max-width: 630px;
+
+    margin: 14px auto 0;
 
     color: var(--brands-muted);
 
     font-size: 14px;
 
+    font-weight: 400;
+
     line-height: 2;
+}
+
+
+/* =========================================================
+   HEADER ACCENT
+========================================================= */
+
+.luxury-brands__header-accent {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+
+.luxury-brands__header-accent span {
+
+    display: block;
+
+    width: 45px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(230, 41, 115, .45)
+        );
+}
+
+
+.luxury-brands__header-accent span:last-child {
+
+    transform: rotate(180deg);
+}
+
+
+.luxury-brands__header-accent i {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 28px;
+    height: 28px;
+
+    border: 1px solid rgba(230, 41, 115, .16);
+
+    border-radius: 50%;
+
+    background: rgba(230, 41, 115, .055);
+
+    color: var(--brands-accent);
+
+    font-size: 12px;
 }
 
 
@@ -191,6 +419,7 @@
 ========================================================= */
 
 .luxury-brands__grid {
+
     position: relative;
 
     display: grid;
@@ -212,32 +441,137 @@
 ========================================================= */
 
 .luxury-brand-card {
+
     position: relative;
 
     min-width: 0;
 
-    padding: 1px;
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
 
     border-radius: 22px;
+
+    overflow: hidden;
 
     background:
         linear-gradient(
             145deg,
-            rgba(230, 41, 115, .16),
-            rgba(255, 255, 255, .8),
-            rgba(230, 41, 115, .08)
+            rgba(230, 41, 115, .18),
+            rgba(255, 255, 255, .85),
+            rgba(230, 41, 115, .07)
         );
 
     box-shadow:
         0 10px 35px
         rgba(35, 31, 32, .045);
+}
 
-    transition:
-        transform .45s cubic-bezier(.22, 1, .36, 1),
-        box-shadow .45s ease,
-        background .45s ease;
 
-    overflow: hidden;
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+.luxury-brands-section.is-animated
+.luxury-brand-card {
+
+    opacity: 0;
+
+    transform:
+        translateY(30px)
+        scale(.965);
+
+    animation:
+        luxuryBrandReveal
+        .75s
+        cubic-bezier(.22, 1, .36, 1)
+        forwards;
+}
+
+
+.luxury-brands-section.is-animated
+.luxury-brand-card:nth-child(1) {
+    animation-delay: .04s;
+}
+
+.luxury-brands-section.is-animated
+.luxury-brand-card:nth-child(2) {
+    animation-delay: .09s;
+}
+
+.luxury-brands-section.is-animated
+.luxury-brand-card:nth-child(3) {
+    animation-delay: .14s;
+}
+
+.luxury-brands-section.is-animated
+.luxury-brand-card:nth-child(4) {
+    animation-delay: .19s;
+}
+
+.luxury-brands-section.is-animated
+.luxury-brand-card:nth-child(5) {
+    animation-delay: .24s;
+}
+
+.luxury-brands-section.is-animated
+.luxury-brand-card:nth-child(6) {
+    animation-delay: .29s;
+}
+
+.luxury-brands-section.is-animated
+.luxury-brand-card:nth-child(7) {
+    animation-delay: .34s;
+}
+
+.luxury-brands-section.is-animated
+.luxury-brand-card:nth-child(8) {
+    animation-delay: .39s;
+}
+
+.luxury-brands-section.is-animated
+.luxury-brand-card:nth-child(9) {
+    animation-delay: .44s;
+}
+
+.luxury-brands-section.is-animated
+.luxury-brand-card:nth-child(10) {
+    animation-delay: .49s;
+}
+
+.luxury-brands-section.is-animated
+.luxury-brand-card:nth-child(11) {
+    animation-delay: .54s;
+}
+
+.luxury-brands-section.is-animated
+.luxury-brand-card:nth-child(12) {
+    animation-delay: .59s;
+}
+
+
+@keyframes luxuryBrandReveal {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px)
+            scale(.965);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
 }
 
 
@@ -246,6 +580,7 @@
 ========================================================= */
 
 .luxury-brand-card__inner {
+
     position: relative;
 
     display: flex;
@@ -253,42 +588,44 @@
     align-items: center;
     justify-content: center;
 
-    min-height: 145px;
+    min-height: 150px;
 
     padding: 25px 20px;
 
+    border: 1px solid rgba(255, 255, 255, .75);
+
     border-radius: 21px;
 
-    background:
-        var(--brands-card);
+    background: var(--brands-card);
 
     overflow: hidden;
 
     transition:
-        background .45s ease,
-        transform .45s cubic-bezier(.22, 1, .36, 1);
+        transform .45s cubic-bezier(.22, 1, .36, 1),
+        box-shadow .45s ease,
+        background .45s ease;
 }
 
 
 /* =========================================================
-   CARD LIGHT
+   INNER LIGHT
 ========================================================= */
 
 .luxury-brand-card__inner::before {
+
     content: "";
 
     position: absolute;
 
-    width: 120px;
-    height: 120px;
-
     top: -70px;
     right: -60px;
 
+    width: 140px;
+    height: 140px;
+
     border-radius: 50%;
 
-    background:
-        var(--brands-accent);
+    background: var(--brands-accent);
 
     opacity: .035;
 
@@ -301,25 +638,25 @@
 
 
 /* =========================================================
-   SHIMMER
+   SHINE
 ========================================================= */
 
-.luxury-brand-card__inner::after {
-    content: "";
+.luxury-brand-card__shine {
 
     position: absolute;
 
-    top: -100%;
+    top: -120%;
+
     left: -70%;
 
-    width: 45%;
+    width: 42%;
     height: 300%;
 
     background:
         linear-gradient(
             90deg,
             transparent,
-            rgba(255,255,255,.7),
+            rgba(255, 255, 255, .75),
             transparent
         );
 
@@ -328,6 +665,8 @@
     opacity: 0;
 
     pointer-events: none;
+
+    z-index: 5;
 }
 
 
@@ -336,9 +675,10 @@
 ========================================================= */
 
 .luxury-brand-card__link {
+
     position: relative;
 
-    z-index: 2;
+    z-index: 4;
 
     display: flex;
 
@@ -348,6 +688,8 @@
     width: 100%;
     height: 100%;
 
+    min-height: 100px;
+
     text-decoration: none;
 
     outline: none;
@@ -355,28 +697,46 @@
 
 
 /* =========================================================
-   BRAND LOGO
+   LOGO
 ========================================================= */
 
 .luxury-brand-card__logo {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    max-width: 155px;
+
+    height: 72px;
+
+    transition:
+        transform .5s cubic-bezier(.22, 1, .36, 1),
+        opacity .5s ease,
+        filter .5s ease;
+}
+
+
+.luxury-brand-card__logo img {
+
     display: block;
 
     width: 100%;
-    max-width: 150px;
-
-    height: 70px;
+    height: 100%;
 
     object-fit: contain;
 
     opacity: .72;
 
-    filter:
-        grayscale(100%);
+    filter: grayscale(100%);
 
     transition:
         transform .5s cubic-bezier(.22, 1, .36, 1),
-        filter .5s ease,
-        opacity .5s ease;
+        opacity .5s ease,
+        filter .5s ease;
 }
 
 
@@ -385,22 +745,26 @@
 ========================================================= */
 
 .luxury-brand-card__fallback {
+
     display: flex;
 
     align-items: center;
     justify-content: center;
 
-    width: 72px;
-    height: 72px;
+    width: 70px;
+    height: 70px;
+
+    border: 1px solid rgba(230, 41, 115, .14);
 
     border-radius: 50%;
 
-    background:
-        rgba(230, 41, 115, .07);
+    background: rgba(230, 41, 115, .06);
 
     color: var(--brands-accent);
 
-    font-size: 27px;
+    font-size: 26px;
+
+    font-weight: 900;
 }
 
 
@@ -409,16 +773,12 @@
 ========================================================= */
 
 .luxury-brand-card__name {
+
     position: absolute;
 
-    right: 14px;
-    left: 14px;
-
-    bottom: 12px;
-
-    z-index: 3;
-
-    text-align: center;
+    right: 12px;
+    bottom: 10px;
+    left: 12px;
 
     color: var(--brands-muted);
 
@@ -428,20 +788,90 @@
 
     line-height: 1.5;
 
-    opacity: .75;
+    text-align: center;
+
+    opacity: .72;
 
     transition:
         color .35s ease,
-        opacity .35s ease;
+        opacity .35s ease,
+        transform .35s ease;
 }
 
 
 /* =========================================================
-   ACTIVE / HOVER
+   BOTTOM ACCENT
 ========================================================= */
 
+.luxury-brand-card__accent {
+
+    position: absolute;
+
+    right: 50%;
+
+    bottom: 0;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--brands-accent);
+
+    transform: translateX(50%);
+
+    transition:
+        width .4s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.luxury-brand-card__arrow {
+
+    position: absolute;
+
+    top: 12px;
+    left: 12px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+
+    border-radius: 50%;
+
+    background: rgba(230, 41, 115, .06);
+
+    color: var(--brands-accent);
+
+    font-size: 9px;
+
+    opacity: 0;
+
+    transform: translateX(5px);
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.luxury-brands-section.is-hover-enabled
 .luxury-brand-card:hover {
-    transform: translateY(-8px);
+
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 22px 55px
+        rgba(230, 41, 115, .13);
 
     background:
         linear-gradient(
@@ -450,68 +880,99 @@
             rgba(230, 41, 115, .18),
             #FFFFFF
         );
-
-    box-shadow:
-        0 20px 50px
-        rgba(230, 41, 115, .13);
 }
 
 
+.luxury-brands-section.is-hover-enabled
 .luxury-brand-card:hover
 .luxury-brand-card__inner {
+
     transform: translateY(-1px);
+
+    box-shadow:
+        inset 0 0 0 1px
+        rgba(255, 255, 255, .45);
 }
 
 
+.luxury-brands-section.is-hover-enabled
 .luxury-brand-card:hover
 .luxury-brand-card__inner::before {
+
     transform: scale(2.2);
 
     opacity: .09;
 }
 
 
+.luxury-brands-section.is-hover-enabled
 .luxury-brand-card:hover
-.luxury-brand-card__logo {
+.luxury-brand-card__logo img {
+
     opacity: 1;
 
-    filter:
-        grayscale(0%);
+    filter: grayscale(0%);
 
-    transform:
-        scale(1.08);
+    transform: scale(1.07);
 }
 
 
+.luxury-brands-section.is-hover-enabled
 .luxury-brand-card:hover
 .luxury-brand-card__name {
+
     color: var(--brands-accent);
 
     opacity: 1;
+
+    transform: translateY(-2px);
 }
 
 
-/* =========================================================
-   SHIMMER HOVER
-========================================================= */
-
+.luxury-brands-section.is-hover-enabled
 .luxury-brand-card:hover
-.luxury-brand-card__inner::after {
+.luxury-brand-card__accent {
+
+    width: 45px;
+}
+
+
+.luxury-brands-section.is-hover-enabled
+.luxury-brand-card:hover
+.luxury-brand-card__arrow {
+
+    opacity: 1;
+
+    transform: translateX(0);
+}
+
+
+.luxury-brands-section.is-hover-enabled
+.luxury-brand-card:hover
+.luxury-brand-card__shine {
+
     opacity: 1;
 
     animation:
-        luxuryBrandShimmer .85s ease forwards;
+        luxuryBrandShine
+        .9s
+        ease
+        forwards;
 }
 
 
-@keyframes luxuryBrandShimmer {
+@keyframes luxuryBrandShine {
 
-    0% {
+    from {
+
         left: -70%;
+
     }
 
-    100% {
+    to {
+
         left: 140%;
+
     }
 
 }
@@ -522,181 +983,61 @@
 ========================================================= */
 
 .luxury-brand-card__link:focus-visible {
+
     outline: 2px solid var(--brands-accent);
 
-    outline-offset: -4px;
+    outline-offset: -5px;
 
     border-radius: 18px;
 }
 
 
 /* =========================================================
-   ANIMATION
+   BOTTOM DECORATION
 ========================================================= */
 
-.luxury-brands-section.is-animated
-.luxury-brand-card {
-    opacity: 0;
+.luxury-brands__bottom-decoration {
 
-    transform:
-        translateY(30px)
-        scale(.97);
+    display: flex;
 
-    animation:
-        luxuryBrandReveal
-        .7s cubic-bezier(.22, 1, .36, 1)
-        forwards;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 38px;
 }
 
 
-.luxury-brands-section.is-animated
-.luxury-brand-card:nth-child(1) {
-    animation-delay: .05s;
-}
+.luxury-brands__bottom-decoration span {
 
-.luxury-brands-section.is-animated
-.luxury-brand-card:nth-child(2) {
-    animation-delay: .11s;
-}
+    display: block;
 
-.luxury-brands-section.is-animated
-.luxury-brand-card:nth-child(3) {
-    animation-delay: .17s;
-}
+    width: 55px;
+    height: 1px;
 
-.luxury-brands-section.is-animated
-.luxury-brand-card:nth-child(4) {
-    animation-delay: .23s;
-}
-
-.luxury-brands-section.is-animated
-.luxury-brand-card:nth-child(5) {
-    animation-delay: .29s;
-}
-
-.luxury-brands-section.is-animated
-.luxury-brand-card:nth-child(6) {
-    animation-delay: .35s;
-}
-
-.luxury-brands-section.is-animated
-.luxury-brand-card:nth-child(7) {
-    animation-delay: .41s;
-}
-
-.luxury-brands-section.is-animated
-.luxury-brand-card:nth-child(8) {
-    animation-delay: .47s;
-}
-
-.luxury-brands-section.is-animated
-.luxury-brand-card:nth-child(9) {
-    animation-delay: .53s;
-}
-
-.luxury-brands-section.is-animated
-.luxury-brand-card:nth-child(10) {
-    animation-delay: .59s;
-}
-
-.luxury-brands-section.is-animated
-.luxury-brand-card:nth-child(11) {
-    animation-delay: .65s;
-}
-
-.luxury-brands-section.is-animated
-.luxury-brand-card:nth-child(12) {
-    animation-delay: .71s;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(230, 41, 115, .22)
+        );
 }
 
 
-@keyframes luxuryBrandReveal {
+.luxury-brands__bottom-decoration span:last-child {
 
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(30px)
-            scale(.97);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-
+    transform: rotate(180deg);
 }
 
 
-/* =========================================================
-   GLOW ANIMATION
-========================================================= */
+.luxury-brands__bottom-decoration i {
 
-.luxury-brands-section.is-glowing::before {
-    animation:
-        luxuryBrandGlow 7s ease-in-out infinite alternate;
-}
+    color: var(--brands-accent);
 
-.luxury-brands-section.is-glowing::after {
-    animation:
-        luxuryBrandGlowReverse 9s ease-in-out infinite alternate;
-}
+    font-size: 11px;
 
-
-@keyframes luxuryBrandGlow {
-
-    from {
-        transform:
-            translate3d(0, 0, 0)
-            scale(1);
-    }
-
-    to {
-        transform:
-            translate3d(-35px, 25px, 0)
-            scale(1.15);
-    }
-
-}
-
-
-@keyframes luxuryBrandGlowReverse {
-
-    from {
-        transform:
-            translate3d(0, 0, 0)
-            scale(1);
-    }
-
-    to {
-        transform:
-            translate3d(30px, -20px, 0)
-            scale(1.12);
-    }
-
-}
-
-
-/* =========================================================
-   4 COLUMNS
-========================================================= */
-
-.luxury-brands__grid--4 {
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-}
-
-
-/* =========================================================
-   5 COLUMNS
-========================================================= */
-
-.luxury-brands__grid--5 {
-    grid-template-columns:
-        repeat(5, minmax(0, 1fr));
+    opacity: .55;
 }
 
 
@@ -705,8 +1046,42 @@
 ========================================================= */
 
 .luxury-brands__grid--6 {
+
     grid-template-columns:
         repeat(6, minmax(0, 1fr));
+}
+
+
+/* =========================================================
+   5 COLUMNS
+========================================================= */
+
+.luxury-brands__grid--5 {
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+}
+
+
+/* =========================================================
+   4 COLUMNS
+========================================================= */
+
+.luxury-brands__grid--4 {
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+}
+
+
+/* =========================================================
+   3 COLUMNS
+========================================================= */
+
+.luxury-brands__grid--3 {
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
 }
 
 
@@ -716,7 +1091,6 @@
 
 @media (max-width: 1100px) {
 
-    .luxury-brands__grid,
     .luxury-brands__grid--5,
     .luxury-brands__grid--6 {
 
@@ -727,24 +1101,25 @@
 
 
     .luxury-brand-card__inner {
-        min-height: 135px;
 
-        padding:
-            22px 15px;
+        min-height: 140px;
+
+        padding: 22px 16px;
     }
 
 
     .luxury-brand-card__logo {
-        max-width: 130px;
 
-        height: 62px;
+        max-width: 135px;
+
+        height: 64px;
     }
 
 }
 
 
 /* =========================================================
-   TABLET SMALL
+   SMALL TABLET
 ========================================================= */
 
 @media (max-width: 850px) {
@@ -752,10 +1127,10 @@
     .luxury-brands-section {
 
         padding-top:
-            calc(var(--brands-padding, 70px) * .8);
+            calc(var(--brands-padding, 70px) * .82);
 
         padding-bottom:
-            calc(var(--brands-padding, 70px) * .8);
+            calc(var(--brands-padding, 70px) * .82);
     }
 
 
@@ -766,6 +1141,7 @@
 
 
     .luxury-brands__grid,
+    .luxury-brands__grid--4,
     .luxury-brands__grid--5,
     .luxury-brands__grid--6 {
 
@@ -773,17 +1149,12 @@
             repeat(3, minmax(0, 1fr));
 
         gap: 14px;
-
-    }
-
-
-    .luxury-brand-card {
-        border-radius: 19px;
     }
 
 
     .luxury-brand-card__inner {
-        min-height: 125px;
+
+        min-height: 128px;
 
         border-radius: 18px;
     }
@@ -811,25 +1182,25 @@
 
         margin-bottom: 30px;
 
-        padding:
-            0 12px;
+        padding: 0 10px;
     }
 
 
     .luxury-brands__eyebrow {
 
-        margin-bottom: 11px;
+        gap: 8px;
+
+        margin-bottom: 10px;
 
         font-size: 9px;
 
-        letter-spacing: .12em;
+        letter-spacing: .1em;
     }
 
 
-    .luxury-brands__eyebrow::before,
-    .luxury-brands__eyebrow::after {
+    .luxury-brands__eyebrow-line {
 
-        width: 25px;
+        width: 24px;
     }
 
 
@@ -838,8 +1209,6 @@
         font-size: 27px;
 
         line-height: 1.4;
-
-        letter-spacing: -.3px;
     }
 
 
@@ -850,6 +1219,12 @@
         font-size: 12px;
 
         line-height: 1.9;
+    }
+
+
+    .luxury-brands__header-accent {
+
+        margin-top: 15px;
     }
 
 
@@ -876,8 +1251,7 @@
 
         min-height: 118px;
 
-        padding:
-            20px 10px;
+        padding: 18px 9px;
 
         border-radius: 16px;
     }
@@ -893,8 +1267,8 @@
 
     .luxury-brand-card__name {
 
-        right: 8px;
-        left: 8px;
+        right: 7px;
+        left: 7px;
 
         bottom: 8px;
 
@@ -904,17 +1278,43 @@
 
     .luxury-brand-card__fallback {
 
-        width: 55px;
-        height: 55px;
+        width: 54px;
+        height: 54px;
 
-        font-size: 21px;
+        font-size: 20px;
     }
 
 
-    .luxury-brand-card:hover {
+    .luxury-brand-card__arrow {
 
-        transform: translateY(-4px);
+        top: 8px;
+        left: 8px;
 
+        width: 22px;
+        height: 22px;
+
+        font-size: 8px;
+    }
+
+
+    .luxury-brands__bottom-decoration {
+
+        margin-top: 28px;
+    }
+
+
+    .luxury-brands__bottom-decoration span {
+
+        width: 40px;
+    }
+
+
+    .luxury-brands__glow {
+
+        width: 260px;
+        height: 260px;
+
+        filter: blur(80px);
     }
 
 }
@@ -940,7 +1340,7 @@
 
         min-height: 105px;
 
-        padding: 16px 8px;
+        padding: 15px 7px;
     }
 
 
@@ -948,7 +1348,7 @@
 
         max-width: 90px;
 
-        height: 45px;
+        height: 44px;
     }
 
 
@@ -957,6 +1357,12 @@
         font-size: 7px;
 
         bottom: 6px;
+    }
+
+
+    .luxury-brand-card__arrow {
+
+        display: none;
     }
 
 }
@@ -981,9 +1387,9 @@
     .luxury-brands-section.is-animated
     .luxury-brand-card {
 
-        opacity: 1;
+        opacity: 1 !important;
 
-        transform: none;
+        transform: none !important;
     }
 
 }
