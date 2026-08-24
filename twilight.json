@@ -4383,7 +4383,214 @@
 "maximum": 180
 }
 ]
+},
+{
+  "key": "7d4f8e91-3c62-4a17-9b85-6e2d1f4a8c73",
+  "title": {
+    "en": "Luxury Footer",
+    "ar": "الفوتر الفاخر"
+  },
+  "description": "فوتر فاخر ومتجاوب مع خيارات متقدمة للتخصيص.",
+  "icon": "sicon-layout-footer",
+  "path": "footer.footer",
+  "image": "https://cdn.salla.network/images/themes/raed/preview-images/footer.png",
+  "is_default": false,
+  "fields": [
+    {
+      "type": "string",
+      "icon": "sicon-format-text-alt",
+      "label": "شارة الفوتر",
+      "multilanguage": true,
+      "id": "eyebrow",
+      "value": "تجربة تسوق استثنائية",
+      "format": "text",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-format-text-alt",
+      "label": "العنوان الرئيسي",
+      "multilanguage": true,
+      "id": "title",
+      "value": "أناقة تبدأ من التفاصيل",
+      "format": "text",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-align-left",
+      "label": "الوصف",
+      "multilanguage": true,
+      "id": "description",
+      "value": "نختار لك تفاصيل تجمع بين الجودة، الأناقة، وتجربة تسوق تليق بك.",
+      "format": "textarea",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-format-text-alt",
+      "label": "نص حقوق النشر",
+      "multilanguage": true,
+      "id": "copyright",
+      "value": "جميع الحقوق محفوظة",
+      "format": "text",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-link",
+      "label": "رابط الشروط والأحكام",
+      "id": "terms_url",
+      "value": "#",
+      "format": "text",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-link",
+      "label": "رابط سياسة الخصوصية",
+      "id": "privacy_url",
+      "value": "#",
+      "format": "text",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-link",
+      "label": "رابط سياسة الاستبدال والاسترجاع",
+      "id": "returns_url",
+      "value": "#",
+      "format": "text",
+      "required": false
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار الشارة",
+      "id": "show_eyebrow",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار العنوان",
+      "id": "show_title",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار الوصف",
+      "id": "show_description",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار وسائل التواصل الاجتماعي",
+      "id": "show_social",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار النشرة البريدية",
+      "id": "show_newsletter",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار طرق الدفع",
+      "id": "show_payment",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار الروابط القانونية",
+      "id": "show_legal",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار التوهج الخلفي",
+      "id": "show_glow",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "تفعيل تأثيرات الحركة",
+      "id": "enable_animation",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "string",
+      "icon": "sicon-color",
+      "label": "لون خلفية الفوتر",
+      "id": "background_color",
+      "value": "#171116",
+      "format": "color",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-color",
+      "label": "اللون الرئيسي",
+      "id": "accent_color",
+      "value": "#E62973",
+      "format": "color",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-color",
+      "label": "لون البطاقات",
+      "id": "card_color",
+      "value": "#211A20",
+      "format": "color",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-color",
+      "label": "لون النص",
+      "id": "text_color",
+      "value": "#FFFFFF",
+      "format": "color",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-color",
+      "label": "لون النص الثانوي",
+      "id": "muted_color",
+      "value": "#B8AEB4",
+      "format": "color",
+      "required": false
+    },
+    {
+      "type": "string",
+      "format": "number",
+      "label": "المسافة الداخلية",
+      "id": "section_padding",
+      "value": "80",
+      "required": false
+    }
+  ]
 }
+
 
 
     ],
