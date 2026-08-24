@@ -2,231 +2,135 @@
 
 {% block content %}
 
-{% set category_name = category.name ?: page.title %}
-{% set category_description = category.description ?: 'اكتشف تشكيلتنا المختارة بعناية، حيث تلتقي الجودة بالأناقة في كل قطعة.' %}
-
 <section class="luxury-category-page" dir="rtl">
 
-    {# =========================================================
-       HERO
-    ========================================================== #}
+    {# ================= HERO ================= #}
 
-    <div class="luxury-category-hero">
+    <header class="luxury-category-hero">
 
-        <div class="luxury-category-hero__glow luxury-category-hero__glow--one"></div>
-        <div class="luxury-category-hero__glow luxury-category-hero__glow--two"></div>
+        <div class="luxury-category-hero__glow"></div>
+        <div class="luxury-category-hero__glow luxury-category-hero__glow--second"></div>
 
-        <div class="luxury-category-hero__pattern"></div>
+        <div class="container mx-auto px-4">
 
-        <div class="luxury-category-container">
+            <div class="luxury-category-hero__content">
 
-            <div class="luxury-category-badge">
-                <span class="luxury-category-badge__diamond"></span>
-                <span>COLLECTION</span>
-                <span class="luxury-category-badge__diamond"></span>
+                <span class="luxury-category-hero__eyebrow">
+                    مجموعتنا المختارة
+                </span>
+
+                <h1 class="luxury-category-hero__title">
+                    {{ category.name ?: page.title }}
+                </h1>
+
+                {% if category.description %}
+
+                    <p class="luxury-category-hero__description">
+                        {{ category.description }}
+                    </p>
+
+                {% else %}
+
+                    <p class="luxury-category-hero__description">
+                        اكتشف تشكيلتنا المختارة بعناية،
+                        حيث تلتقي الأناقة بالجودة في كل تفاصيل.
+                    </p>
+
+                {% endif %}
+
+                <div class="luxury-category-divider">
+                    <span></span>
+                    <i></i>
+                    <span></span>
+                </div>
+
             </div>
 
-            <h1 class="luxury-category-title">
-                {{ category_name }}
-            </h1>
+        </div>
 
-            <p class="luxury-category-description">
-                {{ category_description }}
-            </p>
+    </header>
 
-            <div class="luxury-category-divider">
-                <span></span>
-                <i></i>
-                <span></span>
-            </div>
+
+    {# ================= PRODUCTS ================= #}
+
+    <main class="luxury-category-products">
+
+        <div class="container mx-auto px-4">
 
             {% if products|length > 0 %}
-                <div class="luxury-category-meta">
-                    <span class="luxury-category-meta__line"></span>
 
-                    <span>
+                <div class="luxury-products-header">
+
+                    <div class="luxury-products-heading">
+
+                        <span>
+                            المجموعة
+                        </span>
+
+                        <h2>
+                            منتجات {{ category.name ?: page.title }}
+                        </h2>
+
+                    </div>
+
+                    <div class="luxury-products-count">
                         {{ products|length }}
                         <small>منتج</small>
+                    </div>
+
+                </div>
+
+
+                <div class="luxury-products-grid">
+
+                    {% for product in products %}
+
+                        <article
+                            class="luxury-product-item"
+                            style="--product-index: {{ loop.index0 }};"
+                        >
+
+                            {% include 'components.products.card' with {
+                                product: product
+                            } %}
+
+                        </article>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <div class="luxury-category-empty">
+
+                    <div class="luxury-category-empty__icon">
+                        <i class="sicon-box"></i>
+                    </div>
+
+                    <span>
+                        المجموعة فارغة
                     </span>
 
-                    <span class="luxury-category-meta__line"></span>
+                    <h2>
+                        لا توجد منتجات حالياً
+                    </h2>
+
+                    <p>
+                        سيتم إضافة منتجات جديدة إلى هذا التصنيف قريباً.
+                    </p>
+
+                    <a href="{{ link('/') }}">
+                        العودة إلى الرئيسية
+                    </a>
+
                 </div>
+
             {% endif %}
 
         </div>
 
-    </div>
-
-
-    {# =========================================================
-       PRODUCTS
-    ========================================================== #}
-
-    <div class="luxury-category-container luxury-category-products">
-
-        {% if products|length > 0 %}
-
-            <div class="luxury-products-header">
-
-                <div>
-                    <span class="luxury-products-eyebrow">
-                        مختاراتنا
-                    </span>
-
-                    <h2>
-                        قطع تستحق الاختيار
-                    </h2>
-                </div>
-
-                <div class="luxury-products-line"></div>
-
-            </div>
-
-
-            <div class="luxury-products-grid">
-
-                {% for product in products %}
-
-                    {% set product_image = product.image.url ?: product.image ?: 'images/placeholder.png'|asset %}
-
-                    <article
-                        class="luxury-product-card"
-                        style="--product-index: {{ loop.index0 }};"
-                    >
-
-                        <a
-                            href="{{ product.url }}"
-                            class="luxury-product-card__link"
-                            aria-label="{{ product.name }}"
-                        >
-
-                            {# ================= IMAGE ================= #}
-
-                            <div class="luxury-product-card__media">
-
-                                <div class="luxury-product-card__glow"></div>
-
-                                <span class="luxury-product-card__shine"></span>
-
-                                {% if product.badge %}
-                                    <span class="luxury-product-card__badge">
-                                        {{ product.badge }}
-                                    </span>
-                                {% endif %}
-
-                                <div class="luxury-product-card__image-wrap">
-
-                                    <img
-                                        src="{{ product_image }}"
-                                        alt="{{ product.name }}"
-                                        class="luxury-product-card__image"
-                                        loading="lazy"
-                                        decoding="async"
-                                    >
-
-                                </div>
-
-                                <span class="luxury-product-card__corner luxury-product-card__corner--top"></span>
-                                <span class="luxury-product-card__corner luxury-product-card__corner--bottom"></span>
-
-                            </div>
-
-
-                            {# ================= INFO ================= #}
-
-                            <div class="luxury-product-card__info">
-
-                                <h3 class="luxury-product-card__name">
-                                    {{ product.name }}
-                                </h3>
-
-                                {% if product.short_description %}
-                                    <p class="luxury-product-card__description">
-                                        {{ product.short_description }}
-                                    </p>
-                                {% endif %}
-
-
-                                {# ================= PRICE ================= #}
-
-                                <div class="luxury-product-card__price-row">
-
-                                    {% if product.price %}
-
-                                        <span class="luxury-product-card__price">
-                                            {{ product.price }}
-                                        </span>
-
-                                    {% endif %}
-
-                                    {% if product.sale_price and product.sale_price < product.price %}
-
-                                        <span class="luxury-product-card__old-price">
-                                            {{ product.sale_price }}
-                                        </span>
-
-                                    {% endif %}
-
-                                </div>
-
-
-                                {# ================= ACTION ================= #}
-
-                                <div class="luxury-product-card__action">
-
-                                    <span>
-                                        اكتشف المنتج
-                                    </span>
-
-                                    <span class="luxury-product-card__arrow">
-                                        ←
-                                    </span>
-
-                                </div>
-
-                            </div>
-
-                        </a>
-
-                    </article>
-
-                {% endfor %}
-
-            </div>
-
-
-        {% else %}
-
-            {# =====================================================
-               EMPTY STATE
-            ====================================================== #}
-
-            <div class="luxury-category-empty">
-
-                <div class="luxury-category-empty__icon">
-                    <span></span>
-                </div>
-
-                <h2>
-                    لا توجد منتجات حالياً
-                </h2>
-
-                <p>
-                    نعمل على إضافة منتجات جديدة إلى هذا التصنيف قريباً.
-                </p>
-
-                <a
-                    href="{{ link('/') }}"
-                    class="luxury-category-empty__button"
-                >
-                    العودة للرئيسية
-                </a>
-
-            </div>
-
-        {% endif %}
-
-    </div>
+    </main>
 
 </section>
 

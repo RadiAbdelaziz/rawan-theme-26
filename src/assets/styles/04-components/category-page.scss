@@ -1,1043 +1,268 @@
-/* =========================================================
-   LUXURY CATEGORY PAGE
-   ========================================================= */
-
 .luxury-category-page {
     --luxury-pink: #e62973;
-    --luxury-pink-light: #ff6fa3;
     --luxury-dark: #0b0a0c;
-    --luxury-card: #ffffff;
-    --luxury-text: #211d20;
-    --luxury-muted: #8c8589;
+    --luxury-text: #231f20;
 
-    position: relative;
-    width: 100%;
     min-height: 100%;
-    overflow: hidden;
-    background: #faf8f9;
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(230, 41, 115, .07),
+            transparent 30%
+        ),
+        #fff;
     color: var(--luxury-text);
 }
 
-
-/* =========================================================
-   CONTAINER
-   ========================================================= */
-
-.luxury-category-container {
-    width: min(1380px, calc(100% - 40px));
-    margin-inline: auto;
-}
-
-
-/* =========================================================
-   HERO
-   ========================================================= */
+/* Hero */
 
 .luxury-category-hero {
     position: relative;
-    isolation: isolate;
     overflow: hidden;
-
-    padding: 90px 20px 75px;
-
-    background:
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(230, 41, 115, 0.13),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 85% 80%,
-            rgba(230, 41, 115, 0.08),
-            transparent 28%
-        ),
-        linear-gradient(
-            135deg,
-            #fffafb 0%,
-            #fff 50%,
-            #fdf7fa 100%
-        );
-
-    border-bottom: 1px solid rgba(230, 41, 115, 0.12);
+    padding: 90px 0 75px;
+    background: #0b0a0c;
+    color: #fff;
+    text-align: center;
 }
-
-
-/* top luxury line */
 
 .luxury-category-hero::before {
     content: "";
     position: absolute;
-
-    top: 0;
-    left: 50%;
-
-    width: min(800px, 80%);
-    height: 1px;
-
-    transform: translateX(-50%);
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(230, 41, 115, 0.7),
-        transparent
-    );
-
-    box-shadow: 0 0 20px rgba(230, 41, 115, 0.35);
-}
-
-
-/* bottom glow */
-
-.luxury-category-hero::after {
-    content: "";
-
-    position: absolute;
-    left: 50%;
-    bottom: -180px;
-
-    width: 600px;
-    height: 300px;
-
-    transform: translateX(-50%);
-
-    background: rgba(230, 41, 115, 0.07);
-
-    filter: blur(90px);
-    border-radius: 50%;
-
+    inset: 0;
+    opacity: .04;
+    background-image:
+        radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+    background-size: 28px 28px;
     pointer-events: none;
 }
-
-
-/* =========================================================
-   HERO GLOWS
-   ========================================================= */
 
 .luxury-category-hero__glow {
     position: absolute;
-
-    width: 260px;
-    height: 260px;
-
-    border-radius: 50%;
-
-    background: rgba(230, 41, 115, 0.08);
-
-    filter: blur(80px);
-
-    pointer-events: none;
-
-    z-index: -1;
-}
-
-.luxury-category-hero__glow--one {
-    top: 40px;
+    width: 380px;
+    height: 380px;
+    top: -220px;
     left: -100px;
-}
-
-.luxury-category-hero__glow--two {
-    right: -100px;
-    bottom: 0;
-}
-
-
-/* =========================================================
-   BACKGROUND PATTERN
-   ========================================================= */
-
-.luxury-category-hero__pattern {
-    position: absolute;
-    inset: 0;
-
-    opacity: 0.35;
-
+    border-radius: 50%;
+    background: rgba(230, 41, 115, .18);
+    filter: blur(100px);
     pointer-events: none;
-
-    background-image:
-        radial-gradient(
-            circle at 1px 1px,
-            rgba(230, 41, 115, 0.08) 1px,
-            transparent 0
-        );
-
-    background-size: 34px 34px;
-
-    mask-image: linear-gradient(
-        to bottom,
-        black,
-        transparent 85%
-    );
 }
 
+.luxury-category-hero__glow--second {
+    top: auto;
+    left: auto;
+    right: -120px;
+    bottom: -250px;
+    background: rgba(230, 41, 115, .12);
+}
 
-/* =========================================================
-   HERO CONTENT
-   ========================================================= */
-
-.luxury-category-hero .luxury-category-container {
+.luxury-category-hero__content {
     position: relative;
     z-index: 2;
-
-    text-align: center;
+    max-width: 800px;
+    margin: auto;
 }
 
-
-/* =========================================================
-   BADGE
-   ========================================================= */
-
-.luxury-category-badge {
+.luxury-category-hero__eyebrow {
     display: inline-flex;
-
     align-items: center;
-    justify-content: center;
-
-    gap: 13px;
-
-    margin-bottom: 22px;
-
+    gap: 10px;
+    margin-bottom: 18px;
     color: var(--luxury-pink);
-
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 800;
-
-    letter-spacing: 0.28em;
-
-    text-transform: uppercase;
+    letter-spacing: .08em;
 }
 
-
-.luxury-category-badge__diamond {
-    width: 7px;
-    height: 7px;
-
-    transform: rotate(45deg);
-
-    border: 1px solid var(--luxury-pink);
-
-    box-shadow:
-        0 0 10px rgba(230, 41, 115, 0.45);
+.luxury-category-hero__eyebrow::before,
+.luxury-category-hero__eyebrow::after {
+    content: "";
+    width: 25px;
+    height: 1px;
+    background: var(--luxury-pink);
 }
 
-
-/* =========================================================
-   TITLE
-   ========================================================= */
-
-.luxury-category-title {
+.luxury-category-hero__title {
     margin: 0;
-
-    color: #171316;
-
-    font-size: clamp(34px, 5vw, 68px);
-
+    color: #fff;
+    font-size: clamp(32px, 5vw, 58px);
     font-weight: 900;
-
-    line-height: 1.15;
-
-    letter-spacing: -0.04em;
-
-    text-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.04);
+    line-height: 1.2;
 }
 
-
-/* =========================================================
-   DESCRIPTION
-   ========================================================= */
-
-.luxury-category-description {
-    width: min(680px, 100%);
-
+.luxury-category-hero__description {
+    max-width: 650px;
     margin: 22px auto 0;
-
-    color: var(--luxury-muted);
-
+    color: #aaa3a8;
     font-size: 15px;
-
     line-height: 2;
-
-    font-weight: 400;
 }
-
-
-/* =========================================================
-   DIVIDER
-   ========================================================= */
 
 .luxury-category-divider {
     display: flex;
-
     align-items: center;
     justify-content: center;
-
-    gap: 14px;
-
-    width: min(300px, 80%);
-
-    margin: 34px auto 24px;
+    gap: 12px;
+    margin-top: 30px;
 }
 
-
 .luxury-category-divider span {
+    width: 70px;
     height: 1px;
-    flex: 1;
-
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(230, 41, 115, 0.45)
+        rgba(230, 41, 115, .7)
     );
 }
-
 
 .luxury-category-divider span:last-child {
     background: linear-gradient(
-        90deg,
-        rgba(230, 41, 115, 0.45),
-        transparent
+        270deg,
+        transparent,
+        rgba(230, 41, 115, .7)
     );
 }
 
-
 .luxury-category-divider i {
-    position: relative;
-
-    width: 11px;
-    height: 11px;
-
+    width: 9px;
+    height: 9px;
     transform: rotate(45deg);
-
     background: var(--luxury-pink);
-
-    box-shadow:
-        0 0 0 4px rgba(230, 41, 115, 0.08),
-        0 0 18px rgba(230, 41, 115, 0.35);
+    box-shadow: 0 0 20px rgba(230, 41, 115, .7);
 }
 
 
-/* =========================================================
-   PRODUCTS COUNT
-   ========================================================= */
-
-.luxury-category-meta {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 14px;
-
-    color: #514a4e;
-
-    font-size: 13px;
-    font-weight: 700;
-}
-
-
-.luxury-category-meta small {
-    color: var(--luxury-muted);
-
-    font-size: 11px;
-
-    margin-inline-start: 4px;
-}
-
-
-.luxury-category-meta__line {
-    width: 35px;
-    height: 1px;
-
-    background: rgba(230, 41, 115, 0.3);
-}
-
-
-/* =========================================================
-   PRODUCTS AREA
-   ========================================================= */
+/* Products */
 
 .luxury-category-products {
-    padding-top: 70px;
-    padding-bottom: 90px;
+    padding: 70px 0 100px;
 }
-
-
-/* =========================================================
-   PRODUCTS HEADER
-   ========================================================= */
 
 .luxury-products-header {
     display: flex;
-
-    align-items: flex-end;
+    align-items: end;
     justify-content: space-between;
-
-    gap: 30px;
-
+    gap: 20px;
     margin-bottom: 35px;
 }
 
-
-.luxury-products-eyebrow {
+.luxury-products-heading > span {
     display: block;
-
-    margin-bottom: 7px;
-
+    margin-bottom: 8px;
     color: var(--luxury-pink);
-
-    font-size: 11px;
-
+    font-size: 12px;
     font-weight: 800;
-
-    letter-spacing: 0.16em;
 }
 
-
-.luxury-products-header h2 {
+.luxury-products-heading h2 {
     margin: 0;
-
-    color: #191518;
-
-    font-size: clamp(23px, 3vw, 32px);
-
+    font-size: 27px;
     font-weight: 900;
 }
 
+.luxury-products-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 9px 15px;
+    border: 1px solid rgba(230, 41, 115, .15);
+    border-radius: 999px;
+    background: rgba(230, 41, 115, .05);
+    color: var(--luxury-pink);
+    font-size: 13px;
+    font-weight: 800;
+}
 
-.luxury-products-line {
-    flex: 1;
-
-    height: 1px;
-
-    margin-bottom: 8px;
-
-    background: linear-gradient(
-        90deg,
-        rgba(230, 41, 115, 0.25),
-        transparent
-    );
+.luxury-products-count small {
+    color: #999;
+    font-size: 11px;
 }
 
 
-/* =========================================================
-   PRODUCTS GRID
-   ========================================================= */
+/* Grid */
 
 .luxury-products-grid {
     display: grid;
-
     grid-template-columns: repeat(4, minmax(0, 1fr));
-
     gap: 24px;
 }
 
-
-/* =========================================================
-   PRODUCT CARD
-   ========================================================= */
-
-.luxury-product-card {
-    position: relative;
-
+.luxury-product-item {
     min-width: 0;
-
-    opacity: 0;
-
-    animation: luxuryProductReveal 0.7s
-        cubic-bezier(0.22, 1, 0.36, 1)
-        forwards;
-
-    animation-delay: calc(var(--product-index) * 80ms);
+    animation: luxuryProductReveal .6s ease both;
+    animation-delay: calc(var(--product-index) * 70ms);
 }
-
-
-.luxury-product-card__link {
-    display: block;
-
-    color: inherit;
-
-    text-decoration: none;
-}
-
-
-/* =========================================================
-   PRODUCT MEDIA
-   ========================================================= */
-
-.luxury-product-card__media {
-    position: relative;
-
-    aspect-ratio: 0.86;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            145deg,
-            #ffffff,
-            #f9f3f6
-        );
-
-    border: 1px solid rgba(230, 41, 115, 0.10);
-
-    border-radius: 22px;
-
-    isolation: isolate;
-
-    transition:
-        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-        border-color 0.4s ease,
-        box-shadow 0.5s ease;
-}
-
-
-/* card hover */
-
-.luxury-product-card:hover
-.luxury-product-card__media {
-    transform: translateY(-7px);
-
-    border-color: rgba(230, 41, 115, 0.28);
-
-    box-shadow:
-        0 22px 50px rgba(39, 20, 29, 0.10),
-        0 0 0 1px rgba(230, 41, 115, 0.04);
-}
-
-
-/* =========================================================
-   CARD GLOW
-   ========================================================= */
-
-.luxury-product-card__glow {
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    width: 55%;
-    aspect-ratio: 1;
-
-    transform: translate(-50%, -50%);
-
-    background: rgba(230, 41, 115, 0.09);
-
-    border-radius: 50%;
-
-    filter: blur(55px);
-
-    opacity: 0.45;
-
-    transition:
-        transform 0.7s ease,
-        opacity 0.5s ease;
-
-    z-index: -1;
-}
-
-
-.luxury-product-card:hover
-.luxury-product-card__glow {
-    transform:
-        translate(-50%, -50%)
-        scale(1.35);
-
-    opacity: 0.8;
-}
-
-
-/* =========================================================
-   IMAGE
-   ========================================================= */
-
-.luxury-product-card__image-wrap {
-    position: absolute;
-
-    inset: 14px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    overflow: hidden;
-
-    border-radius: 17px;
-}
-
-
-.luxury-product-card__image {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain;
-
-    mix-blend-mode: multiply;
-
-    transition:
-        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 0.5s ease;
-}
-
-
-.luxury-product-card:hover
-.luxury-product-card__image {
-    transform: scale(1.07);
-
-    filter:
-        saturate(1.04)
-        contrast(1.02);
-}
-
-
-/* =========================================================
-   IMAGE SHINE
-   ========================================================= */
-
-.luxury-product-card__shine {
-    position: absolute;
-
-    top: -20%;
-    left: -70%;
-
-    width: 45%;
-    height: 140%;
-
-    transform: rotate(20deg);
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,0.55),
-        transparent
-    );
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    z-index: 4;
-}
-
-
-.luxury-product-card:hover
-.luxury-product-card__shine {
-    opacity: 1;
-
-    animation: luxuryCardShine 0.9s ease;
-}
-
-
-/* =========================================================
-   BADGE
-   ========================================================= */
-
-.luxury-product-card__badge {
-    position: absolute;
-
-    top: 18px;
-    right: 18px;
-
-    z-index: 8;
-
-    padding: 7px 12px;
-
-    color: #fff;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--luxury-pink),
-            #c91d61
-        );
-
-    border-radius: 999px;
-
-    font-size: 10px;
-
-    font-weight: 800;
-
-    box-shadow:
-        0 7px 20px rgba(230, 41, 115, 0.24);
-}
-
-
-/* =========================================================
-   CORNERS
-   ========================================================= */
-
-.luxury-product-card__corner {
-    position: absolute;
-
-    width: 17px;
-    height: 17px;
-
-    opacity: 0;
-
-    transition: opacity 0.4s ease;
-}
-
-
-.luxury-product-card__corner--top {
-    top: 12px;
-    left: 12px;
-
-    border-top: 1px solid var(--luxury-pink);
-    border-left: 1px solid var(--luxury-pink);
-}
-
-
-.luxury-product-card__corner--bottom {
-    right: 12px;
-    bottom: 12px;
-
-    border-right: 1px solid var(--luxury-pink);
-    border-bottom: 1px solid var(--luxury-pink);
-}
-
-
-.luxury-product-card:hover
-.luxury-product-card__corner {
-    opacity: 0.8;
-}
-
-
-/* =========================================================
-   PRODUCT INFO
-   ========================================================= */
-
-.luxury-product-card__info {
-    padding: 18px 5px 5px;
-
-    text-align: right;
-}
-
-
-.luxury-product-card__name {
-    margin: 0;
-
-    color: #211d20;
-
-    font-size: 15px;
-
-    line-height: 1.7;
-
-    font-weight: 800;
-
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-
-    overflow: hidden;
-
-    transition: color 0.3s ease;
-}
-
-
-.luxury-product-card:hover
-.luxury-product-card__name {
-    color: var(--luxury-pink);
-}
-
-
-/* =========================================================
-   DESCRIPTION
-   ========================================================= */
-
-.luxury-product-card__description {
-    margin: 6px 0 0;
-
-    color: #969095;
-
-    font-size: 11px;
-
-    line-height: 1.8;
-
-    display: -webkit-box;
-
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-
-    overflow: hidden;
-}
-
-
-/* =========================================================
-   PRICE
-   ========================================================= */
-
-.luxury-product-card__price-row {
-    display: flex;
-
-    align-items: center;
-
-    gap: 9px;
-
-    margin-top: 12px;
-}
-
-
-.luxury-product-card__price {
-    color: var(--luxury-pink);
-
-    font-size: 16px;
-
-    font-weight: 900;
-}
-
-
-.luxury-product-card__old-price {
-    color: #aaa3a7;
-
-    font-size: 12px;
-
-    text-decoration: line-through;
-}
-
-
-/* =========================================================
-   ACTION
-   ========================================================= */
-
-.luxury-product-card__action {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    margin-top: 14px;
-
-    padding-top: 12px;
-
-    border-top: 1px solid rgba(20, 15, 18, 0.07);
-
-    color: #625a5f;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    transition:
-        color 0.3s ease,
-        border-color 0.3s ease;
-}
-
-
-.luxury-product-card:hover
-.luxury-product-card__action {
-    color: var(--luxury-pink);
-
-    border-color: rgba(230, 41, 115, 0.18);
-}
-
-
-.luxury-product-card__arrow {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    width: 29px;
-    height: 29px;
-
-    color: var(--luxury-pink);
-
-    border: 1px solid rgba(230, 41, 115, 0.18);
-
-    border-radius: 50%;
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        color 0.3s ease;
-}
-
-
-.luxury-product-card:hover
-.luxury-product-card__arrow {
-    transform: translateX(-4px);
-
-    color: #fff;
-
-    background: var(--luxury-pink);
-}
-
-
-/* =========================================================
-   EMPTY STATE
-   ========================================================= */
-
-.luxury-category-empty {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    min-height: 420px;
-
-    padding: 50px 20px;
-
-    text-align: center;
-
-    background: #fff;
-
-    border: 1px solid rgba(230, 41, 115, 0.10);
-
-    border-radius: 28px;
-
-    box-shadow:
-        0 20px 60px rgba(35, 20, 28, 0.04);
-}
-
-
-.luxury-category-empty__icon {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    width: 70px;
-    height: 70px;
-
-    margin-bottom: 25px;
-
-    border-radius: 50%;
-
-    background: rgba(230, 41, 115, 0.06);
-
-    border: 1px solid rgba(230, 41, 115, 0.15);
-}
-
-
-.luxury-category-empty__icon span {
-    width: 18px;
-    height: 18px;
-
-    transform: rotate(45deg);
-
-    border: 1px solid var(--luxury-pink);
-
-    box-shadow:
-        0 0 18px rgba(230, 41, 115, 0.3);
-}
-
-
-.luxury-category-empty h2 {
-    margin: 0;
-
-    color: #211d20;
-
-    font-size: 24px;
-
-    font-weight: 900;
-}
-
-
-.luxury-category-empty p {
-    max-width: 480px;
-
-    margin: 12px 0 25px;
-
-    color: #999195;
-
-    font-size: 14px;
-
-    line-height: 1.9;
-}
-
-
-.luxury-category-empty__button {
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    min-height: 46px;
-
-    padding: 0 25px;
-
-    color: #fff;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--luxury-pink),
-            #c91d61
-        );
-
-    border-radius: 14px;
-
-    font-size: 13px;
-
-    font-weight: 800;
-
-    text-decoration: none;
-
-    box-shadow:
-        0 10px 25px rgba(230, 41, 115, 0.22);
-
-    transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-
-.luxury-category-empty__button:hover {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 15px 30px rgba(230, 41, 115, 0.30);
-}
-
-
-/* =========================================================
-   ANIMATIONS
-   ========================================================= */
 
 @keyframes luxuryProductReveal {
-
     from {
         opacity: 0;
-
-        transform:
-            translateY(25px)
-            scale(0.98);
+        transform: translateY(25px);
     }
 
     to {
         opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
+        transform: translateY(0);
     }
 }
 
 
-@keyframes luxuryCardShine {
+/* Empty */
 
-    from {
-        left: -70%;
-    }
+.luxury-category-empty {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 70px 30px;
+    border: 1px solid rgba(230, 41, 115, .12);
+    border-radius: 30px;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,.05);
+}
 
-    to {
-        left: 130%;
-    }
+.luxury-category-empty__icon {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    border-radius: 22px;
+    background: rgba(230, 41, 115, .08);
+    color: var(--luxury-pink);
+    font-size: 28px;
+}
 
+.luxury-category-empty > span {
+    color: var(--luxury-pink);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.luxury-category-empty h2 {
+    margin: 10px 0;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.luxury-category-empty p {
+    margin-bottom: 25px;
+    color: #888;
+}
+
+.luxury-category-empty a {
+    display: inline-flex;
+    padding: 12px 24px;
+    border-radius: 14px;
+    background: var(--luxury-pink);
+    color: #fff;
+    font-weight: 800;
 }
 
 
-/* =========================================================
-   TABLET
-   ========================================================= */
+/* Responsive */
 
-@media (max-width: 1100px) {
+@media (max-width: 1024px) {
 
     .luxury-products-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1045,180 +270,43 @@
 
 }
 
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
 @media (max-width: 768px) {
 
-    .luxury-category-container {
-        width: min(100% - 28px, 680px);
-    }
-
-
     .luxury-category-hero {
-        padding: 65px 15px 55px;
+        padding: 65px 0 55px;
     }
-
-
-    .luxury-category-title {
-        font-size: 36px;
-    }
-
-
-    .luxury-category-description {
-        font-size: 13px;
-
-        line-height: 1.9;
-    }
-
 
     .luxury-category-products {
-        padding-top: 45px;
-        padding-bottom: 60px;
+        padding: 50px 0 70px;
     }
-
-
-    .luxury-products-header {
-        margin-bottom: 25px;
-    }
-
-
-    .luxury-products-header h2 {
-        font-size: 23px;
-    }
-
-
-    .luxury-products-line {
-        display: none;
-    }
-
 
     .luxury-products-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-
-        gap: 14px;
+        gap: 15px;
     }
 
-
-    .luxury-product-card__media {
-        border-radius: 17px;
-
-        aspect-ratio: 0.82;
+    .luxury-products-header {
+        align-items: center;
     }
 
-
-    .luxury-product-card__image-wrap {
-        inset: 9px;
-
-        border-radius: 13px;
-    }
-
-
-    .luxury-product-card__badge {
-        top: 12px;
-        right: 12px;
-
-        padding: 5px 9px;
-
-        font-size: 9px;
-    }
-
-
-    .luxury-product-card__info {
-        padding: 13px 3px 3px;
-    }
-
-
-    .luxury-product-card__name {
-        font-size: 13px;
-    }
-
-
-    .luxury-product-card__description {
-        font-size: 10px;
-    }
-
-
-    .luxury-product-card__price {
-        font-size: 14px;
-    }
-
-
-    .luxury-product-card__old-price {
-        font-size: 10px;
-    }
-
-
-    .luxury-product-card__action {
-        margin-top: 10px;
-
-        padding-top: 9px;
-
-        font-size: 9px;
-    }
-
-
-    .luxury-product-card__arrow {
-        width: 25px;
-        height: 25px;
+    .luxury-products-heading h2 {
+        font-size: 21px;
     }
 
 }
 
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 420px) {
-
-    .luxury-category-title {
-        font-size: 31px;
-    }
-
+@media (max-width: 480px) {
 
     .luxury-products-grid {
-        gap: 11px;
+        gap: 10px;
     }
 
-
-    .luxury-product-card__media {
-        border-radius: 15px;
+    .luxury-category-hero__title {
+        font-size: 32px;
     }
 
-
-    .luxury-product-card__name {
-        font-size: 12px;
-    }
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    .luxury-product-card {
-        opacity: 1;
-
-        animation: none;
-    }
-
-
-    .luxury-product-card__media,
-    .luxury-product-card__image,
-    .luxury-product-card__glow,
-    .luxury-product-card__arrow {
-        transition: none;
-    }
-
-
-    .luxury-product-card__shine {
-        display: none;
+    .luxury-category-hero__description {
+        font-size: 13px;
     }
 
 }
