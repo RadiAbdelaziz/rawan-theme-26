@@ -4385,13 +4385,13 @@
 ]
 },
 {
-  "key": "8d4e6c91-7a32-4f5b-9e21-6c8a3d5f1047",
+  "key": "7d4f8e91-3c62-4a17-9b85-6e2d1f4a8c73",
   "title": {
     "en": "Luxury Footer",
     "ar": "الفوتر الفاخر"
   },
-  "description": "فوتر فاخر ومتجاوب للمتجر مع الروابط والتواصل والتطبيقات.",
-  "icon": "sicon-footer",
+  "description": "فوتر فاخر ومتجاوب مع خيارات متقدمة للتخصيص.",
+  "icon": "sicon-layout-footer",
   "path": "footer.footer",
   "image": "https://cdn.salla.network/images/themes/raed/preview-images/footer.png",
   "is_default": false,
@@ -4399,47 +4399,83 @@
     {
       "type": "string",
       "icon": "sicon-format-text-alt",
-      "label": "اسم المتجر",
+      "label": "شارة الفوتر",
       "multilanguage": true,
-      "id": "store_name",
-      "value": "روان",
+      "id": "eyebrow",
+      "value": "تجربة تسوق استثنائية",
       "format": "text",
       "required": false
     },
     {
       "type": "string",
       "icon": "sicon-format-text-alt",
-      "label": "النص التعريفي",
+      "label": "العنوان الرئيسي",
       "multilanguage": true,
-      "id": "store_description",
-      "value": "تجربة تسوق أنيقة تجمع بين الجمال والبساطة والهوية الوردية الفاخرة.",
+      "id": "title",
+      "value": "أناقة تبدأ من التفاصيل",
+      "format": "text",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-align-left",
+      "label": "الوصف",
+      "multilanguage": true,
+      "id": "description",
+      "value": "نختار لك تفاصيل تجمع بين الجودة، الأناقة، وتجربة تسوق تليق بك.",
       "format": "textarea",
       "required": false
     },
     {
       "type": "string",
       "icon": "sicon-format-text-alt",
-      "label": "النص الصغير تحت الشعار",
+      "label": "نص حقوق النشر",
       "multilanguage": true,
-      "id": "brand_caption",
-      "value": "RAWAN THEME",
+      "id": "copyright",
+      "value": "جميع الحقوق محفوظة",
       "format": "text",
       "required": false
     },
     {
       "type": "string",
-      "icon": "sicon-format-text-alt",
-      "label": "الحرف داخل الشعار",
-      "id": "logo_letter",
-      "value": "ر",
+      "icon": "sicon-link",
+      "label": "رابط الشروط والأحكام",
+      "id": "terms_url",
+      "value": "#",
+      "format": "text",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-link",
+      "label": "رابط سياسة الخصوصية",
+      "id": "privacy_url",
+      "value": "#",
+      "format": "text",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-link",
+      "label": "رابط سياسة الاستبدال والاسترجاع",
+      "id": "returns_url",
+      "value": "#",
       "format": "text",
       "required": false
     },
     {
       "type": "boolean",
       "format": "switch",
-      "label": "إظهار الشعار",
-      "id": "show_logo",
+      "label": "إظهار الشارة",
+      "id": "show_eyebrow",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار العنوان",
+      "id": "show_title",
       "value": true,
       "selected": true
     },
@@ -4454,281 +4490,102 @@
     {
       "type": "boolean",
       "format": "switch",
-      "label": "إظهار قسم الروابط",
-      "id": "show_links",
-      "value": true,
-      "selected": true
-    },
-    {
-      "type": "string",
-      "icon": "sicon-format-text-alt",
-      "label": "عنوان الروابط",
-      "multilanguage": true,
-      "id": "links_title",
-      "value": "روابط مهمة",
-      "format": "text",
-      "required": false
-    },
-    {
-      "type": "items",
-      "icon": "sicon-link",
-      "label": "روابط الفوتر",
-      "id": "links",
-      "format": "dropdown-list",
-      "description": "اختر الصفحات أو الروابط التي تريد عرضها في الفوتر.",
-      "selected": [],
-      "options": [],
-      "required": false,
-      "multichoice": true,
-      "searchable": true,
-      "source": "pages",
-      "maxLength": 8,
-      "minLength": 0,
-      "value": []
-    },
-    {
-      "type": "boolean",
-      "format": "switch",
-      "label": "إظهار التواصل",
-      "id": "show_contact",
-      "value": true,
-      "selected": true
-    },
-    {
-      "type": "string",
-      "icon": "sicon-format-text-alt",
-      "label": "عنوان التواصل",
-      "multilanguage": true,
-      "id": "contact_title",
-      "value": "تواصل معنا",
-      "format": "text",
-      "required": false
-    },
-    {
-      "type": "string",
-      "icon": "sicon-phone",
-      "label": "رقم الهاتف",
-      "id": "phone",
-      "value": "",
-      "format": "text",
-      "required": false
-    },
-    {
-      "type": "string",
-      "icon": "sicon-envelope",
-      "label": "البريد الإلكتروني",
-      "id": "email",
-      "value": "",
-      "format": "text",
-      "required": false
-    },
-    {
-      "type": "string",
-      "icon": "sicon-location",
-      "label": "الموقع",
-      "multilanguage": true,
-      "id": "address",
-      "value": "",
-      "format": "text",
-      "required": false
-    },
-    {
-      "type": "string",
-      "icon": "sicon-format-text-alt",
-      "label": "عنوان التطبيقات",
-      "multilanguage": true,
-      "id": "apps_title",
-      "value": "تطبيق الجوال",
-      "format": "text",
-      "required": false
-    },
-    {
-      "type": "boolean",
-      "format": "switch",
-      "label": "إظهار التطبيقات",
-      "id": "show_apps",
-      "value": false,
-      "selected": false
-    },
-    {
-      "type": "string",
-      "icon": "sicon-link",
-      "label": "رابط App Store",
-      "id": "apple_store_url",
-      "value": "",
-      "format": "text",
-      "required": false
-    },
-    {
-      "type": "string",
-      "icon": "sicon-link",
-      "label": "رابط Google Play",
-      "id": "google_play_url",
-      "value": "",
-      "format": "text",
-      "required": false
-    },
-    {
-      "type": "boolean",
-      "format": "switch",
-      "label": "إظهار Instagram",
-      "id": "show_instagram",
-      "value": true,
-      "selected": true
-    },
-    {
-      "type": "string",
-      "icon": "sicon-link",
-      "label": "رابط Instagram",
-      "id": "instagram_url",
-      "value": "",
-      "format": "text",
-      "required": false
-    },
-    {
-      "type": "boolean",
-      "format": "switch",
-      "label": "إظهار TikTok",
-      "id": "show_tiktok",
-      "value": true,
-      "selected": true
-    },
-    {
-      "type": "string",
-      "icon": "sicon-link",
-      "label": "رابط TikTok",
-      "id": "tiktok_url",
-      "value": "",
-      "format": "text",
-      "required": false
-    },
-    {
-      "type": "boolean",
-      "format": "switch",
-      "label": "إظهار X",
-      "id": "show_x",
-      "value": true,
-      "selected": true
-    },
-    {
-      "type": "string",
-      "icon": "sicon-link",
-      "label": "رابط X",
-      "id": "x_url",
-      "value": "",
-      "format": "text",
-      "required": false
-    },
-    {
-      "type": "boolean",
-      "format": "switch",
-      "label": "إظهار YouTube",
-      "id": "show_youtube",
-      "value": true,
-      "selected": true
-    },
-    {
-      "type": "string",
-      "icon": "sicon-link",
-      "label": "رابط YouTube",
-      "id": "youtube_url",
-      "value": "",
-      "format": "text",
-      "required": false
-    },
-    {
-      "type": "boolean",
-      "format": "switch",
-      "label": "إظهار حقوق الملكية",
-      "id": "show_copyright",
-      "value": true,
-      "selected": true
-    },
-    {
-      "type": "string",
-      "icon": "sicon-format-text-alt",
-      "label": "نص حقوق الملكية",
-      "multilanguage": true,
-      "id": "copyright_text",
-      "value": "جميع الحقوق محفوظة",
-      "format": "text",
-      "required": false
-    },
-    {
-      "type": "string",
-      "icon": "sicon-format-text-alt",
-      "label": "نص التصميم",
-      "multilanguage": true,
-      "id": "designer_text",
-      "value": "Designed with ♥ by RAWAN TEAM",
-      "format": "text",
-      "required": false
-    },
-    {
-      "type": "boolean",
-      "format": "switch",
-      "label": "إظهار زر العودة للأعلى",
-      "id": "show_scroll_top",
+      "label": "إظهار وسائل التواصل الاجتماعي",
+      "id": "show_social",
       "value": true,
       "selected": true
     },
     {
       "type": "boolean",
       "format": "switch",
-      "label": "تفعيل الحركة",
-      "id": "enable_animation",
+      "label": "إظهار النشرة البريدية",
+      "id": "show_newsletter",
       "value": true,
       "selected": true
     },
     {
       "type": "boolean",
       "format": "switch",
-      "label": "إظهار التوهج",
+      "label": "إظهار طرق الدفع",
+      "id": "show_payment",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار الروابط القانونية",
+      "id": "show_legal",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار التوهج الخلفي",
       "id": "show_glow",
       "value": true,
       "selected": true
     },
     {
-      "type": "color",
-      "icon": "sicon-palette",
-      "label": "لون الخلفية",
+      "type": "boolean",
+      "format": "switch",
+      "label": "تفعيل تأثيرات الحركة",
+      "id": "enable_animation",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "string",
+      "icon": "sicon-color",
+      "label": "لون خلفية الفوتر",
       "id": "background_color",
-      "value": "#0B0A0C",
+      "value": "#171116",
+      "format": "color",
       "required": false
     },
     {
-      "type": "color",
-      "icon": "sicon-palette",
+      "type": "string",
+      "icon": "sicon-color",
       "label": "اللون الرئيسي",
       "id": "accent_color",
       "value": "#E62973",
+      "format": "color",
       "required": false
     },
     {
-      "type": "color",
-      "icon": "sicon-palette",
+      "type": "string",
+      "icon": "sicon-color",
+      "label": "لون البطاقات",
+      "id": "card_color",
+      "value": "#211A20",
+      "format": "color",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-color",
       "label": "لون النص",
       "id": "text_color",
-      "value": "#D4D4D8",
+      "value": "#FFFFFF",
+      "format": "color",
       "required": false
     },
     {
-      "type": "color",
-      "icon": "sicon-palette",
+      "type": "string",
+      "icon": "sicon-color",
       "label": "لون النص الثانوي",
       "id": "muted_color",
-      "value": "#71717A",
+      "value": "#B8AEB4",
+      "format": "color",
       "required": false
     },
     {
-      "type": "number",
-      "icon": "sicon-arrow-up",
-      "label": "المسافة الرأسية",
+      "type": "string",
+      "format": "number",
+      "label": "المسافة الداخلية",
       "id": "section_padding",
-      "value": 80,
-      "min": 40,
-      "max": 140,
-      "step": 5,
+      "value": "80",
       "required": false
     }
   ]
