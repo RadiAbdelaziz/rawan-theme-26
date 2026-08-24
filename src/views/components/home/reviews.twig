@@ -1,6 +1,7 @@
 {% if component.show_section != false %}
 
 <section
+    id="luxury-testimonials"
     class="
         luxury-testimonials
         {% if component.enable_animation %}
@@ -13,61 +14,70 @@
         --testimonials-accent: {{ component.accent_color ?: '#E62973' }};
         --testimonials-title: #231F20;
         --testimonials-text: #6B7280;
-        --testimonials-border: #F3D5E1;
+        --testimonials-border: rgba(230, 41, 115, .13);
         --testimonials-radius: 24px;
     "
 >
 
-    {# =====================================================
-       AMBIENT BACKGROUND
-    ===================================================== #}
-
-    <div class="luxury-testimonials__ambient" aria-hidden="true">
-        <span class="luxury-testimonials__ambient-orb luxury-testimonials__ambient-orb--one"></span>
-        <span class="luxury-testimonials__ambient-orb luxury-testimonials__ambient-orb--two"></span>
-        <span class="luxury-testimonials__ambient-orb luxury-testimonials__ambient-orb--three"></span>
+    <!-- Background -->
+    <div class="luxury-testimonials__background" aria-hidden="true">
+        <span class="luxury-testimonials__orb luxury-testimonials__orb--one"></span>
+        <span class="luxury-testimonials__orb luxury-testimonials__orb--two"></span>
+        <span class="luxury-testimonials__orb luxury-testimonials__orb--three"></span>
+        <span class="luxury-testimonials__grid-pattern"></span>
     </div>
 
 
     <div class="container luxury-testimonials__container">
 
-        {# =================================================
-           HEADER
-        ================================================= #}
+        <!-- Header -->
+        <header class="luxury-testimonials__header">
 
-        <div class="luxury-testimonials__header">
+            <div class="luxury-testimonials__eyebrow">
 
-            <div
-                class="luxury-testimonials__eyebrow"
-                aria-hidden="true"
-            >
-                <span></span>
+                <span class="luxury-testimonials__eyebrow-line"></span>
 
-                <i class="sicon-heart"></i>
+                <span class="luxury-testimonials__eyebrow-icon">
+                    <i class="sicon-heart"></i>
+                </span>
 
-                <span></span>
+                <span class="luxury-testimonials__eyebrow-line luxury-testimonials__eyebrow-line--reverse"></span>
+
             </div>
 
 
-            <h2 class="luxury-testimonials__title">
-                {{ component.title ?: 'تجارب عملائنا' }}
-            </h2>
+            {% if component.title %}
+                <h2 class="luxury-testimonials__title">
+                    {{ component.title }}
+                    <span class="luxury-testimonials__title-shine"></span>
+                </h2>
+            {% else %}
+                <h2 class="luxury-testimonials__title">
+                    تجارب عملائنا
+                    <span class="luxury-testimonials__title-shine"></span>
+                </h2>
+            {% endif %}
 
 
-            <p class="luxury-testimonials__subtitle">
-                {{ component.subtitle ?: 'آراء حقيقية من عملاء اختاروا الجودة والفخامة' }}
-            </p>
+            {% if component.subtitle %}
+                <p class="luxury-testimonials__subtitle">
+                    {{ component.subtitle }}
+                </p>
+            {% else %}
+                <p class="luxury-testimonials__subtitle">
+                    آراء حقيقية من عملاء اختاروا الجودة والفخامة
+                </p>
+            {% endif %}
 
-        </div>
+        </header>
 
 
-        {# =================================================
-           SUMMARY
-        ================================================= #}
-
+        <!-- Summary -->
         {% if component.show_summary %}
 
             <div class="luxury-testimonials__summary">
+
+                <div class="luxury-testimonials__summary-glow"></div>
 
                 <div class="luxury-testimonials__summary-rating">
 
@@ -102,18 +112,12 @@
         {% endif %}
 
 
-        {# =================================================
-           REVIEWS
-        ================================================= #}
-
+        <!-- Testimonials -->
         {% if component.reviews|length > 0 %}
 
             <div class="luxury-testimonials__slider-wrapper">
 
-                <div
-                    class="luxury-testimonials__slider-glow"
-                    aria-hidden="true"
-                ></div>
+                <div class="luxury-testimonials__side-glow"></div>
 
 
                 <salla-slider
@@ -121,6 +125,7 @@
                     type="carousel"
                     loop="true"
                     show-controls="false"
+                    auto-play="true"
                 >
 
                     <div
@@ -129,6 +134,8 @@
                     >
 
                         {% for review in component.reviews %}
+
+                            {% set review_stars = review.stars ?: 5 %}
 
                             <article
                                 class="
@@ -139,38 +146,26 @@
                                 "
                             >
 
-                                {# =================================
-                                   CARD SHINE
-                                ================================= #}
-
+                                <!-- Card shine -->
                                 <span
                                     class="luxury-testimonial-card__shine"
                                     aria-hidden="true"
                                 ></span>
 
 
-                                {# =================================
-                                   QUOTE DECORATION
-                                ================================= #}
-
+                                <!-- Quote mark -->
                                 <span
-                                    class="luxury-testimonial-card__quote-mark"
+                                    class="luxury-testimonial-card__quote-decoration"
                                     aria-hidden="true"
                                 >
                                     “
                                 </span>
 
 
-                                {# =================================
-                                   AVATAR
-                                ================================= #}
-
+                                <!-- Avatar -->
                                 <div class="luxury-testimonial-card__avatar-wrapper">
 
-                                    <span
-                                        class="luxury-testimonial-card__avatar-ring"
-                                        aria-hidden="true"
-                                    ></span>
+                                    <span class="luxury-testimonial-card__avatar-ring"></span>
 
                                     {% if review.image %}
 
@@ -196,37 +191,30 @@
 
                                     {% endif %}
 
+                                    <span class="luxury-testimonial-card__verified">
+                                        <i class="sicon-check"></i>
+                                    </span>
+
                                 </div>
 
 
-                                {# =================================
-                                   CUSTOMER
-                                ================================= #}
-
+                                <!-- Customer -->
                                 <div class="luxury-testimonial-card__customer">
 
                                     <h3 class="luxury-testimonial-card__name">
                                         {{ review.name ?: 'عميل مميز' }}
                                     </h3>
 
-
                                     {% if review.role %}
-
                                         <span class="luxury-testimonial-card__role">
                                             {{ review.role }}
                                         </span>
-
                                     {% endif %}
 
                                 </div>
 
 
-                                {# =================================
-                                   STARS
-                                ================================= #}
-
-                                {% set review_stars = review.stars ?: 5 %}
-
+                                <!-- Stars -->
                                 <div
                                     class="luxury-testimonial-card__stars"
                                     aria-label="التقييم {{ review_stars }} من 5"
@@ -236,7 +224,6 @@
 
                                         <span
                                             class="{% if i <= review_stars %}is-active{% endif %}"
-                                            style="--star-index: {{ i }}"
                                         >
                                             ★
                                         </span>
@@ -246,19 +233,12 @@
                                 </div>
 
 
-                                {# =================================
-                                   QUOTE
-                                ================================= #}
-
+                                <!-- Quote -->
                                 <div class="luxury-testimonial-card__quote">
 
-                                    <span
-                                        class="luxury-testimonial-card__quote-icon"
-                                        aria-hidden="true"
-                                    >
+                                    <span class="luxury-testimonial-card__quote-icon">
                                         “
                                     </span>
-
 
                                     <p>
                                         {{ review.text ?: 'تجربة رائعة وخدمة مميزة، بالتأكيد سأكرر التجربة مرة أخرى.' }}
@@ -267,10 +247,7 @@
                                 </div>
 
 
-                                {# =================================
-                                   BOTTOM
-                                ================================= #}
-
+                                <!-- Bottom decoration -->
                                 <div
                                     class="luxury-testimonial-card__bottom"
                                     aria-hidden="true"
