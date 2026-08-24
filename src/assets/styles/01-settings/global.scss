@@ -27,3 +27,37 @@ $main-text-color: var(--main-text-color);
   /* plugins */
   --mm-ocd-width: calc(100% - 51px);
 }
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+}
+
+#app {
+    min-height: 100vh;
+}
+
+.app-inner {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#main-content {
+    flex: 1 0 auto;
+    width: 100%;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Footer — Always at the bottom
+|--------------------------------------------------------------------------
+*/
+
+.luxury-footer {
+    flex: 0 0 auto;
+    width: 100%;
+}
