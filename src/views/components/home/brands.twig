@@ -1,7 +1,7 @@
 {# =========================================================
    LUXURY BRANDS
-   قسم الماركات الفاخرة
-   Compatible with current Twilight JSON
+   الماركات الفاخرة
+   Built for the current Luxury Brands JSON
 ========================================================= #}
 
 {% if component.brands|length %}
@@ -15,19 +15,22 @@
         {% if component.enable_hover %}
             luxury-brands--hover
         {% endif %}
+        {% if component.show_glow %}
+            luxury-brands--glow
+        {% endif %}
     "
     style="
         --brands-bg: {{ component.background_color ?: '#FFF8FB' }};
         --brands-accent: {{ component.accent_color ?: '#E62973' }};
         --brands-card: {{ component.card_color ?: '#FFFFFF' }};
         --brands-text: {{ component.text_color ?: '#231F20' }};
-        --brands-padding: {{ component.section_padding ?: 70 }}px;
+        --brands-padding: {{ component.section_padding ?: '70' }}px;
         --brands-columns: {{ component.columns ?: '5' }};
     "
 >
 
     {# =====================================================
-       BACKGROUND DECORATION
+       BACKGROUND ATMOSPHERE
     ===================================================== #}
 
     {% if component.show_glow %}
@@ -50,15 +53,15 @@
     {% endif %}
 
 
-    {# =====================================================
-       DECORATIVE GRID
-    ===================================================== #}
-
     <div
-        class="luxury-brands__background-pattern"
+        class="luxury-brands__pattern"
         aria-hidden="true"
     ></div>
 
+
+    {# =====================================================
+       CONTAINER
+    ===================================================== #}
 
     <div class="container luxury-brands__container">
 
@@ -78,17 +81,13 @@
 
                     <div class="luxury-brands__eyebrow">
 
-                        <span
-                            class="luxury-brands__eyebrow-line"
-                        ></span>
+                        <span class="luxury-brands__eyebrow-line"></span>
 
                         <span class="luxury-brands__eyebrow-text">
                             {{ component.eyebrow }}
                         </span>
 
-                        <span
-                            class="luxury-brands__eyebrow-line"
-                        ></span>
+                        <span class="luxury-brands__eyebrow-line"></span>
 
                     </div>
 
@@ -117,15 +116,19 @@
                 {% endif %}
 
 
-                {# Header Accent #}
+                {# Header Decorative Accent #}
 
                 <div
                     class="luxury-brands__header-accent"
                     aria-hidden="true"
                 >
+
                     <span></span>
+
                     <i class="sicon-award-ribbon"></i>
+
                     <span></span>
+
                 </div>
 
             </header>
@@ -146,9 +149,9 @@
 
             {% for brand in component.brands %}
 
-                {# =========================================
+                {# =================================================
                    BRAND DATA
-                ========================================= #}
+                ================================================= #}
 
                 {% set brand_name = brand.name ?: brand.title ?: 'ماركة' %}
 
@@ -156,36 +159,57 @@
 
                 {% set brand_image = '' %}
 
+
+                {# Logo #}
+
                 {% if brand.logo %}
 
                     {% if brand.logo.url %}
+
                         {% set brand_image = brand.logo.url %}
+
                     {% else %}
+
                         {% set brand_image = brand.logo %}
+
                     {% endif %}
+
+
+                {# Image #}
 
                 {% elseif brand.image %}
 
                     {% if brand.image.url %}
+
                         {% set brand_image = brand.image.url %}
+
                     {% else %}
+
                         {% set brand_image = brand.image %}
+
                     {% endif %}
+
+
+                {# Icon #}
 
                 {% elseif brand.icon %}
 
                     {% if brand.icon.url %}
+
                         {% set brand_image = brand.icon.url %}
+
                     {% else %}
+
                         {% set brand_image = brand.icon %}
+
                     {% endif %}
 
                 {% endif %}
 
 
-                {# =========================================
+                {# =================================================
                    BRAND CARD
-                ========================================= #}
+                ================================================= #}
 
                 <a
                     href="{{ brand_url }}"
@@ -193,7 +217,29 @@
                     aria-label="{{ brand_name }}"
                 >
 
-                    {# Card Shine #}
+
+                    {# Card Background #}
+
+                    <span
+                        class="luxury-brand__background"
+                        aria-hidden="true"
+                    ></span>
+
+
+                    {# Decorative Corner #}
+
+                    <span
+                        class="luxury-brand__corner luxury-brand__corner--top"
+                        aria-hidden="true"
+                    ></span>
+
+                    <span
+                        class="luxury-brand__corner luxury-brand__corner--bottom"
+                        aria-hidden="true"
+                    ></span>
+
+
+                    {# Shine #}
 
                     <span
                         class="luxury-brand__shine"
@@ -201,15 +247,7 @@
                     ></span>
 
 
-                    {# Top Decorative Element #}
-
-                    <span
-                        class="luxury-brand__top-mark"
-                        aria-hidden="true"
-                    ></span>
-
-
-                    {# Brand Logo #}
+                    {# Logo #}
 
                     <span class="luxury-brand__logo">
 
@@ -248,7 +286,7 @@
                     ></span>
 
 
-                    {# Hover Arrow #}
+                    {# Arrow #}
 
                     <span
                         class="luxury-brand__arrow"
@@ -256,6 +294,7 @@
                     >
                         <i class="sicon-arrow-left"></i>
                     </span>
+
 
                 </a>
 
@@ -269,17 +308,18 @@
         ================================================= #}
 
         <div
-            class="luxury-brands__bottom-decoration"
+            class="luxury-brands__bottom"
             aria-hidden="true"
         >
 
             <span></span>
 
-            <i class="sicon-heart"></i>
+            <i class="sicon-award-ribbon"></i>
 
             <span></span>
 
         </div>
+
 
     </div>
 
