@@ -1,84 +1,108 @@
-{# =========================================================
-   LUXURY COMPLETE LOOK
-   الإطلالة المتكاملة الفاخرة
-========================================================= #}
-
-
 {% if component.products|length %}
 
-
 <section
-    class="luxury-look-section"
+    class="
+        luxury-look-section
+        {% if component.enable_animation %}
+            luxury-look-section--animated
+        {% endif %}
+    "
     style="
         --look-bg: {{ component.background_color ?: '#E62973' }};
-        padding: {{ component.section_padding ?: 80 }}px 0;
+        --look-accent: {{ component.accent_color ?: '#FFFFFF' }};
+        padding-top: {{ component.section_padding ?: 80 }}px;
+        padding-bottom: {{ component.section_padding ?: 80 }}px;
     "
 >
 
-
     {# =====================================================
-       MAIN CONTAINER
+       BACKGROUND
     ===================================================== #}
+
+    <div class="luxury-look-bg" aria-hidden="true">
+        <span class="luxury-look-bg__orb luxury-look-bg__orb--one"></span>
+        <span class="luxury-look-bg__orb luxury-look-bg__orb--two"></span>
+        <span class="luxury-look-bg__orb luxury-look-bg__orb--three"></span>
+        <span class="luxury-look-bg__grid"></span>
+    </div>
+
 
     <div class="container">
 
-
         {# =================================================
-           SECTION HEADER
-           عنوان القسم
+           HEADER
         ================================================= #}
 
         <div class="luxury-look-header">
 
+            {% if component.badge or component.show_badge != false %}
+                <div class="luxury-look-header__badge">
 
-            {# Top Badge #}
+                    <span class="luxury-look-header__badge-dot"></span>
 
-            <div class="badge">
+                    <span>
+                        {{ component.badge ?: 'أناقة نسائية فاخرة' }}
+                    </span>
 
-                {{ component.badge ?: 'أناقة نسائية فاخرة' }}
-
-            </div>
-
-
-            {# Main Title #}
-
-            <h2>
-
-                {{ component.title ?: 'أكملي إطلالتك بأسلوب راقٍ' }}
-
-            </h2>
+                </div>
+            {% endif %}
 
 
-            {# Description #}
+            {% if component.title %}
+                <h2>
+                    {{ component.title }}
+                </h2>
+            {% else %}
+                <h2>
+                    أكملي إطلالتك بأسلوب راقٍ
+                </h2>
+            {% endif %}
 
-            <p>
 
-                {{ component.description ?: 'اختاري القطع المثالية لإطلالة متكاملة' }}
+            {% if component.description %}
+                <p>
+                    {{ component.description }}
+                </p>
+            {% else %}
+                <p>
+                    اختاري القطع المثالية لإطلالة متكاملة
+                </p>
+            {% endif %}
 
-            </p>
 
+            <span
+                class="luxury-look-header__line"
+                aria-hidden="true"
+            ></span>
 
         </div>
 
 
         {# =================================================
            MAIN CONTENT
-           الصورة + المنتجات
         ================================================= #}
 
         <div class="luxury-look-content">
 
 
             {# =================================================
-               MAIN IMAGE
-               الصورة الرئيسية للإطلالة
+               IMAGE
             ================================================= #}
 
             <div class="luxury-look-image">
 
+                <div
+                    class="luxury-look-image__shine"
+                    aria-hidden="true"
+                ></div>
+
+                <div
+                    class="luxury-look-image__frame"
+                    aria-hidden="true"
+                ></div>
+
 
                 {% if component.main_image %}
-
 
                     <img
                         src="{{ component.main_image }}"
@@ -87,68 +111,87 @@
                         decoding="async"
                     >
 
-
                 {% else %}
 
-
                     <div class="luxury-look-placeholder">
-
                         إطلالة فاخرة
-
                     </div>
-
 
                 {% endif %}
 
+
+                <div
+                    class="luxury-look-image__caption"
+                    aria-hidden="true"
+                >
+                    <span></span>
+                    <small>THE COMPLETE LOOK</small>
+                    <span></span>
+                </div>
 
             </div>
 
 
             {# =================================================
                PRODUCTS BOX
-               صندوق منتجات الإطلالة
             ================================================= #}
 
             <div class="luxury-products-box">
 
 
-                {# Products Title #}
+                <div class="luxury-products-header">
 
-                <div class="luxury-products-title">
+                    <div>
 
-                    مكونات الإطلالة
+                        <span class="luxury-products-header__eyebrow">
+                            COLLECTION
+                        </span>
+
+                        <div class="luxury-products-title">
+                            مكونات الإطلالة
+                        </div>
+
+                    </div>
+
+                    <span
+                        class="luxury-products-count"
+                        aria-hidden="true"
+                    >
+                        {{ component.products|length }}
+                    </span>
 
                 </div>
 
 
                 {# =================================================
-                   PRODUCTS LIST
-                   قائمة المنتجات
+                   PRODUCTS
                 ================================================= #}
 
                 <div class="luxury-products-list">
 
-
                     {% for product in component.products %}
 
+                        <div
+                            class="
+                                luxury-product-item
+                                {% if component.enable_animation %}
+                                    luxury-product-item--animated
+                                {% endif %}
+                            "
+                            style="--product-index: {{ loop.index0 }};"
+                        >
 
-                        {# =================================================
-                           PRODUCT ITEM
-                        ================================================= #}
+                            <div class="luxury-product-item__number">
+                                {{ '%02d'|format(loop.index) }}
+                            </div>
 
-                        <div class="luxury-product-item">
-
-
-                            {# Product Information #}
 
                             <div class="luxury-product-info">
-
-
-                                {# Product Image + Link #}
 
                                 <a
                                     href="{{ product.url ?: '#' }}"
                                     aria-label="{{ product.name }}"
+                                    class="luxury-product-image-link"
                                 >
 
                                     {% if product.image %}
@@ -171,13 +214,15 @@
 
                                     {% endif %}
 
+                                    <span
+                                        class="luxury-product-image-glow"
+                                        aria-hidden="true"
+                                    ></span>
+
                                 </a>
 
 
-                                {# Product Details #}
-
-                                <div>
-
+                                <div class="luxury-product-details">
 
                                     <a
                                         href="{{ product.url ?: '#' }}"
@@ -185,28 +230,20 @@
                                     >
 
                                         <div class="luxury-product-name">
-
                                             {{ product.name }}
-
                                         </div>
 
                                     </a>
 
 
                                     <div class="luxury-product-type">
-
                                         قطعة أساسية
-
                                     </div>
-
 
                                 </div>
 
-
                             </div>
 
-
-                            {# Product Price #}
 
                             {% if component.show_product_price != false %}
 
@@ -218,102 +255,76 @@
 
                             {% endif %}
 
-
                         </div>
 
-
                     {% endfor %}
-
 
                 </div>
 
 
                 {# =================================================
                    FOOTER
-                   إجمالي الإطلالة + زر الإضافة
                 ================================================= #}
 
                 <div class="luxury-look-footer">
 
-
-                    {# =================================================
-                       TOTAL
-                       إجمالي الإطلالة
-                    ================================================= #}
-
                     {% if component.show_total != false %}
-
 
                         <div class="luxury-look-total">
 
-
                             <div class="luxury-total-label">
-
                                 إجمالي الإطلالة
-
                             </div>
-
 
                             <div class="luxury-total-price">
 
-                                {{ component.products|length }} منتجات
+                                {{ component.products|length }}
+
+                                <span>منتجات</span>
 
                             </div>
 
-
                         </div>
-
 
                     {% endif %}
 
 
-                    {# =================================================
-                       ADD TO CART
-                       إضافة المنتجات إلى السلة
-                    ================================================= #}
-
                     {% if component.show_button != false %}
-
 
                         <div class="luxury-add-button luxury-cart-wrapper">
 
-
                             {% for product in component.products %}
-
 
                                 <salla-add-product-button
                                     product-id="{{ product.id }}"
                                     product-status="{{ product.status }}"
                                     width="wide"
                                 >
+                                    <span class="luxury-cart-button-content">
+                                        <span class="luxury-cart-icon">
+                                            <i class="sicon-shopping-bag"></i>
+                                        </span>
 
-                                    إضافة الإطلالة للسلة
-
+                                        <span>
+                                            إضافة الإطلالة للسلة
+                                        </span>
+                                    </span>
                                 </salla-add-product-button>
-
 
                             {% endfor %}
 
-
                         </div>
-
 
                     {% endif %}
 
-
                 </div>
-
 
             </div>
 
-
         </div>
-
 
     </div>
 
-
 </section>
-
 
 {% endif %}
