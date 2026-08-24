@@ -2004,180 +2004,169 @@
     }
   ]
 },{
-    "key": "25f6cf26-a53f-4954-9b32-739b311b32c7",
-    "title": {
-        "en": "Luxury Brands",
-        "ar": "الماركات الفاخرة"
+  "key": "25f6cf26-a53f-4954-9b32-739b311b32c7",
+  "title": {
+    "en": "Luxury Brands",
+    "ar": "الماركات الفاخرة"
+  },
+  "description": "عرض الماركات التجارية بتصميم فاخر وعصري ومتجاوب.",
+  "icon": "sicon-award-ribbon",
+  "path": "home.brands",
+  "image": "https://cdn.salla.network/images/themes/raed/preview-images/brands.png?v=1.1",
+  "is_default": false,
+  "fields": [
+    {
+      "type": "string",
+      "icon": "sicon-format-text-alt",
+      "label": "الشارة",
+      "multilanguage": true,
+      "id": "eyebrow",
+      "value": "علامات نثق بها",
+      "format": "text",
+      "required": false
     },
-    "icon": "sicon-award-ribbon",
-    "path": "home.brands",
-    "image": "https://cdn.salla.network/images/themes/raed/preview-images/brands.png?v=1.1",
-    "fields": [
+    {
+      "type": "string",
+      "icon": "sicon-format-text-alt",
+      "label": "العنوان الرئيسي",
+      "multilanguage": true,
+      "id": "title",
+      "value": "اكتشفي عالم الماركات الفاخرة",
+      "format": "text",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-align-left",
+      "label": "الوصف",
+      "multilanguage": true,
+      "id": "description",
+      "value": "مجموعة مختارة من العلامات التي تجمع بين الجودة، الأناقة، والتفاصيل الاستثنائية.",
+      "format": "textarea",
+      "required": false
+    },
+    {
+      "type": "items",
+      "icon": "sicon-award-ribbon",
+      "label": "الماركات التجارية",
+      "id": "brands",
+      "format": "dropdown-list",
+      "description": "اختر الماركات التي تريد عرضها في القسم.",
+      "selected": [],
+      "options": [],
+      "required": true,
+      "multichoice": true,
+      "source": "brands",
+      "searchable": true,
+      "maxLength": 20,
+      "minLength": 1,
+      "value": []
+    },
+    {
+      "type": "string",
+      "icon": "sicon-color",
+      "label": "لون خلفية القسم",
+      "id": "background_color",
+      "value": "#FFF8FB",
+      "format": "color",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-color",
+      "label": "لون الهوية",
+      "id": "accent_color",
+      "value": "#E62973",
+      "format": "color",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-color",
+      "label": "لون البطاقات",
+      "id": "card_color",
+      "value": "#FFFFFF",
+      "format": "color",
+      "required": false
+    },
+    {
+      "type": "string",
+      "icon": "sicon-color",
+      "label": "لون النص",
+      "id": "text_color",
+      "value": "#231F20",
+      "format": "color",
+      "required": false
+    },
+    {
+      "type": "string",
+      "format": "select",
+      "label": "عدد الأعمدة",
+      "id": "columns",
+      "value": "5",
+      "options": [
         {
-            "type": "static",
-            "format": "description",
-            "id": "with-bg",
-            "value": "<div><img class='w-full' src='https://cdn.salla.network/images/themes/raed/preview-images/brands.png?v=1.1'></div>"
+          "label": "3 أعمدة",
+          "value": "3"
         },
         {
-            "type": "string",
-            "icon": "sicon-format-text-alt",
-            "label": "العنوان",
-            "multilanguage": true,
-            "id": "title",
-            "required": false,
-            "format": "text",
-            "description": "العنوان الرئيسي للقسم.",
-            "placeholder": "أدخل العنوان هنا...",
-            "minLength": 0,
-            "maxLength": 200,
-            "value": "اكتشفي عالم الماركات الفاخرة"
+          "label": "4 أعمدة",
+          "value": "4"
         },
         {
-            "type": "string",
-            "icon": "sicon-format-text-alt",
-            "label": "الوصف",
-            "multilanguage": true,
-            "id": "description",
-            "required": false,
-            "format": "textarea",
-            "description": "وصف قصير يظهر أسفل العنوان.",
-            "placeholder": "أدخل وصف القسم...",
-            "minLength": 0,
-            "maxLength": 300,
-            "value": "مجموعة مختارة من العلامات التي تجمع بين الجودة، الأناقة، والتفاصيل الاستثنائية."
+          "label": "5 أعمدة",
+          "value": "5"
         },
         {
-            "type": "string",
-            "icon": "sicon-badge",
-            "label": "النص العلوي",
-            "multilanguage": true,
-            "id": "eyebrow",
-            "required": false,
-            "format": "text",
-            "description": "النص الصغير الذي يظهر فوق العنوان.",
-            "placeholder": "مثال: علامات نثق بها",
-            "minLength": 0,
-            "maxLength": 80,
-            "value": "علامات نثق بها"
-        },
-        {
-            "type": "items",
-            "icon": "sicon-keyboard_arrow_down",
-            "label": "الماركات التجارية",
-            "id": "brands",
-            "format": "dropdown-list",
-            "description": "اختر الماركات التي تريد عرضها.",
-            "selected": [],
-            "options": [],
-            "required": true,
-            "multichoice": true,
-            "searchable": true,
-            "source": "brands"
-        },
-        {
-            "type": "boolean",
-            "icon": "sicon-eye",
-            "label": "إظهار العنوان",
-            "id": "show_header",
-            "required": false,
-            "selected": true
-        },
-        {
-            "type": "boolean",
-            "icon": "sicon-magic-wand",
-            "label": "تفعيل الحركة",
-            "id": "enable_animation",
-            "required": false,
-            "selected": true
-        },
-        {
-            "type": "boolean",
-            "icon": "sicon-sparkles",
-            "label": "إظهار التأثيرات الضوئية",
-            "id": "show_glow",
-            "required": false,
-            "selected": true
-        },
-        {
-            "type": "boolean",
-            "icon": "sicon-palette",
-            "label": "تفعيل تأثير الماركة",
-            "id": "enable_hover",
-            "required": false,
-            "selected": true
-        },
-        {
-            "type": "list",
-            "icon": "sicon-grid",
-            "label": "عدد الأعمدة",
-            "id": "columns",
-            "required": false,
-            "options": [
-                {
-                    "label": "3 أعمدة",
-                    "value": "3"
-                },
-                {
-                    "label": "4 أعمدة",
-                    "value": "4"
-                },
-                {
-                    "label": "5 أعمدة",
-                    "value": "5"
-                },
-                {
-                    "label": "6 أعمدة",
-                    "value": "6"
-                }
-            ],
-            "value": "5"
-        },
-        {
-            "type": "color",
-            "icon": "sicon-palette",
-            "label": "لون الخلفية",
-            "id": "background_color",
-            "required": false,
-            "value": "#FFF8FB"
-        },
-        {
-            "type": "color",
-            "icon": "sicon-palette",
-            "label": "اللون الرئيسي",
-            "id": "accent_color",
-            "required": false,
-            "value": "#E62973"
-        },
-        {
-            "type": "color",
-            "icon": "sicon-palette",
-            "label": "لون البطاقات",
-            "id": "card_color",
-            "required": false,
-            "value": "#FFFFFF"
-        },
-        {
-            "type": "color",
-            "icon": "sicon-palette",
-            "label": "لون النص",
-            "id": "text_color",
-            "required": false,
-            "value": "#231F20"
-        },
-        {
-            "type": "number",
-            "icon": "sicon-arrow-up",
-            "label": "المسافة الرأسية",
-            "id": "section_padding",
-            "required": false,
-            "value": 70,
-            "min": 30,
-            "max": 140,
-            "step": 5
+          "label": "6 أعمدة",
+          "value": "6"
         }
-    ]
+      ],
+      "required": false
+    },
+    {
+      "type": "string",
+      "format": "number",
+      "label": "المسافة الداخلية للقسم",
+      "id": "section_padding",
+      "value": "70",
+      "required": false
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار العنوان",
+      "id": "show_header",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "تفعيل الحركة",
+      "id": "enable_animation",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "إظهار التوهج الخلفي",
+      "id": "show_glow",
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "format": "switch",
+      "label": "تفعيل تأثير الماركة",
+      "id": "enable_hover",
+      "value": true,
+      "selected": true
+    }
+  ]
 }
+
 ,
 {
   "key": "8f4b6c21-3d72-4a95-b8e6-1f9c2a7d5e43",
