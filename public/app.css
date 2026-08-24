@@ -5759,6 +5759,30 @@ salla-menu[topnav]:not(.hydrated)::after {
     transition: none !important;
   }
 }
+.luxury-footer__logo-link {
+  display: inline-flex;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+.luxury-footer__logo {
+  display: block;
+  width: 160px;
+  max-width: 100%;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+}
+.luxury-footer__logo-link:hover .luxury-footer__logo {
+  transform: translateY(-3px) scale(1.03);
+  filter: drop-shadow(0 8px 24px rgba(230, 41, 115, 0.28));
+}
+@media (max-width: 600px) {
+  .luxury-footer__logo {
+    width: 135px;
+  }
+}
 .main-menu > li > a[href*=offer]{
     --tw-text-opacity: 1;
     color: rgba(153, 27, 27, 1);

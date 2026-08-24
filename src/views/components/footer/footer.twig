@@ -119,13 +119,16 @@
 
                 <div class="luxury-footer__brand-mark">
 
-                    <span class="luxury-footer__brand-symbol">
-                        R
-                    </span>
+                    <a href="{{ store.url ?: '/' }}" class="luxury-footer__logo-link" aria-label="الصفحة الرئيسية">
+    <img
+        src="{{ 'images/theme-logo.png' | asset }}"
+        alt="شعار المتجر"
+        class="luxury-footer__logo"
+        loading="lazy"
+        decoding="async"
+    >
+</a>
 
-                    <span class="luxury-footer__brand-name">
-                        RAWAN
-                    </span>
 
                 </div>
 
