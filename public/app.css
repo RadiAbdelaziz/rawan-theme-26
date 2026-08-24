@@ -2141,33 +2141,39 @@ input:where([type='file']):focus{
   /* plugins */
   --mm-ocd-width: calc(100% - 51px);
 }
-html {
-  min-height: 100%;
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100% !important;
 }
 body {
-  min-height: 100vh;
-  margin: 0;
+  min-height: 100vh !important;
 }
 #app {
-  min-height: 100vh;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 .app-inner {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 #main-content {
-  flex: 1 0 auto;
-  width: 100%;
+  flex: 1 0 auto !important;
+  width: 100% !important;
+  margin-bottom: 0 !important;
 }
-/*
-|--------------------------------------------------------------------------
-| Footer — Always at the bottom
-|--------------------------------------------------------------------------
-*/
 .luxury-footer {
-  flex: 0 0 auto;
-  width: 100%;
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0;
 }
 body {
   font-size: 15px;
