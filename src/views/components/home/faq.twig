@@ -1,101 +1,160 @@
 {% if component.show_section %}
-    <section
-        class="luxury-faq"
-        style="
-            --faq-accent-color: {{ component.accent_color }};
-            --faq-title-color: {{ component.title_color }};
-            --faq-subtitle-color: {{ component.subtitle_color }};
-            --faq-background-color: {{ component.background_color }};
-        "
-    >
-        <div class="luxury-faq__background"></div>
+<section
+    class="luxury-faq"
+    style="
+        --faq-accent-color: {{ component.accent_color ?: '#E62973' }};
+        --faq-title-color: {{ component.title_color ?: '#4A0F27' }};
+        --faq-subtitle-color: {{ component.subtitle_color ?: '#777777' }};
+        --faq-background-color: {{ component.background_color ?: '#FFF8FB' }};
+    "
+>
+    <!-- Ambient background -->
+    <div class="luxury-faq__background" aria-hidden="true">
+        <span class="luxury-faq__orb luxury-faq__orb--one"></span>
+        <span class="luxury-faq__orb luxury-faq__orb--two"></span>
+        <span class="luxury-faq__orb luxury-faq__orb--three"></span>
+    </div>
 
-        <div class="container">
-            {# Header #}
-            <div class="luxury-faq__header">
-                {% if component.show_badge and component.badge %}
+    <div class="container">
+
+        <!-- =========================
+             HEADER
+        ========================== -->
+        <div class="luxury-faq__header">
+
+            {% if component.show_badge and component.badge %}
+                <div class="luxury-faq__badge-wrap">
                     <span class="luxury-faq__badge">
                         <span class="luxury-faq__badge-dot"></span>
-                        {{ component.badge }}
+                        <span>{{ component.badge }}</span>
                     </span>
-                {% endif %}
+                </div>
+            {% endif %}
 
-                {% if component.title %}
-                    <h2 class="luxury-faq__title">
+            {% if component.title %}
+                <h2 class="luxury-faq__title">
+                    <span class="luxury-faq__title-text">
                         {{ component.title }}
-                        <span class="luxury-faq__underline"></span>
-                    </h2>
-                {% endif %}
+                    </span>
 
-                {% if component.subtitle %}
-                    <p class="luxury-faq__subtitle">
-                        {{ component.subtitle }}
-                    </p>
-                {% endif %}
-            </div>
+                    <span
+                        class="luxury-faq__underline"
+                        aria-hidden="true"
+                    ></span>
+                </h2>
+            {% endif %}
 
-            {# Faq #}
-            {% if component.questions|length %}
-                <div class="luxury-faq__list">
-                    {% for item in component.questions %}
-                        {% if item.question and item.answer %}
-                            <details
-                                class="luxury-faq__item"
-                                {% if item.open %}open{% endif %}
-                            >
-                                <summary class="luxury-faq__question">
-                                    <h3>
-                                        {{ item.question }}
-                                    </h3>
+            {% if component.subtitle %}
+                <p class="luxury-faq__subtitle">
+                    {{ component.subtitle }}
+                </p>
+            {% endif %}
 
-                                    <span class="luxury-faq__icon">
-                                        <span class="luxury-faq__icon-border"></span>
-                                        <span class="luxury-faq__icon-bg"></span>
+        </div>
 
-                                        <svg
-                                            viewBox="0 0 24 24"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            stroke-width="2.5"
-                                        >
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                d="M19 9l-7 7-7-7"
-                                            />
-                                        </svg>
-                                    </span>
-                                </summary>
 
-                                <div class="luxury-faq__answer">
+        <!-- =========================
+             FAQ
+        ========================== -->
+        {% if component.questions|length %}
+
+            <div class="luxury-faq__list">
+
+                {% for item in component.questions %}
+
+                    {% if item.question and item.answer %}
+
+                        <details
+                            class="luxury-faq__item"
+                            {% if item.open %}open{% endif %}
+                        >
+
+                            <!-- Question -->
+                            <summary class="luxury-faq__question">
+
+                                <h3>
+                                    {{ item.question }}
+                                </h3>
+
+                                <span
+                                    class="luxury-faq__icon"
+                                    aria-hidden="true"
+                                >
+                                    <span class="luxury-faq__icon-border"></span>
+                                    <span class="luxury-faq__icon-bg"></span>
+
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2.3"
+                                        aria-hidden="true"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M19 9l-7 7-7-7"
+                                        />
+                                    </svg>
+                                </span>
+
+                            </summary>
+
+
+                            <!-- Answer -->
+                            <div class="luxury-faq__answer">
+
+                                <div class="luxury-faq__answer-inner">
                                     {{ item.answer }}
                                 </div>
-                            </details>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            {% endif %}
 
-            {# Cta #}
-            {% if component.show_cta %}
-                <div class="luxury-faq__cta">
-                    {% if component.cta_text %}
-                        <p>
-                            {{ component.cta_text }}
-                        </p>
+                            </div>
+
+                        </details>
+
                     {% endif %}
 
-                    {% if component.cta_button_text %}
-                        <a
-                            href="{{ component.cta_url ?: '#' }}"
-                            class="luxury-faq__cta-button"
-                        >
-                            <span>←</span>
+                {% endfor %}
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- =========================
+             CTA
+        ========================== -->
+        {% if component.show_cta %}
+
+            <div class="luxury-faq__cta">
+
+                <div class="luxury-faq__cta-glow"></div>
+
+                {% if component.cta_text %}
+                    <p class="luxury-faq__cta-text">
+                        {{ component.cta_text }}
+                    </p>
+                {% endif %}
+
+                {% if component.cta_button_text %}
+                    <a
+                        href="{{ component.cta_url ?: '#' }}"
+                        class="luxury-faq__cta-button"
+                    >
+                        <span class="luxury-faq__cta-arrow">←</span>
+
+                        <span>
                             {{ component.cta_button_text }}
-                        </a>
-                    {% endif %}
-                </div>
-            {% endif %}
-        </div>
-    </section>
+                        </span>
+
+                        <span class="luxury-faq__cta-line"></span>
+                    </a>
+                {% endif %}
+
+            </div>
+
+        {% endif %}
+
+    </div>
+</section>
 {% endif %}
