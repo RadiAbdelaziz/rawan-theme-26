@@ -1250,3 +1250,217 @@
         width: 135px;
     }
 }
+/* =========================================================
+   PAYMENT METHODS
+========================================================= */
+
+.luxury-footer__payments {
+    margin-top: 34px;
+}
+
+.luxury-footer__payments-title {
+    display: block;
+
+    margin-bottom: 14px;
+
+    color: var(--footer-title);
+
+    font-size: 12px;
+    font-weight: 800;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   PAYMENT LIST
+========================================================= */
+
+.luxury-footer__payment-list {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+}
+
+
+/* =========================================================
+   PAYMENT CARD
+========================================================= */
+
+.luxury-footer__payment {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 62px;
+    height: 40px;
+
+    padding: 6px 8px;
+
+    overflow: hidden;
+
+    border: 1px solid var(--footer-border);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255, 255, 255, .96);
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, .08);
+
+    transition:
+        transform .35s cubic-bezier(.22, 1, .36, 1),
+        border-color .35s ease,
+        box-shadow .35s ease,
+        background .35s ease;
+}
+
+
+/* =========================================================
+   LIGHT EFFECT
+========================================================= */
+
+.luxury-footer__payment::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.8),
+            transparent 55%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   PAYMENT IMAGE
+========================================================= */
+
+.luxury-footer__payment img {
+    position: relative;
+
+    z-index: 2;
+
+    display: block;
+
+    width: auto;
+    height: auto;
+
+    max-width: 100%;
+    max-height: 25px;
+
+    object-fit: contain;
+
+    image-rendering: auto;
+
+    transition:
+        transform .35s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.luxury-footer__payment:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        var(--footer-accent);
+
+    background:
+        #FFFFFF;
+
+    box-shadow:
+        0 10px 28px
+        rgba(230, 41, 115, .18);
+}
+
+
+.luxury-footer__payment:hover img {
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .luxury-footer__payments {
+        margin-top: 28px;
+    }
+
+    .luxury-footer__payments-title {
+        margin-bottom: 12px;
+
+        font-size: 11px;
+    }
+
+    .luxury-footer__payment-list {
+        gap: 7px;
+    }
+
+    .luxury-footer__payment {
+        width: 55px;
+        height: 36px;
+
+        padding: 5px 7px;
+
+        border-radius: 8px;
+    }
+
+    .luxury-footer__payment img {
+        max-height: 22px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .luxury-footer__payment {
+        width: 50px;
+        height: 34px;
+
+        padding: 4px 6px;
+    }
+
+    .luxury-footer__payment img {
+        max-height: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .luxury-footer__payment,
+    .luxury-footer__payment img {
+        transition: none !important;
+    }
+
+}
