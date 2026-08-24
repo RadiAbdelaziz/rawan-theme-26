@@ -1004,10 +1004,6 @@ input:where([type='file']):focus{
     margin-left: 0.5rem;
     margin-right: 0.5rem;
 }
-.mx-auto{
-    margin-left: auto;
-    margin-right: auto;
-}
 .my-2\.5{
     margin-top: 0.625rem;
     margin-bottom: 0.625rem;
