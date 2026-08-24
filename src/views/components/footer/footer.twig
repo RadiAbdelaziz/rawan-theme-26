@@ -1,102 +1,162 @@
 {# =========================================================
    LUXURY FOOTER
-   الفوتر الفاخر
-   Built strictly from current JSON fields
+   يعتمد على theme.settings
 ========================================================= #}
 
+{% set footer_show_description = theme.settings.get('footer_show_description', true) %}
+{% set footer_description = theme.settings.get('footer_description', '') %}
+
+{% set footer_show_social = theme.settings.get('footer_show_social', true) %}
+{% set footer_social_links = theme.settings.get('footer_social_links', []) %}
+
+{% set footer_show_links = theme.settings.get('footer_show_links', true) %}
+{% set footer_links_title = theme.settings.get('footer_links_title', 'روابط مهمة') %}
+{% set footer_links = theme.settings.get('footer_links', []) %}
+
+{% set footer_show_contact = theme.settings.get('footer_show_contact', true) %}
+{% set footer_contact_title = theme.settings.get('footer_contact_title', 'تواصل معنا') %}
+{% set footer_phone = theme.settings.get('footer_phone', '') %}
+{% set footer_email = theme.settings.get('footer_email', '') %}
+{% set footer_whatsapp = theme.settings.get('footer_whatsapp', '') %}
+{% set footer_location = theme.settings.get('footer_location', '') %}
+
+{% set footer_show_apps = theme.settings.get('footer_show_apps', true) %}
+{% set footer_apps_title = theme.settings.get('footer_apps_title', 'تطبيق الجوال') %}
+{% set footer_apple_url = theme.settings.get('footer_apple_url', '') %}
+{% set footer_google_url = theme.settings.get('footer_google_url', '') %}
+
+{% set footer_show_scroll_top = theme.settings.get('footer_show_scroll_top', true) %}
+
+{% set footer_copyright = theme.settings.get('footer_copyright', '© 2026 جميع الحقوق محفوظة') %}
+{% set footer_brand_name = theme.settings.get('footer_brand_name', store.name) %}
+{% set footer_credit = theme.settings.get('footer_credit', '') %}
+
+{% set footer_background_color = theme.settings.get('footer_background_color', '#0B0A0C') %}
+{% set footer_text_color = theme.settings.get('footer_text_color', '#A1A1AA') %}
+{% set footer_title_color = theme.settings.get('footer_title_color', '#FFFFFF') %}
+{% set footer_accent_color = theme.settings.get('footer_accent_color', '#E62973') %}
+{% set footer_border_color = theme.settings.get('footer_border_color', '#E6297333') %}
+
+{% set footer_show_glow = theme.settings.get('footer_show_glow', true) %}
+{% set footer_show_pattern = theme.settings.get('footer_show_pattern', true) %}
+
+
 <footer
-    class="
-        luxury-footer
-        {% if component.enable_animation %}
-            luxury-footer--animated
-        {% endif %}
-        {% if component.show_glow %}
-            luxury-footer--glow
-        {% endif %}
-    "
+    class="luxury-footer"
+    dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}"
     style="
-        --footer-bg: {{ component.background_color ?: '#171116' }};
-        --footer-accent: {{ component.accent_color ?: '#E62973' }};
-        --footer-card: {{ component.card_color ?: '#211A20' }};
-        --footer-text: {{ component.text_color ?: '#FFFFFF' }};
-        --footer-muted: {{ component.muted_color ?: '#B8AEB4' }};
-        --footer-padding: {{ component.section_padding ?: 80 }}px;
+        --footer-bg: {{ footer_background_color }};
+        --footer-text: {{ footer_text_color }};
+        --footer-title: {{ footer_title_color }};
+        --footer-accent: {{ footer_accent_color }};
+        --footer-border: {{ footer_border_color }};
     "
 >
 
     {# =====================================================
-       DECORATIVE BACKGROUND
+       BACKGROUND
     ===================================================== #}
 
-    <div
-        class="luxury-footer__background"
-        aria-hidden="true"
-    >
+    <div class="luxury-footer__background" aria-hidden="true">
 
-        <span class="luxury-footer__orb luxury-footer__orb--one"></span>
+        <span class="luxury-footer__line"></span>
 
-        <span class="luxury-footer__orb luxury-footer__orb--two"></span>
+        {% if footer_show_glow %}
+            <span class="luxury-footer__glow luxury-footer__glow--one"></span>
+            <span class="luxury-footer__glow luxury-footer__glow--two"></span>
+        {% endif %}
 
-        <span class="luxury-footer__grid"></span>
+        {% if footer_show_pattern %}
+            <span class="luxury-footer__pattern"></span>
+        {% endif %}
 
     </div>
 
 
-    {# =====================================================
-       TOP ACCENT LINE
-    ===================================================== #}
-
-    <div
-        class="luxury-footer__top-line"
-        aria-hidden="true"
-    ></div>
-
-
-    <div class="container luxury-footer__container">
+    <div class="luxury-footer__container container">
 
 
         {# =================================================
-           INTRO
+           TOP INTRO
         ================================================= #}
 
         <div class="luxury-footer__intro">
 
+            <div class="luxury-footer__brand">
 
-            {% if component.show_eyebrow and component.eyebrow %}
+                {# الشعار من store.logo #}
 
-                <div class="luxury-footer__eyebrow">
+                {% if store.logo %}
 
-                    <span class="luxury-footer__eyebrow-line"></span>
+                    <a
+                        href="{{ store.url }}"
+                        class="luxury-footer__logo"
+                        aria-label="{{ store.name }}"
+                    >
+                        <img
+                            src="{{ store.logo }}"
+                            alt="{{ store.name }}"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
 
-                    <span>
-                        {{ component.eyebrow }}
-                    </span>
+                {% else %}
 
-                    <span class="luxury-footer__eyebrow-line"></span>
+                    <a
+                        href="{{ store.url }}"
+                        class="luxury-footer__brand-name"
+                    >
+                        {{ store.name }}
+                    </a>
 
-                </div>
+                {% endif %}
 
-            {% endif %}
-
-
-            {% if component.show_title and component.title %}
-
-                <h2 class="luxury-footer__title">
-
-                    {{ component.title }}
-
-                </h2>
-
-            {% endif %}
+            </div>
 
 
-            {% if component.show_description and component.description %}
+            {% if footer_show_description and footer_description %}
 
                 <p class="luxury-footer__description">
-
-                    {{ component.description }}
-
+                    {{ footer_description }}
                 </p>
+
+            {% endif %}
+
+
+            {# SOCIAL #}
+
+            {% if footer_show_social and footer_social_links|length %}
+
+                <div class="luxury-footer__social">
+
+                    {% for social in footer_social_links %}
+
+                        {% if social.url %}
+
+                            <a
+                                href="{{ social.url }}"
+                                class="luxury-footer__social-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="{{ social.name ?: 'Social media' }}"
+                            >
+
+                                {% if social.icon %}
+                                    <i class="{{ social.icon }}"></i>
+                                {% else %}
+                                    <span>
+                                        {{ social.name|slice(0, 1) }}
+                                    </span>
+                                {% endif %}
+
+                            </a>
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                </div>
 
             {% endif %}
 
@@ -104,246 +164,137 @@
 
 
         {# =================================================
-           MAIN FOOTER CONTENT
+           MAIN GRID
         ================================================= #}
 
-        <div class="luxury-footer__main">
+        <div class="luxury-footer__grid">
 
 
             {# =================================================
-               BRAND / SOCIAL
+               LINKS
             ================================================= #}
 
-            <div class="luxury-footer__brand-column">
-
-
-                <div class="luxury-footer__brand-mark">
-
-                    <a href="{{ store.url ?: '/' }}" class="luxury-footer__logo-link" aria-label="الصفحة الرئيسية">
-    <img
-        src="{{ 'images/theme-logo.png' | asset }}"
-        alt="شعار المتجر"
-        class="luxury-footer__logo"
-        loading="lazy"
-        decoding="async"
-    >
-</a>
-
-
-                </div>
-
-
-                <p class="luxury-footer__brand-text">
-
-                    تجربة تسوق أنيقة تجمع بين الجودة،
-                    التفاصيل الراقية، والهوية العصرية.
-
-                </p>
-
-
-                {% if component.show_social %}
-
-                    <div class="luxury-footer__social">
-
-                        <a
-                            href="#"
-                            class="luxury-footer__social-item"
-                            aria-label="Instagram"
-                        >
-                            <i class="sicon-instagram"></i>
-                        </a>
-
-
-                        <a
-                            href="#"
-                            class="luxury-footer__social-item"
-                            aria-label="X"
-                        >
-                            <i class="sicon-twitter"></i>
-                        </a>
-
-
-                        <a
-                            href="#"
-                            class="luxury-footer__social-item"
-                            aria-label="TikTok"
-                        >
-                            <i class="sicon-tiktok"></i>
-                        </a>
-
-
-                        <a
-                            href="#"
-                            class="luxury-footer__social-item"
-                            aria-label="YouTube"
-                        >
-                            <i class="sicon-youtube"></i>
-                        </a>
-
-                    </div>
-
-                {% endif %}
-
-            </div>
-
-
-            {# =================================================
-               IMPORTANT LINKS
-            ================================================= #}
-
-            <div class="luxury-footer__column">
-
-                <div class="luxury-footer__column-title">
-
-                    روابط مهمة
-
-                </div>
-
-
-                <nav class="luxury-footer__links">
-
-
-                    {% if component.show_legal %}
-
-                        {% if component.terms_url %}
-
-                            <a
-                                href="{{ component.terms_url }}"
-                                class="luxury-footer__link"
-                            >
-                                الشروط والأحكام
-                            </a>
-
-                        {% endif %}
-
-
-                        {% if component.privacy_url %}
-
-                            <a
-                                href="{{ component.privacy_url }}"
-                                class="luxury-footer__link"
-                            >
-                                سياسة الخصوصية
-                            </a>
-
-                        {% endif %}
-
-
-                        {% if component.returns_url %}
-
-                            <a
-                                href="{{ component.returns_url }}"
-                                class="luxury-footer__link"
-                            >
-                                الاستبدال والاسترجاع
-                            </a>
-
-                        {% endif %}
-
-                    {% endif %}
-
-
-                    <a
-                        href="/"
-                        class="luxury-footer__link"
-                    >
-                        الرئيسية
-                    </a>
-
-
-                </nav>
-
-            </div>
-
-
-            {# =================================================
-               NEWSLETTER
-            ================================================= #}
-
-            {% if component.show_newsletter %}
-
-                <div class="luxury-footer__column luxury-footer__newsletter">
-
-                    <div class="luxury-footer__column-title">
-
-                        النشرة البريدية
-
-                    </div>
-
-
-                    <p class="luxury-footer__column-description">
-
-                        اشتركي ليصلك كل جديد من المنتجات
-                        والعروض المميزة.
-
-                    </p>
-
-
-                    <div class="luxury-footer__newsletter-box">
-
-                        <input
-                            type="email"
-                            class="luxury-footer__newsletter-input"
-                            placeholder="بريدك الإلكتروني"
-                            aria-label="البريد الإلكتروني"
-                        >
-
-                        <button
-                            type="button"
-                            class="luxury-footer__newsletter-button"
-                            aria-label="اشتراك"
-                        >
-
-                            <i class="sicon-arrow-left"></i>
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            {% endif %}
-
-
-            {# =================================================
-               PAYMENT
-            ================================================= #}
-
-            {% if component.show_payment %}
+            {% if footer_show_links and footer_links|length %}
 
                 <div class="luxury-footer__column">
 
-                    <div class="luxury-footer__column-title">
+                    <h3 class="luxury-footer__heading">
+                        {{ footer_links_title }}
+                    </h3>
 
-                        طرق الدفع
+                    <span class="luxury-footer__heading-line"></span>
 
-                    </div>
+                    <ul class="luxury-footer__links">
+
+                        {% for link in footer_links %}
+
+                            {% if link.url %}
+
+                                <li>
+                                    <a href="{{ link.url }}">
+                                        <span>{{ link.title }}</span>
+                                        <i class="sicon-arrow-left"></i>
+                                    </a>
+                                </li>
+
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+            {% endif %}
 
 
-                    <p class="luxury-footer__column-description">
+            {# =================================================
+               CONTACT
+            ================================================= #}
 
-                        خيارات دفع آمنة وموثوقة.
+            {% if footer_show_contact %}
 
-                    </p>
+                <div class="luxury-footer__column">
+
+                    <h3 class="luxury-footer__heading">
+                        {{ footer_contact_title }}
+                    </h3>
+
+                    <span class="luxury-footer__heading-line"></span>
+
+                    <div class="luxury-footer__contact">
+
+                        {% if footer_phone %}
+
+                            <a
+                                href="tel:{{ footer_phone }}"
+                                class="luxury-footer__contact-item"
+                            >
+                                <span class="luxury-footer__contact-icon">
+                                    <i class="sicon-phone"></i>
+                                </span>
+
+                                <span>
+                                    {{ footer_phone }}
+                                </span>
+                            </a>
+
+                        {% endif %}
 
 
-                    <div class="luxury-footer__payments">
+                        {% if footer_email %}
 
-                        <span class="luxury-footer__payment">
-                            VISA
-                        </span>
+                            <a
+                                href="mailto:{{ footer_email }}"
+                                class="luxury-footer__contact-item"
+                            >
+                                <span class="luxury-footer__contact-icon">
+                                    <i class="sicon-mail"></i>
+                                </span>
 
-                        <span class="luxury-footer__payment">
-                            MASTERCARD
-                        </span>
+                                <span>
+                                    {{ footer_email }}
+                                </span>
+                            </a>
 
-                        <span class="luxury-footer__payment">
-                            مدى
-                        </span>
+                        {% endif %}
 
-                        <span class="luxury-footer__payment">
-                            Apple Pay
-                        </span>
+
+                        {% if footer_whatsapp %}
+
+                            <a
+                                href="{{ footer_whatsapp }}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="luxury-footer__contact-item"
+                            >
+                                <span class="luxury-footer__contact-icon">
+                                    <i class="sicon-whatsapp"></i>
+                                </span>
+
+                                <span>
+                                    واتساب
+                                </span>
+                            </a>
+
+                        {% endif %}
+
+
+                        {% if footer_location %}
+
+                            <div class="luxury-footer__contact-item">
+
+                                <span class="luxury-footer__contact-icon">
+                                    <i class="sicon-location"></i>
+                                </span>
+
+                                <span>
+                                    {{ footer_location }}
+                                </span>
+
+                            </div>
+
+                        {% endif %}
 
                     </div>
 
@@ -351,6 +302,89 @@
 
             {% endif %}
 
+
+            {# =================================================
+               MOBILE APPS
+            ================================================= #}
+
+            {% if footer_show_apps %}
+
+                <div class="luxury-footer__column">
+
+                    <h3 class="luxury-footer__heading">
+                        {{ footer_apps_title }}
+                    </h3>
+
+                    <span class="luxury-footer__heading-line"></span>
+
+                    <div class="luxury-footer__apps">
+
+
+                        {% if footer_apple_url %}
+
+                            <a
+                                href="{{ footer_apple_url }}"
+                                class="luxury-footer__app"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img
+                                    src="{{ 'images/app-store.svg'|asset }}"
+                                    alt="App Store"
+                                    loading="lazy"
+                                >
+                            </a>
+
+                        {% endif %}
+
+
+                        {% if footer_google_url %}
+
+                            <a
+                                href="{{ footer_google_url }}"
+                                class="luxury-footer__app"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <img
+                                    src="{{ 'images/google-play.svg'|asset }}"
+                                    alt="Google Play"
+                                    loading="lazy"
+                                >
+                            </a>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+
+        {# =================================================
+           LEGAL LINKS
+        ================================================= #}
+
+        <div class="luxury-footer__legal">
+
+            <a href="{{ theme.settings.get('footer_terms_url', '#') }}">
+                الشروط والأحكام
+            </a>
+
+            <span></span>
+
+            <a href="{{ theme.settings.get('footer_privacy_url', '#') }}">
+                سياسة الخصوصية
+            </a>
+
+            <span></span>
+
+            <a href="{{ theme.settings.get('footer_returns_url', '#') }}">
+                الاستبدال والاسترجاع
+            </a>
 
         </div>
 
@@ -361,69 +395,45 @@
 
         <div class="luxury-footer__bottom">
 
-
             <div class="luxury-footer__copyright">
 
-                © {{ "now"|date("Y") }}
+                {{ footer_copyright }}
 
-                <span>
-                    {{ component.copyright ?: 'جميع الحقوق محفوظة' }}
-                </span>
+                {% if footer_brand_name %}
+                    <strong>{{ footer_brand_name }}</strong>
+                {% endif %}
 
             </div>
 
 
-            {% if component.show_legal %}
+            {% if footer_credit %}
 
-                <div class="luxury-footer__legal">
-
-
-                    {% if component.terms_url %}
-
-                        <a href="{{ component.terms_url }}">
-                            الشروط والأحكام
-                        </a>
-
-                    {% endif %}
-
-
-                    {% if component.privacy_url %}
-
-                        <a href="{{ component.privacy_url }}">
-                            الخصوصية
-                        </a>
-
-                    {% endif %}
-
-
-                    {% if component.returns_url %}
-
-                        <a href="{{ component.returns_url }}">
-                            الاستبدال والاسترجاع
-                        </a>
-
-                    {% endif %}
-
+                <div class="luxury-footer__credit">
+                    {{ footer_credit }}
                 </div>
 
             {% endif %}
 
-
-            <div class="luxury-footer__signature">
-
-                Crafted with
-
-                <span aria-hidden="true">♥</span>
-
-                by
-
-                <strong>RAWAN</strong>
-
-            </div>
-
-
         </div>
 
     </div>
+
+
+    {# =====================================================
+       SCROLL TOP
+    ===================================================== #}
+
+    {% if footer_show_scroll_top %}
+
+        <button
+            type="button"
+            class="luxury-footer__scroll-top"
+            aria-label="العودة إلى الأعلى"
+            onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+        >
+            <i class="sicon-arrow-up"></i>
+        </button>
+
+    {% endif %}
 
 </footer>
