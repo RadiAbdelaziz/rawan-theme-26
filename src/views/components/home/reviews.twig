@@ -1,17 +1,3 @@
-{# =========================================================
-   LUXURY TESTIMONIALS
-   آراء العملاء - Testimonials Slider
-
-   يعتمد على twilight.json الحالي:
-   component.reviews
-
-   Desktop  : 3 بطاقات
-   Tablet   : 2 بطاقات
-   Mobile   : 1 بطاقة
-   Autoplay : يعمل تلقائياً
-   Controls : مخفية
-   ========================================================= #}
-
 {% if component.show_section != false %}
 
 <section
@@ -33,25 +19,21 @@
 >
 
     {# =====================================================
-       BACKGROUND GLOW
-       ===================================================== #}
+       AMBIENT BACKGROUND
+    ===================================================== #}
 
-    <div
-        class="luxury-testimonials__glow luxury-testimonials__glow--one"
-        aria-hidden="true"
-    ></div>
-
-    <div
-        class="luxury-testimonials__glow luxury-testimonials__glow--two"
-        aria-hidden="true"
-    ></div>
+    <div class="luxury-testimonials__ambient" aria-hidden="true">
+        <span class="luxury-testimonials__ambient-orb luxury-testimonials__ambient-orb--one"></span>
+        <span class="luxury-testimonials__ambient-orb luxury-testimonials__ambient-orb--two"></span>
+        <span class="luxury-testimonials__ambient-orb luxury-testimonials__ambient-orb--three"></span>
+    </div>
 
 
     <div class="container luxury-testimonials__container">
 
         {# =================================================
-           SECTION HEADER
-           ================================================= #}
+           HEADER
+        ================================================= #}
 
         <div class="luxury-testimonials__header">
 
@@ -59,35 +41,29 @@
                 class="luxury-testimonials__eyebrow"
                 aria-hidden="true"
             >
-
                 <span></span>
 
                 <i class="sicon-heart"></i>
 
                 <span></span>
-
             </div>
 
 
             <h2 class="luxury-testimonials__title">
-
                 {{ component.title ?: 'تجارب عملائنا' }}
-
             </h2>
 
 
             <p class="luxury-testimonials__subtitle">
-
                 {{ component.subtitle ?: 'آراء حقيقية من عملاء اختاروا الجودة والفخامة' }}
-
             </p>
 
         </div>
 
 
         {# =================================================
-           REVIEWS SUMMARY
-           ================================================= #}
+           SUMMARY
+        ================================================= #}
 
         {% if component.show_summary %}
 
@@ -104,6 +80,9 @@
                     </div>
 
                 </div>
+
+
+                <div class="luxury-testimonials__summary-divider"></div>
 
 
                 <div class="luxury-testimonials__summary-info">
@@ -124,12 +103,18 @@
 
 
         {# =================================================
-           TESTIMONIALS SLIDER
-           ================================================= #}
+           REVIEWS
+        ================================================= #}
 
         {% if component.reviews|length > 0 %}
 
             <div class="luxury-testimonials__slider-wrapper">
+
+                <div
+                    class="luxury-testimonials__slider-glow"
+                    aria-hidden="true"
+                ></div>
+
 
                 <salla-slider
                     id="luxury-testimonials-slider"
@@ -155,10 +140,37 @@
                             >
 
                                 {# =================================
-                                   CUSTOMER IMAGE
-                                   ================================= #}
+                                   CARD SHINE
+                                ================================= #}
+
+                                <span
+                                    class="luxury-testimonial-card__shine"
+                                    aria-hidden="true"
+                                ></span>
+
+
+                                {# =================================
+                                   QUOTE DECORATION
+                                ================================= #}
+
+                                <span
+                                    class="luxury-testimonial-card__quote-mark"
+                                    aria-hidden="true"
+                                >
+                                    “
+                                </span>
+
+
+                                {# =================================
+                                   AVATAR
+                                ================================= #}
 
                                 <div class="luxury-testimonial-card__avatar-wrapper">
+
+                                    <span
+                                        class="luxury-testimonial-card__avatar-ring"
+                                        aria-hidden="true"
+                                    ></span>
 
                                     {% if review.image %}
 
@@ -179,9 +191,7 @@
                                             "
                                             aria-hidden="true"
                                         >
-
                                             <i class="sicon-user"></i>
-
                                         </div>
 
                                     {% endif %}
@@ -190,24 +200,20 @@
 
 
                                 {# =================================
-                                   CUSTOMER INFORMATION
-                                   ================================= #}
+                                   CUSTOMER
+                                ================================= #}
 
                                 <div class="luxury-testimonial-card__customer">
 
                                     <h3 class="luxury-testimonial-card__name">
-
                                         {{ review.name ?: 'عميل مميز' }}
-
                                     </h3>
 
 
                                     {% if review.role %}
 
                                         <span class="luxury-testimonial-card__role">
-
                                             {{ review.role }}
-
                                         </span>
 
                                     {% endif %}
@@ -217,7 +223,7 @@
 
                                 {# =================================
                                    STARS
-                                   ================================= #}
+                                ================================= #}
 
                                 {% set review_stars = review.stars ?: 5 %}
 
@@ -230,6 +236,7 @@
 
                                         <span
                                             class="{% if i <= review_stars %}is-active{% endif %}"
+                                            style="--star-index: {{ i }}"
                                         >
                                             ★
                                         </span>
@@ -241,7 +248,7 @@
 
                                 {# =================================
                                    QUOTE
-                                   ================================= #}
+                                ================================= #}
 
                                 <div class="luxury-testimonial-card__quote">
 
@@ -254,22 +261,22 @@
 
 
                                     <p>
-
                                         {{ review.text ?: 'تجربة رائعة وخدمة مميزة، بالتأكيد سأكرر التجربة مرة أخرى.' }}
-
                                     </p>
 
                                 </div>
 
 
                                 {# =================================
-                                   BOTTOM LINE
-                                   ================================= #}
+                                   BOTTOM
+                                ================================= #}
 
                                 <div
-                                    class="luxury-testimonial-card__bottom-line"
+                                    class="luxury-testimonial-card__bottom"
                                     aria-hidden="true"
-                                ></div>
+                                >
+                                    <span></span>
+                                </div>
 
                             </article>
 
@@ -282,10 +289,6 @@
             </div>
 
         {% else %}
-
-            {# =================================================
-               EMPTY STATE
-               ================================================= #}
 
             <div class="luxury-testimonials__empty">
 
