@@ -1,10 +1,10 @@
-{# =========================================================
-   CINEMATIC LUXURY HERO
-   Header + Video + Navigation + Hero Content
-   ========================================================= #}
+{# ----------------------------------------------------------------------
+   Component: Cinematic Luxury Hero
+   Description: Hero section featuring dynamic video/image background,
+   embedded header navigation, localized actions, and CTA area.
+   ---------------------------------------------------------------------- #}
 
 {% if component.luxury_show_section != false %}
-
 <section
     class="luxury-overlay-hero"
     style="
@@ -17,17 +17,11 @@
         min-height: {{ component.luxury_section_height ?: '100vh' }};
     "
 >
-
-
-    {# =========================================================
-       BACKGROUND VIDEO
-       ========================================================= #}
-
+    {# Background Media Handler #}
     {% set luxury_video = component.luxury_video ?: asset('videos/banner.mp4') %}
     {% set luxury_poster = component.luxury_poster %}
 
     {% if luxury_video %}
-
         <video
             class="luxury-overlay-hero__video"
             autoplay
@@ -36,787 +30,142 @@
             playsinline
             preload="auto"
             aria-hidden="true"
-            {% if luxury_poster %}
-                poster="{{ luxury_poster }}"
-            {% endif %}
+            {% if luxury_poster %}poster="{{ luxury_poster }}"{% endif %}
         >
-            <source
-                src="{{ luxury_video }}"
-                type="video/mp4"
-            >
+            <source src="{{ luxury_video }}" type="video/mp4">
         </video>
-
     {% elseif luxury_poster %}
-
         <img
             class="luxury-overlay-hero__video"
             src="{{ luxury_poster }}"
             alt="{{ component.luxury_title ?: store.name }}"
             loading="eager"
         >
-
     {% endif %}
 
+    {# Visual Overlays & Effects #}
+    <div class="luxury-overlay-hero__dark-overlay" aria-hidden="true"></div>
+    <div class="luxury-overlay-hero__gradient" aria-hidden="true"></div>
+    <div class="luxury-overlay-hero__glow luxury-overlay-hero__glow--left" aria-hidden="true"></div>
+    <div class="luxury-overlay-hero__glow luxury-overlay-hero__glow--right" aria-hidden="true"></div>
 
-    {# =========================================================
-       DARK OVERLAY
-       ========================================================= #}
-
-    <div
-        class="luxury-overlay-hero__dark-overlay"
-        aria-hidden="true"
-    ></div>
-
-
-    {# =========================================================
-       GRADIENT
-       ========================================================= #}
-
-    <div
-        class="luxury-overlay-hero__gradient"
-        aria-hidden="true"
-    ></div>
-
-
-    {# =========================================================
-       PINK GLOW
-       ========================================================= #}
-
-    <div
-        class="luxury-overlay-hero__glow luxury-overlay-hero__glow--left"
-        aria-hidden="true"
-    ></div>
-
-    <div
-        class="luxury-overlay-hero__glow luxury-overlay-hero__glow--right"
-        aria-hidden="true"
-    ></div>
-
-
-    {# =========================================================
-       HEADER
-       ========================================================= #}
-
-    <header
-        class="luxury-overlay-header"
-        data-testid="luxury-overlay-header"
-    >
-
+    {# Header Navigation Container #}
+    <header class="luxury-overlay-header" data-testid="luxury-overlay-header">
         <div class="luxury-overlay-header__top">
-
-
-            {# =====================================================
-               LOGO
-               ===================================================== #}
-
+            {# Store Branding / Logo #}
             <div class="luxury-overlay-header__logo">
-
-                <a
-                    href="{{ store.url }}"
-                    aria-label="{{ store.name }}"
-                >
-
+                <a href="{{ store.url }}" aria-label="{{ store.name }}">
                     <img
                         src="{{ asset('images/theme-logo.png') }}"
                         alt="{{ store.name }}"
                         class="luxury-overlay-header__logo-image"
                     >
-
                 </a>
-
             </div>
 
-
-            {# =====================================================
-               CENTER CONTROLS
-               ===================================================== #}
-
+            {# Header Controls: Search & Localization #}
             <div class="luxury-overlay-header__controls">
-
-
-                {# =================================================
-                   MENU BUTTON
-                   لا يوجد onclick هنا
-                   ================================================= #}
-
-                {# <button
-                    type="button"
-                    id="luxury-menu-toggle"
-                    class="luxury-overlay-header__control luxury-menu-toggle"
-                    aria-label="القائمة"
-                    aria-controls="luxury-mobile-menu"
-                    aria-expanded="false"
-                >
-
-                    <i class="sicon-menu"></i>
-
-                    <span>
-                        القائمة
-                    </span>
-
-                </button> #}
-
-
-                {# =================================================
-                   LANGUAGE / CURRENCY
-                   ================================================= #}
-
                 {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
-
                     <div class="luxury-overlay-header__localization">
-
-                        <salla-localization-modal
-                            show-trigger
-                        ></salla-localization-modal>
-
+                        <salla-localization-modal show-trigger></salla-localization-modal>
                     </div>
-
                 {% endif %}
-
-
-                {# =================================================
-                   SEARCH
-                   ================================================= #}
 
                 <div class="luxury-overlay-header__search">
-
-                    <salla-search
-                        inline
-                        oval
-                        height="40"
-                    ></salla-search>
-
+                    <salla-search inline oval height="40"></salla-search>
                 </div>
-
             </div>
 
-
-            {# =====================================================
-               USER ACTIONS
-               ===================================================== #}
-
+            {# User Interaction Links #}
             <div class="luxury-overlay-header__actions">
-
-
-                {# USER #}
-
-                <div
-                    class="
-                        luxury-overlay-header__action
-                        luxury-overlay-header__user
-                    "
-                >
-
-                    <salla-user-menu
-                        class="luxury-user-menu"
-                        data-testid="store-header-user-menu"
-                        show-header
-                    ></salla-user-menu>
-
+                <div class="luxury-overlay-header__action luxury-overlay-header__user">
+                    <salla-user-menu class="luxury-user-menu" data-testid="store-header-user-menu" show-header></salla-user-menu>
                 </div>
 
-
-                {# WISHLIST #}
-
-                <a
-                    href="{{ link('wishlist') }}"
-                    class="
-                        luxury-overlay-header__action
-                        luxury-overlay-header__icon
-                    "
-                    aria-label="المفضلة"
-                >
-
+                <a href="{{ link('wishlist') }}" class="luxury-overlay-header__action luxury-overlay-header__icon" aria-label="المفضلة">
                     <i class="sicon-heart"></i>
-
                 </a>
 
-
-                {# CART #}
-
-                <div
-                    class="
-                        luxury-overlay-header__action
-                        luxury-overlay-header__cart
-                    "
-                >
-
-                    <salla-cart-summary
-                        data-testid="store-header-cart"
-                        class="luxury-overlay-cart"
-                    >
-
-                        <i
-                            slot="icon"
-                            class="sicon-shopping-bag"
-                        ></i>
-
+                <div class="luxury-overlay-header__action luxury-overlay-header__cart">
+                    <salla-cart-summary data-testid="store-header-cart" class="luxury-overlay-cart">
+                        <i slot="icon" class="sicon-shopping-bag"></i>
                     </salla-cart-summary>
-
                 </div>
-
             </div>
-
         </div>
 
-
-        {# =========================================================
-           DESKTOP NAVIGATION
-
-           مهم:
-           custom-main-menu موجود مرة واحدة فقط.
-           JavaScript سينقله للموبايل عند الحاجة.
-           ========================================================= #}
-
-        <nav
-            class="luxury-overlay-navigation"
-            aria-label="التصنيفات الرئيسية"
-            data-luxury-main-navigation
-        >
-
+        {# Desktop Navigation Menu #}
+        <nav class="luxury-overlay-navigation" aria-label="التصنيفات الرئيسية" data-luxury-main-navigation>
             <div class="luxury-overlay-navigation__inner">
-
                 <custom-main-menu></custom-main-menu>
-
             </div>
-
         </nav>
 
-
-        {# =========================================================
-           MOBILE MENU CONTAINER
-
-           لا نضع custom-main-menu هنا.
-           سيتم نقل نفس العنصر إليه بواسطة JS.
-           ========================================================= #}
-
-        <div
-            id="luxury-mobile-menu"
-            class="luxury-overlay-header__mobile-menu"
-            aria-hidden="true"
-        >
-
+        {# Mobile Menu Container Placeholder (Populated dynamically via JS) #}
+        <div id="luxury-mobile-menu" class="luxury-overlay-header__mobile-menu" aria-hidden="true">
             <div class="luxury-overlay-header__mobile-menu-inner">
-
-                <div
-                    class="luxury-overlay-header__mobile-menu-placeholder"
-                ></div>
-
+                <div class="luxury-overlay-header__mobile-menu-placeholder"></div>
             </div>
-
         </div>
-
     </header>
 
-
-    {# =========================================================
-       HERO CONTENT
-       ========================================================= #}
-
+    {# Hero Main Content Area #}
     <div
-        class="
-            luxury-overlay-hero__content
-
-            {% if component.luxury_content_align == 'left' %}
-                is-left
-            {% elseif component.luxury_content_align == 'right' %}
-                is-right
-            {% else %}
-                is-center
-            {% endif %}
-
-            {% if component.luxury_enable_animation %}
-                is-animated
-            {% endif %}
-        "
+        class="luxury-overlay-hero__content 
+        {% if component.luxury_content_align == 'left' %}is-left{% elseif component.luxury_content_align == 'right' %}is-right{% else %}is-center{% endif %} 
+        {% if component.luxury_enable_animation %}is-animated{% endif %}"
     >
-
-
-        {# =====================================================
-           TITLE
-           ===================================================== #}
-
+        {# Main Heading #}
         {% if component.luxury_title %}
-
             <h1 class="luxury-overlay-hero__title">
-
                 {{ component.luxury_title }}
-
                 {% if component.luxury_highlight %}
-
-                    <span class="luxury-overlay-hero__highlight">
-                        {{ component.luxury_highlight }}
-                    </span>
-
+                    <span class="luxury-overlay-hero__highlight">{{ component.luxury_highlight }}</span>
                 {% endif %}
-
             </h1>
-
         {% endif %}
 
-
-        {# =====================================================
-           DESCRIPTION
-           ===================================================== #}
-
+        {# Subtitle / Description #}
         {% if component.luxury_description %}
-
             <p class="luxury-overlay-hero__description">
-
                 {{ component.luxury_description }}
-
             </p>
-
         {% endif %}
 
-
-        {# =====================================================
-           RATING
-           ===================================================== #}
-
+        {# Social Proof / Rating #}
         {% if component.luxury_show_rating %}
-
             <div class="luxury-overlay-hero__rating">
-
-                <span>
-                    ★★★★★
-                </span>
-
-                <small>
-                    {{ component.luxury_rating_text ?: 'أكثر من 5000 عميل يثق بنا' }}
-                </small>
-
+                <span>★★★★★</span>
+                <small>{{ component.luxury_rating_text ?: 'أكثر من 5000 عميل يثق بنا' }}</small>
             </div>
-
         {% endif %}
 
-
-        {# =====================================================
-           BUTTONS
-           ===================================================== #}
-
+        {# Call To Action Buttons #}
         {% if component.luxury_button_text or component.luxury_show_second_button %}
-
             <div class="luxury-overlay-hero__buttons">
-
-
-                {# PRIMARY BUTTON #}
-
                 {% if component.luxury_button_text %}
-
-                    <a
-                        href="{{ component.luxury_button_url ?: store.url }}"
-                        class="
-                            luxury-overlay-hero__button
-                            luxury-overlay-hero__button--primary
-                        "
-                    >
-
+                    <a href="{{ component.luxury_button_url ?: store.url }}" class="luxury-overlay-hero__button luxury-overlay-hero__button--primary">
                         {{ component.luxury_button_text }}
-
                     </a>
-
                 {% endif %}
-
-
-                {# SECONDARY BUTTON #}
 
                 {% if component.luxury_show_second_button %}
-
-                    <a
-                        href="{{ component.luxury_second_button_url ?: store.url }}"
-                        class="
-                            luxury-overlay-hero__button
-                            luxury-overlay-hero__button--secondary
-                        "
-                    >
-
+                    <a href="{{ component.luxury_second_button_url ?: store.url }}" class="luxury-overlay-hero__button luxury-overlay-hero__button--secondary">
                         {{ component.luxury_second_button_text ?: 'اكتشف المزيد' }}
-
                     </a>
-
                 {% endif %}
-
             </div>
-
         {% endif %}
-
     </div>
 
-
-    {# =========================================================
-       SCROLL INDICATOR
-       ========================================================= #}
-
+    {# Scroll Down Indicator #}
     {% if component.luxury_show_scroll %}
-
-        <div
-            class="luxury-overlay-hero__scroll"
-            aria-hidden="true"
-        >
-
+        <div class="luxury-overlay-hero__scroll" aria-hidden="true">
             <span></span>
-
         </div>
-
     {% endif %}
-
-
 </section>
 
-
-{# =========================================================
-   LUXURY MENU JAVASCRIPT
-
-   نفس custom-main-menu يتم نقله بين:
-   Desktop Navigation
-   و
-   Mobile Menu
-
-   لا توجد نسخة ثانية من القائمة.
-   ========================================================= #}
-
 <script>
-(function () {
-
-    function initLuxuryNavigation() {
-
-        var hero =
-            document.querySelector(
-                '.luxury-overlay-hero'
-            );
-
-        if (!hero) {
-            return;
-        }
-
-
-        var toggle =
-            hero.querySelector(
-                '#luxury-menu-toggle'
-            );
-
-        var mobileMenu =
-            hero.querySelector(
-                '#luxury-mobile-menu'
-            );
-
-        var navigation =
-            hero.querySelector(
-                '[data-luxury-main-navigation]'
-            );
-
-        if (
-            !toggle ||
-            !mobileMenu ||
-            !navigation
-        ) {
-            return;
-        }
-
-
-        var navigationInner =
-            navigation.querySelector(
-                '.luxury-overlay-navigation__inner'
-            );
-
-        var placeholder =
-            mobileMenu.querySelector(
-                '.luxury-overlay-header__mobile-menu-placeholder'
-            );
-
-        if (
-            !navigationInner ||
-            !placeholder
-        ) {
-            return;
-        }
-
-
-        var mainMenu =
-            navigationInner.querySelector(
-                'custom-main-menu'
-            );
-
-        if (!mainMenu) {
-            return;
-        }
-
-
-        var mobileBreakpoint = 768;
-
-
-        function isMobile() {
-
-            return window.innerWidth <= mobileBreakpoint;
-
-        }
-
-
-        function moveMenu() {
-
-            if (isMobile()) {
-
-                /*
-                 * نقل القائمة نفسها للموبايل
-                 */
-
-                if (
-                    mainMenu.parentElement !== placeholder
-                ) {
-
-                    placeholder.appendChild(
-                        mainMenu
-                    );
-
-                }
-
-            } else {
-
-                /*
-                 * إعادتها إلى Desktop
-                 */
-
-                if (
-                    mainMenu.parentElement !== navigationInner
-                ) {
-
-                    navigationInner.appendChild(
-                        mainMenu
-                    );
-
-                }
-
-
-                /*
-                 * إغلاق القائمة عند العودة
-                 * إلى Desktop
-                 */
-
-                mobileMenu.classList.remove(
-                    'is-open'
-                );
-
-                mobileMenu.setAttribute(
-                    'aria-hidden',
-                    'true'
-                );
-
-                toggle.setAttribute(
-                    'aria-expanded',
-                    'false'
-                );
-
-            }
-
-        }
-
-
-        function toggleMenu() {
-
-            if (!isMobile()) {
-                return;
-            }
-
-            var open =
-                !mobileMenu.classList.contains(
-                    'is-open'
-                );
-
-
-            if (open) {
-
-                mobileMenu.classList.add(
-                    'is-open'
-                );
-
-                mobileMenu.setAttribute(
-                    'aria-hidden',
-                    'false'
-                );
-
-                toggle.setAttribute(
-                    'aria-expanded',
-                    'true'
-                );
-
-            } else {
-
-                mobileMenu.classList.remove(
-                    'is-open'
-                );
-
-                mobileMenu.setAttribute(
-                    'aria-hidden',
-                    'true'
-                );
-
-                toggle.setAttribute(
-                    'aria-expanded',
-                    'false'
-                );
-
-            }
-
-        }
-
-
-        /*
-         * فتح / إغلاق
-         */
-
-        toggle.addEventListener(
-            'click',
-            toggleMenu
-        );
-
-
-        /*
-         * عند تغيير حجم الشاشة
-         */
-
-        var resizeTimer;
-
-        window.addEventListener(
-            'resize',
-            function () {
-
-                clearTimeout(
-                    resizeTimer
-                );
-
-                resizeTimer =
-                    setTimeout(
-                        moveMenu,
-                        100
-                    );
-
-            }
-        );
-
-
-        /*
-         * إغلاق عند الضغط خارج القائمة
-         */
-
-        document.addEventListener(
-            'click',
-            function (event) {
-
-                if (!isMobile()) {
-                    return;
-                }
-
-
-                if (
-                    !mobileMenu.classList.contains(
-                        'is-open'
-                    )
-                ) {
-                    return;
-                }
-
-
-                if (
-                    mobileMenu.contains(
-                        event.target
-                    )
-                ) {
-                    return;
-                }
-
-
-                if (
-                    toggle.contains(
-                        event.target
-                    )
-                ) {
-                    return;
-                }
-
-
-                mobileMenu.classList.remove(
-                    'is-open'
-                );
-
-                mobileMenu.setAttribute(
-                    'aria-hidden',
-                    'true'
-                );
-
-                toggle.setAttribute(
-                    'aria-expanded',
-                    'false'
-                );
-
-            }
-        );
-
-
-        /*
-         * إغلاق بزر ESC
-         */
-
-        document.addEventListener(
-            'keydown',
-            function (event) {
-
-                if (
-                    event.key !== 'Escape'
-                ) {
-                    return;
-                }
-
-
-                mobileMenu.classList.remove(
-                    'is-open'
-                );
-
-                mobileMenu.setAttribute(
-                    'aria-hidden',
-                    'true'
-                );
-
-                toggle.setAttribute(
-                    'aria-expanded',
-                    'false'
-                );
-
-            }
-        );
-
-
-        /*
-         * تشغيل أولي
-         */
-
-        moveMenu();
-
-    }
-
-
-    /*
-     * انتظار DOM
-     */
-
-    if (
-        document.readyState === 'loading'
-    ) {
-
-        document.addEventListener(
-            'DOMContentLoaded',
-            initLuxuryNavigation
-        );
-
-    } else {
-
-        initLuxuryNavigation();
-
-    }
-
-})();
-</script>
 
 {% endif %}
-
-
