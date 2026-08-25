@@ -281,482 +281,544 @@
 }
 
 /* =========================================================
-   RAWAN — PREMIUM CATEGORY PRODUCT CARD
-   E62973 Identity
-   يستخدم في صفحة الفئة وقائمة المنتجات
+   RAWAN — CATEGORY PRODUCT CARDS
+   Premium Product Card
+   يستخدم داخل صفحة الفئة / المنتجات
 ========================================================= */
 
 .container--products-list {
 
-  .s-product-card-entry {
+    /* =====================================================
+       PRODUCT GRID
+    ===================================================== */
 
-    background: #fff !important;
-    border: 0 !important;
-    border-radius: 24px !important;
-    overflow: hidden !important;
+    .s-products-list {
 
-    display: flex;
-    flex-direction: column;
+        gap: 24px;
 
-    height: 100%;
-
-    box-shadow:
-      0 12px 35px rgba(0, 0, 0, .08) !important;
-
-    transition:
-      transform .45s cubic-bezier(.22, 1, .36, 1),
-      box-shadow .45s ease;
-
-    &:hover {
-      transform: translateY(-8px);
-
-      box-shadow:
-        0 25px 60px rgba(230, 41, 115, .18) !important;
     }
 
 
-    /* =========================
-       IMAGE
-    ========================= */
+    /* =====================================================
+       CARD
+    ===================================================== */
+
+    .s-product-card-entry {
+
+        background: #fff !important;
+
+        border-radius: 24px !important;
+
+        overflow: hidden !important;
+
+        border: none !important;
+
+        position: relative;
+
+        height: 100%;
+
+        box-shadow:
+            0 15px 40px rgba(0, 0, 0, .10) !important;
+
+        transition:
+            transform .45s cubic-bezier(.22, 1, .36, 1),
+            box-shadow .45s cubic-bezier(.22, 1, .36, 1);
+
+    }
+
+
+    /* =====================================================
+       HOVER
+    ===================================================== */
+
+    .s-product-card-entry:hover {
+
+        transform: translateY(-10px);
+
+        box-shadow:
+            0 30px 70px rgba(230, 41, 115, .22) !important;
+
+    }
+
+
+    /* =====================================================
+       IMAGE AREA
+    ===================================================== */
 
     .s-product-card-image {
 
-      background: #fafafa !important;
+        background: #fafafa !important;
 
-      height: auto !important;
+        padding: 18px !important;
 
-      aspect-ratio: 1 / 1;
-
-      padding: 16px;
-
-      overflow: hidden;
-
-      border-radius: 0;
-
-      transition: background .3s ease;
-
-
-      img {
-
-        width: 100%;
-        height: 100%;
-
-        object-fit: contain !important;
-
-        border-radius: 18px;
-
-        transition:
-          transform .6s cubic-bezier(.22, 1, .36, 1),
-          opacity .4s ease;
-
-      }
-
-    }
-
-
-    &:hover {
-
-      .s-product-card-image {
-
-        background: #fdf7fa !important;
-
-      }
-
-      .s-product-card-image img {
-
-        transform: scale(1.07);
-
-      }
-
-    }
-
-
-    /* =========================
-       PROMOTION
-    ========================= */
-
-    .s-product-card-promotion-title {
-
-      top: 14px;
-      left: 14px;
-      right: auto;
-
-      z-index: 5;
-
-      background: #E62973 !important;
-
-      color: #fff !important;
-
-      border-radius: 999px !important;
-
-      padding: 7px 13px !important;
-
-      font-size: 11px !important;
-
-      font-weight: 800;
-
-      line-height: 1;
-
-      box-shadow:
-        0 6px 18px rgba(230, 41, 115, .22);
-
-    }
-
-
-    /* =========================
-       WISHLIST
-    ========================= */
-
-    .s-product-card-wishlist-btn {
-
-      top: 14px !important;
-      right: 14px !important;
-
-      left: auto !important;
-
-      z-index: 10;
-
-      opacity: 1 !important;
-
-
-      button {
-
-        width: 42px !important;
-        height: 42px !important;
-
-        margin: 0 !important;
-
-        border-radius: 50% !important;
-
-        background: rgba(255,255,255,.96) !important;
-
-        color: #E62973 !important;
-
-        border: 0 !important;
-
-        box-shadow:
-          0 6px 18px rgba(0,0,0,.10);
-
-        transition:
-          transform .3s ease,
-          background .3s ease,
-          color .3s ease;
-
-
-        &:hover {
-
-          background: #E62973 !important;
-
-          color: #fff !important;
-
-          transform: scale(1.08);
-
-        }
-
-      }
-
-    }
-
-
-    /* =========================
-       CONTENT
-    ========================= */
-
-    .s-product-card-content {
-
-      padding: 18px !important;
-
-      text-align: right;
-
-      background: #fff;
-
-    }
-
-
-    /* =========================
-       TITLE
-    ========================= */
-
-    .s-product-card-content-title {
-
-      margin: 0 0 8px !important;
-
-      min-height: 50px;
-
-
-      a {
-
-        display: -webkit-box;
-
-        -webkit-line-clamp: 2;
-
-        -webkit-box-orient: vertical;
+        position: relative;
 
         overflow: hidden;
 
-        color: #171717 !important;
+        opacity: 1 !important;
 
-        font-size: 15px !important;
+    }
+
+
+    .s-product-card-image img {
+
+        width: 100% !important;
+
+        height: auto !important;
+
+        aspect-ratio: 1 / 1;
+
+        object-fit: contain !important;
+
+        border-radius: 20px;
+
+        transition:
+            transform .6s cubic-bezier(.22, 1, .36, 1);
+
+    }
+
+
+    .s-product-card-entry:hover
+    .s-product-card-image img {
+
+        transform: scale(1.08);
+
+    }
+
+
+    /* =====================================================
+       PROMOTION
+    ===================================================== */
+
+    .s-product-card-promotion-title {
+
+        position: absolute !important;
+
+        top: 15px !important;
+
+        left: 15px !important;
+
+        right: auto !important;
+
+        z-index: 5;
+
+        background: #E62973 !important;
+
+        color: #fff !important;
+
+        padding: 6px 12px !important;
+
+        border-radius: 999px !important;
+
+        font-size: 11px !important;
 
         font-weight: 800 !important;
+
+        line-height: 1.3;
+
+        box-shadow:
+            0 5px 15px rgba(230, 41, 115, .25);
+
+    }
+
+
+    /* =====================================================
+       WISHLIST
+    ===================================================== */
+
+    .s-product-card-wishlist-btn {
+
+        position: absolute !important;
+
+        top: 15px !important;
+
+        right: 15px !important;
+
+        left: auto !important;
+
+        z-index: 10;
+
+        opacity: 1 !important;
+
+    }
+
+
+    .s-product-card-wishlist-btn button {
+
+        width: 42px !important;
+
+        height: 42px !important;
+
+        min-width: 42px !important;
+
+        border-radius: 50% !important;
+
+        background: #fff !important;
+
+        color: #E62973 !important;
+
+        border: none !important;
+
+        margin: 0 !important;
+
+        box-shadow:
+            0 5px 15px rgba(0, 0, 0, .12);
+
+        transition:
+            transform .3s ease,
+            background .3s ease,
+            color .3s ease;
+
+    }
+
+
+    .s-product-card-wishlist-btn button:hover {
+
+        background: #E62973 !important;
+
+        color: #fff !important;
+
+        transform: scale(1.1);
+
+    }
+
+
+    /* =====================================================
+       CONTENT
+    ===================================================== */
+
+    .s-product-card-content {
+
+        background: #fff;
+
+        padding: 18px !important;
+
+        text-align: right;
+
+        display: flex;
+
+        flex-direction: column;
+
+    }
+
+
+    /* =====================================================
+       TITLE
+    ===================================================== */
+
+    .s-product-card-content-title {
+
+        margin: 0 0 8px !important;
+
+        line-height: 1.7;
+
+    }
+
+
+    .s-product-card-content-title a {
+
+        display: -webkit-box;
+
+        -webkit-box-orient: vertical;
+
+        -webkit-line-clamp: 2;
+
+        overflow: hidden;
+
+        color: #111 !important;
+
+        font-size: 16px !important;
+
+        font-weight: 900 !important;
 
         line-height: 1.7;
 
         transition: color .3s ease;
 
+    }
 
-        &:hover {
 
-          color: #E62973 !important;
+    .s-product-card-content-title a:hover {
 
-        }
-
-      }
+        color: #E62973 !important;
 
     }
 
 
-    /* =========================
-       RATING
-    ========================= */
+    /* =====================================================
+       SUBTITLE
+    ===================================================== */
 
-    .s-product-card-rating {
+    .s-product-card-content-subtitle {
 
-      margin-top: 5px;
-
-      color: #E62973 !important;
-
-      font-size: 13px;
-
-    }
-
-
-    /* =========================
-       PRICE
-    ========================= */
-
-    .s-product-card-sale-price {
-
-      display: flex;
-
-      align-items: center;
-
-      gap: 8px;
-
-      margin-top: 10px;
-
-
-      h4 {
-
-        margin: 0;
-
-        color: #111 !important;
-
-        font-size: 21px !important;
-
-        font-weight: 900 !important;
-
-      }
-
-
-      span {
-
-        color: #999 !important;
+        color: #888 !important;
 
         font-size: 13px;
 
-        text-decoration: line-through;
+        line-height: 1.6;
 
-      }
+    }
+
+
+    /* =====================================================
+       RATING
+    ===================================================== */
+
+    .s-product-card-rating {
+
+        display: flex;
+
+        align-items: center;
+
+        color: #E62973 !important;
+
+        font-size: 13px;
+
+        margin-top: 8px;
+
+    }
+
+
+    .s-product-card-rating span svg {
+
+        fill: #E62973 !important;
+
+    }
+
+
+    /* =====================================================
+       PRICE
+    ===================================================== */
+
+    .s-product-card-sale-price {
+
+        display: flex;
+
+        align-items: center;
+
+        flex-wrap: wrap;
+
+        gap: 8px;
+
+        margin-top: 12px;
+
+    }
+
+
+    .s-product-card-sale-price h4 {
+
+        color: #111 !important;
+
+        font-size: 22px !important;
+
+        font-weight: 900 !important;
+
+        margin: 0 !important;
+
+    }
+
+
+    .s-product-card-sale-price span {
+
+        color: #999 !important;
+
+        font-size: 14px;
+
+        text-decoration: line-through;
 
     }
 
 
     .s-product-card-price {
 
-      margin-top: 10px;
+        margin-top: 12px;
 
-      color: #111 !important;
+        color: #111 !important;
 
-      font-size: 20px !important;
+        font-size: 20px !important;
 
-      font-weight: 900 !important;
+        font-weight: 900 !important;
 
     }
 
 
-    /* =========================
+    /* =====================================================
        FOOTER
-    ========================= */
+    ===================================================== */
 
     .s-product-card-content-footer {
 
-      margin-top: 16px;
+        margin-top: 18px;
 
-      display: block;
+        width: 100%;
+
+    }
 
 
-      salla-add-product-button {
+    .s-product-card-content-footer salla-add-product-button {
 
         display: block;
 
         width: 100%;
 
+    }
 
-        button {
 
-          width: 100% !important;
+    .s-product-card-content-footer
+    salla-add-product-button button {
 
-          min-height: 48px !important;
+        width: 100% !important;
 
-          height: 48px !important;
+        height: 48px !important;
 
-          border: 0 !important;
+        min-height: 48px !important;
 
-          border-radius: 14px !important;
+        border-radius: 14px !important;
 
-          background: #E62973 !important;
+        background: #E62973 !important;
 
-          color: #fff !important;
+        color: #fff !important;
 
-          font-size: 14px !important;
+        border: none !important;
 
-          font-weight: 900 !important;
+        font-size: 14px !important;
 
-          transition:
+        font-weight: 900 !important;
+
+        transition:
             transform .3s ease,
             background .3s ease,
             box-shadow .3s ease;
 
+    }
 
-          &:hover {
 
-            background: #c2185b !important;
+    .s-product-card-content-footer
+    salla-add-product-button button:hover {
 
-            transform: translateY(-2px);
+        background: #c2185b !important;
 
-            box-shadow:
-              0 8px 20px rgba(230, 41, 115, .25);
+        transform: translateY(-2px);
 
-          }
-
-        }
-
-      }
+        box-shadow:
+            0 8px 20px rgba(230, 41, 115, .25);
 
     }
 
-  }
+}
 
 
-  /* =====================================================
-     GRID
-  ===================================================== */
+/* =========================================================
+   MOBILE
+========================================================= */
 
-  salla-products-list {
+@media (max-width: 768px) {
 
-    display: block;
+    .container--products-list {
 
-  }
+        .s-products-list {
 
-
-  /* =====================================================
-     MOBILE
-  ===================================================== */
-
-  @media (max-width: 768px) {
-
-    .s-product-card-entry {
-
-      border-radius: 18px !important;
-
-
-      .s-product-card-image {
-
-        padding: 10px;
-
-      }
-
-
-      .s-product-card-content {
-
-        padding: 14px !important;
-
-      }
-
-
-      .s-product-card-content-title {
-
-        min-height: 46px;
-
-
-        a {
-
-          font-size: 14px !important;
+            gap: 14px;
 
         }
 
-      }
+
+        .s-product-card-entry {
+
+            border-radius: 18px !important;
+
+        }
 
 
-      .s-product-card-sale-price h4,
-      .s-product-card-price {
+        .s-product-card-image {
 
-        font-size: 18px !important;
+            padding: 10px !important;
 
-      }
-
-
-      .s-product-card-content-footer {
-
-        margin-top: 12px;
+        }
 
 
+        .s-product-card-image img {
+
+            border-radius: 14px;
+
+        }
+
+
+        .s-product-card-content {
+
+            padding: 14px !important;
+
+        }
+
+
+        .s-product-card-content-title a {
+
+            font-size: 14px !important;
+
+        }
+
+
+        .s-product-card-sale-price h4,
+        .s-product-card-price {
+
+            font-size: 18px !important;
+
+        }
+
+
+        .s-product-card-content-footer {
+
+            margin-top: 12px;
+
+        }
+
+
+        .s-product-card-content-footer
         salla-add-product-button button {
 
-          min-height: 43px !important;
+            height: 42px !important;
 
-          height: 43px !important;
+            min-height: 42px !important;
 
-          border-radius: 12px !important;
+            border-radius: 12px !important;
 
-          font-size: 13px !important;
-
-        }
-
-      }
-
-
-      .s-product-card-wishlist-btn {
-
-        top: 10px !important;
-        right: 10px !important;
-
-
-        button {
-
-          width: 36px !important;
-          height: 36px !important;
+            font-size: 13px !important;
 
         }
 
-      }
+
+        .s-product-card-wishlist-btn {
+
+            top: 10px !important;
+
+            right: 10px !important;
+
+        }
 
 
-      .s-product-card-promotion-title {
+        .s-product-card-wishlist-btn button {
 
-        top: 10px;
+            width: 36px !important;
 
-        left: 10px;
+            height: 36px !important;
 
-        padding: 6px 10px !important;
+            min-width: 36px !important;
 
-        font-size: 10px !important;
+        }
 
-      }
+
+        .s-product-card-promotion-title {
+
+            top: 10px !important;
+
+            left: 10px !important;
+
+            padding: 5px 9px !important;
+
+            font-size: 10px !important;
+
+        }
 
     }
-
-  }
 
 }
