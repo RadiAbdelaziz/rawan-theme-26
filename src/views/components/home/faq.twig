@@ -1,160 +1,70 @@
 {% if component.show_section %}
-<section
-    class="luxury-faq"
-    style="
-        --faq-accent-color: {{ component.accent_color ?: '#E62973' }};
-        --faq-title-color: {{ component.title_color ?: '#4A0F27' }};
-        --faq-subtitle-color: {{ component.subtitle_color ?: '#777777' }};
-        --faq-background-color: {{ component.background_color ?: '#FFF8FB' }};
-    "
->
-    <!-- Ambient background -->
+<section class="luxury-faq" style="--faq-accent-color: {{ component.accent_color | default('#E62973') }}; --faq-title-color: {{ component.title_color | default('#4A0F27') }}; --faq-subtitle-color: {{ component.subtitle_color | default('#777777') }}; --faq-background-color: {{ component.background_color | default('#FFF8FB') }};" aria-label="{{ component.title | default('الأسئلة الشائعة'|trans) }}">
     <div class="luxury-faq__background" aria-hidden="true">
         <span class="luxury-faq__orb luxury-faq__orb--one"></span>
         <span class="luxury-faq__orb luxury-faq__orb--two"></span>
         <span class="luxury-faq__orb luxury-faq__orb--three"></span>
     </div>
-
     <div class="container">
-
-        <!-- =========================
-             HEADER
-        ========================== -->
         <div class="luxury-faq__header">
-
             {% if component.show_badge and component.badge %}
                 <div class="luxury-faq__badge-wrap">
                     <span class="luxury-faq__badge">
-                        <span class="luxury-faq__badge-dot"></span>
+                        <span class="luxury-faq__badge-dot" aria-hidden="true"></span>
                         <span>{{ component.badge }}</span>
                     </span>
                 </div>
             {% endif %}
-
             {% if component.title %}
                 <h2 class="luxury-faq__title">
-                    <span class="luxury-faq__title-text">
-                        {{ component.title }}
-                    </span>
-
-                    <span
-                        class="luxury-faq__underline"
-                        aria-hidden="true"
-                    ></span>
+                    <span class="luxury-faq__title-text">{{ component.title }}</span>
+                    <span class="luxury-faq__underline" aria-hidden="true"></span>
                 </h2>
             {% endif %}
-
             {% if component.subtitle %}
-                <p class="luxury-faq__subtitle">
-                    {{ component.subtitle }}
-                </p>
+                <p class="luxury-faq__subtitle">{{ component.subtitle }}</p>
             {% endif %}
-
         </div>
 
-
-        <!-- =========================
-             FAQ
-        ========================== -->
         {% if component.questions|length %}
-
-            <div class="luxury-faq__list">
-
+            <div class="luxury-faq__list" itemscope itemtype="https://schema.org/FAQPage">
                 {% for item in component.questions %}
-
                     {% if item.question and item.answer %}
-
-                        <details
-                            class="luxury-faq__item"
-                            {% if item.open %}open{% endif %}
-                        >
-
-                            <!-- Question -->
+                        <details class="luxury-faq__item" {% if item.open or loop.first %}open{% endif %} itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
                             <summary class="luxury-faq__question">
-
-                                <h3>
-                                    {{ item.question }}
-                                </h3>
-
-                                <span
-                                    class="luxury-faq__icon"
-                                    aria-hidden="true"
-                                >
+                                <h3 itemprop="name">{{ item.question }}</h3>
+                                <span class="luxury-faq__icon" aria-hidden="true">
                                     <span class="luxury-faq__icon-border"></span>
                                     <span class="luxury-faq__icon-bg"></span>
-
-                                    <svg
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        stroke-width="2.3"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            d="M19 9l-7 7-7-7"
-                                        />
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
                                     </svg>
                                 </span>
-
                             </summary>
-
-
-                            <!-- Answer -->
-                            <div class="luxury-faq__answer">
-
-                                <div class="luxury-faq__answer-inner">
-                                    {{ item.answer }}
-                                </div>
-
+                            <div class="luxury-faq__answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                                <div class="luxury-faq__answer-inner" itemprop="text">{{ item.answer | nl2br }}</div>
                             </div>
-
                         </details>
-
                     {% endif %}
-
                 {% endfor %}
-
             </div>
-
         {% endif %}
 
-
-        <!-- =========================
-             CTA
-        ========================== -->
         {% if component.show_cta %}
-
             <div class="luxury-faq__cta">
-
-                <div class="luxury-faq__cta-glow"></div>
-
+                <div class="luxury-faq__cta-glow" aria-hidden="true"></div>
                 {% if component.cta_text %}
-                    <p class="luxury-faq__cta-text">
-                        {{ component.cta_text }}
-                    </p>
+                    <p class="luxury-faq__cta-text">{{ component.cta_text }}</p>
                 {% endif %}
-
                 {% if component.cta_button_text %}
-                    <a
-                        href="{{ component.cta_url ?: '#' }}"
-                        class="luxury-faq__cta-button"
-                    >
-                        <span class="luxury-faq__cta-arrow">←</span>
-
-                        <span>
-                            {{ component.cta_button_text }}
-                        </span>
-
-                        <span class="luxury-faq__cta-line"></span>
+                    <a href="{{ component.cta_url | default('#') }}" class="luxury-faq__cta-button">
+                        <span class="luxury-faq__cta-arrow" aria-hidden="true">←</span>
+                        <span>{{ component.cta_button_text }}</span>
+                        <span class="luxury-faq__cta-line" aria-hidden="true"></span>
                     </a>
                 {% endif %}
-
             </div>
-
         {% endif %}
-
     </div>
 </section>
 {% endif %}

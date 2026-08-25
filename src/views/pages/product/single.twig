@@ -3,673 +3,60 @@
 {% block content %}
 
 {# =========================================================
-   PRODUCT PAGE
-   Gallery + Product Info + Options + Cart + Recommendations
+    PRODUCT PAGE
+    Gallery + Product Info + Options + Cart + Recommendations
 ========================================================= #}
 
 
 {# =========================================================
-   LUXURY PRODUCT CARD STYLE
-   Applied to Salla Products Slider cards
+    LUXURY PRODUCT CARD STYLE
+    Applied to Salla Products Slider cards
 ========================================================= #}
 
-<style>
 
-    /* =====================================================
-       LUXURY RELATED PRODUCTS SECTION
-    ===================================================== */
-
-    .rawan-lux-products {
-
-        --lux-accent: #E62973;
-
-        width: 100%;
-
-        position: relative;
-
-        padding: 20px 0 70px;
-
-    }
-
-
-    .rawan-lux-products .rawan-lux-products__inner {
-
-        position: relative;
-
-        width: 100%;
-
-    }
-
-
-    /* =====================================================
-       SALLA SLIDER
-    ===================================================== */
-
-    .rawan-lux-products salla-products-slider {
-
-        display: block;
-
-        width: 100%;
-
-    }
-
-
-    .rawan-lux-products
-    salla-products-slider .s-slider-block__title {
-
-        display: none !important;
-
-    }
-
-
-    .rawan-lux-products
-    salla-products-slider .s-slider-block {
-
-        margin: 0 !important;
-
-        padding: 0 !important;
-
-    }
-
-
-    .rawan-lux-products
-    salla-products-slider .swiper {
-
-        padding: 15px 8px 35px !important;
-
-    }
-
-
-    .rawan-lux-products
-    salla-products-slider .swiper-wrapper {
-
-        align-items: stretch;
-
-    }
-
-
-    .rawan-lux-products
-    salla-products-slider .swiper-slide {
-
-        height: auto !important;
-
-        display: flex;
-
-    }
-
-
-    /* =====================================================
-       PRODUCT CARD
-       SALLA NATIVE CARD
-    ===================================================== */
-
-    .rawan-lux-products
-    .s-product-card-entry {
-
-        background: #ffffff !important;
-
-        border-radius: 24px !important;
-
-        overflow: hidden !important;
-
-        border: none !important;
-
-        box-shadow:
-            0 15px 40px rgba(0,0,0,.12) !important;
-
-        position: relative !important;
-
-        width: 100% !important;
-
-        height: 100% !important;
-
-        display: flex !important;
-
-        flex-direction: column !important;
-
-        transition:
-            transform .45s cubic-bezier(.22,1,.36,1),
-            box-shadow .45s cubic-bezier(.22,1,.36,1) !important;
-
-    }
-
-
-    .rawan-lux-products
-    .s-product-card-entry:hover {
-
-        transform: translateY(-10px) !important;
-
-        box-shadow:
-            0 30px 70px rgba(230,41,115,.25) !important;
-
-    }
-
-
-    /* =====================================================
-       IMAGE AREA
-    ===================================================== */
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-image {
-
-        background: #fafafa !important;
-
-        padding: 18px !important;
-
-        position: relative !important;
-
-        overflow: hidden !important;
-
-        flex-shrink: 0 !important;
-
-    }
-
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-image
-    .s-product-card-image-cover {
-
-        width: 100% !important;
-
-        aspect-ratio: 1 / 1 !important;
-
-        object-fit: contain !important;
-
-        border-radius: 20px !important;
-
-        transition:
-            transform .6s ease !important;
-
-        display: block !important;
-
-    }
-
-
-    .rawan-lux-products
-    .s-product-card-entry:hover
-    .s-product-card-image-cover {
-
-        transform: scale(1.08) !important;
-
-    }
-
-
-    /* =====================================================
-       PROMOTION BADGE
-    ===================================================== */
-
-    .rawan-lux-products
-    .s-product-card-promotion-title {
-
-        position: absolute !important;
-
-        top: 15px !important;
-
-        left: 15px !important;
-
-        right: auto !important;
-
-        background: #E62973 !important;
-
-        color: #ffffff !important;
-
-        padding: 6px 12px !important;
-
-        border-radius: 999px !important;
-
-        font-size: 11px !important;
-
-        font-weight: 800 !important;
-
-        line-height: 1.4 !important;
-
-        z-index: 5 !important;
-
-        box-shadow:
-            0 5px 15px rgba(230,41,115,.20) !important;
-
-    }
-
-
-    /* =====================================================
-       WISHLIST
-    ===================================================== */
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-wishlist-btn {
-
-        top: 15px !important;
-
-        right: 15px !important;
-
-        left: auto !important;
-
-        z-index: 10 !important;
-
-    }
-
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-wishlist-btn button {
-
-        width: 42px !important;
-
-        height: 42px !important;
-
-        min-width: 42px !important;
-
-        border-radius: 50% !important;
-
-        background: #ffffff !important;
-
-        color: #E62973 !important;
-
-        border: none !important;
-
-        box-shadow:
-            0 5px 15px rgba(0,0,0,.12) !important;
-
-        transition:
-            transform .3s ease,
-            background .3s ease,
-            color .3s ease !important;
-
-    }
-
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-wishlist-btn button:hover {
-
-        background: #E62973 !important;
-
-        color: #ffffff !important;
-
-        transform: scale(1.1) !important;
-
-    }
-
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-wishlist-btn button
-    i {
-
-        color: inherit !important;
-
-    }
-
-
-    /* =====================================================
-       CONTENT
-    ===================================================== */
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-content {
-
-        padding: 18px !important;
-
-        text-align: right !important;
-
-        display: flex !important;
-
-        flex-direction: column !important;
-
-        flex: 1 !important;
-
-        background: #ffffff !important;
-
-    }
-
-
-    /* =====================================================
-       PRODUCT TITLE
-    ===================================================== */
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-content-title {
-
-        margin: 0 0 8px !important;
-
-        min-height: auto !important;
-
-    }
-
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-content-title a {
-
-        color: #111111 !important;
-
-        font-size: 16px !important;
-
-        font-weight: 900 !important;
-
-        line-height: 1.7 !important;
-
-        text-decoration: none !important;
-
-        transition: color .3s ease !important;
-
-    }
-
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-content-title a:hover {
-
-        color: #E62973 !important;
-
-    }
-
-
-    /* =====================================================
-       RATING
-    ===================================================== */
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-rating {
-
-        color: #E62973 !important;
-
-        font-size: 13px !important;
-
-        margin-top: 8px !important;
-
-        display: flex !important;
-
-        align-items: center !important;
-
-        gap: 4px !important;
-
-    }
-
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-rating
-    i {
-
-        color: #E62973 !important;
-
-    }
-
-
-    /* =====================================================
-       PRICE
-    ===================================================== */
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-sale-price {
-
-        display: flex !important;
-
-        align-items: center !important;
-
-        gap: 8px !important;
-
-        margin-top: 12px !important;
-
-        flex-wrap: wrap !important;
-
-    }
-
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-sale-price h4 {
-
-        color: #111111 !important;
-
-        font-size: 22px !important;
-
-        font-weight: 900 !important;
-
-        margin: 0 !important;
-
-    }
-
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-sale-price span {
-
-        color: #999999 !important;
-
-        font-size: 14px !important;
-
-        text-decoration: line-through !important;
-
-    }
-
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-price {
-
-        color: #111111 !important;
-
-        font-size: 20px !important;
-
-        font-weight: 900 !important;
-
-    }
-
-
-    /* =====================================================
-       ADD TO CART
-    ===================================================== */
-
-    .rawan-lux-products
-    .s-product-card-entry
-    .s-product-card-content-footer {
-
-        margin-top: auto !important;
-
-        padding-top: 18px !important;
-
-    }
-
-
-    .rawan-lux-products
-    .s-product-card-entry
-    salla-add-product-button {
-
-        width: 100% !important;
-
-        display: block !important;
-
-    }
-
-
-    .rawan-lux-products
-    .s-product-card-entry
-    salla-add-product-button button {
-
-        width: 100% !important;
-
-        min-height: 48px !important;
-
-        height: 48px !important;
-
-        border-radius: 14px !important;
-
-        background: #E62973 !important;
-
-        color: #ffffff !important;
-
-        font-weight: 900 !important;
-
-        font-size: 14px !important;
-
-        border: none !important;
-
-        box-shadow: none !important;
-
-        transition:
-            background .3s ease,
-            transform .3s ease,
-            box-shadow .3s ease !important;
-
-    }
-
-
-    .rawan-lux-products
-    .s-product-card-entry
-    salla-add-product-button button:hover {
-
-        background: #c2185b !important;
-
-        transform: scale(1.03) !important;
-
-        box-shadow:
-            0 10px 25px rgba(194,24,91,.20) !important;
-
-    }
-
-
-    /* =====================================================
-       MOBILE
-    ===================================================== */
-
-    @media (max-width: 767px) {
-
-        .rawan-lux-products {
-
-            padding-top: 10px;
-
-            padding-bottom: 45px;
-
-        }
-
-
-        .rawan-lux-products
-        salla-products-slider .swiper {
-
-            padding-left: 5px !important;
-
-            padding-right: 5px !important;
-
-        }
-
-
-        .rawan-lux-products
-        .s-product-card-entry {
-
-            border-radius: 20px !important;
-
-        }
-
-
-        .rawan-lux-products
-        .s-product-card-entry
-        .s-product-card-image {
-
-            padding: 12px !important;
-
-        }
-
-
-        .rawan-lux-products
-        .s-product-card-entry
-        .s-product-card-content {
-
-            padding: 14px !important;
-
-        }
-
-
-        .rawan-lux-products
-        .s-product-card-entry
-        .s-product-card-content-title a {
-
-            font-size: 14px !important;
-
-        }
-
-
-        .rawan-lux-products
-        .s-product-card-entry
-        .s-product-card-sale-price h4 {
-
-            font-size: 18px !important;
-
-        }
-
-    }
-
-
-</style>
 
 
 {# =========================================================
-   BREADCRUMBS
+    BREADCRUMBS
 ========================================================= #}
 
 {% if theme.settings.get('product_show_breadcrumbs', true) %}
 
     <div class="container container--breadcrumbs rawan-breadcrumbs">
-
         <nav class="breadcrumbs w-full">
             <salla-breadcrumb></salla-breadcrumb>
         </nav>
-
     </div>
 
 {% endif %}
 
 
 {# =========================================================
-   BEFORE PRODUCT INFO
+    BEFORE PRODUCT INFO
 ========================================================= #}
 
 <div class="s-blocks-wrapper s-before-product-info !mt-0">
-
     {% hook 'product.single.before_product_info' %}
-
 </div>
 
 
-<main
-    class="rawan-product-page"
-    data-product-id="{{ product.id }}"
->
-
+<main class="rawan-product-page" data-product-id="{{ product.id }}">
 
     {# =====================================================
-       PRODUCT HEADER
+        PRODUCT HEADER
     ====================================================== #}
 
     <section class="rawan-section-heading">
-
         <div class="rawan-heading-line"></div>
-
         <div class="rawan-heading-content">
-
             {% if product.category %}
-
-                <a
-                    href="{{ product.category.url }}"
-                    class="rawan-heading-kicker"
-                >
+                <a href="{{ product.category.url }}" class="rawan-heading-kicker">
                     {{ product.category.name }}
                 </a>
-
             {% else %}
-
                 <span class="rawan-heading-kicker">
                     منتجاتنا
                 </span>
-
             {% endif %}
 
             <h2>
@@ -677,36 +64,26 @@
             </h2>
 
             <span class="rawan-heading-dot"></span>
-
         </div>
-
         <div class="rawan-heading-line"></div>
-
     </section>
 
 
     {# =====================================================
-       PRODUCT DETAILS
+        PRODUCT DETAILS
     ====================================================== #}
 
     <div class="container container--product-details">
-
-        <div
-            class="rawan-product-grid"
-            id="product-{{ product.id }}"
-        >
-
+        <div class="rawan-product-grid" id="product-{{ product.id }}">
 
             {# =================================================
-               PRODUCT MEDIA
+                PRODUCT MEDIA
             ================================================== #}
 
             <div class="rawan-product-media">
-
                 {% set has_many_images = product.images|length > 1 %}
 
                 <div class="rawan-media-card">
-
                     <salla-slider
                         data-testid="store-product-image-slider"
                         id="details-slider-{{ product.id }}"
@@ -717,15 +94,11 @@
                         listen-to-thumbnails-option
                         show-thumbs-controls="false"
                     >
-
                         {% if product.promotion_title %}
-
                             <div class="rawan-promotion">
                                 {{ product.promotion_title }}
                             </div>
-
                         {% endif %}
-
 
                         <salla-button
                             class="btn--wishlist rawan-image-wishlist"
@@ -736,35 +109,23 @@
                             color="light"
                             aria-label="إضافة إلى المفضلة"
                         >
-
                             <i class="sicon-heart"></i>
-
                         </salla-button>
 
-
                         {% if product.calories %}
-
                             <div class="rawan-calories">
-
                                 <strong>
                                     {{ product.calories }}
                                 </strong>
-
                                 <span>
                                     {{ trans('pages.products.calories') }}
                                 </span>
-
                             </div>
-
                         {% endif %}
 
-
                         <div slot="items">
-
                             {% for image in product.images %}
-
                                 {% if image.three_d_image_url %}
-
                                     <model-viewer
                                         style="min-height:500px"
                                         class="swiper-slide model-entry rawan-model"
@@ -777,137 +138,89 @@
                                         shadow-intensity="1"
                                         alt="{{ image.alt }}"
                                     ></model-viewer>
-
                                 {% else %}
-
                                     <a
                                         data-fslightbox="product_{{ product.id }}"
                                         data-img-id="{{ image.id }}"
                                         data-slid-index="{{ loop.index - 1 }}"
-
                                         {% if image.video_url %}
                                             data-video-src="{{ image.video_url }}"
                                         {% endif %}
-
                                         data-caption="{{ image.alt }}"
                                         data-infinite="false"
                                         data-type="{{ image.video_type ?? 'image' }}"
-
                                         href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}"
-
                                         aria-label="{{ product.name }}"
-
-                                        class="
-                                            swiper-slide
-                                            magnify-wrapper
-                                            rawan-product-image
-                                            {{ image.video_url ? 'video-entry' : '' }}
-                                        "
+                                        class="swiper-slide magnify-wrapper rawan-product-image {{ image.video_url ? 'video-entry' : '' }}"
                                     >
-
                                         <img
                                             id="{{ image.id }}"
                                             src="{{ image.url }}"
                                             alt="{{ image.alt }}"
                                             loading="{{ loop.first ? 'eager' : 'lazy' }}"
-
                                             {% if loop.first %}
                                                 fetchpriority="high"
                                             {% endif %}
                                         >
-
                                     </a>
-
                                 {% endif %}
-
                             {% endfor %}
-
                         </div>
 
-
                         {% if has_many_images %}
-
                             <div
                                 data-testid="store-product-thumbnails"
                                 slot="thumbs"
                                 class="rawan-thumbnails"
                             >
-
                                 {% for image in product.images %}
-
                                     <div
-                                        class="
-                                            slide--one-fourth
-                                            rawan-thumbnail
-                                            {{ image.video_url ? 'video-entry' : '' }}
-                                            {{ image.three_d_image_url ? 'model-entry' : '' }}
-                                        "
+                                        class="slide--one-fourth rawan-thumbnail {{ image.video_url ? 'video-entry' : '' }} {{ image.three_d_image_url ? 'model-entry' : '' }}"
                                         data-caption="{{ image.alt }}"
                                     >
-
                                         <img
                                             src="{{ image.url }}"
                                             loading="{{ loop.index < 5 ? 'eager' : 'lazy' }}"
                                             title="{{ image.alt }}"
                                             alt="{{ image.alt }}"
                                         >
-
                                     </div>
-
                                 {% endfor %}
-
                             </div>
-
                         {% endif %}
-
                     </salla-slider>
-
                 </div>
-
             </div>
 
 
             {# =================================================
-               PRODUCT INFORMATION
+                PRODUCT INFORMATION
             ================================================== #}
 
             <div class="rawan-product-info">
-
                 {% hook 'product:single.description.start' %}
 
-
                 {% if product.brand and product.brand.name %}
-
                     <div class="rawan-brand">
-
                         <a
                             href="{{ product.brand.url }}"
                             title="{{ product.brand.name }}"
                             class="rawan-brand-logo"
                         >
-
                             {% if product.brand.logo %}
-
                                 <img
                                     src="{{ product.brand.logo }}"
                                     alt="{{ product.brand.name }}"
                                     title="{{ product.brand.name }}"
                                 >
-
                             {% else %}
-
                                 <span>
                                     {{ product.brand.name }}
                                 </span>
-
                             {% endif %}
-
                         </a>
-
                     </div>
-
                 {% endif %}
-
 
                 <h1
                     data-testid="store-product-title"
@@ -917,104 +230,68 @@
                     {{ product.name }}
                 </h1>
 
-
                 {% if product.subtitle %}
-
                     <div class="rawan-product-subtitle">
                         {{ product.subtitle }}
                     </div>
-
                 {% endif %}
 
-
                 {% if product.rating %}
-
                     <div class="rawan-rating">
-
                         <salla-rating-stars
                             data-testid="store-product-rating"
                             value="{{ product.rating.stars }}"
                             reviews="{{ product.rating.count }}"
                         ></salla-rating-stars>
-
                     </div>
-
                 {% endif %}
 
-
                 {% if product.is_taxable %}
-
                     <div class="rawan-tax">
                         {{ trans('pages.products.tax_included') }}
                     </div>
-
                 {% endif %}
-
 
                 <div
                     data-testid="store-product-price"
                     class="rawan-price-box"
                     id="rawan-main-price"
                 >
-
                     {% if product.is_on_sale %}
-
                         <div class="rawan-sale-price">
-
                             <strong>
                                 {{ product.sale_price|money }}
                             </strong>
-
                             <del>
                                 {{ product.regular_price|money }}
                             </del>
-
                             {% if product.discount_percentage %}
-
                                 <span class="rawan-discount">
                                     {{ product.discount_percentage }}
                                 </span>
-
                             {% endif %}
-
                         </div>
-
                     {% else %}
-
                         <div class="rawan-normal-price">
-
                             {% if product.starting_price %}
-
                                 <span>
                                     {{ trans('pages.products.starting_price') }}
                                 </span>
-
                             {% endif %}
-
                             <strong>
-                                {{
-                                    product.starting_price
-                                    ? product.starting_price|money
-                                    : product.price|money
-                                }}
+                                {{ product.starting_price ? product.starting_price|money : product.price|money }}
                             </strong>
-
                         </div>
-
                     {% endif %}
-
                 </div>
-
 
                 <div
                     data-testid="store-product-description"
                     class="product__description rawan-description"
                 >
-
                     {% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
 
                     {% if product.has_read_more %}
-
                         <article
                             class="article article--main rawan-description-content"
                             id="more-content"
@@ -1022,44 +299,27 @@
                         >
                             {{ product_desc|raw }}
                         </article>
-
-                        <a
-                            id="btn-show-more"
-                            class="rawan-read-more"
-                        >
+                        <a id="btn-show-more" class="rawan-read-more">
                             {{ trans('pages.products.read_more') }}
                         </a>
-
                     {% else %}
-
                         <article class="article--main rawan-description-content">
                             {{ product_desc|raw }}
                         </article>
-
                     {% endif %}
-
                 </div>
 
-
                 {% if product.tags|length and theme.settings.get('show_tags', true) %}
-
                     <div class="rawan-tags">
-
                         {% for tag in product.tags %}
-
                             <a href="{{ tag.url }}">
                                 {{ tag.name }}
                             </a>
-
                         {% endfor %}
-
                     </div>
-
                 {% endif %}
 
-
                 <div class="rawan-actions">
-
                     <salla-social-share
                         data-testid="store-product-social-share"
                         aria-label="مشاركة المنتج"
@@ -1075,114 +335,66 @@
                         color="light"
                         aria-label="إضافة إلى المفضلة"
                     >
-
                         <i class="sicon-heart"></i>
-
                     </salla-button>
-
                 </div>
 
-
                 {% if product.sold_quantity or product.can_show_remained_quantity %}
-
                     <div class="rawan-stock-info">
-
                         {% if product.sold_quantity %}
-
                             <div>
-
                                 <i class="sicon-fire"></i>
-
                                 {{ trans('pages.products.sold') }}
-
                                 <span>
-                                    {{
-                                        pluralize(
-                                            'pages.products.sold_times',
-                                            product.sold_quantity
-                                        )|raw
-                                    }}
+                                    {{ pluralize('pages.products.sold_times', product.sold_quantity)|raw }}
                                 </span>
-
                             </div>
-
                         {% endif %}
 
-
                         {% if product.can_show_remained_quantity %}
-
                             <div>
-
                                 <i class="sicon-box-bankers"></i>
-
                                 {{ trans('pages.products.remained') }}
-
                                 <span>
                                     {{ product.quantity }}
                                 </span>
-
                             </div>
-
                         {% endif %}
-
                     </div>
-
                 {% endif %}
 
-
                 {% if product.sku %}
-
                     <div class="rawan-sku">
-
                         <div>
-
                             <i class="sicon-barcode"></i>
-
                             {{ trans('pages.products.sku') }}
-
                         </div>
-
                         <strong class="product-sku">
                             {{ product.sku }}
                         </strong>
-
                     </div>
-
                 {% endif %}
 
-
                 {% hook 'product:single.description' %}
-
 
                 <salla-installment
                     data-testid="store-product-installment"
                     price="{{ product.price }}"
                 ></salla-installment>
 
-
                 {% if product.has_metadata %}
-
                     <salla-metadata
                         data-testid="store-product-metadata"
                     ></salla-metadata>
-
                 {% endif %}
 
-
                 {% if product.show_availability %}
-
                     <section class="rawan-availability">
-
                         <div>
-
                             <span>
-
                                 <i class="sicon-location"></i>
-
                                 {{ trans('pages.products.availability') }}
-
                             </span>
-
                             <a
                                 href="#!"
                                 onclick="salla.event.dispatch('scopes::open', {
@@ -1192,25 +404,18 @@
                             >
                                 {{ trans('pages.products.select_branch') }}
                             </a>
-
                         </div>
-
                     </section>
-
                 {% endif %}
 
-
                 {% if product.digital_files_settings %}
-
                     <digital-files-settings
                         settings="{{ product.digital_files_settings|json_encode }}"
                     ></digital-files-settings>
-
                 {% endif %}
 
-
                 {# =================================================
-                   PRODUCT FORM
+                    PRODUCT FORM
                 ================================================== #}
 
                 <form
@@ -1221,65 +426,43 @@
                     method="post"
                     onsubmit="return salla.form.onSubmit('cart.addItem', event)"
                 >
-
                     <input
                         type="hidden"
                         name="id"
                         value="{{ product.id }}"
                     >
 
-
                     {% hook 'product:single.form.start' %}
-
 
                     {% include 'pages.partials.product.options' %}
 
-
                     {% hook 'product:single.form.end' %}
 
-
                     <section class="rawan-cart-price">
-
                         <span>
                             {{ trans('pages.products.price') }}
                         </span>
 
                         <div class="price-wrapper">
-
                             {% if product.is_on_sale %}
-
                                 <strong class="total-price">
                                     {{ product.sale_price|money }}
                                 </strong>
-
                                 <del class="before-price">
                                     {{ product.regular_price|money }}
                                 </del>
-
                             {% else %}
-
                                 {% if product.starting_price %}
-
                                     <span class="starting-price-title">
                                         {{ trans('pages.products.starting_price') }}
                                     </span>
-
                                 {% endif %}
 
                                 <strong class="total-price">
-
-                                    {{
-                                        product.starting_price
-                                        ? product.starting_price|money
-                                        : product.price|money
-                                    }}
-
+                                    {{ product.starting_price ? product.starting_price|money : product.price|money }}
                                 </strong>
-
                             {% endif %}
-
                         </div>
-
 
                         <div
                             data-testid="store-product-out-of-stock"
@@ -1287,624 +470,11 @@
                         >
                             {{ trans('pages.products.out_of_stock') }}
                         </div>
-
                     </section>
-
-
-                    {% if product.has_preorder_campaign %}
-
-                        <section class="rawan-preorder">
-
-                            <salla-count-down
-                                data-testid="store-product-preorder-countdown"
-                                pre-order="{{ product.preorder|json_encode }}"
-                                boxed
-                                labeled
-                            ></salla-count-down>
-
-                        </section>
-
-                    {% endif %}
-
-
-                    <section class="sticky-product-bar rawan-cart-box">
-
-                        {% if product.is_hidden_quantity or product.type == 'booking' %}
-
-                            <input
-                                type="hidden"
-                                value="1"
-                                name="quantity"
-                                aria-label="Quantity"
-                            >
-
-                        {% else %}
-
-                            <div class="sticky-product-bar__quantity rawan-quantity">
-
-                                <label class="form-label">
-                                    {{ trans('pages.products.quantity') }}
-                                </label>
-
-                                <salla-quantity-input
-                                    data-testid="store-product-quantity"
-                                    max="{{ product.max_quantity }}"
-                                    value="1"
-                                    name="quantity"
-                                    aria-label="Quantity"
-                                ></salla-quantity-input>
-
-                            </div>
-
-                        {% endif %}
-
-
-                        <salla-add-product-button
-                            data-testid="store-product-add-to-cart"
-                            {{ product.can_quick_buy ? 'quick-buy' : '' }}
-                            {{ theme.settings.get('sticky_add_to_cart') ? 'support-sticky-bar' : '' }}
-                            {{ product.is_require_shipping ? 'required-shipping' : '' }}
-                            {{ product.has_preorder_campaign ? 'has-pre-order' : '' }}
-                            amount="{{ product.base_currency_price }}"
-                            class="sticky-product-bar__btn"
-                            product-status="{{ product.status }}"
-                            product-type="{{ product.type }}"
-                            product-id="{{ product.id }}"
-                            loader-position="end"
-                            type="submit"
-                            width="wide"
-
-                            {% if product.notify_availability %}
-
-                                {{ product.notify_availability.subscribed ? 'is-subscribed' : '' }}
-
-                                channels="{{ product.notify_availability.channels|join(',') }}"
-
-                                subscribed-options="{{ product.notify_availability.subscribed_options|json_encode }}"
-
-                                {{ product.notify_availability.options ? 'notify-options-availability' : '' }}
-
-                            {% endif %}
-                        >
-
-                            {{ product.add_to_cart_label }}
-
-                        </salla-add-product-button>
-
-                    </section>
-
                 </form>
-
-
-                {% if product.is_giftable %}
-
-                    <salla-gifting
-                        data-testid="store-product-gifting"
-                        class="rawan-gifting"
-                        widget-subtitle="{{ gifting_intro }}"
-                        product-id="{{ product.id }}"
-                        {{ product.is_require_shipping ? 'physical-products' : '' }}
-                    ></salla-gifting>
-
-                {% endif %}
-
-
-                {% hook 'product:single.description.end' %}
-
-
-                <salla-quick-order
-                    data-testid="store-product-quick-order"
-                    class="rawan-quick-order"
-                ></salla-quick-order>
-
             </div>
-
         </div>
-
-
-        <salla-offer
-            data-testid="store-product-offer"
-        ></salla-offer>
-
     </div>
-
-
-    {# =========================================================
-       REVIEWS
-    ========================================================== #}
-
-    <div class="s-blocks-wrapper s-before-reviews">
-
-        {% hook 'product.single.before_customer_reviews' %}
-
-    </div>
-
-
-    {% if store.settings.rating.show_on_product %}
-
-        <section class="rawan-reviews">
-
-            <salla-comments
-                data-testid="store-product-comments"
-                item-id="{{ product.id }}"
-                type="product"
-            ></salla-comments>
-
-        </section>
-
-    {% endif %}
-
-
-    {# =========================================================
-       RECOMMENDATIONS
-    ========================================================== #}
-
-    <div class="s-blocks-wrapper s-before-related">
-
-        {% hook 'product.single.before_product_recommendations' %}
-
-    </div>
-
-
-    {# =========================================================
-       SAME CATEGORY PRODUCTS
-    ========================================================== #}
-
-    {% if product.category %}
-
-        <section
-            class="rawan-recommendations rawan-lux-products"
-            id="category-products"
-        >
-
-            <div class="container">
-
-                <div class="rawan-related-header">
-
-                    <div class="rawan-related-header__line"></div>
-
-                    <div class="rawan-related-header__content">
-
-                        <span class="rawan-related-header__eyebrow">
-                            {{ product.category.name }}
-                        </span>
-
-                        <h2 class="rawan-related-header__title">
-                            قد يعجبك أيضًا
-                        </h2>
-
-                        <p class="rawan-related-header__description">
-                            منتجات أخرى قد تناسب اختيارك
-                        </p>
-
-                    </div>
-
-                    <div class="rawan-related-header__line"></div>
-
-                </div>
-
-
-                <div class="rawan-lux-products__inner">
-
-                    <salla-products-slider
-                        data-testid="store-product-category-products"
-                        id="rawan-category-slider"
-                        source="categories"
-                        source-value="{{ product.category.id }}"
-                        block-title=""
-                        autoplay
-                    ></salla-products-slider>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    {% endif %}
-
-
-    {# =========================================================
-       RELATED PRODUCTS
-    ========================================================== #}
-
-    <section
-        class="rawan-recommendations rawan-lux-products"
-        id="related-products"
-    >
-
-        <div class="container">
-
-
-        </div>
-
-    </section>
-
-
-    <div class="s-blocks-wrapper s-after-related">
-
-        {% hook 'product.single.after_product_recommendations' %}
-
-    </div>
-
-
 </main>
-
-
-{# =========================================================
-   STICKY PRODUCT BAR
-========================================================= #}
-
-<div
-    class="rawan-sticky-product"
-    id="rawan-sticky-product"
-    aria-hidden="true"
->
-
-    <div class="rawan-sticky-product__inner">
-
-        <div class="rawan-sticky-product__product">
-
-            {% if product.images|length %}
-
-                <div class="rawan-sticky-product__image">
-
-                    <img
-                        src="{{ product.images[0].url }}"
-                        alt="{{ product.name }}"
-                    >
-
-                </div>
-
-            {% endif %}
-
-
-            <div class="rawan-sticky-product__info">
-
-                <strong id="rawan-sticky-title">
-                    {{ product.name }}
-                </strong>
-
-                <span id="rawan-sticky-price">
-
-                    {{
-                        product.starting_price
-                        ? product.starting_price|money
-                        : (
-                            product.is_on_sale
-                            ? product.sale_price|money
-                            : product.price|money
-                        )
-                    }}
-
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="rawan-sticky-product__action">
-
-            <button
-                type="button"
-                class="rawan-sticky-product__button"
-                id="rawan-sticky-add"
-            >
-
-                <i class="sicon-shopping-bag"></i>
-
-                <span>
-                    {{ product.add_to_cart_label|default('أضف إلى السلة') }}
-                </span>
-
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-{% endblock %}
-
-
-{# =========================================================
-   SCRIPTS
-========================================================= #}
-
-{% block scripts %}
-
-<script
-    defer
-    src="{{ 'product.js' | asset }}"
-></script>
-
-
-{% if product.has_3d_image %}
-
-    <script
-        type="module"
-        defer
-        src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-    ></script>
-
-{% endif %}
-
-
-{% if product.digital_files_settings %}
-
-    <script
-        type="module"
-        defer
-        src="{{ 'digital-files.js'|asset }}"
-    ></script>
-
-{% endif %}
-
-
-<script>
-
-(function () {
-
-    'use strict';
-
-
-    /* =====================================================
-       PRODUCT PAGE
-    ====================================================== */
-
-    function initProductPage() {
-
-        var sticky =
-            document.getElementById(
-                'rawan-sticky-product'
-            );
-
-        var stickyButton =
-            document.getElementById(
-                'rawan-sticky-add'
-            );
-
-        var productForm =
-            document.getElementById(
-                'rawan-product-form'
-            );
-
-        var cartBox =
-            document.querySelector(
-                '.rawan-cart-box'
-            );
-
-
-        if (
-            !sticky ||
-            !stickyButton ||
-            !productForm
-        ) {
-
-            return;
-
-        }
-
-
-        /* =====================================================
-           STICKY VISIBILITY
-        ====================================================== */
-
-        function updateSticky() {
-
-            if (!cartBox) {
-
-                return;
-
-            }
-
-
-            var rect =
-                cartBox.getBoundingClientRect();
-
-
-            if (rect.bottom < 0) {
-
-                sticky.classList.add(
-                    'is-visible'
-                );
-
-                sticky.setAttribute(
-                    'aria-hidden',
-                    'false'
-                );
-
-            } else {
-
-                sticky.classList.remove(
-                    'is-visible'
-                );
-
-                sticky.setAttribute(
-                    'aria-hidden',
-                    'true'
-                );
-
-            }
-
-        }
-
-
-        window.addEventListener(
-            'scroll',
-            updateSticky,
-            {
-                passive: true
-            }
-        );
-
-
-        window.addEventListener(
-            'resize',
-            updateSticky
-        );
-
-
-        updateSticky();
-
-
-        /* =====================================================
-           STICKY ADD TO CART
-        ====================================================== */
-
-        stickyButton.addEventListener(
-            'click',
-            function () {
-
-                var originalButton =
-                    productForm.querySelector(
-                        'salla-add-product-button'
-                    );
-
-
-                if (originalButton) {
-
-                    originalButton.click();
-
-                } else {
-
-                    if (
-                        typeof productForm.requestSubmit ===
-                        'function'
-                    ) {
-
-                        productForm.requestSubmit();
-
-                    } else {
-
-                        productForm.submit();
-
-                    }
-
-                }
-
-            }
-        );
-
-
-        /* =====================================================
-           SYNC PRODUCT TITLE
-        ====================================================== */
-
-        var title =
-            document.getElementById(
-                'rawan-product-title'
-            );
-
-        var stickyTitle =
-            document.getElementById(
-                'rawan-sticky-title'
-            );
-
-
-        if (
-            title &&
-            stickyTitle
-        ) {
-
-            stickyTitle.textContent =
-                title.textContent.trim();
-
-        }
-
-
-        /* =====================================================
-           SYNC PRICE
-        ====================================================== */
-
-        var mainPrice =
-            document.getElementById(
-                'rawan-main-price'
-            );
-
-        var stickyPrice =
-            document.getElementById(
-                'rawan-sticky-price'
-            );
-
-
-        if (
-            mainPrice &&
-            stickyPrice
-        ) {
-
-            function syncPrice() {
-
-                var price =
-                    mainPrice.querySelector(
-                        '.total-price, .rawan-sale-price strong, .rawan-normal-price strong, strong'
-                    );
-
-
-                if (price) {
-
-                    stickyPrice.textContent =
-                        price.textContent.trim();
-
-                }
-
-            }
-
-
-            var priceObserver =
-                new MutationObserver(
-                    function () {
-
-                        syncPrice();
-
-                    }
-                );
-
-
-            priceObserver.observe(
-                mainPrice,
-                {
-                    childList: true,
-                    subtree: true,
-                    characterData: true,
-                    attributes: true
-                }
-            );
-
-
-            syncPrice();
-
-        }
-
-    }
-
-
-    /* =====================================================
-       INIT
-    ====================================================== */
-
-    if (
-        document.readyState ===
-        'loading'
-    ) {
-
-        document.addEventListener(
-            'DOMContentLoaded',
-            initProductPage
-        );
-
-    } else {
-
-        initProductPage();
-
-    }
-
-
-})();
-
-</script>
-
 
 {% endblock %}

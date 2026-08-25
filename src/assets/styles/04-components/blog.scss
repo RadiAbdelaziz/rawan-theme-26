@@ -3,48 +3,21 @@
    Version: 2.0
 ========================================================= */
 
-
-/* =========================================================
-   MOTION TOKENS
-========================================================= */
-
+/* Motion Tokens */
 .rawan-blog-section {
-
-    --rawan-ease:
-        cubic-bezier(.22, 1, .36, 1);
-
-    --rawan-ease-soft:
-        cubic-bezier(.16, 1, .3, 1);
-
-    --rawan-duration-fast:
-        .25s;
-
-    --rawan-duration-base:
-        .45s;
-
-    --rawan-duration-slow:
-        .75s;
-
-    --rawan-pink:
-        #e62973;
-
-    --rawan-pink-dark:
-        #c91d60;
-
-    --rawan-shadow:
-        0 18px 55px rgba(80, 20, 40, .08);
-
-    --rawan-shadow-hover:
-        0 28px 75px rgba(80, 20, 40, .14);
-
+    --rawan-ease: cubic-bezier(.22, 1, .36, 1);
+    --rawan-ease-soft: cubic-bezier(.16, 1, .3, 1);
+    --rawan-duration-fast: .25s;
+    --rawan-duration-base: .45s;
+    --rawan-duration-slow: .75s;
+    --rawan-pink: #e62973;
+    --rawan-pink-dark: #c91d60;
+    --rawan-shadow: 0 18px 55px rgba(80, 20, 40, .08);
+    --rawan-shadow-hover: 0 28px 75px rgba(80, 20, 40, .14);
     isolation: isolate;
 }
 
-
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
+/* Background */
 .rawan-blog-bg {
     z-index: -4;
 }
@@ -55,1026 +28,419 @@
     transform: translate3d(0, 0, 0);
 }
 
-
-/* Main orb */
-
 .rawan-blog-orb--one {
-    animation:
-        rawan-orb-one
-        16s
-        var(--rawan-ease-soft)
-        infinite
-        alternate;
+    animation: rawan-orb-one 16s var(--rawan-ease-soft) infinite alternate;
 }
 
-
-/* Secondary orb */
-
 .rawan-blog-orb--two {
-    animation:
-        rawan-orb-two
-        19s
-        var(--rawan-ease-soft)
-        infinite
-        alternate;
+    animation: rawan-orb-two 19s var(--rawan-ease-soft) infinite alternate;
     animation-delay: -5s;
 }
 
-
-/* Center orb */
-
 .rawan-blog-orb--three {
-    animation:
-        rawan-orb-three
-        22s
-        var(--rawan-ease-soft)
-        infinite
-        alternate;
+    animation: rawan-orb-three 22s var(--rawan-ease-soft) infinite alternate;
     animation-delay: -8s;
 }
 
-
-/* =========================================================
-   AMBIENT KEYFRAMES
-========================================================= */
-
+/* Ambient Keyframes */
 @keyframes rawan-orb-one {
-
-    0% {
-        transform:
-            translate3d(0, 0, 0)
-            scale(1);
-    }
-
-    100% {
-        transform:
-            translate3d(-24px, 18px, 0)
-            scale(1.055);
-    }
-
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(-24px, 18px, 0) scale(1.055); }
 }
-
 
 @keyframes rawan-orb-two {
-
-    0% {
-        transform:
-            translate3d(0, 0, 0)
-            scale(1);
-    }
-
-    100% {
-        transform:
-            translate3d(22px, -18px, 0)
-            scale(1.06);
-    }
-
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(22px, -18px, 0) scale(1.06); }
 }
-
 
 @keyframes rawan-orb-three {
-
-    0% {
-        transform:
-            translate3d(0, 0, 0)
-            scale(1);
-    }
-
-    100% {
-        transform:
-            translate3d(-16px, 20px, 0)
-            scale(1.045);
-    }
-
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(-16px, 20px, 0) scale(1.045); }
 }
 
-
-/* =========================================================
-   GENERAL REVEAL
-========================================================= */
-
+/* General Reveal */
 .rawan-blog-reveal {
-
     opacity: 0;
-
-    transform:
-        translate3d(0, 24px, 0)
-        scale(.985);
-
-    filter:
-        blur(7px);
-
-    transition:
-        opacity var(--rawan-duration-slow) var(--rawan-ease)
-            var(--rawan-reveal-delay, 0ms),
-
-        transform var(--rawan-duration-slow) var(--rawan-ease)
-            var(--rawan-reveal-delay, 0ms),
-
-        filter var(--rawan-duration-slow) var(--rawan-ease)
-            var(--rawan-reveal-delay, 0ms);
-
-    will-change:
-        opacity,
-        transform,
-        filter;
+    transform: translate3d(0, 24px, 0) scale(.985);
+    filter: blur(7px);
+    transition: 
+        opacity var(--rawan-duration-slow) var(--rawan-ease) var(--rawan-reveal-delay, 0ms),
+        transform var(--rawan-duration-slow) var(--rawan-ease) var(--rawan-reveal-delay, 0ms),
+        filter var(--rawan-duration-slow) var(--rawan-ease) var(--rawan-reveal-delay, 0ms);
+    will-change: opacity, transform, filter;
 }
-
 
 .rawan-blog-reveal.is-visible {
-
     opacity: 1;
-
-    transform:
-        translate3d(0, 0, 0)
-        scale(1);
-
-    filter:
-        blur(0);
-
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
 }
 
-
-/* =========================================================
-   BADGE REVEAL
-========================================================= */
-
+/* Badge Reveal */
 .rawan-blog-reveal--badge {
-
-    transform:
-        translate3d(0, 16px, 0)
-        scale(.94);
-
+    transform: translate3d(0, 16px, 0) scale(.94);
 }
-
 
 .rawan-blog-reveal--badge.is-visible {
-
-    transform:
-        translate3d(0, 0, 0)
-        scale(1);
-
+    transform: translate3d(0, 0, 0) scale(1);
 }
 
-
-/* =========================================================
-   TITLE REVEAL
-========================================================= */
-
+/* Title Reveal */
 .rawan-blog-reveal--title {
-
-    transform:
-        translate3d(0, 28px, 0)
-        scale(.985);
-
+    transform: translate3d(0, 28px, 0) scale(.985);
 }
-
 
 .rawan-blog-reveal--title.is-visible {
-
-    transform:
-        translate3d(0, 0, 0)
-        scale(1);
-
+    transform: translate3d(0, 0, 0) scale(1);
 }
 
-
-/* =========================================================
-   BUTTON REVEAL
-========================================================= */
-
+/* Button Reveal */
 .rawan-blog-reveal--button {
-
-    transform:
-        translate3d(0, 18px, 0);
-
+    transform: translate3d(0, 18px, 0);
 }
 
-
-/* =========================================================
-   BADGE
-========================================================= */
-
+/* Badge */
 .rawan-blog-badge {
-
     position: relative;
-
     overflow: hidden;
-
-    transition:
+    transition: 
         transform .45s var(--rawan-ease),
         box-shadow .45s var(--rawan-ease),
         border-color .35s ease;
 }
 
-
 .rawan-blog-badge::after {
-
     content: "";
-
     position: absolute;
-
     top: -50%;
     left: -80%;
-
     width: 45%;
     height: 200%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.75),
-            transparent
-        );
-
-    transform:
-        skewX(-18deg);
-
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .75), transparent);
+    transform: skewX(-18deg);
     opacity: 0;
-
     pointer-events: none;
-
 }
-
 
 .rawan-blog-badge:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 12px 28px rgba(230, 41, 115, .12);
-
-    border-color:
-        rgba(230, 41, 115, .25);
-
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(230, 41, 115, .12);
+    border-color: rgba(230, 41, 115, .25);
 }
-
 
 .rawan-blog-badge:hover::after {
-
     opacity: 1;
-
-    animation:
-        rawan-badge-shine
-        .8s
-        var(--rawan-ease)
-        forwards;
-
+    animation: rawan-badge-shine .8s var(--rawan-ease) forwards;
 }
-
 
 @keyframes rawan-badge-shine {
-
-    from {
-        left: -80%;
-    }
-
-    to {
-        left: 140%;
-    }
-
+    from { left: -80%; }
+    to { left: 140%; }
 }
-
 
 .rawan-blog-badge__icon {
-
-    transition:
-        transform .45s var(--rawan-ease);
-
+    transition: transform .45s var(--rawan-ease);
 }
-
 
 .rawan-blog-badge:hover .rawan-blog-badge__icon {
-
-    transform:
-        rotate(-9deg)
-        translateY(-1px);
-
+    transform: rotate(-9deg) translateY(-1px);
 }
 
-
-/* =========================================================
-   ALL ARTICLES LINK
-========================================================= */
-
+/* All Articles Link */
 .rawan-blog-all-link {
-
     position: relative;
-
-    transition:
-        color .35s ease;
-
+    transition: color .35s ease;
 }
-
 
 .rawan-blog-all-link__text {
-
-    transition:
-        transform .45s var(--rawan-ease);
-
+    transition: transform .45s var(--rawan-ease);
 }
 
-
 .rawan-blog-all-link__arrow-wrap {
-
     display: inline-flex;
-
     align-items: center;
-
     justify-content: center;
-
     width: 25px;
     height: 25px;
-
     border-radius: 50%;
-
-    background:
-        rgba(230, 41, 115, .07);
-
-    transition:
+    background: rgba(230, 41, 115, .07);
+    transition: 
         transform .45s var(--rawan-ease),
         background-color .35s ease,
         box-shadow .35s ease;
-
 }
-
 
 .rawan-blog-all-link__arrow {
-
-    transition:
-        transform .45s var(--rawan-ease);
-
+    transition: transform .45s var(--rawan-ease);
 }
 
-
-.rawan-blog-all-link:hover
-.rawan-blog-all-link__text {
-
-    transform:
-        translateX(-2px);
-
+.rawan-blog-all-link:hover .rawan-blog-all-link__text {
+    transform: translateX(-2px);
 }
 
-
-.rawan-blog-all-link:hover
-.rawan-blog-all-link__arrow-wrap {
-
-    transform:
-        translateX(-3px);
-
-    background:
-        rgba(230, 41, 115, .12);
-
-    box-shadow:
-        0 8px 18px rgba(230, 41, 115, .12);
-
+.rawan-blog-all-link:hover .rawan-blog-all-link__arrow-wrap {
+    transform: translateX(-3px);
+    background: rgba(230, 41, 115, .12);
+    box-shadow: 0 8px 18px rgba(230, 41, 115, .12);
 }
 
-
-.rawan-blog-all-link:hover
-.rawan-blog-all-link__arrow {
-
-    transform:
-        translateX(-3px);
-
+.rawan-blog-all-link:hover .rawan-blog-all-link__arrow {
+    transform: translateX(-3px);
 }
 
-
-/* =========================================================
-   CARD — INITIAL REVEAL
-========================================================= */
-
+/* Card — Initial Reveal */
 .rawan-blog-card {
-
     position: relative;
-
     opacity: 0;
-
-    transform:
-        translate3d(0, 36px, 0)
-        scale(.975);
-
-    border-color:
-        rgba(230, 41, 115, .16);
-
-    box-shadow:
-        0 0 0 rgba(0,0,0,0);
-
-    transition:
-        opacity .8s var(--rawan-ease)
-            var(--rawan-card-delay, 0ms),
-
-        transform .85s var(--rawan-ease)
-            var(--rawan-card-delay, 0ms),
-
+    transform: translate3d(0, 36px, 0) scale(.975);
+    border-color: rgba(230, 41, 115, .16);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    transition: 
+        opacity .8s var(--rawan-ease) var(--rawan-card-delay, 0ms),
+        transform .85s var(--rawan-ease) var(--rawan-card-delay, 0ms),
         border-color .5s ease,
-
         box-shadow .65s var(--rawan-ease);
-
-    will-change:
-        transform,
-        opacity;
-
+    will-change: transform, opacity;
 }
-
 
 .rawan-blog-card.is-visible {
-
     opacity: 1;
-
-    transform:
-        translate3d(0, 0, 0)
-        scale(1);
-
+    transform: translate3d(0, 0, 0) scale(1);
 }
 
-
-/* =========================================================
-   CARD HOVER
-========================================================= */
-
+/* Card Hover */
 .rawan-blog-card:hover {
-
-    transform:
-        translate3d(0, -8px, 0)
-        scale(1.012);
-
-    border-color:
-        rgba(230, 41, 115, .38);
-
-    box-shadow:
-        var(--rawan-shadow-hover);
-
+    transform: translate3d(0, -8px, 0) scale(1.012);
+    border-color: rgba(230, 41, 115, .38);
+    box-shadow: var(--rawan-shadow-hover);
 }
 
-
-/* =========================================================
-   CARD MEDIA
-========================================================= */
-
+/* Card Media */
 .rawan-blog-card__media {
-
-    background:
-        #f7eeee;
-
+    background: #f7eeee;
 }
 
-
 .rawan-blog-card__image {
-
     display: block;
-
-    transform:
-        scale(1.055);
-
-    transition:
-        transform 1.15s var(--rawan-ease);
-
-    will-change:
-        transform;
-
+    transform: scale(1.055);
+    transition: transform 1.15s var(--rawan-ease);
+    will-change: transform;
 }
 
-
-.rawan-blog-card.is-visible
-.rawan-blog-card__image {
-
-    transform:
-        scale(1);
-
+.rawan-blog-card.is-visible .rawan-blog-card__image {
+    transform: scale(1);
 }
 
-
-.rawan-blog-card:hover
-.rawan-blog-card__image {
-
-    transform:
-        scale(1.055);
-
+.rawan-blog-card:hover .rawan-blog-card__image {
+    transform: scale(1.055);
 }
 
-
-/* =========================================================
-   IMAGE OVERLAY
-========================================================= */
-
+/* Image Overlay */
 .rawan-blog-card__overlay {
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(0,0,0,.42),
-            rgba(0,0,0,.04) 55%,
-            transparent 75%
-        );
-
-    opacity:
-        .72;
-
-    transition:
-        opacity .6s var(--rawan-ease);
-
+    background: linear-gradient(to top, rgba(0, 0, 0, .42), rgba(0, 0, 0, .04) 55%, transparent 75%);
+    opacity: .72;
+    transition: opacity .6s var(--rawan-ease);
 }
 
-
-.rawan-blog-card:hover
-.rawan-blog-card__overlay {
-
-    opacity:
-        .55;
-
+.rawan-blog-card:hover .rawan-blog-card__overlay {
+    opacity: .55;
 }
 
-
-/* =========================================================
-   IMAGE SHINE
-========================================================= */
-
+/* Image Shine */
 .rawan-blog-card__shine {
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,.22),
-            transparent
-        );
-
-    transform:
-        skewX(-18deg);
-
-    opacity:
-        0;
-
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .22), transparent);
+    transform: skewX(-18deg);
+    opacity: 0;
 }
 
-
-.rawan-blog-card:hover
-.rawan-blog-card__shine {
-
-    opacity:
-        1;
-
-    animation:
-        rawan-card-shine
-        1s
-        var(--rawan-ease)
-        forwards;
-
+.rawan-blog-card:hover .rawan-blog-card__shine {
+    opacity: 1;
+    animation: rawan-card-shine 1s var(--rawan-ease) forwards;
 }
-
 
 @keyframes rawan-card-shine {
-
-    from {
-        left: -120%;
-    }
-
-    to {
-        left: 140%;
-    }
-
+    from { left: -120%; }
+    to { left: 140%; }
 }
 
-
-/* =========================================================
-   CATEGORY
-========================================================= */
-
+/* Category */
 .rawan-blog-card__category {
-
-    backdrop-filter:
-        blur(12px);
-
-    -webkit-backdrop-filter:
-        blur(12px);
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,.08);
-
-    transform:
-        translate3d(0, 0, 0);
-
-    transition:
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+    transform: translate3d(0, 0, 0);
+    transition: 
         transform .45s var(--rawan-ease),
         box-shadow .45s var(--rawan-ease),
         background-color .35s ease;
-
 }
 
-
-.rawan-blog-card:hover
-.rawan-blog-card__category {
-
-    transform:
-        translate3d(0, -2px, 0);
-
-    background:
-        var(--rawan-pink-dark) !important;
-
-    box-shadow:
-        0 12px 25px rgba(230, 41, 115, .22);
-
+.rawan-blog-card:hover .rawan-blog-card__category {
+    transform: translate3d(0, -2px, 0);
+    background: var(--rawan-pink-dark) !important;
+    box-shadow: 0 12px 25px rgba(230, 41, 115, .22);
 }
 
-
-/* =========================================================
-   CARD META
-========================================================= */
-
+/* Card Meta */
 .rawan-blog-card__meta {
-
-    transition:
-        transform .45s var(--rawan-ease),
-        opacity .35s ease;
-
+    transition: transform .45s var(--rawan-ease), opacity .35s ease;
 }
 
-
-.rawan-blog-card:hover
-.rawan-blog-card__meta {
-
-    transform:
-        translateY(-1px);
-
+.rawan-blog-card:hover .rawan-blog-card__meta {
+    transform: translateY(-1px);
 }
 
-
-/* =========================================================
-   CARD TITLE
-========================================================= */
-
+/* Card Title */
 .rawan-blog-card__title {
-
-    line-height:
-        1.5;
-
+    line-height: 1.5;
 }
-
 
 .rawan-blog-card__title a {
-
-    display:
-        inline;
-
-    background-image:
-        linear-gradient(
-            var(--rawan-pink),
-            var(--rawan-pink)
-        );
-
-    background-size:
-        0% 2px;
-
-    background-position:
-        100% 100%;
-
-    background-repeat:
-        no-repeat;
-
-    transition:
+    display: inline;
+    background-image: linear-gradient(var(--rawan-pink), var(--rawan-pink));
+    background-size: 0% 2px;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    transition: 
         color .35s ease,
         background-size .55s var(--rawan-ease),
         background-position .55s var(--rawan-ease);
-
 }
 
-
-.rawan-blog-card:hover
-.rawan-blog-card__title a {
-
-    color:
-        var(--rawan-pink) !important;
-
+.rawan-blog-card:hover .rawan-blog-card__title a {
+    color: var(--rawan-pink) !important;
 }
 
-
-/* =========================================================
-   SUMMARY
-========================================================= */
-
+/* Summary */
 .rawan-blog-card__summary {
-
-    transition:
-        color .35s ease;
-
+    transition: color .35s ease;
 }
 
-
-.rawan-blog-card:hover
-.rawan-blog-card__summary {
-
-    color:
-        #4f4f4f;
-
+.rawan-blog-card:hover .rawan-blog-card__summary {
+    color: #4f4f4f;
 }
 
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
+/* Footer */
 .rawan-blog-card__footer {
-
-    transition:
-        border-color .45s ease;
-
+    transition: border-color .45s ease;
 }
 
-
-.rawan-blog-card:hover
-.rawan-blog-card__footer {
-
-    border-color:
-        rgba(230, 41, 115, .18);
-
+.rawan-blog-card:hover .rawan-blog-card__footer {
+    border-color: rgba(230, 41, 115, .18);
 }
 
-
-/* =========================================================
-   AUTHOR
-========================================================= */
-
+/* Author */
 .rawan-blog-card__author {
-
-    transition:
-        transform .45s var(--rawan-ease),
-        opacity .35s ease;
-
+    transition: transform .45s var(--rawan-ease), opacity .35s ease;
 }
 
-
-.rawan-blog-card:hover
-.rawan-blog-card__author {
-
-    transform:
-        translateX(-2px);
-
+.rawan-blog-card:hover .rawan-blog-card__author {
+    transform: translateX(-2px);
 }
 
-
-/* =========================================================
-   READ MORE
-========================================================= */
-
+/* Read More */
 .rawan-blog-card__read {
-
-    transition:
-        color .35s ease;
-
+    transition: color .35s ease;
 }
-
 
 .rawan-blog-card__read-arrow {
-
-    transition:
-        transform .45s var(--rawan-ease);
-
+    transition: transform .45s var(--rawan-ease);
 }
 
-
-.rawan-blog-card__read:hover
-.rawan-blog-card__read-arrow {
-
-    transform:
-        translateX(-5px);
-
+.rawan-blog-card__read:hover .rawan-blog-card__read-arrow {
+    transform: translateX(-5px);
 }
 
-
-/* =========================================================
-   EMPTY STATE
-========================================================= */
-
+/* Empty State */
 .rawan-blog-empty {
-
-    transition:
+    transition: 
         opacity .7s var(--rawan-ease),
         transform .7s var(--rawan-ease),
         filter .7s var(--rawan-ease);
-
 }
-
 
 .rawan-blog-empty__icon {
-
-    animation:
-        rawan-empty-float
-        4s
-        ease-in-out
-        infinite;
-
+    animation: rawan-empty-float 4s ease-in-out infinite;
 }
-
 
 @keyframes rawan-empty-float {
-
-    0%,
-    100% {
-        transform:
-            translateY(0);
-    }
-
-    50% {
-        transform:
-            translateY(-5px);
-    }
-
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
 }
 
-
-/* =========================================================
-   PERFORMANCE
-========================================================= */
-
+/* Performance Hardware Acceleration */
 .rawan-blog-card,
 .rawan-blog-card__image,
 .rawan-blog-card__category,
 .rawan-blog-orb,
 .rawan-blog-reveal {
-
-    backface-visibility:
-        hidden;
-
-    -webkit-backface-visibility:
-        hidden;
-
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
+/* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
-
     .rawan-blog-section {
-
-        --rawan-duration-slow:
-            .65s;
-
+        --rawan-duration-slow: .65s;
     }
 
-
-    .rawan-blog-orb--one {
-
-        width:
-            300px;
-
-        height:
-            300px;
-
-    }
-
-
-    .rawan-blog-orb--two {
-
-        width:
-            260px;
-
-        height:
-            260px;
-
-    }
-
-
-    .rawan-blog-orb--three {
-
-        width:
-            350px;
-
-        height:
-            350px;
-
-    }
-
+    .rawan-blog-orb--one { width: 300px; height: 300px; }
+    .rawan-blog-orb--two { width: 260px; height: 260px; }
+    .rawan-blog-orb--three { width: 350px; height: 350px; }
 
     .rawan-blog-card {
-
-        transform:
-            translate3d(0, 24px, 0)
-            scale(.985);
-
+        transform: translate3d(0, 24px, 0) scale(.985);
     }
-
 
     .rawan-blog-card.is-visible {
-
-        transform:
-            translate3d(0, 0, 0)
-            scale(1);
-
+        transform: translate3d(0, 0, 0) scale(1);
     }
-
 
     .rawan-blog-card:hover {
-
-        transform:
-            translate3d(0, -4px, 0)
-            scale(1.005);
-
+        transform: translate3d(0, -4px, 0) scale(1.005);
     }
-
 
     .rawan-blog-card__image {
-
-        transform:
-            scale(1.025);
-
+        transform: scale(1.025);
     }
 
-
-    .rawan-blog-card:hover
-    .rawan-blog-card__image {
-
-        transform:
-            scale(1.035);
-
+    .rawan-blog-card:hover .rawan-blog-card__image {
+        transform: scale(1.035);
     }
-
 }
 
-
-/* =========================================================
-   TOUCH DEVICES
-========================================================= */
-
+/* Touch Devices Overrides */
 @media (hover: none) {
-
     .rawan-blog-card:hover {
-
-        transform:
-            translate3d(0, 0, 0)
-            scale(1);
-
-        box-shadow:
-            none;
-
+        transform: translate3d(0, 0, 0) scale(1);
+        box-shadow: none;
     }
 
-
-    .rawan-blog-card:hover
-    .rawan-blog-card__image {
-
-        transform:
-            scale(1);
-
+    .rawan-blog-card:hover .rawan-blog-card__image {
+        transform: scale(1);
     }
 
-
-    .rawan-blog-card:hover
-    .rawan-blog-card__shine {
-
-        animation:
-            none;
-
-        opacity:
-            0;
-
+    .rawan-blog-card:hover .rawan-blog-card__shine {
+        animation: none;
+        opacity: 0;
     }
-
 }
 
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
+/* Accessibility: Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-
     .rawan-blog-section *,
     .rawan-blog-section *::before,
     .rawan-blog-section *::after {
-
-        animation-duration:
-            .01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            .01ms !important;
-
-        scroll-behavior:
-            auto !important;
-
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
     }
-
 
     .rawan-blog-reveal,
     .rawan-blog-card {
-
-        opacity:
-            1 !important;
-
-        transform:
-            none !important;
-
-        filter:
-            none !important;
-
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
     }
-
 }

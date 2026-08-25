@@ -1,170 +1,169 @@
 {% if component.show_section %}
-<section
-    class="quality-story"
-    style="
-        --quality-bg: {{ component.background_color ?: '#FFF8FB' }};
-        --quality-card: {{ component.card_color ?: '#FFFFFF' }};
-        --quality-title: {{ component.title_color ?: '#231F20' }};
-        --quality-text: {{ component.text_color ?: '#6B7280' }};
-        --quality-accent: {{ component.accent_color ?: '#E62973' }};
-        --quality-border: {{ component.border_color ?: '#F3D5E1' }};
-        --quality-radius: {{ component.card_radius ?: 24 }}px;
-        --quality-padding: {{ component.section_padding ?: 90 }}px;
-    "
->
-    {% if component.show_glow %}
-        <div class="quality-story__glow quality-story__glow--top"></div>
-        <div class="quality-story__glow quality-story__glow--bottom"></div>
-        <div class="quality-story__glow quality-story__glow--center"></div>
-    {% endif %}
+    <section 
+        class="quality-story"
+        style="
+            --quality-bg: {{ component.background_color ?: '#FFF8FB' }};
+            --quality-card: {{ component.card_color ?: '#FFFFFF' }};
+            --quality-title: {{ component.title_color ?: '#231F20' }};
+            --quality-text: {{ component.text_color ?: '#6B7280' }};
+            --quality-accent: {{ component.accent_color ?: '#E62973' }};
+            --quality-border: {{ component.border_color ?: '#F3D5E1' }};
+            --quality-radius: {{ component.card_radius ?: 24 }}px;
+            --quality-padding: {{ component.section_padding ?: 90 }}px;
+        "
+    >
+        {% if component.show_glow %}
+            <div class="quality-story__glow quality-story__glow--top"></div>
+            <div class="quality-story__glow quality-story__glow--bottom"></div>
+            <div class="quality-story__glow quality-story__glow--center"></div>
+        {% endif %}
 
-    <div class="container">
-        <div class="quality-story__inner">
+        <div class="container">
+            <div class="quality-story__inner">
 
-            {# Quality header #}
-            <div class="quality-story__header">
-                {% if component.show_badge and component.badge %}
-                    <span class="quality-story__badge">
-                        <span class="quality-story__badge-icon">
-                            <i class="sicon-award"></i>
-                        </span>
-                        <span>{{ component.badge }}</span>
-                    </span>
-                {% endif %}
-
-                {% if component.title %}
-                    <h2 class="quality-story__title">
-                        {{ component.title }}
-                    </h2>
-                {% endif %}
-
-                {% if component.subtitle %}
-                    <p class="quality-story__subtitle">
-                        {{ component.subtitle }}
-                    </p>
-                {% endif %}
-            </div>
-
-            {# Quality steps #}
-            {% if component.quality_steps|length %}
-                <div class="quality-story__steps">
-                    {% for step in component.quality_steps %}
-                        <div
-                            class="quality-story__step{% if component.enable_animation %} is-animated{% endif %}"
-                            style="
-                                --step-index: {{ loop.index0 }};
-                                --step-icon-color: {{ step.icon_color ?: component.accent_color ?: '#E62973' }};
-                            "
-                        >
-                            <div class="quality-story__step-number">
-                                {{ step.number ?: '%02d'|format(loop.index) }}
-                            </div>
-
-                            <div class="quality-story__step-card">
-                                {% if step.icon %}
-                                    <div class="quality-story__step-icon">
-                                        <i class="{{ step.icon }}"></i>
-                                    </div>
-                                {% endif %}
-
-                                {% if step.title %}
-                                    <h3 class="quality-story__step-title">
-                                        {{ step.title }}
-                                    </h3>
-                                {% endif %}
-
-                                {% if step.description %}
-                                    <p class="quality-story__step-description">
-                                        {{ step.description }}
-                                    </p>
-                                {% endif %}
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-
-            {# Divider #}
-            {% if component.show_divider and component.show_stats %}
-                <div class="quality-story__divider">
-                    <span></span>
-                    <i class="sicon-star"></i>
-                    <span></span>
-                </div>
-            {% endif %}
-
-            {# Stats #}
-            {% if component.show_stats %}
-                <div class="quality-story__stats">
-                    <div class="quality-story__stats-header">
-                        {% if component.stats_badge %}
-                            <span class="quality-story__stats-badge">
-                                {{ component.stats_badge }}
+                {# Quality Header #}
+                <div class="quality-story__header">
+                    {% if component.show_badge and component.badge %}
+                        <span class="quality-story__badge">
+                            <span class="quality-story__badge-icon">
+                                <i class="sicon-award"></i>
                             </span>
-                        {% endif %}
+                            <span>{{ component.badge }}</span>
+                        </span>
+                    {% endif %}
 
-                        {% if component.stats_title %}
-                            <h3 class="quality-story__stats-title">
-                                {{ component.stats_title }}
-                            </h3>
-                        {% endif %}
+                    {% if component.title %}
+                        <h2 class="quality-story__title">
+                            {{ component.title }}
+                        </h2>
+                    {% endif %}
 
-                        {% if component.stats_subtitle %}
-                            <p class="quality-story__stats-subtitle">
-                                {{ component.stats_subtitle }}
-                            </p>
-                        {% endif %}
-                    </div>
-
-                    {% if component.stats|length %}
-                        <div class="quality-story__stats-grid quality-story__stats-grid--{{ component.columns ?: '4' }}">
-                            {% for stat in component.stats %}
-                                <div
-                                    class="quality-story__stat{% if component.enable_animation %} is-animated{% endif %}"
-                                    style="
-                                        --stat-index: {{ loop.index0 }};
-                                        --stat-icon-color: {{ stat.icon_color ?: component.accent_color ?: '#E62973' }};
-                                    "
-                                >
-                                    <div class="quality-story__stat-card">
-                                        {% if stat.icon %}
-                                            <div class="quality-story__stat-icon">
-                                                <i class="{{ stat.icon }}"></i>
-                                            </div>
-                                        {% endif %}
-
-                                        {% if stat.value %}
-                                            <div
-                                                class="quality-story__stat-value{% if component.enable_counter and stat.enable_counter %} js-quality-counter{% endif %}"
-                                                {% if component.enable_counter and stat.enable_counter %}
-                                                    data-counter-value="{{ stat.value }}"
-                                                {% endif %}
-                                            >
-                                                {{ stat.value }}
-                                            </div>
-                                        {% endif %}
-
-                                        {% if stat.label %}
-                                            <div class="quality-story__stat-label">
-                                                {{ stat.label }}
-                                            </div>
-                                        {% endif %}
-
-                                        {% if stat.description %}
-                                            <div class="quality-story__stat-description">
-                                                {{ stat.description }}
-                                            </div>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
+                    {% if component.subtitle %}
+                        <p class="quality-story__subtitle">
+                            {{ component.subtitle }}
+                        </p>
                     {% endif %}
                 </div>
-            {% endif %}
 
+                {# Quality Steps #}
+                {% if component.quality_steps|length %}
+                    <div class="quality-story__steps">
+                        {% for step in component.quality_steps %}
+                            <div 
+                                class="quality-story__step{% if component.enable_animation %} is-animated{% endif %}"
+                                style="
+                                    --step-index: {{ loop.index0 }};
+                                    --step-icon-color: {{ step.icon_color ?: component.accent_color ?: '#E62973' }};
+                                "
+                            >
+                                <div class="quality-story__step-number">
+                                    {{ step.number ?: '%02d'|format(loop.index) }}
+                                </div>
+
+                                <div class="quality-story__step-card">
+                                    {% if step.icon %}
+                                        <div class="quality-story__step-icon">
+                                            <i class="{{ step.icon }}"></i>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if step.title %}
+                                        <h3 class="quality-story__step-title">
+                                            {{ step.title }}
+                                        </h3>
+                                    {% endif %}
+
+                                    {% if step.description %}
+                                        <p class="quality-story__step-description">
+                                            {{ step.description }}
+                                        </p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                {# Divider #}
+                {% if component.show_divider and component.show_stats %}
+                    <div class="quality-story__divider">
+                        <span></span>
+                        <i class="sicon-star"></i>
+                        <span></span>
+                    </div>
+                {% endif %}
+
+                {# Stats Section #}
+                {% if component.show_stats %}
+                    <div class="quality-story__stats">
+                        <div class="quality-story__stats-header">
+                            {% if component.stats_badge %}
+                                <span class="quality-story__stats-badge">
+                                    {{ component.stats_badge }}
+                                </span>
+                            {% endif %}
+
+                            {% if component.stats_title %}
+                                <h3 class="quality-story__stats-title">
+                                    {{ component.stats_title }}
+                                </h3>
+                            {% endif %}
+
+                            {% if component.stats_subtitle %}
+                                <p class="quality-story__stats-subtitle">
+                                    {{ component.stats_subtitle }}
+                                </p>
+                            {% endif %}
+                        </div>
+
+                        {% if component.stats|length %}
+                            <div class="quality-story__stats-grid quality-story__stats-grid--{{ component.columns ?: '4' }}">
+                                {% for stat in component.stats %}
+                                    <div 
+                                        class="quality-story__stat{% if component.enable_animation %} is-animated{% endif %}"
+                                        style="
+                                            --stat-index: {{ loop.index0 }};
+                                            --stat-icon-color: {{ stat.icon_color ?: component.accent_color ?: '#E62973' }};
+                                        "
+                                    >
+                                        <div class="quality-story__stat-card">
+                                            {% if stat.icon %}
+                                                <div class="quality-story__stat-icon">
+                                                    <i class="{{ stat.icon }}"></i>
+                                                </div>
+                                            {% endif %}
+
+                                            {% if stat.value %}
+                                                <div 
+                                                    class="quality-story__stat-value{% if component.enable_counter and stat.enable_counter %} js-quality-counter{% endif %}"
+                                                    {% if component.enable_counter and stat.enable_counter %}
+                                                        data-counter-value="{{ stat.value }}"
+                                                    {% endif %}
+                                                >
+                                                    {{ stat.value }}
+                                                </div>
+                                            {% endif %}
+
+                                            {% if stat.label %}
+                                                <div class="quality-story__stat-label">
+                                                    {{ stat.label }}
+                                                </div>
+                                            {% endif %}
+
+                                            {% if stat.description %}
+                                                <div class="quality-story__stat-description">
+                                                    {{ stat.description }}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endif %}
-

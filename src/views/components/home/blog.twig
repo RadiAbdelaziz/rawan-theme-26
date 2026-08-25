@@ -1,60 +1,36 @@
 {% if component.show_section %}
 <section
     class="rawan-blog-section relative overflow-hidden py-20 lg:py-24"
-    style="background: {{ component.background_color ?: '#FFF8FB' }};"
+    style="background: {{ component.background_color | default('#FFF8FB') }};"
     data-rawan-motion-section
 >
-    {# =========================================================
-       BACKGROUND MOTION
-    ========================================================= #}
-
+    {# Background Motion #}
     <div
         class="rawan-blog-bg rawan-blog-bg--gradient absolute inset-0 pointer-events-none"
-        style="
-            background:
-                radial-gradient(
-                    circle at top right,
-                    {{ component.accent_color ?: '#E62973' }}1F,
-                    transparent 40%
-                );
-        "
+        style="background: radial-gradient(circle at top right, {{ component.accent_color | default('#E62973') }}1F, transparent 40%);"
     ></div>
-
     <div
         class="rawan-blog-orb rawan-blog-orb--one absolute -top-32 -right-32 w-[420px] h-[420px] rounded-full blur-3xl pointer-events-none"
-        style="background: {{ component.accent_color ?: '#E62973' }}1A;"
+        style="background: {{ component.accent_color | default('#E62973') }}1A;"
     ></div>
-
     <div
         class="rawan-blog-orb rawan-blog-orb--two absolute bottom-0 left-0 w-[350px] h-[350px] rounded-full blur-3xl pointer-events-none"
         style="background: #f9a8d4;"
     ></div>
-
     <div
         class="rawan-blog-orb rawan-blog-orb--three absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-3xl pointer-events-none"
-        style="background: {{ component.accent_color ?: '#E62973' }}1A;"
+        style="background: {{ component.accent_color | default('#E62973') }}1A;"
     ></div>
 
-
     <div class="container relative z-10">
-
-        {# =====================================================
-           HEADER
-        ===================================================== #}
-
+        {# Header #}
         <div class="flex flex-col lg:flex-row justify-between items-end gap-8 mb-14 text-right">
-
             <div class="rawan-blog-heading">
-
                 {% if component.badge %}
-                    <div
-                        class="rawan-blog-reveal rawan-blog-reveal--badge"
-                        data-rawan-reveal
-                        data-rawan-delay="0"
-                    >
+                    <div class="rawan-blog-reveal rawan-blog-reveal--badge" data-rawan-reveal data-rawan-delay="0">
                         <span
                             class="rawan-blog-badge inline-flex flex-row-reverse items-center gap-2 px-5 py-2 rounded-full bg-white/70 backdrop-blur-xl border border-pink-200 text-xs font-bold tracking-[.3em]"
-                            style="color: {{ component.badge_color ?: component.accent_color ?: '#E62973' }};"
+                            style="color: {{ component.badge_color | default(component.accent_color | default('#E62973')) }};"
                         >
                             <i class="rawan-blog-badge__icon fa-solid fa-feather-pointed"></i>
                             {{ component.badge }}
@@ -62,477 +38,227 @@
                     </div>
                 {% endif %}
 
-
                 {% if component.title %}
-                    <div
-                        class="rawan-blog-reveal rawan-blog-reveal--title"
-                        data-rawan-reveal
-                        data-rawan-delay="90"
-                    >
-                        <h2
-                            class="text-4xl lg:text-5xl font-black mt-6 leading-tight"
-                            style="color: {{ component.title_color ?: '#4A0F27' }};"
-                        >
+                    <div class="rawan-blog-reveal rawan-blog-reveal--title" data-rawan-reveal data-rawan-delay="90">
+                        <h2 class="text-4xl lg:text-5xl font-black mt-6 leading-tight" style="color: {{ component.title_color | default('#4A0F27') }};">
                             {{ component.title }}
-
                             {% if component.subtitle %}
-                                <span
-                                    class="rawan-blog-subtitle block mt-2 text-2xl font-medium"
-                                    style="color: {{ component.subtitle_color ?: '#777777' }};"
-                                >
+                                <span class="rawan-blog-subtitle block mt-2 text-2xl font-medium" style="color: {{ component.subtitle_color | default('#777777') }};">
                                     {{ component.subtitle }}
                                 </span>
                             {% endif %}
                         </h2>
                     </div>
                 {% endif %}
-
             </div>
 
-
-            {# =================================================
-               ALL ARTICLES
-            ================================================= #}
-
             {% if component.show_all_button %}
-                <div
-                    class="rawan-blog-reveal rawan-blog-reveal--button"
-                    data-rawan-reveal
-                    data-rawan-delay="180"
-                >
+                <div class="rawan-blog-reveal rawan-blog-reveal--button" data-rawan-reveal data-rawan-delay="180">
                     <a
-                        href="/blog"
+                        href="{{ link('blog') }}"
                         class="rawan-blog-all-link group flex flex-row-reverse items-center gap-3 font-bold"
-                        style="color: {{ component.accent_color ?: '#E62973' }};"
+                        style="color: {{ component.accent_color | default('#E62973') }};"
                     >
                         <span class="rawan-blog-all-link__text">
-                            {{ component.all_button_text ?: 'عرض جميع المقالات' }}
+                            {{ component.all_button_text | default('عرض جميع المقالات'|trans) }}
                         </span>
-
                         <span class="rawan-blog-all-link__arrow-wrap">
                             <i class="rawan-blog-all-link__arrow fa-solid fa-arrow-left text-sm"></i>
                         </span>
                     </a>
                 </div>
             {% endif %}
-
         </div>
 
-
-        {# =====================================================
-           ARTICLES
-        ===================================================== #}
-
+        {# Articles #}
         {% if component.articles|length %}
-
             <div
                 class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-                {% if component.show_animation %}
-                    data-blog-animation="true"
-                {% endif %}
+                {% if component.show_animation %}data-blog-animation="true"{% endif %}
                 data-rawan-cards
             >
-
-                {% for article in component.articles|slice(0, component.articles_count ?: 3) %}
-
+                {% for article in component.articles|slice(0, component.articles_count | default(3)) %}
                     <article
                         class="rawan-blog-card group overflow-hidden rounded-[32px] bg-white/70 backdrop-blur-2xl border border-pink-200"
                         data-rawan-card
-                        style="
-                            --rawan-card-delay: {{ (loop.index0 * 90) + 240 }}ms;
-                            --rawan-accent: {{ component.accent_color ?: '#E62973' }};
-                        "
+                        style="--rawan-card-delay: {{ (loop.index0 * 90) + 240 }}ms; --rawan-accent: {{ component.accent_color | default('#E62973') }};"
                     >
-
-                        {# =================================================
-                           IMAGE
-                        ================================================= #}
-
-                        <a
-                            href="{{ article.url }}"
-                            class="rawan-blog-card__media relative block overflow-hidden"
-                        >
-
+                        {# Image #}
+                        <a href="{{ article.url }}" class="rawan-blog-card__media relative block overflow-hidden">
                             {% if article.has_image and article.image %}
-
                                 <img
                                     src="{{ article.image.url }}"
-                                    alt="{{ article.image.alt ?: article.title }}"
+                                    alt="{{ article.image.alt | default(article.title) }}"
                                     loading="lazy"
                                     class="rawan-blog-card__image aspect-[16/10] w-full object-cover"
                                 >
-
                             {% else %}
-
                                 <img
                                     src="{{ 'images/placeholder.png'|asset }}"
                                     alt="{{ article.title }}"
                                     loading="lazy"
                                     class="rawan-blog-card__image aspect-[16/10] w-full object-cover"
                                 >
-
                             {% endif %}
-
-
-                            {# Image overlay #}
-
                             <div class="rawan-blog-card__overlay absolute inset-0 pointer-events-none"></div>
-
-
-                            {# Image shine #}
-
                             <div class="rawan-blog-card__shine absolute inset-y-0 -left-[120%] w-[70%] pointer-events-none"></div>
 
-
-                            {# Category #}
-
                             {% if component.show_category and article.tags|length %}
-
                                 <span
                                     class="rawan-blog-card__category absolute top-5 right-5 px-4 py-2 rounded-full text-white text-xs font-black"
-                                    style="background: {{ component.accent_color ?: '#E62973' }};"
+                                    style="background: {{ component.accent_color | default('#E62973') }};"
                                 >
                                     {{ article.tags[0].name }}
                                 </span>
-
                             {% endif %}
-
                         </a>
 
-
-                        {# =================================================
-                           CONTENT
-                        ================================================= #}
-
+                        {# Content #}
                         <div class="p-7">
-
                             {# Meta #}
-
                             <div
                                 class="rawan-blog-card__meta flex flex-row-reverse justify-end items-center gap-6 text-xs mb-5"
-                                style="color: {{ component.accent_color ?: '#E62973' }};"
+                                style="color: {{ component.accent_color | default('#E62973') }};"
                             >
-
                                 {% if component.show_date %}
-
                                     <span class="flex flex-row-reverse items-center gap-2">
                                         <i class="fa-regular fa-calendar"></i>
                                         {{ article.created_at|date }}
                                     </span>
-
                                 {% endif %}
 
-
                                 {% if component.show_views and article.views is defined %}
-
                                     <span class="flex flex-row-reverse items-center gap-2">
                                         <i class="fa-regular fa-eye"></i>
                                         {{ article.views }}
                                     </span>
-
                                 {% endif %}
-
                             </div>
 
-
                             {# Title #}
-
                             {% if article.title %}
-
                                 <h3 class="rawan-blog-card__title text-2xl font-black mb-4">
-
-                                    <a
-                                        href="{{ article.url }}"
-                                        style="color: #111111;"
-                                    >
+                                    <a href="{{ article.url }}" style="color: #111111;">
                                         {{ article.title }}
                                     </a>
-
                                 </h3>
-
                             {% endif %}
 
-
                             {# Summary #}
-
                             {% if article.summary %}
-
                                 <p class="rawan-blog-card__summary text-gray-600 leading-8">
                                     {{ article.summary }}
                                 </p>
-
                             {% endif %}
 
-
                             {# Footer #}
-
                             <div class="rawan-blog-card__footer mt-8 pt-6 border-t border-pink-100 flex flex-row-reverse justify-between items-center">
-
-                                {# Author #}
-
-                                {% if component.show_author and article.author and article.author.name %}
-
-                                    <span
-                                        class="rawan-blog-card__author text-sm"
-                                        style="color: {{ component.accent_color ?: '#E62973' }};"
-                                    >
-                                        {{ article.author.name }}
-                                    </span>
-
-                                {% else %}
-
-                                    <span
-                                        class="rawan-blog-card__author text-sm"
-                                        style="color: {{ component.accent_color ?: '#E62973' }};"
-                                    >
-                                        فريق التحرير
-                                    </span>
-
-                                {% endif %}
-
-
-                                {# Read more #}
+                                <span
+                                    class="rawan-blog-card__author text-sm"
+                                    style="color: {{ component.accent_color | default('#E62973') }};"
+                                >
+                                    {{ (article.author and article.author.name) ? article.author.name : ('فريق التحرير'|trans) }}
+                                </span>
 
                                 {% if component.show_read_more %}
-
                                     <a
                                         href="{{ article.url }}"
                                         class="rawan-blog-card__read group/link flex flex-row-reverse items-center gap-2 font-bold"
-                                        style="color: {{ component.accent_color ?: '#E62973' }};"
+                                        style="color: {{ component.accent_color | default('#E62973') }};"
                                     >
-
-                                        <span>
-                                            {{ component.read_more_text ?: 'قراءة المقال' }}
-                                        </span>
-
+                                        <span>{{ component.read_more_text | default('قراءة المقال'|trans) }}</span>
                                         <i class="rawan-blog-card__read-arrow fa-solid fa-arrow-left text-xs"></i>
-
                                     </a>
-
                                 {% endif %}
-
                             </div>
-
                         </div>
-
                     </article>
-
                 {% endfor %}
-
             </div>
-
-
         {% else %}
-
-            {# =================================================
-               NO ARTICLES
-            ================================================= #}
-
-            <div
-                class="rawan-blog-empty rawan-blog-reveal text-center py-16"
-                data-rawan-reveal
-            >
-
+            {# Empty State #}
+            <div class="rawan-blog-empty rawan-blog-reveal text-center py-16" data-rawan-reveal>
                 <div class="rawan-blog-empty__icon inline-flex items-center justify-center w-16 h-16 rounded-full bg-pink-100 text-[#E62973] mb-5">
                     <i class="fa-solid fa-book-open text-xl"></i>
                 </div>
-
                 <p class="text-gray-500">
-                    لا توجد مقالات لعرضها حالياً.
+                    {{ 'لا توجد مقالات لعرضها حالياً.'|trans }}
                 </p>
-
             </div>
-
         {% endif %}
-
     </div>
 
-
-    {# =========================================================
-       MOTION SCRIPT
-       Scroll reveal without external libraries
-    ========================================================= #}
-
+    {# Motion Script #}
     {% if component.show_animation %}
-
     <script>
     (function () {
-
         const initRawanBlogMotion = () => {
-
             const sections = document.querySelectorAll('[data-rawan-motion-section]');
-
             if (!sections.length) return;
 
-
-            /* =====================================================
-               REDUCED MOTION
-            ===================================================== */
-
-            const reduceMotion = window.matchMedia(
-                '(prefers-reduced-motion: reduce)'
-            ).matches;
-
-
-            /* =====================================================
-               INITIAL STATE
-            ===================================================== */
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
             sections.forEach(section => {
-
                 const reveals = section.querySelectorAll('[data-rawan-reveal]');
                 const cards = section.querySelectorAll('[data-rawan-card]');
 
-
                 if (reduceMotion) {
-
-                    reveals.forEach(el => {
-                        el.classList.add('is-visible');
-                    });
-
-                    cards.forEach(card => {
-                        card.classList.add('is-visible');
-                    });
-
+                    reveals.forEach(el => el.classList.add('is-visible'));
+                    cards.forEach(card => card.classList.add('is-visible'));
                     return;
                 }
 
-
                 reveals.forEach(el => {
-
                     const delay = el.dataset.rawanDelay || 0;
-
-                    el.style.setProperty(
-                        '--rawan-reveal-delay',
-                        `${delay}ms`
-                    );
-
+                    el.style.setProperty('--rawan-reveal-delay', `${delay}ms`);
                 });
-
 
                 cards.forEach(card => {
-
-                    const delay = card.style.getPropertyValue(
-                        '--rawan-card-delay'
-                    );
-
+                    const delay = card.style.getPropertyValue('--rawan-card-delay');
                     if (delay) {
-                        card.style.setProperty(
-                            '--rawan-card-delay',
-                            delay
-                        );
+                        card.style.setProperty('--rawan-card-delay', delay);
                     }
-
                 });
-
             });
 
-
-            /* =====================================================
-               INTERSECTION OBSERVER
-            ===================================================== */
-
             if (reduceMotion || !('IntersectionObserver' in window)) {
-
                 sections.forEach(section => {
-
-                    section.querySelectorAll('[data-rawan-reveal]')
-                        .forEach(el => el.classList.add('is-visible'));
-
-                    section.querySelectorAll('[data-rawan-card]')
-                        .forEach(el => el.classList.add('is-visible'));
-
+                    section.querySelectorAll('[data-rawan-reveal]').forEach(el => el.classList.add('is-visible'));
+                    section.querySelectorAll('[data-rawan-card]').forEach(el => el.classList.add('is-visible'));
                 });
-
                 return;
             }
 
-
             const observer = new IntersectionObserver(
                 (entries, observerInstance) => {
-
                     entries.forEach(entry => {
-
                         if (!entry.isIntersecting) return;
-
                         const section = entry.target;
 
+                        section.querySelectorAll('[data-rawan-reveal]').forEach(el => {
+                            requestAnimationFrame(() => el.classList.add('is-visible'));
+                        });
 
-                        /* -----------------------------------------
-                           HEADER REVEALS
-                        ----------------------------------------- */
-
-                        section
-                            .querySelectorAll('[data-rawan-reveal]')
-                            .forEach(el => {
-
-                                requestAnimationFrame(() => {
-                                    el.classList.add('is-visible');
-                                });
-
-                            });
-
-
-                        /* -----------------------------------------
-                           CARDS
-                        ----------------------------------------- */
-
-                        section
-                            .querySelectorAll('[data-rawan-card]')
-                            .forEach(card => {
-
-                                requestAnimationFrame(() => {
-                                    card.classList.add('is-visible');
-                                });
-
-                            });
-
-
-                        /* -----------------------------------------
-                           OBSERVE ONLY ONCE
-                        ----------------------------------------- */
+                        section.querySelectorAll('[data-rawan-card]').forEach(card => {
+                            requestAnimationFrame(() => card.classList.add('is-visible'));
+                        });
 
                         observerInstance.unobserve(section);
-
                     });
-
                 },
-                {
-                    threshold: 0.12,
-                    rootMargin: '0px 0px -8% 0px'
-                }
+                { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
             );
 
-
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-
+            sections.forEach(section => observer.observe(section));
         };
 
-
-        /* =========================================================
-           DOM READY
-        ========================================================= */
-
         if (document.readyState === 'loading') {
-
-            document.addEventListener(
-                'DOMContentLoaded',
-                initRawanBlogMotion,
-                { once: true }
-            );
-
+            document.addEventListener('DOMContentLoaded', initRawanBlogMotion, { once: true });
         } else {
-
             initRawanBlogMotion();
-
         }
-
     })();
     </script>
-
     {% endif %}
-
 </section>
 {% endif %}

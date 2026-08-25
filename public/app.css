@@ -910,12 +910,6 @@ input:where([type='file']):focus{
 .relative{
     position: relative;
 }
-.\!sticky{
-    position: sticky !important;
-}
-.sticky{
-    position: sticky;
-}
 .inset-0{
     top: 0px;
     right: 0px;
@@ -1286,9 +1280,6 @@ input:where([type='file']):focus{
 }
 .flex-none{
     flex: none;
-}
-.flex-shrink{
-    flex-shrink: 1;
 }
 .shrink-0{
     flex-shrink: 0;
@@ -5470,15 +5461,16 @@ salla-menu[topnav]:not(.hydrated)::after {
   background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.14) 50%, rgba(255, 255, 255, 0) 100%);
 }
 /* =========================================================
-   LUXURY FOOTER
-   RAWAN PREMIUM THEME
-========================================================= */
+   LUXURY FOOTER - RAWAN PREMIUM THEME
+   ========================================================= */
 .luxury-footer {
   --footer-bg: #171116;
   --footer-accent: #E62973;
   --footer-card: #211A20;
   --footer-text: #FFFFFF;
   --footer-muted: #B8AEB4;
+  --footer-border: rgba(255, 255, 255, 0.08);
+  --footer-title: #FFFFFF;
   --footer-padding: 80px;
   position: relative;
   display: block;
@@ -5494,7 +5486,7 @@ salla-menu[topnav]:not(.hydrated)::after {
 }
 /* =========================================================
    TOP LINE
-========================================================= */
+   ========================================================= */
 .luxury-footer__top-line {
   position: absolute;
   top: 0;
@@ -5505,8 +5497,8 @@ salla-menu[topnav]:not(.hydrated)::after {
   opacity: 0.9;
 }
 /* =========================================================
-   BACKGROUND
-========================================================= */
+   BACKGROUND & ORBS
+   ========================================================= */
 .luxury-footer__background {
   position: absolute;
   top: 0;
@@ -5517,9 +5509,6 @@ salla-menu[topnav]:not(.hydrated)::after {
   pointer-events: none;
   overflow: hidden;
 }
-/* =========================================================
-   GLOW ORBS
-========================================================= */
 .luxury-footer__orb {
   position: absolute;
   display: block;
@@ -5541,9 +5530,6 @@ salla-menu[topnav]:not(.hydrated)::after {
   bottom: -250px;
   background: #F472B6;
 }
-/* =========================================================
-   GRID PATTERN
-========================================================= */
 .luxury-footer__grid {
   position: absolute;
   top: 0;
@@ -5556,17 +5542,14 @@ salla-menu[topnav]:not(.hydrated)::after {
   background-size: 30px 30px;
 }
 /* =========================================================
-   CONTAINER
-========================================================= */
+   CONTAINER & INTRO
+   ========================================================= */
 .luxury-footer__container {
   position: relative;
   z-index: 2;
   padding-top: var(--footer-padding);
   padding-bottom: 25px;
 }
-/* =========================================================
-   INTRO
-========================================================= */
 .luxury-footer__intro {
   max-width: 760px;
   margin: 0 auto 55px;
@@ -5574,7 +5557,7 @@ salla-menu[topnav]:not(.hydrated)::after {
 }
 /* =========================================================
    EYEBROW
-========================================================= */
+   ========================================================= */
 .luxury-footer__eyebrow {
   display: inline-flex;
   align-items: center;
@@ -5597,8 +5580,8 @@ salla-menu[topnav]:not(.hydrated)::after {
   background: linear-gradient(270deg, transparent, var(--footer-accent));
 }
 /* =========================================================
-   TITLE
-========================================================= */
+   TITLE & DESCRIPTION
+   ========================================================= */
 .luxury-footer__title {
   margin: 0;
   color: var(--footer-text);
@@ -5607,9 +5590,6 @@ salla-menu[topnav]:not(.hydrated)::after {
   line-height: 1.35;
   letter-spacing: -0.7px;
 }
-/* =========================================================
-   DESCRIPTION
-========================================================= */
 .luxury-footer__description {
   max-width: 600px;
   margin: 14px auto 0;
@@ -5618,58 +5598,52 @@ salla-menu[topnav]:not(.hydrated)::after {
   line-height: 2;
 }
 /* =========================================================
-   MAIN
-========================================================= */
+   MAIN GRID
+   ========================================================= */
 .luxury-footer__main {
   display: grid;
   grid-template-columns: 1.35fr 1fr 1.2fr 1fr;
   grid-gap: 45px;
   gap: 45px;
   padding: 42px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--footer-border);
+  border-bottom: 1px solid var(--footer-border);
 }
 /* =========================================================
-   BRAND
-========================================================= */
+   BRAND COLUMN & LOGO
+   ========================================================= */
 .luxury-footer__brand-column {
   min-width: 0;
 }
-.luxury-footer__brand-mark {
+.luxury-footer__logo-link {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
 }
-.luxury-footer__brand-symbol {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 15px;
-  background: linear-gradient(135deg, var(--footer-accent), #F472B6);
-  color: #FFFFFF;
-  font-size: 18px;
-  font-weight: 900;
-  box-shadow: 0 10px 30px rgba(230, 41, 115, 0.28);
+.luxury-footer__logo {
+  display: block;
+  width: 160px;
+  max-width: 100%;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
 }
-.luxury-footer__brand-name {
-  color: #FFFFFF;
-  font-size: 21px;
-  font-weight: 900;
-  letter-spacing: 0.08em;
+.luxury-footer__logo-link:hover .luxury-footer__logo {
+  transform: translateY(-3px) scale(1.03);
+  filter: drop-shadow(0 8px 24px rgba(230, 41, 115, 0.28));
 }
 .luxury-footer__brand-text {
   max-width: 320px;
-  margin: 0 0 22px;
+  margin: 18px 0 22px;
   color: var(--footer-muted);
   font-size: 12px;
   line-height: 2;
 }
 /* =========================================================
-   SOCIAL
-========================================================= */
+   SOCIAL LINKS
+   ========================================================= */
 .luxury-footer__social {
   display: flex;
   flex-wrap: wrap;
@@ -5697,8 +5671,8 @@ salla-menu[topnav]:not(.hydrated)::after {
   box-shadow: 0 10px 25px rgba(230, 41, 115, 0.18);
 }
 /* =========================================================
-   COLUMNS
-========================================================= */
+   COLUMNS & TITLES
+   ========================================================= */
 .luxury-footer__column {
   min-width: 0;
 }
@@ -5723,7 +5697,7 @@ salla-menu[topnav]:not(.hydrated)::after {
 }
 /* =========================================================
    LINKS
-========================================================= */
+   ========================================================= */
 .luxury-footer__links {
   display: flex;
   flex-direction: column;
@@ -5758,9 +5732,6 @@ salla-menu[topnav]:not(.hydrated)::after {
   width: 12px;
   margin-left: 7px;
 }
-/* =========================================================
-   DESCRIPTION
-========================================================= */
 .luxury-footer__column-description {
   margin: -5px 0 17px;
   color: var(--footer-muted);
@@ -5769,7 +5740,7 @@ salla-menu[topnav]:not(.hydrated)::after {
 }
 /* =========================================================
    NEWSLETTER
-========================================================= */
+   ========================================================= */
 .luxury-footer__newsletter-box {
   display: flex;
   align-items: stretch;
@@ -5818,32 +5789,75 @@ salla-menu[topnav]:not(.hydrated)::after {
   background: #F13D86;
 }
 /* =========================================================
-   PAYMENTS
-========================================================= */
+   PAYMENT METHODS
+   ========================================================= */
 .luxury-footer__payments {
+  margin-top: 34px;
+}
+.luxury-footer__payments-title {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--footer-title);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.6;
+}
+.luxury-footer__payment-list {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 9px;
 }
 .luxury-footer__payment {
-  display: inline-flex;
+  position: relative;
+  display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 58px;
-  height: 32px;
-  padding: 0 9px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.045);
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
+  width: 62px;
+  height: 40px;
+  padding: 6px 8px;
+  overflow: hidden;
+  border: 1px solid var(--footer-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
+}
+.luxury-footer__payment::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), transparent 55%);
+  pointer-events: none;
+}
+.luxury-footer__payment img {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 25px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  image-rendering: auto;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.luxury-footer__payment:hover {
+  transform: translateY(-4px);
+  border-color: var(--footer-accent);
+  background: #FFFFFF;
+  box-shadow: 0 10px 28px rgba(230, 41, 115, 0.18);
+}
+.luxury-footer__payment:hover img {
+  transform: scale(1.08);
 }
 /* =========================================================
-   BOTTOM
-========================================================= */
+   BOTTOM SECTION
+   ========================================================= */
 .luxury-footer__bottom {
   display: flex;
   align-items: center;
@@ -5853,9 +5867,6 @@ salla-menu[topnav]:not(.hydrated)::after {
   color: var(--footer-muted);
   font-size: 10px;
 }
-/* =========================================================
-   COPYRIGHT
-========================================================= */
 .luxury-footer__copyright {
   display: flex;
   align-items: center;
@@ -5866,9 +5877,6 @@ salla-menu[topnav]:not(.hydrated)::after {
   color: #FFFFFF;
   font-weight: 800;
 }
-/* =========================================================
-   LEGAL
-========================================================= */
 .luxury-footer__legal {
   display: flex;
   align-items: center;
@@ -5885,9 +5893,6 @@ salla-menu[topnav]:not(.hydrated)::after {
 .luxury-footer__legal a:hover {
   color: var(--footer-accent);
 }
-/* =========================================================
-   SIGNATURE
-========================================================= */
 .luxury-footer__signature {
   color: rgba(184, 174, 180, 0.65);
   white-space: nowrap;
@@ -5903,6 +5908,9 @@ salla-menu[topnav]:not(.hydrated)::after {
   font-weight: 900;
   letter-spacing: 0.05em;
 }
+/* =========================================================
+   KEYFRAME ANIMATIONS
+   ========================================================= */
 @keyframes luxuryFooterHeart {
   0%, 100% {
     transform: scale(1);
@@ -5911,9 +5919,6 @@ salla-menu[topnav]:not(.hydrated)::after {
     transform: scale(1.18);
   }
 }
-/* =========================================================
-   ENTRANCE ANIMATION
-========================================================= */
 .luxury-footer--animated .luxury-footer__intro,
 .luxury-footer--animated .luxury-footer__main,
 .luxury-footer--animated .luxury-footer__bottom {
@@ -5935,9 +5940,6 @@ salla-menu[topnav]:not(.hydrated)::after {
     transform: translateY(0);
   }
 }
-/* =========================================================
-   GLOW ANIMATION
-========================================================= */
 .luxury-footer--glow .luxury-footer__orb--one {
   animation: luxuryFooterGlowOne 9s ease-in-out infinite alternate;
 }
@@ -5961,21 +5963,17 @@ salla-menu[topnav]:not(.hydrated)::after {
   }
 }
 /* =========================================================
-   TABLET
-========================================================= */
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   ========================================================= */
 @media (max-width: 1050px) {
   .luxury-footer__main {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 35px;
   }
 }
-/* =========================================================
-   MOBILE
-========================================================= */
 @media (max-width: 650px) {
   .luxury-footer {
-    --footer-padding:
-        55px;
+    --footer-padding: 55px;
   }
   .luxury-footer__container {
     padding-left: 17px;
@@ -6023,162 +6021,10 @@ salla-menu[topnav]:not(.hydrated)::after {
     filter: blur(100px);
   }
 }
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-@media (max-width: 400px) {
-  .luxury-footer {
-    --footer-padding:
-        45px;
-  }
-  .luxury-footer__title {
-    font-size: 24px;
-  }
-  .luxury-footer__eyebrow {
-    font-size: 8px;
-  }
-  .luxury-footer__eyebrow-line {
-    width: 25px;
-  }
-  .luxury-footer__brand-name {
-    font-size: 18px;
-  }
-  .luxury-footer__brand-symbol {
-    width: 43px;
-    height: 43px;
-    border-radius: 13px;
-  }
-}
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
-.luxury-footer a:focus-visible,
-.luxury-footer button:focus-visible,
-.luxury-footer input:focus-visible {
-  outline: 2px solid var(--footer-accent);
-  outline-offset: 3px;
-}
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-@media (prefers-reduced-motion: reduce) {
-  .luxury-footer *,
-  .luxury-footer *::before,
-  .luxury-footer *::after {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-.luxury-footer__logo-link {
-  display: inline-flex;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-.luxury-footer__logo {
-  display: block;
-  width: 160px;
-  max-width: 100%;
-  height: auto;
-  -o-object-fit: contain;
-     object-fit: contain;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
-}
-.luxury-footer__logo-link:hover .luxury-footer__logo {
-  transform: translateY(-3px) scale(1.03);
-  filter: drop-shadow(0 8px 24px rgba(230, 41, 115, 0.28));
-}
 @media (max-width: 600px) {
   .luxury-footer__logo {
     width: 135px;
   }
-}
-/* =========================================================
-   PAYMENT METHODS
-========================================================= */
-.luxury-footer__payments {
-  margin-top: 34px;
-}
-.luxury-footer__payments-title {
-  display: block;
-  margin-bottom: 14px;
-  color: var(--footer-title);
-  font-size: 12px;
-  font-weight: 800;
-  line-height: 1.6;
-}
-/* =========================================================
-   PAYMENT LIST
-========================================================= */
-.luxury-footer__payment-list {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 9px;
-}
-/* =========================================================
-   PAYMENT CARD
-========================================================= */
-.luxury-footer__payment {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 62px;
-  height: 40px;
-  padding: 6px 8px;
-  overflow: hidden;
-  border: 1px solid var(--footer-border);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08);
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease, background 0.35s ease;
-}
-/* =========================================================
-   LIGHT EFFECT
-========================================================= */
-.luxury-footer__payment::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), transparent 55%);
-  pointer-events: none;
-}
-/* =========================================================
-   PAYMENT IMAGE
-========================================================= */
-.luxury-footer__payment img {
-  position: relative;
-  z-index: 2;
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 25px;
-  -o-object-fit: contain;
-     object-fit: contain;
-  image-rendering: auto;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-/* =========================================================
-   HOVER
-========================================================= */
-.luxury-footer__payment:hover {
-  transform: translateY(-4px);
-  border-color: var(--footer-accent);
-  background: #FFFFFF;
-  box-shadow: 0 10px 28px rgba(230, 41, 115, 0.18);
-}
-.luxury-footer__payment:hover img {
-  transform: scale(1.08);
-}
-/* =========================================================
-   MOBILE
-========================================================= */
-@media (max-width: 600px) {
   .luxury-footer__payments {
     margin-top: 28px;
   }
@@ -6199,9 +6045,28 @@ salla-menu[topnav]:not(.hydrated)::after {
     max-height: 22px;
   }
 }
-/* =========================================================
-   VERY SMALL SCREENS
-========================================================= */
+@media (max-width: 400px) {
+  .luxury-footer {
+    --footer-padding: 45px;
+  }
+  .luxury-footer__title {
+    font-size: 24px;
+  }
+  .luxury-footer__eyebrow {
+    font-size: 8px;
+  }
+  .luxury-footer__eyebrow-line {
+    width: 25px;
+  }
+  .luxury-footer__brand-name {
+    font-size: 18px;
+  }
+  .luxury-footer__brand-symbol {
+    width: 43px;
+    height: 43px;
+    border-radius: 13px;
+  }
+}
 @media (max-width: 380px) {
   .luxury-footer__payment {
     width: 50px;
@@ -6213,11 +6078,19 @@ salla-menu[topnav]:not(.hydrated)::after {
   }
 }
 /* =========================================================
-   REDUCED MOTION
-========================================================= */
+   ACCESSIBILITY & REDUCED MOTION
+   ========================================================= */
+.luxury-footer a:focus-visible,
+.luxury-footer button:focus-visible,
+.luxury-footer input:focus-visible {
+  outline: 2px solid var(--footer-accent);
+  outline-offset: 3px;
+}
 @media (prefers-reduced-motion: reduce) {
-  .luxury-footer__payment,
-  .luxury-footer__payment img {
+  .luxury-footer *,
+  .luxury-footer *::before,
+  .luxury-footer *::after {
+    animation: none !important;
     transition: none !important;
   }
 }
@@ -15957,26 +15830,27 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transition: none !important;
   }
 }
-/* ======================================
+/* =========================================================
    LUXURY REWARD SECTION
-====================================== */
+========================================================= */
 .luxury-reward-section {
   position: relative;
   overflow: hidden;
   padding-top: 60px;
   padding-bottom: 60px;
   color: #111;
+  direction: rtl;
+  /* =========================================================
+     MAIN CONTAINER
+  ========================================================= */
 }
-/* ======================================
-   MAIN CONTAINER
-====================================== */
 .luxury-reward-section .container {
   position: relative;
   z-index: 2;
 }
-/* ======================================
+/* =========================================================
    BACKGROUND GLOW
-====================================== */
+========================================================= */
 .luxury-reward-glow {
   position: absolute;
   width: 320px;
@@ -15996,14 +15870,28 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   bottom: -120px;
   left: -100px;
 }
-/* ======================================
+/* =========================================================
    HEADER
-====================================== */
+========================================================= */
 .luxury-reward-header {
   position: relative;
   text-align: center;
   margin-bottom: 45px;
   z-index: 2;
+}
+.luxury-reward-header h3 {
+  margin: 0;
+  font-size: max(22px, min(4vw, 30px));
+  font-weight: 900;
+  line-height: 1.4;
+  color: #111;
+}
+.luxury-reward-header p {
+  margin: 15px auto 0;
+  max-width: 600px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #777;
 }
 .luxury-reward-decoration {
   display: flex;
@@ -16024,31 +15912,17 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transform: rotate(45deg);
   box-shadow: 0 0 15px rgba(230, 41, 115, 0.35);
 }
-.luxury-reward-header h3 {
-  margin: 0;
-  font-size: max(22px, min(4vw, 30px));
-  font-weight: 900;
-  line-height: 1.4;
-  color: #111;
-}
-.luxury-reward-header p {
-  margin: 15px auto 0;
-  max-width: 600px;
-  font-size: 14px;
-  line-height: 1.8;
-  color: #777;
-}
-/* ======================================
+/* =========================================================
    PROGRESS WRAPPER
-====================================== */
+========================================================= */
 .luxury-reward-progress {
   position: relative;
   max-width: 800px;
   margin: 55px auto 45px;
 }
-/* ======================================
+/* =========================================================
    PROGRESS BAR
-====================================== */
+========================================================= */
 .luxury-reward-bar {
   position: relative;
   width: 100%;
@@ -16067,9 +15941,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   box-shadow: 0 5px 20px rgba(230, 41, 115, 0.25);
   transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
-/* ======================================
+/* =========================================================
    PROGRESS STEPS
-====================================== */
+========================================================= */
 .luxury-reward-steps {
   position: absolute;
   top: -14px;
@@ -16108,9 +15982,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   white-space: nowrap;
   transition: color 0.35s ease;
 }
-/* ======================================
-   ACTIVE STEP
-====================================== */
+.luxury-reward-step {
+  /* Active Step */
+}
 .luxury-reward-step.active .step-icon {
   background: var(--reward-accent);
   color: #fff;
@@ -16118,9 +15992,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .luxury-reward-step.active span {
   color: var(--reward-accent);
 }
-/* ======================================
-   CURRENT STEP
-====================================== */
+.luxury-reward-step {
+  /* Current Step */
+}
 .luxury-reward-step.current .step-icon {
   background: #fff;
   color: var(--reward-accent);
@@ -16131,9 +16005,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .luxury-reward-step.current span {
   color: var(--reward-accent);
 }
-/* ======================================
-   COMPLETED STEP
-====================================== */
+.luxury-reward-step {
+  /* Completed Step */
+}
 .luxury-reward-step.completed .step-icon {
   background: var(--reward-accent);
   color: #fff;
@@ -16143,9 +16017,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .luxury-reward-step.completed span {
   color: var(--reward-accent);
 }
-/* ======================================
+/* =========================================================
    STATUS BOX
-====================================== */
+========================================================= */
 .luxury-reward-status {
   position: relative;
   display: flex;
@@ -16164,19 +16038,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   align-items: center;
   gap: 15px;
 }
-.status-icon {
-  width: 38px;
-  height: 38px;
-  flex: 0 0 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgba(230, 41, 115, 0.1);
-  color: var(--reward-accent);
-  font-weight: 900;
-  transition: background 0.35s ease, color 0.35s ease, transform 0.35s ease;
-}
 .luxury-reward-status span {
   display: block;
   font-size: 12px;
@@ -16189,9 +16050,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   line-height: 1.6;
   color: var(--reward-accent);
 }
-/* ======================================
-   REWARD BUTTON
-====================================== */
+.luxury-reward-status {
+  /* =========================================================
+     REWARD BUTTON
+  ========================================================= */
+}
 .luxury-reward-status a {
   display: inline-flex;
   align-items: center;
@@ -16223,9 +16086,22 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .luxury-reward-status a:hover b {
   transform: translateX(-4px);
 }
-/* ======================================
+.status-icon {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(230, 41, 115, 0.1);
+  color: var(--reward-accent);
+  font-weight: 900;
+  transition: background 0.35s ease, color 0.35s ease, transform 0.35s ease;
+}
+/* =========================================================
    COMPLETED REWARD STATE
-====================================== */
+========================================================= */
 .luxury-reward-section.is-complete .luxury-reward-bar-fill {
   background: linear-gradient(90deg, #E62973, #d81b64, #f6c86f);
 }
@@ -16244,9 +16120,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .luxury-reward-section.is-complete .luxury-reward-step span {
   color: var(--reward-accent);
 }
-/* ======================================
-   ANIMATION
-====================================== */
+/* =========================================================
+   ANIMATIONS
+========================================================= */
 .luxury-reward-animated .luxury-reward-header,
 .luxury-reward-animated .luxury-reward-progress,
 .luxury-reward-animated .luxury-reward-status {
@@ -16276,9 +16152,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: scale(1.08);
   }
 }
-/* ======================================
+/* =========================================================
+   RESPONSIVE MEDIA QUERIES
    MOBILE
-====================================== */
+========================================================= */
 @media (max-width: 600px) {
   .luxury-reward-section {
     padding-top: 45px;
@@ -16287,12 +16164,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .luxury-reward-header {
     margin-bottom: 35px;
   }
-  .luxury-reward-decoration {
-    gap: 10px;
-  }
-  .luxury-reward-decoration span {
-    width: 55px;
-  }
   .luxury-reward-header h3 {
     font-size: 23px;
   }
@@ -16300,6 +16171,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     padding-left: 15px;
     padding-right: 15px;
     font-size: 13px;
+  }
+  .luxury-reward-decoration {
+    gap: 10px;
+  }
+  .luxury-reward-decoration span {
+    width: 55px;
   }
   .luxury-reward-progress {
     margin-top: 45px;
@@ -16339,9 +16216,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     min-width: 0;
   }
 }
-/* ======================================
+/* =========================================================
    SMALL MOBILE
-====================================== */
+========================================================= */
 @media (max-width: 380px) {
   .luxury-reward-step span {
     font-size: 9px;
@@ -16375,10 +16252,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background: radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.95), transparent 45%), var(--testimonials-bg, #FFF8FB);
   color: #231F20;
   color: var(--testimonials-title, #231F20);
+  /* =========================================================
+     BACKGROUND
+  ========================================================= */
 }
-/* =========================================================
-   BACKGROUND
-========================================================= */
 .luxury-testimonials__background {
   position: absolute;
   top: 0;
@@ -16424,35 +16301,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   filter: blur(20px);
   animation: luxuryTestimonialsOrbThree 10s ease-in-out infinite;
 }
-@keyframes luxuryTestimonialsOrbOne {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-45px, 35px, 0) scale(1.08);
-  }
+.luxury-testimonials {
+  /* =========================================================
+     SUBTLE GRID
+  ========================================================= */
 }
-@keyframes luxuryTestimonialsOrbTwo {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(55px, -35px, 0) scale(1.12);
-  }
-}
-@keyframes luxuryTestimonialsOrbThree {
-  0%, 100% {
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(0.9);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.15);
-  }
-}
-/* =========================================================
-   SUBTLE GRID
-========================================================= */
 .luxury-testimonials__grid-pattern {
   position: absolute;
   top: 0;
@@ -16465,16 +16318,20 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
           mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
   opacity: 0.55;
 }
-/* =========================================================
-   CONTAINER
-========================================================= */
+.luxury-testimonials {
+  /* =========================================================
+     CONTAINER
+  ========================================================= */
+}
 .luxury-testimonials__container {
   position: relative;
   z-index: 2;
 }
-/* =========================================================
-   HEADER
-========================================================= */
+.luxury-testimonials {
+  /* =========================================================
+     HEADER
+  ========================================================= */
+}
 .luxury-testimonials__header {
   position: relative;
   z-index: 5;
@@ -16482,19 +16339,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   text-align: center;
   animation: luxuryTestimonialsHeader 0.9s var(--lt-ease) both;
 }
-@keyframes luxuryTestimonialsHeader {
-  from {
-    opacity: 0;
-    transform: translateY(35px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.luxury-testimonials {
+  /* =========================================================
+     EYEBROW
+  ========================================================= */
 }
-/* =========================================================
-   EYEBROW
-========================================================= */
 .luxury-testimonials__eyebrow {
   display: flex;
   align-items: center;
@@ -16536,27 +16385,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border-radius: inherit;
   animation: luxuryTestimonialsRing 2.5s ease-out infinite;
 }
-@keyframes luxuryTestimonialsHeart {
-  0%, 100% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-4px) scale(1.05);
-  }
+.luxury-testimonials {
+  /* =========================================================
+     TITLE
+  ========================================================= */
 }
-@keyframes luxuryTestimonialsRing {
-  0% {
-    opacity: 0.8;
-    transform: scale(0.85);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.35);
-  }
-}
-/* =========================================================
-   TITLE
-========================================================= */
 .luxury-testimonials__title {
   position: relative;
   display: inline-block;
@@ -16579,17 +16412,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background-size: 200% 100%;
   animation: luxuryTestimonialsShine 3s linear infinite;
 }
-@keyframes luxuryTestimonialsShine {
-  from {
-    background-position: 100% 0;
-  }
-  to {
-    background-position: -100% 0;
-  }
+.luxury-testimonials {
+  /* =========================================================
+     SUBTITLE
+  ========================================================= */
 }
-/* =========================================================
-   SUBTITLE
-========================================================= */
 .luxury-testimonials__subtitle {
   max-width: 650px;
   margin: 20px auto 0;
@@ -16598,9 +16425,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 15px;
   line-height: 2;
 }
-/* =========================================================
-   SUMMARY
-========================================================= */
+.luxury-testimonials {
+  /* =========================================================
+     SUMMARY
+  ========================================================= */
+}
 .luxury-testimonials__summary {
   position: relative;
   display: flex;
@@ -16620,16 +16449,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   animation: luxuryTestimonialsSummary 1s 0.15s var(--lt-ease) both;
-}
-@keyframes luxuryTestimonialsSummary {
-  from {
-    opacity: 0;
-    transform: translateY(25px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
 }
 .luxury-testimonials__summary-glow {
   position: absolute;
@@ -16686,9 +16505,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 11px;
   line-height: 1.7;
 }
-/* =========================================================
-   SLIDER
-========================================================= */
+.luxury-testimonials {
+  /* =========================================================
+     SLIDER
+  ========================================================= */
+}
 .luxury-testimonials__slider-wrapper {
   position: relative;
   width: 100%;
@@ -16707,9 +16528,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   filter: blur(90px);
   pointer-events: none;
 }
-/* =========================================================
-   SALLA SLIDER
-========================================================= */
+.luxury-testimonials {
+  /* Salla Slider overrides */
+}
 .luxury-testimonials salla-slider {
   position: relative;
   display: block;
@@ -16730,7 +16551,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   flex-shrink: 0;
   box-sizing: border-box;
 }
-/* Hide controls */
 .luxury-testimonials salla-slider .swiper-button-next,
 .luxury-testimonials salla-slider .swiper-button-prev,
 .luxury-testimonials salla-slider .s-slider-button,
@@ -16739,9 +16559,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .luxury-testimonials salla-slider .s-slider-next {
   display: none !important;
 }
-/* =========================================================
-   DESKTOP
-========================================================= */
+.luxury-testimonials {
+  /* =========================================================
+     DESKTOP VIEW
+  ========================================================= */
+}
 @media (min-width: 993px) {
   .luxury-testimonials salla-slider .swiper-slide {
     width: calc((100% - 40px) / 3) !important;
@@ -16751,8 +16573,25 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     margin-left: 0;
   }
 }
+.luxury-testimonials {
+  /* =========================================================
+     EMPTY STATE
+  ========================================================= */
+}
+.luxury-testimonials__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 180px;
+  color: var(--testimonials-text);
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid var(--testimonials-border);
+  border-radius: 22px;
+}
 /* =========================================================
-   CARD
+   CARD COMPONENT
 ========================================================= */
 .luxury-testimonial-card {
   position: relative;
@@ -16774,42 +16613,36 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transition: transform 0.6s var(--lt-ease), box-shadow 0.6s var(--lt-ease), border-color 0.4s ease, background 0.4s ease;
   will-change: transform;
 }
-/* Card reveal */
-.luxury-testimonials--animated .luxury-testimonial-card--reveal {
-  opacity: 0;
-  animation: luxuryTestimonialsCardReveal 0.9s var(--lt-ease) forwards;
+.luxury-testimonial-card:hover {
+  transform: translate3d(0, -12px, 0);
+  border-color: rgba(230, 41, 115, 0.28);
+  box-shadow: 0 35px 85px rgba(230, 41, 115, 0.12);
+  background: linear-gradient(145deg, #FFFFFF, #FFF8FB);
 }
-.luxury-testimonials--animated .swiper-slide:nth-child(1) .luxury-testimonial-card {
-  animation-delay: 0.2s;
+.luxury-testimonial-card:hover .luxury-testimonial-card__shine {
+  left: 140%;
+  opacity: 1;
 }
-.luxury-testimonials--animated .swiper-slide:nth-child(2) .luxury-testimonial-card {
-  animation-delay: 0.32s;
+.luxury-testimonial-card:hover .luxury-testimonial-card__quote-decoration {
+  opacity: 0.1;
+  transform: translateY(-5px) scale(1.08);
 }
-.luxury-testimonials--animated .swiper-slide:nth-child(3) .luxury-testimonial-card {
-  animation-delay: 0.44s;
+.luxury-testimonial-card:hover .luxury-testimonial-card__avatar-wrapper {
+  transform: translateX(-50%) translateY(-8px) scale(1.04);
+  box-shadow: 0 22px 45px rgba(230, 41, 115, 0.22);
 }
-.luxury-testimonials--animated .swiper-slide:nth-child(4) .luxury-testimonial-card {
-  animation-delay: 0.56s;
+.luxury-testimonial-card:hover .luxury-testimonial-card__name {
+  letter-spacing: 0.2px;
 }
-.luxury-testimonials--animated .swiper-slide:nth-child(5) .luxury-testimonial-card {
-  animation-delay: 0.68s;
+.luxury-testimonial-card:hover .luxury-testimonial-card__quote-icon {
+  transform: translateY(-3px) scale(1.08);
 }
-.luxury-testimonials--animated .swiper-slide:nth-child(6) .luxury-testimonial-card {
-  animation-delay: 0.8s;
+.luxury-testimonial-card:hover .luxury-testimonial-card__stars span.is-active {
+  transform: translateY(-3px);
 }
-@keyframes luxuryTestimonialsCardReveal {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 45px, 0) scale(0.94);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
+.luxury-testimonial-card {
+  /* Shine effect */
 }
-/* =========================================================
-   CARD SHINE
-========================================================= */
 .luxury-testimonial-card__shine {
   position: absolute;
   top: 0;
@@ -16822,22 +16655,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 0;
   transition: opacity 0.3s ease, left 0.9s var(--lt-ease);
 }
-.luxury-testimonial-card:hover .luxury-testimonial-card__shine {
-  left: 140%;
-  opacity: 1;
+.luxury-testimonial-card {
+  /* Quote decoration */
 }
-/* =========================================================
-   CARD HOVER
-========================================================= */
-.luxury-testimonial-card:hover {
-  transform: translate3d(0, -12px, 0);
-  border-color: rgba(230, 41, 115, 0.28);
-  box-shadow: 0 35px 85px rgba(230, 41, 115, 0.12);
-  background: linear-gradient(145deg, #FFFFFF, #FFF8FB);
-}
-/* =========================================================
-   QUOTE DECORATION
-========================================================= */
 .luxury-testimonial-card__quote-decoration {
   position: absolute;
   top: 12px;
@@ -16850,13 +16670,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   pointer-events: none;
   transition: transform 0.6s var(--lt-ease), opacity 0.4s ease;
 }
-.luxury-testimonial-card:hover .luxury-testimonial-card__quote-decoration {
-  opacity: 0.1;
-  transform: translateY(-5px) scale(1.08);
+.luxury-testimonial-card {
+  /* Avatar */
 }
-/* =========================================================
-   AVATAR
-========================================================= */
 .luxury-testimonial-card__avatar-wrapper {
   position: absolute;
   top: -58px;
@@ -16883,24 +16699,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border: 1px solid rgba(230, 41, 115, 0.2);
   opacity: 0.7;
   animation: luxuryTestimonialsAvatarRing 3s ease-out infinite;
-}
-@keyframes luxuryTestimonialsAvatarRing {
-  0% {
-    opacity: 0.65;
-    transform: scale(0.92);
-  }
-  70% {
-    opacity: 0;
-    transform: scale(1.18);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.18);
-  }
-}
-.luxury-testimonial-card:hover .luxury-testimonial-card__avatar-wrapper {
-  transform: translateX(-50%) translateY(-8px) scale(1.04);
-  box-shadow: 0 22px 45px rgba(230, 41, 115, 0.22);
 }
 .luxury-testimonial-card__avatar {
   display: flex;
@@ -16936,9 +16734,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 10px;
   box-shadow: 0 5px 12px rgba(230, 41, 115, 0.22);
 }
-/* =========================================================
-   CUSTOMER
-========================================================= */
+.luxury-testimonial-card {
+  /* Customer details */
+}
 .luxury-testimonial-card__customer {
   width: 100%;
   margin-bottom: 10px;
@@ -16951,9 +16749,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   line-height: 1.5;
   transition: letter-spacing 0.3s ease;
 }
-.luxury-testimonial-card:hover .luxury-testimonial-card__name {
-  letter-spacing: 0.2px;
-}
 .luxury-testimonial-card__role {
   display: block;
   margin-top: 4px;
@@ -16961,9 +16756,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 12px;
   line-height: 1.7;
 }
-/* =========================================================
-   STARS
-========================================================= */
+.luxury-testimonial-card {
+  /* Stars */
+}
 .luxury-testimonial-card__stars {
   display: flex;
   align-items: center;
@@ -16982,27 +16777,24 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: #E8B33D;
   text-shadow: 0 3px 12px rgba(232, 179, 61, 0.25);
 }
-.luxury-testimonial-card:hover .luxury-testimonial-card__stars span.is-active {
-  transform: translateY(-3px);
-}
-.luxury-testimonial-card:hover .luxury-testimonial-card__stars span:nth-child(1) {
+.luxury-testimonial-card__stars span:nth-child(1) {
   transition-delay: 0.02s;
 }
-.luxury-testimonial-card:hover .luxury-testimonial-card__stars span:nth-child(2) {
+.luxury-testimonial-card__stars span:nth-child(2) {
   transition-delay: 0.05s;
 }
-.luxury-testimonial-card:hover .luxury-testimonial-card__stars span:nth-child(3) {
+.luxury-testimonial-card__stars span:nth-child(3) {
   transition-delay: 0.08s;
 }
-.luxury-testimonial-card:hover .luxury-testimonial-card__stars span:nth-child(4) {
+.luxury-testimonial-card__stars span:nth-child(4) {
   transition-delay: 0.11s;
 }
-.luxury-testimonial-card:hover .luxury-testimonial-card__stars span:nth-child(5) {
+.luxury-testimonial-card__stars span:nth-child(5) {
   transition-delay: 0.14s;
 }
-/* =========================================================
-   QUOTE
-========================================================= */
+.luxury-testimonial-card {
+  /* Quote body */
+}
 .luxury-testimonial-card__quote {
   position: relative;
   width: 100%;
@@ -17022,9 +16814,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 0.4;
   transition: transform 0.5s var(--lt-ease);
 }
-.luxury-testimonial-card:hover .luxury-testimonial-card__quote-icon {
-  transform: translateY(-3px) scale(1.08);
-}
 .luxury-testimonial-card__quote p {
   position: relative;
   z-index: 1;
@@ -17036,9 +16825,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   line-height: 2.1;
   word-break: break-word;
 }
-/* =========================================================
-   BOTTOM LINE
-========================================================= */
+.luxury-testimonial-card {
+  /* Bottom Line */
+}
 .luxury-testimonial-card__bottom {
   position: absolute;
   right: 28px;
@@ -17052,6 +16841,126 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 0.65;
   animation: luxuryTestimonialsBottomLine 4s linear infinite;
 }
+/* =========================================================
+   CARD REVEAL ANIMATIONS
+========================================================= */
+.luxury-testimonials--animated .luxury-testimonial-card--reveal {
+  opacity: 0;
+  animation: luxuryTestimonialsCardReveal 0.9s var(--lt-ease) forwards;
+}
+.luxury-testimonials--animated .swiper-slide:nth-child(1) .luxury-testimonial-card {
+  animation-delay: 0.2s;
+}
+.luxury-testimonials--animated .swiper-slide:nth-child(2) .luxury-testimonial-card {
+  animation-delay: 0.32s;
+}
+.luxury-testimonials--animated .swiper-slide:nth-child(3) .luxury-testimonial-card {
+  animation-delay: 0.44s;
+}
+.luxury-testimonials--animated .swiper-slide:nth-child(4) .luxury-testimonial-card {
+  animation-delay: 0.56s;
+}
+.luxury-testimonials--animated .swiper-slide:nth-child(5) .luxury-testimonial-card {
+  animation-delay: 0.68s;
+}
+.luxury-testimonials--animated .swiper-slide:nth-child(6) .luxury-testimonial-card {
+  animation-delay: 0.8s;
+}
+/* =========================================================
+   KEYFRAMES
+========================================================= */
+@keyframes luxuryTestimonialsHeader {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes luxuryTestimonialsHeart {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.05);
+  }
+}
+@keyframes luxuryTestimonialsRing {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+@keyframes luxuryTestimonialsShine {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+@keyframes luxuryTestimonialsSummary {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes luxuryTestimonialsOrbOne {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-45px, 35px, 0) scale(1.08);
+  }
+}
+@keyframes luxuryTestimonialsOrbTwo {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(55px, -35px, 0) scale(1.12);
+  }
+}
+@keyframes luxuryTestimonialsOrbThree {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+@keyframes luxuryTestimonialsCardReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 45px, 0) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+@keyframes luxuryTestimonialsAvatarRing {
+  0% {
+    opacity: 0.65;
+    transform: scale(0.92);
+  }
+  70%, 100% {
+    opacity: 0;
+    transform: scale(1.18);
+  }
+}
 @keyframes luxuryTestimonialsBottomLine {
   from {
     background-position: 100% 0;
@@ -17061,21 +16970,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   EMPTY
-========================================================= */
-.luxury-testimonials__empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-height: 180px;
-  color: var(--testimonials-text);
-  background: rgba(255, 255, 255, 0.65);
-  border: 1px solid var(--testimonials-border);
-  border-radius: 22px;
-}
-/* =========================================================
+   RESPONSIVE MEDIA QUERIES
    TABLET
 ========================================================= */
 @media (min-width: 601px) and (max-width: 992px) {
@@ -17123,7 +17018,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     font-size: 13px;
     line-height: 1.9;
   }
-  /* Summary */
   .luxury-testimonials__summary {
     width: calc(100% - 30px);
     padding: 15px 18px;
@@ -17144,7 +17038,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .luxury-testimonials__summary-info small {
     font-size: 10px;
   }
-  /* Slider */
   .luxury-testimonials salla-slider .swiper {
     overflow: hidden !important;
   }
@@ -17152,7 +17045,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     width: 100% !important;
     margin-left: 0 !important;
   }
-  /* Card */
+  .luxury-testimonials__orb--one {
+    width: 330px;
+    height: 330px;
+  }
+  .luxury-testimonials__orb--two {
+    width: 300px;
+    height: 300px;
+  }
   .luxury-testimonial-card {
     min-height: 360px;
     margin-top: 53px;
@@ -17186,14 +17086,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .luxury-testimonial-card__bottom {
     right: 20px;
     left: 20px;
-  }
-  .luxury-testimonials__orb--one {
-    width: 330px;
-    height: 330px;
-  }
-  .luxury-testimonials__orb--two {
-    width: 300px;
-    height: 300px;
   }
 }
 /* =========================================================
@@ -17804,33 +17696,20 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
    RAWAN — PREMIUM BLOG MOTION SYSTEM
    Version: 2.0
 ========================================================= */
-/* =========================================================
-   MOTION TOKENS
-========================================================= */
+/* Motion Tokens */
 .rawan-blog-section {
-  --rawan-ease:
-      cubic-bezier(.22, 1, .36, 1);
-  --rawan-ease-soft:
-      cubic-bezier(.16, 1, .3, 1);
-  --rawan-duration-fast:
-      .25s;
-  --rawan-duration-base:
-      .45s;
-  --rawan-duration-slow:
-      .75s;
-  --rawan-pink:
-      #e62973;
-  --rawan-pink-dark:
-      #c91d60;
-  --rawan-shadow:
-      0 18px 55px rgba(80, 20, 40, .08);
-  --rawan-shadow-hover:
-      0 28px 75px rgba(80, 20, 40, .14);
+  --rawan-ease: cubic-bezier(.22, 1, .36, 1);
+  --rawan-ease-soft: cubic-bezier(.16, 1, .3, 1);
+  --rawan-duration-fast: .25s;
+  --rawan-duration-base: .45s;
+  --rawan-duration-slow: .75s;
+  --rawan-pink: #e62973;
+  --rawan-pink-dark: #c91d60;
+  --rawan-shadow: 0 18px 55px rgba(80, 20, 40, .08);
+  --rawan-shadow-hover: 0 28px 75px rgba(80, 20, 40, .14);
   isolation: isolate;
 }
-/* =========================================================
-   BACKGROUND
-========================================================= */
+/* Background */
 .rawan-blog-bg {
   z-index: -4;
 }
@@ -17839,23 +17718,18 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   will-change: transform;
   transform: translate3d(0, 0, 0);
 }
-/* Main orb */
 .rawan-blog-orb--one {
   animation: rawan-orb-one 16s var(--rawan-ease-soft) infinite alternate;
 }
-/* Secondary orb */
 .rawan-blog-orb--two {
   animation: rawan-orb-two 19s var(--rawan-ease-soft) infinite alternate;
   animation-delay: -5s;
 }
-/* Center orb */
 .rawan-blog-orb--three {
   animation: rawan-orb-three 22s var(--rawan-ease-soft) infinite alternate;
   animation-delay: -8s;
 }
-/* =========================================================
-   AMBIENT KEYFRAMES
-========================================================= */
+/* Ambient Keyframes */
 @keyframes rawan-orb-one {
   0% {
     transform: translate3d(0, 0, 0) scale(1);
@@ -17880,9 +17754,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: translate3d(-16px, 20px, 0) scale(1.045);
   }
 }
-/* =========================================================
-   GENERAL REVEAL
-========================================================= */
+/* General Reveal */
 .rawan-blog-reveal {
   opacity: 0;
   transform: translate3d(0, 24px, 0) scale(0.985);
@@ -17896,33 +17768,25 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transform: translate3d(0, 0, 0) scale(1);
   filter: blur(0);
 }
-/* =========================================================
-   BADGE REVEAL
-========================================================= */
+/* Badge Reveal */
 .rawan-blog-reveal--badge {
   transform: translate3d(0, 16px, 0) scale(0.94);
 }
 .rawan-blog-reveal--badge.is-visible {
   transform: translate3d(0, 0, 0) scale(1);
 }
-/* =========================================================
-   TITLE REVEAL
-========================================================= */
+/* Title Reveal */
 .rawan-blog-reveal--title {
   transform: translate3d(0, 28px, 0) scale(0.985);
 }
 .rawan-blog-reveal--title.is-visible {
   transform: translate3d(0, 0, 0) scale(1);
 }
-/* =========================================================
-   BUTTON REVEAL
-========================================================= */
+/* Button Reveal */
 .rawan-blog-reveal--button {
   transform: translate3d(0, 18px, 0);
 }
-/* =========================================================
-   BADGE
-========================================================= */
+/* Badge */
 .rawan-blog-badge {
   position: relative;
   overflow: hidden;
@@ -17963,9 +17827,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .rawan-blog-badge:hover .rawan-blog-badge__icon {
   transform: rotate(-9deg) translateY(-1px);
 }
-/* =========================================================
-   ALL ARTICLES LINK
-========================================================= */
+/* All Articles Link */
 .rawan-blog-all-link {
   position: relative;
   transition: color 0.35s ease;
@@ -17997,9 +17859,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .rawan-blog-all-link:hover .rawan-blog-all-link__arrow {
   transform: translateX(-3px);
 }
-/* =========================================================
-   CARD — INITIAL REVEAL
-========================================================= */
+/* Card — Initial Reveal */
 .rawan-blog-card {
   position: relative;
   opacity: 0;
@@ -18014,17 +17874,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 1;
   transform: translate3d(0, 0, 0) scale(1);
 }
-/* =========================================================
-   CARD HOVER
-========================================================= */
+/* Card Hover */
 .rawan-blog-card:hover {
   transform: translate3d(0, -8px, 0) scale(1.012);
   border-color: rgba(230, 41, 115, 0.38);
   box-shadow: var(--rawan-shadow-hover);
 }
-/* =========================================================
-   CARD MEDIA
-========================================================= */
+/* Card Media */
 .rawan-blog-card__media {
   background: #f7eeee;
 }
@@ -18040,9 +17896,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .rawan-blog-card:hover .rawan-blog-card__image {
   transform: scale(1.055);
 }
-/* =========================================================
-   IMAGE OVERLAY
-========================================================= */
+/* Image Overlay */
 .rawan-blog-card__overlay {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.04) 55%, transparent 75%);
   opacity: 0.72;
@@ -18051,9 +17905,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .rawan-blog-card:hover .rawan-blog-card__overlay {
   opacity: 0.55;
 }
-/* =========================================================
-   IMAGE SHINE
-========================================================= */
+/* Image Shine */
 .rawan-blog-card__shine {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
   transform: skewX(-18deg);
@@ -18071,9 +17923,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     left: 140%;
   }
 }
-/* =========================================================
-   CATEGORY
-========================================================= */
+/* Category */
 .rawan-blog-card__category {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -18087,18 +17937,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background: var(--rawan-pink-dark) !important;
   box-shadow: 0 12px 25px rgba(230, 41, 115, 0.22);
 }
-/* =========================================================
-   CARD META
-========================================================= */
+/* Card Meta */
 .rawan-blog-card__meta {
   transition: transform 0.45s var(--rawan-ease), opacity 0.35s ease;
 }
 .rawan-blog-card:hover .rawan-blog-card__meta {
   transform: translateY(-1px);
 }
-/* =========================================================
-   CARD TITLE
-========================================================= */
+/* Card Title */
 .rawan-blog-card__title {
   line-height: 1.5;
 }
@@ -18115,36 +17961,28 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: #E62973 !important;
   color: var(--rawan-pink) !important;
 }
-/* =========================================================
-   SUMMARY
-========================================================= */
+/* Summary */
 .rawan-blog-card__summary {
   transition: color 0.35s ease;
 }
 .rawan-blog-card:hover .rawan-blog-card__summary {
   color: #4f4f4f;
 }
-/* =========================================================
-   FOOTER
-========================================================= */
+/* Footer */
 .rawan-blog-card__footer {
   transition: border-color 0.45s ease;
 }
 .rawan-blog-card:hover .rawan-blog-card__footer {
   border-color: rgba(230, 41, 115, 0.18);
 }
-/* =========================================================
-   AUTHOR
-========================================================= */
+/* Author */
 .rawan-blog-card__author {
   transition: transform 0.45s var(--rawan-ease), opacity 0.35s ease;
 }
 .rawan-blog-card:hover .rawan-blog-card__author {
   transform: translateX(-2px);
 }
-/* =========================================================
-   READ MORE
-========================================================= */
+/* Read More */
 .rawan-blog-card__read {
   transition: color 0.35s ease;
 }
@@ -18154,9 +17992,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .rawan-blog-card__read:hover .rawan-blog-card__read-arrow {
   transform: translateX(-5px);
 }
-/* =========================================================
-   EMPTY STATE
-========================================================= */
+/* Empty State */
 .rawan-blog-empty {
   transition: opacity 0.7s var(--rawan-ease), transform 0.7s var(--rawan-ease), filter 0.7s var(--rawan-ease);
 }
@@ -18171,9 +18007,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: translateY(-5px);
   }
 }
-/* =========================================================
-   PERFORMANCE
-========================================================= */
+/* Performance Hardware Acceleration */
 .rawan-blog-card,
 .rawan-blog-card__image,
 .rawan-blog-card__category,
@@ -18182,13 +18016,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
 }
-/* =========================================================
-   MOBILE
-========================================================= */
+/* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
   .rawan-blog-section {
-    --rawan-duration-slow:
-        .65s;
+    --rawan-duration-slow: .65s;
   }
   .rawan-blog-orb--one {
     width: 300px;
@@ -18218,9 +18049,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: scale(1.035);
   }
 }
-/* =========================================================
-   TOUCH DEVICES
-========================================================= */
+/* Touch Devices Overrides */
 @media (hover: none) {
   .rawan-blog-card:hover {
     transform: translate3d(0, 0, 0) scale(1);
@@ -18234,9 +18063,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     opacity: 0;
   }
 }
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
+/* Accessibility: Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   .rawan-blog-section *,
   .rawan-blog-section *::before,
@@ -18254,13 +18081,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   RAWAN — LUXURY FAQ
+   RAWAN — LUXURY FAQ (OPTIMIZED CSS/SCSS)
    Premium Motion System
 ========================================================= */
 .luxury-faq {
   --faq-pink: var(--faq-accent-color, #e62973);
   --faq-title: var(--faq-title-color, #4a0f27);
-  --faq-subtitle: var(--faq-subtitle-color, #777);
+  --faq-subtitle: var(--faq-subtitle-color, #777777);
   --faq-bg: var(--faq-background-color, #fff8fb);
   position: relative;
   overflow: hidden;
@@ -18270,7 +18097,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background: var(--faq-bg);
 }
 /* =========================================================
-   BACKGROUND
+   BACKGROUND & AMBIENT ORBS
 ========================================================= */
 .luxury-faq__background {
   position: absolute;
@@ -18292,7 +18119,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background: radial-gradient(circle at 88% 12%, rgba(230, 41, 115, 0.12), transparent 34%), radial-gradient(circle at 8% 85%, rgba(244, 114, 182, 0.09), transparent 32%);
   opacity: 0.95;
 }
-/* Moving ambient orbs */
 .luxury-faq__orb {
   position: absolute;
   display: block;
@@ -18300,6 +18126,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   pointer-events: none;
   filter: blur(75px);
   will-change: transform;
+  transform: translateZ(0);
 }
 .luxury-faq__orb--one {
   top: -170px;
@@ -18359,7 +18186,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   HEADER
+   HEADER & BADGE
 ========================================================= */
 .luxury-faq__header {
   position: relative;
@@ -18368,15 +18195,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   margin: 0 auto 58px;
   text-align: center;
 }
-/* =========================================================
-   BADGE
-========================================================= */
 .luxury-faq__badge-wrap {
   display: flex;
   justify-content: center;
   opacity: 0;
   transform: translateY(18px) scale(0.96);
   animation: luxuryFaqFadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.05s forwards;
+  will-change: transform, opacity;
 }
 .luxury-faq__badge {
   position: relative;
@@ -18397,7 +18222,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   box-shadow: 0 8px 30px rgba(230, 41, 115, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8);
   overflow: hidden;
 }
-/* Badge shine */
 .luxury-faq__badge::after {
   content: "";
   position: absolute;
@@ -18417,14 +18241,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     right: 150%;
   }
 }
-/* Badge dot */
 .luxury-faq__badge-dot {
   width: 7px;
   height: 7px;
   flex: 0 0 7px;
   border-radius: 50%;
   background: var(--faq-pink);
-  box-shadow: 0 0 0 0 rgba(230, 41, 115, 0.35);
   animation: luxuryFaqDotPulse 2.4s ease-out infinite;
 }
 @keyframes luxuryFaqDotPulse {
@@ -18439,7 +18261,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   TITLE
+   TITLE & SUBTITLE
 ========================================================= */
 .luxury-faq__title {
   position: relative;
@@ -18453,12 +18275,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 0;
   transform: translateY(25px);
   animation: luxuryFaqFadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.14s forwards;
+  will-change: transform, opacity;
 }
 .luxury-faq__title-text {
   position: relative;
   display: inline-block;
 }
-/* Underline */
 .luxury-faq__underline {
   position: absolute;
   right: 0;
@@ -18491,9 +18313,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: scaleX(1);
   }
 }
-/* =========================================================
-   SUBTITLE
-========================================================= */
 .luxury-faq__subtitle {
   max-width: 650px;
   margin: 20px auto 0;
@@ -18503,10 +18322,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 0;
   transform: translateY(16px);
   animation: luxuryFaqFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.28s forwards;
+  will-change: transform, opacity;
 }
-/* =========================================================
-   GENERAL FADE
-========================================================= */
 @keyframes luxuryFaqFadeUp {
   from {
     opacity: 0;
@@ -18518,7 +18335,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   FAQ LIST
+   FAQ LIST & ITEMS
 ========================================================= */
 .luxury-faq__list {
   position: relative;
@@ -18529,9 +18346,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   max-width: 900px;
   margin: 0 auto;
 }
-/* =========================================================
-   FAQ ITEM
-========================================================= */
 .luxury-faq__item {
   position: relative;
   overflow: hidden;
@@ -18546,8 +18360,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transform: translateY(30px) scale(0.985);
   animation: luxuryFaqItemIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.45s ease, background 0.35s ease;
+  will-change: transform, opacity;
 }
-/* Individual entrance delays */
+/* Entrance Delays */
 .luxury-faq__item:nth-child(1) {
   animation-delay: 0.34s;
 }
@@ -18592,9 +18407,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: translateY(0) scale(1);
   }
 }
-/* =========================================================
-   CARD SHINE
-========================================================= */
 .luxury-faq__item::before {
   content: "";
   position: absolute;
@@ -18610,23 +18422,19 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .luxury-faq__item:hover::before {
   right: 140%;
 }
-/* =========================================================
-   CARD HOVER
-========================================================= */
 .luxury-faq__item:hover {
   transform: translateY(-3px);
   border-color: rgba(230, 41, 115, 0.22);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.72));
   box-shadow: 0 18px 50px rgba(230, 41, 115, 0.075), 0 4px 15px rgba(20, 20, 20, 0.035), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
-/* Open */
 .luxury-faq__item[open] {
   border-color: rgba(230, 41, 115, 0.2);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(255, 249, 252, 0.78));
   box-shadow: 0 20px 55px rgba(230, 41, 115, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 /* =========================================================
-   QUESTION
+   QUESTION & ICON
 ========================================================= */
 .luxury-faq__question {
   display: flex;
@@ -18641,15 +18449,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
           user-select: none;
   direction: rtl;
 }
-.luxury-faq__question::-webkit-details-marker {
-  display: none;
-}
+.luxury-faq__question::-webkit-details-marker,
 .luxury-faq__question::marker {
   display: none;
 }
-/* =========================================================
-   QUESTION TITLE
-========================================================= */
 .luxury-faq__question h3 {
   position: relative;
   flex: 1;
@@ -18668,9 +18471,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .luxury-faq__item:hover .luxury-faq__question h3 {
   transform: translateX(-2px);
 }
-/* =========================================================
-   ICON
-========================================================= */
 .luxury-faq__icon {
   position: relative;
   display: flex;
@@ -18680,10 +18480,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   height: 34px;
   flex: 0 0 34px;
   border-radius: 10px;
-  color: #777;
+  color: #777777;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
-/* Border */
 .luxury-faq__icon-border {
   position: absolute;
   top: 0;
@@ -18696,7 +18495,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transform: scale(0.75);
   transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
-/* Background */
 .luxury-faq__icon-bg {
   position: absolute;
   top: 1px;
@@ -18708,7 +18506,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transform: scale(0);
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
-/* SVG */
 .luxury-faq__icon svg {
   position: relative;
   z-index: 2;
@@ -18716,21 +18513,17 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   height: 16px;
   transition: color 0.3s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
-/* Hover icon */
 .luxury-faq__item:hover .luxury-faq__icon-border,
-.luxury-faq__item[open] .luxury-faq__icon-border {
-  opacity: 1;
-  transform: scale(1);
-}
+.luxury-faq__item[open] .luxury-faq__icon-border,
 .luxury-faq__item:hover .luxury-faq__icon-bg,
 .luxury-faq__item[open] .luxury-faq__icon-bg {
+  opacity: 1;
   transform: scale(1);
 }
 .luxury-faq__item:hover .luxury-faq__icon svg {
   color: var(--faq-pink);
   transform: translateY(1px);
 }
-/* Open arrow */
 .luxury-faq__item[open] .luxury-faq__icon svg {
   color: var(--faq-pink);
   transform: rotate(180deg);
@@ -18739,12 +18532,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transform: rotate(0deg) scale(1.03);
 }
 /* =========================================================
-   ANSWER — SMOOTH ACCORDION
+   ACCORDION ANIMATION
 ========================================================= */
 .luxury-faq__answer {
   display: grid;
   grid-template-rows: 0fr;
   opacity: 0;
+  overflow: hidden;
   transition: grid-template-rows 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease, margin-top 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .luxury-faq__answer-inner {
@@ -18758,7 +18552,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   text-align: right;
   transition: padding-top 0.55s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease;
 }
-/* Open state */
 .luxury-faq__item[open] .luxury-faq__answer {
   grid-template-rows: 1fr;
   margin-top: 17px;
@@ -18768,9 +18561,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   padding-top: 17px;
   border-top-color: rgba(230, 41, 115, 0.1);
 }
-/* =========================================================
-   ANSWER CONTENT
-========================================================= */
 .luxury-faq__answer-inner p {
   margin: 0 0 10px;
 }
@@ -18784,7 +18574,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   text-underline-offset: 3px;
 }
 /* =========================================================
-   CTA
+   CTA SECTION
 ========================================================= */
 .luxury-faq__cta {
   position: relative;
@@ -18802,9 +18592,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 0;
   transform: translateY(25px);
   animation: luxuryFaqFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.02s forwards;
+  will-change: transform, opacity;
   overflow: hidden;
 }
-/* CTA glow */
 .luxury-faq__cta-glow {
   position: absolute;
   top: -100px;
@@ -18828,7 +18618,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     opacity: 1;
   }
 }
-/* CTA text */
 .luxury-faq__cta-text {
   position: relative;
   z-index: 2;
@@ -18837,7 +18626,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 14px;
   line-height: 1.8;
 }
-/* CTA button */
 .luxury-faq__cta-button {
   position: relative;
   z-index: 2;
@@ -18857,7 +18645,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: #be185d;
   transform: translateX(-4px);
 }
-/* Arrow */
 .luxury-faq__cta-arrow {
   font-size: 19px;
   line-height: 1;
@@ -18866,7 +18653,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .luxury-faq__cta-button:hover .luxury-faq__cta-arrow {
   transform: translateX(-5px);
 }
-/* CTA line */
 .luxury-faq__cta-line {
   position: absolute;
   right: 0;
@@ -18879,21 +18665,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .luxury-faq__cta-button:hover .luxury-faq__cta-line {
   width: 100%;
 }
-/* =========================================================
-   FOCUS
-========================================================= */
-.luxury-faq__question:focus-visible {
+.luxury-faq__question:focus-visible,
+.luxury-faq__cta-button:focus-visible {
   outline: 2px solid var(--faq-pink);
   outline-offset: 6px;
   border-radius: 8px;
 }
-.luxury-faq__cta-button:focus-visible {
-  outline: 2px solid var(--faq-pink);
-  outline-offset: 6px;
-  border-radius: 6px;
-}
 /* =========================================================
-   TABLET
+   RESPONSIVE BREAKPOINTS & PERFORMANCE FALLBACKS
 ========================================================= */
 @media (max-width: 768px) {
   .luxury-faq {
@@ -18915,6 +18694,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .luxury-faq__item {
     padding: 17px;
     border-radius: 17px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.92);
   }
   .luxury-faq__question {
     gap: 15px;
@@ -18927,6 +18709,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
   .luxury-faq__cta {
     margin-top: 38px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(255, 255, 255, 0.95);
   }
   .luxury-faq__orb--one {
     width: 330px;
@@ -18937,9 +18722,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     height: 300px;
   }
 }
-/* =========================================================
-   MOBILE
-========================================================= */
 @media (max-width: 480px) {
   .luxury-faq {
     padding: 52px 0;
@@ -19021,8 +18803,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   REDUCED MOTION
-   Accessibility + Performance
+   REDUCED MOTION (ACCESSIBILITY)
 ========================================================= */
 @media (prefers-reduced-motion: reduce) {
   .luxury-faq *,
@@ -19046,7 +18827,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   STORE BENEFITS — PREMIUM MOTION
+   STORE BENEFITS — PREMIUM MOTION (SCSS)
 ========================================================= */
 .store-benefits {
   position: relative;
@@ -19055,14 +18836,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   padding-top: var(--benefits-padding);
   padding-bottom: var(--benefits-padding);
   background: var(--benefits-bg);
-  --benefits-shadow:
-      0 18px 55px rgba(30, 20, 25, .07);
-  --benefits-shadow-hover:
-      0 24px 65px rgba(30, 20, 25, .13);
+  --benefits-shadow: 0 18px 55px rgba(30, 20, 25, 0.07);
+  --benefits-shadow-hover: 0 24px 65px rgba(30, 20, 25, 0.13);
 }
-/* =========================================================
-   BACKGROUND
-========================================================= */
 .store-benefits::before {
   content: "";
   position: absolute;
@@ -19074,9 +18850,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   pointer-events: none;
   background: radial-gradient(circle at 85% 10%, rgba(230, 41, 115, 0.07), transparent 32%), radial-gradient(circle at 10% 90%, rgba(249, 168, 212, 0.07), transparent 30%);
 }
-/* =========================================================
-   GLOW
-========================================================= */
 .store-benefits__glow {
   position: absolute;
   border-radius: 50%;
@@ -19115,6 +18888,215 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transform: translate(-50%, -50%);
   animation: benefitsGlowCenter 20s ease-in-out infinite alternate;
 }
+.store-benefits__grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-gap: 24px;
+  gap: 24px;
+  width: 100%;
+}
+.store-benefits__grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.store-benefits__grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.store-benefits__grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.store-benefits__grid.is-animated .store-benefit {
+  opacity: 0;
+  animation: storeBenefitReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(0.08s + var(--benefit-index) * 0.085s);
+}
+.store-benefits__grid.is-animated .store-benefit:nth-child(4n+1) {
+  --idle-rotation: -0.15deg;
+}
+.store-benefits__grid.is-animated .store-benefit:nth-child(4n+2) {
+  --idle-rotation: 0.1deg;
+}
+.store-benefits__grid.is-animated .store-benefit:nth-child(4n+3) {
+  --idle-rotation: -0.08deg;
+}
+.store-benefits__grid.is-animated .store-benefit:nth-child(4n+4) {
+  --idle-rotation: 0.12deg;
+}
+.store-benefits__grid.is-animated .store-benefit__icon-wrap {
+  opacity: 0;
+  transform: translateY(12px) scale(0.82);
+  animation: storeBenefitIconReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(0.28s + var(--benefit-index) * 0.085s);
+}
+.store-benefits__grid.is-animated .store-benefit__content {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: storeBenefitContentReveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(0.38s + var(--benefit-index) * 0.085s);
+}
+.store-benefit {
+  --card-radius: 22px;
+  position: relative;
+  min-width: 0;
+  padding: 1px;
+  border-radius: 22px;
+  border-radius: var(--card-radius);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.55));
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset, 0 8px 30px rgba(30, 20, 25, 0.035);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.65s cubic-bezier(0.16, 1, 0.3, 1), background 0.45s ease;
+  will-change: transform;
+}
+.store-benefit::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(230, 41, 115, 0), rgba(230, 41, 115, 0.35), rgba(249, 168, 212, 0));
+  opacity: 0;
+  transition: opacity 0.55s ease;
+  pointer-events: none;
+  -webkit-mask: linear-gradient(#fff 0, #fff 0) content-box, linear-gradient(#fff 0, #fff 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.store-benefit:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--benefits-shadow-hover), 0 0 0 1px rgba(230, 41, 115, 0.035);
+}
+.store-benefit:hover::before {
+  opacity: 1;
+}
+.store-benefit:hover .store-benefit__inner {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.99), rgba(255, 250, 253, 0.94));
+  box-shadow: inset 0 1px 0 rgb(255, 255, 255), 0 8px 25px rgba(230, 41, 115, 0.045);
+}
+.store-benefit:hover .store-benefit__shine {
+  left: 150%;
+  opacity: 1;
+}
+.store-benefit:hover .store-benefit__icon {
+  color: #fff;
+  background: linear-gradient(135deg, var(--benefit-icon-color), color-mix(in srgb, var(--benefit-icon-color) 72%, #9d174d));
+  transform: translateY(-3px) scale(1.07) rotate(-4deg);
+  box-shadow: 0 14px 32px rgba(230, 41, 115, 0.22);
+}
+.store-benefit:hover .store-benefit__icon::before {
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: scale(1.08);
+}
+.store-benefit:hover .store-benefit__icon-glow {
+  opacity: 0.15;
+  transform: scale(1.1);
+}
+.store-benefit:hover .store-benefit__content h3 {
+  color: var(--benefits-accent);
+  transform: translateY(-1px);
+}
+.store-benefit:hover .store-benefit__content p {
+  color: #666;
+}
+.store-benefit:focus-within {
+  outline: 2px solid rgba(230, 41, 115, 0.35);
+  outline-offset: 4px;
+}
+.store-benefit__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-height: 145px;
+  padding: 24px 20px;
+  text-align: center;
+  border-radius: calc(var(--card-radius) - 1px);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.78));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.65s cubic-bezier(0.16, 1, 0.3, 1), background 0.45s ease;
+}
+.store-benefit__shine {
+  position: absolute;
+  top: 0;
+  left: -120%;
+  z-index: 4;
+  width: 70%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(100deg, transparent 0%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0) 65%, transparent 100%);
+  transform: skewX(-18deg);
+  opacity: 0;
+  transition: left 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+.store-benefit__icon-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
+}
+.store-benefit__icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 17px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.7));
+  color: var(--benefit-icon-color);
+  font-size: 21px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.055), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), background 0.45s ease, color 0.35s ease, box-shadow 0.55s ease;
+}
+.store-benefit__icon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(230, 41, 115, 0.12);
+  transition: border-color 0.4s ease, transform 0.5s ease;
+}
+.store-benefit__icon-glow {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  border-radius: 22px;
+  background: var(--benefit-icon-color);
+  opacity: 0;
+  filter: blur(15px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.store-benefit__content {
+  position: relative;
+  z-index: 3;
+  min-width: 0;
+}
+.store-benefit__content h3 {
+  margin: 0 0 7px;
+  color: #171717;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.6;
+  transition: color 0.35s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.store-benefit__content p {
+  margin: 0;
+  color: #737373;
+  font-size: 12px;
+  line-height: 1.85;
+  transition: color 0.35s ease;
+}
 @keyframes benefitsGlowTop {
   0% {
     transform: translate3d(0, 0, 0) scale(1);
@@ -19141,247 +19123,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: translate(-50%, -50%) scale(1.08);
   }
 }
-/* =========================================================
-   GRID
-========================================================= */
-.store-benefits__grid {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-gap: 24px;
-  gap: 24px;
-  width: 100%;
-}
-.store-benefits__grid--2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.store-benefits__grid--3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-.store-benefits__grid--4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-/* =========================================================
-   CARD
-========================================================= */
-.store-benefit {
-  --card-radius: 22px;
-  position: relative;
-  min-width: 0;
-  padding: 1px;
-  border-radius: 22px;
-  border-radius: var(--card-radius);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.55));
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset, 0 8px 30px rgba(30, 20, 25, 0.035);
-  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.65s cubic-bezier(0.16, 1, 0.3, 1), background 0.45s ease;
-  will-change: transform;
-}
-/* =========================================================
-   CARD BORDER GLOW
-========================================================= */
-.store-benefit::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(230, 41, 115, 0), rgba(230, 41, 115, 0.35), rgba(249, 168, 212, 0));
-  opacity: 0;
-  transition: opacity 0.55s ease;
-  pointer-events: none;
-  -webkit-mask: linear-gradient(#fff 0, #fff 0) content-box, linear-gradient(#fff 0, #fff 0);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
-.store-benefit:hover::before {
-  opacity: 1;
-}
-/* =========================================================
-   INNER
-========================================================= */
-.store-benefit__inner {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  min-height: 145px;
-  padding: 24px 20px;
-  text-align: center;
-  border-radius: calc(var(--card-radius) - 1px);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.78));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.65s cubic-bezier(0.16, 1, 0.3, 1), background 0.45s ease;
-}
-/* =========================================================
-   SHINE EFFECT
-========================================================= */
-.store-benefit__shine {
-  position: absolute;
-  top: 0;
-  left: -120%;
-  z-index: 4;
-  width: 70%;
-  height: 100%;
-  pointer-events: none;
-  background: linear-gradient(100deg, transparent 0%, rgba(255, 255, 255, 0) 35%, rgba(255, 255, 255, 0.55) 50%, rgba(255, 255, 255, 0) 65%, transparent 100%);
-  transform: skewX(-18deg);
-  opacity: 0;
-  transition: left 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-}
-.store-benefit:hover .store-benefit__shine {
-  left: 150%;
-  opacity: 1;
-}
-/* =========================================================
-   HOVER
-========================================================= */
-.store-benefit:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--benefits-shadow-hover), 0 0 0 1px rgba(230, 41, 115, 0.035);
-}
-.store-benefit:hover .store-benefit__inner {
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.99), rgba(255, 250, 253, 0.94));
-  box-shadow: inset 0 1px 0 rgb(255, 255, 255), 0 8px 25px rgba(230, 41, 115, 0.045);
-}
-/* =========================================================
-   ICON WRAPPER
-========================================================= */
-.store-benefit__icon-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 58px;
-  height: 58px;
-  flex-shrink: 0;
-}
-/* =========================================================
-   ICON
-========================================================= */
-.store-benefit__icon {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 17px;
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.7));
-  color: var(--benefit-icon-color);
-  font-size: 21px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.055), inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), background 0.45s ease, color 0.35s ease, box-shadow 0.55s ease;
-}
-/* =========================================================
-   ICON BORDER
-========================================================= */
-.store-benefit__icon::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: inherit;
-  border: 1px solid rgba(230, 41, 115, 0.12);
-  transition: border-color 0.4s ease, transform 0.5s ease;
-}
-/* =========================================================
-   ICON GLOW
-========================================================= */
-.store-benefit__icon-glow {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  bottom: -8px;
-  left: -8px;
-  border-radius: 22px;
-  background: var(--benefit-icon-color);
-  opacity: 0;
-  filter: blur(15px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
-}
-/* =========================================================
-   ICON HOVER
-========================================================= */
-.store-benefit:hover .store-benefit__icon {
-  color: #fff;
-  background: linear-gradient(135deg, var(--benefit-icon-color), color-mix(in srgb, var(--benefit-icon-color) 72%, #9d174d));
-  transform: translateY(-3px) scale(1.07) rotate(-4deg);
-  box-shadow: 0 14px 32px rgba(230, 41, 115, 0.22);
-}
-.store-benefit:hover .store-benefit__icon::before {
-  border-color: rgba(255, 255, 255, 0.35);
-  transform: scale(1.08);
-}
-.store-benefit:hover .store-benefit__icon-glow {
-  opacity: 0.15;
-  transform: scale(1.1);
-}
-/* =========================================================
-   CONTENT
-========================================================= */
-.store-benefit__content {
-  position: relative;
-  z-index: 3;
-  min-width: 0;
-}
-/* =========================================================
-   TITLE
-========================================================= */
-.store-benefit__content h3 {
-  margin: 0 0 7px;
-  color: #171717;
-  font-size: 15px;
-  font-weight: 900;
-  line-height: 1.6;
-  transition: color 0.35s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.store-benefit:hover .store-benefit__content h3 {
-  color: var(--benefits-accent);
-  transform: translateY(-1px);
-}
-/* =========================================================
-   DESCRIPTION
-========================================================= */
-.store-benefit__content p {
-  margin: 0;
-  color: #737373;
-  font-size: 12px;
-  line-height: 1.85;
-  transition: color 0.35s ease;
-}
-.store-benefit:hover .store-benefit__content p {
-  color: #666;
-}
-/* =========================================================
-   ENTRANCE ANIMATION
-========================================================= */
-.store-benefits__grid.is-animated .store-benefit {
-  opacity: 0;
-  animation: storeBenefitReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: calc(0.08s + var(--benefit-index) * 0.085s);
-}
-.store-benefits__grid.is-animated .store-benefit__icon-wrap {
-  opacity: 0;
-  transform: translateY(12px) scale(0.82);
-  animation: storeBenefitIconReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: calc(0.28s + var(--benefit-index) * 0.085s);
-}
-.store-benefits__grid.is-animated .store-benefit__content {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: storeBenefitContentReveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: calc(0.38s + var(--benefit-index) * 0.085s);
-}
-/* =========================================================
-   CARD REVEAL
-========================================================= */
 @keyframes storeBenefitReveal {
   0% {
     opacity: 0;
@@ -19399,9 +19140,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     filter: blur(0);
   }
 }
-/* =========================================================
-   ICON REVEAL
-========================================================= */
 @keyframes storeBenefitIconReveal {
   0% {
     opacity: 0;
@@ -19416,9 +19154,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: translateY(0) scale(1) rotate(0);
   }
 }
-/* =========================================================
-   CONTENT REVEAL
-========================================================= */
 @keyframes storeBenefitContentReveal {
   from {
     opacity: 0;
@@ -19429,57 +19164,40 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: translateY(0);
   }
 }
-/* =========================================================
-   SUBTLE IDLE MOTION
-========================================================= */
-.store-benefits__grid.is-animated .store-benefit:nth-child(4n+1) {
-  --idle-rotation: -.15deg;
-}
-.store-benefits__grid.is-animated .store-benefit:nth-child(4n+2) {
-  --idle-rotation: .1deg;
-}
-.store-benefits__grid.is-animated .store-benefit:nth-child(4n+3) {
-  --idle-rotation: -.08deg;
-}
-.store-benefits__grid.is-animated .store-benefit:nth-child(4n+4) {
-  --idle-rotation: .12deg;
-}
-/* =========================================================
-   FOCUS
-========================================================= */
-.store-benefit:focus-within {
-  outline: 2px solid rgba(230, 41, 115, 0.35);
-  outline-offset: 4px;
-}
-/* =========================================================
-   TABLET
-========================================================= */
 @media (max-width: 992px) {
-  .store-benefits__grid--4,
-  .store-benefits__grid--3 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
   .store-benefits__grid {
     gap: 18px;
+  }
+  .store-benefits__grid--3, .store-benefits__grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .store-benefit__inner {
     min-height: 140px;
   }
 }
-/* =========================================================
-   MOBILE
-========================================================= */
 @media (max-width: 640px) {
   .store-benefits {
     padding-top: 40px;
     padding-bottom: 40px;
   }
-  .store-benefits__grid,
-  .store-benefits__grid--2,
-  .store-benefits__grid--3,
-  .store-benefits__grid--4 {
+  .store-benefits__grid, .store-benefits__grid--2, .store-benefits__grid--3, .store-benefits__grid--4 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
+  }
+  .store-benefits__glow--top {
+    width: 280px;
+    height: 280px;
+    filter: blur(75px);
+  }
+  .store-benefits__glow--bottom {
+    width: 250px;
+    height: 250px;
+    filter: blur(75px);
+  }
+  .store-benefits__glow--center {
+    width: 320px;
+    height: 320px;
+    filter: blur(90px);
   }
   .store-benefit {
     --card-radius: 17px;
@@ -19507,25 +19225,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     font-size: 10.5px;
     line-height: 1.75;
   }
-  .store-benefits__glow--top {
-    width: 280px;
-    height: 280px;
-    filter: blur(75px);
-  }
-  .store-benefits__glow--bottom {
-    width: 250px;
-    height: 250px;
-    filter: blur(75px);
-  }
-  .store-benefits__glow--center {
-    width: 320px;
-    height: 320px;
-    filter: blur(90px);
-  }
 }
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
 @media (max-width: 380px) {
   .store-benefits__grid,
   .store-benefits__grid--2,
@@ -19544,9 +19244,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     font-size: 10px;
   }
 }
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
 @media (prefers-reduced-motion: reduce) {
   .store-benefits__glow,
   .store-benefit,
@@ -19568,9 +19265,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: none;
   }
 }
-/* =========================================
-   QUALITY STORY
-========================================= */
+/* ==========================================================================
+   # QUALITY STORY COMPONENT STYLES
+   ========================================================================== */
 .quality-story {
   position: relative;
   isolation: isolate;
@@ -19578,10 +19275,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   padding: var(--quality-padding) 0;
   background: var(--quality-bg);
   color: var(--quality-title);
+  /* --- Background Glow Effects --- */
 }
-/* =========================================
-   BACKGROUND GLOW
-========================================= */
 .quality-story__glow {
   position: absolute;
   width: 420px;
@@ -19592,19 +19287,16 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 0.14;
   z-index: -1;
 }
-/* TOP */
 .quality-story__glow--top {
   top: -230px;
   right: -140px;
   background: var(--quality-accent);
 }
-/* BOTTOM */
 .quality-story__glow--bottom {
   bottom: -250px;
   left: -150px;
   background: #f9a8d4;
 }
-/* CENTER */
 .quality-story__glow--center {
   top: 45%;
   left: 50%;
@@ -19615,26 +19307,25 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   filter: blur(120px);
   opacity: 1;
 }
-/* =========================================
-   INNER
-========================================= */
+.quality-story {
+  /* --- Inner Container --- */
+}
 .quality-story__inner {
   position: relative;
   z-index: 2;
 }
-/* =========================================
-   HEADER
-========================================= */
+.quality-story {
+  /* --- Header Section --- */
+}
 .quality-story__header {
   max-width: 760px;
   margin: 0 auto 58px;
   text-align: center;
 }
-/* =========================================
-   BADGE
-========================================= */
-.quality-story__badge,
-.quality-story__stats-badge {
+.quality-story {
+  /* --- Badge Component --- */
+}
+.quality-story__badge, .quality-story__stats-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -19651,9 +19342,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
-/* =========================================
-   BADGE ICON
-========================================= */
 .quality-story__badge-icon {
   display: inline-flex;
   align-items: center;
@@ -19666,9 +19354,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 11px;
   box-shadow: 0 5px 15px rgba(230, 41, 115, 0.2);
 }
-/* =========================================
-   TITLE
-========================================= */
+.quality-story {
+  /* --- Title & Typography --- */
+}
 .quality-story__title {
   position: relative;
   display: inline-block;
@@ -19679,9 +19367,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   line-height: 1.3;
   letter-spacing: -0.025em;
 }
-/* =========================================
-   TITLE LINE
-========================================= */
 .quality-story__title::after {
   content: "";
   position: absolute;
@@ -19694,9 +19379,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background: linear-gradient(90deg, transparent, var(--quality-accent), transparent);
   opacity: 0.9;
 }
-/* =========================================
-   SUBTITLE
-========================================= */
 .quality-story__subtitle {
   max-width: 650px;
   margin: 29px auto 0;
@@ -19705,9 +19387,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   line-height: 2;
   text-align: center;
 }
-/* =========================================
-   QUALITY STEPS
-========================================= */
+.quality-story {
+  /* --- Quality Steps Grid --- */
+}
 .quality-story__steps {
   position: relative;
   display: grid;
@@ -19715,16 +19397,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   grid-gap: 20px;
   gap: 20px;
 }
-/* =========================================
-   STEP
-========================================= */
 .quality-story__step {
   position: relative;
   min-width: 0;
 }
-/* =========================================
-   CONNECTING LINE
-========================================= */
 .quality-story__step:not(:last-child)::after {
   content: "";
   position: absolute;
@@ -19735,9 +19411,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background: linear-gradient(90deg, var(--quality-border), var(--quality-accent), var(--quality-border));
   opacity: 0.5;
 }
-/* =========================================
-   STEP NUMBER
-========================================= */
 .quality-story__step-number {
   position: absolute;
   top: -10px;
@@ -19756,9 +19429,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-weight: 900;
   box-shadow: 0 8px 25px rgba(74, 15, 39, 0.06);
 }
-/* =========================================
-   STEP CARD
-========================================= */
 .quality-story__step-card {
   position: relative;
   height: 100%;
@@ -19773,9 +19443,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   -webkit-backdrop-filter: blur(15px);
   transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
-/* =========================================
-   CARD DECORATION
-========================================= */
 .quality-story__step-card::before {
   content: "";
   position: absolute;
@@ -19789,17 +19456,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   filter: blur(30px);
   pointer-events: none;
 }
-/* =========================================
-   CARD HOVER
-========================================= */
-.quality-story__step:hover .quality-story__step-card {
+.quality-story__step:hover .quality-story__step__step-card {
   transform: translateY(-6px);
   border-color: color-mix(in srgb, var(--step-icon-color) 30%, var(--quality-border));
   box-shadow: 0 20px 50px rgba(74, 15, 39, 0.09), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
 }
-/* =========================================
-   STEP ICON
-========================================= */
 .quality-story__step-icon {
   position: relative;
   z-index: 1;
@@ -19816,16 +19477,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 22px;
   transition: background 0.35s ease, color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
 }
-/* ICON HOVER */
-.quality-story__step:hover .quality-story__step-icon {
+.quality-story__step:hover .quality-story__step__step-icon {
   background: var(--step-icon-color);
   color: #fff;
   transform: scale(1.06) rotate(-3deg);
   box-shadow: 0 10px 25px color-mix(in srgb, var(--step-icon-color) 20%, transparent);
 }
-/* =========================================
-   STEP TITLE
-========================================= */
 .quality-story__step-title {
   position: relative;
   z-index: 1;
@@ -19835,9 +19492,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-weight: 900;
   line-height: 1.6;
 }
-/* =========================================
-   STEP DESCRIPTION
-========================================= */
 .quality-story__step-description {
   position: relative;
   z-index: 1;
@@ -19846,9 +19500,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 12px;
   line-height: 1.9;
 }
-/* =========================================
-   DIVIDER
-========================================= */
+.quality-story {
+  /* --- Divider Section --- */
+}
 .quality-story__divider {
   display: flex;
   align-items: center;
@@ -19878,15 +19532,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 11px;
   box-shadow: 0 8px 25px rgba(230, 41, 115, 0.06);
 }
-/* =========================================
-   STATS
-========================================= */
+.quality-story {
+  /* --- Statistics Section --- */
+}
 .quality-story__stats {
   text-align: center;
 }
-/* =========================================
-   STATS HEADER
-========================================= */
 .quality-story__stats-header {
   max-width: 700px;
   margin: 0 auto 35px;
@@ -19905,9 +19556,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 13px;
   line-height: 1.9;
 }
-/* =========================================
-   STATS GRID
-========================================= */
 .quality-story__stats-grid {
   display: grid;
   grid-gap: 16px;
@@ -19925,9 +19573,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .quality-story__stats-grid--5 {
   grid-template-columns: repeat(5, minmax(0, 1fr));
 }
-/* =========================================
-   STAT CARD
-========================================= */
+.quality-story {
+  /* --- Stat Card Component --- */
+}
+.quality-story__stat {
+  position: relative;
+}
 .quality-story__stat-card {
   position: relative;
   min-height: 180px;
@@ -19943,9 +19594,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   box-shadow: 0 10px 35px rgba(74, 15, 39, 0.045);
   transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
-/* =========================================
-   STAT CARD SHINE
-========================================= */
 .quality-story__stat-card::after {
   content: "";
   position: absolute;
@@ -19956,17 +19604,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.65), transparent 45%);
   pointer-events: none;
 }
-/* =========================================
-   STAT HOVER
-========================================= */
-.quality-story__stat:hover .quality-story__stat-card {
+.quality-story__stat:hover .quality-story__stat__stat-card {
   transform: translateY(-5px);
   border-color: color-mix(in srgb, var(--stat-icon-color) 25%, var(--quality-border));
   box-shadow: 0 18px 45px rgba(74, 15, 39, 0.08);
 }
-/* =========================================
-   STAT ICON
-========================================= */
 .quality-story__stat-icon {
   position: relative;
   z-index: 1;
@@ -19982,15 +19624,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 18px;
   transition: transform 0.35s ease, background 0.35s ease, color 0.35s ease;
 }
-/* STAT ICON HOVER */
-.quality-story__stat:hover .quality-story__stat-icon {
+.quality-story__stat:hover .quality-story__stat__stat-icon {
   background: var(--stat-icon-color);
   color: #fff;
   transform: scale(1.07);
 }
-/* =========================================
-   STAT VALUE
-========================================= */
 .quality-story__stat-value {
   position: relative;
   z-index: 1;
@@ -20000,9 +19638,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   line-height: 1;
   letter-spacing: -0.04em;
 }
-/* =========================================
-   STAT LABEL
-========================================= */
 .quality-story__stat-label {
   position: relative;
   z-index: 1;
@@ -20011,9 +19646,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 13px;
   font-weight: 800;
 }
-/* =========================================
-   STAT DESCRIPTION
-========================================= */
 .quality-story__stat-description {
   position: relative;
   z-index: 1;
@@ -20022,12 +19654,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 10px;
   line-height: 1.6;
 }
-/* =========================================
-   ANIMATION
-========================================= */
+.quality-story {
+  /* --- Animations --- */
+}
 @media (prefers-reduced-motion: no-preference) {
-  .quality-story__step.is-animated,
-  .quality-story__stat.is-animated {
+  .quality-story__step.is-animated, .quality-story__stat.is-animated {
     opacity: 0;
     transform: translateY(22px);
     animation: qualityStoryReveal 0.7s ease forwards;
@@ -20045,30 +19676,25 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: translateY(0);
   }
 }
-/* =========================================
-   TABLET
-========================================= */
+/* ==========================================================================
+   # RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
 @media (max-width: 1100px) {
   .quality-story__steps {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  .quality-story__step:nth-child(2)::after,
-  .quality-story__step:nth-child(4)::after {
+  .quality-story__step:nth-child(2)::after, .quality-story__step:nth-child(4)::after {
     display: none;
   }
 }
 @media (max-width: 991px) {
-  .quality-story__stats-grid--4,
-  .quality-story__stats-grid--5 {
+  .quality-story__stats-grid--4, .quality-story__stats-grid--5 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .quality-story__stats-grid--3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
-/* =========================================
-   MOBILE
-========================================= */
 @media (max-width: 767px) {
   .quality-story {
     padding: calc(var(--quality-padding) * 0.7) 0;
@@ -20076,8 +19702,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .quality-story__header {
     margin-bottom: 42px;
   }
-  .quality-story__badge,
-  .quality-story__stats-badge {
+  .quality-story__badge, .quality-story__stats-badge {
     padding: 7px 13px;
     font-size: 11px;
   }
@@ -20157,9 +19782,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     font-size: 9px;
   }
 }
-/* =========================================
-   SMALL MOBILE
-========================================= */
 @media (max-width: 420px) {
   .quality-story__title {
     font-size: 27px;
@@ -20171,20 +19793,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     min-height: 145px;
   }
 }
-/* =========================================
-   REDUCED MOTION
-========================================= */
 @media (prefers-reduced-motion: reduce) {
-  .quality-story__step,
-  .quality-story__step-card,
-  .quality-story__step-icon,
-  .quality-story__stat,
-  .quality-story__stat-card,
-  .quality-story__stat-icon {
+  .quality-story__step, .quality-story__step-card, .quality-story__step-icon, .quality-story__stat, .quality-story__stat-card, .quality-story__stat-icon {
     transition: none !important;
   }
-  .quality-story__step.is-animated,
-  .quality-story__stat.is-animated {
+  .quality-story__step.is-animated, .quality-story__stat.is-animated {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
@@ -21295,6 +20908,260 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .rawan-salla-products .s-product-card-entry .s-product-card-content-footer salla-add-product-button button:hover {
   background: #c2185b !important;
   transform: scale(1.03);
+}
+/* =====================================================
+    LUXURY RELATED PRODUCTS SECTION
+===================================================== */
+.rawan-lux-products {
+  --lux-accent: #E62973;
+  width: 100%;
+  position: relative;
+  padding: 20px 0 70px;
+}
+.rawan-lux-products .rawan-lux-products__inner {
+  position: relative;
+  width: 100%;
+}
+/* =====================================================
+    SALLA SLIDER
+===================================================== */
+.rawan-lux-products salla-products-slider {
+  display: block;
+  width: 100%;
+}
+.rawan-lux-products salla-products-slider .s-slider-block__title {
+  display: none !important;
+}
+.rawan-lux-products salla-products-slider .s-slider-block {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.rawan-lux-products salla-products-slider .swiper {
+  padding: 15px 8px 35px !important;
+}
+.rawan-lux-products salla-products-slider .swiper-wrapper {
+  align-items: stretch;
+}
+.rawan-lux-products salla-products-slider .swiper-slide {
+  height: auto !important;
+  display: flex;
+}
+/* =====================================================
+    PRODUCT CARD
+    SALLA NATIVE CARD
+===================================================== */
+.rawan-lux-products .s-product-card-entry {
+  background: #ffffff !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  border: none !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12) !important;
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+.rawan-lux-products .s-product-card-entry:hover {
+  transform: translateY(-10px) !important;
+  box-shadow: 0 30px 70px rgba(230, 41, 115, 0.25) !important;
+}
+/* =====================================================
+    IMAGE AREA
+===================================================== */
+.rawan-lux-products .s-product-card-entry .s-product-card-image {
+  background: #fafafa !important;
+  padding: 18px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+}
+.rawan-lux-products .s-product-card-entry .s-product-card-image .s-product-card-image-cover {
+  width: 100% !important;
+  aspect-ratio: 1/1 !important;
+  -o-object-fit: contain !important;
+     object-fit: contain !important;
+  border-radius: 20px !important;
+  transition: transform 0.6s ease !important;
+  display: block !important;
+}
+.rawan-lux-products .s-product-card-entry:hover .s-product-card-image-cover {
+  transform: scale(1.08) !important;
+}
+/* =====================================================
+    PROMOTION BADGE
+===================================================== */
+.rawan-lux-products .s-product-card-promotion-title {
+  position: absolute !important;
+  top: 15px !important;
+  left: 15px !important;
+  right: auto !important;
+  background: #E62973 !important;
+  color: #ffffff !important;
+  padding: 6px 12px !important;
+  border-radius: 999px !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  line-height: 1.4 !important;
+  z-index: 5 !important;
+  box-shadow: 0 5px 15px rgba(230, 41, 115, 0.2) !important;
+}
+/* =====================================================
+    WISHLIST
+===================================================== */
+.rawan-lux-products .s-product-card-entry .s-product-card-wishlist-btn {
+  top: 15px !important;
+  right: 15px !important;
+  left: auto !important;
+  z-index: 10 !important;
+}
+.rawan-lux-products .s-product-card-entry .s-product-card-wishlist-btn button {
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 42px !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  color: #E62973 !important;
+  border: none !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12) !important;
+  transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease !important;
+}
+.rawan-lux-products .s-product-card-entry .s-product-card-wishlist-btn button:hover {
+  background: #E62973 !important;
+  color: #ffffff !important;
+  transform: scale(1.1) !important;
+}
+.rawan-lux-products .s-product-card-entry .s-product-card-wishlist-btn button i {
+  color: inherit !important;
+}
+/* =====================================================
+    CONTENT
+===================================================== */
+.rawan-lux-products .s-product-card-entry .s-product-card-content {
+  padding: 18px !important;
+  text-align: right !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+  background: #ffffff !important;
+}
+/* =====================================================
+    PRODUCT TITLE
+===================================================== */
+.rawan-lux-products .s-product-card-entry .s-product-card-content-title {
+  margin: 0 0 8px !important;
+  min-height: auto !important;
+}
+.rawan-lux-products .s-product-card-entry .s-product-card-content-title a {
+  color: #111111 !important;
+  font-size: 16px !important;
+  font-weight: 900 !important;
+  line-height: 1.7 !important;
+  -webkit-text-decoration: none !important;
+  text-decoration: none !important;
+  transition: color 0.3s ease !important;
+}
+.rawan-lux-products .s-product-card-entry .s-product-card-content-title a:hover {
+  color: #E62973 !important;
+}
+/* =====================================================
+    RATING
+===================================================== */
+.rawan-lux-products .s-product-card-entry .s-product-card-rating {
+  color: #E62973 !important;
+  font-size: 13px !important;
+  margin-top: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+.rawan-lux-products .s-product-card-entry .s-product-card-rating i {
+  color: #E62973 !important;
+}
+/* =====================================================
+    PRICE
+===================================================== */
+.rawan-lux-products .s-product-card-entry .s-product-card-sale-price {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-top: 12px !important;
+  flex-wrap: wrap !important;
+}
+.rawan-lux-products .s-product-card-entry .s-product-card-sale-price h4 {
+  color: #111111 !important;
+  font-size: 22px !important;
+  font-weight: 900 !important;
+  margin: 0 !important;
+}
+.rawan-lux-products .s-product-card-entry .s-product-card-sale-price span {
+  color: #999999 !important;
+  font-size: 14px !important;
+  -webkit-text-decoration: line-through !important;
+  text-decoration: line-through !important;
+}
+.rawan-lux-products .s-product-card-entry .s-product-card-price {
+  color: #111111 !important;
+  font-size: 20px !important;
+  font-weight: 900 !important;
+}
+/* =====================================================
+    ADD TO CART
+===================================================== */
+.rawan-lux-products .s-product-card-entry .s-product-card-content-footer {
+  margin-top: auto !important;
+  padding-top: 18px !important;
+}
+.rawan-lux-products .s-product-card-entry salla-add-product-button {
+  width: 100% !important;
+  display: block !important;
+}
+.rawan-lux-products .s-product-card-entry salla-add-product-button button {
+  width: 100% !important;
+  min-height: 48px !important;
+  height: 48px !important;
+  border-radius: 14px !important;
+  background: #E62973 !important;
+  color: #ffffff !important;
+  font-weight: 900 !important;
+  font-size: 14px !important;
+  border: none !important;
+  box-shadow: none !important;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+.rawan-lux-products .s-product-card-entry salla-add-product-button button:hover {
+  background: #c2185b !important;
+  transform: scale(1.03) !important;
+  box-shadow: 0 10px 25px rgba(194, 24, 91, 0.2) !important;
+}
+/* =====================================================
+    MOBILE
+===================================================== */
+@media (max-width: 767px) {
+  .rawan-lux-products {
+    padding-top: 10px;
+    padding-bottom: 45px;
+  }
+  .rawan-lux-products salla-products-slider .swiper {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+  .rawan-lux-products .s-product-card-entry {
+    border-radius: 20px !important;
+  }
+  .rawan-lux-products .s-product-card-entry .s-product-card-image {
+    padding: 12px !important;
+  }
+  .rawan-lux-products .s-product-card-entry .s-product-card-content {
+    padding: 14px !important;
+  }
+  .rawan-lux-products .s-product-card-entry .s-product-card-content-title a {
+    font-size: 14px !important;
+  }
+  .rawan-lux-products .s-product-card-entry .s-product-card-sale-price h4 {
+    font-size: 18px !important;
+  }
 }
 body.mm-ocd-opened,
 body.modal-is-open,

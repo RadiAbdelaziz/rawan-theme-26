@@ -1,5 +1,5 @@
 /* =========================================================
-   STORE BENEFITS — PREMIUM MOTION
+   STORE BENEFITS — PREMIUM MOTION (SCSS)
 ========================================================= */
 
 .store-benefits {
@@ -9,884 +9,478 @@
 
     padding-top: var(--benefits-padding);
     padding-bottom: var(--benefits-padding);
-
     background: var(--benefits-bg);
 
-    --benefits-shadow:
-        0 18px 55px rgba(30, 20, 25, .07);
+    --benefits-shadow: 0 18px 55px rgba(30, 20, 25, 0.07);
+    --benefits-shadow-hover: 0 24px 65px rgba(30, 20, 25, 0.13);
 
-    --benefits-shadow-hover:
-        0 24px 65px rgba(30, 20, 25, .13);
-}
-
-
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
-.store-benefits::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -3;
-    pointer-events: none;
-
-    background:
-        radial-gradient(
-            circle at 85% 10%,
-            rgba(230, 41, 115, .07),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 10% 90%,
-            rgba(249, 168, 212, .07),
-            transparent 30%
-        );
-}
-
-
-/* =========================================================
-   GLOW
-========================================================= */
-
-.store-benefits__glow {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: -2;
-
-    will-change: transform;
-}
-
-.store-benefits__glow--top {
-    width: 420px;
-    height: 420px;
-
-    top: -250px;
-    right: -100px;
-
-    background: var(--benefits-accent);
-    opacity: .13;
-
-    filter: blur(100px);
-
-    animation: benefitsGlowTop 14s ease-in-out infinite alternate;
-}
-
-.store-benefits__glow--bottom {
-    width: 360px;
-    height: 360px;
-
-    bottom: -230px;
-    left: -120px;
-
-    background: #f9a8d4;
-    opacity: .14;
-
-    filter: blur(100px);
-
-    animation: benefitsGlowBottom 17s ease-in-out infinite alternate;
-}
-
-.store-benefits__glow--center {
-    width: 500px;
-    height: 500px;
-
-    top: 50%;
-    left: 50%;
-
-    background: var(--benefits-accent);
-    opacity: .035;
-
-    filter: blur(120px);
-
-    transform: translate(-50%, -50%);
-
-    animation: benefitsGlowCenter 20s ease-in-out infinite alternate;
-}
-
-
-@keyframes benefitsGlowTop {
-
-    0% {
-        transform: translate3d(0, 0, 0) scale(1);
+    // Background Gradient Overlay
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -3;
+        pointer-events: none;
+        background: 
+            radial-gradient(circle at 85% 10%, rgba(230, 41, 115, 0.07), transparent 32%),
+            radial-gradient(circle at 10% 90%, rgba(249, 168, 212, 0.07), transparent 30%);
     }
 
-    100% {
-        transform: translate3d(-35px, 25px, 0) scale(1.08);
+    // -------------------------------------------------------
+    // GLOW ORBS
+    // -------------------------------------------------------
+    &__glow {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: -2;
+        will-change: transform;
+
+        &--top {
+            width: 420px;
+            height: 420px;
+            top: -250px;
+            right: -100px;
+            background: var(--benefits-accent);
+            opacity: 0.13;
+            filter: blur(100px);
+            animation: benefitsGlowTop 14s ease-in-out infinite alternate;
+        }
+
+        &--bottom {
+            width: 360px;
+            height: 360px;
+            bottom: -230px;
+            left: -120px;
+            background: #f9a8d4;
+            opacity: 0.14;
+            filter: blur(100px);
+            animation: benefitsGlowBottom 17s ease-in-out infinite alternate;
+        }
+
+        &--center {
+            width: 500px;
+            height: 500px;
+            top: 50%;
+            left: 50%;
+            background: var(--benefits-accent);
+            opacity: 0.035;
+            filter: blur(120px);
+            transform: translate(-50%, -50%);
+            animation: benefitsGlowCenter 20s ease-in-out infinite alternate;
+        }
     }
 
-}
+    // -------------------------------------------------------
+    // GRID SYSTEM & STAGGERED ANIMATIONS
+    // -------------------------------------------------------
+    &__grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        gap: 24px;
+        width: 100%;
 
+        &--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        &--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+        &--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
-@keyframes benefitsGlowBottom {
+        // Entrance animation triggers
+        &.is-animated {
+            .store-benefit {
+                opacity: 0;
+                animation: storeBenefitReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                animation-delay: calc(0.08s + (var(--benefit-index) * 0.085s));
 
-    0% {
-        transform: translate3d(0, 0, 0) scale(1);
+                // Idle Rotations
+                &:nth-child(4n + 1) { --idle-rotation: -0.15deg; }
+                &:nth-child(4n + 2) { --idle-rotation: 0.1deg; }
+                &:nth-child(4n + 3) { --idle-rotation: -0.08deg; }
+                &:nth-child(4n + 4) { --idle-rotation: 0.12deg; }
+            }
+
+            .store-benefit__icon-wrap {
+                opacity: 0;
+                transform: translateY(12px) scale(0.82);
+                animation: storeBenefitIconReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                animation-delay: calc(0.28s + (var(--benefit-index) * 0.085s));
+            }
+
+            .store-benefit__content {
+                opacity: 0;
+                transform: translateY(10px);
+                animation: storeBenefitContentReveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+                animation-delay: calc(0.38s + (var(--benefit-index) * 0.085s));
+            }
+        }
     }
-
-    100% {
-        transform: translate3d(30px, -25px, 0) scale(1.1);
-    }
-
 }
 
-
-@keyframes benefitsGlowCenter {
-
-    0% {
-        opacity: .025;
-        transform: translate(-50%, -50%) scale(.95);
-    }
-
-    100% {
-        opacity: .055;
-        transform: translate(-50%, -50%) scale(1.08);
-    }
-
-}
-
-
-/* =========================================================
-   GRID
-========================================================= */
-
-.store-benefits__grid {
-    position: relative;
-    z-index: 2;
-
-    display: grid;
-
-    gap: 24px;
-
-    width: 100%;
-}
-
-
-.store-benefits__grid--2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-
-.store-benefits__grid--3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-
-.store-benefits__grid--4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-
-/* =========================================================
-   CARD
-========================================================= */
+// =========================================================
+// STORE BENEFIT ITEM
+// =========================================================
 
 .store-benefit {
     --card-radius: 22px;
 
     position: relative;
-
     min-width: 0;
-
     padding: 1px;
-
     border-radius: var(--card-radius);
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(255,255,255,.95),
-            rgba(255,255,255,.55)
-        );
-
-    box-shadow:
-        0 1px 0 rgba(255,255,255,.9) inset,
-        0 8px 30px rgba(30,20,25,.035);
-
-    transition:
-        transform .65s cubic-bezier(.16,1,.3,1),
-        box-shadow .65s cubic-bezier(.16,1,.3,1),
-        background .45s ease;
-
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.55));
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset, 0 8px 30px rgba(30, 20, 25, 0.035);
+    transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.45s ease;
     will-change: transform;
-}
 
+    // Card Border Glow Effect
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(135deg, rgba(230, 41, 115, 0), rgba(230, 41, 115, 0.35), rgba(249, 168, 212, 0));
+        opacity: 0;
+        transition: opacity 0.55s ease;
+        pointer-events: none;
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+    }
 
-/* =========================================================
-   CARD BORDER GLOW
-========================================================= */
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--benefits-shadow-hover), 0 0 0 1px rgba(230, 41, 115, 0.035);
 
-.store-benefit::before {
-    content: "";
+        &::before {
+            opacity: 1;
+        }
 
-    position: absolute;
-    inset: 0;
+        .store-benefit__inner {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.99), rgba(255, 250, 253, 0.94));
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1), 0 8px 25px rgba(230, 41, 115, 0.045);
+        }
 
-    border-radius: inherit;
+        .store-benefit__shine {
+            left: 150%;
+            opacity: 1;
+        }
 
-    padding: 1px;
+        .store-benefit__icon {
+            color: #fff;
+            background: linear-gradient(
+                135deg,
+                var(--benefit-icon-color),
+                color-mix(in srgb, var(--benefit-icon-color) 72%, #9d174d)
+            );
+            transform: translateY(-3px) scale(1.07) rotate(-4deg);
+            box-shadow: 0 14px 32px rgba(230, 41, 115, 0.22);
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(230,41,115,0),
-            rgba(230,41,115,.35),
-            rgba(249,168,212,0)
-        );
+            &::before {
+                border-color: rgba(255, 255, 255, 0.35);
+                transform: scale(1.08);
+            }
+        }
 
-    opacity: 0;
+        .store-benefit__icon-glow {
+            opacity: 0.15;
+            transform: scale(1.1);
+        }
 
-    transition:
-        opacity .55s ease;
+        .store-benefit__content {
+            h3 {
+                color: var(--benefits-accent);
+                transform: translateY(-1px);
+            }
 
-    pointer-events: none;
+            p {
+                color: #666;
+            }
+        }
+    }
 
-    -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
+    &:focus-within {
+        outline: 2px solid rgba(230, 41, 115, 0.35);
+        outline-offset: 4px;
+    }
 
-    -webkit-mask-composite: xor;
+    // -------------------------------------------------------
+    // INNER CONTENT HOLDER
+    // -------------------------------------------------------
+    &__inner {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        min-height: 145px;
+        padding: 24px 20px;
+        text-align: center;
+        border-radius: calc(var(--card-radius) - 1px);
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.78));
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+        transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                    background 0.45s ease;
+    }
 
-    mask-composite: exclude;
-}
-
-
-.store-benefit:hover::before {
-    opacity: 1;
-}
-
-
-/* =========================================================
-   INNER
-========================================================= */
-
-.store-benefit__inner {
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    gap: 16px;
-
-    min-height: 145px;
-
-    padding: 24px 20px;
-
-    text-align: center;
-
-    border-radius: calc(var(--card-radius) - 1px);
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.96),
-            rgba(255,255,255,.78)
-        );
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.95);
-
-    transition:
-        transform .65s cubic-bezier(.16,1,.3,1),
-        box-shadow .65s cubic-bezier(.16,1,.3,1),
-        background .45s ease;
-}
-
-
-/* =========================================================
-   SHINE EFFECT
-========================================================= */
-
-.store-benefit__shine {
-    position: absolute;
-
-    top: 0;
-    left: -120%;
-
-    z-index: 4;
-
-    width: 70%;
-    height: 100%;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
+    // Light Shine Overlay
+    &__shine {
+        position: absolute;
+        top: 0;
+        left: -120%;
+        z-index: 4;
+        width: 70%;
+        height: 100%;
+        pointer-events: none;
+        background: linear-gradient(
             100deg,
             transparent 0%,
-            rgba(255,255,255,0) 35%,
-            rgba(255,255,255,.55) 50%,
-            rgba(255,255,255,0) 65%,
+            rgba(255, 255, 255, 0) 35%,
+            rgba(255, 255, 255, 0.55) 50%,
+            rgba(255, 255, 255, 0) 65%,
             transparent 100%
         );
+        transform: skewX(-18deg);
+        opacity: 0;
+        transition: left 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
 
-    transform: skewX(-18deg);
+    // -------------------------------------------------------
+    // ICON ELEMENTS
+    // -------------------------------------------------------
+    &__icon-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 58px;
+        height: 58px;
+        flex-shrink: 0;
+    }
 
-    opacity: 0;
+    &__icon {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 52px;
+        height: 52px;
+        border-radius: 17px;
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.7));
+        color: var(--benefit-icon-color);
+        font-size: 21px;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.055), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+        transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                    background 0.45s ease,
+                    color 0.35s ease,
+                    box-shadow 0.55s ease;
 
-    transition:
-        left .9s cubic-bezier(.16,1,.3,1),
-        opacity .3s ease;
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            border: 1px solid rgba(230, 41, 115, 0.12);
+            transition: border-color 0.4s ease, transform 0.5s ease;
+        }
+    }
+
+    &__icon-glow {
+        position: absolute;
+        inset: -8px;
+        border-radius: 22px;
+        background: var(--benefit-icon-color);
+        opacity: 0;
+        filter: blur(15px);
+        transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    // -------------------------------------------------------
+    // TEXT CONTENT
+    // -------------------------------------------------------
+    &__content {
+        position: relative;
+        z-index: 3;
+        min-width: 0;
+
+        h3 {
+            margin: 0 0 7px;
+            color: #171717;
+            font-size: 15px;
+            font-weight: 900;
+            line-height: 1.6;
+            transition: color 0.35s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        p {
+            margin: 0;
+            color: #737373;
+            font-size: 12px;
+            line-height: 1.85;
+            transition: color 0.35s ease;
+        }
+    }
 }
 
+// =========================================================
+// ANIMATION KEYFRAMES
+// =========================================================
 
-.store-benefit:hover .store-benefit__shine {
-    left: 150%;
-    opacity: 1;
+@keyframes benefitsGlowTop {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(-35px, 25px, 0) scale(1.08); }
 }
 
-
-/* =========================================================
-   HOVER
-========================================================= */
-
-.store-benefit:hover {
-    transform: translateY(-8px);
-
-    box-shadow:
-        var(--benefits-shadow-hover),
-        0 0 0 1px rgba(230,41,115,.035);
+@keyframes benefitsGlowBottom {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(30px, -25px, 0) scale(1.1); }
 }
 
-
-.store-benefit:hover .store-benefit__inner {
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.99),
-            rgba(255,250,253,.94)
-        );
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,1),
-        0 8px 25px rgba(230,41,115,.045);
+@keyframes benefitsGlowCenter {
+    0% {
+        opacity: 0.025;
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    100% {
+        opacity: 0.055;
+        transform: translate(-50%, -50%) scale(1.08);
+    }
 }
-
-
-/* =========================================================
-   ICON WRAPPER
-========================================================= */
-
-.store-benefit__icon-wrap {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 58px;
-    height: 58px;
-
-    flex-shrink: 0;
-}
-
-
-/* =========================================================
-   ICON
-========================================================= */
-
-.store-benefit__icon {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 52px;
-    height: 52px;
-
-    border-radius: 17px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.95),
-            rgba(255,255,255,.7)
-        );
-
-    color: var(--benefit-icon-color);
-
-    font-size: 21px;
-
-    box-shadow:
-        0 8px 22px rgba(0,0,0,.055),
-        inset 0 1px 0 rgba(255,255,255,.95);
-
-    transition:
-        transform .65s cubic-bezier(.16,1,.3,1),
-        background .45s ease,
-        color .35s ease,
-        box-shadow .55s ease;
-}
-
-
-/* =========================================================
-   ICON BORDER
-========================================================= */
-
-.store-benefit__icon::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    border-radius: inherit;
-
-    border: 1px solid rgba(230,41,115,.12);
-
-    transition:
-        border-color .4s ease,
-        transform .5s ease;
-}
-
-
-/* =========================================================
-   ICON GLOW
-========================================================= */
-
-.store-benefit__icon-glow {
-    position: absolute;
-
-    inset: -8px;
-
-    border-radius: 22px;
-
-    background: var(--benefit-icon-color);
-
-    opacity: 0;
-
-    filter: blur(15px);
-
-    transition:
-        opacity .55s ease,
-        transform .55s ease;
-}
-
-
-/* =========================================================
-   ICON HOVER
-========================================================= */
-
-.store-benefit:hover .store-benefit__icon {
-    color: #fff;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--benefit-icon-color),
-            color-mix(
-                in srgb,
-                var(--benefit-icon-color) 72%,
-                #9d174d
-            )
-        );
-
-    transform:
-        translateY(-3px)
-        scale(1.07)
-        rotate(-4deg);
-
-    box-shadow:
-        0 14px 32px
-        rgba(230,41,115,.22);
-}
-
-
-.store-benefit:hover .store-benefit__icon::before {
-    border-color: rgba(255,255,255,.35);
-
-    transform: scale(1.08);
-}
-
-
-.store-benefit:hover .store-benefit__icon-glow {
-    opacity: .15;
-
-    transform: scale(1.1);
-}
-
-
-/* =========================================================
-   CONTENT
-========================================================= */
-
-.store-benefit__content {
-    position: relative;
-
-    z-index: 3;
-
-    min-width: 0;
-}
-
-
-/* =========================================================
-   TITLE
-========================================================= */
-
-.store-benefit__content h3 {
-    margin: 0 0 7px;
-
-    color: #171717;
-
-    font-size: 15px;
-    font-weight: 900;
-
-    line-height: 1.6;
-
-    transition:
-        color .35s ease,
-        transform .45s cubic-bezier(.16,1,.3,1);
-}
-
-
-.store-benefit:hover .store-benefit__content h3 {
-    color: var(--benefits-accent);
-
-    transform: translateY(-1px);
-}
-
-
-/* =========================================================
-   DESCRIPTION
-========================================================= */
-
-.store-benefit__content p {
-    margin: 0;
-
-    color: #737373;
-
-    font-size: 12px;
-
-    line-height: 1.85;
-
-    transition:
-        color .35s ease;
-}
-
-
-.store-benefit:hover .store-benefit__content p {
-    color: #666;
-}
-
-
-/* =========================================================
-   ENTRANCE ANIMATION
-========================================================= */
-
-.store-benefits__grid.is-animated .store-benefit {
-    opacity: 0;
-
-    animation:
-        storeBenefitReveal .85s
-        cubic-bezier(.16,1,.3,1)
-        forwards;
-
-    animation-delay:
-        calc(
-            .08s + (var(--benefit-index) * .085s)
-        );
-}
-
-
-.store-benefits__grid.is-animated
-.store-benefit__icon-wrap {
-
-    opacity: 0;
-
-    transform:
-        translateY(12px)
-        scale(.82);
-
-    animation:
-        storeBenefitIconReveal .7s
-        cubic-bezier(.16,1,.3,1)
-        forwards;
-
-    animation-delay:
-        calc(
-            .28s + (var(--benefit-index) * .085s)
-        );
-}
-
-
-.store-benefits__grid.is-animated
-.store-benefit__content {
-
-    opacity: 0;
-
-    transform: translateY(10px);
-
-    animation:
-        storeBenefitContentReveal .65s
-        cubic-bezier(.16,1,.3,1)
-        forwards;
-
-    animation-delay:
-        calc(
-            .38s + (var(--benefit-index) * .085s)
-        );
-}
-
-
-/* =========================================================
-   CARD REVEAL
-========================================================= */
 
 @keyframes storeBenefitReveal {
-
     0% {
         opacity: 0;
-
-        transform:
-            translate3d(0, 32px, 0)
-            scale(.96);
-
+        transform: translate3d(0, 32px, 0) scale(0.96);
         filter: blur(3px);
     }
-
     65% {
         opacity: 1;
-
-        transform:
-            translate3d(0, -3px, 0)
-            scale(1.005);
-
+        transform: translate3d(0, -3px, 0) scale(1.005);
         filter: blur(0);
     }
-
     100% {
         opacity: 1;
-
-        transform:
-            translate3d(0, 0, 0)
-            scale(1);
-
+        transform: translate3d(0, 0, 0) scale(1);
         filter: blur(0);
     }
-
 }
-
-
-/* =========================================================
-   ICON REVEAL
-========================================================= */
 
 @keyframes storeBenefitIconReveal {
-
     0% {
         opacity: 0;
-
-        transform:
-            translateY(12px)
-            scale(.82)
-            rotate(-8deg);
+        transform: translateY(12px) scale(0.82) rotate(-8deg);
     }
-
     65% {
         opacity: 1;
-
-        transform:
-            translateY(-2px)
-            scale(1.04)
-            rotate(2deg);
+        transform: translateY(-2px) scale(1.04) rotate(2deg);
     }
-
     100% {
         opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1)
-            rotate(0);
+        transform: translateY(0) scale(1) rotate(0);
     }
-
 }
-
-
-/* =========================================================
-   CONTENT REVEAL
-========================================================= */
 
 @keyframes storeBenefitContentReveal {
-
     from {
         opacity: 0;
-
-        transform:
-            translateY(10px);
+        transform: translateY(10px);
     }
-
     to {
         opacity: 1;
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
-
 }
 
-
-/* =========================================================
-   SUBTLE IDLE MOTION
-========================================================= */
-
-.store-benefits__grid.is-animated
-.store-benefit:nth-child(4n + 1) {
-    --idle-rotation: -.15deg;
-}
-
-.store-benefits__grid.is-animated
-.store-benefit:nth-child(4n + 2) {
-    --idle-rotation: .1deg;
-}
-
-.store-benefits__grid.is-animated
-.store-benefit:nth-child(4n + 3) {
-    --idle-rotation: -.08deg;
-}
-
-.store-benefits__grid.is-animated
-.store-benefit:nth-child(4n + 4) {
-    --idle-rotation: .12deg;
-}
-
-
-/* =========================================================
-   FOCUS
-========================================================= */
-
-.store-benefit:focus-within {
-    outline: 2px solid
-        rgba(230,41,115,.35);
-
-    outline-offset: 4px;
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
+// =========================================================
+// RESPONSIVE MEDIA QUERIES
+// =========================================================
 
 @media (max-width: 992px) {
-
-    .store-benefits__grid--4,
-    .store-benefits__grid--3 {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-    }
-
     .store-benefits__grid {
         gap: 18px;
+
+        &--3,
+        &--4 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
     }
 
     .store-benefit__inner {
         min-height: 140px;
     }
-
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
 @media (max-width: 640px) {
-
     .store-benefits {
         padding-top: 40px;
         padding-bottom: 40px;
+
+        &__grid,
+        &__grid--2,
+        &__grid--3,
+        &__grid--4 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        &__glow--top {
+            width: 280px;
+            height: 280px;
+            filter: blur(75px);
+        }
+
+        &__glow--bottom {
+            width: 250px;
+            height: 250px;
+            filter: blur(75px);
+        }
+
+        &__glow--center {
+            width: 320px;
+            height: 320px;
+            filter: blur(90px);
+        }
     }
-
-
-    .store-benefits__grid,
-    .store-benefits__grid--2,
-    .store-benefits__grid--3,
-    .store-benefits__grid--4 {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
-        gap: 12px;
-    }
-
 
     .store-benefit {
         --card-radius: 17px;
+
+        &__inner {
+            min-height: 150px;
+            padding: 18px 11px;
+            gap: 11px;
+        }
+
+        &__icon-wrap {
+            width: 50px;
+            height: 50px;
+        }
+
+        &__icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 14px;
+            font-size: 18px;
+        }
+
+        &__content {
+            h3 {
+                font-size: 13px;
+                line-height: 1.55;
+            }
+
+            p {
+                font-size: 10.5px;
+                line-height: 1.75;
+            }
+        }
     }
-
-
-    .store-benefit__inner {
-        min-height: 150px;
-
-        padding: 18px 11px;
-
-        gap: 11px;
-    }
-
-
-    .store-benefit__icon-wrap {
-        width: 50px;
-        height: 50px;
-    }
-
-
-    .store-benefit__icon {
-        width: 45px;
-        height: 45px;
-
-        border-radius: 14px;
-
-        font-size: 18px;
-    }
-
-
-    .store-benefit__content h3 {
-        font-size: 13px;
-
-        line-height: 1.55;
-    }
-
-
-    .store-benefit__content p {
-        font-size: 10.5px;
-
-        line-height: 1.75;
-    }
-
-
-    .store-benefits__glow--top {
-        width: 280px;
-        height: 280px;
-
-        filter: blur(75px);
-    }
-
-
-    .store-benefits__glow--bottom {
-        width: 250px;
-        height: 250px;
-
-        filter: blur(75px);
-    }
-
-
-    .store-benefits__glow--center {
-        width: 320px;
-        height: 320px;
-
-        filter: blur(90px);
-    }
-
 }
 
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
 @media (max-width: 380px) {
-
     .store-benefits__grid,
     .store-benefits__grid--2,
     .store-benefits__grid--3,
@@ -894,34 +488,21 @@
         gap: 9px;
     }
 
+    .store-benefit {
+        &__inner {
+            min-height: 145px;
+            padding: 16px 8px;
+        }
 
-    .store-benefit__inner {
-        min-height: 145px;
-
-        padding:
-            16px
-            8px;
+        &__content {
+            h3 { font-size: 12px; }
+            p { font-size: 10px; }
+        }
     }
-
-
-    .store-benefit__content h3 {
-        font-size: 12px;
-    }
-
-
-    .store-benefit__content p {
-        font-size: 10px;
-    }
-
 }
 
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
+// Accessibility Adjustment
 @media (prefers-reduced-motion: reduce) {
-
     .store-benefits__glow,
     .store-benefit,
     .store-benefit__inner,
@@ -930,24 +511,19 @@
     .store-benefit__content,
     .store-benefit__shine {
         animation: none !important;
-
         transition: none !important;
     }
 
-
-    .store-benefits__grid.is-animated .store-benefit,
-    .store-benefits__grid.is-animated
-    .store-benefit__icon-wrap,
-    .store-benefits__grid.is-animated
-    .store-benefit__content {
-        opacity: 1;
-
-        transform: none;
+    .store-benefits__grid.is-animated {
+        .store-benefit,
+        .store-benefit__icon-wrap,
+        .store-benefit__content {
+            opacity: 1;
+            transform: none;
+        }
     }
-
 
     .store-benefit:hover {
         transform: none;
     }
-
 }

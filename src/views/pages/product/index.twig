@@ -10,18 +10,14 @@
 <section class="rawan-category-page" dir="rtl">
 
     {# =========================================================
-       HERO
+        HERO SECTION
     ========================================================= #}
-
     <header class="rawan-category-hero">
-
         <div class="rawan-category-hero__glow rawan-category-hero__glow--one"></div>
         <div class="rawan-category-hero__glow rawan-category-hero__glow--two"></div>
-
         <div class="rawan-category-hero__pattern"></div>
 
         <div class="container">
-
             {% if theme.settings.get('product_index_show_breadcrumbs', true) %}
                 <nav class="rawan-category-breadcrumbs">
                     <salla-breadcrumb></salla-breadcrumb>
@@ -29,7 +25,6 @@
             {% endif %}
 
             <div class="rawan-category-hero__content">
-
                 <span class="rawan-category-eyebrow">
                     <i></i>
                     RAWAN COLLECTION
@@ -40,120 +35,65 @@
                     {{ page.title|raw }}
                 </h1>
 
-                {% if category.description %}
-                    <p class="rawan-category-description">
-                        {{ category.description|raw }}
-                    </p>
-                {% else %}
-                    <p class="rawan-category-description">
-                        اكتشفي تشكيلتنا المختارة بعناية،
-                        حيث تلتقي الأناقة بالجودة في كل قطعة.
-                    </p>
-                {% endif %}
+                <p class="rawan-category-description">
+                    {{ category.description|default('اكتشفي تشكيلتنا المختارة بعناية، حيث تلتقي الأناقة بالجودة في كل قطعة.')|raw }}
+                </p>
 
                 <div class="rawan-category-divider">
                     <span></span>
                     <b></b>
                     <span></span>
                 </div>
-
             </div>
-
         </div>
-
     </header>
 
 
     {# =========================================================
-       PRODUCTS AREA
+        PRODUCTS AREA
     ========================================================= #}
-
     <main class="rawan-category-products">
-
         <div class="container">
 
+            {# Toolbar (Heading, Filter Trigger & Sort) #}
             <div class="rawan-products-toolbar">
-
                 <div class="rawan-products-heading">
-
                     <span>مختاراتنا</span>
-
-                    <h2>
-                        منتجات {{ page.title|raw }}
-                    </h2>
-
+                    <h2>منتجات {{ page.title|raw }}</h2>
                 </div>
 
-
                 <div class="rawan-products-actions">
-
                     {% if filters %}
-
-                        <a
-                            href="#filters-menu"
-                            data-testid="store-products-filters-mobile-trigger"
-                            class="rawan-filter-button filters-trigger lg:hidden"
-                        >
+                        <a href="#filters-menu"
+                           data-testid="store-products-filters-mobile-trigger"
+                           class="rawan-filter-button filters-trigger lg:hidden">
                             <i class="sicon-filter"></i>
                             <span>فلترة</span>
                         </a>
-
                     {% endif %}
-
 
                     {% if sort_options|length %}
-
                         <div class="rawan-sort">
-
-                            <span class="rawan-sort-label">
-                                ترتيب حسب
-                            </span>
-
-                            <select
-                                id="product-filter"
-                                class="rawan-sort-select"
-                            >
-
+                            <span class="rawan-sort-label">ترتيب حسب</span>
+                            <select id="product-filter" class="rawan-sort-select">
                                 {% for sort in sort_options %}
-
-                                    <option
-                                        value="{{ sort.id }}"
-                                        {{ sort.is_selected ? 'selected' : '' }}
-                                    >
+                                    <option value="{{ sort.id }}" {{ sort.is_selected ? 'selected' : '' }}>
                                         {{ sort.name }}
                                     </option>
-
                                 {% endfor %}
-
                             </select>
-
                         </div>
-
                     {% endif %}
-
                 </div>
-
             </div>
 
 
-            {# =====================================================
-               PRODUCTS + FILTER
-            ===================================================== #}
-
+            {# Layout (Sidebar Filters + Products List) #}
             <div class="rawan-products-layout">
 
-
                 {% if filters %}
-
-                    <aside
-                        class="rawan-filter-sidebar"
-                        id="filters-menu"
-                    >
-
-                        <button
-                            type="button"
-                            class="rawan-filter-close btn--close-sm close-filters sicon-cancel"
-                        ></button>
+                    <aside class="rawan-filter-sidebar" id="filters-menu">
+                        <button type="button" class="rawan-filter-close btn--close-sm close-filters sicon-cancel"></button>
 
                         <div class="rawan-filter-title">
                             <span>تصفية</span>
@@ -163,54 +103,43 @@
                         <salla-filters
                             data-testid="store-products-filters"
                             class="rawan-filters"
-                            id="filters-menu"
-                        ></salla-filters>
-
+                            id="filters-menu">
+                        </salla-filters>
                     </aside>
-
                 {% endif %}
 
-
                 <div class="rawan-products-content">
-
                     {% hook 'product:index.items.start' %}
 
                     <div class="rawan-products-list">
-
                         <salla-products-list
                             data-testid="store-products-list"
                             class="rawan-salla-products"
                             source="{{ page.slug }}"
                             source-value="{{ page.id }}"
-                            {{ filters ? 'filters-Results' : '' }}
-                        ></salla-products-list>
-
+                            {{ filters ? 'filters-Results' : '' }}>
+                        </salla-products-list>
                     </div>
 
                     {% hook 'product:index.items.end' %}
-
                 </div>
 
             </div>
 
         </div>
-
     </main>
 
 
     {# =========================================================
-       AFTER PRODUCTS
+        AFTER PRODUCTS & HOOKS
     ========================================================= #}
-
     <div class="s-blocks-wrapper rawan-category-after-products">
         {% hook 'product.index.after_products_group_with_filter' %}
     </div>
 
-
     {% if store.settings.category.testimonial_enabled %}
         {% component 'home.testimonials' %}
     {% endif %}
-
 
     <div class="s-blocks-wrapper">
         {% hook 'product.index.after_testimonials' %}
@@ -222,9 +151,5 @@
 
 
 {% block scripts %}
-
 <script defer src="{{ 'product.js' | asset }}"></script>
-
 {% endblock %}
-
-
