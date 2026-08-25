@@ -1266,9 +1266,6 @@ input:where([type='file']):focus{
 .w-full{
     width: 100%;
 }
-.min-w-0{
-    min-width: 0px;
-}
 .min-w-full{
     min-width: 100%;
 }
@@ -22012,252 +22009,362 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     align-items: flex-start;
   }
 }
-.luxury-category-page {
-  --luxury-pink: #e62973;
-  --luxury-dark: #0b0a0c;
-  --luxury-text: #231f20;
-  min-height: 100%;
-  background: radial-gradient(circle at 10% 10%, rgba(230, 41, 115, 0.07), transparent 30%), #fff;
+/* =========================================================
+   RAWAN CATEGORY PRODUCTS PAGE
+   Luxury / Feminine / Elegant
+========================================================= */
+.rawan-category-page {
+  --rawan-pink: #e62973;
+  --rawan-pink-light: #f85a96;
+  --rawan-dark: #0b0a0c;
+  --rawan-text: #231f20;
+  --rawan-muted: #8d878b;
+  background: radial-gradient(circle at 5% 15%, rgba(230, 41, 115, 0.045), transparent 28%), #fff;
+  min-height: 100vh;
   color: #231f20;
-  color: var(--luxury-text);
+  color: var(--rawan-text);
 }
-/* Hero */
-.luxury-category-hero {
+/* =========================================================
+   HERO
+========================================================= */
+.rawan-category-hero {
   position: relative;
   overflow: hidden;
-  padding: 90px 0 75px;
-  background: #0b0a0c;
+  padding: 35px 0 85px;
+  background: linear-gradient(135deg, #080709 0%, #100c10 55%, #080709 100%);
   color: #fff;
-  text-align: center;
 }
-.luxury-category-hero::before {
-  content: "";
+.rawan-category-hero__pattern {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  opacity: 0.04;
-  background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 0);
+  opacity: 0.035;
+  background-image: radial-gradient(circle at 1px 1px, #fff 1px, transparent 1px);
   background-size: 28px 28px;
   pointer-events: none;
 }
-.luxury-category-hero__glow {
+.rawan-category-hero__glow {
   position: absolute;
-  width: 380px;
-  height: 380px;
-  top: -220px;
-  left: -100px;
+  width: 420px;
+  height: 420px;
   border-radius: 50%;
-  background: rgba(230, 41, 115, 0.18);
-  filter: blur(100px);
+  filter: blur(110px);
   pointer-events: none;
 }
-.luxury-category-hero__glow--second {
-  top: auto;
-  left: auto;
-  right: -120px;
-  bottom: -250px;
-  background: rgba(230, 41, 115, 0.12);
+.rawan-category-hero__glow--one {
+  top: -250px;
+  left: -120px;
+  background: rgba(230, 41, 115, 0.22);
 }
-.luxury-category-hero__content {
+.rawan-category-hero__glow--two {
+  right: -160px;
+  bottom: -280px;
+  background: rgba(230, 41, 115, 0.14);
+}
+/* =========================================================
+   BREADCRUMBS
+========================================================= */
+.rawan-category-breadcrumbs {
+  position: relative;
+  z-index: 3;
+  padding: 12px 0 35px;
+  color: rgba(255, 255, 255, 0.65);
+}
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+.rawan-category-hero__content {
   position: relative;
   z-index: 2;
-  max-width: 800px;
+  max-width: 850px;
   margin: auto;
+  text-align: center;
 }
-.luxury-category-hero__eyebrow {
+.rawan-category-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 18px;
-  color: var(--luxury-pink);
-  font-size: 13px;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  color: #E62973;
+  color: var(--rawan-pink);
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.18em;
 }
-.luxury-category-hero__eyebrow::before,
-.luxury-category-hero__eyebrow::after {
-  content: "";
-  width: 25px;
+.rawan-category-eyebrow i {
+  display: block;
+  width: 28px;
   height: 1px;
-  background: var(--luxury-pink);
+  background: #E62973;
+  background: var(--rawan-pink);
 }
-.luxury-category-hero__title {
+.rawan-category-title {
   margin: 0;
   color: #fff;
-  font-size: max(32px, min(5vw, 58px));
+  font-size: max(34px, min(6vw, 64px));
   font-weight: 900;
-  line-height: 1.2;
+  line-height: 1.15;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
-.luxury-category-hero__description {
+.rawan-category-description {
   max-width: 650px;
   margin: 22px auto 0;
   color: #aaa3a8;
   font-size: 15px;
   line-height: 2;
 }
-.luxury-category-divider {
+.rawan-category-divider {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  margin-top: 30px;
+  margin-top: 32px;
 }
-.luxury-category-divider span {
+.rawan-category-divider span {
   width: 70px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(230, 41, 115, 0.7));
+  background: linear-gradient(90deg, transparent, #E62973);
+  background: linear-gradient(90deg, transparent, var(--rawan-pink));
 }
-.luxury-category-divider span:last-child {
-  background: linear-gradient(270deg, transparent, rgba(230, 41, 115, 0.7));
+.rawan-category-divider span:last-child {
+  background: linear-gradient(270deg, transparent, #E62973);
+  background: linear-gradient(270deg, transparent, var(--rawan-pink));
 }
-.luxury-category-divider i {
+.rawan-category-divider b {
   width: 9px;
   height: 9px;
+  display: block;
   transform: rotate(45deg);
-  background: var(--luxury-pink);
-  box-shadow: 0 0 20px rgba(230, 41, 115, 0.7);
+  background: #E62973;
+  background: var(--rawan-pink);
+  box-shadow: 0 0 18px rgba(230, 41, 115, 0.8);
 }
-/* Products */
-.luxury-category-products {
-  padding: 70px 0 100px;
+/* =========================================================
+   PRODUCTS SECTION
+========================================================= */
+.rawan-category-products {
+  padding: 65px 0 90px;
 }
-.luxury-products-header {
+/* =========================================================
+   TOOLBAR
+========================================================= */
+.rawan-products-toolbar {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: 20px;
+  gap: 30px;
   margin-bottom: 35px;
 }
-.luxury-products-heading > span {
+.rawan-products-heading span {
   display: block;
-  margin-bottom: 8px;
-  color: var(--luxury-pink);
-  font-size: 12px;
-  font-weight: 800;
-}
-.luxury-products-heading h2 {
-  margin: 0;
-  font-size: 27px;
-  font-weight: 900;
-}
-.luxury-products-count {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 9px 15px;
-  border: 1px solid rgba(230, 41, 115, 0.15);
-  border-radius: 999px;
-  background: rgba(230, 41, 115, 0.05);
-  color: var(--luxury-pink);
-  font-size: 13px;
-  font-weight: 800;
-}
-.luxury-products-count small {
-  color: #999;
+  margin-bottom: 7px;
+  color: #E62973;
+  color: var(--rawan-pink);
   font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
 }
-/* Grid */
-.luxury-products-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-gap: 24px;
-  gap: 24px;
+.rawan-products-heading h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--rawan-dark);
 }
-.luxury-product-item {
-  min-width: 0;
-  animation: luxuryProductReveal 0.6s ease both;
-  animation-delay: calc(var(--product-index) * 70ms);
-}
-@keyframes luxuryProductReveal {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* Empty */
-.luxury-category-empty {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 70px 30px;
-  border: 1px solid rgba(230, 41, 115, 0.12);
-  border-radius: 30px;
-  background: #fff;
-  text-align: center;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
-}
-.luxury-category-empty__icon {
-  width: 70px;
-  height: 70px;
+.rawan-products-actions {
   display: flex;
   align-items: center;
+  gap: 12px;
+}
+/* =========================================================
+   FILTER BUTTON
+========================================================= */
+.rawan-filter-button {
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  margin: 0 auto 20px;
-  border-radius: 22px;
-  background: rgba(230, 41, 115, 0.08);
-  color: var(--luxury-pink);
-  font-size: 28px;
-}
-.luxury-category-empty > span {
-  color: var(--luxury-pink);
-  font-size: 13px;
+  gap: 8px;
+  height: 44px;
+  padding: 0 18px;
+  border: 1px solid rgba(230, 41, 115, 0.18);
+  border-radius: 14px;
+  background: #fff;
+  color: #E62973;
+  color: var(--rawan-pink);
   font-weight: 800;
+  transition: 0.25s ease;
 }
-.luxury-category-empty h2 {
-  margin: 10px 0;
-  font-size: 25px;
+.rawan-filter-button:hover {
+  background: #E62973;
+  background: var(--rawan-pink);
+  color: #fff;
+}
+/* =========================================================
+   SORT
+========================================================= */
+.rawan-sort {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px 6px 6px;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 14px;
+  background: #fff;
+}
+.rawan-sort-label {
+  padding-right: 8px;
+  color: #999;
+  font-size: 12px;
+}
+.rawan-sort-select {
+  min-width: 160px;
+  height: 36px;
+  padding: 0 12px;
+  border: 0;
+  outline: none;
+  border-radius: 10px;
+  background: #faf8f9;
+  color: #444444;
+  color: var(--rawan-text);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+/* =========================================================
+   PRODUCTS LAYOUT
+========================================================= */
+.rawan-products-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+.rawan-products-content {
+  flex: 1;
+  min-width: 0;
+}
+.rawan-products-list {
+  width: 100%;
+}
+/* =========================================================
+   FILTER SIDEBAR
+========================================================= */
+.rawan-filter-sidebar {
+  position: sticky;
+  top: 90px;
+  width: 260px;
+  flex: 0 0 260px;
+  padding: 24px;
+  border: 1px solid rgba(230, 41, 115, 0.09);
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.045);
+}
+.rawan-filter-title {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-bottom: 18px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #f1edf0;
+}
+.rawan-filter-title span {
+  color: #E62973;
+  color: var(--rawan-pink);
+  font-size: 11px;
   font-weight: 900;
 }
-.luxury-category-empty p {
-  margin-bottom: 25px;
-  color: #888;
+.rawan-filter-title b {
+  font-size: 18px;
+  font-weight: 900;
 }
-.luxury-category-empty a {
-  display: inline-flex;
-  padding: 12px 24px;
-  border-radius: 14px;
-  background: var(--luxury-pink);
-  color: #fff;
-  font-weight: 800;
+.rawan-filter-close {
+  display: none;
 }
-/* Responsive */
+/* =========================================================
+   AFTER PRODUCTS
+========================================================= */
+.rawan-category-after-products {
+  margin-top: 20px;
+}
+/* =========================================================
+   PRODUCT LIST VISUAL ENHANCEMENT
+========================================================= */
+.rawan-salla-products {
+  display: block;
+}
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 @media (max-width: 1024px) {
-  .luxury-products-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .rawan-products-layout {
+    display: block;
+  }
+  .rawan-filter-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    width: min(330px, 88vw);
+    overflow-y: auto;
+    border-radius: 0;
+    transform: translateX(110%);
+    transition: transform 0.3s ease;
+  }
+  .rawan-filter-sidebar.is-open {
+    transform: translateX(0);
   }
 }
 @media (max-width: 768px) {
-  .luxury-category-hero {
-    padding: 65px 0 55px;
+  .rawan-category-hero {
+    padding: 20px 0 60px;
   }
-  .luxury-category-products {
-    padding: 50px 0 70px;
+  .rawan-category-breadcrumbs {
+    padding-bottom: 25px;
   }
-  .luxury-products-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 15px;
+  .rawan-category-title {
+    font-size: 36px;
   }
-  .luxury-products-header {
-    align-items: center;
+  .rawan-category-description {
+    padding: 0 20px;
+    font-size: 13px;
   }
-  .luxury-products-heading h2 {
-    font-size: 21px;
+  .rawan-category-products {
+    padding: 45px 0 70px;
+  }
+  .rawan-products-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .rawan-products-heading h2 {
+    font-size: 23px;
+  }
+  .rawan-products-actions {
+    width: 100%;
+  }
+  .rawan-sort {
+    flex: 1;
+  }
+  .rawan-sort-select {
+    width: 100%;
+    min-width: 0;
   }
 }
 @media (max-width: 480px) {
-  .luxury-products-grid {
-    gap: 10px;
+  .rawan-category-title {
+    font-size: 31px;
   }
-  .luxury-category-hero__title {
-    font-size: 32px;
+  .rawan-category-divider span {
+    width: 45px;
   }
-  .luxury-category-hero__description {
-    font-size: 13px;
+  .rawan-products-heading h2 {
+    font-size: 21px;
+  }
+  .rawan-sort-label {
+    display: none;
   }
 }
 body.mm-ocd-opened,
@@ -22639,9 +22746,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:w-7\/12{
         width: 58.333333%;
     }
-    .md\:w-72{
-        width: 18rem;
-    }
     .md\:w-auto{
         width: auto;
     }
@@ -22718,9 +22822,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:sticky{
         position: sticky;
-    }
-    .lg\:top-20{
-        top: 5rem;
     }
     .lg\:col-span-6{
         grid-column: span 6 / span 6;
@@ -22939,9 +23040,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
 }
 @media (min-width: 1024px){
-    .ltr\:lg\:ml-8:where([dir="ltr"], [dir="ltr"] *){
-        margin-left: 2rem;
-    }
     .ltr\:lg\:mr-8:where([dir="ltr"], [dir="ltr"] *){
         margin-right: 2rem;
     }
@@ -23039,9 +23137,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 @media (min-width: 1024px){
     .rtl\:lg\:ml-8:where([dir="rtl"], [dir="rtl"] *){
         margin-left: 2rem;
-    }
-    .rtl\:lg\:mr-8:where([dir="rtl"], [dir="rtl"] *){
-        margin-right: 2rem;
     }
     .rtl\:lg\:pr-10:where([dir="rtl"], [dir="rtl"] *){
         padding-right: 2.5rem;
