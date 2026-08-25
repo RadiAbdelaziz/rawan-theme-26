@@ -4,150 +4,54 @@
    RTL / Safe Category URLs
 ========================================================= #}
 
-
-{# =========================================================
-   SECTION
-========================================================= #}
-
 {% if component.show_section != false %}
 
 <section
     class="categories-section reveal-section"
     dir="rtl"
-    style="
-        --categories-padding: {{ component.padding ?: 70 }}px;
-    "
+    style="--categories-padding: {{ component.padding ?: 70 }}px;"
 >
-
     <div class="container">
 
-
-        {# =====================================================
-           SECTION HEADER
-        ===================================================== #}
-
+        {# SECTION HEADER #}
         <header class="categories-header">
-
-
-            {# Decorative Line #}
-
             <div class="decor-line">
-
                 <span></span>
-
                 <i></i>
-
                 <span></span>
-
             </div>
 
-
-            {# Main Title #}
-
-            <h2>
-
-                {{ component.title ?: 'تسوق حسب المجموعة' }}
-
-            </h2>
-
-
-            {# Description #}
+            <h2>{{ component.title ?: 'تسوق حسب المجموعة' }}</h2>
 
             {% if component.show_description != false %}
-
-                <p>
-
-                    {{ component.description ?: 'اكتشفي تشكيلات أنيقة من الأزياء والعطور والإكسسوارات المصممة بذوق راقٍ' }}
-
-                </p>
-
+                <p>{{ component.description ?: 'اكتشفي تشكيلات أنيقة من الأزياء والعطور والإكسسوارات المصممة بذوق راقٍ' }}</p>
             {% endif %}
-
-
         </header>
 
-
-        {# =====================================================
-           CATEGORIES
-        ===================================================== #}
-
+        {# CATEGORIES GRID #}
         {% set categories = component.categories ?: [] %}
 
+        <div class="categories-grid columns-{{ component.columns ?: '4' }}">
 
-        <div
-            class="
-                categories-grid
-                columns-{{ component.columns ?: '4' }}
-            "
-        >
+            {% for category in categories %}
 
+                {# CATEGORY URL #}
+                {% set category_url = category.url ?: (category.slug ? link('categories/' ~ category.slug) : '#') %}
 
-            {# =================================================
-               CATEGORY LOOP
-            ================================================= #}
+                {# CATEGORY IMAGE #}
+                {% set raw_image = category.image.url ?: category.image %}
+                {% set category_image = raw_image ? image(raw_image, { w: 600, h: 800, q: 80 }) : 'images/placeholder.png'|asset %}
 
-            {% for category in categories|slice(0, 4) %}
+                {# CATEGORY NAME #}
+                {% set category_name = category.name ?: 'مجموعة مميزة' %}
 
-
-                {# =================================================
-                   CATEGORY URL
-
-                   نفس طريقة قسم Crystal تمامًا
-                ================================================= #}
-
-                {% set category_url =
-                    category.url
-                    ?: link('categories/' ~ category.slug)
-                %}
-
-
-                {# =================================================
-                   CATEGORY IMAGE
-
-                   يدعم:
-                   category.image.url
-                   category.image
-                   placeholder
-                ================================================= #}
-
-                {% set category_image =
-                    category.image.url
-                    ?: category.image
-                    ?: 'images/placeholder.png'|asset
-                %}
-
-
-                {# =================================================
-                   CATEGORY NAME
-                ================================================= #}
-
-                {% set category_name =
-                    category.name
-                    ?: 'مجموعة مميزة'
-                %}
-
-
-                {# =================================================
-                   CATEGORY CARD
-                ================================================= #}
-
+                {# CATEGORY CARD #}
                 <a
                     href="{{ category_url }}"
-                    class="
-                        category-card
-                        reveal-card
-                    "
-                    style="
-                        --category-index: {{ loop.index0 }};
-                    "
+                    class="category-card reveal-card"
+                    style="--category-index: {{ loop.index0 }};"
                     aria-label="{{ category_name }}"
                 >
-
-
-                    {# =================================================
-                       IMAGE
-                    ================================================= #}
-
                     <img
                         src="{{ category_image }}"
                         alt="{{ category_name }}"
@@ -155,141 +59,44 @@
                         decoding="async"
                     >
 
+                    <div class="overlay" aria-hidden="true"></div>
 
-                    {# =================================================
-                       OVERLAY
-                    ================================================= #}
-
-                    <div
-                        class="overlay"
-                        aria-hidden="true"
-                    ></div>
-
-
-                    {# =================================================
-                       BADGE
-                    ================================================= #}
-
-                    {% if component.show_badge != false %}
-
-                        {% if category.badge %}
-
-                            <span class="category-badge">
-
-                                {{ category.badge }}
-
-                            </span>
-
-                        {% endif %}
-
+                    {% if component.show_badge != false and category.badge %}
+                        <span class="category-badge">{{ category.badge }}</span>
                     {% endif %}
 
-
-                    {# =================================================
-                       CONTENT
-                    ================================================= #}
-
                     <div class="content">
+                        <h3>{{ category_name }}</h3>
 
-
-                        {# =================================================
-                           CATEGORY NAME
-                        ================================================= #}
-
-                        <h3>
-
-                            {{ category_name }}
-
-                        </h3>
-
-
-                        {# =================================================
-                           CATEGORY DESCRIPTION
-                        ================================================= #}
-
-                        {% if component.show_description != false %}
-
-                            {% if category.description %}
-
-                                <p>
-
-                                    {{ category.description }}
-
-                                </p>
-
-                            {% endif %}
-
+                        {% if component.show_description != false and category.description %}
+                            <p>{{ category.description }}</p>
                         {% endif %}
 
-
-                        {# =================================================
-                           PRODUCT COUNT
-                        ================================================= #}
-
-                        {% if category.products_count is defined
-                            and category.products_count is not null %}
-
+                        {% if category.products_count is defined and category.products_count is not null %}
                             <span class="category-count">
-
-                                {{ category.products_count }}
-
-                                <span>
-                                    منتج
-                                </span>
-
+                                {{ category.products_count }} <span>منتج</span>
                             </span>
-
                         {% endif %}
-
-
-                        {# =================================================
-                           ARROW
-                        ================================================= #}
 
                         {% if component.show_arrow != false %}
-
-                            <span
-                                class="category-arrow"
-                                aria-hidden="true"
-                            >
-
+                            <span class="category-arrow" aria-hidden="true">
                                 <i class="sicon-arrow-left"></i>
-
                             </span>
-
                         {% endif %}
-
-
                     </div>
-
-
                 </a>
 
+            {% else %}
+
+                {# EMPTY STATE #}
+                <div class="categories-empty">
+                    لم يتم اختيار أي مجموعات
+                </div>
 
             {% endfor %}
 
-
-            {# =================================================
-               EMPTY STATE
-            ================================================= #}
-
-            {% if categories|length == 0 %}
-
-                <div class="categories-empty">
-
-                    لم يتم اختيار أي مجموعات
-
-                </div>
-
-            {% endif %}
-
-
         </div>
-
-
     </div>
-
 </section>
 
 {% endif %}
-

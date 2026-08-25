@@ -1,35 +1,34 @@
-{# Luxury Crystal Categories #}
+{# 
+  ==========================================================================
+  Luxury Crystal Categories Component
+  --------------------------------------------------------------------------
+  Displays a curated grid/list of store categories with crystal aesthetic.
+  Supports component parameters for title, subtitle, and categories array.
+  ==========================================================================
+#}
 
-<section
-    class="crystal-categories-section reveal-section"
-    dir="rtl"
->
+<section class="crystal-categories-section reveal-section" dir="rtl">
     <div class="crystal-categories-container">
 
         {# Section Header #}
-
         <div class="crystal-section-header">
 
             {# Crystal Badge #}
-
             <div class="crystal-badge">
                 <span class="crystal-badge__gem">
                     <span></span>
                 </span>
-
                 <span class="crystal-badge__text">
-                    تصنيفاتنا
+                    {{ trans('blocks.categories.badge') ?: 'تصنيفاتنا' }}
                 </span>
             </div>
 
-            {# Main Title #}
-
+            {# Section Main Title #}
             <h2 class="crystal-section-title">
                 {{ component.title ?: 'تصفح الأقسام المختارة' }}
             </h2>
 
-            {# Subtitle #}
-
+            {# Section Subtitle #}
             <div class="crystal-subtitle-wrapper">
                 {% if component.subtitle %}
                     <p class="crystal-section-subtitle is-active">
@@ -42,111 +41,76 @@
                 {% endif %}
             </div>
 
-            {# Crystal Divider #}
-
+            {# Decorative Crystal Divider #}
             <div class="crystal-divider">
                 <span class="crystal-divider__line crystal-divider__line--left"></span>
-
                 <span class="crystal-divider__gem">
                     <i></i>
                 </span>
-
                 <span class="crystal-divider__line crystal-divider__line--right"></span>
             </div>
 
         </div>
 
-        {# Categories #}
-
+        {# Categories Content List #}
         {% set categories = component.categories ?: [] %}
 
         <div class="crystal-categories-viewport">
-
             <div class="crystal-categories-list">
 
                 {% for category in categories %}
 
-                    {# Category URL #}
-
+                    {# Helper Variables #}
                     {% set category_url = category.url ?: link('categories/' ~ category.slug) %}
-
-                    {# Category Image #}
-
                     {% set category_image = category.image.url ?: category.image ?: 'images/placeholder.png'|asset %}
 
-                    {# Category Card #}
-
-                    <a
-                        href="{{ category_url }}"
-                        class="crystal-category-card reveal-card"
-                        style="--card-index: {{ loop.index0 }};"
-                        aria-label="{{ category.name }}"
-                    >
+                    {# Category Card Item #}
+                    <a href="{{ category_url }}"
+                       class="crystal-category-card reveal-card"
+                       style="--card-index: {{ loop.index0 }};"
+                       aria-label="{{ category.name }}">
                         <div class="crystal-category-card__inner">
 
-                            {# Floating Glow #}
+                            {# Floating Background Glow #}
+                            <span class="crystal-category-card__glow" aria-hidden="true"></span>
 
-                            <span
-                                class="crystal-category-card__glow"
-                                aria-hidden="true"
-                            ></span>
-
-                            {# Crystal Object #}
-
-                            <div
-                                class="crystal-category-card__crystal"
-                                aria-hidden="true"
-                            >
+                            {# Crystal Facet Visual & Image #}
+                            <div class="crystal-category-card__crystal" aria-hidden="true">
                                 <span class="crystal-shine"></span>
-
                                 <span class="crystal-facet crystal-facet--one"></span>
                                 <span class="crystal-facet crystal-facet--two"></span>
                                 <span class="crystal-facet crystal-facet--three"></span>
 
-                                {# Category Image #}
-
                                 <div class="crystal-category-card__image">
-                                    <img
-                                        src="{{ category_image }}"
-                                        alt="{{ category.name }}"
-                                        loading="lazy"
-                                        decoding="async"
-                                    >
+                                    <img src="{{ category_image }}"
+                                         alt="{{ category.name }}"
+                                         loading="lazy"
+                                         decoding="async">
                                 </div>
-
                             </div>
 
                             {# Category Information #}
-
                             <div class="crystal-category-card__info">
-
                                 <span class="crystal-category-card__name">
                                     {{ category.name }}
                                 </span>
 
                                 {% if category.products_count is defined and category.products_count is not null %}
                                     <span class="crystal-category-card__count">
-                                        {{ category.products_count }}
-                                        <span>منتج</span>
+                                        {{ category.products_count }} <span>منتج</span>
                                     </span>
                                 {% endif %}
-
                             </div>
 
-                            {# Bottom Accent #}
-
-                            <span
-                                class="crystal-category-card__accent"
-                                aria-hidden="true"
-                            ></span>
+                            {# Bottom Accent Border #}
+                            <span class="crystal-category-card__accent" aria-hidden="true"></span>
 
                         </div>
                     </a>
 
                 {% endfor %}
 
-                {# Empty State #}
-
+                {# Fallback Empty State #}
                 {% if categories|length == 0 %}
                     <div class="crystal-categories-empty">
                         لم يتم اختيار أي تصنيفات
@@ -154,9 +118,7 @@
                 {% endif %}
 
             </div>
-
         </div>
 
     </div>
 </section>
-
