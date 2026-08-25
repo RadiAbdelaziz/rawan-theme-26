@@ -1,9 +1,10 @@
-{% set products = component.products %}
+{# جلب كائن المنتجات مع إمكانية استخدام اسم بديل إن وجد #}
+{% set products = component.products ?: component.items %}
 
-{% if products|length %}
+{% if products and products|length > 0 %}
 
 <section
-    class="featured-products-premium reveal-section"
+    class="featured-products-premium"
     style="
         --section-bg: {{ component.background_color ?: '#FFFFFF' }};
         --card-bg: {{ component.card_color ?: '#FFFFFF' }};
@@ -14,65 +15,48 @@
     <div class="container">
 
         {# Header #}
-
-        {% if component.show_title != false %}
-
+        {% if component.show_title is not defined or component.show_title != false %}
             <header class="featured-header">
-
                 <div class="featured-badge">
                     <span class="featured-badge-dot"></span>
                     <span>منتجاتنا</span>
                 </div>
 
-                <h2>
-                    {{ component.title ?: 'أحدث المنتجات الفاخرة' }}
-                </h2>
+                <h2>{{ component.title ?: 'أحدث المنتجات الفاخرة' }}</h2>
 
-                <p>
-                    {{ component.subtitle ?: 'مجموعة مختارة بعناية لتجربة تسوق راقية' }}
-                </p>
+                <p>{{ component.subtitle ?: 'مجموعة مختارة بعناية لتجربة تسوق راقية' }}</p>
 
                 <div class="featured-line">
                     <span></span>
                     <i></i>
                     <span></span>
                 </div>
-
             </header>
-
         {% endif %}
 
         {# Products Grid #}
-
         <div class="featured-grid columns-{{ component.columns ?: '4' }}">
 
             {% for product in products %}
+                {# تحديد الرابط والأبعاد والصورة بشكل آمن #}
+                {% set product_url = product.url ?: '#' %}
+                {% set product_img = product.image.url ?: (product.image ?: (product.main_image ?: '')) %}
 
                 <article
                     class="premium-card"
                     style="--product-index: {{ loop.index0 }};"
                 >
 
-                    {# Image #}
-
+                    {# Image Area #}
                     <div class="premium-image">
 
                         {% if component.show_badge != false and product.promotion_title %}
-
-                            <span class="premium-discount">
-                                {{ product.promotion_title }}
-                            </span>
-
-                        {% elseif component.show_badge != false and product.sale_price %}
-
-                            <span class="premium-discount">
-                                عرض
-                            </span>
-
+                            <span class="premium-discount">{{ product.promotion_title }}</span>
+                        {% elseif component.show_badge != false and (product.is_on_sale or product.sale_price) %}
+                            <span class="premium-discount">عرض</span>
                         {% endif %}
 
                         {# Wishlist #}
-
                         <button
                             type="button"
                             class="premium-wishlist"
@@ -83,174 +67,91 @@
                         </button>
 
                         {# Image Link #}
-
                         <a
-                            href="{{ product.url ?: '#' }}"
+                            href="{{ product_url }}"
                             class="premium-image-link"
                             aria-label="{{ product.name }}"
                         >
-
-                            {% if product.image %}
-
-                                <img
-                                    class="premium-product-image"
-                                    src="{{ product.image.url ?: product.image }}"
-                                    alt="{{ product.image.alt ?: product.name }}"
-                                    loading="lazy"
-                                    decoding="async"
-                                >
-
-                            {% elseif product.main_image %}
-
-                                <img
-                                    class="premium-product-image"
-                                    src="{{ product.main_image }}"
-                                    alt="{{ product.name }}"
-                                    loading="lazy"
-                                    decoding="async"
-                                >
-
-                            {% else %}
-
-                                <img
-                                    class="premium-product-image"
-                                    src="{{ 'images/placeholder.png'|asset }}"
-                                    alt="{{ product.name }}"
-                                    loading="lazy"
-                                    decoding="async"
-                                >
-
-                            {% endif %}
-
+                            <img
+                                class="premium-product-image"
+                                src="{{ product_img ?: 'images/placeholder.png'|asset }}"
+                                alt="{{ product.name }}"
+                                loading="lazy"
+                                decoding="async"
+                            >
                         </a>
 
                     </div>
 
                     {# Sales Status #}
-
                     {% if product.is_out_of_stock %}
-
                         <div class="premium-sales-status premium-sales-status--out">
                             غير متوفر حالياً
                         </div>
-
                     {% elseif product.promotion_title %}
-
                         <div class="premium-sales-status">
                             {{ product.promotion_title }}
                         </div>
-
                     {% endif %}
 
                     {# Content #}
-
                     <div class="premium-content">
 
                         {# Rating #}
-
                         {% if component.show_rating != false and product.rating %}
-
                             <div class="premium-rating">
-
                                 <span class="premium-rating-star">★</span>
-
                                 <span class="premium-rating-value">
                                     {{ product.rating.stars ?: product.rating }}
                                 </span>
-
                                 {% if product.rating.count %}
-
-                                    <span class="premium-rating-count">
-                                        ({{ product.rating.count }})
-                                    </span>
-
+                                    <span class="premium-rating-count">({{ product.rating.count }})</span>
                                 {% endif %}
-
                             </div>
-
                         {% endif %}
 
                         {# Title #}
-
                         <h3 class="premium-product-title">
-                            <a href="{{ product.url ?: '#' }}">
-                                {{ product.name }}
-                            </a>
+                            <a href="{{ product_url }}">{{ product.name }}</a>
                         </h3>
 
                         {# Sub Info #}
-
                         <p class="premium-product-subinfo">
-
                             {% if product.subtitle %}
-
                                 {{ product.subtitle }}
-
                             {% elseif product.brand and product.brand.name %}
-
                                 {{ product.brand.name }}
-
                             {% else %}
-
                                 منتج فاخر مختار بعناية
-
                             {% endif %}
-
                         </p>
 
                         {# Price #}
-
                         <div class="premium-price-row">
-
                             <div class="premium-price-main">
-
                                 <strong class="premium-price">
-
                                     {% if product.is_on_sale and product.sale_price %}
-
                                         {{ product.sale_price }}
-
                                     {% else %}
-
                                         {{ product.price }}
-
                                     {% endif %}
-
                                 </strong>
-
-                                <span
-                                    class="premium-price-currency"
-                                    aria-label="ريال سعودي"
-                                >
+                                <span class="premium-price-currency" aria-label="ريال سعودي">
                                     <i class="sicon-sar"></i>
                                 </span>
-
                             </div>
 
-                            {% if component.show_old_price != false and product.regular_price %}
-
+                            {% if component.show_old_price != false and (product.regular_price or product.price_before_discount) %}
                                 <del class="premium-old-price">
-                                    <span>{{ product.regular_price }}</span>
+                                    <span>{{ product.regular_price ?: product.price_before_discount }}</span>
                                     <i class="sicon-sar"></i>
                                 </del>
-
-                            {% elseif component.show_old_price != false and product.price_before_discount %}
-
-                                <del class="premium-old-price">
-                                    <span>{{ product.price_before_discount }}</span>
-                                    <i class="sicon-sar"></i>
-                                </del>
-
                             {% endif %}
-
                         </div>
 
                         {# Add To Cart #}
-
                         {% if component.show_add_to_cart != false %}
-
                             <div class="premium-cart">
-
                                 <salla-add-product-button
                                     product-id="{{ product.id }}"
                                     product-status="{{ product.status }}"
@@ -262,15 +163,12 @@
                                         <span>إضافة إلى السلة</span>
                                     </span>
                                 </salla-add-product-button>
-
                             </div>
-
                         {% endif %}
 
                     </div>
 
                 </article>
-
             {% endfor %}
 
         </div>
@@ -279,5 +177,3 @@
 </section>
 
 {% endif %}
-
-

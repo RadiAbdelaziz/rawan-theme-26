@@ -1,24 +1,11 @@
-{# =========================================================
-   LUXURY BRANDS
-   الماركات الفاخرة
-   Built for the current Luxury Brands JSON
-========================================================= #}
+{# =========================================================================
+   LUXURY BRANDS COMPONENT
+   قسم عرض الماركات الفاخرة - تصميم واجهة متكامل وديناميكي
+========================================================================= #}
 
 {% if component.brands|length %}
-
 <section
-    class="
-        luxury-brands
-        {% if component.enable_animation %}
-            luxury-brands--animated
-        {% endif %}
-        {% if component.enable_hover %}
-            luxury-brands--hover
-        {% endif %}
-        {% if component.show_glow %}
-            luxury-brands--glow
-        {% endif %}
-    "
+    class="luxury-brands{% if component.enable_animation %} luxury-brands--animated{% endif %}{% if component.enable_hover %} luxury-brands--hover{% endif %}{% if component.show_glow %} luxury-brands--glow{% endif %}"
     style="
         --brands-bg: {{ component.background_color ?: '#FFF8FB' }};
         --brands-accent: {{ component.accent_color ?: '#E62973' }};
@@ -28,301 +15,89 @@
         --brands-columns: {{ component.columns ?: '5' }};
     "
 >
-
-    {# =====================================================
-       BACKGROUND ATMOSPHERE
-    ===================================================== #}
-
+    {# Background Atmosphere #}
     {% if component.show_glow %}
-
-        <div
-            class="luxury-brands__glow luxury-brands__glow--one"
-            aria-hidden="true"
-        ></div>
-
-        <div
-            class="luxury-brands__glow luxury-brands__glow--two"
-            aria-hidden="true"
-        ></div>
-
-        <div
-            class="luxury-brands__glow luxury-brands__glow--center"
-            aria-hidden="true"
-        ></div>
-
+        <div class="luxury-brands__glow luxury-brands__glow--one" aria-hidden="true"></div>
+        <div class="luxury-brands__glow luxury-brands__glow--two" aria-hidden="true"></div>
+        <div class="luxury-brands__glow luxury-brands__glow--center" aria-hidden="true"></div>
     {% endif %}
 
-
-    <div
-        class="luxury-brands__pattern"
-        aria-hidden="true"
-    ></div>
-
-
-    {# =====================================================
-       CONTAINER
-    ===================================================== #}
+    <div class="luxury-brands__pattern" aria-hidden="true"></div>
 
     <div class="container luxury-brands__container">
-
-
-        {# =================================================
-           HEADER
-        ================================================= #}
-
+        {# Header Block #}
         {% if component.show_header %}
-
             <header class="luxury-brands__header">
-
-
-                {# Eyebrow #}
-
                 {% if component.eyebrow %}
-
                     <div class="luxury-brands__eyebrow">
-
                         <span class="luxury-brands__eyebrow-line"></span>
-
-                        <span class="luxury-brands__eyebrow-text">
-                            {{ component.eyebrow }}
-                        </span>
-
+                        <span class="luxury-brands__eyebrow-text">{{ component.eyebrow }}</span>
                         <span class="luxury-brands__eyebrow-line"></span>
-
                     </div>
-
                 {% endif %}
-
-
-                {# Title #}
 
                 {% if component.title %}
-
-                    <h2 class="luxury-brands__title">
-                        {{ component.title }}
-                    </h2>
-
+                    <h2 class="luxury-brands__title">{{ component.title }}</h2>
                 {% endif %}
-
-
-                {# Description #}
 
                 {% if component.description %}
-
-                    <p class="luxury-brands__description">
-                        {{ component.description }}
-                    </p>
-
+                    <p class="luxury-brands__description">{{ component.description }}</p>
                 {% endif %}
 
-
-                {# Header Decorative Accent #}
-
-                <div
-                    class="luxury-brands__header-accent"
-                    aria-hidden="true"
-                >
-
+                <div class="luxury-brands__header-accent" aria-hidden="true">
                     <span></span>
-
                     <i class="sicon-award-ribbon"></i>
-
                     <span></span>
-
                 </div>
-
             </header>
-
         {% endif %}
 
-
-        {# =================================================
-           BRANDS GRID
-        ================================================= #}
-
-        <div
-            class="
-                luxury-brands__grid
-                luxury-brands__grid--{{ component.columns ?: '5' }}
-            "
-        >
-
+        {# Brands Grid List #}
+        <div class="luxury-brands__grid luxury-brands__grid--{{ component.columns ?: '5' }}">
             {% for brand in component.brands %}
-
-                {# =================================================
-                   BRAND DATA
-                ================================================= #}
-
+                {# Brand Variables Processing #}
                 {% set brand_name = brand.name ?: brand.title ?: 'ماركة' %}
-
                 {% set brand_url = brand.url ?: brand.link ?: '#' %}
-
                 {% set brand_image = '' %}
 
-
-                {# Logo #}
-
                 {% if brand.logo %}
-
-                    {% if brand.logo.url %}
-
-                        {% set brand_image = brand.logo.url %}
-
-                    {% else %}
-
-                        {% set brand_image = brand.logo %}
-
-                    {% endif %}
-
-
-                {# Image #}
-
+                    {% set brand_image = brand.logo.url ?: brand.logo %}
                 {% elseif brand.image %}
-
-                    {% if brand.image.url %}
-
-                        {% set brand_image = brand.image.url %}
-
-                    {% else %}
-
-                        {% set brand_image = brand.image %}
-
-                    {% endif %}
-
-
-                {# Icon #}
-
+                    {% set brand_image = brand.image.url ?: brand.image %}
                 {% elseif brand.icon %}
-
-                    {% if brand.icon.url %}
-
-                        {% set brand_image = brand.icon.url %}
-
-                    {% else %}
-
-                        {% set brand_image = brand.icon %}
-
-                    {% endif %}
-
+                    {% set brand_image = brand.icon.url ?: brand.icon %}
                 {% endif %}
 
-
-                {# =================================================
-                   BRAND CARD
-                ================================================= #}
-
-                <a
-                    href="{{ brand_url }}"
-                    class="luxury-brand"
-                    aria-label="{{ brand_name }}"
-                >
-
-
-                    {# Card Background #}
-
-                    <span
-                        class="luxury-brand__background"
-                        aria-hidden="true"
-                    ></span>
-
-
-                    {# Decorative Corner #}
-
-                    <span
-                        class="luxury-brand__corner luxury-brand__corner--top"
-                        aria-hidden="true"
-                    ></span>
-
-                    <span
-                        class="luxury-brand__corner luxury-brand__corner--bottom"
-                        aria-hidden="true"
-                    ></span>
-
-
-                    {# Shine #}
-
-                    <span
-                        class="luxury-brand__shine"
-                        aria-hidden="true"
-                    ></span>
-
-
-                    {# Logo #}
+                {# Brand Card Item #}
+                <a href="{{ brand_url }}" class="luxury-brand" aria-label="{{ brand_name }}">
+                    <span class="luxury-brand__background" aria-hidden="true"></span>
+                    <span class="luxury-brand__corner luxury-brand__corner--top" aria-hidden="true"></span>
+                    <span class="luxury-brand__corner luxury-brand__corner--bottom" aria-hidden="true"></span>
+                    <span class="luxury-brand__shine" aria-hidden="true"></span>
 
                     <span class="luxury-brand__logo">
-
                         {% if brand_image %}
-
-                            <img
-                                src="{{ brand_image }}"
-                                alt="{{ brand_name }}"
-                                loading="lazy"
-                                decoding="async"
-                            >
-
+                            <img src="{{ brand_image }}" alt="{{ brand_name }}" loading="lazy" decoding="async">
                         {% else %}
-
-                            <span class="luxury-brand__fallback">
-                                {{ brand_name|slice(0, 1) }}
-                            </span>
-
+                            <span class="luxury-brand__fallback">{{ brand_name|slice(0, 1) }}</span>
                         {% endif %}
-
                     </span>
 
-
-                    {# Brand Name #}
-
-                    <span class="luxury-brand__name">
-                        {{ brand_name }}
-                    </span>
-
-
-                    {# Bottom Accent #}
-
-                    <span
-                        class="luxury-brand__accent"
-                        aria-hidden="true"
-                    ></span>
-
-
-                    {# Arrow #}
-
-                    <span
-                        class="luxury-brand__arrow"
-                        aria-hidden="true"
-                    >
+                    <span class="luxury-brand__name">{{ brand_name }}</span>
+                    <span class="luxury-brand__accent" aria-hidden="true"></span>
+                    <span class="luxury-brand__arrow" aria-hidden="true">
                         <i class="sicon-arrow-left"></i>
                     </span>
-
-
                 </a>
-
             {% endfor %}
-
         </div>
 
-
-        {# =================================================
-           BOTTOM DECORATION
-        ================================================= #}
-
-        <div
-            class="luxury-brands__bottom"
-            aria-hidden="true"
-        >
-
+        {# Footer Decorative Divider #}
+        <div class="luxury-brands__bottom" aria-hidden="true">
             <span></span>
-
             <i class="sicon-award-ribbon"></i>
-
             <span></span>
-
         </div>
-
-
     </div>
-
 </section>
-
 {% endif %}

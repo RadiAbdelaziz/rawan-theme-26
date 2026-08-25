@@ -1,138 +1,49 @@
 {% if component.show_section %}
+<section class="store-location-section{% if component.enable_animation %} store-location-animated{% endif %}" data-show-controls="{{ component.show_controls ? 'true' : 'false' }}" style="background: {{ component.background_color ?: '#FFFFFF' }}; --location-accent: {{ component.accent_color ?: '#E62973' }}; --map-height: {{ component.map_height ?: '420' }}px;">
+  {# Background Glow #}
+  {% if component.show_glow %}
+    <div class="store-location-glow one" aria-hidden="true"></div>
+    <div class="store-location-glow two" aria-hidden="true"></div>
+  {% endif %}
 
-<section
-    class="
-        store-location-section
-        {% if component.enable_animation %}
-            store-location-animated
-        {% endif %}
-    "
-    data-show-controls="{{ component.show_controls ? 'true' : 'false' }}"
-    style="
-        background: {{ component.background_color ?: '#FFFFFF' }};
-        --location-accent: {{ component.accent_color ?: '#E62973' }};
-        --map-height: {{ component.map_height ?: '420' }}px;
-    "
->
-
-    {# Background Glow #}
-
-    {% if component.show_glow %}
-
-        <div
-            class="store-location-glow one"
-            aria-hidden="true"
-        ></div>
-
-        <div
-            class="store-location-glow two"
-            aria-hidden="true"
-        ></div>
-
+  <div class="container">
+    {# Section Header #}
+    {% if component.show_title %}
+      <div class="store-location-header">
+        <div class="location-decoration">
+          <span></span>
+          <i></i>
+          <span></span>
+        </div>
+        <h2>{{ component.title ?: 'شرفنا بزيارتك' }}</h2>
+        <p>{{ component.subtitle ?: 'متواجدون لخدمتك في فروعنا داخل المملكة' }}</p>
+      </div>
     {% endif %}
 
+    {# Locations Content #}
+    <div class="store-location-content">
+      {# Map #}
+      <div class="store-location-map">
+        <div id="store-map" class="store-map" data-store-map></div>
+      </div>
 
-    <div class="container">
-
-        {# Section Header #}
-
-        {% if component.show_title %}
-
-            <div class="store-location-header">
-
-                <div class="location-decoration">
-
-                    <span></span>
-
-                    <i></i>
-
-                    <span></span>
-
-                </div>
-
-
-                <h2>
-                    {{ component.title ?: 'شرفنا بزيارتك' }}
-                </h2>
-
-
-                <p>
-                    {{ component.subtitle ?: 'متواجدون لخدمتك في فروعنا داخل المملكة' }}
-                </p>
-
-            </div>
-
-        {% endif %}
-
-
-        {# Locations Content #}
-
-        <div class="store-location-content">
-
-            {# Map #}
-
-            <div class="store-location-map">
-
-                <div
-                    id="store-map"  
-                    class="store-map"
-                    data-store-map
-                ></div>
-
-            </div>
-
-
-            {# Branches #}
-
-            {% if component.branches|length %}
-
-                <div class="store-location-branches">
-
-                    {% for branch in component.branches %}
-
-                        <button
-                            type="button"
-                            class="store-branch-card"
-                            data-lat="{{ branch.latitude }}"
-                            data-lng="{{ branch.longitude }}"
-                            data-name="{{ branch.name }}"
-                        >
-
-                            <h3>
-                                {{ branch.name }}
-                            </h3>
-
-
-                            {% if branch.description %}
-
-                                <p>
-                                    {{ branch.description }}
-                                </p>
-
-                            {% endif %}
-
-
-                            {% if branch.button_text %}
-
-                                <span>
-                                    {{ branch.button_text }}
-                                </span>
-
-                            {% endif %}
-
-                        </button>
-
-                    {% endfor %}
-
-                </div>
-
-            {% endif %}
-
+      {# Branches #}
+      {% if component.branches|length %}
+        <div class="store-location-branches">
+          {% for branch in component.branches %}
+            <button type="button" class="store-branch-card" data-lat="{{ branch.latitude }}" data-lng="{{ branch.longitude }}" data-name="{{ branch.name }}">
+              <h3>{{ branch.name }}</h3>
+              {% if branch.description %}
+                <p>{{ branch.description }}</p>
+              {% endif %}
+              {% if branch.button_text %}
+                <span>{{ branch.button_text }}</span>
+              {% endif %}
+            </button>
+          {% endfor %}
         </div>
-
+      {% endif %}
     </div>
-
+  </div>
 </section>
-
 {% endif %}
-

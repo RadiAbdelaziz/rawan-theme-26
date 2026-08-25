@@ -9366,9 +9366,10 @@ model-viewer[style*=width]:before{
   }
 }
 /* =========================================================
-   LUXURY BRANDS
-   الماركات الفاخرة
+   LUXURY BRANDS COMPONENT STYLES
+   أنماط قسم الماركات الفاخرة - تصميم نظيف وعالي الأداء
 ========================================================= */
+/* --- Base Component Setup --- */
 .luxury-brands {
   --brands-bg: #FFF8FB;
   --brands-accent: #E62973;
@@ -9390,16 +9391,11 @@ model-viewer[style*=width]:before{
   color: var(--brands-text);
   direction: rtl;
 }
-/* =========================================================
-   CONTAINER
-========================================================= */
 .luxury-brands__container {
   position: relative;
   z-index: 5;
 }
-/* =========================================================
-   BACKGROUND GLOW
-========================================================= */
+/* --- Background Glow Effects --- */
 .luxury-brands__glow {
   position: absolute;
   width: 380px;
@@ -9411,19 +9407,16 @@ model-viewer[style*=width]:before{
   z-index: -2;
   will-change: transform;
 }
-/* Top Right */
 .luxury-brands__glow--one {
   top: -190px;
   right: -120px;
   background: var(--brands-accent);
 }
-/* Bottom Left */
 .luxury-brands__glow--two {
   left: -150px;
   bottom: -220px;
   background: #F9A8D4;
 }
-/* Center */
 .luxury-brands__glow--center {
   top: 35%;
   left: 45%;
@@ -9433,9 +9426,7 @@ model-viewer[style*=width]:before{
   opacity: 0.035;
   filter: blur(120px);
 }
-/* =========================================================
-   GLOW ANIMATION
-========================================================= */
+/* --- Keyframe Animations --- */
 .luxury-brands--glow .luxury-brands__glow--one {
   animation: luxuryBrandsGlowOne 8s ease-in-out infinite alternate;
 }
@@ -9471,9 +9462,7 @@ model-viewer[style*=width]:before{
     opacity: 0.055;
   }
 }
-/* =========================================================
-   BACKGROUND PATTERN
-========================================================= */
+/* --- Background Pattern --- */
 .luxury-brands__pattern {
   position: absolute;
   top: 0;
@@ -9488,18 +9477,13 @@ model-viewer[style*=width]:before{
   mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
   -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
 }
-/* =========================================================
-   HEADER
-========================================================= */
+/* --- Header & Typography --- */
 .luxury-brands__header {
   position: relative;
   max-width: 760px;
   margin: 0 auto 48px;
   text-align: center;
 }
-/* =========================================================
-   EYEBROW
-========================================================= */
 .luxury-brands__eyebrow {
   display: inline-flex;
   align-items: center;
@@ -9522,9 +9506,6 @@ model-viewer[style*=width]:before{
 .luxury-brands__eyebrow-line:last-child {
   background: linear-gradient(270deg, transparent, var(--brands-accent));
 }
-/* =========================================================
-   TITLE
-========================================================= */
 .luxury-brands__title {
   margin: 0;
   color: var(--brands-text);
@@ -9533,9 +9514,6 @@ model-viewer[style*=width]:before{
   line-height: 1.35;
   letter-spacing: -0.7px;
 }
-/* =========================================================
-   DESCRIPTION
-========================================================= */
 .luxury-brands__description {
   max-width: 630px;
   margin: 14px auto 0;
@@ -9544,9 +9522,6 @@ model-viewer[style*=width]:before{
   font-weight: 400;
   line-height: 2;
 }
-/* =========================================================
-   HEADER ACCENT
-========================================================= */
 .luxury-brands__header-accent {
   display: flex;
   align-items: center;
@@ -9576,9 +9551,7 @@ model-viewer[style*=width]:before{
   color: var(--brands-accent);
   font-size: 12px;
 }
-/* =========================================================
-   GRID
-========================================================= */
+/* --- Brands Grid Layout --- */
 .luxury-brands__grid {
   position: relative;
   display: grid;
@@ -9588,9 +9561,7 @@ model-viewer[style*=width]:before{
   gap: 18px;
   width: 100%;
 }
-/* =========================================================
-   BRAND CARD
-========================================================= */
+/* --- Brand Card --- */
 .luxury-brand {
   position: relative;
   display: flex;
@@ -9611,9 +9582,6 @@ model-viewer[style*=width]:before{
   isolation: isolate;
   will-change: transform;
 }
-/* =========================================================
-   CARD BACKGROUND
-========================================================= */
 .luxury-brand__background {
   position: absolute;
   top: 0;
@@ -9625,9 +9593,6 @@ model-viewer[style*=width]:before{
   opacity: 0.9;
   transition: opacity 0.45s ease, transform 0.6s ease;
 }
-/* =========================================================
-   CARD CORNERS
-========================================================= */
 .luxury-brand__corner {
   position: absolute;
   width: 42px;
@@ -9651,9 +9616,6 @@ model-viewer[style*=width]:before{
   border-left: 1px solid var(--brands-accent);
   border-bottom-left-radius: 9px;
 }
-/* =========================================================
-   SHINE
-========================================================= */
 .luxury-brand__shine {
   position: absolute;
   top: -100%;
@@ -9666,9 +9628,6 @@ model-viewer[style*=width]:before{
   transform: rotate(22deg);
   opacity: 0;
 }
-/* =========================================================
-   LOGO
-========================================================= */
 .luxury-brand__logo {
   position: relative;
   z-index: 3;
@@ -9690,9 +9649,6 @@ model-viewer[style*=width]:before{
   filter: grayscale(100%);
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease, filter 0.45s ease;
 }
-/* =========================================================
-   FALLBACK
-========================================================= */
 .luxury-brand__fallback {
   display: flex;
   align-items: center;
@@ -9706,9 +9662,6 @@ model-viewer[style*=width]:before{
   font-size: 26px;
   font-weight: 900;
 }
-/* =========================================================
-   BRAND NAME
-========================================================= */
 .luxury-brand__name {
   position: absolute;
   right: 15px;
@@ -9725,9 +9678,6 @@ model-viewer[style*=width]:before{
   text-overflow: ellipsis;
   transition: color 0.35s ease, transform 0.35s ease, opacity 0.35s ease;
 }
-/* =========================================================
-   BOTTOM ACCENT
-========================================================= */
 .luxury-brand__accent {
   position: absolute;
   bottom: 0;
@@ -9738,9 +9688,6 @@ model-viewer[style*=width]:before{
   transform: translateX(-50%);
   transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
-/* =========================================================
-   ARROW
-========================================================= */
 .luxury-brand__arrow {
   position: absolute;
   top: 12px;
@@ -9759,9 +9706,7 @@ model-viewer[style*=width]:before{
   transform: translateX(6px);
   transition: opacity 0.35s ease, transform 0.35s ease, background 0.35s ease;
 }
-/* =========================================================
-   HOVER
-========================================================= */
+/* --- Interactive Hover Effects --- */
 .luxury-brands--hover .luxury-brand:hover {
   transform: translateY(-8px);
   border-color: rgba(230, 41, 115, 0.22);
@@ -9796,9 +9741,6 @@ model-viewer[style*=width]:before{
   height: 50px;
   opacity: 0.35;
 }
-/* =========================================================
-   SHIMMER
-========================================================= */
 .luxury-brands--hover .luxury-brand:hover .luxury-brand__shine {
   opacity: 1;
   animation: luxuryBrandsShine 0.9s ease forwards;
@@ -9811,9 +9753,7 @@ model-viewer[style*=width]:before{
     left: 140%;
   }
 }
-/* =========================================================
-   ENTRANCE ANIMATION
-========================================================= */
+/* --- Entrance & Stagger Animations --- */
 .luxury-brands--animated .luxury-brand {
   opacity: 0;
   transform: translateY(28px) scale(0.97);
@@ -9829,9 +9769,6 @@ model-viewer[style*=width]:before{
     transform: translateY(0) scale(1);
   }
 }
-/* =========================================================
-   STAGGER
-========================================================= */
 .luxury-brands--animated .luxury-brand:nth-child(1) {
   animation-delay: 0.04s;
 }
@@ -9892,9 +9829,7 @@ model-viewer[style*=width]:before{
 .luxury-brands--animated .luxury-brand:nth-child(20) {
   animation-delay: 0.99s;
 }
-/* =========================================================
-   BOTTOM DECORATION
-========================================================= */
+/* --- Bottom Decoration & Accessibility --- */
 .luxury-brands__bottom {
   display: flex;
   align-items: center;
@@ -9915,17 +9850,12 @@ model-viewer[style*=width]:before{
   font-size: 12px;
   opacity: 0.55;
 }
-/* =========================================================
-   FOCUS ACCESSIBILITY
-========================================================= */
 .luxury-brand:focus-visible {
   outline: 2px solid var(--brands-accent);
   outline-offset: 4px;
   border-radius: 22px;
 }
-/* =========================================================
-   TABLET
-========================================================= */
+/* --- Responsive Media Queries --- */
 @media (max-width: 1100px) {
   .luxury-brands__grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -9943,9 +9873,6 @@ model-viewer[style*=width]:before{
     height: 68px;
   }
 }
-/* =========================================================
-   TABLET SMALL
-========================================================= */
 @media (max-width: 850px) {
   .luxury-brands {
     padding-top: calc(70px * 0.82);
@@ -9972,9 +9899,6 @@ model-viewer[style*=width]:before{
     height: 62px;
   }
 }
-/* =========================================================
-   MOBILE
-========================================================= */
 @media (max-width: 600px) {
   .luxury-brands {
     padding-top: calc(70px * 0.68);
@@ -10055,9 +9979,6 @@ model-viewer[style*=width]:before{
     width: 38px;
   }
 }
-/* =========================================================
-   VERY SMALL MOBILE
-========================================================= */
 @media (max-width: 380px) {
   .luxury-brands__grid {
     gap: 8px;
@@ -10086,13 +10007,8 @@ model-viewer[style*=width]:before{
     display: none;
   }
 }
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
 @media (prefers-reduced-motion: reduce) {
-  .luxury-brands *,
-  .luxury-brands *::before,
-  .luxury-brands *::after {
+  .luxury-brands *, .luxury-brands *::before, .luxury-brands *::after {
     animation: none !important;
     transition: none !important;
   }
@@ -13639,20 +13555,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   PREMIUM COUNTDOWN OFFER
-   Soft Luxury / E62973 Identity
-   ========================================================= */
-/* =========================================================
-   BOX SIZING
-   ========================================================= */
-.countdown-section,
-.countdown-section *,
-.countdown-section *::before,
-.countdown-section *::after {
-  box-sizing: border-box;
-}
-/* =========================================================
-   MAIN SECTION
+   PREMIUM COUNTDOWN OFFER (Soft Luxury / E62973)
    ========================================================= */
 .countdown-section {
   position: relative;
@@ -13662,48 +13565,57 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   overflow: hidden;
   padding: 80px 0;
   color: #4A0F27;
-  background: radial-gradient(circle at 8% 15%, rgba(230, 41, 115, 0.07), transparent 28%), radial-gradient(circle at 92% 85%, rgba(255, 126, 179, 0.08), transparent 30%), linear-gradient(135deg, #FFFFFF 0%, #FFF9FC 48%, #FFF4F8 100%) !important;
   isolation: isolate;
+  background: radial-gradient(circle at 8% 15%, rgba(230, 41, 115, 0.07), transparent 28%), radial-gradient(circle at 92% 85%, rgba(255, 126, 179, 0.08), transparent 30%), linear-gradient(135deg, #FFFFFF 0%, #FFF9FC 48%, #FFF4F8 100%) !important;
 }
-/* =========================================================
-   BACKGROUND DECORATION
-   ========================================================= */
-.countdown-section::before {
+.countdown-section, .countdown-section *, .countdown-section *::before, .countdown-section *::after {
+  box-sizing: border-box;
+}
+.countdown-section::before, .countdown-section::after {
   content: "";
   position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+.countdown-section::before {
   width: 420px;
   height: 420px;
   top: -220px;
   right: -160px;
-  border-radius: 50%;
   background: radial-gradient(circle, rgba(230, 41, 115, 0.09), transparent 70%);
   filter: blur(30px);
-  pointer-events: none;
-  z-index: -1;
   animation: countdownAmbientRight 10s ease-in-out infinite alternate;
 }
 .countdown-section::after {
-  content: "";
-  position: absolute;
   width: 360px;
   height: 360px;
   bottom: -190px;
   left: -140px;
-  border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 126, 179, 0.1), transparent 70%);
   filter: blur(35px);
-  pointer-events: none;
-  z-index: -1;
   animation: countdownAmbientLeft 12s ease-in-out infinite alternate;
 }
-/* =========================================================
-   CONTAINER
-   ========================================================= */
 .countdown-section > .container {
   position: relative;
   z-index: 3;
   width: 100%;
   min-width: 0;
+}
+@media (max-width: 992px) {
+  .countdown-section {
+    padding: 65px 0;
+  }
+}
+@media (max-width: 640px) {
+  .countdown-section {
+    padding: 52px 0 48px;
+  }
+}
+@media (max-width: 380px) {
+  .countdown-section {
+    padding: 45px 0 42px;
+  }
 }
 /* =========================================================
    GLOW ELEMENTS
@@ -13730,8 +13642,15 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background: rgba(255, 126, 179, 0.1);
   animation-delay: 1.5s;
 }
+@media (max-width: 640px) {
+  .countdown-glow {
+    width: 180px;
+    height: 180px;
+    filter: blur(55px);
+  }
+}
 /* =========================================================
-   LAYOUT
+   LAYOUT & ALIGNMENT
    ========================================================= */
 .countdown-wrapper {
   position: relative;
@@ -13742,9 +13661,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   min-width: 0;
   gap: 70px;
 }
-/* =========================================================
-   CONTENT ALIGNMENT
-   ========================================================= */
 .countdown-wrapper.content-right {
   flex-direction: row-reverse;
   text-align: right;
@@ -13757,8 +13673,30 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   flex-direction: row-reverse;
   text-align: center;
 }
+.countdown-wrapper.content-center .countdown-content {
+  text-align: center;
+}
+.countdown-wrapper.content-center .countdown-content p {
+  margin-left: auto;
+  margin-right: auto;
+}
+.countdown-wrapper.content-center .offer-timer {
+  justify-content: center;
+}
+@media (max-width: 992px) {
+  .countdown-wrapper, .countdown-wrapper.content-right, .countdown-wrapper.content-left, .countdown-wrapper.content-center {
+    flex-direction: column-reverse;
+    gap: 45px;
+    text-align: center;
+  }
+}
+@media (max-width: 640px) {
+  .countdown-wrapper {
+    gap: 32px;
+  }
+}
 /* =========================================================
-   CONTENT
+   CONTENT & ELEMENTS
    ========================================================= */
 .countdown-content {
   position: relative;
@@ -13766,38 +13704,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   width: 50%;
   min-width: 0;
 }
-.content-center .countdown-content {
-  text-align: center;
+@media (max-width: 992px) {
+  .countdown-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
-.content-center .countdown-content p {
-  margin-left: auto;
-  margin-right: auto;
-}
-/* =========================================================
-   BADGE
-   ========================================================= */
-.offer-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  max-width: 100%;
-  padding: 8px 17px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 241, 247, 0.9));
-  border: 1px solid rgba(230, 41, 115, 0.16);
-  color: #E62973;
-  font-size: 13px;
-  font-weight: 800;
-  line-height: 1.4;
-  box-shadow: 0 6px 20px rgba(230, 41, 115, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  animation: countdownBadgeFloat 4s ease-in-out infinite;
-}
-/* =========================================================
-   TITLE
-   ========================================================= */
 .countdown-content h2 {
   margin: 20px 0 0;
   max-width: 700px;
@@ -13818,9 +13732,22 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-weight: 800;
   letter-spacing: -0.3px;
 }
-/* =========================================================
-   DESCRIPTION
-   ========================================================= */
+@media (max-width: 640px) {
+  .countdown-content h2 {
+    margin-top: 16px;
+    font-size: 29px;
+    letter-spacing: -0.6px;
+  }
+  .countdown-content h2 span {
+    margin-top: 6px;
+    font-size: 0.58em;
+  }
+}
+@media (max-width: 380px) {
+  .countdown-content h2 {
+    font-size: 26px;
+  }
+}
 .countdown-content p {
   width: 100%;
   max-width: 560px;
@@ -13831,9 +13758,45 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   line-height: 1.95;
   font-weight: 400;
 }
-/* =========================================================
-   TIMER
-   ========================================================= */
+@media (max-width: 992px) {
+  .countdown-content p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (max-width: 640px) {
+  .countdown-content p {
+    margin-top: 14px;
+    max-width: 450px;
+    font-size: 13px;
+    line-height: 1.85;
+  }
+}
+.offer-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 100%;
+  padding: 8px 17px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 241, 247, 0.9));
+  border: 1px solid rgba(230, 41, 115, 0.16);
+  color: #E62973;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.4;
+  box-shadow: 0 6px 20px rgba(230, 41, 115, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  animation: countdownBadgeFloat 4s ease-in-out infinite;
+}
+@media (max-width: 640px) {
+  .offer-badge {
+    padding: 7px 14px;
+    font-size: 11px;
+  }
+}
 .offer-timer {
   display: flex;
   align-items: stretch;
@@ -13842,8 +13805,22 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   margin-top: 30px;
   direction: ltr;
 }
-.content-center .offer-timer {
-  justify-content: center;
+@media (max-width: 992px) {
+  .offer-timer {
+    justify-content: center;
+  }
+}
+@media (max-width: 640px) {
+  .offer-timer {
+    width: 100%;
+    gap: 7px;
+    margin-top: 24px;
+  }
+}
+@media (max-width: 380px) {
+  .offer-timer {
+    gap: 5px;
+  }
 }
 .time-box {
   display: flex;
@@ -13876,11 +13853,42 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   line-height: 1.4;
   font-weight: 600;
 }
-/* =========================================================
-   BUTTON
-   ========================================================= */
+@media (max-width: 640px) {
+  .time-box {
+    flex: 1 1 0;
+    width: auto;
+    min-width: 0;
+    min-height: 70px;
+    padding: 8px 5px;
+    border-radius: 14px;
+  }
+  .time-box span {
+    font-size: 20px;
+  }
+  .time-box small {
+    margin-top: 3px;
+    font-size: 9px;
+  }
+}
+@media (max-width: 380px) {
+  .time-box {
+    min-height: 64px;
+    border-radius: 12px;
+  }
+  .time-box span {
+    font-size: 18px;
+  }
+  .time-box small {
+    font-size: 8px;
+  }
+}
 .offer-action {
   margin-top: 28px;
+}
+@media (max-width: 640px) {
+  .offer-action {
+    margin-top: 23px;
+  }
 }
 .offer-btn {
   display: inline-flex;
@@ -13901,21 +13909,29 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   box-shadow: 0 9px 24px rgba(230, 41, 115, 0.16);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
+.offer-btn i {
+  font-size: 13px;
+  transition: transform 0.3s ease;
+}
 .offer-btn:hover {
   color: #FFFFFF;
   transform: translateY(-3px);
   background: linear-gradient(135deg, #D91F67 0%, #E62973 100%);
   box-shadow: 0 13px 30px rgba(230, 41, 115, 0.22);
 }
-.offer-btn i {
-  font-size: 13px;
-  transition: transform 0.3s ease;
-}
 .offer-btn:hover i {
   transform: translateX(-3px);
 }
+@media (max-width: 640px) {
+  .offer-btn {
+    min-height: 47px;
+    padding: 0 23px;
+    font-size: 13px;
+    border-radius: 13px;
+  }
+}
 /* =========================================================
-   IMAGE AREA
+   IMAGE AREA & CARD
    ========================================================= */
 .countdown-image {
   position: relative;
@@ -13925,6 +13941,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   justify-content: center;
   width: 50%;
   min-width: 0;
+}
+@media (max-width: 992px) {
+  .countdown-image {
+    width: 100%;
+    max-width: 520px;
+  }
 }
 .image-card {
   position: relative;
@@ -13937,13 +13959,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   box-shadow: 0 18px 45px rgba(74, 15, 39, 0.08), 0 5px 15px rgba(230, 41, 115, 0.04);
   transition: transform 0.45s ease, box-shadow 0.45s ease;
 }
-.image-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 24px 55px rgba(74, 15, 39, 0.1), 0 8px 20px rgba(230, 41, 115, 0.06);
-}
-/* =========================================================
-   IMAGE
-   ========================================================= */
 .image-card img {
   display: block;
   width: 100%;
@@ -13952,13 +13967,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
      object-fit: cover;
   transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s ease;
 }
-.image-card:hover img {
-  transform: scale(1.045);
-  filter: saturate(1.03);
-}
-/* =========================================================
-   IMAGE SOFT OVERLAY
-   ========================================================= */
 .image-card::after {
   content: "";
   position: absolute;
@@ -13970,9 +13978,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   pointer-events: none;
   z-index: 2;
 }
-/* =========================================================
-   IMAGE SHINE
-   ========================================================= */
 .image-card::before {
   content: "";
   position: absolute;
@@ -13987,13 +13992,35 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   z-index: 4;
   transition: left 0.8s ease, opacity 0.3s ease;
 }
+.image-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 55px rgba(74, 15, 39, 0.1), 0 8px 20px rgba(230, 41, 115, 0.06);
+}
+.image-card:hover img {
+  transform: scale(1.045);
+  filter: saturate(1.03);
+}
 .image-card:hover::before {
   left: 145%;
   opacity: 1;
 }
-/* =========================================================
-   PRICE CARD
-   ========================================================= */
+@media (max-width: 992px) {
+  .image-card {
+    width: 100%;
+    height: 440px;
+  }
+}
+@media (max-width: 640px) {
+  .image-card {
+    height: 360px;
+    border-radius: 23px;
+  }
+}
+@media (max-width: 380px) {
+  .image-card {
+    height: 320px;
+  }
+}
 .price-card {
   position: absolute;
   right: 18px;
@@ -14029,8 +14056,20 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 11px;
   font-weight: 500;
 }
+@media (max-width: 640px) {
+  .price-card {
+    right: 12px;
+    bottom: 12px;
+    min-width: 110px;
+    padding: 9px 12px;
+    border-radius: 13px;
+  }
+  .price-card strong {
+    font-size: 18px;
+  }
+}
 /* =========================================================
-   REVEAL
+   REVEAL ANIMATION CLASSES
    ========================================================= */
 .reveal-section {
   opacity: 0;
@@ -14040,11 +14079,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .reveal-section.show {
   opacity: 1;
   transform: translateY(0);
-}
-.reveal-card {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .reveal-section.show .reveal-card {
   opacity: 1;
@@ -14056,8 +14090,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .reveal-section.show .reveal-card:nth-child(2) {
   transition-delay: 0.22s;
 }
+.reveal-card {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
 /* =========================================================
-   ANIMATIONS
+   KEYFRAMES
    ========================================================= */
 @keyframes countdownBadgeFloat {
   0%, 100% {
@@ -14094,160 +14133,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   TABLET
-   ========================================================= */
-@media (max-width: 992px) {
-  .countdown-section {
-    padding: 65px 0;
-  }
-  .countdown-wrapper,
-  .countdown-wrapper.content-right,
-  .countdown-wrapper.content-left,
-  .countdown-wrapper.content-center {
-    flex-direction: column-reverse;
-    gap: 45px;
-    text-align: center;
-  }
-  .countdown-content,
-  .countdown-image {
-    width: 100%;
-  }
-  .countdown-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .countdown-content h2 {
-    max-width: 700px;
-  }
-  .countdown-content p {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .offer-timer {
-    justify-content: center;
-  }
-  .countdown-image {
-    max-width: 520px;
-  }
-  .image-card {
-    width: 100%;
-    height: 440px;
-  }
-}
-/* =========================================================
-   MOBILE
-   ========================================================= */
-@media (max-width: 640px) {
-  .countdown-section {
-    padding: 52px 0 48px;
-  }
-  .countdown-wrapper {
-    gap: 32px;
-  }
-  .countdown-content h2 {
-    margin-top: 16px;
-    font-size: 29px;
-    letter-spacing: -0.6px;
-  }
-  .countdown-content h2 span {
-    margin-top: 6px;
-    font-size: 0.58em;
-  }
-  .countdown-content p {
-    margin-top: 14px;
-    max-width: 450px;
-    font-size: 13px;
-    line-height: 1.85;
-  }
-  .offer-badge {
-    padding: 7px 14px;
-    font-size: 11px;
-  }
-  .offer-timer {
-    width: 100%;
-    gap: 7px;
-    margin-top: 24px;
-  }
-  .time-box {
-    flex: 1 1 0;
-    width: auto;
-    min-width: 0;
-    min-height: 70px;
-    padding: 8px 5px;
-    border-radius: 14px;
-  }
-  .time-box span {
-    font-size: 20px;
-  }
-  .time-box small {
-    margin-top: 3px;
-    font-size: 9px;
-  }
-  .offer-action {
-    margin-top: 23px;
-  }
-  .offer-btn {
-    min-height: 47px;
-    padding: 0 23px;
-    font-size: 13px;
-    border-radius: 13px;
-  }
-  .image-card {
-    height: 360px;
-    border-radius: 23px;
-  }
-  .price-card {
-    right: 12px;
-    bottom: 12px;
-    min-width: 110px;
-    padding: 9px 12px;
-    border-radius: 13px;
-  }
-  .price-card strong {
-    font-size: 18px;
-  }
-  .countdown-glow {
-    width: 180px;
-    height: 180px;
-    filter: blur(55px);
-  }
-}
-/* =========================================================
-   VERY SMALL MOBILE
-   ========================================================= */
-@media (max-width: 380px) {
-  .countdown-section {
-    padding-top: 45px;
-    padding-bottom: 42px;
-  }
-  .countdown-content h2 {
-    font-size: 26px;
-  }
-  .offer-timer {
-    gap: 5px;
-  }
-  .time-box {
-    min-height: 64px;
-    border-radius: 12px;
-  }
-  .time-box span {
-    font-size: 18px;
-  }
-  .time-box small {
-    font-size: 8px;
-  }
-  .image-card {
-    height: 320px;
-  }
-}
-/* =========================================================
    ACCESSIBILITY
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
-  .countdown-section *,
-  .countdown-section *::before,
-  .countdown-section *::after {
+  .countdown-section *, .countdown-section *::before, .countdown-section *::after {
     animation: none !important;
     transition: none !important;
   }
@@ -14274,10 +14163,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   --premium-light: #A3A3A3;
   --premium-border: #F0E9EC;
   --premium-radius: 18px;
-  --premium-shadow:
-      0 8px 24px rgba(30, 20, 25, .045);
-  --premium-shadow-hover:
-      0 14px 32px rgba(30, 20, 25, .075);
+  --premium-shadow: 0 8px 24px rgba(30, 20, 25, .045);
+  --premium-shadow-hover: 0 14px 32px rgba(30, 20, 25, .075);
 }
 /* =========================================================
    GLOBAL BOX SIZING
@@ -14305,9 +14192,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   overflow: hidden;
   isolation: isolate;
 }
-/*
-   Soft decorative background
-*/
+/* Soft decorative background */
 .featured-products-premium::before {
   content: "";
   position: absolute;
@@ -14435,15 +14320,36 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 ========================================================= */
 .featured-grid {
   position: relative;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-template-columns: repeat(var(--premium-columns, 4), minmax(0, 1fr));
-  grid-gap: 18px;
   gap: 18px;
   align-items: stretch;
 }
-/* Columns */
+/* =========================================================
+   PRODUCT CARD & FLEX-BASIS CALCULATION
+========================================================= */
+.premium-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 calc((100% - (4 - 1) * 18px) / 4);
+  flex: 0 0 calc((100% - (var(--premium-columns, 4) - 1) * 18px) / var(--premium-columns, 4));
+  max-width: calc((100% - (4 - 1) * 18px) / 4);
+  max-width: calc((100% - (var(--premium-columns, 4) - 1) * 18px) / var(--premium-columns, 4));
+  min-width: 0;
+  background: var(--premium-card);
+  border: 1px solid var(--premium-border);
+  border-radius: var(--premium-radius);
+  overflow: hidden;
+  box-shadow: var(--premium-shadow);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  animation: premiumProductReveal 0.65s ease both;
+  animation-delay: calc(0 * 70ms);
+  animation-delay: calc(var(--product-index, 0) * 70ms);
+}
+/* Dynamic Columns */
 .featured-grid.columns-2 {
   --premium-columns: 2;
 }
@@ -14455,25 +14361,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .featured-grid.columns-5 {
   --premium-columns: 5;
-}
-/* =========================================================
-   PRODUCT CARD
-========================================================= */
-.premium-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-width: 0;
-  background: var(--premium-card);
-  border: 1px solid var(--premium-border);
-  border-radius: var(--premium-radius);
-  overflow: hidden;
-  box-shadow: var(--premium-shadow);
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
-  animation: premiumProductReveal 0.65s ease both;
-  animation-delay: calc(0 * 70ms);
-  animation-delay: calc(var(--product-index, 0) * 70ms);
 }
 /* Card hover */
 .premium-card:hover {
@@ -14748,14 +14635,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .premium-cart salla-add-product-button {
   display: block;
   width: 100%;
-  --salla-add-product-button-bg:
-      var(--premium-accent);
-  --salla-add-product-button-color:
-      #FFFFFF;
-  --color-primary:
-      var(--premium-accent);
-  --primary-color:
-      var(--premium-accent);
+  --salla-add-product-button-bg: var(--premium-accent);
+  --salla-add-product-button-color: #FFFFFF;
+  --color-primary: var(--premium-accent);
+  --primary-color: var(--premium-accent);
 }
 /* =========================================================
    SALLA BUTTON
@@ -14831,8 +14714,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .featured-grid {
     gap: 14px;
   }
-  .featured-grid.columns-5 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .premium-card {
+    flex: 0 0 calc((100% - 42px) / 4);
+    max-width: calc((100% - 42px) / 4);
   }
   .premium-content {
     padding: 11px;
@@ -14868,15 +14752,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     font-size: 12px;
     line-height: 1.85;
   }
-  .featured-grid,
-  .featured-grid.columns-2,
-  .featured-grid.columns-3,
-  .featured-grid.columns-4,
-  .featured-grid.columns-5 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .featured-grid {
     gap: 10px;
   }
   .premium-card {
+    flex: 0 0 calc((100% - 10px) / 2);
+    max-width: calc((100% - 10px) / 2);
     border-radius: 15px;
     box-shadow: 0 6px 18px rgba(30, 20, 25, 0.04);
   }
@@ -14960,12 +14841,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
    VERY SMALL MOBILE
 ========================================================= */
 @media (max-width: 420px) {
-  .featured-grid,
-  .featured-grid.columns-2,
-  .featured-grid.columns-3,
-  .featured-grid.columns-4,
-  .featured-grid.columns-5 {
+  .featured-grid {
     gap: 8px;
+  }
+  .premium-card {
+    flex: 0 0 calc((100% - 8px) / 2);
+    max-width: calc((100% - 8px) / 2);
   }
   .premium-product-title {
     font-size: 10px;
@@ -15002,636 +14883,262 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 /* =========================================================
    SECTION REVEAL ON SCROLL
-   نفس تأثير الكود الأول
 ========================================================= */
 .featured-products-premium.reveal-section {
   opacity: 0;
   transform: translateY(35px);
   transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
-/* عندما يصل القسم إلى الشاشة */
 .featured-products-premium.reveal-section.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
-/* =========================================================
-   CATEGORIES CARDS
-   Premium / Soft Luxury Style
-========================================================= */
-/* =========================================================
-   GLOBAL
-========================================================= */
-.categories-section,
-.categories-section *,
-.categories-section *::before,
-.categories-section *::after {
-  box-sizing: border-box;
-}
-/* =========================================================
-   SECTION
-========================================================= */
+/* ==========================================================================
+   Categories Section - Soft Luxury Style
+   ========================================================================== */
+/* 1. Base Section Architecture
+   -------------------------------------------------------------------------- */
 .categories-section {
-  --categories-accent: #E62973;
-  --categories-accent-soft: #FFF4F7;
-  --categories-text: #171717;
-  --categories-muted: #777777;
-  --categories-border: #F0E9EC;
   position: relative;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
+  background-color: #0b1120;
   padding: 80px 0;
-  background: linear-gradient(180deg, #FFFDFE 0%, #FFF9FB 100%);
   overflow: hidden;
-  isolation: isolate;
+  direction: rtl;
 }
-/* =========================================================
-   SOFT BACKGROUND DECORATION
-========================================================= */
 .categories-section::before {
   content: "";
   position: absolute;
-  width: 360px;
-  height: 360px;
-  top: -180px;
+  top: -150px;
   right: -150px;
-  border-radius: 50%;
-  background: rgba(230, 41, 115, 0.045);
-  filter: blur(20px);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
   pointer-events: none;
+  z-index: 1;
 }
-.categories-section::after {
-  content: "";
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  bottom: -170px;
-  left: -140px;
-  border-radius: 50%;
-  background: rgba(230, 41, 115, 0.035);
-  filter: blur(20px);
-  pointer-events: none;
-}
-/* =========================================================
-   CONTAINER
-========================================================= */
-.categories-section > .container {
+.categories-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
   position: relative;
   z-index: 2;
-  width: 100%;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
 }
-/* =========================================================
-   HEADER
-========================================================= */
+/* 2. Crystal Glass Header Structure
+   -------------------------------------------------------------------------- */
 .categories-header {
-  position: relative;
-  width: 100%;
-  max-width: 720px;
-  margin: 0 auto 52px;
   text-align: center;
-}
-/* =========================================================
-   DECORATIVE LINE
-========================================================= */
-.categories-header .decor-line {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 180px;
-  margin: 0 auto 20px;
-}
-.categories-header .decor-line span {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(230, 41, 115, 0.28));
-}
-.categories-header .decor-line span:last-child {
-  background: linear-gradient(90deg, rgba(230, 41, 115, 0.28), transparent);
-}
-.categories-header .decor-line i {
-  width: 7px;
-  height: 7px;
-  flex: 0 0 7px;
-  border-radius: 50%;
-  background: var(--categories-accent);
-  box-shadow: 0 0 0 4px rgba(230, 41, 115, 0.07);
-}
-/* =========================================================
-   HEADER TITLE
-========================================================= */
-.categories-header h2 {
-  margin: 0;
-  color: var(--categories-text);
-  font-size: max(28px, min(4vw, 42px));
-  line-height: 1.35;
-  font-weight: 900;
-  letter-spacing: -0.7px;
-}
-/* =========================================================
-   HEADER DESCRIPTION
-========================================================= */
-.categories-header p {
-  width: 100%;
-  max-width: 650px;
-  margin: 12px auto 0;
-  color: var(--categories-muted);
-  font-size: 14px;
-  line-height: 1.9;
-  font-weight: 400;
-}
-/* =========================================================
-   GRID
-========================================================= */
-.categories-grid {
+  margin-bottom: 56px;
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-gap: 18px;
-  gap: 18px;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-/* =========================================================
-   CATEGORY CARD
-========================================================= */
+/* Glass Badge Accent */
+.categories-header::before {
+  content: "منتجات مختارة بعناية";
+  display: inline-block;
+  padding: 6px 16px;
+  margin-bottom: 16px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #d4af37;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 100px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+.categories-header h2 {
+  font-size: max(1.75rem, min(3vw, 2.5rem));
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 12px 0;
+  position: relative;
+  letter-spacing: -0.02em;
+}
+.categories-header p {
+  font-size: 1rem;
+  color: #94a3b8;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+/* Ambient Glow behind Header */
+.categories-header::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 80px;
+  background: rgba(212, 175, 55, 0.12);
+  filter: blur(40px);
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 50%;
+}
+/* 3. Grid & Cards Layout
+   -------------------------------------------------------------------------- */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 24px;
+  gap: 24px;
+}
 .category-card {
-  --card-radius: 18px;
   position: relative;
   display: block;
-  width: 100%;
-  height: 390px;
-  min-width: 0;
+  height: 380px;
+  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 18px;
-  border-radius: var(--card-radius);
-  background: #FFFFFF;
   -webkit-text-decoration: none;
   text-decoration: none;
-  box-shadow: 0 6px 24px rgba(24, 16, 20, 0.055);
-  transform: translateY(0);
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease, border-color 0.4s ease;
-  animation: categoryCardReveal 0.65s ease both;
-  animation-delay: calc(0 * 80ms);
-  animation-delay: calc(var(--category-index, 0) * 80ms);
+  background-color: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease;
 }
-/* =========================================================
-   CARD HOVER
-========================================================= */
 .category-card:hover {
-  transform: translateY(-7px);
-  border-color: rgba(230, 41, 115, 0.12);
-  box-shadow: 0 16px 38px rgba(24, 16, 20, 0.09);
+  transform: translateY(-8px);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.15);
 }
-/* =========================================================
-   IMAGE
-========================================================= */
-.category-card img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  transform: scale(1);
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-/* =========================================================
-   IMAGE HOVER
-========================================================= */
-.category-card:hover img {
-  transform: scale(1.055);
-}
-/* =========================================================
-   OVERLAY
-========================================================= */
-.category-card .overlay {
+/* Image & Overlay Effects */
+.category-image-wrapper {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02) 15%, rgba(0, 0, 0, 0.08) 42%, rgba(0, 0, 0, 0.68) 100%);
-  transition: background 0.4s ease;
-}
-.category-card:hover .overlay {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.03) 10%, rgba(0, 0, 0, 0.12) 40%, rgba(0, 0, 0, 0.72) 100%);
-}
-/* =========================================================
-   BADGE
-========================================================= */
-.category-badge {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 4;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  max-width: calc(100% - 32px);
-  padding: 7px 13px;
-  border: 1px solid rgba(230, 41, 115, 0.1);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.94);
-  color: var(--categories-accent);
-  font-size: 10px;
-  font-weight: 800;
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.08);
-  backdrop-filter: blur(8px);
-}
-/* =========================================================
-   CARD CONTENT
-========================================================= */
-.category-card .content {
-  position: absolute;
-  right: 22px;
-  left: 22px;
-  bottom: 21px;
-  z-index: 3;
-  color: #FFFFFF;
-  text-align: right;
-}
-/* =========================================================
-   CARD TITLE
-========================================================= */
-.category-card .content h3 {
-  margin: 0;
-  color: #FFFFFF;
-  font-size: max(19px, min(2vw, 24px));
-  line-height: 1.35;
-  font-weight: 900;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
-}
-/* =========================================================
-   CARD SUBTITLE
-========================================================= */
-.category-card .content p {
   width: 100%;
-  margin: 6px 0 0;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 12px;
-  line-height: 1.7;
-  font-weight: 400;
+  height: 100%;
 }
-/* =========================================================
-   ARROW
-========================================================= */
-.category-arrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 31px;
-  height: 31px;
-  margin-top: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  color: #FFFFFF;
-  backdrop-filter: blur(8px);
-  opacity: 0.88;
-  transform: translateX(0);
-  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+.category-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.category-arrow i {
-  font-size: 13px;
-  line-height: 1;
+.category-card:hover .category-image {
+  transform: scale(1.08);
 }
-.category-card:hover .category-arrow {
-  background: var(--categories-accent);
-  border-color: var(--categories-accent);
-  transform: translateX(-4px);
-}
-/* =========================================================
-   CARD REVEAL ANIMATION
-========================================================= */
-@keyframes categoryCardReveal {
-  from {
-    opacity: 0;
-    transform: translateY(18px) scale(0.985);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-/* =========================================================
-   SECTION REVEAL
-========================================================= */
-.reveal-section {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.reveal-section.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* =========================================================
-   CARD REVEAL
-========================================================= */
-.category-card.reveal-section {
-  opacity: 0;
-  transform: translateY(24px);
-}
-.category-card.reveal-section.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* =========================================================
-   TABLET
-========================================================= */
-@media (max-width: 1100px) {
-  .categories-section {
-    padding: 70px 0;
-  }
-  .categories-section > .container {
-    padding-left: 18px;
-    padding-right: 18px;
-  }
-  .categories-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-  }
-  .category-card {
-    height: 370px;
-  }
-}
-/* =========================================================
-   MOBILE
-========================================================= */
-@media (max-width: 768px) {
-  .categories-section {
-    padding: 55px 0 45px;
-  }
-  .categories-section > .container {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-  .categories-header {
-    margin-bottom: 30px;
-  }
-  .categories-header .decor-line {
-    width: 145px;
-    margin-bottom: 16px;
-  }
-  .categories-header h2 {
-    font-size: 27px;
-    letter-spacing: -0.5px;
-  }
-  .categories-header p {
-    padding: 0 8px;
-    font-size: 12px;
-    line-height: 1.85;
-  }
-  .categories-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-  .category-card {
-    height: 290px;
-    border-radius: 15px;
-  }
-  .category-badge {
-    top: 8px;
-    right: 8px;
-    max-width: calc(100% - 16px);
-    padding: 5px 9px;
-    font-size: 8px;
-  }
-  .category-card .content {
-    right: 13px;
-    left: 13px;
-    bottom: 14px;
-  }
-  .category-card .content h3 {
-    font-size: 16px;
-  }
-  .category-card .content p {
-    margin-top: 4px;
-    font-size: 9px;
-    line-height: 1.6;
-  }
-  .category-arrow {
-    width: 27px;
-    height: 27px;
-    margin-top: 9px;
-  }
-  .category-arrow i {
-    font-size: 11px;
-  }
-}
-/* =========================================================
-   VERY SMALL MOBILE
-========================================================= */
-@media (max-width: 420px) {
-  .categories-grid {
-    gap: 8px;
-  }
-  .category-card {
-    height: 250px;
-    border-radius: 13px;
-  }
-  .category-card .content {
-    right: 11px;
-    left: 11px;
-    bottom: 11px;
-  }
-  .category-card .content h3 {
-    font-size: 14px;
-  }
-  .category-card .content p {
-    font-size: 8px;
-  }
-  .category-arrow {
-    width: 25px;
-    height: 25px;
-    margin-top: 7px;
-  }
-  .category-badge {
-    padding: 4px 8px;
-    font-size: 7px;
-  }
-}
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-@media (prefers-reduced-motion: reduce) {
-  .categories-section *,
-  .categories-section *::before,
-  .categories-section *::after {
-    animation: none !important;
-    transition: none !important;
-  }
-  .reveal-section,
-  .category-card.reveal-section {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
-/* =========================================================
-   CATEGORIES — CRYSTAL GLASS HEADER
-   Premium Crystal Title Design
-   لا يحذف أو يعدل أي شيء من التصميم الأصلي
-========================================================= */
-/* =========================================================
-   CRYSTAL BADGE
-========================================================= */
-.categories-header::before {
-  content: "منتجات مختارة بعناية";
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  margin-bottom: 16px;
-  padding: 8px 17px;
-  border: 1px solid rgba(255, 255, 255, 0.75);
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(255, 247, 250, 0.45));
-  color: #E62973;
-  font-size: 11px;
-  font-weight: 800;
-  line-height: 1;
-  box-shadow: 0 8px 25px rgba(230, 41, 115, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  z-index: 2;
-}
-/* =========================================================
-   CRYSTAL BADGE SHINE
-========================================================= */
-.categories-header::after {
-  content: "";
+.category-overlay {
   position: absolute;
   top: 0;
-  left: 50%;
-  width: 120px;
-  height: 40px;
-  transform: translateX(-50%);
-  border-radius: 999px;
-  background: radial-gradient(ellipse, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0));
-  opacity: 0.45;
-  filter: blur(8px);
-  pointer-events: none;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(180deg, rgba(11, 17, 32, 0) 0%, rgba(11, 17, 32, 0.4) 50%, rgba(11, 17, 32, 0.92) 100%);
+  transition: opacity 0.4s ease;
 }
-/* =========================================================
-   CRYSTAL TITLE
-========================================================= */
-.categories-header h2 {
-  position: relative;
-  z-index: 2;
-}
-/* =========================================================
-   TITLE SOFT GLOW
-========================================================= */
-.categories-header h2::after {
-  content: "";
+/* Card Content & Typography */
+.category-content {
   position: absolute;
-  z-index: -1;
-  left: 50%;
-  bottom: -5px;
-  width: 180px;
-  height: 45px;
-  transform: translateX(-50%);
-  border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(230, 41, 115, 0.09), transparent 70%);
-  filter: blur(9px);
-  pointer-events: none;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 24px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-/* =========================================================
-   CRYSTAL DECORATIVE LINE
-========================================================= */
-.categories-header .decor-line {
-  position: relative;
+.category-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+.category-card:hover .category-title {
+  color: #d4af37;
+}
+.category-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+.category-count {
+  font-size: 0.875rem;
+  color: #cbd5e1;
+}
+.category-arrow {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  width: 180px;
-  height: 12px;
-  margin: 0 auto 20px;
-}
-/* =========================================================
-   LEFT / RIGHT CRYSTAL LINES
-========================================================= */
-.categories-header .decor-line span {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(230, 41, 115, 0.32));
-}
-.categories-header .decor-line span:last-child {
-  background: linear-gradient(90deg, rgba(230, 41, 115, 0.32), transparent);
-}
-/* =========================================================
-   CRYSTAL CENTER
-========================================================= */
-.categories-header .decor-line i {
-  position: relative;
-  width: 10px;
-  height: 10px;
-  flex: 0 0 10px;
-  border: 1px solid rgba(230, 41, 115, 0.25);
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #FFFFFF 0%, #FFF0F5 55%, #FFDCE9 100%);
-  box-shadow: 0 0 0 4px rgba(230, 41, 115, 0.055), 0 3px 12px rgba(230, 41, 115, 0.18), inset 1px 1px 2px rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: #ffffff;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
-/* =========================================================
-   CRYSTAL CENTER REFLECTION
-========================================================= */
-.categories-header .decor-line i::before {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: #FFFFFF;
-  box-shadow: 0 0 6px rgb(255, 255, 255);
+.category-card:hover .category-arrow {
+  background: #d4af37;
+  color: #0b1120;
+  transform: translateX(-4px);
 }
-/* =========================================================
-   MOBILE CRYSTAL HEADER
-========================================================= */
-@media (max-width: 768px) {
-  .categories-header::before {
-    margin-bottom: 13px;
-    padding: 7px 14px;
-    font-size: 10px;
+/* 4. Responsive Breakpoints
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
-  .categories-header .decor-line {
-    width: 145px;
-    height: 10px;
-    margin-bottom: 16px;
-  }
-  .categories-header .decor-line i {
-    width: 9px;
-    height: 9px;
-    flex-basis: 9px;
+  .category-card {
+    height: 320px;
   }
 }
-/* =========================================================
-   VERY SMALL MOBILE
-========================================================= */
-@media (max-width: 420px) {
-  .categories-header::before {
-    padding: 6px 12px;
-    font-size: 9px;
+@media (max-width: 640px) {
+  .categories-section {
+    padding: 56px 0;
   }
-  .categories-header .decor-line {
-    width: 130px;
+  .categories-header {
+    margin-bottom: 36px;
+  }
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .category-card {
+    height: 240px;
+    border-radius: 12px;
+  }
+  .category-content {
+    padding: 14px;
+  }
+  .category-title {
+    font-size: 1rem;
+  }
+  .category-count {
+    font-size: 0.75rem;
+  }
+  .category-arrow {
+    width: 26px;
+    height: 26px;
+  }
+  .category-arrow svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+/* 5. Accessibility Controls
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .category-card,
+  .category-image,
+  .category-arrow {
+    transition: none !important;
   }
 }
 /* =========================================================
-   LUXURY COMPLETE LOOK
-   PREMIUM MOTION EDITION
+   LUXURY COMPLETE LOOK - PREMIUM MOTION EDITION
 ========================================================= */
 .luxury-look-section {
   position: relative;
@@ -15643,11 +15150,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background: radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.1), transparent 30%), var(--look-bg, #E62973);
   isolation: isolate;
   --look-white: #fff;
-  --look-soft-white: rgba(255,255,255,.72);
-  --look-border: rgba(255,255,255,.15);
+  --look-soft-white: rgba(255, 255, 255, 0.72);
+  --look-border: rgba(255, 255, 255, 0.15);
 }
 /* =========================================================
-   BACKGROUND
+   BACKGROUND & ORBS
 ========================================================= */
 .luxury-look-bg {
   position: absolute;
@@ -15659,9 +15166,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   overflow: hidden;
   pointer-events: none;
 }
-/* =========================================================
-   ORBS
-========================================================= */
 .luxury-look-bg__orb {
   position: absolute;
   display: block;
@@ -15669,6 +15173,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   pointer-events: none;
   filter: blur(90px);
   will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 .luxury-look-bg__orb--one {
   width: 420px;
@@ -15718,9 +15224,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: translate3d(50px, 30px, 0) scale(1.15);
   }
 }
-/* =========================================================
-   BACKGROUND GRID
-========================================================= */
 .luxury-look-bg__grid {
   position: absolute;
   top: 0;
@@ -15730,8 +15233,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 0.06;
   background-image: linear-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.35) 1px, transparent 1px);
   background-size: 70px 70px;
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
   -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
-          mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
 }
 /* =========================================================
    HEADER
@@ -15804,7 +15307,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 0.7;
 }
 /* =========================================================
-   MAIN CONTENT
+   MAIN CONTENT & IMAGE
 ========================================================= */
 .luxury-look-content {
   position: relative;
@@ -15814,9 +15317,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   gap: 28px;
   width: 100%;
 }
-/* =========================================================
-   IMAGE
-========================================================= */
 .luxury-look-image {
   position: relative;
   width: 42%;
@@ -15844,9 +15344,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transform: scale(1.075);
   filter: saturate(1.08) contrast(1.02);
 }
-/* =========================================================
-   IMAGE DARK OVERLAY
-========================================================= */
 .luxury-look-image::after {
   content: "";
   position: absolute;
@@ -15858,9 +15355,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   pointer-events: none;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent 35%);
 }
-/* =========================================================
-   IMAGE SHINE
-========================================================= */
 .luxury-look-image__shine {
   position: absolute;
   top: -30%;
@@ -15886,9 +15380,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: rotate(18deg) translateX(430%);
   }
 }
-/* =========================================================
-   IMAGE FRAME
-========================================================= */
 .luxury-look-image__frame {
   position: absolute;
   top: 14px;
@@ -15901,9 +15392,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   pointer-events: none;
   opacity: 0.65;
 }
-/* =========================================================
-   IMAGE CAPTION
-========================================================= */
 .luxury-look-image__caption {
   position: absolute;
   right: 24px;
@@ -15926,9 +15414,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   letter-spacing: 0.25em;
   white-space: nowrap;
 }
-/* =========================================================
-   PLACEHOLDER
-========================================================= */
 .luxury-look-placeholder {
   display: flex;
   align-items: center;
@@ -15941,7 +15426,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-weight: 900;
 }
 /* =========================================================
-   PRODUCTS BOX
+   PRODUCTS BOX & ITEMS
 ========================================================= */
 .luxury-products-box {
   position: relative;
@@ -15956,7 +15441,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
   overflow: hidden;
 }
-/* Internal glow */
 .luxury-products-box::before {
   content: "";
   position: absolute;
@@ -15969,9 +15453,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   filter: blur(70px);
   pointer-events: none;
 }
-/* =========================================================
-   PRODUCTS HEADER
-========================================================= */
 .luxury-products-header {
   position: relative;
   z-index: 2;
@@ -16007,9 +15488,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 12px;
   font-weight: 900;
 }
-/* =========================================================
-   PRODUCTS LIST
-========================================================= */
 .luxury-products-list {
   position: relative;
   z-index: 2;
@@ -16017,9 +15495,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   flex-direction: column;
   gap: 10px;
 }
-/* =========================================================
-   PRODUCT ITEM
-========================================================= */
 .luxury-product-item {
   position: relative;
   display: flex;
@@ -16034,7 +15509,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
   overflow: hidden;
 }
-/* Light sweep */
 .luxury-product-item::before {
   content: "";
   position: absolute;
@@ -16051,14 +15525,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   left: 140%;
 }
 .luxury-product-item:hover {
-  transform: translateX(-8px) translateY(-2px);
+  transform: translateY(-2px);
   background: rgba(255, 255, 255, 0.115);
   border-color: rgba(255, 255, 255, 0.22);
   box-shadow: 0 14px 35px rgba(0, 0, 0, 0.12);
 }
-/* =========================================================
-   PRODUCT NUMBER
-========================================================= */
 .luxury-product-item__number {
   flex: 0 0 auto;
   width: 24px;
@@ -16067,9 +15538,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-weight: 900;
   text-align: center;
 }
-/* =========================================================
-   PRODUCT INFO
-========================================================= */
 .luxury-product-info {
   display: flex;
   align-items: center;
@@ -16099,7 +15567,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transform: scale(1.09);
   filter: brightness(1.08) saturate(1.08);
 }
-/* Image glow */
 .luxury-product-image-glow {
   position: absolute;
   top: 0;
@@ -16114,9 +15581,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .luxury-product-item:hover .luxury-product-image-glow {
   opacity: 1;
 }
-/* =========================================================
-   PRODUCT DETAILS
-========================================================= */
 .luxury-product-details {
   min-width: 0;
 }
@@ -16133,6 +15597,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .luxury-product-info a:hover .luxury-product-name {
   color: rgba(255, 255, 255, 0.78);
+}
+[dir=rtl] .luxury-product-info a:hover .luxury-product-name {
+  transform: translateX(3px);
+}
+[dir=ltr] .luxury-product-info a:hover .luxury-product-name {
   transform: translateX(-3px);
 }
 .luxury-product-type {
@@ -16141,14 +15610,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 10px;
   line-height: 1.5;
 }
-/* =========================================================
-   PRICE
-========================================================= */
 .luxury-product-price {
   position: relative;
   flex: 0 0 auto;
   padding: 7px 10px;
-  border-radius: 9px;
+  border-radius: 99px;
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
   font-size: 15px;
@@ -16162,7 +15628,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background: rgba(255, 255, 255, 0.15);
 }
 /* =========================================================
-   FOOTER
+   FOOTER & BUTTONS
 ========================================================= */
 .luxury-look-footer {
   position: relative;
@@ -16175,9 +15641,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
-/* =========================================================
-   TOTAL
-========================================================= */
 .luxury-look-total {
   min-width: 0;
 }
@@ -16198,9 +15661,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 10px;
   font-weight: 700;
 }
-/* =========================================================
-   ADD BUTTON
-========================================================= */
 .luxury-add-button {
   display: flex;
   align-items: center;
@@ -16214,9 +15674,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   display: block;
   width: 100%;
 }
-/* =========================================================
-   SALLA BUTTON
-========================================================= */
 .luxury-add-button salla-add-product-button button,
 .luxury-add-button salla-add-product-button .s-button-element {
   position: relative;
@@ -16235,7 +15692,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-weight: 950 !important;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, background 0.35s ease !important;
 }
-/* Shine */
 .luxury-add-button salla-add-product-button button::before,
 .luxury-add-button salla-add-product-button .s-button-element::before {
   content: "";
@@ -16329,9 +15785,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     filter: blur(0);
   }
 }
-/* =========================================================
-   PRODUCT STAGGER
-========================================================= */
 .luxury-look-section--animated .luxury-product-item {
   opacity: 0;
   animation: luxuryProductReveal 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -16347,9 +15800,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     transform: translateX(0) scale(1);
   }
 }
-/* =========================================================
-   FOOTER REVEAL
-========================================================= */
 .luxury-look-section--animated .luxury-look-footer {
   animation: luxuryLookFooterIn 0.7s 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
@@ -16364,7 +15814,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   TABLET
+   MEDIA QUERIES (RESPONSIVE)
 ========================================================= */
 @media (max-width: 992px) {
   .luxury-look-content {
@@ -16379,9 +15829,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     width: 100%;
   }
 }
-/* =========================================================
-   MOBILE
-========================================================= */
 @media (max-width: 600px) {
   .luxury-look-header {
     margin-bottom: 38px;
@@ -16438,9 +15885,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     padding: 9px;
     border-radius: 14px;
   }
-  .luxury-product-item:hover {
-    transform: translateX(-3px);
-  }
   .luxury-product-item__number {
     display: none;
   }
@@ -16486,9 +15930,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     font-size: 11px !important;
   }
 }
-/* =========================================================
-   VERY SMALL MOBILE
-========================================================= */
 @media (max-width: 420px) {
   .luxury-look-image {
     height: 300px;
@@ -16508,9 +15949,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     height: 57px;
   }
 }
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
 @media (prefers-reduced-motion: reduce) {
   .luxury-look-section *,
   .luxury-look-section *::before,
@@ -17772,8 +17210,17 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 /* =========================================================
    STORE LOCATION
    Premium Responsive Store Map
-   RTL / Leaflet Safe
+   RTL / Leaflet Safe & Optimized for Salla Twilight
 ========================================================= */
+:root {
+  --location-accent: #e62973;
+  --location-accent-light: #fff7fa;
+  --location-accent-shadow: rgba(230, 41, 115, 0.15);
+  --location-bg-gray: #f5f5f5;
+  --location-border: rgba(0, 0, 0, 0.06);
+  --location-title-color: #111111;
+  --location-text-color: #777777;
+}
 /* =========================================================
    GLOBAL BOX SIZING
 ========================================================= */
@@ -17796,7 +17243,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   padding-top: 90px;
   padding-bottom: 90px;
   overflow: hidden;
-  color: #111;
+  color: #111111;
+  color: var(--location-title-color);
   z-index: 1;
 }
 /* =========================================================
@@ -17811,8 +17259,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   pointer-events: none;
   opacity: 0.35;
   z-index: 0;
+  will-change: transform;
 }
 .store-location-glow.one {
+  background: #e62973;
   background: var(--location-accent);
   top: -120px;
   left: -100px;
@@ -17867,35 +17317,35 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   width: 12px;
   height: 12px;
   flex: 0 0 12px;
+  background: #e62973;
   background: var(--location-accent);
   transform: rotate(45deg);
   box-shadow: 0 0 15px rgba(230, 41, 115, 0.35);
 }
 /* =========================================================
-   TITLE
+   TITLE & SUBTITLE
 ========================================================= */
 .store-location-header h2 {
   width: 100%;
   margin: 0;
-  color: #111;
+  color: #111111;
+  color: var(--location-title-color);
   font-size: max(30px, min(5vw, 48px));
   line-height: 1.3;
   font-weight: 900;
   letter-spacing: -0.7px;
 }
-/* =========================================================
-   SUBTITLE
-========================================================= */
 .store-location-header p {
   width: 100%;
   max-width: 550px;
   margin: 15px auto 0;
-  color: #777;
+  color: #777777;
+  color: var(--location-text-color);
   font-size: 15px;
   line-height: 1.9;
 }
 /* =========================================================
-   CONTENT
+   CONTENT WRAPPER
 ========================================================= */
 .store-location-content {
   position: relative;
@@ -17907,56 +17357,40 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   gap: 30px;
 }
 /* =========================================================
-   MAP WRAPPER
+   MAP CONTAINER & LEAFLET SAFE FIXES
 ========================================================= */
 .store-location-map {
   position: relative;
   width: 68%;
   min-width: 0;
   height: 520px;
-  min-height: 520px;
   flex: 1 1 68%;
   overflow: hidden;
   border-radius: 32px;
   background: #f5f5f5;
+  background: var(--location-bg-gray);
   border: 1px solid rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--location-border);
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
   isolation: isolate;
 }
-/* =========================================================
-   MAP ELEMENT
-========================================================= */
 .store-location-map .store-map,
 .store-location-map [data-store-map],
-#store-map {
+#store-map,
+.store-location-map .leaflet-container {
   position: relative;
   display: block;
   width: 100% !important;
-  height: 520px !important;
-  min-height: 520px;
+  height: 100% !important;
+  min-height: 100%;
   max-width: 100%;
   margin: 0;
   padding: 0;
   overflow: hidden;
-}
-/* =========================================================
-   LEAFLET
-========================================================= */
-.store-location-map .leaflet-container,
-#store-map.leaflet-container {
-  position: relative;
-  width: 100% !important;
-  height: 100% !important;
-  min-height: 520px;
-  max-width: 100%;
-  overflow: hidden;
   font-family: inherit;
-  background: #f1f1f1;
   z-index: 1;
 }
-/* =========================================================
-   LEAFLET MAP PANES
-========================================================= */
+/* Leaflet Panes Standardizing */
 .store-location-map .leaflet-map-pane {
   z-index: 1;
 }
@@ -17978,21 +17412,16 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .store-location-map .leaflet-popup-pane {
   z-index: 8;
 }
-/* =========================================================
-   LEAFLET CONTROLS
-========================================================= */
 .store-location-map .leaflet-control-container {
   position: relative;
-  z-index: 20;
+  z-index: 10;
 }
 .store-location-map .leaflet-control {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border: none;
 }
-/* =========================================================
-   LEAFLET BUTTONS
-========================================================= */
 .store-location-map .leaflet-control-zoom a {
   width: 34px;
   height: 34px;
@@ -18000,16 +17429,17 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: #333;
   background: #fff;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 .store-location-map .leaflet-control-zoom a:hover {
+  color: #e62973;
   color: var(--location-accent);
   background: #fff7fa;
+  background: var(--location-accent-light);
 }
-/* =========================================================
-   LEAFLET POPUP
-========================================================= */
 .store-location-map .leaflet-popup-content-wrapper {
   border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 .store-location-map .leaflet-popup-content {
   margin: 14px 18px;
@@ -18023,7 +17453,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background: #fff;
 }
 /* =========================================================
-   BRANCHES
+   BRANCHES SIDEBAR
 ========================================================= */
 .store-location-branches {
   width: 32%;
@@ -18033,9 +17463,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   flex-direction: column;
   gap: 15px;
 }
-/* =========================================================
-   BRANCH CARD
-========================================================= */
 .store-branch-card {
   position: relative;
   width: 100%;
@@ -18050,64 +17477,61 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border-radius: 22px;
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  color: #111;
+  border: 1px solid var(--location-border);
+  color: #111111;
+  color: var(--location-title-color);
   cursor: pointer;
+  will-change: transform, box-shadow;
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, background 0.35s ease;
 }
-/* =========================================================
-   BRANCH TITLE
-========================================================= */
 .store-branch-card h3 {
   margin: 0;
-  color: #111;
+  color: #111111;
+  color: var(--location-title-color);
   font-size: 18px;
   line-height: 1.5;
   font-weight: 900;
   transition: color 0.3s ease;
 }
-/* =========================================================
-   BRANCH DESCRIPTION
-========================================================= */
 .store-branch-card p {
   margin: 8px 0 0;
-  color: #777;
+  color: #777777;
+  color: var(--location-text-color);
   font-size: 13px;
   line-height: 1.7;
 }
-/* =========================================================
-   BRANCH BUTTON TEXT
-========================================================= */
 .store-branch-card span {
   display: inline-block;
   margin-top: 12px;
+  color: #e62973;
   color: var(--location-accent);
   font-size: 12px;
   line-height: 1.5;
   font-weight: 800;
 }
-/* =========================================================
-   BRANCH HOVER
-========================================================= */
+/* Hover & Active States */
+.store-branch-card:hover,
+.store-branch-card.active {
+  border-color: #e62973;
+  border-color: var(--location-accent);
+  box-shadow: 0 18px 40px rgba(230, 41, 115, 0.15);
+  box-shadow: 0 18px 40px var(--location-accent-shadow);
+}
 .store-branch-card:hover {
   transform: translateY(-5px);
-  border-color: var(--location-accent);
-  box-shadow: 0 18px 40px rgba(230, 41, 115, 0.15);
 }
-/* =========================================================
-   BRANCH ACTIVE
-========================================================= */
 .store-branch-card.active {
   transform: translateY(-3px);
-  border-color: var(--location-accent);
   background: linear-gradient(135deg, #fff, #fff7fa);
-  box-shadow: 0 18px 40px rgba(230, 41, 115, 0.15);
+  background: linear-gradient(135deg, #fff, var(--location-accent-light));
 }
 .store-branch-card:hover h3,
 .store-branch-card.active h3 {
+  color: #e62973;
   color: var(--location-accent);
 }
 /* =========================================================
-   ANIMATION
+   ENTRANCE ANIMATIONS
 ========================================================= */
 .store-location-animated .store-branch-card {
   opacity: 0;
@@ -18136,26 +17560,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 /* =========================================================
-   LARGE DESKTOP
+   RESPONSIVE BREAKPOINTS
 ========================================================= */
-@media (min-width: 1201px) {
-  .store-location-section > .container {
-    max-width: 1200px;
-  }
-  .store-location-map {
-    height: 520px;
-    min-height: 520px;
-  }
-  .store-location-map .store-map,
-  .store-location-map [data-store-map],
-  #store-map {
-    height: 520px !important;
-    min-height: 520px;
-  }
-}
-/* =========================================================
-   DESKTOP / SMALL LAPTOP
-========================================================= */
+/* Desktop / Small Laptop */
 @media (max-width: 1200px) {
   .store-location-section {
     padding-top: 80px;
@@ -18172,22 +17579,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     width: 66%;
     flex-basis: 66%;
     height: 500px;
-    min-height: 500px;
-  }
-  .store-location-map .store-map,
-  .store-location-map [data-store-map],
-  #store-map {
-    height: 500px !important;
-    min-height: 500px;
   }
   .store-location-branches {
     width: 34%;
     flex-basis: 34%;
   }
 }
-/* =========================================================
-   TABLET
-========================================================= */
+/* Tablet (Switch to Vertical Layout) */
 @media (max-width: 992px) {
   .store-location-section {
     padding-top: 70px;
@@ -18201,33 +17599,15 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     margin-bottom: 45px;
   }
   .store-location-content {
-    display: flex;
     flex-direction: column;
-    width: 100%;
     gap: 24px;
   }
-  /* MAP */
   .store-location-map {
     width: 100%;
     flex: 0 0 auto;
     height: 480px;
-    min-height: 480px;
     border-radius: 28px;
   }
-  .store-location-map .store-map,
-  .store-location-map [data-store-map],
-  #store-map {
-    width: 100% !important;
-    height: 480px !important;
-    min-height: 480px;
-  }
-  .store-location-map .leaflet-container,
-  #store-map.leaflet-container {
-    width: 100% !important;
-    height: 480px !important;
-    min-height: 480px;
-  }
-  /* BRANCHES */
   .store-location-branches {
     width: 100%;
     flex: 0 0 auto;
@@ -18240,9 +17620,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     min-height: 150px;
   }
 }
-/* =========================================================
-   SMALL TABLET
-========================================================= */
+/* Small Tablet */
 @media (max-width: 768px) {
   .store-location-section {
     padding: 60px 0 50px;
@@ -18260,7 +17638,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
   .store-location-header p {
     margin-top: 12px;
-    padding: 0 8px;
+    padding-left: 8px;
+    padding-right: 8px;
     font-size: 13px;
     line-height: 1.85;
   }
@@ -18277,30 +17656,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     height: 10px;
     flex-basis: 10px;
   }
-  /* MAP */
   .store-location-map {
-    width: 100%;
     height: 420px;
-    min-height: 420px;
     border-radius: 24px;
-  }
-  .store-location-map .store-map,
-  .store-location-map [data-store-map],
-  #store-map {
-    width: 100% !important;
-    height: 420px !important;
-    min-height: 420px;
-  }
-  .store-location-map .leaflet-container,
-  #store-map.leaflet-container {
-    width: 100% !important;
-    height: 420px !important;
-    min-height: 420px;
-  }
-  /* BRANCHES */
-  .store-location-branches {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
   }
   .store-branch-card {
     padding: 18px;
@@ -18315,16 +17673,23 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .store-branch-card span {
     font-size: 11px;
   }
-  /* LEAFLET CONTROLS */
+  .store-location-map .leaflet-container {
+    touch-action: pan-x pan-y;
+  }
+  .store-location-map .leaflet-control {
+    margin: 10px;
+  }
   .store-location-map .leaflet-control-zoom a {
     width: 32px;
     height: 32px;
     line-height: 32px;
   }
+  .store-location-map .leaflet-popup-content {
+    max-width: 220px;
+    font-size: 12px;
+  }
 }
-/* =========================================================
-   MOBILE
-========================================================= */
+/* Mobile */
 @media (max-width: 600px) {
   .store-location-section {
     padding: 55px 0 45px;
@@ -18358,39 +17723,16 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     height: 9px;
     flex-basis: 9px;
   }
-  /* =====================================================
-     MAP
-  ===================================================== */
   .store-location-map {
-    width: 100%;
     height: 400px;
-    min-height: 400px;
     border-radius: 22px;
     box-shadow: 0 18px 40px rgba(0, 0, 0, 0.09);
   }
-  .store-location-map .store-map,
-  .store-location-map [data-store-map],
-  #store-map {
-    width: 100% !important;
-    height: 400px !important;
-    min-height: 400px;
-  }
-  .store-location-map .leaflet-container,
-  #store-map.leaflet-container {
-    width: 100% !important;
-    height: 400px !important;
-    min-height: 400px;
-  }
-  /* =====================================================
-     BRANCHES
-  ===================================================== */
   .store-location-branches {
-    width: 100%;
     grid-template-columns: 1fr;
     gap: 10px;
   }
   .store-branch-card {
-    width: 100%;
     min-height: auto;
     padding: 18px;
     border-radius: 18px;
@@ -18403,9 +17745,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     font-size: 12px;
   }
 }
-/* =========================================================
-   VERY SMALL MOBILE
-========================================================= */
+/* Very Small Mobile */
 @media (max-width: 420px) {
   .store-location-section {
     padding: 48px 0 40px;
@@ -18418,31 +17758,18 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     font-size: 26px;
   }
   .store-location-header p {
-    padding: 0 5px;
+    padding-left: 5px;
+    padding-right: 5px;
     font-size: 11px;
   }
   .location-decoration span {
     width: 38px;
     flex-basis: 38px;
   }
-  /* MAP */
   .store-location-map {
     height: 350px;
-    min-height: 350px;
     border-radius: 19px;
   }
-  .store-location-map .store-map,
-  .store-location-map [data-store-map],
-  #store-map {
-    height: 350px !important;
-    min-height: 350px;
-  }
-  .store-location-map .leaflet-container,
-  #store-map.leaflet-container {
-    height: 350px !important;
-    min-height: 350px;
-  }
-  /* BRANCH */
   .store-branch-card {
     padding: 16px;
     border-radius: 16px;
@@ -18454,44 +17781,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     font-size: 11px;
   }
 }
-/* =========================================================
-   LANDSCAPE MOBILE
-========================================================= */
+/* Landscape Mobile Fix */
 @media (max-width: 768px) and (orientation: landscape) {
   .store-location-map {
     height: 360px;
-    min-height: 360px;
-  }
-  .store-location-map .store-map,
-  .store-location-map [data-store-map],
-  #store-map {
-    height: 360px !important;
-    min-height: 360px;
-  }
-  .store-location-map .leaflet-container,
-  #store-map.leaflet-container {
-    height: 360px !important;
-    min-height: 360px;
   }
 }
-/* =========================================================
-   LEAFLET MOBILE TOUCH
-========================================================= */
-@media (max-width: 768px) {
-  .store-location-map .leaflet-container {
-    touch-action: pan-x pan-y;
-  }
-  .store-location-map .leaflet-control {
-    margin: 10px;
-  }
-  .store-location-map .leaflet-popup-content {
-    max-width: 220px;
-    font-size: 12px;
-  }
-}
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
+/* Reduced Motion Preference */
 @media (prefers-reduced-motion: reduce) {
   .store-location-section *,
   .store-location-section *::before,
