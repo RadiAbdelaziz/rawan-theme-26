@@ -1,7 +1,6 @@
 /* =========================================================
    CINEMATIC LUXURY HERO
    HEADER + VIDEO + RESPONSIVE MENU
-   FIXED MOBILE MENU
    ========================================================= */
 
 
@@ -89,7 +88,7 @@
 
 
 /* =========================================================
-   HEADER STRUCTURE
+   HEADER STRUCTURE (RIGHT TO LEFT DIRECT FLOW)
    ========================================================= */
 
 .luxury-overlay-header {
@@ -103,7 +102,6 @@
     background: transparent;
     border: 0;
     box-shadow: none;
-    isolation: isolate;
 }
 
 .luxury-overlay-header__top {
@@ -112,25 +110,23 @@
     min-height: 82px;
     margin: 0 auto;
     padding: 15px 32px;
-    display: grid;
-    /* الترتيب: اللوجو (يمين)، الأدوات (وسط)، السلة والأيقونات (يسار) */
-    grid-template-columns: auto 1fr auto;
+    display: flex;
     align-items: center;
-    gap: 25px;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 
 /* =========================================================
-   LOGO (RIGHT / START)
+   LOGO (RIGHT SIDE)
    ========================================================= */
 
 .luxury-overlay-header__logo {
-    order: 1;
-    justify-self: start;
     display: flex;
     align-items: center;
     position: relative;
     z-index: 110;
+    flex-shrink: 0;
 }
 
 .luxury-overlay-header__logo a {
@@ -156,17 +152,17 @@
 
 
 /* =========================================================
-   CENTER CONTROLS (SEARCH & LOCALIZATION)
+   CENTER CONTROLS (SEARCH & LOCALIZATION & MENU TOGGLE)
    ========================================================= */
 
 .luxury-overlay-header__controls {
-    order: 2;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
     position: relative;
     z-index: 110;
+    flex: 1;
 }
 
 .luxury-overlay-header__control {
@@ -211,7 +207,7 @@
 }
 
 .luxury-overlay-header__search {
-    width: 160px;
+    width: 180px;
     display: flex;
     align-items: center;
     position: relative;
@@ -240,12 +236,10 @@
 
 
 /* =========================================================
-   USER ACTIONS & CART (LEFT / END)
+   USER ACTIONS & CART (LEFT SIDE)
    ========================================================= */
 
 .luxury-overlay-header__actions {
-    order: 3;
-    justify-self: end;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -253,6 +247,7 @@
     color: #fff;
     position: relative;
     z-index: 110;
+    flex-shrink: 0;
 }
 
 .luxury-overlay-header__action {
@@ -461,7 +456,6 @@
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     z-index: 9999;
-    isolation: isolate;
 }
 
 .luxury-overlay-header__mobile-menu.is-open {
@@ -552,12 +546,6 @@
     width: 100% !important;
     max-width: none !important;
     background: rgba(255, 255, 255, 0.035) !important;
-}
-
-.luxury-overlay-header__mobile-menu .main-menu span,
-.luxury-overlay-header__mobile-menu .main-menu a,
-.luxury-overlay-header__mobile-menu .main-menu li {
-    visibility: visible !important;
 }
 
 
@@ -732,7 +720,7 @@
 
 
 /* =========================================================
-   MEDIA QUERIES (TABLET & MOBILE)
+   MEDIA QUERIES (RESPONSIVE)
    ========================================================= */
 
 @media (max-width: 991px) {
@@ -741,16 +729,11 @@
     }
 
     .luxury-overlay-header__search {
-        width: 130px;
+        width: 140px;
     }
 
     .luxury-overlay-hero__content {
         padding-top: 180px;
-    }
-
-    .luxury-overlay-navigation {
-        padding-left: 15px;
-        padding-right: 15px;
     }
 
     .luxury-overlay-hero__title {
@@ -759,30 +742,10 @@
 }
 
 @media (max-width: 768px) {
-    .luxury-overlay-hero {
-        min-height: 100svh !important;
-        overflow: hidden;
-    }
-
-    .luxury-overlay-header {
-        z-index: 1000 !important;
-    }
-
     .luxury-overlay-header__top {
         min-height: 72px;
         padding: 10px 15px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px;
-    }
-
-    /* اللوجو يمين في الجوال */
-    .luxury-overlay-header__logo {
-        order: 1;
-        margin: 0;
-        justify-content: flex-start;
-        z-index: 1100;
+        gap: 10px;
     }
 
     .luxury-overlay-header__logo img {
@@ -790,157 +753,15 @@
         max-height: 45px;
     }
 
-    /* زر القائمة ومحدد اللغة في الوسط */
-    .luxury-overlay-header__controls {
-        order: 2;
-        justify-content: center;
-        z-index: 1100;
-    }
-
-    .luxury-overlay-header__control {
-        min-width: 42px;
-        width: 42px;
-        height: 42px;
-        padding: 0 !important;
-    }
-
-    .luxury-overlay-header__control span,
     .luxury-overlay-header__search {
+        width: 100px;
+    }
+
+    .luxury-overlay-header__control span {
         display: none;
-    }
-
-    /* أيقونات السلة والمفضلة والحساب يسار في الجوال */
-    .luxury-overlay-header__actions {
-        order: 3;
-        justify-content: flex-end;
-        gap: 5px;
-        z-index: 1100;
-    }
-
-    .luxury-overlay-header__action,
-    .luxury-user-menu,
-    .luxury-user-menu button,
-    .luxury-overlay-header__icon,
-    .luxury-overlay-cart,
-    .luxury-overlay-cart .s-cart-summary-content,
-    .luxury-overlay-cart .s-cart-summary-icon {
-        width: 38px !important;
-        height: 38px !important;
-        min-width: 38px !important;
-        max-width: 38px !important;
-        flex-basis: 38px !important;
     }
 
     .luxury-overlay-navigation {
         display: none !important;
-        visibility: hidden !important;
-        height: 0 !important;
-        min-height: 0 !important;
-        overflow: hidden !important;
-    }
-
-    .luxury-overlay-header__mobile-menu {
-        display: none !important;
-        position: absolute !important;
-        top: 100% !important;
-        right: 12px !important;
-        left: 12px !important;
-        width: auto !important;
-        height: auto !important;
-        min-height: 0 !important;
-        max-height: calc(100svh - 90px) !important;
-        overflow-y: auto !important;
-        overflow-x: hidden !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-        transform: translateY(-8px);
-        background: rgba(10, 10, 10, 0.97) !important;
-        z-index: 999999 !important;
-    }
-
-    .luxury-overlay-header__mobile-menu.is-open {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        transform: translateY(0) !important;
-    }
-
-    .luxury-overlay-header__mobile-menu custom-main-menu {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        width: 100% !important;
-        height: auto !important;
-        max-height: none !important;
-        overflow: visible !important;
-        position: relative !important;
-        background: transparent !important;
-        color: #fff !important;
-    }
-
-    .luxury-overlay-header__mobile-menu custom-main-menu .main-menu {
-        display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        width: 100% !important;
-        height: auto !important;
-        max-height: none !important;
-        min-height: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        justify-content: flex-start !important;
-        gap: 0 !important;
-        background: transparent !important;
-        overflow: visible !important;
-    }
-
-    .luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        width: 100% !important;
-        height: auto !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        position: relative !important;
-        background: transparent !important;
-    }
-
-    .luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li > a {
-        display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        width: 100% !important;
-        min-height: 52px !important;
-        margin: 0 !important;
-        padding: 14px 16px !important;
-        color: #fff !important;
-        background: transparent !important;
-        border: 0 !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-        font-size: 15px !important;
-        font-weight: 700 !important;
-        line-height: 1.5 !important;
-        text-decoration: none !important;
-        white-space: normal !important;
-    }
-
-    .luxury-overlay-header__mobile-menu custom-main-menu .main-menu > li > a:hover {
-        color: #fff !important;
-        background: rgba(230, 41, 115, 0.14) !important;
-    }
-
-    .luxury-overlay-header__mobile-menu custom-main-menu .main-menu ul {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative !important;
-        width: 100% !important;
     }
 }
