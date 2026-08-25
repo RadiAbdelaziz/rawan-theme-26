@@ -11,7 +11,7 @@ import './all-products'
 import './categorie'
 import './reward-progress'
 import './reviews'
-import './cinematic-hero'
+// import './cinematic-hero'
 
 class App extends AppHelpers {
   constructor() {

@@ -5,18 +5,18 @@
         var hero = document.querySelector('.luxury-overlay-hero');
         if (!hero) return;
 
-        var toggle = hero.querySelector('#luxury-menu-toggle');
-        var mobileMenu = hero.querySelector('#luxury-mobile-menu');
-        var navigation = hero.querySelector('[data-luxury-main-navigation]');
+        // جلب العناصر مع توفير عناصر بديلة لتجنب التوقف
+        var toggle = hero.querySelector('#luxury-menu-toggle') || hero.querySelector('.luxury-overlay-header__control');
+        var mobileMenu = hero.querySelector('#luxury-mobile-menu') || hero.querySelector('.luxury-overlay-header__mobile-menu');
+        var navigation = hero.querySelector('[data-luxury-main-navigation]') || hero.querySelector('.luxury-overlay-navigation');
 
-        if (!toggle || !mobileMenu || !navigation) return;
+        if (!mobileMenu || !navigation) return;
 
-        var navigationInner = navigation.querySelector('.luxury-overlay-navigation__inner');
-        var placeholder = mobileMenu.querySelector('.luxury-overlay-header__mobile-menu-placeholder');
+        // البحث عن الحاوية الداخلية أو استخدام الحاوية الرئيسية مباشرة
+        var navigationInner = navigation.querySelector('.luxury-overlay-navigation__inner') || navigation;
+        var placeholder = mobileMenu.querySelector('.luxury-overlay-header__mobile-menu-placeholder') || mobileMenu;
 
-        if (!navigationInner || !placeholder) return;
-
-        var mainMenu = navigationInner.querySelector('custom-main-menu');
+        var mainMenu = navigation.querySelector('custom-main-menu') || mobileMenu.querySelector('custom-main-menu');
         if (!mainMenu) return;
 
         var mobileBreakpoint = 768;
@@ -28,7 +28,7 @@
         function setMenuClosedState() {
             mobileMenu.classList.remove('is-open');
             mobileMenu.setAttribute('aria-hidden', 'true');
-            toggle.setAttribute('aria-expanded', 'false');
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
         }
 
         function moveMenu() {
@@ -44,7 +44,8 @@
             }
         }
 
-        function toggleMenu() {
+        function toggleMenu(event) {
+            if (event) event.preventDefault();
             if (!isMobile()) return;
 
             var isOpen = mobileMenu.classList.contains('is-open');
@@ -53,12 +54,14 @@
             } else {
                 mobileMenu.classList.add('is-open');
                 mobileMenu.setAttribute('aria-hidden', 'false');
-                toggle.setAttribute('aria-expanded', 'true');
+                if (toggle) toggle.setAttribute('aria-expanded', 'true');
             }
         }
 
         // Event Listeners
-        toggle.addEventListener('click', toggleMenu);
+        if (toggle) {
+            toggle.addEventListener('click', toggleMenu);
+        }
 
         var resizeTimer;
         window.addEventListener('resize', function () {
@@ -68,7 +71,7 @@
 
         document.addEventListener('click', function (event) {
             if (!isMobile() || !mobileMenu.classList.contains('is-open')) return;
-            if (mobileMenu.contains(event.target) || toggle.contains(event.target)) return;
+            if (mobileMenu.contains(event.target) || (toggle && toggle.contains(event.target))) return;
             setMenuClosedState();
         });
 
