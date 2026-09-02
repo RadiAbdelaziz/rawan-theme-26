@@ -55,28 +55,50 @@
             "source": "Manual",
             "required": true
         },
+     {
+    "type": "items",
+    "id": "font_family",
+    "label": "خط المتجر",
+    "description": "اختر الخط المستخدم في جميع أجزاء المتجر",
+    "format": "dropdown-list",
+    "options": [
         {
-        "type": "items",
-        "id": "font_family",
-        "label": "خط المتجر",
-        "format": "dropdown-list",
-        "options": [
-            {
-                "label": "Tajawal",
-                "value": "Tajawal",
-                "key": "tajawal"
-            }
-        ],
-        "selected": [
-            {
-                "label": "Tajawal",
-                "value": "Tajawal",
-                "key": "tajawal"
-            }
-        ],
-        "source": "Manual",
-        "required": true
-    },
+            "label": "Tajawal",
+            "value": "Tajawal",
+            "key": "tajawal"
+        },
+        {
+            "label": "IBM Plex Sans Arabic",
+            "value": "IBM Plex Sans Arabic",
+            "key": "ibm-plex-sans-arabic"
+        },
+        {
+            "label": "Noto Kufi Arabic",
+            "value": "Noto Kufi Arabic",
+            "key": "noto-kufi-arabic"
+        },
+        {
+            "label": "Cairo",
+            "value": "Cairo",
+            "key": "cairo"
+        },
+        {
+            "label": "Alexandria",
+            "value": "Alexandria",
+            "key": "alexandria"
+        }
+    ],
+    "selected": [
+        {
+            "label": "Tajawal",
+            "value": "Tajawal",
+            "key": "tajawal"
+        }
+    ],
+    "source": "Manual",
+    "required": true
+}
+,
         {
             "type": "boolean",
             "icon": "sicon-toggle-off",
