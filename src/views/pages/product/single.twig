@@ -3,29 +3,17 @@
 {% block content %}
 
 {# =========================================================
-    PRODUCT PAGE
-    Gallery + Product Info + Options + Cart + Recommendations
+   RAWAN LUXURY — PRODUCT DETAILS PAGE
+   Gallery + Product Info + Options + Cart
+   + Related Products From Same Category
 ========================================================= #}
 
 
 {# =========================================================
-    LUXURY PRODUCT CARD STYLE
-    Applied to Salla Products Slider cards
-========================================================= #}
-
-
-
-
-{# =========================================================
-    BREADCRUMBS
+   BREADCRUMBS
 ========================================================= #}
 
 {% if theme.settings.get('product_show_breadcrumbs', true) %}
-
-
-
-
-radua dashskhfsdkf 
 
     <div class="container container--breadcrumbs rawan-breadcrumbs">
         <nav class="breadcrumbs w-full">
@@ -37,7 +25,7 @@ radua dashskhfsdkf
 
 
 {# =========================================================
-    BEFORE PRODUCT INFO
+   BEFORE PRODUCT INFO
 ========================================================= #}
 
 <div class="s-blocks-wrapper s-before-product-info !mt-0">
@@ -45,52 +33,79 @@ radua dashskhfsdkf
 </div>
 
 
-<main class="rawan-product-page" data-product-id="{{ product.id }}">
+{# =========================================================
+   PRODUCT PAGE
+========================================================= #}
+
+<main
+    class="rawan-product-page"
+    data-product-id="{{ product.id }}"
+>
+
 
     {# =====================================================
-        PRODUCT HEADER
+       PRODUCT HEADER
     ====================================================== #}
 
     <section class="rawan-section-heading">
+
         <div class="rawan-heading-line"></div>
+
         <div class="rawan-heading-content">
+
             {% if product.category %}
-                <a href="{{ product.category.url }}" class="rawan-heading-kicker">
+
+                <a
+                    href="{{ product.category.url }}"
+                    class="rawan-heading-kicker"
+                >
                     {{ product.category.name }}
                 </a>
 
-
             {% else %}
+
                 <span class="rawan-heading-kicker">
                     منتجاتنا
                 </span>
+
             {% endif %}
+
 
             <h2>
                 {{ product.name }}
             </h2>
 
             <span class="rawan-heading-dot"></span>
+
         </div>
+
         <div class="rawan-heading-line"></div>
+
     </section>
 
 
     {# =====================================================
-        PRODUCT DETAILS
+       PRODUCT DETAILS
     ====================================================== #}
 
     <div class="container container--product-details">
-        <div class="rawan-product-grid" id="product-{{ product.id }}">
+
+        <div
+            class="rawan-product-grid"
+            id="product-{{ product.id }}"
+        >
+
 
             {# =================================================
-                PRODUCT MEDIA
+               PRODUCT MEDIA
             ================================================== #}
 
             <div class="rawan-product-media">
+
                 {% set has_many_images = product.images|length > 1 %}
 
                 <div class="rawan-media-card">
+
                     <salla-slider
                         data-testid="store-product-image-slider"
                         id="details-slider-{{ product.id }}"
@@ -101,11 +116,20 @@ radua dashskhfsdkf
                         listen-to-thumbnails-option
                         show-thumbs-controls="false"
                     >
+
+
+                        {# PROMOTION #}
+
                         {% if product.promotion_title %}
+
                             <div class="rawan-promotion">
                                 {{ product.promotion_title }}
                             </div>
+
                         {% endif %}
+
+
+                        {# WISHLIST #}
 
                         <salla-button
                             class="btn--wishlist rawan-image-wishlist"
@@ -119,20 +143,34 @@ radua dashskhfsdkf
                             <i class="sicon-heart"></i>
                         </salla-button>
 
+
+                        {# CALORIES #}
+
                         {% if product.calories %}
+
                             <div class="rawan-calories">
+
                                 <strong>
                                     {{ product.calories }}
                                 </strong>
+
                                 <span>
                                     {{ trans('pages.products.calories') }}
                                 </span>
+
                             </div>
+
                         {% endif %}
 
+
+                        {# IMAGES #}
+
                         <div slot="items">
+
                             {% for image in product.images %}
+
                                 {% if image.three_d_image_url %}
+
                                     <model-viewer
                                         style="min-height:500px"
                                         class="swiper-slide model-entry rawan-model"
@@ -145,89 +183,135 @@ radua dashskhfsdkf
                                         shadow-intensity="1"
                                         alt="{{ image.alt }}"
                                     ></model-viewer>
+
                                 {% else %}
+
                                     <a
                                         data-fslightbox="product_{{ product.id }}"
                                         data-img-id="{{ image.id }}"
                                         data-slid-index="{{ loop.index - 1 }}"
+
                                         {% if image.video_url %}
                                             data-video-src="{{ image.video_url }}"
                                         {% endif %}
+
                                         data-caption="{{ image.alt }}"
                                         data-infinite="false"
                                         data-type="{{ image.video_type ?? 'image' }}"
+
                                         href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}"
+
                                         aria-label="{{ product.name }}"
+
                                         class="swiper-slide magnify-wrapper rawan-product-image {{ image.video_url ? 'video-entry' : '' }}"
                                     >
+
                                         <img
                                             id="{{ image.id }}"
                                             src="{{ image.url }}"
                                             alt="{{ image.alt }}"
                                             loading="{{ loop.first ? 'eager' : 'lazy' }}"
+
                                             {% if loop.first %}
                                                 fetchpriority="high"
                                             {% endif %}
                                         >
+
                                     </a>
+
                                 {% endif %}
+
                             {% endfor %}
+
                         </div>
 
+
+                        {# THUMBNAILS #}
+
                         {% if has_many_images %}
+
                             <div
                                 data-testid="store-product-thumbnails"
                                 slot="thumbs"
                                 class="rawan-thumbnails"
                             >
+
                                 {% for image in product.images %}
+
                                     <div
-                                        class="slide--one-fourth rawan-thumbnail {{ image.video_url ? 'video-entry' : '' }} {{ image.three_d_image_url ? 'model-entry' : '' }}"
+                                        class="slide--one-fourth rawan-thumbnail
+                                        {{ image.video_url ? 'video-entry' : '' }}
+                                        {{ image.three_d_image_url ? 'model-entry' : '' }}"
                                         data-caption="{{ image.alt }}"
                                     >
+
                                         <img
                                             src="{{ image.url }}"
                                             loading="{{ loop.index < 5 ? 'eager' : 'lazy' }}"
                                             title="{{ image.alt }}"
                                             alt="{{ image.alt }}"
                                         >
+
                                     </div>
+
                                 {% endfor %}
+
                             </div>
+
                         {% endif %}
+
                     </salla-slider>
+
                 </div>
+
             </div>
 
 
             {# =================================================
-                PRODUCT INFORMATION
+               PRODUCT INFORMATION
             ================================================== #}
 
             <div class="rawan-product-info">
+
                 {% hook 'product:single.description.start' %}
 
+
+                {# BRAND #}
+
                 {% if product.brand and product.brand.name %}
+
                     <div class="rawan-brand">
+
                         <a
                             href="{{ product.brand.url }}"
                             title="{{ product.brand.name }}"
                             class="rawan-brand-logo"
                         >
+
                             {% if product.brand.logo %}
+
                                 <img
                                     src="{{ product.brand.logo }}"
                                     alt="{{ product.brand.name }}"
                                     title="{{ product.brand.name }}"
                                 >
+
                             {% else %}
+
                                 <span>
                                     {{ product.brand.name }}
                                 </span>
+
                             {% endif %}
+
                         </a>
+
                     </div>
+
                 {% endif %}
+
+
+                {# PRODUCT TITLE #}
 
                 <h1
                     data-testid="store-product-title"
@@ -237,68 +321,110 @@ radua dashskhfsdkf
                     {{ product.name }}
                 </h1>
 
+
+                {# SUBTITLE #}
+
                 {% if product.subtitle %}
+
                     <div class="rawan-product-subtitle">
                         {{ product.subtitle }}
                     </div>
+
                 {% endif %}
 
+
+                {# RATING #}
+
                 {% if product.rating %}
+
                     <div class="rawan-rating">
+
                         <salla-rating-stars
                             data-testid="store-product-rating"
                             value="{{ product.rating.stars }}"
                             reviews="{{ product.rating.count }}"
                         ></salla-rating-stars>
+
                     </div>
+
                 {% endif %}
 
+
+                {# TAX #}
+
                 {% if product.is_taxable %}
+
                     <div class="rawan-tax">
                         {{ trans('pages.products.tax_included') }}
                     </div>
+
                 {% endif %}
+
+
+                {# PRICE #}
 
                 <div
                     data-testid="store-product-price"
                     class="rawan-price-box"
                     id="rawan-main-price"
                 >
+
                     {% if product.is_on_sale %}
+
                         <div class="rawan-sale-price">
+
                             <strong>
                                 {{ product.sale_price|money }}
                             </strong>
+
                             <del>
                                 {{ product.regular_price|money }}
                             </del>
+
                             {% if product.discount_percentage %}
+
                                 <span class="rawan-discount">
                                     {{ product.discount_percentage }}
                                 </span>
+
                             {% endif %}
+
                         </div>
+
                     {% else %}
+
                         <div class="rawan-normal-price">
+
                             {% if product.starting_price %}
+
                                 <span>
                                     {{ trans('pages.products.starting_price') }}
                                 </span>
+
                             {% endif %}
+
                             <strong>
                                 {{ product.starting_price ? product.starting_price|money : product.price|money }}
                             </strong>
+
                         </div>
+
                     {% endif %}
+
                 </div>
+
+
+                {# DESCRIPTION #}
 
                 <div
                     data-testid="store-product-description"
                     class="product__description rawan-description"
                 >
+
                     {% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
 
                     {% if product.has_read_more %}
+
                         <article
                             class="article article--main rawan-description-content"
                             id="more-content"
@@ -306,27 +432,48 @@ radua dashskhfsdkf
                         >
                             {{ product_desc|raw }}
                         </article>
-                        <a id="btn-show-more" class="rawan-read-more">
+
+                        <a
+                            id="btn-show-more"
+                            class="rawan-read-more"
+                        >
                             {{ trans('pages.products.read_more') }}
                         </a>
+
                     {% else %}
+
                         <article class="article--main rawan-description-content">
                             {{ product_desc|raw }}
                         </article>
+
                     {% endif %}
+
                 </div>
 
+
+                {# TAGS #}
+
                 {% if product.tags|length and theme.settings.get('show_tags', true) %}
+
                     <div class="rawan-tags">
+
                         {% for tag in product.tags %}
+
                             <a href="{{ tag.url }}">
                                 {{ tag.name }}
                             </a>
+
                         {% endfor %}
+
                     </div>
+
                 {% endif %}
 
+
+                {# ACTIONS #}
+
                 <div class="rawan-actions">
+
                     <salla-social-share
                         data-testid="store-product-social-share"
                         aria-label="مشاركة المنتج"
@@ -344,64 +491,115 @@ radua dashskhfsdkf
                     >
                         <i class="sicon-heart"></i>
                     </salla-button>
+
                 </div>
 
+
+                {# STOCK #}
+
                 {% if product.sold_quantity or product.can_show_remained_quantity %}
+
                     <div class="rawan-stock-info">
+
                         {% if product.sold_quantity %}
+
                             <div>
+
                                 <i class="sicon-fire"></i>
+
                                 {{ trans('pages.products.sold') }}
+
                                 <span>
                                     {{ pluralize('pages.products.sold_times', product.sold_quantity)|raw }}
                                 </span>
+
                             </div>
+
                         {% endif %}
 
+
                         {% if product.can_show_remained_quantity %}
+
                             <div>
+
                                 <i class="sicon-box-bankers"></i>
+
                                 {{ trans('pages.products.remained') }}
+
                                 <span>
                                     {{ product.quantity }}
                                 </span>
+
                             </div>
+
                         {% endif %}
+
                     </div>
+
                 {% endif %}
 
+
+                {# SKU #}
+
                 {% if product.sku %}
+
                     <div class="rawan-sku">
+
                         <div>
+
                             <i class="sicon-barcode"></i>
+
                             {{ trans('pages.products.sku') }}
+
                         </div>
+
                         <strong class="product-sku">
                             {{ product.sku }}
                         </strong>
+
                     </div>
+
                 {% endif %}
 
+
                 {% hook 'product:single.description' %}
+
+
+                {# INSTALLMENTS #}
 
                 <salla-installment
                     data-testid="store-product-installment"
                     price="{{ product.price }}"
                 ></salla-installment>
 
+
+                {# METADATA #}
+
                 {% if product.has_metadata %}
+
                     <salla-metadata
                         data-testid="store-product-metadata"
                     ></salla-metadata>
+
                 {% endif %}
 
+
+                {# AVAILABILITY #}
+
                 {% if product.show_availability %}
+
                     <section class="rawan-availability">
+
                         <div>
+
                             <span>
+
                                 <i class="sicon-location"></i>
+
                                 {{ trans('pages.products.availability') }}
+
                             </span>
+
                             <a
                                 href="#!"
                                 onclick="salla.event.dispatch('scopes::open', {
@@ -411,18 +609,27 @@ radua dashskhfsdkf
                             >
                                 {{ trans('pages.products.select_branch') }}
                             </a>
+
                         </div>
+
                     </section>
+
                 {% endif %}
 
+
+                {# DIGITAL FILES #}
+
                 {% if product.digital_files_settings %}
+
                     <digital-files-settings
                         settings="{{ product.digital_files_settings|json_encode }}"
                     ></digital-files-settings>
+
                 {% endif %}
 
+
                 {# =================================================
-                    PRODUCT FORM
+                   PRODUCT FORM
                 ================================================== #}
 
                 <form
@@ -433,43 +640,64 @@ radua dashskhfsdkf
                     method="post"
                     onsubmit="return salla.form.onSubmit('cart.addItem', event)"
                 >
+
                     <input
                         type="hidden"
                         name="id"
                         value="{{ product.id }}"
                     >
 
+
                     {% hook 'product:single.form.start' %}
+
+
+                    {# PRODUCT OPTIONS #}
 
                     {% include 'pages.partials.product.options' %}
 
+
                     {% hook 'product:single.form.end' %}
 
+
+                    {# CART PRICE #}
+
                     <section class="rawan-cart-price">
+
                         <span>
                             {{ trans('pages.products.price') }}
                         </span>
 
+
                         <div class="price-wrapper">
+
                             {% if product.is_on_sale %}
+
                                 <strong class="total-price">
                                     {{ product.sale_price|money }}
                                 </strong>
+
                                 <del class="before-price">
                                     {{ product.regular_price|money }}
                                 </del>
+
                             {% else %}
+
                                 {% if product.starting_price %}
+
                                     <span class="starting-price-title">
                                         {{ trans('pages.products.starting_price') }}
                                     </span>
+
                                 {% endif %}
 
                                 <strong class="total-price">
                                     {{ product.starting_price ? product.starting_price|money : product.price|money }}
                                 </strong>
+
                             {% endif %}
+
                         </div>
+
 
                         <div
                             data-testid="store-product-out-of-stock"
@@ -477,11 +705,101 @@ radua dashskhfsdkf
                         >
                             {{ trans('pages.products.out_of_stock') }}
                         </div>
+
                     </section>
+
                 </form>
+
             </div>
+
         </div>
+
     </div>
+
 </main>
+
+
+{# =========================================================
+   RAWAN — RELATED PRODUCTS
+   SAME CATEGORY
+========================================================= #}
+
+{% if product.category %}
+
+<section class="rawan-lux-products rawan-related-products">
+
+    <div class="container">
+
+        <div class="rawan-lux-products__inner">
+
+
+            {# SECTION HEADER #}
+
+            <div class="rawan-section-heading">
+
+                <div class="rawan-section-heading__line"></div>
+
+                <div>
+
+                    <span class="rawan-section-heading__eyebrow">
+                        RAWAN COLLECTION
+                    </span>
+
+                    <h2>
+                        منتجات قد تعجبك
+                    </h2>
+
+                    <p>
+                        اكتشفي المزيد من منتجات
+                        {{ product.category.name }}
+                    </p>
+
+                </div>
+
+                <div class="rawan-section-heading__line"></div>
+
+            </div>
+
+
+            {# RELATED PRODUCTS SLIDER #}
+
+            <salla-products-slider
+                data-testid="store-product-related-products"
+                source="categories"
+                source-value='[{{ product.category.id }}]'
+                limit="12"
+                autoplay
+                block-title=""
+                sub-title=""
+                slider-id="rawan-related-products-{{ product.id }}"
+            ></salla-products-slider>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+
+{# =========================================================
+   AFTER PRODUCT / REVIEWS / OTHER BLOCKS
+========================================================= #}
+
+<div class="s-blocks-wrapper rawan-product-after">
+
+    {% hook 'product.single.after_product_info' %}
+
+</div>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+
+<script defer src="{{ 'product.js' | asset }}"></script>
 
 {% endblock %}
