@@ -56,6 +56,28 @@
             "required": true
         },
         {
+        "type": "items",
+        "id": "font_family",
+        "label": "خط المتجر",
+        "format": "dropdown-list",
+        "options": [
+            {
+                "label": "Tajawal",
+                "value": "Tajawal",
+                "key": "tajawal"
+            }
+        ],
+        "selected": [
+            {
+                "label": "Tajawal",
+                "value": "Tajawal",
+                "key": "tajawal"
+            }
+        ],
+        "source": "Manual",
+        "required": true
+    },
+        {
             "type": "boolean",
             "icon": "sicon-toggle-off",
             "label": "وضع عمودي للمنتجات في مربع المنتجات الثابتة في الصفحة الرئيسية",
