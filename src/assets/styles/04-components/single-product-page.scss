@@ -312,3 +312,643 @@
         }
     }
 
+/* =========================================================
+   RAWAN — PRODUCT PURCHASE AREA
+========================================================= */
+
+.rawan-product-form {
+    position: relative;
+}
+
+.rawan-cart-box {
+    margin-top: 20px;
+    padding: 18px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, .07);
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, .05);
+}
+
+
+/* =========================================================
+   QUANTITY
+========================================================= */
+
+.rawan-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.rawan-quantity-title {
+    color: #111;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   CART PRICE
+========================================================= */
+
+.rawan-cart-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 0 0 15px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.rawan-cart-price > span {
+    color: #111;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.rawan-cart-price .price-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.rawan-cart-price .total-price {
+    color: #E62973 !important;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.rawan-cart-price .before-price {
+    color: #999;
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   MAIN ADD TO CART
+========================================================= */
+
+.rawan-main-cart-button {
+    width: 100%;
+}
+
+.rawan-main-cart-button salla-add-product-button {
+    display: block;
+    width: 100%;
+}
+
+.rawan-main-cart-button salla-add-product-button .s-button-solid,
+.rawan-main-cart-button salla-add-product-button .s-button-primary,
+.rawan-main-cart-button salla-add-product-button button {
+    width: 100% !important;
+    min-height: 58px !important;
+    height: 58px !important;
+
+    border-radius: 16px !important;
+
+    background: #E62973 !important;
+    background-color: #E62973 !important;
+
+    border-color: #E62973 !important;
+
+    color: #fff !important;
+
+    font-size: 16px !important;
+    font-weight: 900 !important;
+
+    box-shadow: 0 12px 30px rgba(230, 41, 115, .22) !important;
+
+    transition:
+        background-color .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease !important;
+}
+
+.rawan-main-cart-button salla-add-product-button .s-button-solid:hover,
+.rawan-main-cart-button salla-add-product-button .s-button-primary:hover,
+.rawan-main-cart-button salla-add-product-button button:hover {
+    background: #C91D60 !important;
+    background-color: #C91D60 !important;
+    border-color: #C91D60 !important;
+
+    color: #fff !important;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 17px 38px rgba(230, 41, 115, .30) !important;
+}
+
+
+/* =========================================================
+   OUT OF STOCK
+========================================================= */
+
+.rawan-cart-price .out-of-stock {
+    color: #dc2626 !important;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   STICKY PURCHASE BAR
+========================================================= */
+
+.rawan-sticky-cart {
+    position: fixed;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    padding: 10px 14px;
+
+    background: rgba(255, 255, 255, .96);
+
+    border-top: 1px solid rgba(0, 0, 0, .08);
+
+    box-shadow:
+        0 -8px 30px rgba(0, 0, 0, .12);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.rawan-sticky-cart__inner {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+}
+
+.rawan-sticky-cart__product {
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.rawan-sticky-cart__product img {
+    width: 48px;
+    height: 48px;
+
+    flex: 0 0 48px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+
+    background: #f8f8f8;
+}
+
+.rawan-sticky-cart__info {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.rawan-sticky-cart__info strong {
+    display: block;
+
+    max-width: 230px;
+
+    overflow: hidden;
+
+    color: #111;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.rawan-sticky-cart__price {
+    color: #E62973;
+
+    font-size: 14px;
+    font-weight: 900;
+}
+
+.rawan-sticky-cart__button {
+    flex: 0 0 auto;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    min-width: 135px;
+    min-height: 48px;
+
+    padding: 0 18px;
+
+    border: 0;
+    border-radius: 14px;
+
+    background: #E62973;
+
+    color: #fff;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 22px rgba(230, 41, 115, .25);
+
+    transition:
+        background .25s ease,
+        transform .25s ease,
+        box-shadow .25s ease;
+}
+
+.rawan-sticky-cart__button:hover {
+    background: #C91D60;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 12px 28px rgba(230, 41, 115, .32);
+}
+
+.rawan-sticky-cart__button i {
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   STICKY ACTIVE
+========================================================= */
+
+.rawan-sticky-cart.is-visible {
+    display: block;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .rawan-product-page {
+        padding-bottom: 80px;
+    }
+
+    .rawan-cart-box {
+        margin-top: 15px;
+        padding: 15px;
+        border-radius: 18px;
+    }
+
+    .rawan-main-cart-button salla-add-product-button .s-button-solid,
+    .rawan-main-cart-button salla-add-product-button .s-button-primary,
+    .rawan-main-cart-button salla-add-product-button button {
+        min-height: 54px !important;
+        height: 54px !important;
+        border-radius: 14px !important;
+        font-size: 15px !important;
+    }
+
+    .rawan-sticky-cart {
+        display: block;
+        transform: translateY(110%);
+        transition: transform .35s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .rawan-sticky-cart.is-visible {
+        transform: translateY(0);
+    }
+
+    .rawan-sticky-cart__inner {
+        gap: 8px;
+    }
+
+    .rawan-sticky-cart__product {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .rawan-sticky-cart__product img {
+        width: 42px;
+        height: 42px;
+        flex-basis: 42px;
+    }
+
+    .rawan-sticky-cart__info strong {
+        max-width: 125px;
+        font-size: 11px;
+    }
+
+    .rawan-sticky-cart__price {
+        font-size: 13px;
+    }
+
+    .rawan-sticky-cart__button {
+        min-width: 125px;
+        min-height: 46px;
+        padding: 0 14px;
+        border-radius: 13px;
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .rawan-sticky-cart {
+        padding: 8px;
+    }
+
+    .rawan-sticky-cart__product img {
+        display: none;
+    }
+
+    .rawan-sticky-cart__info strong {
+        max-width: 105px;
+    }
+
+    .rawan-sticky-cart__button {
+        min-width: 115px;
+        padding-inline: 10px;
+    }
+}
+
+
+/* =========================================================
+   RELATED PRODUCTS
+========================================================= */
+
+.rawan-related-products {
+    position: relative;
+
+    padding-top: 50px;
+    padding-bottom: 70px;
+
+    background: #fafafa;
+}
+
+.rawan-lux-products__inner {
+    position: relative;
+    width: 100%;
+}
+
+
+/* =========================================================
+   RELATED HEADING
+========================================================= */
+
+.rawan-related-products .rawan-section-heading {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+
+    margin-bottom: 35px;
+
+    text-align: center;
+}
+
+.rawan-related-products .rawan-section-heading > div {
+    position: relative;
+}
+
+.rawan-related-products .rawan-section-heading__eyebrow {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #E62973;
+
+    font-size: 11px;
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+.rawan-related-products .rawan-section-heading h2 {
+    margin: 0;
+
+    color: #111;
+
+    font-size: clamp(24px, 3vw, 34px);
+
+    line-height: 1.3;
+
+    font-weight: 900;
+}
+
+.rawan-related-products .rawan-section-heading p {
+    margin: 7px 0 0;
+
+    color: #888;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+.rawan-related-products .rawan-section-heading__line {
+    width: 55px;
+    height: 1px;
+
+    flex-shrink: 0;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            #E62973
+        );
+}
+
+.rawan-related-products .rawan-section-heading__line:last-child {
+    background:
+        linear-gradient(
+            to left,
+            transparent,
+            #E62973
+        );
+}
+
+
+/* =========================================================
+   RELATED SLIDER
+========================================================= */
+
+.rawan-related-products salla-products-slider {
+    display: block;
+    width: 100%;
+}
+
+.rawan-related-products salla-products-slider .s-slider-block__title {
+    display: none !important;
+}
+
+.rawan-related-products salla-products-slider .s-slider-block {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.rawan-related-products salla-products-slider .swiper {
+    padding: 15px 8px 35px !important;
+}
+
+.rawan-related-products salla-products-slider .swiper-wrapper {
+    align-items: stretch;
+}
+
+.rawan-related-products salla-products-slider .swiper-slide {
+    height: auto !important;
+    display: flex;
+}
+
+
+/* =========================================================
+   RELATED PRODUCT CARD
+========================================================= */
+
+.rawan-related-products .s-product-card-entry {
+    position: relative !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    overflow: hidden !important;
+
+    background: #fff !important;
+
+    border: 0 !important;
+    border-radius: 24px !important;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, .12) !important;
+
+    transition:
+        transform .45s cubic-bezier(.22, 1, .36, 1),
+        box-shadow .45s cubic-bezier(.22, 1, .36, 1) !important;
+}
+
+.rawan-related-products .s-product-card-entry:hover {
+    transform: translateY(-10px) !important;
+
+    box-shadow:
+        0 30px 70px rgba(230, 41, 115, .25) !important;
+}
+
+.rawan-related-products .s-product-card-entry .s-product-card-image {
+    position: relative !important;
+
+    flex-shrink: 0 !important;
+
+    padding: 18px !important;
+
+    overflow: hidden !important;
+
+    background: #fafafa !important;
+}
+
+.rawan-related-products
+.s-product-card-entry
+.s-product-card-image
+.s-product-card-image-cover {
+    display: block !important;
+
+    width: 100% !important;
+
+    aspect-ratio: 1 / 1 !important;
+
+    object-fit: contain !important;
+
+    border-radius: 20px !important;
+
+    transition: transform .6s ease !important;
+}
+
+.rawan-related-products
+.s-product-card-entry:hover
+.s-product-card-image-cover {
+    transform: scale(1.08) !important;
+}
+
+
+/* =========================================================
+   RELATED MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .rawan-related-products {
+        padding-top: 35px;
+        padding-bottom: 45px;
+    }
+
+    .rawan-related-products .rawan-section-heading {
+        gap: 8px;
+        margin-bottom: 25px;
+    }
+
+    .rawan-related-products .rawan-section-heading__line {
+        width: 25px;
+    }
+
+    .rawan-related-products .rawan-section-heading h2 {
+        font-size: 24px;
+    }
+
+    .rawan-related-products .rawan-section-heading p {
+        font-size: 12px;
+    }
+
+    .rawan-related-products .s-product-card-entry {
+        border-radius: 20px !important;
+    }
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .rawan-product-page *,
+    .rawan-sticky-cart *,
+    .rawan-related-products * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
