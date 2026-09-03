@@ -37,34 +37,44 @@
         {# Main Content #}
         <div class="luxury-look-content">
             {# Image (ظهورها مشروط بإعدادات show_image) #}
-            {% if component.show_image != false %}
-                <div class="luxury-look-image">
-                    <div class="luxury-look-image__shine" aria-hidden="true"></div>
-                    <div class="luxury-look-image__frame" aria-hidden="true"></div>
+            {# Image #}
+{% if component.show_image != false %}
+    <div class="luxury-look-image">
+        <div class="luxury-look-image__shine" aria-hidden="true"></div>
+        <div class="luxury-look-image__frame" aria-hidden="true"></div>
 
-                    {% if component.main_image %}
-                        <img
-                            src="{{ component.main_image.url ?: component.main_image }}"
-                            alt="{{ component.title ?: 'الإطلالة المتكاملة الفاخرة' }}"
-                            loading="lazy"
-                            decoding="async"
-                        >
-                    {% else %}
-                        <img 
-                            src="{{ 'images/placeholder.png'|asset }}" 
-                            alt="Default Placeholder"
-                            loading="lazy"
-                            decoding="async"
-                        >
-                    {% endif %}
+        {% set raw_image = component.main_image %}
+        {% set img_src = '' %}
 
-                    <div class="luxury-look-image__caption" aria-hidden="true">
-                        <span></span>
-                        <small>THE COMPLETE LOOK</small>
-                        <span></span>
-                    </div>
-                </div>
-            {% endif %}
+        {% if raw_image is iterable %}
+            {% set img_src = raw_image.url ?: raw_image.path ?: raw_image.link %}
+        {% else %}
+            {% set img_src = raw_image %}
+        {% endif %}
+
+        {% if img_src %}
+            <img
+                src="{{ img_src }}"
+                alt="{{ component.title ?: 'الإطلالة المتكاملة الفاخرة' }}"
+                loading="lazy"
+                decoding="async"
+            >
+        {% else %}
+            <img 
+                src="{{ 'images/placeholder.png'|asset }}" 
+                alt="Default Placeholder"
+                loading="lazy"
+                decoding="async"
+            >
+        {% endif %}
+
+        <div class="luxury-look-image__caption" aria-hidden="true">
+            <span></span>
+            <small>THE COMPLETE LOOK</small>
+            <span></span>
+        </div>
+    </div>
+{% endif %}
 
             {# Products Box #}
             <div class="luxury-products-box" style="{% if component.card_background %}background-color: {{ component.card_background }};{% endif %}">
