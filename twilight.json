@@ -3319,9 +3319,7 @@
   "path": "home.complete-look",
   "image": "https://cdn.salla.network/images/themes/raed/preview-images/products.png",
   "is_default": true,
-
   "fields": [
-
     {
       "id": "badge",
       "type": "string",
@@ -3330,7 +3328,6 @@
       "multilanguage": true,
       "value": "أناقة نسائية فاخرة"
     },
-
     {
       "id": "title",
       "type": "string",
@@ -3339,7 +3336,6 @@
       "multilanguage": true,
       "value": "أكملي إطلالتكِ بأسلوب راقٍ"
     },
-
     {
       "id": "description",
       "type": "string",
@@ -3348,18 +3344,14 @@
       "multilanguage": true,
       "value": "اختاري الطقم المثالي الذي يعكس جمالك ويمنحك حضوراً متكاملاً في كل مناسبة"
     },
-
-
     {
       "id": "main_image",
-      "type": "items",
+      "type": "image",
       "format": "image",
       "label": "الصورة الرئيسية",
-      "value": null,
+      "value": "",
       "required": false
     },
-
-
     {
       "id": "products",
       "type": "items",
@@ -3372,8 +3364,6 @@
       "required": false,
       "value": []
     },
-
-
     {
       "id": "background_color",
       "type": "string",
@@ -3381,8 +3371,6 @@
       "label": "لون الخلفية",
       "value": "#E62973"
     },
-
-
     {
       "id": "accent_color",
       "type": "string",
@@ -3390,8 +3378,6 @@
       "label": "لون التفاصيل",
       "value": "#ffffff"
     },
-
-
     {
       "id": "card_background",
       "type": "string",
@@ -3399,8 +3385,6 @@
       "label": "لون بطاقة المنتجات",
       "value": "rgba(255,255,255,0.10)"
     },
-
-
     {
       "id": "button_color",
       "type": "string",
@@ -3408,8 +3392,6 @@
       "label": "لون الزر",
       "value": "#ffffff"
     },
-
-
     {
       "id": "show_glow",
       "type": "boolean",
@@ -3418,8 +3400,6 @@
       "value": true,
       "selected": true
     },
-
-
     {
       "id": "show_image",
       "type": "boolean",
@@ -3428,8 +3408,6 @@
       "value": true,
       "selected": true
     },
-
-
     {
       "id": "show_button",
       "type": "boolean",
@@ -3438,8 +3416,6 @@
       "value": true,
       "selected": true
     },
-
-
     {
       "id": "show_total",
       "type": "boolean",
@@ -3448,8 +3424,6 @@
       "value": true,
       "selected": true
     },
-
-
     {
       "id": "show_product_price",
       "type": "boolean",
@@ -3458,8 +3432,6 @@
       "value": true,
       "selected": true
     },
-
-
     {
       "id": "show_product_image",
       "type": "boolean",
@@ -3468,8 +3440,6 @@
       "value": true,
       "selected": true
     },
-
-
     {
       "id": "section_padding",
       "type": "number",
@@ -3477,7 +3447,6 @@
       "label": "مسافة القسم",
       "value": 80
     }
-
   ]
 },
 {
