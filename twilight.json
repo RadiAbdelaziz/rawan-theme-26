@@ -3346,8 +3346,9 @@
     },
     {
       "id": "main_image",
-      "type": "image",
-      "label": "الصورة الرئيسية",
+      "type": "string",
+      "format": "text",
+      "label": "رابط الصورة الرئيسية",
       "value": "",
       "required": false
     },
