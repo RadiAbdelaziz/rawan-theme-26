@@ -3351,12 +3351,13 @@
 
 
     {
-  "id": "main_image",
-  "type": "image",
-  "format": "image",
-  "label": "الصورة الرئيسية ",
-  "required": false
-},
+      "id": "main_image",
+      "type": "items",
+      "format": "image",
+      "label": "الصورة الرئيسية",
+      "value": null,
+      "required": false
+    },
 
 
     {
