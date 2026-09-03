@@ -2061,8 +2061,8 @@
 {
   "key": "f7a83c21-4b6e-49d2-91c5-7e2a6d8f104b",
   "title": {
-    "en": "Cinematic Hero",
-    "ar": "الهيرو السينمائي"
+    "en": " Hero",
+    "ar": "الهيرو"
   },
   "icon": "sicon-video-camera",
   "path": "home.cinematic-hero",
@@ -2312,8 +2312,8 @@
 {
   "key": "c91f7a42-6d83-4e21-b5a9-31f8d7246c90",
   "title": {
-    "en": "all Products",
-    "ar": "كل المنتجات"
+    "en": "Products",
+    "ar": "المنتجات"
   },
   "description": "عرض المنتجات بتصميم فاخر وعصري ومتجاوب.",
   "icon": "sicon-products",
@@ -2473,8 +2473,8 @@
 },{
   "key": "25f6cf26-a53f-4954-9b32-739b311b32c7",
   "title": {
-    "en": "Luxury Brands",
-    "ar": "الماركات الفاخرة"
+    "en": " Brands",
+    "ar": "الماركات "
   },
   "description": "عرض الماركات التجارية بتصميم فاخر وعصري ومتجاوب.",
   "icon": "sicon-award-ribbon",
@@ -2638,8 +2638,8 @@
 {
   "key": "8f4b6c21-3d72-4a95-b8e6-1f9c2a7d5e43",
   "title": {
-    "en": "Store Categories",
-    "ar": "فئات المتجر الدائرية"
+    "en": " Categories",
+    "ar": " الفئات"
   },
   "icon": "sicon-grid",
   "path": "home.categories",
@@ -3008,8 +3008,8 @@
 {
   "key": "8b4d2f61-7c92-4a75-a821-9c5f6e2026ab",
   "title": {
-    "en": "Premium Featured Products",
-    "ar": "المنتجات المميزة الفاخرة"
+    "en": " Featured Products",
+    "ar": "المنتجات المميزة"
   },
   "description": "عرض المنتجات المختارة بتصميم فاخر.",
   "icon": "sicon-products",
@@ -3311,8 +3311,8 @@
 {
   "key": "8b42f671-9c35-4d82-a716-5e8f2026cd91",
   "title": {
-    "en": "Luxury Complete Look",
-    "ar": "الإطلالة المتكاملة الفاخرة"
+    "en": " Complete Look",
+    "ar": "الإطلالة المتكاملة "
   },
   "description": "عرض مجموعة منتجات متناسقة بتصميم فاخر.",
   "icon": "sicon-star",
@@ -4854,8 +4854,8 @@
 {
   "key": "7d4f8e91-3c62-4a17-9b85-6e2d1f4a8c73",
   "title": {
-    "en": "Luxury Footer",
-    "ar": "الفوتر الفاخر"
+    "en": " Footer",
+    "ar": "الفوتر "
   },
   "description": "فوتر فاخر ومتجاوب مع خيارات متقدمة للتخصيص.",
   "icon": "sicon-layout-footer",
