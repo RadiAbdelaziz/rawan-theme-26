@@ -1,160 +1,151 @@
 {% if component.products|length %}
+
 <section
-    class="luxury-look-section {% if component.enable_animation %}luxury-look-section--animated{% endif %}"
-    style="
-        --look-bg: {{ component.background_color ?: '#E62973' }};
-        --look-accent: {{ component.accent_color ?: '#FFFFFF' }};
-        padding-top: {{ component.section_padding ?: 80 }}px;
-        padding-bottom: {{ component.section_padding ?: 80 }}px;
-    "
+class="luxury-look-section"
+style="
+--look-bg:{{ component.background_color ?: '#E62973' }};
+padding:{{ component.section_padding ?: 80 }}px 0;
+"
 >
-    {# Background Decor #}
-    <div class="luxury-look-bg" aria-hidden="true">
-        {% if component.show_glow != false %}
-            <span class="luxury-look-bg__orb luxury-look-bg__orb--one"></span>
-            <span class="luxury-look-bg__orb luxury-look-bg__orb--two"></span>
-            <span class="luxury-look-bg__orb luxury-look-bg__orb--three"></span>
-        {% endif %}
-        <span class="luxury-look-bg__grid"></span>
-    </div>
 
-    <div class="container">
-        {# Header #}
-        <div class="luxury-look-header">
-            {% if component.badge %}
-                <div class="luxury-look-header__badge">
-                    <span class="luxury-look-header__badge-dot"></span>
-                    <span>{{ component.badge }}</span>
-                </div>
-            {% endif %}
+<div class="container">
 
-            <h2>{{ component.title ?: 'أكملي إطلالتكِ بأسلوب راقٍ' }}</h2>
-            <p>{{ component.description }}</p>
-
-            <span class="luxury-look-header__line" aria-hidden="true"></span>
-        </div>
-
-        {# Main Content #}
-        <div class="luxury-look-content">
-            {# Image (ظهورها مشروط بإعدادات show_image) #}
-            {# Image #}
-{% if component.show_image != false %}
-    <div class="luxury-look-image">
-        <div class="luxury-look-image__shine" aria-hidden="true"></div>
-        <div class="luxury-look-image__frame" aria-hidden="true"></div>
-
-        {% set raw_image = component.main_image %}
-        {% set img_src = '' %}
-
-        {% if raw_image is iterable %}
-            {% set img_src = raw_image.url ?: raw_image.path ?: raw_image.link %}
-        {% else %}
-            {% set img_src = raw_image %}
-        {% endif %}
-
-        {% if img_src %}
-            <img
-                src="{{ img_src }}"
-                alt="{{ component.title ?: 'الإطلالة المتكاملة الفاخرة' }}"
-                loading="lazy"
-                decoding="async"
-            >
-        {% else %}
-            <img 
-                src="{{ 'images/placeholder.png'|asset }}" 
-                alt="Default Placeholder"
-                loading="lazy"
-                decoding="async"
-            >
-        {% endif %}
-
-        <div class="luxury-look-image__caption" aria-hidden="true">
-            <span></span>
-            <small>THE COMPLETE LOOK</small>
-            <span></span>
-        </div>
-    </div>
+<!-- HEADER -->
+<div class="luxury-look-header">
+{% if component.badge %}
+<div class="badge">
+{{ component.badge }}
+</div>
 {% endif %}
 
-            {# Products Box #}
-            <div class="luxury-products-box" style="{% if component.card_background %}background-color: {{ component.card_background }};{% endif %}">
-                <div class="luxury-products-header">
-                    <div>
-                        <span class="luxury-products-header__eyebrow">COLLECTION</span>
-                        <div class="luxury-products-title">مكونات الإطلالة</div>
-                    </div>
-                    <span class="luxury-products-count" aria-hidden="true">
-                        {{ component.products|length }}
-                    </span>
-                </div>
+<h2>
+{{ component.title ?: 'أكملي إطلالتك بأسلوب راقٍ' }}
+</h2>
 
-                {# Products List #}
-                <div class="luxury-products-list">
-                    {% for product in component.products %}
-                        <div
-                            class="luxury-product-item {% if component.enable_animation %}luxury-product-item--animated{% endif %}"
-                            style="--product-index: {{ loop.index0 }};"
-                        >
-                            <div class="luxury-product-item__number">
-                                {{ '%02d'|format(loop.index) }}
-                            </div>
+{% if component.description %}
+<p>
+{{ component.description }}
+</p>
+{% endif %}
+</div>
 
-                            <div class="luxury-product-info">
-                                {% if component.show_product_image != false %}
-                                    <a href="{{ product.url ?: '#' }}" aria-label="{{ product.name }}" class="luxury-product-image-link">
-                                        <img
-                                            src="{{ product.image.url ?: (product.image ?: 'images/placeholder.png'|asset) }}"
-                                            alt="{{ product.name }}"
-                                            loading="lazy"
-                                            decoding="async"
-                                        >
-                                        <span class="luxury-product-image-glow" aria-hidden="true"></span>
-                                    </a>
-                                {% endif %}
+<!-- CONTENT -->
+<div class="luxury-look-content">
 
-                                <div class="luxury-product-details">
-                                    <a href="{{ product.url ?: '#' }}" aria-label="{{ product.name }}">
-                                        <div class="luxury-product-name">{{ product.name }}</div>
-                                    </a>
-                                    <div class="luxury-product-type">قطعة أساسية</div>
-                                </div>
-                            </div>
+<!-- MAIN IMAGE -->
+{% if component.show_image != false %}
+<div class="luxury-look-image">
+{% set img_url = '' %}
+{% if component.main_image is iterable %}
+{% set img_url = component.main_image.url ?: component.main_image.path %}
+{% else %}
+{% set img_url = component.main_image %}
+{% endif %}
 
-                            {% if component.show_product_price != false %}
-                                <div class="luxury-product-price">
-                                    {{ product.price|money }}
-                                </div>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-                </div>
+{% if img_url %}
+<img
+src="{{ img_url }}"
+alt="{{ component.title ?: 'Luxury Look' }}"
+loading="lazy"
+decoding="async"
+>
+{% else %}
+<div style="
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#222;
+color:#fff;
+font-size:22px;
+font-weight:bold;
+">
+إطلالة فاخرة
+</div>
+{% endif %}
+</div>
+{% endif %}
 
-                {# Footer #}
-                <div class="luxury-look-footer">
-                    {% if component.show_total != false %}
-                        <div class="luxury-look-total">
-                            <div class="luxury-total-label">إجمالي الإطلالة</div>
-                            <div class="luxury-total-price">
-                                {{ component.products|length }} <span>منتجات</span>
-                            </div>
-                        </div>
-                    {% endif %}
+<!-- PRODUCTS -->
+<div class="luxury-products-box" style="{% if component.card_background %}background-color: {{ component.card_background }};{% endif %}">
 
-                    {% if component.show_button != false %}
-                        <div class="luxury-add-button luxury-cart-wrapper">
-                            <button 
-                                class="btn btn-primary luxury-cart-button-content" 
-                                style="{% if component.button_color %}color: {{ component.button_color }};{% endif %}"
-                                onclick="addLookToCart({{ component.products|map(p => p.id)|json_encode }})"
-                            >
-                                <span class="luxury-cart-icon"><i class="sicon-shopping-bag"></i></span>
-                                <span>إضافة الإطلالة للسلة</span>
-                            </button>
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="luxury-products-title">
+مكونات الإطلالة
+</div>
+
+<div class="luxury-products-list">
+{% for product in component.products %}
+<div class="luxury-product-item">
+
+<div class="luxury-product-info">
+{% if component.show_product_image != false %}
+<a href="{{ product.url }}">
+<img
+src="{{ product.image.url ?: product.image }}"
+alt="{{ product.name }}"
+loading="lazy"
+decoding="async"
+>
+</a>
+{% endif %}
+
+<div>
+<a href="{{ product.url }}">
+<div class="luxury-product-name">
+{{ product.name }}
+</div>
+</a>
+
+<div class="luxury-product-type">
+قطعة أساسية
+</div>
+</div>
+</div>
+
+{% if component.show_product_price != false %}
+<div class="luxury-product-price">
+{{ product.price|money }}
+</div>
+{% endif %}
+
+</div>
+{% endfor %}
+</div>
+
+<!-- FOOTER -->
+<div class="luxury-look-footer">
+
+{% if component.show_total != false %}
+<div>
+<div class="luxury-total-label">
+إجمالي الإطلالة
+</div>
+<div class="luxury-total-price">
+{{ component.products|length }} منتجات
+</div>
+</div>
+{% endif %}
+
+{% if component.show_button != false %}
+<div class="luxury-add-button luxury-cart-wrapper">
+<button 
+class="btn btn-primary luxury-cart-button-content" 
+style="{% if component.button_color %}color: {{ component.button_color }};{% endif %}"
+onclick="addLookToCart({{ component.products|map(p => p.id)|json_encode }})"
+>
+<span class="luxury-cart-icon"><i class="sicon-shopping-bag"></i></span>
+<span>إضافة الإطلالة للسلة</span>
+</button>
+</div>
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 </section>
+
 {% endif %}
