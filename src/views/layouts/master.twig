@@ -40,40 +40,61 @@
         href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     />
 
-    <style>
-        :root {
-            --font-main: '{{ theme.font.name }}';
-            --color-primary: {{ theme.color.primary }};
-            --color-primary-dark: {{ theme.color.darker(0.15) }};
-            --color-primary-light: {{ theme.color.lighter(0.15) }};
-            --color-primary-reverse: {{ theme.color.reverse_text }};
-        }
+   <style>
+    :root {
+        /*
+         * Theme Font
+         * الأولوية لإعداد font_family من twilight.json
+         * وإذا لم يكن موجودًا نستخدم خط Salla الافتراضي
+         */
+        --font-family: '{{ theme.settings.get('font_family', theme.font.name) }}', sans-serif;
+        --font-main: var(--font-family);
 
-        html,
-        body {
-            min-height: 100%;
-            margin: 0;
-        }
+        /*
+         * Theme Colors
+         */
+        --color-primary: {{ theme.color.primary }};
+        --color-primary-dark: {{ theme.color.darker(0.15) }};
+        --color-primary-light: {{ theme.color.lighter(0.15) }};
+        --color-primary-reverse: {{ theme.color.reverse_text }};
+    }
 
-        body {
-            min-height: 100vh;
-        }
+    html,
+    body {
+        min-height: 100%;
+        margin: 0;
+        font-family: var(--font-family);
+    }
 
-        #app {
-            min-height: 100vh;
-        }
+    body {
+        min-height: 100vh;
+    }
 
-        .app-inner {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+    #app {
+        min-height: 100vh;
+    }
 
-        #main-content {
-            flex: 1 0 auto;
-            width: 100%;
-        }
-    </style>
+    .app-inner {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #main-content {
+        flex: 1 0 auto;
+        width: 100%;
+    }
+
+    button,
+    input,
+    textarea,
+    select,
+    option,
+    optgroup {
+        font-family: var(--font-family);
+    }
+</style>
+
 
     {% hook 'head:end' %}
 </head>

@@ -98,6 +98,244 @@
     "source": "Manual",
     "required": true
 }
+,{
+    "type": "static",
+    "id": "global-design-line",
+    "format": "line"
+},
+{
+    "type": "static",
+    "format": "title",
+    "id": "global-design-title",
+    "value": "<div class='rounded-lg' style='background:#21636d;padding:15px;text-align:center'><h6 style='color:#fff;font-size:15px;font-weight:bold'>الألوان والتصميم العام</h6></div>",
+    "variant": "h6"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "اللون الرئيسي",
+    "description": "اللون الأساسي المستخدم في المتجر والأزرار والعناصر التفاعلية",
+    "id": "primary_color",
+    "format": "color",
+    "required": false,
+    "value": "#21636D"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "اللون الثانوي",
+    "description": "لون مساعد للعناصر والتفاصيل الثانوية",
+    "id": "secondary_color",
+    "format": "color",
+    "required": false,
+    "value": "#E62973"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون الخلفية العامة",
+    "id": "body_background_color",
+    "format": "color",
+    "required": false,
+    "value": "#FFFFFF"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون خلفية البطاقات",
+    "id": "card_background_color",
+    "format": "color",
+    "required": false,
+    "value": "#FFFFFF"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون النصوص",
+    "id": "text_color",
+    "format": "color",
+    "required": false,
+    "value": "#18181B"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون النصوص الثانوية",
+    "id": "muted_text_color",
+    "format": "color",
+    "required": false,
+    "value": "#71717A"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون العناوين",
+    "id": "heading_color",
+    "format": "color",
+    "required": false,
+    "value": "#18181B"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون الحدود",
+    "id": "border_color",
+    "format": "color",
+    "required": false,
+    "value": "#E4E4E7"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون الروابط",
+    "id": "link_color",
+    "format": "color",
+    "required": false,
+    "value": "#21636D"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون الروابط عند المرور",
+    "id": "link_hover_color",
+    "format": "color",
+    "required": false,
+    "value": "#174A51"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون السعر",
+    "id": "price_color",
+    "format": "color",
+    "required": false,
+    "value": "#18181B"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون الخصم",
+    "id": "discount_color",
+    "format": "color",
+    "required": false,
+    "value": "#E62973"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون التقييم",
+    "id": "rating_color",
+    "format": "color",
+    "required": false,
+    "value": "#F59E0B"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون النجاح",
+    "id": "success_color",
+    "format": "color",
+    "required": false,
+    "value": "#16A34A"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون التحذير",
+    "id": "warning_color",
+    "format": "color",
+    "required": false,
+    "value": "#F59E0B"
+},
+{
+    "type": "string",
+    "icon": "sicon-palette",
+    "label": "لون الخطأ",
+    "id": "danger_color",
+    "format": "color",
+    "required": false,
+    "value": "#DC2626"
+},
+{
+    "type": "static",
+    "id": "layout-settings-line",
+    "format": "line"
+},
+{
+    "type": "static",
+    "format": "title",
+    "id": "layout-settings-title",
+    "value": "<div class='rounded-lg' style='background:#21636d;padding:15px;text-align:center'><h6 style='color:#fff;font-size:15px;font-weight:bold'>إعدادات التخطيط</h6></div>",
+    "variant": "h6"
+},
+{
+    "type": "number",
+    "icon": "sicon-layout",
+    "label": "عرض المحتوى",
+    "description": "العرض الأقصى للمحتوى الرئيسي في المتجر",
+    "id": "container_max_width",
+    "format": "number",
+    "required": false,
+    "value": 1280
+},
+{
+    "type": "number",
+    "icon": "sicon-spacing",
+    "label": "المسافة بين الأقسام",
+    "description": "المسافة الرأسية بين أقسام الصفحة",
+    "id": "section_spacing",
+    "format": "number",
+    "required": false,
+    "value": 48
+},
+{
+    "type": "number",
+    "icon": "sicon-border-radius",
+    "label": "نصف قطر البطاقات",
+    "id": "card_border_radius",
+    "format": "number",
+    "required": false,
+    "value": 12
+},
+{
+    "type": "number",
+    "icon": "sicon-border-radius",
+    "label": "نصف قطر الأزرار",
+    "id": "button_border_radius",
+    "format": "number",
+    "required": false,
+    "value": 8
+},
+{
+    "type": "number",
+    "icon": "sicon-border-radius",
+    "label": "نصف قطر الحقول",
+    "id": "input_border_radius",
+    "format": "number",
+    "required": false,
+    "value": 8
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار الظلال على البطاقات",
+    "id": "card_shadow_enabled",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "تفعيل تأثير الحركة",
+    "description": "تفعيل الحركات والتأثيرات البصرية للعناصر عند ظهورها والتفاعل معها",
+    "id": "animations_enabled",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+}
 ,
         {
             "type": "boolean",
@@ -304,21 +542,206 @@
             "required": true
         },
         {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "label": "تكبير الصور في سليدر صور المنتج",
-            "description": "هذه الخاصية تمكنك من تكبير الصورة لتسهل رؤية المزيد من التفاصيل بها",
-            "id": "imageZoom",
-            "format": "switch",
-            "required": false,
-            "value": false,
-            "selected": false
-        },
-        {
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "تكبير الصور في سليدر صور المنتج",
+    "description": "هذه الخاصية تمكنك من تكبير الصورة لتسهل رؤية المزيد من التفاصيل بها",
+    "id": "imageZoom",
+    "format": "switch",
+    "required": false,
+    "value": false,
+    "selected": false
+},
+
+{
+    "type": "static",
+    "id": "product-extra-settings-line",
+    "format": "line"
+},
+{
+    "type": "static",
+    "format": "title",
+    "id": "product-extra-settings-title",
+    "value": "<div class='rounded-lg' style='background:#21636d;padding:15px;text-align:center'><h6 style='color:#fff;font-size:15px;font-weight:bold'>إعدادات إضافية لصفحة المنتج</h6></div>",
+    "variant": "h6"
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار مشاركة المنتج",
+    "id": "product_show_share",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار زر المفضلة في صفحة المنتج",
+    "id": "product_show_wishlist",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار تقييم المنتج",
+    "id": "product_show_rating",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار رقم المنتج SKU",
+    "id": "product_show_sku",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+
+{
+    "type": "static",
+    "id": "related-products-settings-line",
+    "format": "line"
+},
+{
+    "type": "static",
+    "format": "title",
+    "id": "related-products-settings-title",
+    "value": "<div class='rounded-lg' style='background:#21636d;padding:15px;text-align:center'><h6 style='color:#fff;font-size:15px;font-weight:bold'>المنتجات المرتبطة</h6></div>",
+    "variant": "h6"
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار المنتجات المرتبطة من نفس الفئة",
+    "description": "عرض منتجات أخرى من نفس تصنيف المنتج الحالي",
+    "id": "product_show_related",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "number",
+    "icon": "sicon-grid-view",
+    "label": "عدد المنتجات المرتبطة",
+    "description": "عدد المنتجات التي تظهر في قسم المنتجات المرتبطة",
+    "id": "related_products_count",
+    "format": "number",
+    "required": false,
+    "value": 8
+},
+
+{
+    "type": "static",
+    "id": "cart-product-settings-line",
+    "format": "line"
+},
+{
+    "type": "static",
+    "format": "title",
+    "id": "cart-product-settings-title",
+    "value": "<div class='rounded-lg' style='background:#21636d;padding:15px;text-align:center'><h6 style='color:#fff;font-size:15px;font-weight:bold'>إعدادات الشراء والسلة</h6></div>",
+    "variant": "h6"
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "تفعيل الشراء السريع",
+    "id": "quick_buy_enabled",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "فتح السلة بعد إضافة المنتج",
+    "id": "open_cart_after_add",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+
+{
+    "type": "static",
+    "id": "product-card-settings-line",
+    "format": "line"
+},
+{
+    "type": "static",
+    "format": "title",
+    "id": "product-card-settings-title",
+    "value": "<div class='rounded-lg' style='background:#21636d;padding:15px;text-align:center'><h6 style='color:#fff;font-size:15px;font-weight:bold'>إعدادات بطاقات المنتجات</h6></div>",
+    "variant": "h6"
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار التقييم في بطاقة المنتج",
+    "id": "card_show_rating",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار السعر السابق",
+    "id": "card_show_before_price",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار نسبة الخصم",
+    "id": "card_show_discount_percentage",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار زر الإضافة للسلة في البطاقة",
+    "id": "card_add_to_cart_enabled",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+{
+    "type": "boolean",
+    "icon": "sicon-toggle-off",
+    "label": "إظهار زر المفضلة في البطاقة",
+    "id": "card_wishlist_enabled",
+    "format": "switch",
+    "required": false,
+    "value": true,
+    "selected": true
+},
+
+{
     "type": "static",
     "id": "footer-custom-line",
     "format": "line"
 },
+
 {
     "type": "static",
     "format": "title",

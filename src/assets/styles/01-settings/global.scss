@@ -1,4 +1,3 @@
-
 // Colors
 $main-color: var(--color-primary);
 $infinte-color: var(--infinte-color);
@@ -9,8 +8,7 @@ $main-text-color: var(--main-text-color);
   --main-text-color: #231f1e;
   --main-text-color-dark: #2b2d34;
 
-  /* current */
-  --color-primary: #5cd5c4;
+  /* Colors */
   --color-primary: #414042;
   --color-primary-d: #272628;
   --color-primary-l: #676668;
@@ -19,56 +17,60 @@ $main-text-color: var(--main-text-color);
   --bg-gray: #c6c7ce1a;
   --color-grey: #f5f7f9;
   --color-light-grey: #eeeeee;
-  /* font-size */
-  --font-sm: 0.8685714286rem;
-  /* font-family: ; */
-  --font-main: "DINNextLTArabic";
 
-  /* plugins */
+  /* Font Size */
+  --font-sm: 0.8685714286rem;
+
+  /* Font Family */
+  --font-main: var(--font-family, "Tajawal", sans-serif);
+
+  /* Plugins */
   --mm-ocd-width: calc(100% - 51px);
 }
+
 html,
 body {
-    margin: 0 !important;
-    padding: 0 !important;
-    min-height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100% !important;
 }
 
 body {
-    min-height: 100vh !important;
+  min-height: 100vh !important;
+  font-family: var(--font-main);
 }
 
 #app {
-    min-height: 100vh !important;
-    margin: 0 !important;
-    padding: 0 !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .app-inner {
-    min-height: 100vh !important;
-    min-height: 100dvh !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
 
-    display: flex !important;
-    flex-direction: column !important;
+  display: flex !important;
+  flex-direction: column !important;
 
-    margin: 0 !important;
-    padding: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 #main-content {
-    flex: 1 0 auto !important;
-    width: 100% !important;
+  flex: 1 0 auto !important;
+  width: 100% !important;
 
-    margin-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 .luxury-footer {
-    flex: 0 0 auto !important;
+  flex: 0 0 auto !important;
 
-    width: 100% !important;
+  width: 100% !important;
 
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 
-    padding-bottom: 0;
+  padding-bottom: 0;
 }

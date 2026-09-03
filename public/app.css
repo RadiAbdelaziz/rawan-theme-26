@@ -339,7 +339,7 @@ html,
   -moz-tab-size: 4; /* 3 */
   -o-tab-size: 4;
      tab-size: 4; /* 3 */
-  font-family: "DINNextLTArabic", -apple-system, BlinkMacSystemFont;
+  font-family: 'Tajawal', sans-serif, -apple-system, BlinkMacSystemFont;
   font-family: var(--font-main), -apple-system, BlinkMacSystemFont; /* 4 */
   font-feature-settings: normal; /* 5 */
   font-variation-settings: normal; /* 6 */
@@ -2126,7 +2126,34 @@ body,
 button,
 input,
 textarea,
+select,
+option,
+optgroup {
+  font-family: 'Tajawal', sans-serif;
+  font-family: var(--font-family);
+}
+body,
+button,
+input,
+textarea,
 select {
+  font-weight: 400;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Tajawal', sans-serif;
+  font-family: var(--font-family);
+  font-weight: 700;
+}
+::-moz-placeholder {
+  font-family: 'Tajawal', sans-serif;
+  font-family: var(--font-family);
+}
+::placeholder {
   font-family: 'Tajawal', sans-serif;
   font-family: var(--font-family);
 }
@@ -2134,8 +2161,7 @@ select {
   --infinte-color: #c9c9c9;
   --main-text-color: #231f1e;
   --main-text-color-dark: #2b2d34;
-  /* current */
-  --color-primary: #5cd5c4;
+  /* Colors */
   --color-primary: #414042;
   --color-primary-d: #272628;
   --color-primary-l: #676668;
@@ -2144,11 +2170,11 @@ select {
   --bg-gray: rgba(198,199,206,0.10196);
   --color-grey: #f5f7f9;
   --color-light-grey: #eeeeee;
-  /* font-size */
+  /* Font Size */
   --font-sm: 0.8685714286rem;
-  /* font-family: ; */
-  --font-main: "DINNextLTArabic";
-  /* plugins */
+  /* Font Family */
+  --font-main: var(--font-family, "Tajawal", sans-serif);
+  /* Plugins */
   --mm-ocd-width: calc(100% - 51px);
 }
 html,
@@ -2159,6 +2185,8 @@ body {
 }
 body {
   min-height: 100vh !important;
+  font-family: 'Tajawal', sans-serif;
+  font-family: var(--font-main);
 }
 #app {
   min-height: 100vh !important;

@@ -9,6 +9,30 @@ body,
 button,
 input,
 textarea,
+select,
+option,
+optgroup {
+    font-family: var(--font-family);
+}
+
+body,
+button,
+input,
+textarea,
 select {
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-family);
+    font-weight: 700;
+}
+
+::placeholder {
     font-family: var(--font-family);
 }
