@@ -3311,8 +3311,8 @@
 {
   "key": "8b42f671-9c35-4d82-a716-5e8f2026cd91",
   "title": {
-    "en": " Complete Look",
-    "ar": "الإطلالة المتكاملة "
+    "en": "Luxury Complete Look",
+    "ar": "الإطلالة المتكاملة الفاخرة"
   },
   "description": "عرض مجموعة منتجات متناسقة بتصميم فاخر.",
   "icon": "sicon-star",
@@ -3347,7 +3347,6 @@
     {
       "id": "main_image",
       "type": "image",
-      "format": "image",
       "label": "الصورة الرئيسية",
       "value": "",
       "required": false
