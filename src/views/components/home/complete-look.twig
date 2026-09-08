@@ -134,7 +134,7 @@ style="{% if component.button_color %}color: {{ component.button_color }};{% end
 onclick="addLookToCart({{ component.products|map(p => p.id)|json_encode }})"
 >
 <span class="luxury-cart-icon"><i class="sicon-shopping-bag"></i></span>
-<span>إضافة الإطلالة للسلة</span>
+<span>{{ trans('pages.complete_look.add_look_to_cart') }}</span>
 </button>
 </div>
 {% endif %}

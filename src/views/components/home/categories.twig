@@ -97,8 +97,8 @@
 
                                 {% if category.products_count is defined and category.products_count is not null %}
                                     <span class="crystal-category-card__count">
-                                        {{ category.products_count }} <span>منتج</span>
-                                    </span>
+{{ category.products_count }} <span>{{ trans('pages.product.product') }}</span>
+                                     </span>
                                 {% endif %}
                             </div>
 

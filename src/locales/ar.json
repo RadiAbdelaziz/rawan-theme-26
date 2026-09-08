@@ -9,8 +9,47 @@
   },
   "pages": {
     "cart": {
-      "cart_options": "خيارات السلة"
+      "cart_options": "خيارات السلة",
+      "coupon_code": "كود الخصم"
     },
+    "product": {
+      "product": "منتج",
+  "our_picks": "مختاراتنا",
+  "products": "منتجات",
+  "filter": "فلترة",
+  "sort_by": "ترتيب حسب",
+  "filtering": "تصفية",
+  "choose_what_suits_you": "اختاري ما يناسبك"
+},
+"complete_look": {
+  "add_look_to_cart": "إضافة الإطلالة للسلة"
+},
+"featured_countdown": {
+  "day": "يوم",
+  "hour": "ساعة",
+  "minute": "دقيقة",
+  "second": "ثانية",
+  "price": "السعر"
+},
+"premium_featured_products": {
+  "our_products": "منتجاتنا",
+  "offer": "عرض"
+},
+"footer": {
+  "terms_and_conditions": "الشروط والأحكام",
+  "privacy_policy": "الخصوصية",
+  "return_and_exchange": "الاستبدال والاسترجاع",
+  "crafted_with": "صُنع بحب",
+  "by": "بواسطة",
+  "theme_name": "RAWAN"
+},
+"all_products": {
+  "out_of_stock": "غير متوفر حالياً",
+  "add_to_cart": "إضافة إلى السلة"
+}
+,"categories_cards": {
+  "selected_products": "منتجات مختارة بعناية"
+},
     "order": {
       "can_edit_or_delete_your_review_within": "يمكنك تعديل أو حذف تقييمك خلال",
       "edit_period_ended": "تم انتهاء المدة المحددة لتعديل التقييم",

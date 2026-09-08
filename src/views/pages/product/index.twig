@@ -55,11 +55,17 @@
     <main class="rawan-category-products">
         <div class="container">
 
+            {# =====================================================
+                BEFORE PRODUCTS GROUP WITH FILTER
+            ===================================================== #}
+
+            {% hook 'product.index.before_products_group_with_filter' %}
+
             {# Toolbar (Heading, Filter Trigger & Sort) #}
             <div class="rawan-products-toolbar">
                 <div class="rawan-products-heading">
-                    <span>مختاراتنا</span>
-                    <h2>منتجات {{ page.title|raw }}</h2>
+                    <span>{{ trans('pages.product.our_picks') }}</span>
+                    <h2>{{ trans('pages.product.products') }} {{ page.title|raw }}</h2>
                 </div>
 
                 <div class="rawan-products-actions">
@@ -68,13 +74,13 @@
                            data-testid="store-products-filters-mobile-trigger"
                            class="rawan-filter-button filters-trigger lg:hidden">
                             <i class="sicon-filter"></i>
-                            <span>فلترة</span>
+                            <span>{{ trans('pages.product.filter') }}</span>
                         </a>
                     {% endif %}
 
                     {% if sort_options|length %}
                         <div class="rawan-sort">
-                            <span class="rawan-sort-label">ترتيب حسب</span>
+                            <span class="rawan-sort-label"> {{ trans('pages.product.sort_by') }}</span>
                             <select id="product-filter" class="rawan-sort-select">
                                 {% for sort in sort_options %}
                                     <option value="{{ sort.id }}" {{ sort.is_selected ? 'selected' : '' }}>
@@ -93,11 +99,16 @@
 
                 {% if filters %}
                     <aside class="rawan-filter-sidebar" id="filters-menu">
-                        <button type="button" class="rawan-filter-close btn--close-sm close-filters sicon-cancel"></button>
+                        <button
+                            type="button"
+                            class="rawan-filter-close btn--close-sm close-filters sicon-cancel"
+                        ></button>
 
                         <div class="rawan-filter-title">
-                            <span>تصفية</span>
-                            <b>اختاري ما يناسبك</b>
+                            <span>{{ trans('pages.product.filtering') }}
+</span>
+                            <b>{{ trans('pages.product.choose_what_suits_you') }}
+</b>
                         </div>
 
                         <salla-filters
@@ -109,9 +120,11 @@
                 {% endif %}
 
                 <div class="rawan-products-content">
+
                     {% hook 'product:index.items.start' %}
 
                     <div class="rawan-products-list">
+
                         <salla-products-list
                             data-testid="store-products-list"
                             class="rawan-salla-products"
@@ -119,9 +132,11 @@
                             source-value="{{ page.id }}"
                             {{ filters ? 'filters-Results' : '' }}>
                         </salla-products-list>
+
                     </div>
 
                     {% hook 'product:index.items.end' %}
+
                 </div>
 
             </div>
@@ -134,15 +149,21 @@
         AFTER PRODUCTS & HOOKS
     ========================================================= #}
     <div class="s-blocks-wrapper rawan-category-after-products">
+
         {% hook 'product.index.after_products_group_with_filter' %}
+
     </div>
 
     {% if store.settings.category.testimonial_enabled %}
+
         {% component 'home.testimonials' %}
+
     {% endif %}
 
     <div class="s-blocks-wrapper">
+
         {% hook 'product.index.after_testimonials' %}
+
     </div>
 
 </section>
@@ -151,5 +172,7 @@
 
 
 {% block scripts %}
+
 <script defer src="{{ 'product.js' | asset }}"></script>
+
 {% endblock %}

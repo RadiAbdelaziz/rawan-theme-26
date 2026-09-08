@@ -63,7 +63,9 @@
 
                                 {# Product Availability Status #}
                                 {% if product.is_out_of_stock %}
-                                    <div class="lux-sales-status lux-sales-status--out">غير متوفر حالياً</div>
+<div class="lux-sales-status lux-sales-status--out">
+    {{ trans('pages.all_products.out_of_stock') }}
+</div>
                                 {% elseif product.promotion_title %}
                                     <div class="lux-sales-status">{{ product.promotion_title }}</div>
                                 {% endif %}
@@ -126,7 +128,7 @@
                                             <salla-add-product-button product-id="{{ product.id }}" product-status="{{ product.status }}" product-type="{{ product.type }}" width="full">
                                                 <span class="lux-cart-inner">
                                                     <i class="sicon-shopping-bag"></i>
-                                                    <span>إضافة إلى السلة</span>
+                                                    <span>{{ trans('pages.all_products.add_to_cart') }}</span>
                                                 </span>
                                             </salla-add-product-button>
                                         </div>
