@@ -17,30 +17,23 @@
         min-height: {{ component.luxury_section_height ?: '100vh' }};
     "
 >
-    {# ------------------------------------------------------------------
-       Background Media
-       Video is loaded ONLY from the Twilight file-upload field.
-       No video is bundled inside Assets.
-       ------------------------------------------------------------------ #}
-
-    {% set luxury_video = component.luxury_video %}
+    {# Background Media Handler #}
+    {% set luxury_video = component.luxury_video ?: asset('videos/banner.mp4') %}
     {% set luxury_poster = component.luxury_poster %}
 
     {% if luxury_video %}
         <video
             class="luxury-overlay-hero__video"
-            {% if component.luxury_autoplay != false %}autoplay{% endif %}
-            {% if component.luxury_muted != false %}muted{% endif %}
-            {% if component.luxury_loop != false %}loop{% endif %}
-            {% if component.luxury_controls %}controls{% endif %}
+            autoplay
+            muted
+            loop
             playsinline
-            preload="metadata"
+            preload="auto"
             aria-hidden="true"
             {% if luxury_poster %}poster="{{ luxury_poster }}"{% endif %}
         >
             <source src="{{ luxury_video }}" type="video/mp4">
         </video>
-
     {% elseif luxury_poster %}
         <img
             class="luxury-overlay-hero__video"
@@ -59,7 +52,6 @@
     {# Header Navigation Container #}
     <header class="luxury-overlay-header" data-testid="luxury-overlay-header">
         <div class="luxury-overlay-header__top">
-
             {# Store Branding / Logo #}
             <div class="luxury-overlay-header__logo">
                 <a href="{{ store.url }}" aria-label="{{ store.name }}">
@@ -73,7 +65,6 @@
 
             {# Header Controls: Search & Localization #}
             <div class="luxury-overlay-header__controls">
-
                 {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
                     <div class="luxury-overlay-header__localization">
                         <salla-localization-modal show-trigger></salla-localization-modal>
@@ -83,88 +74,53 @@
                 <div class="luxury-overlay-header__search">
                     <salla-search inline oval height="40"></salla-search>
                 </div>
-
             </div>
 
             {# User Interaction Links #}
             <div class="luxury-overlay-header__actions">
-
                 <div class="luxury-overlay-header__action luxury-overlay-header__user">
-                    <salla-user-menu
-                        class="luxury-user-menu"
-                        data-testid="store-header-user-menu"
-                        show-header
-                    ></salla-user-menu>
+                    <salla-user-menu class="luxury-user-menu" data-testid="store-header-user-menu" show-header></salla-user-menu>
                 </div>
 
-                <a
-                    href="{{ link('wishlist') }}"
-                    class="luxury-overlay-header__action luxury-overlay-header__icon"
-                    aria-label="المفضلة"
-                >
+                <a href="{{ link('wishlist') }}" class="luxury-overlay-header__action luxury-overlay-header__icon" aria-label="المفضلة">
                     <i class="sicon-heart"></i>
                 </a>
 
                 <div class="luxury-overlay-header__action luxury-overlay-header__cart">
-                    <salla-cart-summary
-                        data-testid="store-header-cart"
-                        class="luxury-overlay-cart"
-                    >
+                    <salla-cart-summary data-testid="store-header-cart" class="luxury-overlay-cart">
                         <i slot="icon" class="sicon-shopping-bag"></i>
                     </salla-cart-summary>
                 </div>
-
             </div>
         </div>
 
         {# Desktop Navigation Menu #}
-        <nav
-            class="luxury-overlay-navigation"
-            aria-label="التصنيفات الرئيسية"
-            data-luxury-main-navigation
-        >
+        <nav class="luxury-overlay-navigation" aria-label="التصنيفات الرئيسية" data-luxury-main-navigation>
             <div class="luxury-overlay-navigation__inner">
                 <custom-main-menu></custom-main-menu>
             </div>
         </nav>
 
-        {# Mobile Menu Container Placeholder #}
-        <div
-            id="luxury-mobile-menu"
-            class="luxury-overlay-header__mobile-menu"
-            aria-hidden="true"
-        >
+        {# Mobile Menu Container Placeholder (Populated dynamically via JS) #}
+        <div id="luxury-mobile-menu" class="luxury-overlay-header__mobile-menu" aria-hidden="true">
             <div class="luxury-overlay-header__mobile-menu-inner">
                 <div class="luxury-overlay-header__mobile-menu-placeholder"></div>
             </div>
         </div>
-
     </header>
 
     {# Hero Main Content Area #}
     <div
-        class="luxury-overlay-hero__content
-        {% if component.luxury_content_align == 'left' %}
-            is-left
-        {% elseif component.luxury_content_align == 'right' %}
-            is-right
-        {% else %}
-            is-center
-        {% endif %}
-        {% if component.luxury_enable_animation %}
-            is-animated
-        {% endif %}"
+        class="luxury-overlay-hero__content 
+        {% if component.luxury_content_align == 'left' %}is-left{% elseif component.luxury_content_align == 'right' %}is-right{% else %}is-center{% endif %} 
+        {% if component.luxury_enable_animation %}is-animated{% endif %}"
     >
-
         {# Main Heading #}
         {% if component.luxury_title %}
             <h1 class="luxury-overlay-hero__title">
                 {{ component.luxury_title }}
-
                 {% if component.luxury_highlight %}
-                    <span class="luxury-overlay-hero__highlight">
-                        {{ component.luxury_highlight }}
-                    </span>
+                    <span class="luxury-overlay-hero__highlight">{{ component.luxury_highlight }}</span>
                 {% endif %}
             </h1>
         {% endif %}
@@ -180,51 +136,34 @@
         {% if component.luxury_show_rating %}
             <div class="luxury-overlay-hero__rating">
                 <span>★★★★★</span>
-
-                <small>
-                    {{ component.luxury_rating_text ?: 'أكثر من 5000 عميل يثق بنا' }}
-                </small>
+                <small>{{ component.luxury_rating_text ?: 'أكثر من 5000 عميل يثق بنا' }}</small>
             </div>
         {% endif %}
 
         {# Call To Action Buttons #}
         {% if component.luxury_button_text or component.luxury_show_second_button %}
-
             <div class="luxury-overlay-hero__buttons">
-
                 {% if component.luxury_button_text %}
-                    <a
-                        href="{{ component.luxury_button_url ?: store.url }}"
-                        class="luxury-overlay-hero__button luxury-overlay-hero__button--primary"
-                    >
+                    <a href="{{ component.luxury_button_url ?: store.url }}" class="luxury-overlay-hero__button luxury-overlay-hero__button--primary">
                         {{ component.luxury_button_text }}
                     </a>
                 {% endif %}
 
                 {% if component.luxury_show_second_button %}
-                    <a
-                        href="{{ component.luxury_second_button_url ?: store.url }}"
-                        class="luxury-overlay-hero__button luxury-overlay-hero__button--secondary"
-                    >
+                    <a href="{{ component.luxury_second_button_url ?: store.url }}" class="luxury-overlay-hero__button luxury-overlay-hero__button--secondary">
                         {{ component.luxury_second_button_text ?: 'اكتشف المزيد' }}
                     </a>
                 {% endif %}
-
             </div>
-
         {% endif %}
     </div>
 
     {# Scroll Down Indicator #}
     {% if component.luxury_show_scroll %}
-        <div
-            class="luxury-overlay-hero__scroll"
-            aria-hidden="true"
-        >
+        <div class="luxury-overlay-hero__scroll" aria-hidden="true">
             <span></span>
         </div>
     {% endif %}
-
 </section>
 
 <script>
@@ -232,9 +171,7 @@
     'use strict';
 
     function initLuxuryNavigation() {
-
         var hero = document.querySelector('.luxury-overlay-hero');
-
         if (!hero) return;
 
         var toggle = hero.querySelector('#luxury-menu-toggle');
@@ -243,19 +180,12 @@
 
         if (!toggle || !mobileMenu || !navigation) return;
 
-        var navigationInner =
-            navigation.querySelector('.luxury-overlay-navigation__inner');
-
-        var placeholder =
-            mobileMenu.querySelector(
-                '.luxury-overlay-header__mobile-menu-placeholder'
-            );
+        var navigationInner = navigation.querySelector('.luxury-overlay-navigation__inner');
+        var placeholder = mobileMenu.querySelector('.luxury-overlay-header__mobile-menu-placeholder');
 
         if (!navigationInner || !placeholder) return;
 
-        var mainMenu =
-            navigationInner.querySelector('custom-main-menu');
-
+        var mainMenu = navigationInner.querySelector('custom-main-menu');
         if (!mainMenu) return;
 
         var mobileBreakpoint = 768;
@@ -265,136 +195,65 @@
         }
 
         function setMenuClosedState() {
-
             mobileMenu.classList.remove('is-open');
-
-            mobileMenu.setAttribute(
-                'aria-hidden',
-                'true'
-            );
-
-            toggle.setAttribute(
-                'aria-expanded',
-                'false'
-            );
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            toggle.setAttribute('aria-expanded', 'false');
         }
 
         function moveMenu() {
-
             if (isMobile()) {
-
                 if (mainMenu.parentElement !== placeholder) {
                     placeholder.appendChild(mainMenu);
                 }
-
             } else {
-
                 if (mainMenu.parentElement !== navigationInner) {
                     navigationInner.appendChild(mainMenu);
                 }
-
                 setMenuClosedState();
             }
         }
 
         function toggleMenu() {
-
             if (!isMobile()) return;
 
-            var isOpen =
-                mobileMenu.classList.contains('is-open');
-
+            var isOpen = mobileMenu.classList.contains('is-open');
             if (isOpen) {
-
                 setMenuClosedState();
-
             } else {
-
                 mobileMenu.classList.add('is-open');
-
-                mobileMenu.setAttribute(
-                    'aria-hidden',
-                    'false'
-                );
-
-                toggle.setAttribute(
-                    'aria-expanded',
-                    'true'
-                );
+                mobileMenu.setAttribute('aria-hidden', 'false');
+                toggle.setAttribute('aria-expanded', 'true');
             }
         }
 
-        toggle.addEventListener(
-            'click',
-            toggleMenu
-        );
+        // Event Listeners
+        toggle.addEventListener('click', toggleMenu);
 
         var resizeTimer;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(moveMenu, 100);
+        });
 
-        window.addEventListener(
-            'resize',
-            function () {
+        document.addEventListener('click', function (event) {
+            if (!isMobile() || !mobileMenu.classList.contains('is-open')) return;
+            if (mobileMenu.contains(event.target) || toggle.contains(event.target)) return;
+            setMenuClosedState();
+        });
 
-                clearTimeout(resizeTimer);
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') setMenuClosedState();
+        });
 
-                resizeTimer = setTimeout(
-                    moveMenu,
-                    100
-                );
-            }
-        );
-
-        document.addEventListener(
-            'click',
-            function (event) {
-
-                if (
-                    !isMobile() ||
-                    !mobileMenu.classList.contains('is-open')
-                ) {
-                    return;
-                }
-
-                if (
-                    mobileMenu.contains(event.target) ||
-                    toggle.contains(event.target)
-                ) {
-                    return;
-                }
-
-                setMenuClosedState();
-            }
-        );
-
-        document.addEventListener(
-            'keydown',
-            function (event) {
-
-                if (event.key === 'Escape') {
-                    setMenuClosedState();
-                }
-            }
-        );
-
+        // Initial Execution
         moveMenu();
     }
 
     if (document.readyState === 'loading') {
-
-        document.addEventListener(
-            'DOMContentLoaded',
-            initLuxuryNavigation
-        );
-
+        document.addEventListener('DOMContentLoaded', initLuxuryNavigation);
     } else {
-
         initLuxuryNavigation();
-
     }
-
 })();
 </script>
-
 {% endif %}
-
-
