@@ -1,47 +1,38 @@
 {# ----------------------------------------------------------------------
    Component: Cinematic Luxury Hero
-   Description: Hero section featuring dynamic video/image background,
+   Description: Hero section featuring dynamic slideshow background from 1 to 3 images,
    embedded header navigation, localized actions, and CTA area.
    ---------------------------------------------------------------------- #}
 
 {% if component.luxury_show_section != false %}
+{% set images = [] %}
+{% if component.luxury_image_1 %}{% set images = images|merge([component.luxury_image_1]) %}{% endif %}
+{% if component.luxury_image_2 %}{% set images = images|merge([component.luxury_image_2]) %}{% endif %}
+{% if component.luxury_image_3 %}{% set images = images|merge([component.luxury_image_3]) %}{% endif %}
+
 <section
-    class="luxury-overlay-hero"
+    class="luxury-overlay-hero cinematic-hero-slideshow"
     style="
         --luxury-overlay: {{ component.luxury_overlay_color ?: '#000000' }};
-        --luxury-overlay-opacity: {{ component.luxury_overlay_opacity ?: '0.28' }};
+        --luxury-overlay-opacity: {{ component.luxury_overlay_opacity ?: '0.35' }};
         --luxury-title-color: {{ component.luxury_title_color ?: '#FFFFFF' }};
         --luxury-highlight-color: {{ component.luxury_highlight_color ?: '#E62973' }};
         --luxury-description-color: {{ component.luxury_description_color ?: '#FFFFFF' }};
         --luxury-accent: #E62973;
         min-height: {{ component.luxury_section_height ?: '100vh' }};
     "
+    data-speed="{{ component.luxury_slide_speed ? component.luxury_slide_speed * 1000 : 4000 }}"
 >
-    {# Background Media Handler #}
-    {% set luxury_video = component.luxury_video ?: asset('videos/banner.mp4') %}
-    {% set luxury_poster = component.luxury_poster %}
-
-    {% if luxury_video %}
-        <video
-            class="luxury-overlay-hero__video"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="auto"
-            aria-hidden="true"
-            {% if luxury_poster %}poster="{{ luxury_poster }}"{% endif %}
-        >
-            <source src="{{ luxury_video }}" type="video/mp4">
-        </video>
-    {% elseif luxury_poster %}
-        <img
-            class="luxury-overlay-hero__video"
-            src="{{ luxury_poster }}"
-            alt="{{ component.luxury_title ?: store.name }}"
-            loading="eager"
-        >
-    {% endif %}
+    {# Background Slideshow Media Handler #}
+    <div class="hero-slides-container luxury-overlay-hero__video">
+        {% if images|length > 0 %}
+            {% for img in images %}
+                <div class="hero-slide-item {{ loop.first ? 'active' : '' }}" style="background-image: url('{{ img }}');"></div>
+            {% endfor %}
+        {% else %}
+            <div class="hero-slide-item active" style="background-image: url('{{ asset('images/banner.mp4') }}'); background-size: cover; background-position: center;"></div>
+        {% endif %}
+    </div>
 
     {# Visual Overlays & Effects #}
     <div class="luxury-overlay-hero__dark-overlay" aria-hidden="true"></div>
@@ -166,14 +157,57 @@
     {% endif %}
 </section>
 
+<style>
+.hero-slides-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+.hero-slide-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out, transform 6s ease-out;
+    transform: scale(1);
+}
+.hero-slide-item.active {
+    opacity: 1;
+    transform: scale(1.05);
+    z-index: 1;
+}
+</style>
+
 <script>
 (function () {
     'use strict';
 
-    function initLuxuryNavigation() {
-        var hero = document.querySelector('.luxury-overlay-hero');
+    function initLuxuryHero() {
+        var hero = document.querySelector('.cinematic-hero-slideshow');
         if (!hero) return;
+        
+        // Slideshow Handler
+        var slides = hero.querySelectorAll('.hero-slide-item');
+        if (slides.length > 1) {
+            var speed = parseInt(hero.getAttribute('data-speed')) || 4000;
+            var currentIndex = 0;
 
+            setInterval(function () {
+                slides[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % slides.length;
+                slides[currentIndex].classList.add('active');
+            }, speed);
+        }
+
+        // Navigation Menu Handler
         var toggle = hero.querySelector('#luxury-menu-toggle');
         var mobileMenu = hero.querySelector('#luxury-mobile-menu');
         var navigation = hero.querySelector('[data-luxury-main-navigation]');
@@ -226,7 +260,6 @@
             }
         }
 
-        // Event Listeners
         toggle.addEventListener('click', toggleMenu);
 
         var resizeTimer;
@@ -245,14 +278,13 @@
             if (event.key === 'Escape') setMenuClosedState();
         });
 
-        // Initial Execution
         moveMenu();
     }
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initLuxuryNavigation);
+        document.addEventListener('DOMContentLoaded', initLuxuryHero);
     } else {
-        initLuxuryNavigation();
+        initLuxuryHero();
     }
 })();
 </script>
